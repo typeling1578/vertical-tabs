@@ -2,6 +2,10 @@
   "extensionDescription": {
     "message": "Tab Center は、ユーザーのタブの使い方から生じるいくつかの問題 (特に「タブを開きすぎてしまう」状況) を解決し、将来の革新に向けてより自在な UI の基礎を提供しようとする試みです。この Firefox アドオンの初回版では、タブを水平ではなく垂直に配置してみました。これは素晴らしい VerticalTabs アドオンに強く触発され、そのアイデアを借用したものです。"
   },
+  "browserActionTitle": {
+    "message": "Toggle Tab Center Redux",
+    "description": "Tooltip shown when hovering the toolbar button."
+  },
   "sidebarTitle": {
     "message": "タブ",
     "description": "Label shown in the sidebar selector."
@@ -91,11 +95,17 @@
   "optionsDarkTheme": {
     "message": "暗いテーマ"
   },
+  "optionsThemeIntegration": {
+    "message": "Integrate with current theme"
+  },
   "optionsAdvancedTitle": {
     "message": "上級者設定"
   },
   "optionsCustomCSS": {
     "message": "CSSを保存"
+  },
+  "optionsCustomCSSWikiLink": {
+    "message": "CSS Tweaks Wiki Article"
   },
   "optionsSaveCustomCSS": {
     "message": "CSSを保存"

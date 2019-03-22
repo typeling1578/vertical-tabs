@@ -95,6 +95,9 @@
   "optionsDarkTheme": {
     "message": "Tmavý vzhled"
   },
+  "optionsThemeIntegration": {
+    "message": "Integrate with current theme"
+  },
   "optionsAdvancedTitle": {
     "message": "Pokročilé"
   },

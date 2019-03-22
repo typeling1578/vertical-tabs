@@ -95,6 +95,9 @@
   "optionsDarkTheme": {
     "message": "Σκούρο θέμα"
   },
+  "optionsThemeIntegration": {
+    "message": "Integrate with current theme"
+  },
   "optionsAdvancedTitle": {
     "message": "Για προχωρημένους"
   },
