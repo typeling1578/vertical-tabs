@@ -102,7 +102,6 @@ TabList.prototype = {
     }
     this._shiftTabsIndexes(1, newPosition);
     let tab = await browser.tabs.get(tabId);
-    tab.id = tabId; // Replace the ID by the new tab ID (they are different!).
     this._create(tab);
   },
   _onBrowserTabRemoved(tabId) {
