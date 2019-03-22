@@ -1,4 +1,5 @@
 .DS_Store
+node_modules
+package-lock.json
 src/sidebar/dist
 web-ext-artifacts
-node_modules
