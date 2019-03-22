@@ -154,19 +154,8 @@ SideTab.prototype = {
     }
     // Avoid an expensive sync reflow (scrolling).
     requestAnimationFrame(() => {
-      this._scrollIntoView();
+      this.view.scrollIntoView({block: "nearest", behavior: "smooth"});
     });
-  },
-  _scrollIntoView() {
-    const {top: parentTop, height} = this.view.parentNode.parentNode.getBoundingClientRect();
-    let {top, bottom} = this.view.getBoundingClientRect();
-    top -= parentTop;
-    bottom -= parentTop;
-    if (top < 0) {
-      this.view.scrollIntoView({block: "start", behavior: "smooth"});
-    } else if (bottom > height) {
-      this.view.scrollIntoView({block: "end", behavior: "smooth"});
-    }
   },
   updateVisibility(show) {
     this.visible = show;
