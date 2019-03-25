@@ -19,6 +19,8 @@
     "browserSettings",
     "contextualIdentities",
     "cookies",
+    "menus",
+    "menus.overrideContext",
     "sessions",
     "storage",
     "tabHide",

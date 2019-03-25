@@ -1,3 +1,4 @@
+import SideTab from "./tab.js";
 import TabList from "./tablist.js";
 import TopMenu from "./topmenu/topmenu.js";
 
@@ -52,8 +53,9 @@ TabCenter.prototype = {
     });
     window.addEventListener("contextmenu", (e) => {
       const target = e.target;
-      // Let the searchbox input have a context menu.
-      if (!(target && target.tagName === "INPUT" && target.type === "text")) {
+      // Let the searchbox input and the tabs have a context menu.
+      if (!(target && target.tagName === "INPUT" && target.type === "text")
+          && !SideTab.isTabEvent(e, false)) {
         e.preventDefault();
       }
     }, false);

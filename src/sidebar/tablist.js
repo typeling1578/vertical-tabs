@@ -5,6 +5,7 @@ import fuzzysort from "./lib/fuzzysort.js";
 const COMPACT_MODE_OFF = 0;
 /*const COMPACT_MODE_DYNAMIC = 1;*/
 const COMPACT_MODE_STRICT = 2;
+const SUPPORT_OVERRIDE_CONTEXT_MENU = typeof browser.menus.overrideContext === "function";
 
 /* @arg {props}
  * openTab
@@ -27,12 +28,19 @@ function TabList(props) {
 
   this._compactModeMode = parseInt(this._props.prefs.compactModeMode);
   this._compactPins = this._props.prefs.compactPins;
+
   this._setupListeners();
 
   if (browser.browserSettings.closeTabsByDoubleClick) { // Introduced in Firefox 61.
     browser.browserSettings.closeTabsByDoubleClick.get({}).then(({value}) => {
       this.closeTabsByDoubleClick = value;
     });
+  }
+
+  if (SUPPORT_OVERRIDE_CONTEXT_MENU) {
+    this._setupNativeMenu();
+    this._setupNativeMenuListener();
+    this._updateHasRecentlyClosedTabs();
   }
 }
 
@@ -56,7 +64,7 @@ TabList.prototype = {
       view.addEventListener("dblclick", e => this._onDblClick(e));
       view.addEventListener("auxclick", e => this._onAuxClick(e));
       view.addEventListener("mousedown", e => this._onMouseDown(e));
-      view.addEventListener("contextmenu", e => this._onContextMenu(e));
+      view.addEventListener("contextmenu", e => this._onContextMenu(e), true);
       view.addEventListener("animationend", e => this._onAnimationEnd(e));
     }
 
@@ -79,6 +87,88 @@ TabList.prototype = {
 
     // Pref changes
     browser.storage.onChanged.addListener(changes => this._onPrefsChanged(changes));
+  },
+  _setupNativeMenu() {
+    const items = [{
+      id: "contextMenuReloadTab",
+      title: browser.i18n.getMessage("contextMenuReloadTab")
+    }, {
+      id: "contextMenuMuteTab"
+    }, {
+      type: "separator"
+    }, {
+      id: "contextMenuPinTab"
+    }, {
+      id: "contextMenuDuplicateTab",
+      title: browser.i18n.getMessage("contextMenuDuplicateTab")
+    }, {
+      id: "contextMenuMoveTabToNewWindow",
+      title: browser.i18n.getMessage("contextMenuMoveTabToNewWindow")
+    }, {
+      type: "separator"
+    }, {
+      id: "contextMenuReloadAllTabs",
+      title: browser.i18n.getMessage("contextMenuReloadAllTabs")
+    }, {
+      id: "contextMenuCloseTabsUnderneath",
+      title: browser.i18n.getMessage("contextMenuCloseTabsUnderneath")
+    }, {
+      id: "contextMenuCloseOtherTabs",
+      title: browser.i18n.getMessage("contextMenuCloseOtherTabs")
+    }, {
+      type: "separator"
+    }, {
+      id: "contextMenuUndoCloseTab",
+      title: browser.i18n.getMessage("contextMenuUndoCloseTab")
+    }, {
+      id: "contextMenuCloseTab",
+      title: browser.i18n.getMessage("contextMenuCloseTab")
+    }];
+
+    items.forEach(item => {
+      browser.menus.create({
+        ...item,
+        contexts: ["tab"],
+        viewTypes: ["sidebar"],
+        documentUrlPatterns: [`moz-extension://${location.host}/*`]
+      });
+    });
+  },
+  _setupNativeMenuListener() {
+    browser.menus.onClicked.addListener((info, tab) => {
+      switch (info.menuItemId) {
+      case "contextMenuReloadTab":
+        browser.tabs.reload(tab.id);
+        break;
+      case "contextMenuMuteTab":
+        browser.tabs.update(tab.id, {"muted": !tab.mutedInfo.muted});
+        break;
+      case "contextMenuPinTab":
+        browser.tabs.update(tab.id, {"pinned": !tab.pinned});
+        break;
+      case "contextMenuDuplicateTab":
+        browser.tabs.duplicate(tab.id);
+        break;
+      case "contextMenuMoveTabToNewWindow":
+        browser.windows.create({tabId: tab.id});
+        break;
+      case "contextMenuReloadAllTabs":
+        this._reloadAllTabs();
+        break;
+      case "contextMenuCloseTabsUnderneath":
+        this._closeTabsAfter(tab.index);
+        break;
+      case "contextMenuCloseOtherTabs":
+        this._closeAllTabsExcept(tab.id);
+        break;
+      case "contextMenuUndoCloseTab":
+        this._undoCloseTab();
+        break;
+      case "contextMenuCloseTab":
+        browser.tabs.remove(tab.id);
+        break;
+      }
+    });
   },
   _onPrefsChanged(changes) {
     if (changes.compactModeMode) {
@@ -111,6 +201,7 @@ TabList.prototype = {
     }
     this._shiftTabsIndexes(-1, sidetab.index);
     this._remove(sidetab);
+    this._updateHasRecentlyClosedTabs();
   },
   _onBrowserTabActivated(tabId) {
     const sidetab = this._getTabById(tabId);
@@ -214,6 +305,50 @@ TabList.prototype = {
     this._contextMenu = null;
   },
   _onContextMenu(e) {
+    if (SUPPORT_OVERRIDE_CONTEXT_MENU) {
+      this._onNativeContextMenu(e);
+    } else {
+      this._onCustomContextMenu(e);
+    }
+  },
+  _onNativeContextMenu(e) {
+    if (!SideTab.isTabEvent(e, false)) {
+      e.preventDefault();
+      return;
+    }
+    const tabId = SideTab.tabIdForEvent(e);
+    const tab = this._getTabById(tabId);
+
+    // update labels
+    browser.menus.update("contextMenuMuteTab", {
+      title: browser.i18n.getMessage(tab.muted ? "contextMenuUnmuteTab" :
+                                                 "contextMenuMuteTab")
+    });
+    browser.menus.update("contextMenuPinTab", {
+      title: browser.i18n.getMessage(tab.pinned ? "contextMenuUnpinTab" :
+                                                  "contextMenuPinTab")
+    });
+    // update visibility
+    browser.menus.update("contextMenuMoveTabToNewWindow", {
+      visible: this._tabs.size > 1
+    });
+    browser.menus.update("contextMenuCloseTabsUnderneath", {
+      visible: !tab.pinned && !this._filterActive
+    });
+    browser.menus.update("contextMenuCloseOtherTabs", {
+      visible: !tab.pinned
+    });
+    // update enabled state
+    browser.menus.update("contextMenuUndoCloseTab", {
+      enabled: this.hasRecentlyClosedTabs
+    });
+
+    browser.menus.overrideContext({
+      context: "tab",
+      tabId: tabId
+    });
+  },
+  _onCustomContextMenu(e) {
     this._closeContextMenu();
     e.preventDefault();
     if (!SideTab.isTabEvent(e, false)) {
@@ -254,6 +389,12 @@ TabList.prototype = {
       }
     }
   },
+  // We can’t make the function that overrides context menu asynchronous,
+  // so we get this information ahead of time.
+  async _updateHasRecentlyClosedTabs() {
+    const undoTabs = await this._getRecentlyClosedTabs();
+    this.hasRecentlyClosedTabs = undoTabs.length > 0;
+  },
   async _hasRecentlyClosedTabs() {
     const undoTabs = await this._getRecentlyClosedTabs();
     return !!undoTabs.length;
@@ -272,6 +413,7 @@ TabList.prototype = {
     if (undoTabs.length) {
       browser.sessions.restore(undoTabs[0].sessionId);
     }
+    this._updateHasRecentlyClosedTabs();
   },
   onScroll() {
     if (this._view.scrollTop === 0) {
