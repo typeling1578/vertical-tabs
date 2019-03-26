@@ -1,113 +1,113 @@
 {
-  "extensionDescription": {
-    "message": "Tab Center é uma tentativa de resolver alguns dos problemas que surgiram a partir da forma como as pessoas usam abas (notavelmente o problema de \"abas demais\") e fornecer uma base de interface de usuário mais versátil para inovação futura. A primeira versão desta extensão para o Firefox organiza abas verticalmente, em vez de horizontalmente. Ela é fortemente inspirada e toma emprestado ideias da excelente extensão VerticalTabs."
-  },
-  "browserActionTitle": {
-    "message": "Alternar Tab Center Redux",
-    "description": "Tooltip shown when hovering the toolbar button."
-  },
-  "sidebarTitle": {
-    "message": "Abas",
-    "description": "Label shown in the sidebar selector."
-  },
-  "newTabBtnLabel": {
-    "message": "Nova aba",
-    "description": "Label of the New Tab button in the top menu."
-  },
-  "newTabBtnTooltip": {
-    "message": "Abrir uma nova aba"
-  },
-  "searchPlaceholder": {
-    "message": "Buscar abas"
-  },
-  "closeTabButtonTooltip": {
-    "message": "Fechar aba"
-  },
-  "allTabsLabel": {
-    "message": "Mostrar todas as abas…",
-    "description": "Shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
-  },
-  "contextMenuReloadTab": {
-    "message": "Recarregar aba",
-    "description": "Reload Tab context menu item label."
-  },
-  "contextMenuPinTab": {
-    "message": "Fixar aba",
-    "description": "Pin Tab context menu item label."
-  },
-  "contextMenuUnpinTab": {
-    "message": "Desafixar aba",
-    "description": "Unpin Tab context menu item label."
-  },
-  "contextMenuMuteTab": {
-    "message": "Silenciar aba",
-    "description": "Mute Tab context menu item label."
-  },
-  "contextMenuUnmuteTab": {
-    "message": "Não silenciar aba",
-    "description": "Unmute Tab context menu item label."
-  },
-  "contextMenuCloseTab": {
-    "message": "Fechar aba"
-  },
-  "contextMenuUndoCloseTab": {
-    "message": "Reabrir aba"
-  },
-  "contextMenuDuplicateTab": {
-    "message": "Duplicar aba"
-  },
-  "contextMenuMoveTabToNewWindow": {
-    "message": "Mover para nova janela"
-  },
-  "contextMenuReloadAllTabs": {
-    "message": "Recarregar todas as abas"
-  },
-  "contextMenuCloseTabsUnderneath": {
-    "message": "Fechar abas abaixo"
-  },
-  "contextMenuCloseOtherTabs": {
-    "message": "Fechar outras abas"
-  },
-  "settingsBtnTooltip": {
-    "message": "Abrir opções"
-  },
-  "optionsTitle": {
-    "message": "Opções"
-  },
-  "optionsCompactMode": {
-    "message": "Modo compacto"
-  },
-  "optionsCompactModeTooltip": {
-    "message": "O modo compacto reduz a altura das abas para mostrar mais delas. Na configuração dinâmica, este modo será\nacionado quando não houver espaço disponível."
-  },
-  "optionsCompactModeOff": {
-    "message": "Desativado"
-  },
-  "optionsCompactModeDynamic": {
-    "message": "Dinâmico"
-  },
-  "optionsCompactModeStrict": {
-    "message": "Sempre"
-  },
-  "optionsCompactPins": {
-    "message": "Compactar abas fixadas"
-  },
-  "optionsDarkTheme": {
-    "message": "Tema escuro"
-  },
-  "optionsThemeIntegration": {
-    "message": "Integrate with current theme"
-  },
-  "optionsAdvancedTitle": {
-    "message": "Avançado"
-  },
-  "optionsCustomCSS": {
-    "message": "Folha de estilos personalizada"
-  },
-  "optionsCustomCSSWikiLink": {
-    "message": "Artigo Wiki sobre ajustes CSS"
-  },
-  "optionsSaveCustomCSS": {
-    "message": "Salvar CSS"
-  }
+    "extensionDescription": {
+        "message": "Tab Center é uma tentativa de resolver alguns dos problemas que surgiram a partir da forma como as pessoas usam abas (notavelmente o problema de \"abas demais\") e fornecer uma base de interface de usuário mais versátil para inovação futura. A primeira versão desta extensão para o Firefox organiza abas verticalmente, em vez de horizontalmente. Ela é fortemente inspirada e toma emprestado ideias da excelente extensão VerticalTabs."
+    },
+    "browserActionTitle": {
+        "message": "Alternar Tab center Reborn",
+        "description": "Tooltip shown when hovering the toolbar button."
+    },
+    "sidebarTitle": {
+        "message": "Abas",
+        "description": "Label shown in the sidebar selector."
+    },
+    "newTabBtnLabel": {
+        "message": "Nova aba",
+        "description": "Label of the New Tab button in the top menu."
+    },
+    "newTabBtnTooltip": {
+        "message": "Abrir uma nova aba"
+    },
+    "searchPlaceholder": {
+        "message": "Buscar abas"
+    },
+    "closeTabButtonTooltip": {
+        "message": "Fechar aba"
+    },
+    "allTabsLabel": {
+        "message": "Mostrar todas as abas…",
+        "description": "Shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
+    },
+    "contextMenuReloadTab": {
+        "message": "Recarregar aba",
+        "description": "Reload Tab context menu item label."
+    },
+    "contextMenuPinTab": {
+        "message": "Fixar aba",
+        "description": "Pin Tab context menu item label."
+    },
+    "contextMenuUnpinTab": {
+        "message": "Desafixar aba",
+        "description": "Unpin Tab context menu item label."
+    },
+    "contextMenuMuteTab": {
+        "message": "Silenciar aba",
+        "description": "Mute Tab context menu item label."
+    },
+    "contextMenuUnmuteTab": {
+        "message": "Não silenciar aba",
+        "description": "Unmute Tab context menu item label."
+    },
+    "contextMenuCloseTab": {
+        "message": "Fechar aba"
+    },
+    "contextMenuUndoCloseTab": {
+        "message": "Reabrir aba"
+    },
+    "contextMenuDuplicateTab": {
+        "message": "Duplicar aba"
+    },
+    "contextMenuMoveTabToNewWindow": {
+        "message": "Mover para nova janela"
+    },
+    "contextMenuReloadAllTabs": {
+        "message": "Recarregar todas as abas"
+    },
+    "contextMenuCloseTabsUnderneath": {
+        "message": "Fechar abas abaixo"
+    },
+    "contextMenuCloseOtherTabs": {
+        "message": "Fechar outras abas"
+    },
+    "settingsBtnTooltip": {
+        "message": "Abrir opções"
+    },
+    "optionsTitle": {
+        "message": "Opções"
+    },
+    "optionsCompactMode": {
+        "message": "Modo compacto"
+    },
+    "optionsCompactModeTooltip": {
+        "message": "O modo compacto reduz a altura das abas para mostrar mais delas. Na configuração dinâmica, este modo será\nacionado quando não houver espaço disponível."
+    },
+    "optionsCompactModeOff": {
+        "message": "Desativado"
+    },
+    "optionsCompactModeDynamic": {
+        "message": "Dinâmico"
+    },
+    "optionsCompactModeStrict": {
+        "message": "Sempre"
+    },
+    "optionsCompactPins": {
+        "message": "Compactar abas fixadas"
+    },
+    "optionsDarkTheme": {
+        "message": "Tema escuro"
+    },
+    "optionsThemeIntegration": {
+        "message": "Integrate with current theme"
+    },
+    "optionsAdvancedTitle": {
+        "message": "Avançado"
+    },
+    "optionsCustomCSS": {
+        "message": "Folha de estilos personalizada"
+    },
+    "optionsCustomCSSWikiLink": {
+        "message": "Artigo Wiki sobre ajustes CSS"
+    },
+    "optionsSaveCustomCSS": {
+        "message": "Salvar CSS"
+    }
 }
