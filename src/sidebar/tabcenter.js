@@ -21,7 +21,7 @@ TabCenter.prototype = {
     this._applyPrefs(prefs);
     this._tabList = new TabList({openTab, search, prefs});
     // There's no real need to await on populate().
-    this._tabList.populate(windowId);
+    this._tabList.populate(windowId).then(() => this._tabList.updateScrollShadow());
 
     browser.runtime.sendMessage({
       event: "sidebar-open",

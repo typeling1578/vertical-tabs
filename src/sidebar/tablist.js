@@ -71,7 +71,7 @@ TabList.prototype = {
     this._spacerView.addEventListener("dblclick", () => this._onSpacerDblClick());
     this._spacerView.addEventListener("auxclick", e => this._onSpacerAuxClick(e));
     this._moreTabsView.addEventListener("click", () => this._clearSearch());
-    this._view.addEventListener("scroll", () => this.onScroll());
+    this._view.addEventListener("scroll", () => this.updateScrollShadow());
 
     // Drag-and-drop.
     document.addEventListener("dragstart", e => this._onDragStart(e));
@@ -415,11 +415,16 @@ TabList.prototype = {
     }
     this._updateHasRecentlyClosedTabs();
   },
-  onScroll() {
+  updateScrollShadow() {
     if (this._view.scrollTop === 0) {
-      this._wrapperView.classList.remove("scrolled");
+      this._wrapperView.classList.remove("can-scroll-top");
     } else {
-      this._wrapperView.classList.add("scrolled");
+      this._wrapperView.classList.add("can-scroll-top");
+    }
+    if ((this._view.scrollTop + this._view.clientHeight) >= this._view.scrollHeight) {
+      this._wrapperView.classList.remove("can-scroll-bottom");
+    } else {
+      this._wrapperView.classList.add("can-scroll-bottom");
     }
   },
   _onClick(e) {
