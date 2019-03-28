@@ -96,7 +96,7 @@
         "message": "Koyu Tema"
     },
     "optionsThemeIntegration": {
-        "message": "Integrate with current theme"
+        "message": ""
     },
     "optionsAdvancedTitle": {
         "message": "Gelişmiş"
@@ -109,5 +109,17 @@
     },
     "optionsSaveCustomCSS": {
         "message": "CSS Kaydet"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "Kapsayıcıda yeniden aç"
+    },
+    "contextMenuMoveTab": {
+        "message": "Sekmeyi taşı"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "En başa taşı"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "En sona taşı"
     }
 }
