@@ -96,7 +96,7 @@
         "message": "Tema escuro"
     },
     "optionsThemeIntegration": {
-        "message": "Integrate with current theme"
+        "message": ""
     },
     "optionsAdvancedTitle": {
         "message": "Avançado"
@@ -109,5 +109,17 @@
     },
     "optionsSaveCustomCSS": {
         "message": "Salvar CSS"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "Reabrir no contentor"
+    },
+    "contextMenuMoveTab": {
+        "message": "Mover separador"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "Mover para o início"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "Mover para o fim"
     }
 }
