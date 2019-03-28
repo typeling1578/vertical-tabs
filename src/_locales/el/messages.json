@@ -96,7 +96,7 @@
         "message": "Σκούρο θέμα"
     },
     "optionsThemeIntegration": {
-        "message": "Integrate with current theme"
+        "message": ""
     },
     "optionsAdvancedTitle": {
         "message": "Για προχωρημένους"
@@ -109,5 +109,17 @@
     },
     "optionsSaveCustomCSS": {
         "message": "Αποθήκευση CSS"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "Άνοιγμα ξανά σε θεματική καρτέλα"
+    },
+    "contextMenuMoveTab": {
+        "message": "Μετακίνηση καρτέλας"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "Μετακίνηση στην αρχή"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "Μετακίνηση στο τέλος"
     }
 }
