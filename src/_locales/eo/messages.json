@@ -109,5 +109,17 @@
     },
     "optionsSaveCustomCSS": {
         "message": "Konservi la stilfolion"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "Remalfermi en ingo"
+    },
+    "contextMenuMoveTab": {
+        "message": "Movi langeton"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "Movi al la komenco"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "Movi al la fino"
     }
 }
