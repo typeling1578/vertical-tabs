@@ -67,7 +67,7 @@ TabCenter.prototype = {
     };
   },
   set _customCSS(cssText) {
-    document.getElementById("customCSS").innerHTML = cssText;
+    document.getElementById("customCSS").textContent = cssText;
   },
   set _darkTheme(isDarkTheme) {
     if (isDarkTheme) {

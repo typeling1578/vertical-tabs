@@ -102,7 +102,7 @@ SideTab.prototype = {
       }
     }
     this.title = title;
-    this._titleView.innerText = title;
+    this._titleView.textContent = title;
     this.view.title = title;
   },
   _updateIcon(favIconUrl) {
