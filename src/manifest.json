@@ -53,7 +53,7 @@
       "suggested_key": {
           "default": "Ctrl+Shift+O",
           "mac": "Command+Shift+O",
-          "linux": "F1"
+          "linux": "Ctrl+F1"
       }
     }
   },

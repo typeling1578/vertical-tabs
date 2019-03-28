@@ -125,7 +125,7 @@ img, .tab *:not(.clickable) {
 
 #newtab-menu {
     display: flex;
-    z-index: 2;
+    z-index: 75;
     position: absolute;
     top: 36px;
     left: 3px;
@@ -392,6 +392,10 @@ body[platform="win"] #searchbox-input:placeholder-shown {
     overflow-y: auto;
 }
 
+#pinnedtablist {
+    z-index: 50;
+}
+
 #tablist,
 #pinnedtablist:not(.compact) {
     overflow-x: hidden;
@@ -411,9 +415,9 @@ body[platform="win"] #searchbox-input:placeholder-shown {
 }
 
 #topshadow, #bottomshadow {
+    z-index: 25;
     flex-shrink: 0;
     width: 100%;
-    z-index: 1;
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -728,6 +732,7 @@ body[platform="win"] #searchbox-input:placeholder-shown {
 }
 
 .tab:hover:not(.pinned) > .tab-title-wrapper {
+    z-index: 0; /* So that highlighting doesn’t draw above shadows */
     mask-image: linear-gradient(to left, transparent 28px, black calc(2em + 28px));
 }
 
@@ -747,7 +752,6 @@ body[platform="win"] #searchbox-input:placeholder-shown {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 12px;
-    z-index: 0;
 }
 
 .tab-close {
