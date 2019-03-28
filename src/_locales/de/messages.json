@@ -109,5 +109,17 @@
     },
     "optionsSaveCustomCSS": {
         "message": "Stylesheet speichern"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "In Tab-Umgebung öffnen"
+    },
+    "contextMenuMoveTab": {
+        "message": "Tab verschieben"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "An Anfang verschieben"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "An Ende verschieben"
     }
 }
