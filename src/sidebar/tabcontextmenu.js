@@ -80,7 +80,8 @@ TabContextMenu.prototype = {
     }, /*
         * We don’t have “Add to bookmarks” because it requires us to code the dialog.
         * Also, it’s not very useful since you can bookmark the active tab easily anyway.
-        */ {
+        */
+    {
       id: "contextMenuOpenInContextualTab",
       title: browser.i18n.getMessage("contextMenuOpenInContextualTab"),
       visible: browser.contextualIdentities !== undefined
@@ -147,14 +148,14 @@ TabContextMenu.prototype = {
         contexts: ["tab"],
         viewTypes: ["sidebar"],
         documentUrlPatterns: [`moz-extension://${location.host}/*`]
-      })
-    })
+      });
+    });
 
     browser.menus.overrideContext({
       context: "tab",
       tabId: tabId
     });
   },
-}
+};
 
 export default TabContextMenu;
