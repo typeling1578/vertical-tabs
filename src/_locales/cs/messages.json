@@ -96,7 +96,7 @@
         "message": "Tmavý vzhled"
     },
     "optionsThemeIntegration": {
-        "message": "Integrate with current theme"
+        "message": ""
     },
     "optionsAdvancedTitle": {
         "message": "Pokročilé"
@@ -109,5 +109,17 @@
     },
     "optionsSaveCustomCSS": {
         "message": "Uložit CSS"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "Otevřít v kontejnerovém panelu"
+    },
+    "contextMenuMoveTab": {
+        "message": "Přesunout panel"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "Přesunout na začátek"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "Přesunout na konec"
     }
 }
