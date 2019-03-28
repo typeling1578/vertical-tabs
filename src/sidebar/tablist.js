@@ -5,7 +5,6 @@ import fuzzysort from "./lib/fuzzysort.js";
 const COMPACT_MODE_OFF = 0;
 /*const COMPACT_MODE_DYNAMIC = 1;*/
 const COMPACT_MODE_STRICT = 2;
-const SUPPORT_OVERRIDE_CONTEXT_MENU = typeof browser.menus.overrideContext === "function";
 
 /* @arg {props}
  * openTab
@@ -31,17 +30,13 @@ function TabList(props) {
 
   this._setupListeners();
 
-  if (browser.browserSettings.closeTabsByDoubleClick) { // Introduced in Firefox 61.
-    browser.browserSettings.closeTabsByDoubleClick.get({}).then(({value}) => {
-      this.closeTabsByDoubleClick = value;
-    });
-  }
+  browser.browserSettings.closeTabsByDoubleClick.get({}).then(({value}) => {
+    this.closeTabsByDoubleClick = value;
+  });
 
-  if (SUPPORT_OVERRIDE_CONTEXT_MENU) {
-    this._setupNativeMenu();
-    this._setupNativeMenuListener();
-    this._updateHasRecentlyClosedTabs();
-  }
+  this._updateContextualIdentities();
+  this._updateHasRecentlyClosedTabs();
+  this.tabContextMenu = new TabContextMenu(this);
 }
 
 TabList.prototype = {
@@ -64,7 +59,7 @@ TabList.prototype = {
       view.addEventListener("dblclick", e => this._onDblClick(e));
       view.addEventListener("auxclick", e => this._onAuxClick(e));
       view.addEventListener("mousedown", e => this._onMouseDown(e));
-      view.addEventListener("contextmenu", e => this._onContextMenu(e), true);
+      view.addEventListener("contextmenu", e => this.tabContextMenu.open(e), true);
       view.addEventListener("animationend", e => this._onAnimationEnd(e));
     }
 
@@ -87,88 +82,10 @@ TabList.prototype = {
 
     // Pref changes
     browser.storage.onChanged.addListener(changes => this._onPrefsChanged(changes));
-  },
-  _setupNativeMenu() {
-    const items = [{
-      id: "contextMenuReloadTab",
-      title: browser.i18n.getMessage("contextMenuReloadTab")
-    }, {
-      id: "contextMenuMuteTab"
-    }, {
-      type: "separator"
-    }, {
-      id: "contextMenuPinTab"
-    }, {
-      id: "contextMenuDuplicateTab",
-      title: browser.i18n.getMessage("contextMenuDuplicateTab")
-    }, {
-      id: "contextMenuMoveTabToNewWindow",
-      title: browser.i18n.getMessage("contextMenuMoveTabToNewWindow")
-    }, {
-      type: "separator"
-    }, {
-      id: "contextMenuReloadAllTabs",
-      title: browser.i18n.getMessage("contextMenuReloadAllTabs")
-    }, {
-      id: "contextMenuCloseTabsUnderneath",
-      title: browser.i18n.getMessage("contextMenuCloseTabsUnderneath")
-    }, {
-      id: "contextMenuCloseOtherTabs",
-      title: browser.i18n.getMessage("contextMenuCloseOtherTabs")
-    }, {
-      type: "separator"
-    }, {
-      id: "contextMenuUndoCloseTab",
-      title: browser.i18n.getMessage("contextMenuUndoCloseTab")
-    }, {
-      id: "contextMenuCloseTab",
-      title: browser.i18n.getMessage("contextMenuCloseTab")
-    }];
 
-    items.forEach(item => {
-      browser.menus.create({
-        ...item,
-        contexts: ["tab"],
-        viewTypes: ["sidebar"],
-        documentUrlPatterns: [`moz-extension://${location.host}/*`]
-      });
-    });
-  },
-  _setupNativeMenuListener() {
-    browser.menus.onClicked.addListener((info, tab) => {
-      switch (info.menuItemId) {
-      case "contextMenuReloadTab":
-        browser.tabs.reload(tab.id);
-        break;
-      case "contextMenuMuteTab":
-        browser.tabs.update(tab.id, {"muted": !tab.mutedInfo.muted});
-        break;
-      case "contextMenuPinTab":
-        browser.tabs.update(tab.id, {"pinned": !tab.pinned});
-        break;
-      case "contextMenuDuplicateTab":
-        browser.tabs.duplicate(tab.id);
-        break;
-      case "contextMenuMoveTabToNewWindow":
-        browser.windows.create({tabId: tab.id});
-        break;
-      case "contextMenuReloadAllTabs":
-        this._reloadAllTabs();
-        break;
-      case "contextMenuCloseTabsUnderneath":
-        this._closeTabsAfter(tab.index);
-        break;
-      case "contextMenuCloseOtherTabs":
-        this._closeAllTabsExcept(tab.id);
-        break;
-      case "contextMenuUndoCloseTab":
-        this._undoCloseTab();
-        break;
-      case "contextMenuCloseTab":
-        browser.tabs.remove(tab.id);
-        break;
-      }
-    });
+    browser.contextualIdentities.onCreated.addListener(this._updateContextualIdentities);
+    browser.contextualIdentities.onRemoved.addListener(this._updateContextualIdentities);
+    browser.contextualIdentities.onUpdated.addListener(this._updateContextualIdentities);
   },
   _onPrefsChanged(changes) {
     if (changes.compactModeMode) {
@@ -195,7 +112,7 @@ TabList.prototype = {
     this._create(tab);
   },
   _onBrowserTabRemoved(tabId) {
-    let sidetab = this._getTabById(tabId);
+    let sidetab = this.getTabById(tabId);
     if (!sidetab) { // Could be null because different window.
       return;
     }
@@ -204,7 +121,7 @@ TabList.prototype = {
     this._updateHasRecentlyClosedTabs();
   },
   _onBrowserTabActivated(tabId) {
-    const sidetab = this._getTabById(tabId);
+    const sidetab = this.getTabById(tabId);
     if (!sidetab) { // Could be null because different window.
       return;
     }
@@ -213,7 +130,7 @@ TabList.prototype = {
     sidetab.scrollIntoView();
   },
   _onBrowserTabMoved(tabId, moveInfo) {
-    const tab = this._getTabById(tabId);
+    const tab = this.getTabById(tabId);
     if (!tab) { // Could be null because different window.
       return;
     }
@@ -236,7 +153,7 @@ TabList.prototype = {
     if (!this._checkWindow(tab)) {
       return;
     }
-    const sidetab = this._getTabById(tab.id);
+    const sidetab = this.getTabById(tab.id);
     if (!sidetab) {
       return;
     }
@@ -270,7 +187,7 @@ TabList.prototype = {
     if (frameId !== 0) { // We only care about top-level frames.
       return;
     }
-    let sidetab = this._getTabById(tabId);
+    let sidetab = this.getTabById(tabId);
     if (!sidetab) { // Could be null because different window.
       return;
     }
@@ -296,125 +213,6 @@ TabList.prototype = {
       return;
     }
   },
-  _closeContextMenu() {
-    if (this._contextMenu) {
-      this._contextMenu.close();
-    }
-  },
-  _onContextMenuHidden() {
-    this._contextMenu = null;
-  },
-  _onContextMenu(e) {
-    if (SUPPORT_OVERRIDE_CONTEXT_MENU) {
-      this._onNativeContextMenu(e);
-    } else {
-      this._onCustomContextMenu(e);
-    }
-  },
-  _onNativeContextMenu(e) {
-    if (!SideTab.isTabEvent(e, false)) {
-      e.preventDefault();
-      return;
-    }
-    const tabId = SideTab.tabIdForEvent(e);
-    const tab = this._getTabById(tabId);
-
-    // update labels
-    browser.menus.update("contextMenuMuteTab", {
-      title: browser.i18n.getMessage(tab.muted ? "contextMenuUnmuteTab" :
-                                                 "contextMenuMuteTab")
-    });
-    browser.menus.update("contextMenuPinTab", {
-      title: browser.i18n.getMessage(tab.pinned ? "contextMenuUnpinTab" :
-                                                  "contextMenuPinTab")
-    });
-    // update visibility
-    browser.menus.update("contextMenuMoveTabToNewWindow", {
-      visible: this._tabs.size > 1
-    });
-    browser.menus.update("contextMenuCloseTabsUnderneath", {
-      visible: !tab.pinned && !this._filterActive
-    });
-    browser.menus.update("contextMenuCloseOtherTabs", {
-      visible: !tab.pinned
-    });
-    // update enabled state
-    browser.menus.update("contextMenuUndoCloseTab", {
-      enabled: this.hasRecentlyClosedTabs
-    });
-
-    browser.menus.overrideContext({
-      context: "tab",
-      tabId: tabId
-    });
-  },
-  _onCustomContextMenu(e) {
-    this._closeContextMenu();
-    e.preventDefault();
-    if (!SideTab.isTabEvent(e, false)) {
-      return;
-    }
-    const tabId = SideTab.tabIdForEvent(e);
-    const tab = this._getTabById(tabId);
-    this._contextMenu = new TabContextMenu({
-      tab,
-      posX: e.clientX, posY: e.clientY,
-      onClose: this._onContextMenuHidden.bind(this),
-      canMoveToNewWindow: this._tabs.size > 1,
-      reloadAllTabs: this._reloadAllTabs.bind(this),
-      canCloseTabsAfter: !this._filterActive,
-      closeTabsAfter: this._closeTabsAfter.bind(this, tab.index),
-      closeOtherTabs: this._closeAllTabsExcept.bind(this, tabId),
-      canUndoCloseTab: this._hasRecentlyClosedTabs.bind(this),
-      undoCloseTab: this._undoCloseTab.bind(this)
-    });
-    this._contextMenu.show();
-  },
-  _closeTabsAfter(tabIndex) {
-    const toClose = [...this._tabs.values()]
-                    .filter(tab => tab.index > tabIndex && !tab.hidden)
-                    .map(tab => tab.id);
-    browser.tabs.remove(toClose);
-  },
-  _closeAllTabsExcept(tabId) {
-    const toClose = [...this._tabs.values()]
-                    .filter(tab => tab.id !== tabId && !tab.pinned && !tab.hidden)
-                    .map(tab => tab.id);
-    browser.tabs.remove(toClose);
-  },
-  _reloadAllTabs() {
-    for (let tab of this._tabs.values()) {
-      if (!tab.hidden) {
-        browser.tabs.reload(tab.id);
-      }
-    }
-  },
-  // We can’t make the function that overrides context menu asynchronous,
-  // so we get this information ahead of time.
-  async _updateHasRecentlyClosedTabs() {
-    const undoTabs = await this._getRecentlyClosedTabs();
-    this.hasRecentlyClosedTabs = undoTabs.length > 0;
-  },
-  async _hasRecentlyClosedTabs() {
-    const undoTabs = await this._getRecentlyClosedTabs();
-    return undoTabs.length > 0;
-  },
-  async _getRecentlyClosedTabs() {
-    const sessions = await browser.sessions.getRecentlyClosed();
-    return sessions.reduce((acc, session) => {
-      if (session.tab && this._checkWindow(session.tab)) {
-        acc.push(session.tab);
-      }
-      return acc;
-    }, []);
-  },
-  async _undoCloseTab() {
-    const undoTabs = await this._getRecentlyClosedTabs();
-    if (undoTabs.length) {
-      browser.sessions.restore(undoTabs[0].sessionId);
-    }
-    this._updateHasRecentlyClosedTabs();
-  },
   updateScrollShadow() {
     if (this._view.scrollTop === 0) {
       this._wrapperView.classList.remove("can-scroll-top");
@@ -433,7 +231,7 @@ TabList.prototype = {
       browser.tabs.remove(tabId);
     } else if (SideTab.isIconOverlayEvent(e)) {
       const tabId = SideTab.tabIdForEvent(e);
-      const tab = this._getTabById(tabId);
+      const tab = this.getTabById(tabId);
       browser.tabs.update(tabId, {"muted": !tab.muted});
     }
   },
@@ -447,7 +245,7 @@ TabList.prototype = {
       return;
     }
     const tabId = SideTab.tabIdForEvent(e);
-    const tab = this._getTabById(tabId);
+    const tab = this.getTabById(tabId);
     e.dataTransfer.setData("text/x-tabcenter-tab", JSON.stringify({
       tabId: parseInt(SideTab.tabIdForEvent(e)),
       origWindowId: this._windowId
@@ -505,10 +303,10 @@ TabList.prototype = {
       return;
     }
 
-    let curTab = this._getTabById(tabId);
+    let curTab = this.getTabById(tabId);
 
     if (e.target === this._spacerView || e.target === this._moreTabsView) {
-      this._moveTabToBottom(curTab);
+      this.moveTabToEnd(curTab);
       return;
     }
 
@@ -518,16 +316,16 @@ TabList.prototype = {
       return;
     }
 
-    let dropTab = this._getTabById(dropTabId);
+    let dropTab = this.getTabById(dropTabId);
 
     if (curTab.pinned !== dropTab.pinned) { // They can't mix
       if (curTab.pinned) {
         // We tried to move a pinned tab to the non-pinned area, move it to the last
         // position of the pinned tabs.
-        this._moveTabToBottom(curTab);
+        this.moveTabToEnd(curTab);
       } else {
         // Reverse of the previous statement
-        this._moveTabToTop(curTab);
+        this.moveTabToStart(curTab);
       }
       return;
     }
@@ -548,26 +346,8 @@ TabList.prototype = {
   },
   _onAnimationEnd(e) {
     const tabId = SideTab.tabIdForEvent(e);
-    const tab = this._getTabById(tabId);
+    const tab = this.getTabById(tabId);
     tab.onAnimationEnd(e);
-  },
-  async _moveTabToBottom(tab) {
-    let sameCategoryTabs = await browser.tabs.query({
-      hidden: false,
-      pinned: tab.pinned,
-      windowId: this._windowId
-    });
-    let lastIndex = sameCategoryTabs[sameCategoryTabs.length - 1].index;
-    await browser.tabs.move(tab.id, {index: lastIndex + 1});
-  },
-  async _moveTabToTop(tab) {
-    let sameCategoryTabs = await browser.tabs.query({
-      hidden: false,
-      pinned: tab.pinned,
-      windowId: this._windowId
-    });
-    let lastIndex = sameCategoryTabs[0].index;
-    await browser.tabs.move(tab.id, {index: lastIndex});
   },
   _clearSearch() {
     // _clearSearch() is called every time we open a new tab (see _create()),
@@ -662,7 +442,7 @@ TabList.prototype = {
   _checkWindow(tab) {
     return (tab.windowId === this._windowId);
   },
-  _getTabById(tabId) {
+  getTabById(tabId) {
     return this._tabs.get(tabId, null);
   },
   get _compactPins() {
@@ -758,7 +538,7 @@ TabList.prototype = {
   },
   _setActive(sidetab) {
     if (this._active) {
-      this._getTabById(this._active).updateActive(false);
+      this.getTabById(this._active).updateActive(false);
     }
     sidetab.updateActive(true);
     this._active = sidetab.id;
@@ -812,7 +592,80 @@ TabList.prototype = {
       return;
     }
     sidetab.updateThumbnail();
-  }
+  },
+  /*
+   * Functions below are used by TabContextMenu
+   */
+  tabCount() {
+    return this._tabs.size;
+  },
+  isFilterActive() {
+    return this._filterActive;
+  },
+  async _updateContextualIdentities() {
+    if (browser.contextualIdentities === undefined) {
+      return;
+    }
+    const identities = await browser.contextualIdentities.query({});
+    if (!identities || !identities.length) {
+      return;
+    }
+    this.contextualIdentities = identities;
+  },
+  // We can’t make the function that overrides context menu asynchronous,
+  // so we get this information ahead of time.
+  async _updateHasRecentlyClosedTabs() {
+    const undoTabs = await this._getRecentlyClosedTabs();
+    this.hasRecentlyClosedTabs = undoTabs.length > 0;
+  },
+  async _getRecentlyClosedTabs() {
+    const sessions = await browser.sessions.getRecentlyClosed();
+    return sessions.reduce((acc, session) => {
+      if (session.tab && this._checkWindow(session.tab)) {
+        acc.push(session.tab);
+      }
+      return acc;
+    }, []);
+  },
+  hasTabsUnderneath(currentTab) {
+    return Array.from(this._tabs)
+      .map(elem => elem[1])
+      .filter(tab => tab.pinned === currentTab.pinned)
+      .some(tab => tab.index > currentTab.index);
+  },
+  moveTabToStart(currentTab) {
+    let minIndex = Math.min(...Array.from(this._tabs)
+      .map(elem => elem[1])
+      .filter(tab => tab.pinned === currentTab.pinned)
+      .map(tab => tab.index));
+    browser.tabs.move(currentTab.id, {index: minIndex});
+  },
+  async moveTabToEnd(currentTab) {
+    let maxIndex = Math.max(...Array.from(this._tabs)
+      .map(elem => elem[1])
+      .filter(tab => tab.pinned === currentTab.pinned)
+      .map(tab => tab.index));
+    browser.tabs.move(currentTab.id, {index: maxIndex});
+  },
+  closeTabsAfter(tabIndex) {
+    const toClose = [...this._tabs.values()]
+                    .filter(tab => tab.index > tabIndex && !tab.hidden)
+                    .map(tab => tab.id);
+    browser.tabs.remove(toClose);
+  },
+  closeAllTabsExcept(tabId) {
+    const toClose = [...this._tabs.values()]
+                    .filter(tab => tab.id !== tabId && !tab.pinned && !tab.hidden)
+                    .map(tab => tab.id);
+    browser.tabs.remove(toClose);
+  },
+  async undoCloseTab() {
+    const undoTabs = await this._getRecentlyClosedTabs();
+    if (undoTabs.length) {
+      browser.sessions.restore(undoTabs[0].sessionId);
+    }
+    this._updateHasRecentlyClosedTabs();
+  },
 };
 
 export default TabList;

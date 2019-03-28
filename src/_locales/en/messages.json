@@ -26,6 +26,10 @@
     "message": "Search tabs"
   },
 
+  "settingsBtnTooltip": {
+    "message": "Open settings"
+  },
+
   "closeTabButtonTooltip": {
     "message": "Close tab"
   },
@@ -60,24 +64,28 @@
     "description": "Unmute Tab context menu item label."
   },
 
-  "contextMenuCloseTab": {
-    "message": "Close Tab"
-  },
-
-  "contextMenuUndoCloseTab": {
-    "message": "Undo Close Tab"
-  },
-
   "contextMenuDuplicateTab": {
     "message": "Duplicate Tab"
   },
 
-  "contextMenuMoveTabToNewWindow": {
-    "message": "Move to New Window"
+  "contextMenuOpenInContextualTab": {
+    "message": "Reopen in Container"
   },
 
-  "contextMenuReloadAllTabs": {
-    "message": "Reload All Tabs"
+  "contextMenuMoveTab": {
+    "message": "Move Tab"
+  },
+
+  "contextMenuMoveTabToStart": {
+    "message": "Move tab to start"
+  },
+
+  "contextMenuMoveTabToEnd": {
+    "message": "Move tab to end"
+  },
+
+  "contextMenuMoveTabToNewWindow": {
+    "message": "Move to New Window"
   },
 
   "contextMenuCloseTabsUnderneath": {
@@ -88,8 +96,12 @@
     "message": "Close Other Tabs"
   },
 
-  "settingsBtnTooltip": {
-    "message": "Open settings"
+  "contextMenuUndoCloseTab": {
+    "message": "Undo Close Tab"
+  },
+
+  "contextMenuCloseTab": {
+    "message": "Close Tab"
   },
 
   "optionsTitle": {

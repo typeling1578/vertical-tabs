@@ -1,125 +1,160 @@
-import ContextMenu from "./lib/contextmenu/contextmenu.js";
+import SideTab from "./tab.js";
 
-/* @arg {props}
- * tab
- * posX
- * poxY
- * onClose
- * canMoveToNewWindow
- * reloadAllTabs
- * canCloseTabsAfter
- * closeTabsAfter
- * closeOtherTabs
- * canUndoCloseTab
- * undoCloseTab
- */
-function TabContextMenu(props) {
-  this._props = props;
-  this._contextMenu = new ContextMenu(props.posX, props.posY);
+function TabContextMenu(tablist) {
+  this._tablist = tablist;
+
+  browser.menus.onClicked.addListener((info, tab) => {
+    switch (info.menuItemId) {
+    case "contextMenuReloadTab":
+      browser.tabs.reload(tab.id);
+      break;
+    case "contextMenuMuteTab":
+      browser.tabs.update(tab.id, {"muted": !tab.mutedInfo.muted});
+      break;
+    case "contextMenuPinTab":
+      browser.tabs.update(tab.id, {"pinned": !tab.pinned});
+      break;
+    case "contextMenuDuplicateTab":
+      browser.tabs.duplicate(tab.id);
+      break;
+    case "contextMenuAddTabToBookmarks":
+      browser.bookmarks.create({
+        title: tab.title,
+        url: tab.url
+      });
+      break;
+    case "contextMenuMoveTabToStart":
+      this._tablist.moveTabToStart(tab);
+      break;
+    case "contextMenuMoveTabToEnd":
+      this._tablist.moveTabToEnd(tab);
+      break;
+    case "contextMenuMoveTabToNewWindow":
+      browser.windows.create({tabId: tab.id});
+      break;
+    case "contextMenuCloseTabsUnderneath":
+      this._tablist.closeTabsAfter(tab.index);
+      break;
+    case "contextMenuCloseOtherTabs":
+      this._tablist.closeAllTabsExcept(tab.id);
+      break;
+    case "contextMenuUndoCloseTab":
+      this._tablist.undoCloseTab();
+      break;
+    case "contextMenuCloseTab":
+      browser.tabs.remove(tab.id);
+      break;
+    }
+  });
 }
+
 TabContextMenu.prototype = {
-  show() {
-    const items = this._createContextMenuItems(this._props.tab);
-    this._contextMenu.show(items);
-    this._setupListeners();
-  },
-  _setupListeners() {
-    const closeIf = (predicateFun, e) => {
-      if (predicateFun(e)) {
-        this.close();
-      }
-    };
-    this._onKeyUp = closeIf.bind(this, e => e.key === "Escape");
-    this._onClick = closeIf.bind(this, e => e.button === 0);
-    this._onBlur = closeIf.bind(this, () => true);
-    window.addEventListener("keyup", this._onKeyUp);
-    window.addEventListener("click", this._onClick);
-    window.addEventListener("blur", this._onBlur);
-  },
-  _removeListeners() {
-    window.removeEventListener("keyup", this._onKeyUp);
-    window.removeEventListener("click", this._onClick);
-    window.removeEventListener("blur", this._onBlur);
-  },
-  close() {
-    this._removeListeners();
-    this._contextMenu.hide();
-    this._props.onClose();
-  },
-  _createContextMenuItems(tab) {
-    const items = [];
-    items.push({
-      label: browser.i18n.getMessage("contextMenuReloadTab"),
-      onCommandFn: () => {
-        browser.tabs.reload(tab.id);
-      }
-    });
-    items.push({
-      label: browser.i18n.getMessage(tab.muted ? "contextMenuUnmuteTab" :
-                                                 "contextMenuMuteTab"),
-      onCommandFn: () => {
-        browser.tabs.update(tab.id, {"muted": !tab.muted});
-      }
-    });
-    items.push({
-      label: "separator"
-    });
-    items.push({
-      label: browser.i18n.getMessage(tab.pinned ? "contextMenuUnpinTab" :
-                                                  "contextMenuPinTab"),
-      onCommandFn: () => {
-        browser.tabs.update(tab.id, {"pinned": !tab.pinned});
-      }
-    });
-    items.push({
-      label: browser.i18n.getMessage("contextMenuDuplicateTab"),
-      onCommandFn: () => {
-        browser.tabs.duplicate(tab.id);
-      }
-    });
-    if (this._props.canMoveToNewWindow) {
-      items.push({
-        label: browser.i18n.getMessage("contextMenuMoveTabToNewWindow"),
-        onCommandFn: () => {
-          browser.windows.create({tabId: tab.id});
-        }
-      });
+  open(e) {
+    if (!SideTab.isTabEvent(e, false)) {
+      e.preventDefault();
+      return;
     }
-    items.push({
-      label: "separator"
-    });
-    items.push({
-      label: browser.i18n.getMessage("contextMenuReloadAllTabs"),
-      onCommandFn: this._props.reloadAllTabs
-    });
-    if (!tab.pinned) {
-      if (this._props.canCloseTabsAfter) {
-        items.push({
-          label: browser.i18n.getMessage("contextMenuCloseTabsUnderneath"),
-          onCommandFn: this._props.closeTabsAfter
+    browser.menus.removeAll();
+
+    const tabId = SideTab.tabIdForEvent(e);
+    const tab = this._tablist.getTabById(tabId);
+
+    const items = [{
+      id: "contextMenuReloadTab",
+      title: browser.i18n.getMessage("contextMenuReloadTab")
+    }, {
+      id: "contextMenuMuteTab",
+      title: browser.i18n.getMessage(tab.muted ? "contextMenuUnmuteTab" :
+                                                 "contextMenuMuteTab")
+    }, {
+      type: "separator"
+    }, {
+      id: "contextMenuPinTab",
+      title: browser.i18n.getMessage(tab.pinned ? "contextMenuUnpinTab" :
+                                                  "contextMenuPinTab")
+    }, {
+      id: "contextMenuDuplicateTab",
+      title: browser.i18n.getMessage("contextMenuDuplicateTab")
+    }, {
+      type: "separator"
+    }, /*
+        * We don’t have “Add to bookmarks” because it requires us to code the dialog.
+        * Also, it’s not very useful since you can bookmark the active tab easily anyway.
+        */ {
+      id: "contextMenuOpenInContextualTab",
+      title: browser.i18n.getMessage("contextMenuOpenInContextualTab"),
+      visible: browser.contextualIdentities !== undefined
+    }, {
+      id: "contextMenuMoveTab",
+      title: browser.i18n.getMessage("contextMenuMoveTab"),
+      enabled: this._tablist.tabCount() > 1
+    }, {
+      parentId: "contextMenuMoveTab",
+      id: "contextMenuMoveTabToStart",
+      title: browser.i18n.getMessage("contextMenuMoveTabToStart"),
+      enabled: tab.index !== 0
+    }, {
+      parentId: "contextMenuMoveTab",
+      id: "contextMenuMoveTabToEnd",
+      title: browser.i18n.getMessage("contextMenuMoveTabToEnd"),
+      enabled: tab.index !== this._tablist.tabCount() - 1
+    }, {
+      parentId: "contextMenuMoveTab",
+      id: "contextMenuMoveTabToNewWindow",
+      title: browser.i18n.getMessage("contextMenuMoveTabToNewWindow"),
+      enabled: this._tablist.tabCount() !== 1
+    }, {
+      type: "separator"
+    }, {
+      id: "contextMenuCloseTabsUnderneath",
+      title: browser.i18n.getMessage("contextMenuCloseTabsUnderneath"),
+      enabled: this._tablist.hasTabsUnderneath(tab),
+      visible: !this._tablist.isFilterActive()
+    }, {
+      id: "contextMenuCloseOtherTabs",
+      title: browser.i18n.getMessage("contextMenuCloseOtherTabs"),
+      enabled: this._tablist.tabCount() !== 1
+    }, {
+      type: "separator"
+    }, {
+      id: "contextMenuUndoCloseTab",
+      title: browser.i18n.getMessage("contextMenuUndoCloseTab"),
+      enabled: this._tablist.hasRecentlyClosedTabs
+    }, {
+      id: "contextMenuCloseTab",
+      title: browser.i18n.getMessage("contextMenuCloseTab")
+    }];
+
+    if (browser.contextualIdentities !== undefined) {
+      items.forEach(item => {
+        browser.menus.create({
+          ...item,
+          contexts: ["tab"],
+          viewTypes: ["sidebar"],
+          documentUrlPatterns: [`moz-extension://${location.host}/*`]
         });
-      }
-      items.push({
-        label: browser.i18n.getMessage("contextMenuCloseOtherTabs"),
-        onCommandFn: this._props.closeOtherTabs
       });
     }
-    items.push({
-      label: "separator"
+
+    this._tablist.contextualIdentities.forEach(identity => {
+      browser.menus.create({
+        parentId: "contextMenuOpenInContextualTab",
+        id: `contextMenuContextualIdentity-${identity.name}`,
+        title: identity.name,
+        icons: {
+          "16": `/sidebar/img/contextual-identities/${identity.icon}.svg#${identity.color}`
+        },
+        contexts: ["tab"],
+        viewTypes: ["sidebar"],
+        documentUrlPatterns: [`moz-extension://${location.host}/*`]
+      })
+    })
+
+    browser.menus.overrideContext({
+      context: "tab",
+      tabId: tabId
     });
-    items.push({
-      label: browser.i18n.getMessage("contextMenuUndoCloseTab"),
-      isEnabled: this._props.canUndoCloseTab,
-      onCommandFn: this._props.undoCloseTab
-    });
-    items.push({
-      label: browser.i18n.getMessage("contextMenuCloseTab"),
-      onCommandFn: () => {
-        browser.tabs.remove(tab.id);
-      }
-    });
-    return items;
   },
-};
+}
 
 export default TabContextMenu;
