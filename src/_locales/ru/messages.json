@@ -96,7 +96,7 @@
         "message": "Темная тема"
     },
     "optionsThemeIntegration": {
-        "message": "Integrate with current theme"
+        "message": ""
     },
     "optionsAdvancedTitle": {
         "message": "Расширенные настройки"
@@ -109,5 +109,17 @@
     },
     "optionsSaveCustomCSS": {
         "message": "Сохранить CSS"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "Переоткрыть в контейнере"
+    },
+    "contextMenuMoveTab": {
+        "message": "Переместить вкладку"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "Переместить в начало"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "Переместить в конец"
     }
 }
