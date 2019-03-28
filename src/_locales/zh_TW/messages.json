@@ -109,5 +109,17 @@
     },
     "optionsSaveCustomCSS": {
         "message": "儲存 CSS"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "使用容器開啟"
+    },
+    "contextMenuMoveTab": {
+        "message": "移動分頁"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "移動至開頭"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "移動至結尾"
     }
 }
