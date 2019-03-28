@@ -109,5 +109,17 @@
     },
     "optionsSaveCustomCSS": {
         "message": "保存 CSS"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "使用身份标签页打开"
+    },
+    "contextMenuMoveTab": {
+        "message": "移动标签页"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "移动到开头"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "移动到末尾"
     }
 }
