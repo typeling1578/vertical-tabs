@@ -1,6 +1,5 @@
 {
-  "name": "tabcenter-redux",
-  "version": "1.0.0",
+  "name": "tabcenter-reborn",
   "scripts": {
     "lint": "eslint .",
     "build": "webpack-cli --mode production && web-ext build -s src/ -i test/ 'sidebar/**/*.js' '!sidebar/dist/bundle.js' --overwrite-dest",
@@ -10,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eoger/tabcenter-redux.git"
+    "url": "git+https://framagit.org/ariasuni/tabcenter-reborn.git"
   },
-  "author": "Edouard Oger",
+  "author": "Mélanie Chauvel (ariasuni)",
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/eoger/tabcenter-redux/issues"
+    "url": "https://framagit.org/ariasuni/tabcenter-reborn"
   },
-  "homepage": "https://github.com/eoger/tabcenter-redux#readme",
+  "homepage": "https://framagit.org/ariasuni/tabcenter-reborn#readme",
   "devDependencies": {
     "eslint": "^5.15.3",
     "npm-run-all": "^4.1.5",

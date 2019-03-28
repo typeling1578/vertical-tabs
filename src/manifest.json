@@ -1,10 +1,16 @@
 {
-  "name": "Tab Center Redux",
+  "name": "Tab Center Reborn",
   "description": "__MSG_extensionDescription__",
-  "homepage_url": "https://github.com/eoger/tabcenter-redux",
+  "homepage_url": "https://framagit.org/ariasuni/tabcenter-reborn",
   "manifest_version": 2,
-  "version": "0.7.0",
+  "version": "0.8.0",
   "default_locale": "en",
+  "browser_specific_settings": {
+  "gecko": {
+    "id": "tabcenter-reborn@ariasuni",
+    "strict_min_version": "64.0"
+    }
+  },
   "sidebar_action": {
     "default_title": "__MSG_sidebarTitle__",
     "default_panel": "sidebar/tabcenter.html",
