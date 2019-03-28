@@ -1,113 +1,113 @@
 {
-  "extensionDescription": {
-    "message": "Tab Center je pokus vyřešit některé problémy, které vznikly kvůli tomu, jak lidé panely používají (především problém s příliš velkým počtem otevřených panelů) a snaží se poskytnout univerzální základ uživatelského rozhraní pro další inovace. První verze tohoto doplňku řadí panely vertikálně a ne horizontálně. Byla inspirována skvělým doplňkem VerticalTabs, odkud přejímá některé nápady."
-  },
-  "browserActionTitle": {
-    "message": "Přepnout Tab Center Redux",
-    "description": "Tooltip shown when hovering the toolbar button."
-  },
-  "sidebarTitle": {
-    "message": "Panely",
-    "description": "Label shown in the sidebar selector."
-  },
-  "newTabBtnLabel": {
-    "message": "Nový panel",
-    "description": "Label of the New Tab button in the top menu."
-  },
-  "newTabBtnTooltip": {
-    "message": "Otevře nový panel"
-  },
-  "searchPlaceholder": {
-    "message": "Vyhledávat v záložkách"
-  },
-  "closeTabButtonTooltip": {
-    "message": "Zavře panel"
-  },
-  "allTabsLabel": {
-    "message": "Zobrazit všechny panely…",
-    "description": "Shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
-  },
-  "contextMenuReloadTab": {
-    "message": "Obnovit panel",
-    "description": "Reload Tab context menu item label."
-  },
-  "contextMenuPinTab": {
-    "message": "Připnout panel",
-    "description": "Pin Tab context menu item label."
-  },
-  "contextMenuUnpinTab": {
-    "message": "Odepnout panel",
-    "description": "Unpin Tab context menu item label."
-  },
-  "contextMenuMuteTab": {
-    "message": "Vypnout zvuk panelu",
-    "description": "Mute Tab context menu item label."
-  },
-  "contextMenuUnmuteTab": {
-    "message": "Zapnout zvuk panelu",
-    "description": "Unmute Tab context menu item label."
-  },
-  "contextMenuCloseTab": {
-    "message": "Zavřít panel"
-  },
-  "contextMenuUndoCloseTab": {
-    "message": "Vrátit zavření panelu"
-  },
-  "contextMenuDuplicateTab": {
-    "message": "Duplikovat kartu"
-  },
-  "contextMenuMoveTabToNewWindow": {
-    "message": "Přesunout do nového okna"
-  },
-  "contextMenuReloadAllTabs": {
-    "message": "Obnovit všechny panely"
-  },
-  "contextMenuCloseTabsUnderneath": {
-    "message": "Zavřít panely níže"
-  },
-  "contextMenuCloseOtherTabs": {
-    "message": "Zavřít ostatní panely"
-  },
-  "settingsBtnTooltip": {
-    "message": "Otevřít nastavení"
-  },
-  "optionsTitle": {
-    "message": "Nastavení"
-  },
-  "optionsCompactMode": {
-    "message": "Kompaktní režim"
-  },
-  "optionsCompactModeTooltip": {
-    "message": "Kompaktní režim snižuje výšku záložek aby jich bylo zobrazeno více. Dynamické nastavení aktivuje kompaktní režim když bude málo místa."
-  },
-  "optionsCompactModeOff": {
-    "message": "Deaktivováno"
-  },
-  "optionsCompactModeDynamic": {
-    "message": "Dynamický"
-  },
-  "optionsCompactModeStrict": {
-    "message": "Pokaždé"
-  },
-  "optionsCompactPins": {
-    "message": "Kompaktní připnuté karty"
-  },
-  "optionsDarkTheme": {
-    "message": "Tmavý vzhled"
-  },
-  "optionsThemeIntegration": {
-    "message": "Integrate with current theme"
-  },
-  "optionsAdvancedTitle": {
-    "message": "Pokročilé"
-  },
-  "optionsCustomCSS": {
-    "message": "Vlastní šablona stylů"
-  },
-  "optionsCustomCSSWikiLink": {
-    "message": "Wiki článek o CSS vylepšeních"
-  },
-  "optionsSaveCustomCSS": {
-    "message": "Uložit CSS"
-  }
+    "extensionDescription": {
+        "message": "Tab Center je pokus vyřešit některé problémy, které vznikly kvůli tomu, jak lidé panely používají (především problém s příliš velkým počtem otevřených panelů) a snaží se poskytnout univerzální základ uživatelského rozhraní pro další inovace. První verze tohoto doplňku řadí panely vertikálně a ne horizontálně. Byla inspirována skvělým doplňkem VerticalTabs, odkud přejímá některé nápady."
+    },
+    "browserActionTitle": {
+        "message": "Přepnout Tab Center Reborn",
+        "description": "Tooltip shown when hovering the toolbar button."
+    },
+    "sidebarTitle": {
+        "message": "Panely",
+        "description": "Label shown in the sidebar selector."
+    },
+    "newTabBtnLabel": {
+        "message": "Nový panel",
+        "description": "Label of the New Tab button in the top menu."
+    },
+    "newTabBtnTooltip": {
+        "message": "Otevře nový panel"
+    },
+    "searchPlaceholder": {
+        "message": "Vyhledávat v záložkách"
+    },
+    "closeTabButtonTooltip": {
+        "message": "Zavře panel"
+    },
+    "allTabsLabel": {
+        "message": "Zobrazit všechny panely…",
+        "description": "Shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
+    },
+    "contextMenuReloadTab": {
+        "message": "Obnovit panel",
+        "description": "Reload Tab context menu item label."
+    },
+    "contextMenuPinTab": {
+        "message": "Připnout panel",
+        "description": "Pin Tab context menu item label."
+    },
+    "contextMenuUnpinTab": {
+        "message": "Odepnout panel",
+        "description": "Unpin Tab context menu item label."
+    },
+    "contextMenuMuteTab": {
+        "message": "Vypnout zvuk panelu",
+        "description": "Mute Tab context menu item label."
+    },
+    "contextMenuUnmuteTab": {
+        "message": "Zapnout zvuk panelu",
+        "description": "Unmute Tab context menu item label."
+    },
+    "contextMenuCloseTab": {
+        "message": "Zavřít panel"
+    },
+    "contextMenuUndoCloseTab": {
+        "message": "Vrátit zavření panelu"
+    },
+    "contextMenuDuplicateTab": {
+        "message": "Duplikovat kartu"
+    },
+    "contextMenuMoveTabToNewWindow": {
+        "message": "Přesunout do nového okna"
+    },
+    "contextMenuReloadAllTabs": {
+        "message": "Obnovit všechny panely"
+    },
+    "contextMenuCloseTabsUnderneath": {
+        "message": "Zavřít panely níže"
+    },
+    "contextMenuCloseOtherTabs": {
+        "message": "Zavřít ostatní panely"
+    },
+    "settingsBtnTooltip": {
+        "message": "Otevřít nastavení"
+    },
+    "optionsTitle": {
+        "message": "Nastavení"
+    },
+    "optionsCompactMode": {
+        "message": "Kompaktní režim"
+    },
+    "optionsCompactModeTooltip": {
+        "message": "Kompaktní režim snižuje výšku záložek aby jich bylo zobrazeno více. Dynamické nastavení aktivuje kompaktní režim když bude málo místa."
+    },
+    "optionsCompactModeOff": {
+        "message": "Deaktivováno"
+    },
+    "optionsCompactModeDynamic": {
+        "message": "Dynamický"
+    },
+    "optionsCompactModeStrict": {
+        "message": "Pokaždé"
+    },
+    "optionsCompactPins": {
+        "message": "Kompaktní připnuté karty"
+    },
+    "optionsDarkTheme": {
+        "message": "Tmavý vzhled"
+    },
+    "optionsThemeIntegration": {
+        "message": "Integrate with current theme"
+    },
+    "optionsAdvancedTitle": {
+        "message": "Pokročilé"
+    },
+    "optionsCustomCSS": {
+        "message": "Vlastní šablona stylů"
+    },
+    "optionsCustomCSSWikiLink": {
+        "message": "Wiki článek o CSS vylepšeních"
+    },
+    "optionsSaveCustomCSS": {
+        "message": "Uložit CSS"
+    }
 }

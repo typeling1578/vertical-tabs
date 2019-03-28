@@ -1,158 +1,158 @@
 {
-  "extensionDescription": {
-    "message": "Tab Center is an attempt to solve some of the issues that have emerged from the way people use tabs (most notably the “too many tabs” problem) and provide a more versatile UI basis for future innovation. The first version of this Firefox add-on arranges tabs in a vertical rather than horizontal fashion. It is heavily inspired by and borrows ideas from the excellent VerticalTabs add-on."
-  },
+    "extensionDescription": {
+        "message": "Tab Center is an attempt to solve some of the issues that have emerged from the way people use tabs (most notably the “too many tabs” problem) and provide a more versatile UI basis for future innovation. The first version of this Firefox add-on arranges tabs in a vertical rather than horizontal fashion. It is heavily inspired by and borrows ideas from the excellent VerticalTabs add-on."
+    },
 
-  "browserActionTitle": {
-    "message": "Toggle Tab Center Redux",
-    "description": "Tooltip shown when hovering the toolbar button."
-  },
+    "browserActionTitle": {
+        "message": "Toggle Tab Center Reborn",
+        "description": "Tooltip shown when hovering the toolbar button."
+    },
 
-  "sidebarTitle": {
-    "message": "Tabs",
-    "description": "Label shown in the sidebar selector."
-  },
+    "sidebarTitle": {
+        "message": "Tabs",
+        "description": "Label shown in the sidebar selector."
+    },
 
-  "newTabBtnLabel": {
-    "message": "New Tab",
-    "description": "Label of the New Tab button in the top menu."
-  },
+    "newTabBtnLabel": {
+        "message": "New Tab",
+        "description": "Label of the New Tab button in the top menu."
+    },
 
-  "newTabBtnTooltip": {
-    "message": "Open a new tab"
-  },
+    "newTabBtnTooltip": {
+        "message": "Open a new tab"
+    },
 
-  "searchPlaceholder": {
-    "message": "Search tabs"
-  },
+    "searchPlaceholder": {
+        "message": "Search tabs"
+    },
 
-  "settingsBtnTooltip": {
-    "message": "Open settings"
-  },
+    "settingsBtnTooltip": {
+        "message": "Open settings"
+    },
 
-  "closeTabButtonTooltip": {
-    "message": "Close tab"
-  },
+    "closeTabButtonTooltip": {
+        "message": "Close tab"
+    },
 
-  "allTabsLabel": {
-    "message": "Show all tabs…",
-    "description": "Shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
-  },
+    "allTabsLabel": {
+        "message": "Show all tabs…",
+        "description": "Shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
+    },
 
-  "contextMenuReloadTab": {
-    "message": "Reload Tab",
-    "description": "Reload Tab context menu item label."
-  },
+    "contextMenuReloadTab": {
+        "message": "Reload Tab",
+        "description": "Reload Tab context menu item label."
+    },
 
-  "contextMenuPinTab": {
-    "message": "Pin Tab",
-    "description": "Pin Tab context menu item label."
-  },
+    "contextMenuPinTab": {
+        "message": "Pin Tab",
+        "description": "Pin Tab context menu item label."
+    },
 
-  "contextMenuUnpinTab": {
-    "message": "Unpin Tab",
-    "description": "Unpin Tab context menu item label."
-  },
+    "contextMenuUnpinTab": {
+        "message": "Unpin Tab",
+        "description": "Unpin Tab context menu item label."
+    },
 
-  "contextMenuMuteTab": {
-    "message": "Mute Tab",
-    "description": "Mute Tab context menu item label."
-  },
+    "contextMenuMuteTab": {
+        "message": "Mute Tab",
+        "description": "Mute Tab context menu item label."
+    },
 
-  "contextMenuUnmuteTab": {
-    "message": "Unmute Tab",
-    "description": "Unmute Tab context menu item label."
-  },
+    "contextMenuUnmuteTab": {
+        "message": "Unmute Tab",
+        "description": "Unmute Tab context menu item label."
+    },
 
-  "contextMenuDuplicateTab": {
-    "message": "Duplicate Tab"
-  },
+    "contextMenuDuplicateTab": {
+        "message": "Duplicate Tab"
+    },
 
-  "contextMenuOpenInContextualTab": {
-    "message": "Reopen in Container"
-  },
+    "contextMenuOpenInContextualTab": {
+        "message": "Reopen in Container"
+    },
 
-  "contextMenuMoveTab": {
-    "message": "Move Tab"
-  },
+    "contextMenuMoveTab": {
+        "message": "Move Tab"
+    },
 
-  "contextMenuMoveTabToStart": {
-    "message": "Move tab to start"
-  },
+    "contextMenuMoveTabToStart": {
+        "message": "Move tab to start"
+    },
 
-  "contextMenuMoveTabToEnd": {
-    "message": "Move tab to end"
-  },
+    "contextMenuMoveTabToEnd": {
+        "message": "Move tab to end"
+    },
 
-  "contextMenuMoveTabToNewWindow": {
-    "message": "Move to New Window"
-  },
+    "contextMenuMoveTabToNewWindow": {
+        "message": "Move to New Window"
+    },
 
-  "contextMenuCloseTabsUnderneath": {
-    "message": "Close Tabs Underneath"
-  },
+    "contextMenuCloseTabsUnderneath": {
+        "message": "Close Tabs Underneath"
+    },
 
-  "contextMenuCloseOtherTabs": {
-    "message": "Close Other Tabs"
-  },
+    "contextMenuCloseOtherTabs": {
+        "message": "Close Other Tabs"
+    },
 
-  "contextMenuUndoCloseTab": {
-    "message": "Undo Close Tab"
-  },
+    "contextMenuUndoCloseTab": {
+        "message": "Undo Close Tab"
+    },
 
-  "contextMenuCloseTab": {
-    "message": "Close Tab"
-  },
+    "contextMenuCloseTab": {
+        "message": "Close Tab"
+    },
 
-  "optionsTitle": {
-    "message": "Settings"
-  },
+    "optionsTitle": {
+        "message": "Settings"
+    },
 
-  "optionsCompactMode": {
-    "message": "Compact Mode"
-  },
+    "optionsCompactMode": {
+        "message": "Compact Mode"
+    },
 
-  "optionsCompactModeTooltip": {
-    "message": "The Compact Mode reduces the height of tabs to show more of them. In the Dynamic setting, it will engage once we have no space left."
-  },
+    "optionsCompactModeTooltip": {
+        "message": "The Compact Mode reduces the height of tabs to show more of them. In the Dynamic setting, it will engage once we have no space left."
+    },
 
-  "optionsCompactModeOff":{
-    "message": "Disabled"
-  },
+    "optionsCompactModeOff":{
+        "message": "Disabled"
+    },
 
-  "optionsCompactModeDynamic":{
-    "message": "Dynamic"
-  },
+    "optionsCompactModeDynamic":{
+        "message": "Dynamic"
+    },
 
-  "optionsCompactModeStrict":{
-    "message": "Always"
-  },
+    "optionsCompactModeStrict":{
+        "message": "Always"
+    },
 
-  "optionsCompactPins": {
-    "message": "Compact Pinned Tabs"
-  },
+    "optionsCompactPins": {
+        "message": "Compact Pinned Tabs"
+    },
 
-  "optionsDarkTheme": {
-    "message": "Dark Theme"
-  },
+    "optionsDarkTheme": {
+        "message": "Dark Theme"
+    },
 
-  "optionsThemeIntegration": {
-    "message": "Integrate with current theme"
-  },
+    "optionsThemeIntegration": {
+        "message": "Integrate with current theme"
+    },
 
-  "optionsAdvancedTitle": {
-    "message": "Advanced"
-  },
+    "optionsAdvancedTitle": {
+        "message": "Advanced"
+    },
 
-  "optionsCustomCSS": {
-    "message": "Custom Stylesheet"
-  },
+    "optionsCustomCSS": {
+        "message": "Custom Stylesheet"
+    },
 
-  "optionsCustomCSSWikiLink": {
-    "message": "CSS Tweaks Wiki Article"
-  },
+    "optionsCustomCSSWikiLink": {
+        "message": "CSS Tweaks Wiki Article"
+    },
 
-  "optionsSaveCustomCSS": {
-    "message": "Save CSS"
-  }
+    "optionsSaveCustomCSS": {
+        "message": "Save CSS"
+    }
 }
