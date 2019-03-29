@@ -3,9 +3,9 @@
   "scripts": {
     "lint": "eslint .",
     "build": "webpack-cli --mode production && web-ext build -s src/ -i test/ 'sidebar/**/*.js' '!sidebar/dist/bundle.js' --overwrite-dest",
-    "watch": "webpack-cli --mode development --watch",
+    "watch": "webpack-cli --mode development --watch --devtool=inline-cheap-source-map --devtool=inline-cheap-module-source-map --devtool=inline-source-map",
     "webext": "web-ext run --start-url about:debugging -s src",
-    "dev": "npm-run-all --parallel watch webext"
+    "dev": "concurrently --kill-others --raw -s first npm:webext npm:watch"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,8 @@
   },
   "homepage": "https://framagit.org/ariasuni/tabcenter-reborn#readme",
   "devDependencies": {
+    "concurrently": "^4.1.0",
     "eslint": "^5.15.3",
-    "npm-run-all": "^4.1.5",
     "web-ext": "^3.0.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
