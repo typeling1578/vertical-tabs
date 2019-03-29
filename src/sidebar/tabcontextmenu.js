@@ -1,5 +1,7 @@
 import SideTab from "./tab.js";
 
+const IS_PRIVILEGED_PAGE_URL = /^(about|chrome|data|file|javascript):*/;
+
 function TabContextMenu(tablist) {
   this._tablist = tablist;
 
@@ -45,6 +47,14 @@ function TabContextMenu(tablist) {
       browser.tabs.remove(tab.id);
       break;
     }
+
+    if (info.menuItemId.startsWith("contextMenuOpenInContextualTab_")) {
+      let newTab = {cookieStoreId: info.menuItemId.split("contextMenuOpenInContextualTab_")[1]};
+      if (tab.url !== "about:newtab") {
+        newTab["url"] = tab.url;
+      }
+      browser.tabs.create(newTab);
+    }
   });
 }
 
@@ -84,6 +94,9 @@ TabContextMenu.prototype = {
     {
       id: "contextMenuOpenInContextualTab",
       title: browser.i18n.getMessage("contextMenuOpenInContextualTab"),
+      enabled: !IS_PRIVILEGED_PAGE_URL.test(tab.url)
+        || tab.url === "about:newtab"
+        || tab.url === "about:blank",
       visible: browser.contextualIdentities !== undefined
     }, {
       id: "contextMenuMoveTab",
@@ -126,30 +139,30 @@ TabContextMenu.prototype = {
       title: browser.i18n.getMessage("contextMenuCloseTab")
     }];
 
+    items.forEach(item => {
+      browser.menus.create({
+        ...item,
+        contexts: ["tab"],
+        viewTypes: ["sidebar"],
+        documentUrlPatterns: [`moz-extension://${location.host}/*`]
+      });
+    });
+
     if (browser.contextualIdentities !== undefined) {
-      items.forEach(item => {
+      this._tablist.contextualIdentities.forEach(identity => {
         browser.menus.create({
-          ...item,
+          parentId: "contextMenuOpenInContextualTab",
+          id: `contextMenuOpenInContextualTab_${identity.cookieStoreId}`,
+          title: identity.name,
+          icons: {
+            "16": `/sidebar/img/contextual-identities/${identity.icon}.svg#${identity.color}`
+          },
           contexts: ["tab"],
           viewTypes: ["sidebar"],
           documentUrlPatterns: [`moz-extension://${location.host}/*`]
         });
       });
     }
-
-    this._tablist.contextualIdentities.forEach(identity => {
-      browser.menus.create({
-        parentId: "contextMenuOpenInContextualTab",
-        id: `contextMenuContextualIdentity-${identity.name}`,
-        title: identity.name,
-        icons: {
-          "16": `/sidebar/img/contextual-identities/${identity.icon}.svg#${identity.color}`
-        },
-        contexts: ["tab"],
-        viewTypes: ["sidebar"],
-        documentUrlPatterns: [`moz-extension://${location.host}/*`]
-      });
-    });
 
     browser.menus.overrideContext({
       context: "tab",
