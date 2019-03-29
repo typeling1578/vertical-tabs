@@ -1,3 +1,11 @@
+## 0.8.2
+
+* Remove the bottom border of tab if it’s at window bottom
+* Scroll to active tab when hovering it if it’s partially hidden
+* Do not scroll when tab is already in view
+* Update link for CSS tweaks in option page to Tab Center Reborn’s one
+* Update translations, mostly by copying translation from Firefox
+
 ## 0.8.1
 
 * Make the addon actually work when installed from AMO (and not only in development)
