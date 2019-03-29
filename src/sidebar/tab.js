@@ -154,11 +154,18 @@ SideTab.prototype = {
     }
     // Avoid an expensive sync reflow (scrolling).
     requestAnimationFrame(() => {
-      this.view.scrollIntoView();
+      this._scrollIntoViewIfNeeded();
       // workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1139745#c7
       // we still make a first scrollIntoView so that it starts scrolling right away
-      setTimeout(() => this.view.scrollIntoView(), 100);
+      setTimeout(() => this._scrollIntoViewIfNeeded(), 100);
     });
+  },
+  _scrollIntoViewIfNeeded() {
+    const {top: parentTop, height} = this.view.parentNode.getBoundingClientRect();
+    let {top, bottom} = this.view.getBoundingClientRect();
+    if ((top - parentTop) < 0 || (bottom - parentTop) > height) {
+      this.view.scrollIntoView({block: "nearest"});
+    }
   },
   updateVisibility(show) {
     this.visible = show;

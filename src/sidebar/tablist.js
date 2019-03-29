@@ -208,10 +208,6 @@ TabList.prototype = {
     }
   },
   _onMouseOver(e) {
-    if (!SideTab.isTabEvent(e)) {
-      return;
-    }
-
     const tabId = SideTab.tabIdForEvent(e);
     if (tabId === this._active) {
       this.getTabById(tabId).scrollIntoView();
