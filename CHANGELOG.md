@@ -1,3 +1,8 @@
+## 0.8.1
+
+* Make the addon actually work when installed from AMO (and not only in development)
+* Make open in contextual tab feature work
+
 ## 0.8.0
 
 * Fix about:addons favicon not colored correctly in dark theme
