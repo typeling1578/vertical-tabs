@@ -59,6 +59,7 @@ TabList.prototype = {
       view.addEventListener("dblclick", e => this._onDblClick(e));
       view.addEventListener("auxclick", e => this._onAuxClick(e));
       view.addEventListener("mousedown", e => this._onMouseDown(e));
+      view.addEventListener("mouseover", e => this._onMouseOver(e));
       view.addEventListener("contextmenu", e => this.tabContextMenu.open(e), true);
       view.addEventListener("animationend", e => this._onAnimationEnd(e));
     }
@@ -204,6 +205,16 @@ TabList.prototype = {
     if (e.button === 1) {
       e.preventDefault();
       return;
+    }
+  },
+  _onMouseOver(e) {
+    if (!SideTab.isTabEvent(e)) {
+      return;
+    }
+
+    const tabId = SideTab.tabIdForEvent(e);
+    if (tabId === this._active) {
+      this.getTabById(tabId).scrollIntoView();
     }
   },
   _onAuxClick(e) {
