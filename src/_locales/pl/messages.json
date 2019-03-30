@@ -109,5 +109,17 @@
     },
     "optionsSaveCustomCSS": {
         "message": "Zapisz CSS"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "Opnieuw openen in Container"
+    },
+    "contextMenuMoveTab": {
+        "message": "Tabblad verplaatsen"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "Verplaatsen naar begin"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "Verplaatsen naar einde"
     }
 }
