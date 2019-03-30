@@ -109,5 +109,8 @@
     },
     "optionsSaveCustomCSS": {
         "message": "Enregistrer la CSS"
+    },
+    "contextMenuMoveTab": {
+        "message": ""
     }
 }
