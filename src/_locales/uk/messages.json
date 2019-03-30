@@ -109,5 +109,17 @@
     },
     "optionsSaveCustomCSS": {
         "message": "Зберегти CSS"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "Відкрити в контейнері"
+    },
+    "contextMenuMoveTab": {
+        "message": "Перемістити вкладку"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "Перемістити на початок"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "Перемістити в кінець"
     }
 }
