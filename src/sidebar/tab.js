@@ -152,13 +152,10 @@ SideTab.prototype = {
     if (this.pinned) {
       return;
     }
-    // Avoid an expensive sync reflow (scrolling).
-    requestAnimationFrame(() => {
-      this._scrollIntoViewIfNeeded();
-      // workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1139745#c7
-      // we still make a first scrollIntoView so that it starts scrolling right away
-      setTimeout(() => this._scrollIntoViewIfNeeded(), 100);
-    });
+    this._scrollIntoViewIfNeeded();
+    // workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1139745#c7
+    // we still make a first scrollIntoView so that it starts scrolling right away
+    setTimeout(() => this._scrollIntoViewIfNeeded(), 100);
   },
   _scrollIntoViewIfNeeded() {
     const {top: parentTop, height} = this.view.parentNode.getBoundingClientRect();
@@ -294,7 +291,9 @@ Object.assign(SideTab, {
   },
   _syncThrobberAnimations() {
     requestAnimationFrame(() => {
-      if (!document.body.getAnimations) { // this API is available only in Nightly so far
+      // this API is available only in Dev Edition/Nightly so far
+      // https://developer.mozilla.org/en-US/docs/Web/API/Document/getAnimations
+      if (!document.body.getAnimations) {
         return;
       }
       setTimeout(() => {
