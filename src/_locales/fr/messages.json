@@ -109,5 +109,17 @@
     },
     "optionsSaveCustomCSS": {
         "message": "Enregistrer la CSS"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "Rouvrir dans un onglet contextuel"
+    },
+    "contextMenuMoveTab": {
+        "message": "Déplace l’onglet"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "Déplacer vers le début"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "Déplacer vers la fin"
     }
 }
