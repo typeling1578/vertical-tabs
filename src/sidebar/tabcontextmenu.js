@@ -2,63 +2,63 @@ import SideTab from "./tab.js";
 
 const IS_PRIVILEGED_PAGE_URL = /^(about|chrome|data|file|javascript):*/;
 
-function TabContextMenu(tablist) {
-  this._tablist = tablist;
+export default class TabContextMenu {
+  constructor(tablist) {
+    this._tablist = tablist;
 
-  browser.menus.onClicked.addListener((info, tab) => {
-    switch (info.menuItemId) {
-    case "contextMenuReloadTab":
-      browser.tabs.reload(tab.id);
-      break;
-    case "contextMenuMuteTab":
-      browser.tabs.update(tab.id, {"muted": !tab.mutedInfo.muted});
-      break;
-    case "contextMenuPinTab":
-      browser.tabs.update(tab.id, {"pinned": !tab.pinned});
-      break;
-    case "contextMenuDuplicateTab":
-      browser.tabs.duplicate(tab.id);
-      break;
-    case "contextMenuAddTabToBookmarks":
-      browser.bookmarks.create({
-        title: tab.title,
-        url: tab.url
-      });
-      break;
-    case "contextMenuMoveTabToStart":
-      this._tablist.moveTabToStart(tab);
-      break;
-    case "contextMenuMoveTabToEnd":
-      this._tablist.moveTabToEnd(tab);
-      break;
-    case "contextMenuMoveTabToNewWindow":
-      browser.windows.create({tabId: tab.id});
-      break;
-    case "contextMenuCloseTabsUnderneath":
-      this._tablist.closeTabsAfter(tab.index);
-      break;
-    case "contextMenuCloseOtherTabs":
-      this._tablist.closeAllTabsExcept(tab.id);
-      break;
-    case "contextMenuUndoCloseTab":
-      this._tablist.undoCloseTab();
-      break;
-    case "contextMenuCloseTab":
-      browser.tabs.remove(tab.id);
-      break;
-    }
-
-    if (info.menuItemId.startsWith("contextMenuOpenInContextualTab_")) {
-      let newTab = {cookieStoreId: info.menuItemId.split("contextMenuOpenInContextualTab_")[1]};
-      if (tab.url !== "about:newtab") {
-        newTab["url"] = tab.url;
+    browser.menus.onClicked.addListener((info, tab) => {
+      switch (info.menuItemId) {
+      case "contextMenuReloadTab":
+        browser.tabs.reload(tab.id);
+        break;
+      case "contextMenuMuteTab":
+        browser.tabs.update(tab.id, {"muted": !tab.mutedInfo.muted});
+        break;
+      case "contextMenuPinTab":
+        browser.tabs.update(tab.id, {"pinned": !tab.pinned});
+        break;
+      case "contextMenuDuplicateTab":
+        browser.tabs.duplicate(tab.id);
+        break;
+      case "contextMenuAddTabToBookmarks":
+        browser.bookmarks.create({
+          title: tab.title,
+          url: tab.url
+        });
+        break;
+      case "contextMenuMoveTabToStart":
+        this._tablist.moveTabToStart(tab);
+        break;
+      case "contextMenuMoveTabToEnd":
+        this._tablist.moveTabToEnd(tab);
+        break;
+      case "contextMenuMoveTabToNewWindow":
+        browser.windows.create({tabId: tab.id});
+        break;
+      case "contextMenuCloseTabsUnderneath":
+        this._tablist.closeTabsAfter(tab.index);
+        break;
+      case "contextMenuCloseOtherTabs":
+        this._tablist.closeAllTabsExcept(tab.id);
+        break;
+      case "contextMenuUndoCloseTab":
+        this._tablist.undoCloseTab();
+        break;
+      case "contextMenuCloseTab":
+        browser.tabs.remove(tab.id);
+        break;
       }
-      browser.tabs.create(newTab);
-    }
-  });
-}
 
-TabContextMenu.prototype = {
+      if (info.menuItemId.startsWith("contextMenuOpenInContextualTab_")) {
+        let newTab = {cookieStoreId: info.menuItemId.split("contextMenuOpenInContextualTab_")[1]};
+        if (tab.url !== "about:newtab") {
+          newTab["url"] = tab.url;
+        }
+        browser.tabs.create(newTab);
+      }
+    });
+  }
+
   open(e) {
     if (!SideTab.isTabEvent(e, false)) {
       e.preventDefault();
@@ -168,7 +168,5 @@ TabContextMenu.prototype = {
       context: "tab",
       tabId: tabId
     });
-  },
-};
-
-export default TabContextMenu;
+  }
+}

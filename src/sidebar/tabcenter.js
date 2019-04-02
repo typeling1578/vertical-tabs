@@ -2,9 +2,7 @@ import SideTab from "./tab.js";
 import TabList from "./tablist.js";
 import TopMenu from "./topmenu/topmenu.js";
 
-function TabCenter() {
-}
-TabCenter.prototype = {
+export default class TabCenter {
   async init() {
     const search = this._search.bind(this);
     const openTab = this._openTab.bind(this);
@@ -31,7 +29,8 @@ TabCenter.prototype = {
     browser.runtime.getPlatformInfo().then((platform) => {
       document.body.setAttribute("platform", platform.os);
     });
-  },
+  }
+
   async _openTab(props = {}) {
     if (props.afterCurrent) {
       let currentIndex = (await browser.tabs.query({windowId: this._windowId, active: true}))[0].index;
@@ -39,11 +38,13 @@ TabCenter.prototype = {
     }
     delete props.afterCurrent;
     browser.tabs.create(props);
-  },
+  }
+
   _search(val) {
     this._tabList.filter(val);
     this._topMenu.updateSearch(val);
-  },
+  }
+
   _setupListeners() {
     window.addEventListener("contextmenu", (e) => {
       const target = e.target;
@@ -59,17 +60,20 @@ TabCenter.prototype = {
         this._applyTheme(theme);
       }
     };
-  },
+  }
+
   set _customCSS(cssText) {
     document.getElementById("customCSS").textContent = cssText;
-  },
+  }
+
   set _darkTheme(isDarkTheme) {
     if (isDarkTheme) {
       document.body.classList.add("dark-theme");
     } else {
       document.body.classList.remove("dark-theme");
     }
-  },
+  }
+
   set _themeIntegration(enabled) {
     if (!browser.theme.onUpdated) {
       return;
@@ -83,7 +87,8 @@ TabCenter.prototype = {
       browser.theme.onUpdated.addListener(this._themeListener);
       browser.theme.getCurrent(this._windowId).then(this._applyTheme);
     }
-  },
+  }
+
   _readPrefs() {
     return browser.storage.local.get({
       customCSS: "",
@@ -92,7 +97,8 @@ TabCenter.prototype = {
       compactPins: true,
       themeIntegration: false,
     });
-  },
+  }
+
   _applyPrefs(prefs) {
     if (prefs.hasOwnProperty("customCSS")) {
       this._customCSS = prefs.customCSS;
@@ -103,7 +109,8 @@ TabCenter.prototype = {
     if (prefs.hasOwnProperty("themeIntegration")) {
       this._themeIntegration = prefs.themeIntegration;
     }
-  },
+  }
+
   _applyTheme(theme) {
     const setVariable = (cssVar, themeProps) => {
       for (const prop of themeProps) {
@@ -123,16 +130,18 @@ TabCenter.prototype = {
     setVariable("--searchbox-background", ["toolbar_field"]);
     setVariable("--searchbox-text-color", ["toolbar_field_text"]);
     setVariable("--tab-border-color", ["toolbar_top_separator"]);
-  },
+  }
+
   _resetTheme() {
     this._applyTheme({});
-  },
+  }
+
   startTests() {
     const script = document.createElement("script");
     script.src = "../test/index.js";
     document.head.appendChild(script);
   }
-};
+}
 
 function unwrapChanges(changes) {
   const unwrapped = {};
@@ -141,5 +150,3 @@ function unwrapChanges(changes) {
   }
   return unwrapped;
 }
-
-export default TabCenter;

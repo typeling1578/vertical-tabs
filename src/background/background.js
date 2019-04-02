@@ -1,10 +1,11 @@
-function TabCenterBackground() {
-  browser.runtime.onConnect.addListener(port => this.onConnect(port));
-  browser.browserAction.onClicked.addListener((tab) => this.onClick(tab));
-  browser.browserAction.setBadgeTextColor({color: "white"});
-}
-TabCenterBackground.prototype = {
-  openedSidebarWindows: new Object(),
+class TabCenterBackground {
+  constructor() {
+    this.openedSidebarWindows = {};
+    browser.runtime.onConnect.addListener(port => this.onConnect(port));
+    browser.browserAction.onClicked.addListener((tab) => this.onClick(tab));
+    browser.browserAction.setBadgeTextColor({color: "white"});
+  }
+
   onConnect(port) {
     const windowId = parseInt(port.name);
     this.openedSidebarWindows[windowId] = port;
@@ -14,7 +15,8 @@ TabCenterBackground.prototype = {
       delete this.openedSidebarWindows[parseInt(port.name)];
       browser.browserAction.setBadgeBackgroundColor({color: "#38383d"});
     });
-  },
+  }
+
   onClick({windowId}) {
     if (this.openedSidebarWindows[windowId] !== undefined) {
       browser.sidebarAction.close();
@@ -22,6 +24,6 @@ TabCenterBackground.prototype = {
       browser.sidebarAction.open();
     }
   }
-};
+}
 
 new TabCenterBackground();

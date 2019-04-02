@@ -1,15 +1,15 @@
 /* global CSSAnimation */
 
-function SideTab() {
-  this.id = null;
-  this.url = null;
-  this.title = null;
-  this.muted = null;
-  this.pinned = null;
-  this.visible = true;
-}
+export default class SideTab {
+  constructor() {
+    this.id = null;
+    this.url = null;
+    this.title = null;
+    this.muted = null;
+    this.pinned = null;
+    this.visible = true;
+  }
 
-SideTab.prototype = {
   init(tabInfo) {
     this.id = tabInfo.id;
     this.index = tabInfo.index;
@@ -39,7 +39,8 @@ SideTab.prototype = {
       });
     }
     this.updateThumbnail = debounce(() => this._updateThumbnail(), 500);
-  },
+  }
+
   _buildViewStructure() {
     const template = document.getElementById("tab-template");
     const tab = template.content.children[0].cloneNode(true);
@@ -56,7 +57,8 @@ SideTab.prototype = {
     this.thumbnailCanvas = tab.querySelector("canvas");
     this.thumbnailCanvas.id = `thumbnail-canvas-${this.id}`;
     this.thumbnailCanvasCtx = this.thumbnailCanvas.getContext("2d", {alpha: false});
-  },
+  }
+
   onUpdate(changeInfo, tab) {
     if (changeInfo.hasOwnProperty("hidden")) {
       this.hidden = changeInfo.hidden;
@@ -91,10 +93,12 @@ SideTab.prototype = {
     if (changeInfo.hasOwnProperty("pinned")) {
       this._updatePinned(changeInfo.pinned);
     }
-  },
+  }
+
   get host() {
     return new URL(this.url).host || this.url;
-  },
+  }
+
   _updateTitle(title) {
     if (this.title && this.title !== title) {
       if (!this.view.classList.contains("active")) {
@@ -104,25 +108,30 @@ SideTab.prototype = {
     this.title = title;
     this._titleView.textContent = title;
     this.view.title = title;
-  },
+  }
+
   _updateIcon(favIconUrl) {
     if (favIconUrl) {
       this._setIcon(favIconUrl);
     } else {
       this._resetIcon();
     }
-  },
+  }
+
   _updateURL(url) {
     this.url = url;
     this._hostView.innerText = this.host;
-  },
+  }
+
   _updateAudible(audible) {
     this._iconOverlayView.classList.toggle("sound", audible);
-  },
+  }
+
   _updatedMuted(muted) {
     this.muted = muted;
     this._iconOverlayView.classList.toggle("muted", muted);
-  },
+  }
+
   _updateLoading(isLoading) {
     this.view.classList.toggle("loading", isLoading);
     if (isLoading) {
@@ -135,10 +144,12 @@ SideTab.prototype = {
         this.view.removeAttribute("notselectedsinceload");
       }
     }
-  },
+  }
+
   burst() {
     this._burstView.classList.add("bursting");
-  },
+  }
+
   updateActive(active) {
     this.view.classList.toggle("active", active);
     if (active) {
@@ -146,7 +157,8 @@ SideTab.prototype = {
       this.view.removeAttribute("notselectedsinceload");
       this.view.classList.remove("wants-attention");
     }
-  },
+  }
+
   scrollIntoView() {
     // Pinned tabs are always into view!
     if (this.pinned) {
@@ -156,18 +168,21 @@ SideTab.prototype = {
     // workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1139745#c7
     // we still make a first scrollIntoView so that it starts scrolling right away
     setTimeout(() => this._scrollIntoViewIfNeeded(), 100);
-  },
+  }
+
   _scrollIntoViewIfNeeded() {
     const {top: parentTop, height} = this.view.parentNode.getBoundingClientRect();
     let {top, bottom} = this.view.getBoundingClientRect();
     if ((top - parentTop) < 0 || (bottom - parentTop) > height) {
       this.view.scrollIntoView({block: "nearest"});
     }
-  },
+  }
+
   updateVisibility(show) {
     this.visible = show;
     this.view.classList.toggle("hidden", !show);
-  },
+  }
+
   _setIcon(favIconUrl) {
     if (favIconUrl.startsWith("chrome://") && favIconUrl.endsWith(".svg")) {
       this._iconView.classList.add("chrome-icon");
@@ -184,18 +199,22 @@ SideTab.prototype = {
     imgTest.onerror = () => {
       this._resetIcon();
     };
-  },
+  }
+
   _resetIcon() {
     this._iconView.style.backgroundImage = "url(\"img/defaultFavicon.svg\")";
     this._iconView.classList.add("chrome-icon");
-  },
+  }
+
   _updatePinned(pinned) {
     this.pinned = pinned;
     this.view.classList.toggle("pinned", pinned);
-  },
+  }
+
   _updateDiscarded(discarded) {
     this.view.classList.toggle("discarded", discarded);
-  },
+  }
+
   _updateThumbnail() {
     requestIdleCallback(async () => {
       const thumbnailBase64 = await browser.tabs.captureTab(this.id, {
@@ -206,7 +225,8 @@ SideTab.prototype = {
       this._metaImageView.style.backgroundImage = `-moz-element(#${this.thumbnailCanvas.id})`;
       this._metaImageView.classList.add("has-thumbnail");
     });
-  },
+  }
+
   _updateThumbnailCanvas(base64Str) {
     const desiredHeight = 192;
     return new Promise(resolve => {
@@ -221,38 +241,42 @@ SideTab.prototype = {
       };
       img.src = base64Str;
     });
-  },
+  }
+
   resetThumbnail() {
     this._metaImageView.style.backgroundImage = "";
     this._metaImageView.classList.remove("has-thumbnail");
-  },
+  }
+
   onAnimationEnd(e) {
     if (e.target.classList.contains("tab-loading-burst")) {
       this._burstView.classList.remove("bursting");
     }
-  },
+  }
+
   resetHighlights() {
     this._titleView.innerText = this.title;
     this._hostView.innerText = this.host;
-  },
+  }
+
   highlightTitle(newTitle) {
     this._titleView.innerHTML = newTitle;
-  },
+  }
+
   highlightHost(newHost) {
     this._hostView.innerHTML = newHost;
-  },
+  }
+
   resetOrder() {
     this.setOrder(null);
-  },
+  }
+
   setOrder(idx) {
     this.view.style.order = idx;
   }
-};
 
-// Static methods
-Object.assign(SideTab, {
   // If strict is true, this will return false for subviews (e.g the close button).
-  isTabEvent(e, strict = true) {
+  static isTabEvent(e, strict = true) {
     let el = e.target;
     if (!el) {
       return false;
@@ -270,26 +294,31 @@ Object.assign(SideTab, {
       }
     }
     return false;
-  },
-  isCloseButtonEvent(e) {
+  }
+
+  static isCloseButtonEvent(e) {
     return e.target && e.target.classList.contains("tab-close");
-  },
-  isIconOverlayEvent(e) {
+  }
+
+  static isIconOverlayEvent(e) {
     return e.target && e.target.classList.contains("tab-icon-overlay");
-  },
-  tabIdForView(el) {
+  }
+
+  static tabIdForView(el) {
     if (!el) {
       return null;
     }
     return parseInt(el.getAttribute("data-tab-id"));
-  },
-  tabIdForEvent(e) {
+  }
+
+  static tabIdForEvent(e) {
     let el = e.target;
     // eslint-disable-next-line curly
     while (!SideTab.tabIdForView(el) && (el = el.parentElement));
     return SideTab.tabIdForView(el);
-  },
-  _syncThrobberAnimations() {
+  }
+
+  static _syncThrobberAnimations() {
     requestAnimationFrame(() => {
       // this API is available only in Dev Edition/Nightly so far
       // https://developer.mozilla.org/en-US/docs/Web/API/Document/getAnimations
@@ -331,8 +360,8 @@ Object.assign(SideTab, {
         });
       }, 0);
     });
-  },
-});
+  }
+}
 
 function debounce(fn, delay) {
   let timeoutID;
@@ -346,5 +375,3 @@ function debounce(fn, delay) {
     }, delay);
   };
 }
-
-export default SideTab;

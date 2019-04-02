@@ -6,40 +6,40 @@ const COMPACT_MODE_OFF = 0;
 /*const COMPACT_MODE_DYNAMIC = 1;*/
 const COMPACT_MODE_STRICT = 2;
 
-/* @arg {props}
- * openTab
- * search
- * prefs
- */
-function TabList(props) {
-  this._props = props;
-  this._tabs = new Map();
-  this._active = null;
-  this.__compactPins = true;
-  this.__tabsShrinked = false;
-  this._windowId = null;
-  this._filterActive = false;
-  this._view = document.getElementById("tablist");
-  this._pinnedview = document.getElementById("pinnedtablist");
-  this._wrapperView = document.getElementById("tablist-wrapper");
-  this._spacerView = document.getElementById("spacer");
-  this._moreTabsView = document.getElementById("moretabs");
+export default class TabList {
+  /* @arg {props}
+   * openTab
+   * search
+   * prefs
+   */
+  constructor(props) {
+    this._props = props;
+    this._tabs = new Map();
+    this._active = null;
+    this.__compactPins = true;
+    this.__tabsShrinked = false;
+    this._windowId = null;
+    this._filterActive = false;
+    this._view = document.getElementById("tablist");
+    this._pinnedview = document.getElementById("pinnedtablist");
+    this._wrapperView = document.getElementById("tablist-wrapper");
+    this._spacerView = document.getElementById("spacer");
+    this._moreTabsView = document.getElementById("moretabs");
 
-  this._compactModeMode = parseInt(this._props.prefs.compactModeMode);
-  this._compactPins = this._props.prefs.compactPins;
+    this._compactModeMode = parseInt(this._props.prefs.compactModeMode);
+    this._compactPins = this._props.prefs.compactPins;
 
-  this._setupListeners();
+    this._setupListeners();
 
-  browser.browserSettings.closeTabsByDoubleClick.get({}).then(({value}) => {
-    this.closeTabsByDoubleClick = value;
-  });
+    browser.browserSettings.closeTabsByDoubleClick.get({}).then(({value}) => {
+      this.closeTabsByDoubleClick = value;
+    });
 
-  this._updateContextualIdentities();
-  this._updateHasRecentlyClosedTabs();
-  this.tabContextMenu = new TabContextMenu(this);
-}
+    this._updateContextualIdentities();
+    this._updateHasRecentlyClosedTabs();
+    this.tabContextMenu = new TabContextMenu(this);
+  }
 
-TabList.prototype = {
   _setupListeners() {
     // Tab events
     browser.tabs.onCreated.addListener(tab => this._onBrowserTabCreated(tab));
@@ -87,7 +87,8 @@ TabList.prototype = {
     browser.contextualIdentities.onCreated.addListener(this._updateContextualIdentities);
     browser.contextualIdentities.onRemoved.addListener(this._updateContextualIdentities);
     browser.contextualIdentities.onUpdated.addListener(this._updateContextualIdentities);
-  },
+  }
+
   _onPrefsChanged(changes) {
     if (changes.compactModeMode) {
       this._compactModeMode = parseInt(changes.compactModeMode.newValue);
@@ -96,14 +97,16 @@ TabList.prototype = {
       this._compactPins = changes.compactPins.newValue;
     }
     this._maybeShrinkTabs();
-  },
+  }
+
   _onBrowserTabCreated(tab) {
     if (!this._checkWindow(tab)) {
       return;
     }
     this._shiftTabsIndexes(1, tab.index);
     this._create(tab);
-  },
+  }
+
   async _onBrowserTabAttached(tabId, {newWindowId, newPosition}) {
     if (newWindowId !== this._windowId) {
       return;
@@ -111,7 +114,8 @@ TabList.prototype = {
     this._shiftTabsIndexes(1, newPosition);
     let tab = await browser.tabs.get(tabId);
     this._create(tab);
-  },
+  }
+
   _onBrowserTabRemoved(tabId) {
     let sidetab = this.getTabById(tabId);
     if (!sidetab) { // Could be null because different window.
@@ -120,7 +124,8 @@ TabList.prototype = {
     this._shiftTabsIndexes(-1, sidetab.index);
     this._remove(sidetab);
     this._updateHasRecentlyClosedTabs();
-  },
+  }
+
   _onBrowserTabActivated(tabId) {
     const sidetab = this.getTabById(tabId);
     if (!sidetab) { // Could be null because different window.
@@ -129,7 +134,8 @@ TabList.prototype = {
     this._setActive(sidetab);
     this._maybeUpdateTabThumbnail(sidetab);
     sidetab.scrollIntoView();
-  },
+  }
+
   _onBrowserTabMoved(tabId, moveInfo) {
     const tab = this.getTabById(tabId);
     if (!tab) { // Could be null because different window.
@@ -149,7 +155,8 @@ TabList.prototype = {
 
     this._appendTabView(tab);
     tab.scrollIntoView();
-  },
+  }
+
   _onBrowserTabUpdated(tabId, changeInfo, tab) {
     if (!this._checkWindow(tab)) {
       return;
@@ -174,7 +181,8 @@ TabList.prototype = {
     if (changeInfo.hasOwnProperty("pinned")) {
       this._onTabPinned(sidetab, tab);
     }
-  },
+  }
+
   // Shift tabs indexes with indexes between |start| and |end| (|end| not included)
   // by |offset| (can be a negative number).
   _shiftTabsIndexes(offset, start, end = null) {
@@ -183,7 +191,8 @@ TabList.prototype = {
         tab.index += offset;
       }
     }
-  },
+  }
+
   _webNavigationOnCompleted({tabId, frameId}) {
     if (frameId !== 0) { // We only care about top-level frames.
       return;
@@ -193,7 +202,8 @@ TabList.prototype = {
       return;
     }
     sidetab.burst();
-  },
+  }
+
   _onMouseDown(e) {
     // Don't put preventDefault here or drag-and-drop won't work
     if (e.button === 0 && SideTab.isTabEvent(e)) {
@@ -206,20 +216,23 @@ TabList.prototype = {
       e.preventDefault();
       return;
     }
-  },
+  }
+
   _onMouseOver(e) {
     const tabId = SideTab.tabIdForEvent(e);
     if (tabId === this._active) {
       this.getTabById(tabId).scrollIntoView();
     }
-  },
+  }
+
   _onAuxClick(e) {
     if (e.button === 1 && SideTab.isTabEvent(e, false)) {
       browser.tabs.remove(SideTab.tabIdForEvent(e));
       e.preventDefault();
       return;
     }
-  },
+  }
+
   updateScrollShadow() {
     if (this._view.scrollTop === 0) {
       this._wrapperView.classList.remove("can-scroll-top");
@@ -231,7 +244,8 @@ TabList.prototype = {
     } else {
       this._wrapperView.classList.add("can-scroll-bottom");
     }
-  },
+  }
+
   _onClick(e) {
     if (SideTab.isCloseButtonEvent(e)) {
       const tabId = SideTab.tabIdForEvent(e);
@@ -241,12 +255,14 @@ TabList.prototype = {
       const tab = this.getTabById(tabId);
       browser.tabs.update(tabId, {"muted": !tab.muted});
     }
-  },
+  }
+
   _onDblClick(e) {
     if (SideTab.isTabEvent(e) && this.closeTabsByDoubleClick) {
       browser.tabs.remove(SideTab.tabIdForEvent(e));
     }
-  },
+  }
+
   _onDragStart(e) {
     if (!SideTab.isTabEvent(e) || this._filterActive) {
       return;
@@ -263,10 +279,12 @@ TabList.prototype = {
       uri: tab.url
     }));
     e.dataTransfer.dropEffect = "move";
-  },
+  }
+
   _onDragOver(e) {
     e.preventDefault();
-  },
+  }
+
   _findMozURL(dataTransfer) {
     const urlData = dataTransfer.getData("text/x-moz-url-data"); // page link
     if (urlData) {
@@ -277,7 +295,8 @@ TabList.prototype = {
       return JSON.parse(mozPlaceData).uri;
     }
     return null;
-  },
+  }
+
   _onDrop(e) {
     if (!SideTab.isTabEvent(e, false) &&
         e.target !== this._spacerView &&
@@ -301,7 +320,8 @@ TabList.prototype = {
       windowId: this._windowId
     });
     return;
-  },
+  }
+
   _handleDroppedTabCenterTab(e, tab) {
     let {tabId, origWindowId} = tab;
     let currentWindowId = this._windowId;
@@ -342,20 +362,24 @@ TabList.prototype = {
     let newPos = curTabPos < dropTabPos ? Math.min(this._tabs.size, dropTabPos) :
                                           Math.max(0, dropTabPos);
     browser.tabs.move(tabId, {index: newPos});
-  },
+  }
+
   _onSpacerDblClick() {
     this._props.openTab();
-  },
+  }
+
   _onSpacerAuxClick(e) {
     if (e.button === 1) {
       this._props.openTab();
     }
-  },
+  }
+
   _onAnimationEnd(e) {
     const tabId = SideTab.tabIdForEvent(e);
     const tab = this.getTabById(tabId);
     tab.onAnimationEnd(e);
-  },
+  }
+
   _clearSearch() {
     // _clearSearch() is called every time we open a new tab (see _create()),
     // which subsequently calls the expensive filter() method.
@@ -365,7 +389,8 @@ TabList.prototype = {
       return;
     }
     this._props.search("");
-  },
+  }
+
   filter(query) {
     this._filterActive = query.length > 0;
 
@@ -417,7 +442,8 @@ TabList.prototype = {
       this._moreTabsView.removeAttribute("hasMoreTabs");
     }
     this._maybeShrinkTabs();
-  },
+  }
+
   async populate(windowId) {
     if (windowId && this._windowId === null) {
       this._windowId = windowId;
@@ -445,16 +471,20 @@ TabList.prototype = {
       this._maybeUpdateTabThumbnail(activeTab);
       activeTab.scrollIntoView();
     }
-  },
+  }
+
   _checkWindow(tab) {
     return (tab.windowId === this._windowId);
-  },
+  }
+
   getTabById(tabId) {
     return this._tabs.get(tabId, null);
-  },
+  }
+
   get _compactPins() {
     return this.__compactPins;
-  },
+  }
+
   set _compactPins(compact) {
     this.__compactPins = compact;
     if (compact) {
@@ -462,10 +492,12 @@ TabList.prototype = {
     } else {
       this._pinnedview.classList.remove("compact");
     }
-  },
+  }
+
   get _tabsShrinked() {
     return this.__tabsShrinked;
-  },
+  }
+
   set _tabsShrinked(shrinked) {
     this.__tabsShrinked = shrinked;
     if (shrinked) {
@@ -473,13 +505,15 @@ TabList.prototype = {
     } else {
       this._wrapperView.classList.remove("shrinked");
     }
-  },
+  }
+
   _maybeShrinkTabs() {
     // Avoid an expensive sync reflow (offsetHeight).
     requestAnimationFrame(() => {
       this.__maybeShrinkTabs();
     });
-  },
+  }
+
   __maybeShrinkTabs() {
     if (this._compactModeMode === COMPACT_MODE_STRICT ||
         this._compactModeMode === COMPACT_MODE_OFF) {
@@ -519,7 +553,8 @@ TabList.prototype = {
     if (estimatedHeight <= wrapperHeight) {
       this._tabsShrinked = false;
     }
-  },
+  }
+
   __create(tabInfo) {
     let tab = new SideTab();
     this._tabs.set(tabInfo.id, tab);
@@ -528,7 +563,8 @@ TabList.prototype = {
       this._setActive(tab);
     }
     return tab;
-  },
+  }
+
   _create(tabInfo, scrollTo = true) {
     const sidetab = this.__create(tabInfo);
     // Bail early and don't insert the tab in the DOM: we'll do it later
@@ -542,14 +578,16 @@ TabList.prototype = {
     if (scrollTo) {
       sidetab.scrollIntoView();
     }
-  },
+  }
+
   _setActive(sidetab) {
     if (this._active) {
       this.getTabById(this._active).updateActive(false);
     }
     sidetab.updateActive(true);
     this._active = sidetab.id;
-  },
+  }
+
   _remove(sidetab) {
     if (this._active === sidetab.id) {
       this._active = null;
@@ -557,7 +595,8 @@ TabList.prototype = {
     sidetab.view.remove();
     this._tabs.delete(sidetab.id);
     this._maybeShrinkTabs();
-  },
+  }
+
   _appendTabView(sidetab) {
     let element = sidetab.view;
     let parent = sidetab.pinned ? this._pinnedview : this._view;
@@ -576,12 +615,14 @@ TabList.prototype = {
       return;
     }
     parent.insertBefore(element, tabAfter.view);
-  },
+  }
+
   _removeTabView(sidetab) {
     let element = sidetab.view;
     let parent = sidetab.pinned ? this._pinnedview : this._view;
     parent.removeChild(element);
-  },
+  }
+
   _onTabPinned(sidetab, tab) {
     if (tab.pinned && this._compactPins) {
       sidetab.resetThumbnail();
@@ -590,7 +631,8 @@ TabList.prototype = {
     this._appendTabView(sidetab);
 
     this._maybeShrinkTabs();
-  },
+  }
+
   _maybeUpdateTabThumbnail(sidetab) {
     if (this._compactModeMode === COMPACT_MODE_STRICT) {
       return;
@@ -599,16 +641,19 @@ TabList.prototype = {
       return;
     }
     sidetab.updateThumbnail();
-  },
+  }
+
   /*
    * Functions below are used by TabContextMenu
    */
   tabCount() {
     return this._tabs.size;
-  },
+  }
+
   isFilterActive() {
     return this._filterActive;
-  },
+  }
+
   async _updateContextualIdentities() {
     if (browser.contextualIdentities === undefined) {
       return;
@@ -618,13 +663,15 @@ TabList.prototype = {
       return;
     }
     this.contextualIdentities = identities;
-  },
+  }
+
   // We can’t make the function that overrides context menu asynchronous,
   // so we get this information ahead of time.
   async _updateHasRecentlyClosedTabs() {
     const undoTabs = await this._getRecentlyClosedTabs();
     this.hasRecentlyClosedTabs = undoTabs.length > 0;
-  },
+  }
+
   async _getRecentlyClosedTabs() {
     const sessions = await browser.sessions.getRecentlyClosed();
     return sessions.reduce((acc, session) => {
@@ -633,46 +680,50 @@ TabList.prototype = {
       }
       return acc;
     }, []);
-  },
+  }
+
   hasTabsUnderneath(currentTab) {
     return Array.from(this._tabs)
       .map(elem => elem[1])
       .filter(tab => tab.pinned === currentTab.pinned)
       .some(tab => tab.index > currentTab.index);
-  },
+  }
+
   moveTabToStart(currentTab) {
     let minIndex = Math.min(...Array.from(this._tabs)
       .map(elem => elem[1])
       .filter(tab => tab.pinned === currentTab.pinned)
       .map(tab => tab.index));
     browser.tabs.move(currentTab.id, {index: minIndex});
-  },
+  }
+
   async moveTabToEnd(currentTab) {
     let maxIndex = Math.max(...Array.from(this._tabs)
       .map(elem => elem[1])
       .filter(tab => tab.pinned === currentTab.pinned)
       .map(tab => tab.index));
     browser.tabs.move(currentTab.id, {index: maxIndex});
-  },
+  }
+
   closeTabsAfter(tabIndex) {
     const toClose = [...this._tabs.values()]
                     .filter(tab => tab.index > tabIndex && !tab.hidden)
                     .map(tab => tab.id);
     browser.tabs.remove(toClose);
-  },
+  }
+
   closeAllTabsExcept(tabId) {
     const toClose = [...this._tabs.values()]
                     .filter(tab => tab.id !== tabId && !tab.pinned && !tab.hidden)
                     .map(tab => tab.id);
     browser.tabs.remove(toClose);
-  },
+  }
+
   async undoCloseTab() {
     const undoTabs = await this._getRecentlyClosedTabs();
     if (undoTabs.length) {
       browser.sessions.restore(undoTabs[0].sessionId);
     }
     this._updateHasRecentlyClosedTabs();
-  },
-};
-
-export default TabList;
+  }
+}

@@ -1,15 +1,24 @@
-function TabCenterOptions() {
-  this.setupLabels();
-  this.setupStateAndListeners();
-}
+class TabCenterOptions {
+  constructor() {
+    this.setupLabels();
+    this.setupStateAndListeners();
+  }
 
-TabCenterOptions.prototype = {
   setupLabels() {
-    const options = ["optionsTitle", "optionsCompactMode",
-      "optionsCompactModeStrict", "optionsCompactModeDynamic",
-      "optionsCompactModeOff", "optionsCompactPins", "optionsDarkTheme",
-      "optionsThemeIntegration", "optionsAdvancedTitle", "optionsCustomCSS",
-      "optionsCustomCSSWikiLink", "optionsSaveCustomCSS"];
+    const options = [
+      "optionsTitle",
+      "optionsCompactMode",
+      "optionsCompactModeStrict",
+      "optionsCompactModeDynamic",
+      "optionsCompactModeOff",
+      "optionsCompactPins",
+      "optionsDarkTheme",
+      "optionsThemeIntegration",
+      "optionsAdvancedTitle",
+      "optionsCustomCSS",
+      "optionsCustomCSSWikiLink",
+      "optionsSaveCustomCSS"
+    ];
     for (let opt of options) {
       this._setupTextContentLabel(opt);
     }
@@ -17,10 +26,12 @@ TabCenterOptions.prototype = {
     helpImg.id = "help";
     helpImg.title = browser.i18n.getMessage("optionsCompactModeTooltip");
     document.getElementById("optionsCompactMode").appendChild(helpImg);
-  },
+  }
+
   _setupTextContentLabel(opt) {
     document.getElementById(opt).textContent = browser.i18n.getMessage(opt);
-  },
+  }
+
   setupStateAndListeners() {
     this._setupCheckboxOption("darkTheme", "darkTheme");
     this._setupCheckboxOption("themeIntegration", "themeIntegration");
@@ -38,7 +49,8 @@ TabCenterOptions.prototype = {
         "customCSS": document.getElementById("customCSS").value
       });
     });
-  },
+  }
+
   _setupCheckboxOption(checkboxId, optionName, defaultValue = false) {
     const checkbox = document.getElementById(checkboxId);
     browser.storage.local.get({
@@ -52,7 +64,8 @@ TabCenterOptions.prototype = {
         [optionName]: e.target.checked
       });
     });
-  },
+  }
+
   _setupDropdownOption(drowdownId, optionName) {
     const dropdown = document.getElementById(drowdownId);
     browser.storage.local.get({
@@ -67,6 +80,6 @@ TabCenterOptions.prototype = {
       });
     });
   }
-};
+}
 
 new TabCenterOptions();
