@@ -23,10 +23,10 @@ TabCenter.prototype = {
     // There's no real need to await on populate().
     this._tabList.populate(windowId).then(() => this._tabList.updateScrollShadow());
 
-    browser.runtime.sendMessage({
-      event: "sidebar-open",
-      windowId
-    });
+    browser.runtime.connect(
+      "tabcenter-reborn@ariasuni",
+      {name: this._windowId.toString()}
+    );
 
     browser.runtime.getPlatformInfo().then((platform) => {
       document.body.setAttribute("platform", platform.os);
@@ -45,12 +45,6 @@ TabCenter.prototype = {
     this._topMenu.updateSearch(val);
   },
   _setupListeners() {
-    window.addEventListener("beforeunload", () => {
-      browser.runtime.sendMessage({
-        event: "sidebar-closed",
-        windowId: this._windowId
-      });
-    });
     window.addEventListener("contextmenu", (e) => {
       const target = e.target;
       // Let the searchbox input and the tabs have a context menu.
