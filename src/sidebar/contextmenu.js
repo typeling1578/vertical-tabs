@@ -1,8 +1,9 @@
 import SideTab from "./tab.js";
+import getContextualIdentityItems from "./contextualidentities.js";
 
 const IS_PRIVILEGED_PAGE_URL = /^(about|chrome|data|file|javascript):*/;
 
-export default class TabContextMenu {
+export default class ContextMenu {
   constructor(tablist) {
     this._tablist = tablist;
 
@@ -148,18 +149,13 @@ export default class TabContextMenu {
       });
     });
 
-    if (browser.contextualIdentities !== undefined) {
-      this._tablist.contextualIdentities.forEach(identity => {
+    let identityItems = getContextualIdentityItems();
+    if (identityItems !== null) {
+      identityItems.forEach(identityItem => {
+        identityItem["id"] = `contextMenuOpenInContextualTab_${identityItem["id"]}`;
         browser.menus.create({
           parentId: "contextMenuOpenInContextualTab",
-          id: `contextMenuOpenInContextualTab_${identity.cookieStoreId}`,
-          title: identity.name,
-          icons: {
-            "16": `/sidebar/img/contextual-identities/${identity.icon}.svg#${identity.color}`
-          },
-          contexts: ["tab"],
-          viewTypes: ["sidebar"],
-          documentUrlPatterns: [`moz-extension://${location.host}/*`]
+          ...identityItem
         });
       });
     }

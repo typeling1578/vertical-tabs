@@ -1,25 +1,26 @@
 const LONG_PRESS_DELAY = 500;
 
-import NewTabPopup from "./newtabpopup.js";
+import getContextualIdentityItems from "./contextualidentities.js";
 
 /* @arg {props}
  * openTab
  * search
  */
-function TopMenu(props) {
-  this._props = props;
-  this._newTabButtonView = document.getElementById("newtab");
-  this._settingsView = document.getElementById("settings");
-  this._searchBoxInput = document.getElementById("searchbox-input");
-  this._newTabLabelView = document.getElementById("newtab-label");
-  this._setupLabels();
-  this._setupListeners();
-}
+export default class TopMenu {
+  constructor(props) {
+    this._props = props;
+    this._newTabButtonView = document.getElementById("newtab");
+    this._settingsView = document.getElementById("settings");
+    this._searchBoxInput = document.getElementById("searchbox-input");
+    this._newTabLabelView = document.getElementById("newtab-label");
+    this._setupLabels();
+    this._setupListeners();
+  }
 
-TopMenu.prototype = {
   updateSearch(val) {
     this._searchBoxInput.value = val;
-  },
+  }
+
   _setupListeners() {
     this._settingsView.addEventListener("click", () => {
       browser.runtime.openOptionsPage();
@@ -46,17 +47,10 @@ TopMenu.prototype = {
     this._newTabButtonView.addEventListener("auxclick", e => {
       if (e.button === 1) {
         this._props.openTab({afterCurrent: true});
-      } else if (e.button === 2) {
-        this._showNewTabPopup();
       }
     });
-    this._newTabButtonView.addEventListener("mousedown", () => {
-      this._longPressTimer = setTimeout(() => {
-        this._showNewTabPopup();
-      }, LONG_PRESS_DELAY);
-    });
-    this._newTabButtonView.addEventListener("mouseup", () => {
-      clearTimeout(this._longPressTimer);
+    this._newTabButtonView.addEventListener("contextmenu", () => {
+      this._showNewTabPopup();
     });
 
     window.addEventListener("keyup", (e) => {
@@ -64,31 +58,37 @@ TopMenu.prototype = {
         this._props.search("");
       }
     });
-  },
+
+    browser.menus.onClicked.addListener((info, tab) => {
+      if (info.menuItemId.startsWith("contextMenuOpenInNewContextualTab_")) {
+        this._props.openTab({
+          afterCurrent: true,
+          cookieStoreId: info.menuItemId.split("contextMenuOpenInNewContextualTab_")[1]
+        });
+      }
+    });
+  }
+
   _setupLabels() {
     this._newTabLabelView.textContent = browser.i18n.getMessage("newTabBtnLabel");
     this._newTabLabelView.title = browser.i18n.getMessage("newTabBtnTooltip");
     this._settingsView.title = browser.i18n.getMessage("settingsBtnTooltip");
     this._searchBoxInput.placeholder = browser.i18n.getMessage("searchPlaceholder");
-  },
-  async _showNewTabPopup() {
-    if (!browser.contextualIdentities) {
-      return;
-    }
-    const identities = await browser.contextualIdentities.query({});
-    if (!identities || !identities.length) {
-      return;
-    }
-    const openTab = this._props.openTab.bind(this);
-    const onClose = this._onNewTabPopupClosed.bind(this);
-    this._newTabPopup = new NewTabPopup({openTab, onClose});
-    this._newTabPopup.show(identities);
-    this._newTabButtonView.classList.add("menuopened");
-  },
-  _onNewTabPopupClosed() {
-    this._newTabPopup = null;
-    this._newTabButtonView.classList.remove("menuopened");
   }
-};
 
-export default TopMenu;
+  _showNewTabPopup() {
+    browser.menus.removeAll();
+    let identityItems = getContextualIdentityItems();
+    if (identityItems !== null) {
+      identityItems.forEach(identityItem => {
+        identityItem["id"] = `contextMenuOpenInNewContextualTab_${identityItem["id"]}`;
+        browser.menus.create(identityItem);
+      });
+    }
+
+    browser.menus.overrideContext({
+      context: "tab",
+      tabId: this._props.getFirstTabId()
+    });
+  }
+}

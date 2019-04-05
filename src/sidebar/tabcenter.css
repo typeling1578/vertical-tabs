@@ -1,4 +1,3 @@
-@import url("lib/contextmenu/contextmenu.css");
 @import url("lib/photon-colors.css");
 
 :root {
@@ -26,9 +25,6 @@
 
     --close-icon-hover: hsla(0, 0%, 0%, 0.16);
     --close-icon-active: hsla(0, 0%, 0%, 0.22);
-
-    --menu-background-color: var(--white-100);
-    --menu-border-color: var(--grey-30);
 }
 
 body.dark-theme {
@@ -51,15 +47,6 @@ body.dark-theme {
 
     --close-icon-hover: hsla(0, 0%, 100%, 0.2);
     --close-icon-active: hsla(0, 0%, 100%, 0.3);
-
-    --menu-background-color: var(--grey-60);
-    --menu-border-color: var(--grey-80);
-}
-
-body.dark-theme #newtab-menu::before {
-    -moz-context-properties: fill;
-    fill: var(--menu-background-color);
-    filter: url("img/filters.svg#fill");
 }
 
 html, body {
@@ -121,60 +108,6 @@ img, .tab *:not(.clickable) {
     #newtab-label {
         display: none;
     }
-}
-
-#newtab-menu {
-    display: flex;
-    z-index: 75;
-    position: absolute;
-    top: 36px;
-    left: 3px;
-    padding-bottom: 5px;
-    flex-direction: column;
-    background-color: var(--menu-background-color);
-    box-shadow: 0 3px 5px hsla(210,4%,10%,.1),
-                0 0 7px hsla(210,4%,10%,.1);
-    border: 1px solid var(--menu-border-color);
-}
-
-body[platform="mac"] #newtab-menu {
-    border-radius: 3.5px;
-}
-
-#newtab-menu::before {
-    content: "";
-    background-image: url("img/panelarrow-vertical-themed.svg");
-    width: 20px;
-    height: 10px;
-    background-size: contain;
-    position: relative;
-    top: -10px;
-    left: 9px;
-}
-
-.newtab-menu-identity:hover {
-    background-color: var(--close-icon-hover);
-}
-
-.newtab-menu-identity:hover:active {
-    background-color: var(--close-icon-active);
-    box-shadow: 0 1px 0 hsla(210,4%,10%,.03) inset;
-}
-
-.newtab-menu-identity:first-child {
-    margin-top: -5px;
-}
-
-.newtab-menu-identity {
-    display: flex;
-    align-items: center;
-    padding: 7px 0 7px 18px;
-}
-
-.newtab-menu-identity-label {
-    pointer-events: none;
-    padding-left: 6px;
-    padding-right: 16px;
 }
 
 [data-identity-color="blue"] {
@@ -255,19 +188,6 @@ body[platform="mac"] #newtab-menu {
 
 [data-identity-icon="chill"] {
     --identity-icon: url("img/usercontext.svg#chill");
-}
-
-.newtab-menu-identity-icon {
-    pointer-events: none;
-    width: 16px;
-    height: 16px;
-    background-image: var(--identity-icon);
-    -moz-context-properties: fill;
-    fill: var(--identity-color);
-    filter: url("img/filters.svg#fill");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
 }
 
 .topmenu-button {

@@ -1,5 +1,5 @@
 import SideTab from "./tab.js";
-import TabContextMenu from "./tabcontextmenu.js";
+import ContextMenu from "./contextmenu.js";
 import fuzzysort from "./lib/fuzzysort.js";
 
 const COMPACT_MODE_OFF = 0;
@@ -35,9 +35,8 @@ export default class TabList {
       this.closeTabsByDoubleClick = value;
     });
 
-    this._updateContextualIdentities();
     this._updateHasRecentlyClosedTabs();
-    this.tabContextMenu = new TabContextMenu(this);
+    this.tabContextMenu = new ContextMenu(this);
   }
 
   _setupListeners() {
@@ -83,10 +82,6 @@ export default class TabList {
 
     // Pref changes
     browser.storage.onChanged.addListener(changes => this._onPrefsChanged(changes));
-
-    browser.contextualIdentities.onCreated.addListener(this._updateContextualIdentities);
-    browser.contextualIdentities.onRemoved.addListener(this._updateContextualIdentities);
-    browser.contextualIdentities.onUpdated.addListener(this._updateContextualIdentities);
   }
 
   _onPrefsChanged(changes) {
@@ -643,8 +638,12 @@ export default class TabList {
     sidetab.updateThumbnail();
   }
 
+  getFirstTabId() {
+    return this._tabs.keys().next().value;
+  }
+
   /*
-   * Functions below are used by TabContextMenu
+   * Functions below are used by ContextMenu
    */
   tabCount() {
     return this._tabs.size;
@@ -652,17 +651,6 @@ export default class TabList {
 
   isFilterActive() {
     return this._filterActive;
-  }
-
-  async _updateContextualIdentities() {
-    if (browser.contextualIdentities === undefined) {
-      return;
-    }
-    const identities = await browser.contextualIdentities.query({});
-    if (!identities || !identities.length) {
-      return;
-    }
-    this.contextualIdentities = identities;
   }
 
   // We can’t make the function that overrides context menu asynchronous,

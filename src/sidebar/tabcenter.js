@@ -1,12 +1,13 @@
 import SideTab from "./tab.js";
 import TabList from "./tablist.js";
-import TopMenu from "./topmenu/topmenu.js";
+import TopMenu from "./topmenu.js";
 
 export default class TabCenter {
   async init() {
     const search = this._search.bind(this);
     const openTab = this._openTab.bind(this);
-    this._topMenu = new TopMenu({openTab, search});
+    const getFirstTabId = this._getFirstTabId.bind(this);
+    this._topMenu = new TopMenu({openTab, search, getFirstTabId});
     // Do other work while the promises are pending.
     const prefsPromise = this._readPrefs();
     const windowPromise = browser.windows.getCurrent();
@@ -33,7 +34,10 @@ export default class TabCenter {
 
   async _openTab(props = {}) {
     if (props.afterCurrent) {
-      let currentIndex = (await browser.tabs.query({windowId: this._windowId, active: true}))[0].index;
+      let currentIndex = (await browser.tabs.query({
+        windowId: this._windowId,
+        active: true
+      }))[0].index;
       props.index = currentIndex + 1;
     }
     delete props.afterCurrent;
@@ -45,11 +49,18 @@ export default class TabCenter {
     this._topMenu.updateSearch(val);
   }
 
+  _getFirstTabId() {
+    return this._tabList.getFirstTabId();
+  }
+
   _setupListeners() {
     window.addEventListener("contextmenu", (e) => {
       const target = e.target;
       // Let the searchbox input and the tabs have a context menu.
-      if (!(target && target.tagName === "INPUT" && target.type === "text")
+      if (!(target
+            && ((target.localName === "INPUT" && target.type === "text")
+              || target.id.startsWith("newtab"))
+          )
           && !SideTab.isTabEvent(e, false)) {
         e.preventDefault();
       }
