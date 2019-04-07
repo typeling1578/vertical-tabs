@@ -57,10 +57,7 @@ export default class TabCenter {
     window.addEventListener("contextmenu", (e) => {
       const target = e.target;
       // Let the searchbox input and the tabs have a context menu.
-      if (!(target
-            && ((target.localName === "INPUT" && target.type === "text")
-              || target.id.startsWith("newtab"))
-          )
+      if (!(target && (target.id === "searchbox-input" || target.id.startsWith("newtab")))
           && !SideTab.isTabEvent(e, false)) {
         e.preventDefault();
       }
