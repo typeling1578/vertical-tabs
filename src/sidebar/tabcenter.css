@@ -67,8 +67,8 @@ body {
 
 #topmenu {
     display: flex;
-    padding: 6px 4px;
     height: 35px;
+    padding: 4px 4px;
     border-bottom: 1px solid hsla(0, 0%, 0%, 0.2);
     background-color: var(--topmenu-background-color);
 }
@@ -79,7 +79,7 @@ body {
     flex: 0 20 auto;
     min-width: 26px;
     align-items: center;
-    padding: 2px 4px;
+    padding: 4px 4px;
     text-shadow: var(--topmenu-button-text-shadow);
 }
 
@@ -94,14 +94,11 @@ img, .tab *:not(.clickable) {
 }
 
 #newtab-label {
+    vertical-align: middle;
     margin-left: 4px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* text centering */
-    margin-top: 1px; /* take shadow under text into account */
-    height: 100%;
-    line-height: 100%;
 }
 
 @media screen and (max-width: 190px) {
@@ -284,7 +281,6 @@ body[platform="win"] #searchbox-input:placeholder-shown {
 
 #settings {
     flex-shrink: 0;
-    min-width: 18px;
     padding: 0 12px;
     background-size: 16px 16px;
     background-repeat: no-repeat;
