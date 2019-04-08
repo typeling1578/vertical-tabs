@@ -384,6 +384,7 @@ export default class TabList {
       return;
     }
     this._props.search("");
+    this.updateScrollShadow();
   }
 
   filter(query) {
@@ -503,6 +504,7 @@ export default class TabList {
   }
 
   _maybeShrinkTabs() {
+    this.updateScrollShadow();
     // Avoid an expensive sync reflow (offsetHeight).
     requestAnimationFrame(() => {
       this.__maybeShrinkTabs();
