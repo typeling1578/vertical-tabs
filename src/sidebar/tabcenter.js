@@ -120,24 +120,38 @@ export default class TabCenter {
   }
 
   _applyTheme(theme) {
-    const setVariable = (cssVar, themeProps) => {
-      for (const prop of themeProps) {
-        if (theme.colors && theme.colors[prop]) {
-          document.body.style.setProperty(cssVar, theme.colors[prop]);
-          return;
-        }
-      }
-      document.body.style.removeProperty(cssVar);
+    const cssToThemeProp = {
+      "--background": ["frame", "accentcolor"],
+      "--button-background-active": ["button_background_active"],
+      "--button-background-hover": ["button_background_hover"],
+      "--icons": ["icons", "textcolor"],
+      "--tab-separator": ["tab_background_separator", "toolbar_top_separator"],
+      "--tab-selected-line": ["tab_line"],
+      "--tab-loading-indicator": ["tab_loading"],
+      "--tab-active-background": ["tab_selected", "toolbar"],
+      "--tab-text": ["tab_text", "toolbar_text", "textcolor"],
+      "--toolbar-background": ["toolbar", "frame", "accentcolor"],
+      "--toolbar-text": ["toolbar_text", "textcolor"],
+      "--input-background": ["toolbar_field"],
+      "--input-border": ["toolbar_field_border"],
+      "--input-border-focus": ["toolbar_field_border_focus"],
+      "--input-background-focus": ["toolbar_field_focus"],
+      "--input-selected-text-background": ["toolbar_field_highlight", "button_background_active"],
+      "--input-selected-text": ["toolbar_field_highlight_text", "toolbar_field_text"],
+      "--input-text": ["bookmark_text", "toolbar_field_text"],
+      "--input-text-focus": ["toolbar_field_text_focus"]
     };
-    setVariable("--tab-background-normal", ["accentcolor"]);
-    setVariable("--menu-background", ["accentcolor"]);
-    setVariable("--primary-text-color", ["textcolor"]);
-    setVariable("--tab-background-active", ["tab_selected", "toolbar"]);
-    setVariable("--tab-text-color-active", ["tab_text", "toolbar_text"]);
-    setVariable("--default-tab-line-color", ["tab_line", "accentcolor"]);
-    setVariable("--searchbox-background", ["toolbar_field"]);
-    setVariable("--searchbox-text-color", ["toolbar_field_text"]);
-    setVariable("--tab-border-color", ["toolbar_top_separator"]);
+
+    for (const [cssVar, themeProps] of Object.entries(cssToThemeProp)) {
+     // for (const prop of themeProps) {
+     themeProps.forEach(prop => {
+       if (theme.colors && theme.colors[prop]) {
+         document.body.style.setProperty(cssVar, theme.colors[prop]);
+         return;
+       }
+       document.body.style.removeProperty(cssVar);
+     });
+   };
   }
 
   _resetTheme() {
