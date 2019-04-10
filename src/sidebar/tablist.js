@@ -695,11 +695,23 @@ export default class TabList {
     browser.tabs.move(currentTab.id, {index: maxIndex});
   }
 
+  closeTabsAfterCount(tabIndex) {
+    return [...this._tabs.values()]
+            .filter(tab => tab.index > tabIndex && !tab.hidden)
+            .length;
+  }
+
   closeTabsAfter(tabIndex) {
     const toClose = [...this._tabs.values()]
-                    .filter(tab => tab.index > tabIndex && !tab.hidden)
-                    .map(tab => tab.id);
+                     .filter(tab => tab.index > tabIndex && !tab.hidden)
+                     .map(tab => tab.id);
     browser.tabs.remove(toClose);
+  }
+
+  closeAllTabsExceptCount(tabId) {
+    return [...this._tabs.values()]
+            .filter(tab => tab.id !== tabId && !tab.pinned && !tab.hidden)
+            .length;
   }
 
   closeAllTabsExcept(tabId) {

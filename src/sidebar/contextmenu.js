@@ -6,6 +6,7 @@ const IS_PRIVILEGED_PAGE_URL = /^(about|chrome|data|file|javascript):*/;
 export default class ContextMenu {
   constructor(tablist) {
     this._tablist = tablist;
+    let count;
 
     browser.menus.onClicked.addListener((info, tab) => {
       switch (info.menuItemId) {
@@ -37,10 +38,16 @@ export default class ContextMenu {
         browser.windows.create({tabId: tab.id});
         break;
       case "contextMenuCloseTabsUnderneath":
-        this._tablist.closeTabsAfter(tab.index);
+        count = this._tablist.closeTabsAfterCount(tab.index);
+        if (count < 4 || confirm(browser.i18n.getMessage("closeTabsAfterWarning", count))) {
+          this._tablist.closeTabsAfter(tab.index);
+        }
         break;
       case "contextMenuCloseOtherTabs":
-        this._tablist.closeAllTabsExcept(tab.id);
+        count = this._tablist.closeAllTabsExceptCount(tab.id);
+        if (count < 4 || confirm(browser.i18n.getMessage("closeAllTabsExceptWarning", count))) {
+          this._tablist.closeAllTabsExcept(tab.id);
+        }
         break;
       case "contextMenuUndoCloseTab":
         this._tablist.undoCloseTab();
