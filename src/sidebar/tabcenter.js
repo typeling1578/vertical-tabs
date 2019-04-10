@@ -171,7 +171,7 @@ export default class TabCenter {
   }
 
   _resetTheme() {
-    this._useDarkTheme(this._darkTheme);
+    this._useDarkTheme(this._isDarkTheme);
     this._applyTheme({});
   }
 
