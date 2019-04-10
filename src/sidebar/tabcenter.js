@@ -157,17 +157,17 @@ export default class TabCenter {
     };
 
     for (const [cssVar, themeProps] of Object.entries(cssToThemeProp)) {
-     for (const prop of themeProps) {
-       if (theme.colors && theme.colors[prop]) {
-         if (cssVar === "--sidebar-background") {
-           this._useDarkTheme(isDark(theme.colors[prop]));
-         }
-         document.body.style.setProperty(cssVar, theme.colors[prop]);
-         break;
-       }
-       document.body.style.removeProperty(cssVar);
-     }
-   };
+      for (const prop of themeProps) {
+        if (theme.colors && theme.colors[prop]) {
+          if (cssVar === "--sidebar-background") {
+            this._useDarkTheme(isDark(theme.colors[prop]));
+          }
+          document.body.style.setProperty(cssVar, theme.colors[prop]);
+          break;
+        }
+        document.body.style.removeProperty(cssVar);
+      }
+    }
   }
 
   _resetTheme() {
@@ -193,7 +193,7 @@ function unwrapChanges(changes) {
 // from https://awik.io/determine-color-bright-dark-using-javascript/
 function isDark(color) {
   // Variables for red, green, blue values
-  var r, g, b, hsp;
+  let r, g, b, hsp;
 
   // Check the format of the color, HEX or RGB?
   if (color.match(/^rgb/)) {
@@ -205,8 +205,7 @@ function isDark(color) {
     b = color[3];
   } else {
     // If RGB --> Convert it to HEX: http://gist.github.com/983661
-    color = +("0x" + color.slice(1).replace(
-    color.length < 5 && /./g, '$&$&'));
+    color = `0x${color.slice(1).replace(color.length < 5 && /./g, "$&$&")}`;
 
     r = color >> 16;
     g = color >> 8 & 255;

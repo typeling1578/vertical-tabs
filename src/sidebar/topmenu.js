@@ -1,5 +1,3 @@
-const LONG_PRESS_DELAY = 500;
-
 import getContextualIdentityItems from "./contextualidentities.js";
 
 /* @arg {props}
@@ -59,7 +57,7 @@ export default class TopMenu {
       }
     });
 
-    browser.menus.onClicked.addListener((info, tab) => {
+    browser.menus.onClicked.addListener((info) => {
       if (info.menuItemId.startsWith("contextMenuOpenInNewContextualTab_")) {
         this._props.openTab({
           afterCurrent: true,
