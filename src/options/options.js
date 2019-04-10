@@ -11,7 +11,7 @@ class TabCenterOptions {
       "optionsCompactModeStrict",
       "optionsCompactModeDynamic",
       "optionsCompactModeOff",
-      "optionsCompactModeTooltip",
+      "optionsCompactModeExplanation",
       "optionsCompactPins",
       "optionsDarkTheme",
       "optionsThemeIntegration",

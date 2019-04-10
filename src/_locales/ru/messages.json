@@ -77,7 +77,7 @@
     "optionsCompactMode": {
         "message": "Компактный режим"
     },
-    "optionsCompactModeTooltip": {
+    "optionsCompactModeExplanation": {
         "message": "Компактный режим уменьшает высоту вкладок, позволяя отобразить их большее количество. Опция \"Динамический\" активирует компактный режим автоматически, когда заканчивается свободное место."
     },
     "optionsCompactModeOff": {

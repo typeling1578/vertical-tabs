@@ -77,7 +77,7 @@
     "optionsCompactMode": {
         "message": "Компактний режим"
     },
-    "optionsCompactModeTooltip": {
+    "optionsCompactModeExplanation": {
         "message": "У компактному режимі вкладки займають менше місця. Якщо ввімкнено динамічне переключення, то компактний режим буде активовано у випадку відсутності вільного простору."
     },
     "optionsCompactModeOff": {

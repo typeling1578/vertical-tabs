@@ -77,7 +77,7 @@
     "optionsCompactMode": {
         "message": "紧凑模式"
     },
-    "optionsCompactModeTooltip": {
+    "optionsCompactModeExplanation": {
         "message": "紧凑模式通过减少标签页的高度显示更多标签页。在动态模式下，它将在没有足够显示空间时自动激活。"
     },
     "optionsCompactModeOff": {

@@ -77,7 +77,7 @@
     "optionsCompactMode": {
         "message": "Modo compacto"
     },
-    "optionsCompactModeTooltip": {
+    "optionsCompactModeExplanation": {
         "message": "El Modo compacto reduce la altura de las pestañas para mostrar más. En Ajustes dinámicos, se activará automáticamente cuando no quede más espacio."
     },
     "optionsCompactModeOff": {

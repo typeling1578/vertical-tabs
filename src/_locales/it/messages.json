@@ -77,7 +77,7 @@
     "optionsCompactMode": {
         "message": "Modalità compatta"
     },
-    "optionsCompactModeTooltip": {
+    "optionsCompactModeExplanation": {
         "message": "La modalità compatta riduce l'altezza delle schede per mostrarne di più. Nella modalità dinamica, si attiverà in mancanza di spazio."
     },
     "optionsCompactModeOff": {

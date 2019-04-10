@@ -77,7 +77,7 @@
     "optionsCompactMode": {
         "message": "الوضع المختصر"
     },
-    "optionsCompactModeTooltip": {
+    "optionsCompactModeExplanation": {
         "message": "إن الوضع المختصر يقلل من إرتفاع علامات التبويب لكي يتم إظهار عدد أكبر منهم. بينما في الإعدادات الديناميكية, سيتم تفعيل الوضع المختصر فقط عندما لا يبقى مساحة كافية."
     },
     "optionsCompactModeOff": {

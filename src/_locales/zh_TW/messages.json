@@ -77,7 +77,7 @@
     "optionsCompactMode": {
         "message": "精簡模式"
     },
-    "optionsCompactModeTooltip": {
+    "optionsCompactModeExplanation": {
         "message": "精簡模式降低分頁的高度以顯示更多的分頁。在「動態」設定中，一旦發現沒有足夠的空間就會自動啟用。"
     },
     "optionsCompactModeOff": {

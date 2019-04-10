@@ -77,7 +77,7 @@
     "optionsCompactMode": {
         "message": "Kompaktní režim"
     },
-    "optionsCompactModeTooltip": {
+    "optionsCompactModeExplanation": {
         "message": "Kompaktní režim snižuje výšku záložek aby jich bylo zobrazeno více. Dynamické nastavení aktivuje kompaktní režim když bude málo místa."
     },
     "optionsCompactModeOff": {

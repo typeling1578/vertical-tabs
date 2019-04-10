@@ -77,7 +77,7 @@
     "optionsCompactMode": {
         "message": "コンパクトモード"
     },
-    "optionsCompactModeTooltip": {
+    "optionsCompactModeExplanation": {
         "message": "コンパクトモードではタブの高さを減らし、より多くのタブを表示します。ダイナミック設定では一定のスペースが残っていないと動作しません。"
     },
     "optionsCompactModeOff": {

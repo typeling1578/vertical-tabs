@@ -77,7 +77,7 @@
     "optionsCompactMode": {
         "message": "Compacte modus"
     },
-    "optionsCompactModeTooltip": {
+    "optionsCompactModeExplanation": {
         "message": "De compacte modus vermindert de hoogte van de tabbladen zodat er meer getoond kunnen worden. In de dynamische modus zal dit ingeschakeld worden wanneer er geen ruimte meer over is."
     },
     "optionsCompactModeOff": {

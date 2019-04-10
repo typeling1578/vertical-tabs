@@ -77,7 +77,7 @@
     "optionsCompactMode": {
         "message": "Συμπαγής Λειτουργία"
     },
-    "optionsCompactModeTooltip": {
+    "optionsCompactModeExplanation": {
         "message": "Η Συμπαγής Λειτουργία μειώνει το ύψος των καρτελών για την εμφάνιση περισσοτέρων αυτών. Στη Δυναμική Ρύθμιση ενεργοποιείτε όταν δεν υπάρχει άλλος χώρος."
     },
     "optionsCompactModeOff": {

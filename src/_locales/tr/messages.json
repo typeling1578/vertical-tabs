@@ -77,7 +77,7 @@
     "optionsCompactMode": {
         "message": "Kısa Mod"
     },
-    "optionsCompactModeTooltip": {
+    "optionsCompactModeExplanation": {
         "message": "Kısa Mod daha fazla göstermek için sekmelerin yüksekliğini azaltır. Dinamik ayarda, boş alanımız kalmayınca devreye girecek."
     },
     "optionsCompactModeOff": {

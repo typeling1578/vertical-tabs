@@ -77,7 +77,7 @@
     "optionsCompactMode": {
         "message": "Kompakte Darstellung"
     },
-    "optionsCompactModeTooltip": {
+    "optionsCompactModeExplanation": {
         "message": "Die kompakte Darstellung reduziert die Höhe der Tabs und zeigt so mehr von ihnen an. Bei der Einstellung \"Dynamisch\", wird die Höhe reduziert, sobald nicht mehr genügend Platz zur Verfügung steht."
     },
     "optionsCompactModeOff": {
