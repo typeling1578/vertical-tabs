@@ -15,108 +15,135 @@
         "description": "Label of the New Tab button in the top menu."
     },
     "newTabBtnTooltip": {
-        "message": "Open a new tab"
+        "message": "Open a new tab",
+        "description": "Tooltip of the New Tab button in the top menu."
     },
     "searchPlaceholder": {
-        "message": "Search tabs"
+        "message": "Search tabs",
+        "description": "Placehorder of the Search bar in the top menu."
     },
     "settingsBtnTooltip": {
-        "message": "Open settings"
+        "message": "Open settings",
+        "description": "Tooltip of the settings button in the top menu."
     },
     "closeTabButtonTooltip": {
-        "message": "Close tab"
+        "message": "Close tab",
+        "description": "Tooltip of the close button on tabs."
     },
     "allTabsLabel": {
         "message": "Show all tabs…",
-        "description": "Shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
+        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
     },
     "contextMenuReloadTab": {
         "message": "Reload Tab",
-        "description": "Reload Tab context menu item label."
+        "description": "Context menu item label."
     },
     "contextMenuPinTab": {
         "message": "Pin Tab",
-        "description": "Pin Tab context menu item label."
+        "description": "Context menu item label."
     },
     "contextMenuUnpinTab": {
         "message": "Unpin Tab",
-        "description": "Unpin Tab context menu item label."
+        "description": "Context menu item label."
     },
     "contextMenuMuteTab": {
         "message": "Mute Tab",
-        "description": "Mute Tab context menu item label."
+        "description": "Context menu item label."
     },
     "contextMenuUnmuteTab": {
         "message": "Unmute Tab",
-        "description": "Unmute Tab context menu item label."
+        "description": "Context menu item label."
     },
     "contextMenuDuplicateTab": {
-        "message": "Duplicate Tab"
+        "message": "Duplicate Tab",
+        "description": "Context menu item label."
     },
     "contextMenuOpenInContextualTab": {
-        "message": "Reopen in Container"
+        "message": "Reopen in Container",
+        "description": "Context menu item label."
     },
     "contextMenuMoveTab": {
-        "message": "Move Tab"
+        "message": "Move Tab",
+        "description": "Context menu item label."
     },
     "contextMenuMoveTabToStart": {
-        "message": "Move to Start"
+        "message": "Move to Start",
+        "description": "Context menu item label."
     },
     "contextMenuMoveTabToEnd": {
-        "message": "Move to End"
+        "message": "Move to End",
+        "description": "Context menu item label."
     },
     "contextMenuMoveTabToNewWindow": {
-        "message": "Move to New Window"
+        "message": "Move to New Window",
+        "description": "Context menu item label."
     },
     "contextMenuCloseTabsUnderneath": {
-        "message": "Close Tabs Underneath"
+        "message": "Close Tabs Underneath",
+        "description": "Context menu item label."
     },
     "contextMenuCloseOtherTabs": {
-        "message": "Close Other Tabs"
+        "message": "Close Other Tabs",
+        "description": "Context menu item label."
     },
     "contextMenuUndoCloseTab": {
-        "message": "Undo Close Tab"
+        "message": "Undo Close Tab",
+        "description": "Context menu item label."
     },
     "contextMenuCloseTab": {
-        "message": "Close Tab"
+        "message": "Close Tab",
+        "description": "Context menu item label."
     },
     "optionsTitle": {
-        "message": "Settings"
+        "message": "Settings",
+        "description": "Section in options page."
     },
     "optionsCompactMode": {
-        "message": "Compact Mode"
+        "message": "Compact Mode",
+        "description": "Option in options page."
     },
     "optionsCompactModeTooltip": {
-        "message": "The Compact Mode reduces the height of tabs to show more of them. In the Dynamic setting, it will engage once we have no space left."
+        "message": "The Compact Mode reduces the height of tabs to show more of them. In the Dynamic setting, it will engage once we have no space left.",
+        "description": "Tooltip for the Compact Mode option in options page."
     },
     "optionsCompactModeOff": {
-        "message": "Disabled"
+        "message": "Disabled",
+        "description": "Possible value for Compact Mode option in options page."
     },
     "optionsCompactModeDynamic": {
-        "message": "Dynamic"
+        "message": "Dynamic",
+        "description": "Possible value for Compact Mode option in options page."
     },
     "optionsCompactModeStrict": {
-        "message": "Always"
+        "message": "Always",
+        "description": "Possible value for Compact Mode option in options page."
     },
     "optionsCompactPins": {
-        "message": "Compact Pinned Tabs"
+        "message": "Compact Pinned Tabs",
+        "description": "Option in options page."
     },
     "optionsDarkTheme": {
-        "message": "Dark Theme"
+        "message": "Dark Theme",
+        "description": "Option in options page."
     },
     "optionsThemeIntegration": {
-        "message": "Integrate with current theme"
+        "message": "Integrate with custom theme",
+        "description": "Option in options page."
     },
     "optionsAdvancedTitle": {
-        "message": "Advanced"
+        "message": "Advanced",
+        "description": "Section in options page."
     },
     "optionsCustomCSS": {
-        "message": "Custom Stylesheet"
+        "message": "Custom Stylesheet",
+        "description": "Option in options page."
     },
     "optionsCustomCSSWikiLink": {
-        "message": "CSS Tweaks Wiki Article"
+        "message": "CSS Tweaks Wiki Article",
+        "description": "Option in options page."
     },
     "optionsSaveCustomCSS": {
-        "message": "Save CSS"
+        "message": "Save CSS",
+        "description": "Option in options page."
     }
 }
