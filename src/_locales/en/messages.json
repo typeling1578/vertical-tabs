@@ -1,6 +1,11 @@
 {
     "extensionDescription": {
-        "message": "Tab Center is an attempt to solve some of the issues that have emerged from the way people use tabs (most notably the “too many tabs” problem) and provide a more versatile UI basis for future innovation. The first version of this Firefox add-on arranges tabs in a vertical rather than horizontal fashion. It is heavily inspired by and borrows ideas from the excellent VerticalTabs add-on."
+        "message": "Move your tabs to the side of your browser window.",
+        "description": "Extension description shown in the options page and as short description on addons.mozilla.org."
+    },
+    "extensionsLongDescription": {
+        "message": "Tab Center Reborn is the continuation of <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> to provide a simple, powerful and well-integrated extension to manage tabs vertically.\n\nThe extension provides a handful of of settings and allows power-users to customize its appearance completely with CSS code.\n\n<ul><li>Use Shift+F1 to open or close the addon</li><li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">How to hide top menu bar</a></li></ul>\n\nPlease <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">contribute, with translation, documentation or code</a>.",
+        "description": "Long description displayed on addons.mozilla.org."
     },
     "browserActionTitle": {
         "message": "Toggle Tab Center Reborn",
