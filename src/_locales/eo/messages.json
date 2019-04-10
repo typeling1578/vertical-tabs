@@ -1,6 +1,6 @@
 {
     "extensionDescription": {
-        "message": "Tab Center estas provo solvi kelkajn problemojn kiuj aperigis el kiel homoj uzas langetojn (pli fame, la «tro da langetoj» problemo) kaj provizi pli diversutilan fasadan bazon por estontaj novaĵoj. La unua versio de ĉi tiu Firefox-a aldonaĵo aranĝas la langetojn vertikale anstataŭ horizontale. Ĝi forte inspiriĝis kaj prenis ideon el la bonega aldonaĵo VerticalTabs."
+        "message": "Movigi vian langeton flanken de via fenestro."
     },
     "browserActionTitle": {
         "message": "Ŝalti Tab Center Reborn",
@@ -96,7 +96,7 @@
         "message": "Malhela etoso"
     },
     "optionsThemeIntegration": {
-        "message": "Integriĝi aktualan temon"
+        "message": "Integriĝi propran temon"
     },
     "optionsAdvancedTitle": {
         "message": "Altnivela"
@@ -121,5 +121,13 @@
     },
     "contextMenuMoveTabToEnd": {
         "message": "Movi al la fino"
+    },
+    "extensionsLongDescription": {
+        "message": "!!Esperanto not available on AMO!!",
+        "description": "Long description displayed on addons.mozilla.org."
+    },
+    "optionsThemeIntegrationExplanation": {
+        "message": "Integriĝi propran temon anstataŭ uzi la supran temon. Fermu and remalfermu la flankpanelon post kiam vi reebligis unu el la defaŭltaj temoj de Firefox.",
+        "description": "Explanation for the Theme Integration option in the options page."
     }
 }
