@@ -129,5 +129,13 @@
     "optionsThemeIntegrationExplanation": {
         "message": "S’intègre avec le thème personnalisé au lieu d’utiliser le thème ci-dessus. Fermez et réouvrez la barre latérale après être revenu·e sur un des thèmes par défaut de Firefox.",
         "description": "Explanation for the Theme Integration option in the options page."
+    },
+    "closeTabsAfterWarning": {
+        "message": "Voulez-vous vraiment fermer les $COUNT$ onglets en dessous ?",
+        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another."
+    },
+    "closeAllTabsExceptWarning": {
+        "message": "Voulez-vous vraiment fermer les $COUNT$ autres onglets ?",
+        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
     }
 }
