@@ -75,11 +75,24 @@ export default class TabCenter {
   }
 
   set _darkTheme(isDarkTheme) {
-    if (isDarkTheme) {
+    this._isDarkTheme = isDarkTheme;
+    this._useDarkTheme(isDarkTheme);
+  }
+
+  _useDarkTheme(isDarkTheme) {
+    if (isDarkTheme || this._isDarkTheme) {
       document.body.classList.add("dark-theme");
     } else {
       document.body.classList.remove("dark-theme");
     }
+
+    let type = isDarkTheme? "light": "dark";
+    browser.sidebarAction.setIcon({
+      path: {
+        16: `/icons/tabcenter.svg#${type}`,
+        32: `/icons/tabcenter.svg#${type}`
+      }
+    });
   }
 
   set _themeIntegration(enabled) {
@@ -93,7 +106,7 @@ export default class TabCenter {
       }
     } else {
       browser.theme.onUpdated.addListener(this._themeListener);
-      browser.theme.getCurrent(this._windowId).then(this._applyTheme);
+      browser.theme.getCurrent(this._windowId).then(this._applyTheme.bind(this));
     }
   }
 
@@ -139,22 +152,26 @@ export default class TabCenter {
       "--input-selected-text-background": ["toolbar_field_highlight", "button_background_active"],
       "--input-selected-text": ["toolbar_field_highlight_text", "toolbar_field_text"],
       "--input-text": ["bookmark_text", "toolbar_field_text"],
-      "--input-text-focus": ["toolbar_field_text_focus"]
+      "--input-text-focus": ["toolbar_field_text_focus"],
+      "--sidebar-background": ["sidebar", "frame", "accentcolor"]
     };
 
     for (const [cssVar, themeProps] of Object.entries(cssToThemeProp)) {
-     // for (const prop of themeProps) {
-     themeProps.forEach(prop => {
+     for (const prop of themeProps) {
        if (theme.colors && theme.colors[prop]) {
+         if (cssVar === "--sidebar-background") {
+           this._useDarkTheme(isDark(theme.colors[prop]));
+         }
          document.body.style.setProperty(cssVar, theme.colors[prop]);
-         return;
+         break;
        }
        document.body.style.removeProperty(cssVar);
-     });
+     }
    };
   }
 
   _resetTheme() {
+    this._useDarkTheme(this._darkTheme);
     this._applyTheme({});
   }
 
@@ -171,4 +188,38 @@ function unwrapChanges(changes) {
     unwrapped[pref] = change.newValue;
   }
   return unwrapped;
+}
+
+// from https://awik.io/determine-color-bright-dark-using-javascript/
+function isDark(color) {
+  // Variables for red, green, blue values
+  var r, g, b, hsp;
+
+  // Check the format of the color, HEX or RGB?
+  if (color.match(/^rgb/)) {
+    // If HEX --> store the red, green, blue values in separate variables
+    color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
+
+    r = color[1];
+    g = color[2];
+    b = color[3];
+  } else {
+    // If RGB --> Convert it to HEX: http://gist.github.com/983661
+    color = +("0x" + color.slice(1).replace(
+    color.length < 5 && /./g, '$&$&'));
+
+    r = color >> 16;
+    g = color >> 8 & 255;
+    b = color & 255;
+  }
+
+  // HSP (Highly Sensitive Poo) equation from http://alienryderflex.com/hsp.html
+  hsp = Math.sqrt(
+    0.299 * (r * r) +
+    0.587 * (g * g) +
+    0.114 * (b * b)
+  );
+
+  // Using the HSP value, determine whether the color is light or dark
+  return hsp <= 127.5;
 }
