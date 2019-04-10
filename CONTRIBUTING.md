@@ -1,6 +1,9 @@
 ## Translate
 
-Choose your language and start translating and reviewing [here](https://translate.funkwhale.audio/projects/tabcenter-reborn/interface/).  
+Choose your language and start translating and reviewing [here](https://translate.funkwhale.audio/projects/tabcenter-reborn/interface/).
+
+You can take your inspiration from the extension’s already translated strings or the [Firefox translations](https://pontoon.mozilla.org/projects/firefox/).
+
 Can’t find your own language? [Open an issue!](https://framagit.org/ariasuni/tabcenter-reborn/issues)
 
 [![Translation status](https://translate.funkwhale.audio/widgets/tabcenter-reborn/-/interface/svg-badge.svg)](https://translate.funkwhale.audio/engage/tabcenter-reborn/?utm_source=widget)
