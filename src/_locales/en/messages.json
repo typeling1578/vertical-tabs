@@ -130,6 +130,10 @@
         "message": "Integrate with custom theme",
         "description": "Option in options page."
     },
+    "optionsThemeIntegrationExplanation": {
+        "message": "Integrate with custom theme instead of using the above theme. Close and reopen the sidebar after switching back to one of Firefox’s default theme.",
+        "description": "Explanation for the Theme Integration option in the options page."
+    },
     "optionsAdvancedTitle": {
         "message": "Advanced",
         "description": "Section in options page."

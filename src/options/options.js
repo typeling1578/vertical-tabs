@@ -11,9 +11,11 @@ class TabCenterOptions {
       "optionsCompactModeStrict",
       "optionsCompactModeDynamic",
       "optionsCompactModeOff",
+      "optionsCompactModeTooltip",
       "optionsCompactPins",
       "optionsDarkTheme",
       "optionsThemeIntegration",
+      "optionsThemeIntegrationExplanation",
       "optionsAdvancedTitle",
       "optionsCustomCSS",
       "optionsCustomCSSWikiLink",
@@ -22,10 +24,6 @@ class TabCenterOptions {
     for (let opt of options) {
       this._setupTextContentLabel(opt);
     }
-    let helpImg = document.createElement("div");
-    helpImg.id = "help";
-    helpImg.title = browser.i18n.getMessage("optionsCompactModeTooltip");
-    document.getElementById("optionsCompactMode").appendChild(helpImg);
   }
 
   _setupTextContentLabel(opt) {

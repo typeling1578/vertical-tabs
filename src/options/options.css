@@ -16,15 +16,13 @@ h1 {
   border-bottom: 1px solid hsla(0, 0%, 0%, 0.2);
 }
 
-a, a:visited {
-  color: rgb(10, 141, 255);
+.explanation {
+    font-size: 1rem;
+    grid-column: 1  / span 2;
 }
 
-.options {
-  display: grid;
-  align-items: center;
-  grid-template-columns: 260px auto;
-  margin-bottom : 10px;
+a, a:visited {
+  color: rgb(10, 141, 255);
 }
 
 .options > div {
@@ -32,7 +30,10 @@ a, a:visited {
 }
 
 #primaryOptions {
-  grid-auto-rows: 1fr;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 300px auto;
+  margin-bottom : 10px;
 }
 
 input[type="checkbox"] {
@@ -40,15 +41,9 @@ input[type="checkbox"] {
 }
 
 #customCSS {
-  width: 250px;
-  height: 100px;
-}
-
-#help {
-  margin-left: 5px;
-  vertical-align: middle;
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background-image: url("img/help.svg");
+  width: 100%;
+  max-width: 25rem;
+  height: 15rem;
+  resize: vertical;
+  overflow: auto;
 }
