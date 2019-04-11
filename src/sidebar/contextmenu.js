@@ -167,6 +167,8 @@ export default class ContextMenu {
       });
     }
 
+    // overrideContext can only be called in `tab` or `bookmark` context
+    // so we need to pass a tabId to open a native context menu
     browser.menus.overrideContext({
       context: "tab",
       tabId: tabId
