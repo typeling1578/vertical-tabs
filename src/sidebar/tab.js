@@ -11,6 +11,8 @@ export default class SideTab {
   }
 
   init(tabInfo) {
+    console.log("miou!");
+    console.log(tabInfo);
     this.id = tabInfo.id;
     this.index = tabInfo.index;
     this._buildViewStructure();
@@ -24,6 +26,7 @@ export default class SideTab {
     this._updateAudible(tabInfo.audible);
     this._updatedMuted(tabInfo.mutedInfo.muted);
     this._updateIcon(tabInfo.favIconUrl);
+    this._updateLoading(tabInfo.status);
     this._updatePinned(tabInfo.pinned);
     this._updateDiscarded(tabInfo.discarded);
     if (tabInfo.cookieStoreId && tabInfo.cookieStoreId.startsWith("firefox-container-")) {
@@ -84,11 +87,7 @@ export default class SideTab {
       this._updateDiscarded(changeInfo.discarded);
     }
     if (changeInfo.hasOwnProperty("status")) {
-      if (changeInfo.status === "loading") {
-        this._updateLoading(true);
-      } else if (changeInfo.status === "complete") {
-        this._updateLoading(false);
-      }
+      this._updateLoading(changeInfo.status);
     }
     if (changeInfo.hasOwnProperty("pinned")) {
       this._updatePinned(changeInfo.pinned);
@@ -132,9 +131,9 @@ export default class SideTab {
     this._iconOverlayView.classList.toggle("muted", muted);
   }
 
-  _updateLoading(isLoading) {
-    this.view.classList.toggle("loading", isLoading);
-    if (isLoading) {
+  _updateLoading(status) {
+    this.view.classList.toggle("loading", status === "loading");
+    if (status === "loading") {
       SideTab._syncThrobberAnimations();
       this._notselectedsinceload = !this.view.classList.contains("active");
     } else {
