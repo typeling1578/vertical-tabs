@@ -67,6 +67,7 @@ export default class TabList {
     this._spacerView.addEventListener("auxclick", e => this._onSpacerAuxClick(e));
     this._moreTabsView.addEventListener("click", () => this._clearSearch());
     this._view.addEventListener("scroll", () => this.updateScrollShadow());
+    document.defaultView.addEventListener("resize", () => this.updateScrollShadow());
 
     // Drag-and-drop.
     document.addEventListener("dragstart", e => this._onDragStart(e));
