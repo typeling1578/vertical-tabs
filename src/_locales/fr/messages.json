@@ -1,6 +1,6 @@
 {
     "extensionDescription": {
-        "message": "Tab Center essaie de résoudre certains des problèmes venant de la façon dont les gens utilisent les onglets (notamment le problème du « j'ai trop d'onglets ») et propose une base d'interface utilisateur polyvalente pour de futures innovation. La première version de ce module propose un arrangement vertical des onglets. Il est fortement inspiré et emprunte des idées à l'excellent module VerticalTabs."
+        "message": "Déplacez vos onglets sur le côté de votre fenêtre."
     },
     "browserActionTitle": {
         "message": "Activer/désactiver Tab Center Reborn",
@@ -96,7 +96,7 @@
         "message": "Thème sombre"
     },
     "optionsThemeIntegration": {
-        "message": "Intégrer avec le thème actuel"
+        "message": "Intégrer avec le thème personnalisé"
     },
     "optionsAdvancedTitle": {
         "message": "Avancé"
@@ -121,5 +121,13 @@
     },
     "contextMenuMoveTabToEnd": {
         "message": "Déplacer vers la fin"
+    },
+    "extensionsLongDescription": {
+        "message": "Tab Center Reborn est la continuation de <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> pour proposer une extension simple, puissante et bien intégrée pour gérer ses onglets verticalement.\n\nL’extension fournit quelques paramètres et permet aux utilisateur·rice·s avancé·e·s de complètement personnaliser son apparence avec du code CSS.\n\n<ul>\n<li>Utilisez Maj+F1 pour ouvrir ou fermer l’extension</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">Comment cacher la barre d’onglets</a></li>\n</ul>\n\nVous pouvez <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">contribuer avec des traductions, de la documentation ou du code</a>.",
+        "description": "Long description displayed on addons.mozilla.org."
+    },
+    "optionsThemeIntegrationExplanation": {
+        "message": "S’intègre avec le thème personnalisé au lieu d’utiliser le thème ci-dessus. Fermez et réouvrez la barre latérale après être revenu·e sur un des thèmes par défaut de Firefox.",
+        "description": "Explanation for the Theme Integration option in the options page."
     }
 }
