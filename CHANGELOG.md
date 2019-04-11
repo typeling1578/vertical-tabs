@@ -1,3 +1,23 @@
+## 0.9.0
+
+* Make toolbar button work correctly and add on/off indicator
+* Make new tab menu native and work only on right-click
+* Make context menu appear again on right-click in searchbox
+* Make top menu bar buttons a little bit bigger with less margin
+* Always update scroll shadows (when tabs are moved or window resized)
+* Big visual redesign and better integration with custom themes
+  * Separate active and contextual identity indicator
+  * Add active indicator on pinned compact tabs
+  * Make integration with custom themes much much better
+* Change sidebar icon to light for dark default and custom themes
+* Add description for all translatable strings
+* Improve options page layout add explanation for theme integration
+* Improve extension description and add AMO long description
+* Warn user before closing 4 or more tabs at once
+* Improve contributing instructions for translators (CONTRIBUTING.md)
+* Improve README.md and list differences with Tab Center Redux
+* Show tab as loading if it started loading before sidebar was opened
+
 ## 0.8.2
 
 * Remove the bottom border of tab if it’s at window bottom
