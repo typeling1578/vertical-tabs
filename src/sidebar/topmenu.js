@@ -69,7 +69,7 @@ export default class TopMenu {
 
   _setupLabels() {
     this._newTabLabelView.textContent = browser.i18n.getMessage("newTabBtnLabel");
-    this._newTabLabelView.title = browser.i18n.getMessage("newTabBtnTooltip");
+    this._newTabButtonView.title = browser.i18n.getMessage("newTabBtnTooltip");
     this._settingsView.title = browser.i18n.getMessage("settingsBtnTooltip");
     this._searchBoxInput.placeholder = browser.i18n.getMessage("searchPlaceholder");
   }
