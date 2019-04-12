@@ -1,6 +1,6 @@
 {
     "extensionDescription": {
-        "message": "Tab Center versucht, einige Probleme zu lösen, die häufig bei der Verwendung von Tabs auftreten (insbesondere das \"zu viele Tabs\"-Problem). Außerdem soll es eine flexiblere Basis für zukünftige Innovationen der Benutzeroberfläche bieten. Die erste Version dieses AddOns für Firefox ordnet die offenen Tabs vertikal an anstelle von horizontal. Es wurde stark inspiriert durch das exzellente AddOn VerticalTabs und übernimmt viele Ideen von diesem."
+        "message": "Verschieben Sie Ihre Tabs an die Seite Ihres Browserfensters."
     },
     "browserActionTitle": {
         "message": "Tab Center Reborn aktivieren/deaktivieren",
@@ -78,7 +78,7 @@
         "message": "Kompakte Darstellung"
     },
     "optionsCompactModeExplanation": {
-        "message": "Die kompakte Darstellung reduziert die Höhe der Tabs und zeigt so mehr von ihnen an. Bei der Einstellung \"Dynamisch\", wird die Höhe reduziert, sobald nicht mehr genügend Platz zur Verfügung steht."
+        "message": "Die kompakte Darstellung reduziert die Höhe der Tabs und zeigt so mehr von diesen an. Bei der Einstellung \"Dynamisch\", wird die Höhe reduziert, sobald nicht mehr genügend Platz zur Verfügung steht."
     },
     "optionsCompactModeOff": {
         "message": "Deaktiviert"
@@ -96,7 +96,7 @@
         "message": "Dunkle Darstellung"
     },
     "optionsThemeIntegration": {
-        "message": "Ins aktuelle Theme integrieren"
+        "message": "Ins benutzerdefinierten Theme integrieren"
     },
     "optionsAdvancedTitle": {
         "message": "Weitere Einstellungen"
@@ -121,5 +121,21 @@
     },
     "contextMenuMoveTabToEnd": {
         "message": "An Ende verschieben"
+    },
+    "extensionsLongDescription": {
+        "message": "Tab Center Reborn ist die Weiterentwicklung von <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a>um eine einfache, leistungsstarke und gut integrierte Erweiterung für die vertikale Verwaltung von Tabs bereitzustellen.\n\nDie Erweiterung bietet eine handvoll Einstellungen und ermöglicht es fortgeschrittenen Benutzern, das Erscheinungsbild vollständig mit CSS-Code anzupassen.\n\n<ul>\n<li>Nutze Shift+F1 um die Erweiterung zu öffnen oder zu schließen</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">So blenden Sie die obere Tab-Leiste aus</a>\n</li>\n</ul>\nBitte unterstützen Sie die Erweiterung <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">im Rahmen der Übersetzung, Dokumentation oder mit Code</a>.",
+        "description": "Long description displayed on addons.mozilla.org."
+    },
+    "closeTabsAfterWarning": {
+        "message": "Möchten Sie wirklich die $COUNT$ unteren Tabs schließen?",
+        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another."
+    },
+    "closeAllTabsExceptWarning": {
+        "message": "Möchten Sie wirklich die $COUNT$ anderen Tabs schließen?",
+        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
+    },
+    "optionsThemeIntegrationExplanation": {
+        "message": "Ins benutzerdefiniertes Theme integrieren, anstatt das obige Theme zu verwenden. Schließen und öffnen Sie die Sidebar erneut, nachdem Sie wieder zu einem Standardtheme von Firefox gewechselt haben.",
+        "description": "Explanation for the Theme Integration option in the options page."
     }
 }
