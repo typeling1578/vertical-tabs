@@ -42,9 +42,11 @@ export default class TabList {
   _setupListeners() {
     // Tab events
     browser.tabs.onCreated.addListener(tab => this._onBrowserTabCreated(tab));
-    browser.tabs.onActivated.addListener(({tabId}) => this._onBrowserTabActivated(tabId));
+    // browser.tabs.onActivated.addListener(({tabId}) => this._onBrowserTabActivated(tabId));
+    browser.tabs.onActivated.addListener(activeInfo => this._onBrowserTabActivated(activeInfo));
     browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => this._onBrowserTabUpdated(tabId, changeInfo, tab));
-    browser.tabs.onRemoved.addListener(tabId => this._onBrowserTabRemoved(tabId));
+    // browser.tabs.onRemoved.addListener(tabId => this._onBrowserTabRemoved(tabId));
+    browser.tabs.onRemoved.addListener((tabId, removeInfo) => this._onBrowserTabRemoved((tabId, removeInfo)));
     browser.tabs.onMoved.addListener((tabId, moveInfo) => this._onBrowserTabMoved(tabId, moveInfo));
     browser.tabs.onAttached.addListener((tabId, attachInfo) => this._onBrowserTabAttached(tabId, attachInfo));
     browser.tabs.onDetached.addListener(tabId => this._onBrowserTabRemoved(tabId));
@@ -96,7 +98,7 @@ export default class TabList {
   }
 
   _onBrowserTabCreated(tab) {
-    if (!this._checkWindow(tab)) {
+    if (!this._checkTabWindow(tab)) {
       return;
     }
     this._shiftTabsIndexes(1, tab.index);
@@ -104,7 +106,10 @@ export default class TabList {
   }
 
   async _onBrowserTabAttached(tabId, {newWindowId, newPosition}) {
-    if (newWindowId !== this._windowId) {
+    // if (newWindowId !== this._windowId) {
+    //   return;
+    // }
+    if (!this._checkWindow(newWindowId)) {
       return;
     }
     this._shiftTabsIndexes(1, newPosition);
@@ -112,9 +117,13 @@ export default class TabList {
     this._create(tab);
   }
 
-  _onBrowserTabRemoved(tabId) {
+  // _onBrowserTabRemoved(tabId) {
+  _onBrowserTabRemoved(tabId, removeInfo) {
+    if (removeInfo.isWindowClosing || !this._checkWindow(removeInfo.windowId)) {
+      return;
+    }
     let sidetab = this.getTabById(tabId);
-    if (!sidetab) { // Could be null because different window.
+    if (!sidetab) {
       return;
     }
     this._shiftTabsIndexes(-1, sidetab.index);
@@ -122,9 +131,13 @@ export default class TabList {
     this._updateHasRecentlyClosedTabs();
   }
 
-  _onBrowserTabActivated(tabId) {
-    const sidetab = this.getTabById(tabId);
-    if (!sidetab) { // Could be null because different window.
+  // _onBrowserTabActivated(tabId) {
+  _onBrowserTabActivated(activeInfo) {
+    if (!this._checkWindow(activeInfo.windowId)) {
+      return;
+    }
+    const sidetab = this.getTabById(activeInfo.tabId);
+    if (!sidetab) {
       return;
     }
     this._setActive(sidetab);
@@ -133,8 +146,11 @@ export default class TabList {
   }
 
   _onBrowserTabMoved(tabId, moveInfo) {
+    if (!this._checkWindow(moveInfo.windowId)) {
+      return;
+    }
     const tab = this.getTabById(tabId);
-    if (!tab) { // Could be null because different window.
+    if (!tab) {
       return;
     }
 
@@ -154,10 +170,10 @@ export default class TabList {
   }
 
   _onBrowserTabUpdated(tabId, changeInfo, tab) {
-    if (!this._checkWindow(tab)) {
+    if (!this._checkTabWindow(tab)) {
       return;
     }
-    const sidetab = this.getTabById(tab.id);
+    const sidetab = this.getTabById(tabId);
     if (!sidetab) {
       return;
     }
@@ -295,8 +311,8 @@ export default class TabList {
 
   _onDrop(e) {
     if (!SideTab.isTabEvent(e, false) &&
-        e.target !== this._spacerView &&
-        e.target !== this._moreTabsView) {
+      e.target !== this._spacerView &&
+      e.target !== this._moreTabsView) {
       return;
     }
     e.preventDefault();
@@ -356,7 +372,7 @@ export default class TabList {
     let curTabPos = curTab.index;
     let dropTabPos = dropTab.index;
     let newPos = curTabPos < dropTabPos ? Math.min(this._tabs.size, dropTabPos) :
-                                          Math.max(0, dropTabPos);
+      Math.max(0, dropTabPos);
     browser.tabs.move(tabId, {index: newPos});
   }
 
@@ -399,12 +415,12 @@ export default class TabList {
         allowTypo: false,
         threshold: -1000,
       })
-      .sort((r1, r2) => r2.score - r1.score)
-      .reduce((acc, tabResult, index) => {
-        tabResult.order = index;
-        acc[tabResult.obj.id] = tabResult;
-        return acc;
-      }, {});
+        .sort((r1, r2) => r2.score - r1.score)
+        .reduce((acc, tabResult, index) => {
+          tabResult.order = index;
+          acc[tabResult.obj.id] = tabResult;
+          return acc;
+        }, {});
       for (const tab of tabs) {
         const result = results[tab.id];
         const show = !!result;
@@ -470,8 +486,12 @@ export default class TabList {
     }
   }
 
-  _checkWindow(tab) {
+  _checkTabWindow(tab) {
     return (tab.windowId === this._windowId);
+  }
+
+  _checkWindow(windowId) {
+    return (windowId === this._windowId);
   }
 
   getTabById(tabId) {
@@ -514,7 +534,7 @@ export default class TabList {
 
   __maybeShrinkTabs() {
     if (this._compactModeMode === COMPACT_MODE_STRICT ||
-        this._compactModeMode === COMPACT_MODE_OFF) {
+      this._compactModeMode === COMPACT_MODE_OFF) {
       this._tabsShrinked = this._compactModeMode === COMPACT_MODE_STRICT;
       return;
     }
@@ -545,8 +565,8 @@ export default class TabList {
       }
     }
     estimatedHeight += this._compactPins && numPinnedTabs > 0 ?
-                       this._pinnedview.offsetHeight :
-                       numPinnedTabs * estimatedTabHeight;
+      this._pinnedview.offsetHeight :
+      numPinnedTabs * estimatedTabHeight;
 
     if (estimatedHeight <= wrapperHeight) {
       this._tabsShrinked = false;
@@ -605,8 +625,8 @@ export default class TabList {
       return;
     }
     const allTabs = [...this._tabs.values()]
-                    .filter(tab => tab.pinned === sidetab.pinned && !tab.hidden)
-                    .sort((a, b) => a.index - b.index);
+      .filter(tab => tab.pinned === sidetab.pinned && !tab.hidden)
+      .sort((a, b) => a.index - b.index);
     const tabAfter = allTabs.find(tab => tab.index > sidetab.index);
     if (!tabAfter) {
       parent.appendChild(element);
@@ -666,7 +686,7 @@ export default class TabList {
   async _getRecentlyClosedTabs() {
     const sessions = await browser.sessions.getRecentlyClosed();
     return sessions.reduce((acc, session) => {
-      if (session.tab && this._checkWindow(session.tab)) {
+      if (session.tab && this._checkTabWindow(session.tab)) {
         acc.push(session.tab);
       }
       return acc;
@@ -698,27 +718,27 @@ export default class TabList {
 
   closeTabsAfterCount(tabIndex) {
     return [...this._tabs.values()]
-            .filter(tab => tab.index > tabIndex && !tab.hidden)
-            .length;
+      .filter(tab => tab.index > tabIndex && !tab.hidden)
+      .length;
   }
 
   closeTabsAfter(tabIndex) {
     const toClose = [...this._tabs.values()]
-                     .filter(tab => tab.index > tabIndex && !tab.hidden)
-                     .map(tab => tab.id);
+      .filter(tab => tab.index > tabIndex && !tab.hidden)
+      .map(tab => tab.id);
     browser.tabs.remove(toClose);
   }
 
   closeAllTabsExceptCount(tabId) {
     return [...this._tabs.values()]
-            .filter(tab => tab.id !== tabId && !tab.pinned && !tab.hidden)
-            .length;
+      .filter(tab => tab.id !== tabId && !tab.pinned && !tab.hidden)
+      .length;
   }
 
   closeAllTabsExcept(tabId) {
     const toClose = [...this._tabs.values()]
-                    .filter(tab => tab.id !== tabId && !tab.pinned && !tab.hidden)
-                    .map(tab => tab.id);
+      .filter(tab => tab.id !== tabId && !tab.pinned && !tab.hidden)
+      .map(tab => tab.id);
     browser.tabs.remove(toClose);
   }
 
