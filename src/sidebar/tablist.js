@@ -15,6 +15,7 @@ export default class TabList {
   constructor(props) {
     this._props = props;
     this._tabs = new Map();
+    this._previous = null;
     this._active = null;
     this.__compactPins = true;
     this.__tabsShrinked = false;
@@ -601,6 +602,7 @@ export default class TabList {
   _setActive(sidetab) {
     if (this._active) {
       this.getTabById(this._active).updateActive(false);
+      this._previous = this._active;
     }
     sidetab.updateActive(true);
     this._active = sidetab.id;
