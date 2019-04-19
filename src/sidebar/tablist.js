@@ -15,7 +15,7 @@ export default class TabList {
   constructor(props) {
     this._props = props;
     this._tabs = new Map();
-    this._previous = null;
+    this._previousActive = null;
     this._active = null;
     this.__compactPins = true;
     this.__tabsShrinked = false;
@@ -29,6 +29,7 @@ export default class TabList {
 
     this._compactModeMode = parseInt(this._props.prefs.compactModeMode);
     this._compactPins = this._props.prefs.compactPins;
+    this._switchLastActiveTab = this._props.prefs.switchLastActiveTab;
 
     this._setupListeners();
 
@@ -43,15 +44,12 @@ export default class TabList {
   _setupListeners() {
     // Tab events
     browser.tabs.onCreated.addListener(tab => this._onBrowserTabCreated(tab));
-    // browser.tabs.onActivated.addListener(({tabId}) => this._onBrowserTabActivated(tabId));
     browser.tabs.onActivated.addListener(activeInfo => this._onBrowserTabActivated(activeInfo));
     browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => this._onBrowserTabUpdated(tabId, changeInfo, tab));
-    // browser.tabs.onRemoved.addListener(tabId => this._onBrowserTabRemoved(tabId));
-    browser.tabs.onRemoved.addListener((tabId, removeInfo) => this._onBrowserTabRemoved((tabId, removeInfo)));
+    browser.tabs.onRemoved.addListener((tabId, removeInfo) => this._onBrowserTabRemoved(tabId, removeInfo));
     browser.tabs.onMoved.addListener((tabId, moveInfo) => this._onBrowserTabMoved(tabId, moveInfo));
     browser.tabs.onAttached.addListener((tabId, attachInfo) => this._onBrowserTabAttached(tabId, attachInfo));
     browser.tabs.onDetached.addListener(tabId => this._onBrowserTabRemoved(tabId));
-    browser.webNavigation.onCompleted.addListener(details => this._webNavigationOnCompleted(details));
 
     // Global ("event-bubbling") listeners
     // Because defining event listeners for each tab is a terrible idea.
@@ -61,6 +59,7 @@ export default class TabList {
       view.addEventListener("dblclick", e => this._onDblClick(e));
       view.addEventListener("auxclick", e => this._onAuxClick(e));
       view.addEventListener("mousedown", e => this._onMouseDown(e));
+      view.addEventListener("mouseup", e => this._onMouseUp(e));
       view.addEventListener("mouseover", e => this._onMouseOver(e));
       view.addEventListener("contextmenu", e => this.tabContextMenu.open(e), true);
       view.addEventListener("animationend", e => this._onAnimationEnd(e));
@@ -94,6 +93,9 @@ export default class TabList {
     }
     if (changes.compactPins) {
       this._compactPins = changes.compactPins.newValue;
+    }
+    if (changes.switchLastActiveTab) {
+      this._switchLastActiveTab = changes.switchLastActiveTab.newValue;
     }
     this._maybeShrinkTabs();
   }
@@ -150,24 +152,22 @@ export default class TabList {
     if (!this._checkWindow(moveInfo.windowId)) {
       return;
     }
-    const tab = this.getTabById(tabId);
-    if (!tab) {
+    const sidetab = this.getTabById(tabId);
+    if (!sidetab) {
       return;
     }
-
     const {fromIndex, toIndex} = moveInfo;
     const direction = fromIndex < toIndex ? -1 : 1;
     const start = direction > 0 ? toIndex : fromIndex + 1;
     const end = direction > 0 ? fromIndex : toIndex + 1;
     this._shiftTabsIndexes(direction, start, end);
-    tab.index = toIndex;
+    sidetab.index = toIndex;
 
-    if (tab.hidden) {
+    if (sidetab.hidden) {
       return;
     }
-
-    this._appendTabView(tab);
-    tab.scrollIntoView();
+    this._appendTabView(sidetab);
+    sidetab.scrollIntoView();
   }
 
   _onBrowserTabUpdated(tabId, changeInfo, tab) {
@@ -178,6 +178,10 @@ export default class TabList {
     if (!sidetab) {
       return;
     }
+
+    // tab info passed because of https://bugzilla.mozilla.org/show_bug.cgi?id=1450384
+    sidetab.onUpdate(changeInfo, tab);
+
     if (changeInfo.hasOwnProperty("hidden")) {
       if (changeInfo.hidden) {
         this._removeTabView(sidetab);
@@ -185,15 +189,16 @@ export default class TabList {
         this._appendTabView(sidetab);
       }
     }
-    if (changeInfo.hasOwnProperty("status") && changeInfo.status === "complete") {
-      this._maybeUpdateTabThumbnail(sidetab);
+
+    if (changeInfo.hasOwnProperty("pinned")) {
+      this._onTabPinned(sidetab);
     }
 
-    // tab info passed because of https://bugzilla.mozilla.org/show_bug.cgi?id=1450384
-    sidetab.onUpdate(changeInfo, tab);
-    if (changeInfo.hasOwnProperty("pinned")) {
-      this._onTabPinned(sidetab, tab);
+    if (changeInfo.hasOwnProperty("status") && changeInfo.status === "complete") {
+      this._maybeUpdateTabThumbnail(sidetab);
+      sidetab.burst();
     }
+
   }
 
   // Shift tabs indexes with indexes between |start| and |end| (|end| not included)
@@ -206,21 +211,24 @@ export default class TabList {
     }
   }
 
-  _webNavigationOnCompleted({tabId, frameId}) {
-    if (frameId !== 0) { // We only care about top-level frames.
+  _onMouseDown(e) {
+    // Prevent autoscrolling on middle click
+    if (e.button === 1) {
+      e.preventDefault();
       return;
     }
-    let sidetab = this.getTabById(tabId);
-    if (!sidetab) { // Could be null because different window.
-      return;
-    }
-    sidetab.burst();
   }
 
-  _onMouseDown(e) {
+  _onMouseUp(e) {
     // Don't put preventDefault here or drag-and-drop won't work
     if (e.button === 0 && SideTab.isTabEvent(e)) {
-      browser.tabs.update(SideTab.tabIdForEvent(e), {active: true});
+      const tabId = SideTab.tabIdForEvent(e);
+      if (tabId !== this._active) {
+        browser.tabs.update(tabId, {active: true});
+      } else if (this._switchLastActiveTab) {
+        browser.tabs.update(this._previousActive, {active: true});
+      }
+
       this._props.search("");
       return;
     }
@@ -584,7 +592,7 @@ export default class TabList {
     return tab;
   }
 
-  _create(tabInfo, scrollTo = true) {
+  _create(tabInfo) {
     const sidetab = this.__create(tabInfo);
     // Bail early and don't insert the tab in the DOM: we'll do it later
     // if the tab becomes visible.
@@ -594,15 +602,18 @@ export default class TabList {
     this._clearSearch();
     this._appendTabView(sidetab);
     this._maybeShrinkTabs();
-    if (scrollTo) {
+    if (tabInfo.active) {
       sidetab.scrollIntoView();
     }
   }
 
   _setActive(sidetab) {
     if (this._active) {
+      if (this._active === sidetab.id) {
+        return;
+      }
       this.getTabById(this._active).updateActive(false);
-      this._previous = this._active;
+      this._previousActive = this._active;
     }
     sidetab.updateActive(true);
     this._active = sidetab.id;
@@ -643,8 +654,8 @@ export default class TabList {
     parent.removeChild(element);
   }
 
-  _onTabPinned(sidetab, tab) {
-    if (tab.pinned && this._compactPins) {
+  _onTabPinned(sidetab) {
+    if (sidetab.pinned && this._compactPins) {
       sidetab.resetThumbnail();
     }
 
