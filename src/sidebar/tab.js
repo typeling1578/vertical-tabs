@@ -11,8 +11,6 @@ export default class SideTab {
   }
 
   init(tabInfo) {
-    console.log("miou!");
-    console.log(tabInfo);
     this.id = tabInfo.id;
     this.index = tabInfo.index;
     this._buildViewStructure();
