@@ -28,26 +28,27 @@
       <div id="spacer" draggable="true"></div>
     </div>
     <script src="/sidebar/dist/bundle.js"></script>
-  </body>
-  <template id="tab-template">
-    <div class="tab" draggable="true">
-      <div class="tab-loading-burst"></div>
-      <div class="tab-context"></div>
-      <div class="tab-icon-overlay clickable"></div>
-      <div class="tab-meta-image">
-        <div class="tab-icon-wrapper">
-          <div class="tab-icon"></div>
+    <object id="svg-object" data="../icons/tabcenter.svg" type="image/svg+xml" style="display: none;"></object>
+    <template id="tab-template">
+      <div class="tab" draggable="true">
+        <div class="tab-loading-burst"></div>
+        <div class="tab-context"></div>
+        <div class="tab-icon-overlay clickable"></div>
+        <div class="tab-meta-image">
+          <div class="tab-icon-wrapper">
+            <div class="tab-icon"></div>
+          </div>
         </div>
+        <div class="tab-title-wrapper">
+          <div class="tab-title"></div>
+          <div class="tab-host"></div>
+        </div>
+        <div class="tab-pin"></div>
+        <!-- .clickable makes the close button an event target for dragstart, which
+        allows us to cancel the drag if the user initiated the drag from here! -->
+        <div class="tab-close clickable" draggable="true"></div>
+        <canvas mozOpaque></canvas>
       </div>
-      <div class="tab-title-wrapper">
-        <div class="tab-title"></div>
-        <div class="tab-host"></div>
-      </div>
-      <div class="tab-pin"></div>
-      <!-- .clickable makes the close button an event target for dragstart, which
-      allows us to cancel the drag if the user initiated the drag from here! -->
-      <div class="tab-close clickable" draggable="true"></div>
-      <canvas mozOpaque></canvas>
-    </div>
-  </template>
+    </template>
+  </body>
 </html>
