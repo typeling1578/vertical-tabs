@@ -47,8 +47,8 @@ export default class TopMenu {
         this._props.openTab({afterCurrent: true});
       }
     });
-    this._newTabButtonView.addEventListener("contextmenu", () => {
-      this._showNewTabPopup();
+    this._newTabButtonView.addEventListener("contextmenu", (e) => {
+      this._showNewTabPopup(e);
     });
 
     window.addEventListener("keyup", (e) => {
@@ -74,8 +74,12 @@ export default class TopMenu {
     this._searchBoxInput.placeholder = browser.i18n.getMessage("searchPlaceholder");
   }
 
-  _showNewTabPopup() {
+  _showNewTabPopup(e) {
     browser.menus.removeAll();
+    if (document.body.hasAttribute("incognito")) {
+      e.preventDefault();
+      return;
+    }
     let identityItems = getContextualIdentityItems();
     if (identityItems !== null) {
       identityItems.forEach(identityItem => {
