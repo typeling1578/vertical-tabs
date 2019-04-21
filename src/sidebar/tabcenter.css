@@ -479,31 +479,9 @@ body[platform="win"] #searchbox-input:placeholder-shown {
 #tablist-wrapper:not(.shrinked) #tablist:not(.compact) .tab-icon-overlay {
     width: 16px;
     height: 16px;
-    top: 2px;
-    left: 6px;
+    top: 0;
+    left: 10px;
 }
-
-/* .tab-icon-overlay {
-    display: none;
-    z-index: 1;
-    position: relative;
-    min-width: 13px;
-    min-height: 13px;
-    margin-left: -13px;
-    margin-bottom: -13px;
-    border-radius: 50%;
-    background-color: white;
-    background-size: contain;
-    background-clip: padding-box;
-    border: 1px solid hsla(0, 0%, 0%, 0.2);
-    box-shadow: 0 1px 0 hsla(0, 0%, 0%, 0.5);
-}
-
-#tablist-wrapper:not(.shrinked) #pinnedtablist:not(.compact) .tab-icon-overlay,
-#tablist-wrapper:not(.shrinked) #tablist:not(.compact) .tab-icon-overlay {
-    min-width: 15px;
-    min-height: 15px;
-} */
 
 .tab-icon-overlay.sound {
     display: block;
