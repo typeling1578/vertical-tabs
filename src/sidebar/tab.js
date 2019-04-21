@@ -181,7 +181,8 @@ export default class SideTab {
   }
 
   _setIcon(favIconUrl) {
-    if (favIconUrl.startsWith("chrome://") && favIconUrl.endsWith(".svg")) {
+    if (favIconUrl.startsWith("chrome://") && favIconUrl.endsWith(".svg")
+        && favIconUrl !== "chrome://browser/skin/privatebrowsing/favicon.svg") {
       this._iconView.classList.add("chrome-icon");
     } else {
       this._iconView.classList.remove("chrome-icon");
