@@ -63,6 +63,10 @@
         "message": "Duplicate Tab",
         "description": "Context menu item label."
     },
+    "contextMenuUnloadTab": {
+        "message": "Unload Tab",
+        "description": "Context menu item label."
+    },
     "contextMenuOpenInContextualTab": {
         "message": "Reopen in Container",
         "description": "Context menu item label."

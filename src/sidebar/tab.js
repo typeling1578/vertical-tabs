@@ -7,6 +7,8 @@ export default class SideTab {
     this.title = null;
     this.muted = null;
     this.pinned = null;
+    this.active = false;
+    this.discarded = false;
     this.visible = true;
   }
 
@@ -148,6 +150,7 @@ export default class SideTab {
   }
 
   updateActive(active) {
+    this.active = active;
     this.view.classList.toggle("active", active);
     if (active) {
       this._notselectedsinceload = false;
@@ -210,6 +213,7 @@ export default class SideTab {
   }
 
   _updateDiscarded(discarded) {
+    this.discarded = discarded;
     this.view.classList.toggle("discarded", discarded);
   }
 

@@ -22,11 +22,8 @@ export default class ContextMenu {
       case "contextMenuDuplicateTab":
         browser.tabs.duplicate(tab.id);
         break;
-      case "contextMenuAddTabToBookmarks":
-        browser.bookmarks.create({
-          title: tab.title,
-          url: tab.url
-        });
+      case "contextMenuUnloadTab":
+        browser.tabs.discard(tab.id);
         break;
       case "contextMenuMoveTabToStart":
         this._tablist.moveTabToStart(tab);
@@ -76,6 +73,7 @@ export default class ContextMenu {
 
     const tabId = SideTab.tabIdForEvent(e);
     const tab = this._tablist.getTabById(tabId);
+    console.log(tab);
 
     const items = [{
       id: "contextMenuReloadTab",
@@ -93,6 +91,11 @@ export default class ContextMenu {
     }, {
       id: "contextMenuDuplicateTab",
       title: browser.i18n.getMessage("contextMenuDuplicateTab")
+    }, {
+      id: "contextMenuUnloadTab",
+      title: browser.i18n.getMessage("contextMenuUnloadTab"),
+      enabled: !tab.active && !tab.discarded
+        && !tab.url.startsWith("about:") && !tab.url.startsWith("chrome:")
     }, {
       type: "separator"
     }, /*
