@@ -42,6 +42,10 @@ body.dark-theme {
     --tab-separator: var(--grey-60);
 }
 
+body[incognito=true] {
+    --identity-color: var(--purple-50);
+}
+
 html, body {
     height: 100%;
 }
@@ -267,11 +271,18 @@ body[platform="win"] #searchbox-input:placeholder-shown {
 }
 
 #pinnedtablist:not(.compact) .tab.hasContext .tab-context,
-#tablist .tab.hasContext .tab-context {
+#tablist .tab.hasContext .tab-context,
+[incognito=true] #pinnedtablist:not(.compact) .tab .tab-context,
+[incognito=true] #tablist .tab .tab-context {
     position: absolute;
     height: 80%;
     width: 100%;
     box-shadow: inset -3px 0 0px 0px var(--identity-color);
+}
+
+[incognito=true] #pinnedtablist:not(.compact) .tab .tab-context,
+[incognito=true] #tablist .tab .tab-context {
+    height: 100%;
 }
 
 #tablist-wrapper {
@@ -317,14 +328,21 @@ body[platform="win"] #searchbox-input:placeholder-shown {
     box-shadow: inset 0 3px 0px 0px var(--tab-selected-line);
 }
 
-#pinnedtablist.compact .tab.pinned.hasContext .tab-context {
+#pinnedtablist.compact .tab.pinned .tab-context {
     position: absolute;
+    left: 0;
     height: 100%;
     width: 18px;
-    margin-left: 3px;
+    margin-left: 7px;
 }
 
-#pinnedtablist.compact .tab.pinned.hasContext .tab-context {
+[incognito=true] #pinnedtablist.compact .tab.pinned .tab-context {
+    width: 100%;
+    margin-left: 0;
+}
+
+#pinnedtablist.compact .tab.pinned.hasContext .tab-context,
+[incognito=true] #pinnedtablist.compact .tab.pinned .tab-context {
     box-shadow: inset 0 -2px 0px 0px var(--identity-color);
 }
 
