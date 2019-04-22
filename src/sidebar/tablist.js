@@ -602,9 +602,7 @@ export default class TabList {
     this._clearSearch();
     this._appendTabView(sidetab);
     this._maybeShrinkTabs();
-    if (tabInfo.active) {
-      sidetab.scrollIntoView();
-    }
+    sidetab.scrollIntoView();
   }
 
   _setActive(sidetab) {

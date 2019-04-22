@@ -63,7 +63,6 @@ export default class SideTab {
   }
 
   onUpdate(changeInfo, tab) {
-
     if (changeInfo.hasOwnProperty("hidden")) {
       this.hidden = changeInfo.hidden;
     }
