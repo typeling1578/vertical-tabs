@@ -134,7 +134,6 @@ export default class TabList {
     this._updateHasRecentlyClosedTabs();
   }
 
-  // _onBrowserTabActivated(tabId) {
   _onBrowserTabActivated(activeInfo) {
     if (!this._checkWindow(activeInfo.windowId)) {
       return;
