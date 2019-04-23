@@ -651,17 +651,12 @@ export default class TabList {
     if (sidetab.pinned && this._compactPins) {
       sidetab.resetThumbnail();
     }
-
     this._appendTabView(sidetab);
-
     this._maybeShrinkTabs();
   }
 
   _maybeUpdateTabThumbnail(sidetab) {
-    if (this._compactModeMode === COMPACT_MODE_STRICT) {
-      return;
-    }
-    if (sidetab.pinned && this._compactPins) {
+    if (this._tabsShrinked || (sidetab.pinned && this._compactPins)) {
       return;
     }
     sidetab.updateThumbnail();
