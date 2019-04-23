@@ -73,7 +73,6 @@ export default class ContextMenu {
 
     const tabId = SideTab.tabIdForEvent(e);
     const tab = this._tablist.getTabById(tabId);
-    console.log(tab);
 
     const items = [{
       id: "contextMenuReloadTab",

@@ -18,12 +18,8 @@ export default class TabCenter {
     this._windowId = window.id;
     const prefs = await prefsPromise;
     this._applyPrefs(prefs);
-    if (window.incognito) {
-      document.body.setAttribute("incognito", true);
-    }
-    this._tabList = new TabList({openTab, search, prefs});
-    // There's no real need to await on populate().
-    this._tabList.populate(this._windowId).then(() => this._tabList.updateScrollShadow());
+    document.body.setAttribute("incognito", window.incognito);
+    this._tabList = new TabList({windowId: this._windowId, openTab, search, prefs});
 
     browser.runtime.connect(
       "tabcenter-reborn@ariasuni",

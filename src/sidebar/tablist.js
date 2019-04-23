@@ -8,6 +8,7 @@ const COMPACT_MODE_STRICT = 2;
 
 export default class TabList {
   /* @arg {props}
+   * windowId
    * openTab
    * search
    * prefs
@@ -19,7 +20,7 @@ export default class TabList {
     this._active = null;
     this.__compactPins = true;
     this.__tabsShrinked = false;
-    this._windowId = null;
+    this._windowId = props.windowId;
     this._filterActive = false;
     this._view = document.getElementById("tablist");
     this._pinnedview = document.getElementById("pinnedtablist");
@@ -32,6 +33,8 @@ export default class TabList {
     this._switchLastActiveTab = this._props.prefs.switchLastActiveTab;
 
     this._setupListeners();
+    this._populate();
+    this._updateScrollShadow();
 
     browser.browserSettings.closeTabsByDoubleClick.get({}).then(({value}) => {
       this.closeTabsByDoubleClick = value;
@@ -45,16 +48,23 @@ export default class TabList {
     // Tab events
     browser.tabs.onCreated.addListener(tab => this._onBrowserTabCreated(tab));
     browser.tabs.onActivated.addListener(activeInfo => this._onBrowserTabActivated(activeInfo));
-    browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => this._onBrowserTabUpdated(tabId, changeInfo, tab));
-    browser.tabs.onRemoved.addListener((tabId, removeInfo) => this._onBrowserTabRemoved(tabId, removeInfo));
-    browser.tabs.onMoved.addListener((tabId, moveInfo) => this._onBrowserTabMoved(tabId, moveInfo));
-    browser.tabs.onAttached.addListener((tabId, attachInfo) => this._onBrowserTabAttached(tabId, attachInfo));
-    browser.tabs.onDetached.addListener(tabId => this._onBrowserTabRemoved(tabId));
+    browser.tabs.onUpdated.addListener(
+      (tabId, changeInfo, tab) => this._onBrowserTabUpdated(tabId, changeInfo, tab),
+      {windowId: this._windowId} // only onUpdated lets us filter by windowId
+    );
+    browser.tabs.onRemoved.addListener((tabId, removeInfo) =>
+      this._onBrowserTabRemoved(tabId, removeInfo.windowId, removeInfo.isWindowClosing));
+    browser.tabs.onMoved.addListener(
+      (tabId, moveInfo) => this._onBrowserTabMoved(tabId, moveInfo));
+    browser.tabs.onAttached.addListener(
+      (tabId, attachInfo) => this._onBrowserTabAttached(tabId, attachInfo));
+    browser.tabs.onDetached.addListener(
+      (tabId, detachInfo) => this._onBrowserTabRemoved(tabId, detachInfo.oldWindowId, false));
 
     // Global ("event-bubbling") listeners
     // Because defining event listeners for each tab is a terrible idea.
     // Read more here: https://davidwalsh.name/event-delegate
-    for (let view of [this._view, this._pinnedview]) {
+    for (const view of [this._view, this._pinnedview]) {
       view.addEventListener("click", e => this._onClick(e));
       view.addEventListener("dblclick", e => this._onDblClick(e));
       view.addEventListener("auxclick", e => this._onAuxClick(e));
@@ -68,8 +78,8 @@ export default class TabList {
     this._spacerView.addEventListener("dblclick", () => this._onSpacerDblClick());
     this._spacerView.addEventListener("auxclick", e => this._onSpacerAuxClick(e));
     this._moreTabsView.addEventListener("click", () => this._clearSearch());
-    this._view.addEventListener("scroll", () => this.updateScrollShadow());
-    document.defaultView.addEventListener("resize", () => this.updateScrollShadow());
+    this._view.addEventListener("scroll", () => this._updateScrollShadow());
+    document.defaultView.addEventListener("resize", () => this._updateScrollShadow());
 
     // Drag-and-drop.
     document.addEventListener("dragstart", e => this._onDragStart(e));
@@ -101,7 +111,7 @@ export default class TabList {
   }
 
   _onBrowserTabCreated(tab) {
-    if (!this._checkTabWindow(tab)) {
+    if (!this._checkWindow(tab.windowId)) {
       return;
     }
     this._shiftTabsIndexes(1, tab.index);
@@ -109,26 +119,19 @@ export default class TabList {
   }
 
   async _onBrowserTabAttached(tabId, {newWindowId, newPosition}) {
-    // if (newWindowId !== this._windowId) {
-    //   return;
-    // }
     if (!this._checkWindow(newWindowId)) {
       return;
     }
     this._shiftTabsIndexes(1, newPosition);
-    let tab = await browser.tabs.get(tabId);
+    const tab = await browser.tabs.get(tabId);
     this._create(tab);
   }
 
-  // _onBrowserTabRemoved(tabId) {
-  _onBrowserTabRemoved(tabId, removeInfo) {
-    if (removeInfo.isWindowClosing || !this._checkWindow(removeInfo.windowId)) {
+  _onBrowserTabRemoved(tabId, windowId, isWindowClosing) {
+    if (!this._checkWindow(windowId) || isWindowClosing) {
       return;
     }
-    let sidetab = this.getTabById(tabId);
-    if (!sidetab) {
-      return;
-    }
+    const sidetab = this.getTabById(tabId);
     this._shiftTabsIndexes(-1, sidetab.index);
     this._remove(sidetab);
     this._updateHasRecentlyClosedTabs();
@@ -139,9 +142,6 @@ export default class TabList {
       return;
     }
     const sidetab = this.getTabById(activeInfo.tabId);
-    if (!sidetab) {
-      return;
-    }
     this._setActive(sidetab);
     this._maybeUpdateTabThumbnail(sidetab);
     sidetab.scrollIntoView();
@@ -152,9 +152,6 @@ export default class TabList {
       return;
     }
     const sidetab = this.getTabById(tabId);
-    if (!sidetab) {
-      return;
-    }
     const {fromIndex, toIndex} = moveInfo;
     const direction = fromIndex < toIndex ? -1 : 1;
     const start = direction > 0 ? toIndex : fromIndex + 1;
@@ -170,14 +167,10 @@ export default class TabList {
   }
 
   _onBrowserTabUpdated(tabId, changeInfo, tab) {
-    if (!this._checkTabWindow(tab)) {
-      return;
-    }
     const sidetab = this.getTabById(tabId);
-    if (!sidetab) {
+    if (!sidetab) { // if tab hasn’t yet been created in our tablist
       return;
     }
-
     // tab info passed because of https://bugzilla.mozilla.org/show_bug.cgi?id=1450384
     sidetab.onUpdate(changeInfo, tab);
 
@@ -197,7 +190,6 @@ export default class TabList {
       this._maybeUpdateTabThumbnail(sidetab);
       sidetab.burst();
     }
-
   }
 
   // Shift tabs indexes with indexes between |start| and |end| (|end| not included)
@@ -253,7 +245,7 @@ export default class TabList {
     }
   }
 
-  updateScrollShadow() {
+  _updateScrollShadow() {
     if (this._view.scrollTop === 0) {
       this._wrapperView.classList.remove("can-scroll-top");
     } else {
@@ -343,10 +335,9 @@ export default class TabList {
   }
 
   _handleDroppedTabCenterTab(e, tab) {
-    let {tabId, origWindowId} = tab;
-    let currentWindowId = this._windowId;
-    if (currentWindowId !== origWindowId) {
-      browser.tabs.move(tabId, {windowId: currentWindowId, index: -1});
+    const {tabId, origWindowId} = tab;
+    if (!this._checkWindow(origWindowId)) {
+      browser.tabs.move(tabId, {windowId: this._windowId, index: -1});
       return;
     }
 
@@ -409,7 +400,7 @@ export default class TabList {
       return;
     }
     this._props.search("");
-    this.updateScrollShadow();
+    this._updateScrollShadow();
   }
 
   filter(query) {
@@ -465,11 +456,8 @@ export default class TabList {
     this._maybeShrinkTabs();
   }
 
-  async populate(windowId) {
-    if (windowId && this._windowId === null) {
-      this._windowId = windowId;
-    }
-    const tabs = await browser.tabs.query({windowId});
+  async _populate() {
+    const tabs = await browser.tabs.query({windowId: this._windowId});
     // Sort the tabs by index so we can insert them in sequence.
     tabs.sort((a, b) => a.index - b.index);
     const pinnedFragment = document.createDocumentFragment();
@@ -492,10 +480,6 @@ export default class TabList {
       this._maybeUpdateTabThumbnail(activeTab);
       activeTab.scrollIntoView();
     }
-  }
-
-  _checkTabWindow(tab) {
-    return (tab.windowId === this._windowId);
   }
 
   _checkWindow(windowId) {
@@ -533,7 +517,7 @@ export default class TabList {
   }
 
   _maybeShrinkTabs() {
-    this.updateScrollShadow();
+    this._updateScrollShadow();
     // Avoid an expensive sync reflow (offsetHeight).
     requestAnimationFrame(() => {
       this.__maybeShrinkTabs();
@@ -696,7 +680,7 @@ export default class TabList {
   async _getRecentlyClosedTabs() {
     const sessions = await browser.sessions.getRecentlyClosed();
     return sessions.reduce((acc, session) => {
-      if (session.tab && this._checkTabWindow(session.tab)) {
+      if (session.tab && this._checkWindow(session.tab.windowId)) {
         acc.push(session.tab);
       }
       return acc;
