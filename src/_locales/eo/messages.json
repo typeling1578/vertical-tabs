@@ -137,5 +137,17 @@
     "closeAllTabsExceptWarning": {
         "message": "Ĉu vi vere volas fermi la $COUNT$ aliajn langetojn?",
         "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
+    },
+    "contextMenuUnloadTab": {
+        "message": "Malŝarĝi langeton",
+        "description": "Context menu item label."
+    },
+    "optionsSwitchLastActiveTabExplanation": {
+        "message": "Alklaki aktivan langeton ŝaltas la laste aktivan.",
+        "description": "Explanation for the Compact Mode option in options page."
+    },
+    "optionsSwitchLastActiveTab": {
+        "message": "Ŝalti laste aktivan langeton",
+        "description": "Option in options page."
     }
 }
