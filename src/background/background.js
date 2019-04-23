@@ -18,7 +18,13 @@ class TabCenterBackground {
     browser.browserAction.setBadgeBackgroundColor({color: BADGE_ENABLED_BACKGROUND, windowId});
     port.onDisconnect.addListener(port => {
       delete this.openedSidebarWindows[parseInt(port.name)];
-      browser.browserAction.setBadgeBackgroundColor({color: BADGE_DISABLED_BACKGROUND, windowId});
+      browser.windows.getAll().then(windows => {
+        // Don’t try to set badge background color to closed window
+        if (windows.map(window => window.id).some(id => id === windowId)) {
+          browser.browserAction.setBadgeBackgroundColor(
+            {color: BADGE_DISABLED_BACKGROUND, windowId});
+        }
+      });
     });
   }
 
