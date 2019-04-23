@@ -219,13 +219,22 @@ export default class SideTab {
 
   _updateThumbnail() {
     requestIdleCallback(async () => {
-      const thumbnailBase64 = await browser.tabs.captureTab(this.id, {
-        format: "png"
-      });
-      await this._updateThumbnailCanvas(thumbnailBase64);
 
-      this._metaImageView.style.backgroundImage = `-moz-element(#${this.thumbnailCanvas.id})`;
-      this._metaImageView.classList.add("has-thumbnail");
+      let thumbnailBase64 = null;
+      try {
+        thumbnailBase64 = await browser.tabs.captureTab(this.id, {
+          format: "png"
+        });
+      } catch (error) {
+        //the tab is not available;
+      }
+
+      if (thumbnailBase64) {
+        await this._updateThumbnailCanvas(thumbnailBase64);
+        this._metaImageView.style.backgroundImage = `-moz-element(#${this.thumbnailCanvas.id})`;
+        this._metaImageView.classList.add("has-thumbnail");
+      }
+
     });
   }
 

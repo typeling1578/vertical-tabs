@@ -12,6 +12,8 @@ class TabCenterOptions {
       "optionsCompactModeDynamic",
       "optionsCompactModeOff",
       "optionsCompactModeExplanation",
+      "optionsSwitchLastActiveTabExplanation",
+      "optionsSwitchLastActiveTab",
       "optionsCompactPins",
       "optionsDarkTheme",
       "optionsThemeIntegration",
@@ -35,6 +37,7 @@ class TabCenterOptions {
     this._setupCheckboxOption("themeIntegration", "themeIntegration");
     this._setupDropdownOption("compactMode", "compactModeMode");
     this._setupCheckboxOption("compactPins", "compactPins", true);
+    this._setupCheckboxOption("switchLastActiveTab", "switchLastActiveTab", true);
 
     // Custom CSS
     browser.storage.local.get({

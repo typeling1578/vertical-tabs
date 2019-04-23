@@ -125,6 +125,10 @@
         "message": "Settings",
         "description": "Section in options page."
     },
+    "optionsSwitchLastActiveTabExplanation": {
+        "message": "Clicking active tab switch to the last active one.",
+        "description": "Explanation for the Compact Mode option in options page."
+    },
     "optionsCompactMode": {
         "message": "Compact Mode",
         "description": "Option in options page."
@@ -144,6 +148,10 @@
     "optionsCompactModeStrict": {
         "message": "Always",
         "description": "Possible value for Compact Mode option in options page."
+    },
+    "optionsSwitchLastActiveTab": {
+        "message": "Switch Last Active Tab",
+        "description": "Option in options page."
     },
     "optionsCompactPins": {
         "message": "Compact Pinned Tabs",
