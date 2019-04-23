@@ -32,11 +32,11 @@
         "description": "Reload Tab context menu item label."
     },
     "contextMenuPinTab": {
-        "message": "Fiksi la langeton",
+        "message": "Alpingli la langeton",
         "description": "Pin Tab context menu item label."
     },
     "contextMenuUnpinTab": {
-        "message": "Malfiksi la langeton",
+        "message": "Depingli la langeton",
         "description": "Unpin Tab context menu item label."
     },
     "contextMenuMuteTab": {
@@ -81,7 +81,7 @@
         "message": "La kompakta modo malgrandiĝas la alto de la langetojn por montri pli da ili. En dinamika agordo, ĝi validiĝas kiam oni ne plu havas ceteran spacon."
     },
     "optionsCompactModeOff": {
-        "message": "Malvalidigita"
+        "message": "Malebligita"
     },
     "optionsCompactModeDynamic": {
         "message": "Dinamika"
