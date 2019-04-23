@@ -60,6 +60,8 @@ export default class TabList {
       (tabId, attachInfo) => this._onBrowserTabAttached(tabId, attachInfo));
     browser.tabs.onDetached.addListener(
       (tabId, detachInfo) => this._onBrowserTabRemoved(tabId, detachInfo.oldWindowId, false));
+    browser.webNavigation.onCompleted.addListener(
+      details => this._webNavigationOnCompleted(details));
 
     // Global ("event-bubbling") listeners
     // Because defining event listeners for each tab is a terrible idea.
@@ -188,7 +190,6 @@ export default class TabList {
 
     if (changeInfo.hasOwnProperty("status") && changeInfo.status === "complete") {
       this._maybeUpdateTabThumbnail(sidetab);
-      sidetab.burst();
     }
   }
 
@@ -200,6 +201,17 @@ export default class TabList {
         tab.index += offset;
       }
     }
+  }
+
+  _webNavigationOnCompleted({tabId, frameId}) {
+    if (frameId !== 0) { // We only care about top-level frames.
+      return;
+    }
+    let sidetab = this.getTabById(tabId);
+    if (!sidetab) { // Could be null because different window.
+      return;
+    }
+    sidetab.burst();
   }
 
   _onMouseDown(e) {
