@@ -21,6 +21,8 @@ export default class TabList {
     this.__tabsShrinked = false;
     this._windowId = props.windowId;
     this._filterActive = false;
+    this._isDragging = false;
+    this._openInNewWindowTimer = null;
     this._view = document.getElementById("tablist");
     this._pinnedview = document.getElementById("pinnedtablist");
     this._wrapperView = document.getElementById("tablist-wrapper");
@@ -86,6 +88,7 @@ export default class TabList {
     document.addEventListener("dragstart", e => this._onDragStart(e));
     document.addEventListener("dragover", e => this._onDragOver(e));
     document.addEventListener("drop", e => this._onDrop(e));
+    document.addEventListener("dragend", e => this._onDragend(e));
 
     // Disable zooming.
     document.addEventListener("wheel", e => {
@@ -293,6 +296,7 @@ export default class TabList {
   }
 
   _onDragStart(e) {
+    this._isDragging = true;
     if (!SideTab.isTabEvent(e) || this._filterActive) {
       return;
     }
@@ -327,6 +331,11 @@ export default class TabList {
   }
 
   _onDrop(e) {
+    this._isDragging = false;
+    if (this._openInNewWindowTimer !== null) {
+      clearTimeout(this._openInNewWindowTimer);
+    }
+
     if (!SideTab.isTabEvent(e, false) &&
       e.target !== this._spacerView &&
       e.target !== this._moreTabsView) {
@@ -391,6 +400,16 @@ export default class TabList {
     let newPos = curTabPos < dropTabPos ? Math.min(this._tabs.size, dropTabPos) :
       Math.max(0, dropTabPos);
     browser.tabs.move(tabId, {index: newPos});
+  }
+
+  _onDragend(e) {
+    this._openInNewWindowTimer = setTimeout(
+      () => {
+        if (this._isDragging === true) {
+          browser.windows.create({tabId: SideTab.tabIdForView(e.target)})
+        }
+        this._openInNewWindowTimer = null;
+      }, 50);
   }
 
   _onSpacerDblClick() {
