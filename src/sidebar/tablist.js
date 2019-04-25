@@ -16,7 +16,6 @@ export default class TabList {
   constructor(props) {
     this._props = props;
     this._tabs = new Map();
-    this._previousActive = null;
     this._active = null;
     this.__compactPins = true;
     this.__tabsShrinked = false;
@@ -228,8 +227,11 @@ export default class TabList {
       const tabId = SideTab.tabIdForEvent(e);
       if (tabId !== this._active) {
         browser.tabs.update(tabId, {active: true});
-      } else if (this._switchLastActiveTab) {
-        browser.tabs.update(this._previousActive, {active: true});
+      } else if (this._switchLastActiveTab && this._tabs.size > 1) {
+        browser.tabs.query({currentWindow: true}).then(tabs => {
+          tabs.sort((a, b) => b.lastAccessed - a.lastAccessed);
+          browser.tabs.update(tabs[1].id, {active: true});
+        });
       }
 
       this._props.search("");
@@ -606,7 +608,6 @@ export default class TabList {
         return;
       }
       this.getTabById(this._active).updateActive(false);
-      this._previousActive = this._active;
     }
     sidetab.updateActive(true);
     this._active = sidetab.id;
