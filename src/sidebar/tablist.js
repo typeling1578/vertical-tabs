@@ -143,6 +143,9 @@ export default class TabList {
       return;
     }
     const sidetab = this.getTabById(activeInfo.tabId);
+    if (!sidetab) { // if tab is not moved yet from one window to another
+      return;
+    }
     this._setActive(sidetab);
     this._maybeUpdateTabThumbnail(sidetab);
     sidetab.scrollIntoView();
@@ -352,6 +355,7 @@ export default class TabList {
     const {tabId, origWindowId} = tab;
     if (!this._checkWindow(origWindowId)) {
       browser.tabs.move(tabId, {windowId: this._windowId, index: -1});
+      browser.tabs.update(tabId, {active: true});
       return;
     }
 
