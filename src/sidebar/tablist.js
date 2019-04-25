@@ -212,7 +212,7 @@ export default class TabList {
     if (frameId !== 0) { // We only care about top-level frames.
       return;
     }
-    let sidetab = this.getTabById(tabId);
+    const sidetab = this.getTabById(tabId);
     if (!sidetab) { // Could be null because different window.
       return;
     }
@@ -368,20 +368,20 @@ export default class TabList {
       return;
     }
 
-    let curTab = this.getTabById(tabId);
+    const curTab = this.getTabById(tabId);
 
     if (e.target === this._spacerView || e.target === this._moreTabsView) {
       this.moveTabToEnd(curTab);
       return;
     }
 
-    let dropTabId = SideTab.tabIdForEvent(e);
+    const dropTabId = SideTab.tabIdForEvent(e);
 
     if (tabId === dropTabId) {
       return;
     }
 
-    let dropTab = this.getTabById(dropTabId);
+    const dropTab = this.getTabById(dropTabId);
 
     if (curTab.pinned !== dropTab.pinned) { // They can't mix
       if (curTab.pinned) {
@@ -395,9 +395,9 @@ export default class TabList {
       return;
     }
 
-    let curTabPos = curTab.index;
-    let dropTabPos = dropTab.index;
-    let newPos = curTabPos < dropTabPos ? Math.min(this._tabs.size, dropTabPos) :
+    const curTabPos = curTab.index;
+    const dropTabPos = dropTab.index;
+    const newPos = curTabPos < dropTabPos ? Math.min(this._tabs.size, dropTabPos) :
       Math.max(0, dropTabPos);
     browser.tabs.move(tabId, {index: newPos});
   }
@@ -646,28 +646,28 @@ export default class TabList {
   }
 
   _appendTabView(sidetab) {
-    let element = sidetab.view;
-    let parent = sidetab.pinned ? this._pinnedview : this._view;
+    const element = sidetab.view;
+    const parent = sidetab.pinned ? this._pinnedview : this._view;
     // Can happen with browser.tabs.closeWindowWithLastTab set to true or during
     // session restore.
     if (!this._tabs.size) {
       parent.appendChild(element);
       return;
     }
-    const allTabs = [...this._tabs.values()]
+    const tabAfter = [...this._tabs.values()]
       .filter(tab => tab.pinned === sidetab.pinned && !tab.hidden)
-      .sort((a, b) => a.index - b.index);
-    const tabAfter = allTabs.find(tab => tab.index > sidetab.index);
-    if (!tabAfter) {
+      .sort((a, b) => a.index - b.index)
+      .find(tab => tab.index > sidetab.index);
+    if (tabAfter) {
+      parent.insertBefore(element, tabAfter.view);
+    } else {
       parent.appendChild(element);
-      return;
     }
-    parent.insertBefore(element, tabAfter.view);
   }
 
   _removeTabView(sidetab) {
-    let element = sidetab.view;
-    let parent = sidetab.pinned ? this._pinnedview : this._view;
+    const element = sidetab.view;
+    const parent = sidetab.pinned ? this._pinnedview : this._view;
     parent.removeChild(element);
   }
 
@@ -726,7 +726,7 @@ export default class TabList {
   }
 
   moveTabToStart(currentTab) {
-    let minIndex = Math.min(...Array.from(this._tabs)
+    const minIndex = Math.min(...Array.from(this._tabs)
       .map(elem => elem[1])
       .filter(tab => tab.pinned === currentTab.pinned)
       .map(tab => tab.index));
@@ -734,7 +734,7 @@ export default class TabList {
   }
 
   async moveTabToEnd(currentTab) {
-    let maxIndex = Math.max(...Array.from(this._tabs)
+    const maxIndex = Math.max(...Array.from(this._tabs)
       .map(elem => elem[1])
       .filter(tab => tab.pinned === currentTab.pinned)
       .map(tab => tab.index));
