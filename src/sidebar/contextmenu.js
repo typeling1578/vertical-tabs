@@ -108,7 +108,7 @@ export default class ContextMenu {
         || tab.url === "about:newtab"
         || tab.url === "about:blank",
       visible: browser.contextualIdentities !== undefined
-        && !document.body.hasAttribute("incognito")
+        && document.body.getAttribute("incognito") !== "true"
     }, {
       id: "contextMenuMoveTab",
       title: browser.i18n.getMessage("contextMenuMoveTab"),

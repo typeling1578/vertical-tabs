@@ -76,7 +76,7 @@ export default class TopMenu {
 
   _showNewTabPopup(e) {
     browser.menus.removeAll();
-    if (document.body.hasAttribute("incognito")) {
+    if (document.body.getAttribute("incognito") === "true") {
       e.preventDefault();
       return;
     }
