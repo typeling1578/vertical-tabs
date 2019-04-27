@@ -22,6 +22,7 @@ export default class TabList {
     this._windowId = props.windowId;
     this._filterActive = false;
     this._isDragging = false;
+    this._scrollTimer = null;
     this._openInNewWindowTimer = null;
     this._highlightBottomScrollShadowTimer = null;
     this._view = document.getElementById("tablist");
@@ -82,8 +83,8 @@ export default class TabList {
     this._spacerView.addEventListener("dblclick", () => this._onSpacerDblClick());
     this._spacerView.addEventListener("auxclick", e => this._onSpacerAuxClick(e));
     this._moreTabsView.addEventListener("click", () => this._clearSearch());
-    this._view.addEventListener("scroll", () => this._updateScrollShadow());
-    document.defaultView.addEventListener("resize", () => this._updateScrollShadow());
+    this._view.addEventListener("scroll", () => this._onScroll());
+    document.defaultView.addEventListener("resize", () => this._onScroll());
 
     // Drag-and-drop.
     document.addEventListener("dragstart", e => this._onDragStart(e));
@@ -264,6 +265,18 @@ export default class TabList {
       e.preventDefault();
       return;
     }
+  }
+
+  _onScroll() {
+    if (this._scrollTimer !== null) {
+      clearTimeout(this._scrollTimer);
+    } else {
+      this._updateScrollShadow();
+    }
+    this._scrollTimer = setTimeout(() => {
+      this._scrollTimer = null;
+      this._updateScrollShadow();
+    }, 100);
   }
 
   scrollIntoView(tab) {
