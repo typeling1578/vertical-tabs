@@ -159,25 +159,6 @@ export default class SideTab {
     }
   }
 
-  scrollIntoView() {
-    // Pinned tabs are always into view!
-    if (this.pinned) {
-      return;
-    }
-    this._scrollIntoViewIfNeeded();
-    // workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1139745#c7
-    // we still make a first scrollIntoView so that it starts scrolling right away
-    setTimeout(() => this._scrollIntoViewIfNeeded(), 100);
-  }
-
-  _scrollIntoViewIfNeeded() {
-    const {top: parentTop, height} = this.view.parentNode.getBoundingClientRect();
-    let {top, bottom} = this.view.getBoundingClientRect();
-    if ((top - parentTop) < 0 || (bottom - parentTop) > height) {
-      this.view.scrollIntoView({block: "nearest"});
-    }
-  }
-
   updateVisibility(show) {
     this.visible = show;
     this.view.classList.toggle("hidden", !show);

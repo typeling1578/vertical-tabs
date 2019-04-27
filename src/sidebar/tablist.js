@@ -23,6 +23,7 @@ export default class TabList {
     this._filterActive = false;
     this._isDragging = false;
     this._openInNewWindowTimer = null;
+    this._highlightBottomScrollShadowTimer = null;
     this._view = document.getElementById("tablist");
     this._pinnedview = document.getElementById("pinnedtablist");
     this._wrapperView = document.getElementById("tablist-wrapper");
@@ -151,7 +152,7 @@ export default class TabList {
     }
     this._setActive(sidetab);
     this._maybeUpdateTabThumbnail(sidetab);
-    sidetab.scrollIntoView();
+    this.scrollIntoView(sidetab);
   }
 
   _onBrowserTabMoved(tabId, moveInfo) {
@@ -170,7 +171,7 @@ export default class TabList {
       return;
     }
     this._appendTabView(sidetab);
-    sidetab.scrollIntoView();
+    this.scrollIntoView(sidetab);
   }
 
   _onBrowserTabUpdated(tabId, changeInfo, tab) {
@@ -253,7 +254,7 @@ export default class TabList {
   _onMouseOver(e) {
     const tabId = SideTab.tabIdForEvent(e);
     if (tabId === this._active) {
-      this.getTabById(tabId).scrollIntoView();
+      this.scrollIntoView(this.getTabById(tabId));
     }
   }
 
@@ -265,17 +266,49 @@ export default class TabList {
     }
   }
 
+  scrollIntoView(tab) {
+    // Pinned tabs are always into view!
+    if (tab.pinned) {
+      return;
+    }
+    this._scrollIntoViewIfNeeded(tab);
+    // workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1139745#c7
+    // we still make a first scrollIntoView so that it starts scrolling right away
+    setTimeout(() => this._scrollIntoViewIfNeeded(tab), 100);
+  }
+
+  _scrollIntoViewIfNeeded(tab) {
+    const {top: parentTop, height} = this._view.getBoundingClientRect();
+    let {top, bottom} = tab.view.getBoundingClientRect();
+    if ((top - parentTop) < 0 || (bottom - parentTop) > height) {
+      // check if scrolling to tab won’t push active tab outside view
+      if (tab.id !== this._active) {
+        const activeTab = this.getTabById(this._active);
+        const {top: activeTop} = activeTab.view.getBoundingClientRect();
+        const tabHeight = bottom - top;
+        const activeDistanceFromTop = activeTop - parentTop;
+        if (activeDistanceFromTop < tabHeight) {
+          activeTab.view.scrollIntoView(true);
+          this._highlightBottomScrollShadow();
+          return;
+        }
+      }
+      tab.view.scrollIntoView({block: "nearest"});
+    }
+  }
+
+  _highlightBottomScrollShadow() {
+    clearTimeout(this._highlightBottomScrollShadowTimer);
+    this._wrapperView.classList.add("highlight-scroll-bottom");
+    this._highlightBottomScrollShadowTimer = setTimeout(
+      () => this._wrapperView.classList.remove("highlight-scroll-bottom"), 500);
+  }
+
   _updateScrollShadow() {
-    if (this._view.scrollTop === 0) {
-      this._wrapperView.classList.remove("can-scroll-top");
-    } else {
-      this._wrapperView.classList.add("can-scroll-top");
-    }
-    if ((this._view.scrollTop + this._view.clientHeight) >= this._view.scrollHeight) {
-      this._wrapperView.classList.remove("can-scroll-bottom");
-    } else {
-      this._wrapperView.classList.add("can-scroll-bottom");
-    }
+    const {scrollTop, clientHeight, scrollHeight} = this._view;
+    this._wrapperView.classList.toggle("can-scroll-top", scrollTop !== 0);
+    this._wrapperView.classList.toggle("can-scroll-bottom",
+      (scrollTop + clientHeight) < scrollHeight);
   }
 
   _onClick(e) {
@@ -332,9 +365,7 @@ export default class TabList {
 
   _onDrop(e) {
     this._isDragging = false;
-    if (this._openInNewWindowTimer !== null) {
-      clearTimeout(this._openInNewWindowTimer);
-    }
+    clearTimeout(this._openInNewWindowTimer);
 
     if (!SideTab.isTabEvent(e, false) &&
       e.target !== this._spacerView &&
@@ -408,7 +439,6 @@ export default class TabList {
         if (this._isDragging === true) {
           browser.windows.create({tabId: SideTab.tabIdForView(e.target)})
         }
-        this._openInNewWindowTimer = null;
       }, 50);
   }
 
@@ -515,7 +545,7 @@ export default class TabList {
     this._maybeShrinkTabs();
     if (activeTab) {
       this._maybeUpdateTabThumbnail(activeTab);
-      activeTab.scrollIntoView();
+      this.scrollIntoView(activeTab);
     }
   }
 
@@ -622,7 +652,7 @@ export default class TabList {
     this._clearSearch();
     this._appendTabView(sidetab);
     this._maybeShrinkTabs();
-    sidetab.scrollIntoView();
+    this.scrollIntoView(sidetab);
   }
 
   _setActive(sidetab) {
