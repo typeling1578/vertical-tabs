@@ -292,19 +292,17 @@ export default class TabList {
 
   _scrollIntoViewIfNeeded(tab) {
     const {top: parentTop, height} = this._view.getBoundingClientRect();
-    let {top, bottom} = tab.view.getBoundingClientRect();
+    const {top, bottom} = tab.view.getBoundingClientRect();
     if ((top - parentTop) < 0 || (bottom - parentTop) > height) {
       // check if scrolling to tab won’t push active tab outside view
       if (tab.id !== this._active) {
         const activeTab = this.getTabById(this._active);
         const {top: activeTop} = activeTab.view.getBoundingClientRect();
-        const tabHeight = bottom - top;
-        const activeDistanceFromTop = activeTop - parentTop;
-        if (activeDistanceFromTop < tabHeight) {
+        if (activeTop > parentTop) {
           activeTab.view.scrollIntoView(true);
-          this._highlightBottomScrollShadow();
-          return;
         }
+        this._highlightBottomScrollShadow();
+        return;
       }
       tab.view.scrollIntoView({block: "nearest"});
     }
@@ -489,7 +487,7 @@ export default class TabList {
     const tabs = [...this._tabs.values()];
     let notShown = 0;
     if (query.length) {
-      let results = fuzzysort.go(query, tabs, {
+      const results = fuzzysort.go(query, tabs, {
         keys: ["title", "host"],
         allowTypo: false,
         threshold: -1000,
@@ -543,12 +541,12 @@ export default class TabList {
     const pinnedFragment = document.createDocumentFragment();
     const unpinnedFragment = document.createDocumentFragment();
     let activeTab;
-    for (let tab of tabs) {
+    for (const tab of tabs) {
       const sidetab = this.__create(tab);
       if (tab.active) {
         activeTab = sidetab;
       }
-      let fragment = tab.pinned ? pinnedFragment : unpinnedFragment;
+      const fragment = tab.pinned ? pinnedFragment : unpinnedFragment;
       if (!tab.hidden) {
         fragment.appendChild(sidetab.view);
       }
@@ -576,11 +574,7 @@ export default class TabList {
 
   set _compactPins(compact) {
     this.__compactPins = compact;
-    if (compact) {
-      this._pinnedview.classList.add("compact");
-    } else {
-      this._pinnedview.classList.remove("compact");
-    }
+    this._pinnedview.classList.toggle("compact", compact);
   }
 
   get _tabsShrinked() {
@@ -589,18 +583,17 @@ export default class TabList {
 
   set _tabsShrinked(shrinked) {
     this.__tabsShrinked = shrinked;
-    if (shrinked) {
-      this._wrapperView.classList.add("shrinked");
-    } else {
-      this._wrapperView.classList.remove("shrinked");
-    }
+    this._wrapperView.classList.toggle("shrinked", shrinked);
   }
 
   _maybeShrinkTabs() {
-    this._updateScrollShadow();
     // Avoid an expensive sync reflow (offsetHeight).
     requestAnimationFrame(() => {
+      const previousTabsShrinked = this._tabsShrinked;
       this.__maybeShrinkTabs();
+      if (this._tabsShrinked !== previousTabsShrinked) {
+        this._updateScrollShadow();
+      }
     });
   }
 
@@ -646,7 +639,7 @@ export default class TabList {
   }
 
   __create(tabInfo) {
-    let tab = new SideTab();
+    const tab = new SideTab();
     this._tabs.set(tabInfo.id, tab);
     tab.init(tabInfo);
     if (tabInfo.active) {

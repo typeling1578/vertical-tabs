@@ -334,7 +334,7 @@ export default class SideTab {
           return;
         }
         requestAnimationFrame(() => {
-          for (let animation of animations) {
+          for (const animation of animations) {
             // If |animation| has been cancelled since this rAF callback
             // was scheduled we don't want to set its startTime since
             // that would restart it. We check for a cancelled animation

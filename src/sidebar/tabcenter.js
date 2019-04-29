@@ -33,7 +33,7 @@ export default class TabCenter {
 
   async _openTab(props = {}) {
     if (props.afterCurrent) {
-      let currentIndex = (await browser.tabs.query({
+      const currentIndex = (await browser.tabs.query({
         windowId: this._windowId,
         active: true
       }))[0].index;
@@ -85,7 +85,7 @@ export default class TabCenter {
       document.body.classList.remove("dark-theme");
     }
 
-    let type = isDarkTheme? "light": "dark";
+    const type = isDarkTheme? "light": "dark";
     browser.sidebarAction.setIcon({
       path: {
         16: `/icons/tabcenter.svg#${type}`,

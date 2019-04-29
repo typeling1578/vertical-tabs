@@ -80,7 +80,7 @@ export default class TopMenu {
       e.preventDefault();
       return;
     }
-    let identityItems = getContextualIdentityItems();
+    const identityItems = getContextualIdentityItems();
     if (identityItems !== null) {
       identityItems.forEach(identityItem => {
         identityItem["id"] = `contextMenuOpenInNewContextualTab_${identityItem["id"]}`;

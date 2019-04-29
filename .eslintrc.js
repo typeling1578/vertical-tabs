@@ -6,7 +6,7 @@ module.exports = {
   },
   "extends": "eslint:recommended",
   "parserOptions": {
-    "ecmaVersion": 2018,
+    "ecmaVersion": 8,
     "sourceType": "module"
   },
   "rules": {
@@ -24,6 +24,7 @@ module.exports = {
     "no-multi-spaces": ["error"],
     "no-trailing-spaces": ["error"],
     "no-var": ["error"],
+    "prefer-const": ["error"],
     "object-curly-spacing": ["error", "never"],
     "prefer-template": ["error"],
     "quotes": ["error", "double"],
