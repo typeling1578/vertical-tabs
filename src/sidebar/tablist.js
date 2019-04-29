@@ -295,8 +295,8 @@ export default class TabList {
     const {top, bottom} = tab.view.getBoundingClientRect();
     if ((top - parentTop) < 0 || (bottom - parentTop) > height) {
       // check if scrolling to tab won’t push active tab outside view
-      if (tab.id !== this._active) {
-        const activeTab = this.getTabById(this._active);
+      const activeTab = this.getTabById(this._active);
+      if (tab.id !== this._active && !activeTab.pinned) {
         const {top: activeTop} = activeTab.view.getBoundingClientRect();
         if (activeTop > parentTop) {
           activeTab.view.scrollIntoView(true);
