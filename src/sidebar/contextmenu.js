@@ -55,7 +55,7 @@ export default class ContextMenu {
       }
 
       if (info.menuItemId.startsWith("contextMenuOpenInContextualTab_")) {
-        let newTab = {cookieStoreId: info.menuItemId.split("contextMenuOpenInContextualTab_")[1]};
+        const newTab = {cookieStoreId: info.menuItemId.split("contextMenuOpenInContextualTab_")[1]};
         if (tab.url !== "about:newtab") {
           newTab["url"] = tab.url;
         }
@@ -159,7 +159,7 @@ export default class ContextMenu {
       });
     });
 
-    let identityItems = getContextualIdentityItems();
+    const identityItems = getContextualIdentityItems();
     if (identityItems !== null) {
       identityItems.forEach(identityItem => {
         identityItem["id"] = `contextMenuOpenInContextualTab_${identityItem["id"]}`;
