@@ -23,7 +23,7 @@ class TabCenterOptions {
       "optionsCustomCSSWikiLink",
       "optionsSaveCustomCSS"
     ];
-    for (let opt of options) {
+    for (const opt of options) {
       this._setupTextContentLabel(opt);
     }
   }

@@ -10,7 +10,7 @@ window.tabCenter = tabCenter;
 // alert/confirm/prompt dialogs do not work properly in the sidebar
 // https://gist.github.com/tim-we/592e271c9517af6b9bcaadd811056d26
 (function() {
-  let _confirm = window.confirm;
+  const _confirm = window.confirm;
   let bg = null;
 
   function addBackgroundElement() {
@@ -32,7 +32,7 @@ window.tabCenter = tabCenter;
   // apply fix
   window.confirm = text => {
     addBackgroundElement();
-    let res = _confirm(text);
+    const res = _confirm(text);
     removeBackgroundElement();
     return res;
   };
