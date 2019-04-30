@@ -2,6 +2,7 @@
   "name": "tabcenter-reborn",
   "scripts": {
     "lint": "eslint .",
+    "webext-lint": "web-ext lint -s src/ -i sidebar/dist/ test/vendor/",
     "build": "webpack-cli --mode production && web-ext build -s src/ -i test/ 'sidebar/**/*.js' '!sidebar/dist/bundle.js' --overwrite-dest",
     "watch": "webpack-cli --mode development --watch --devtool=inline-cheap-source-map --devtool=inline-cheap-module-source-map --devtool=inline-source-map",
     "webext": "web-ext run --start-url about:debugging -s src",
