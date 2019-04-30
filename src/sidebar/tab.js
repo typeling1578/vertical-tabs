@@ -28,7 +28,7 @@ export default class SideTab {
     this._updateIcon(tabInfo.favIconUrl);
     this._updateLoading(tabInfo.status);
     this._updatePinned(tabInfo.pinned);
-    this._updateDiscarded(tabInfo.discarded);
+    this.updateDiscarded(tabInfo.discarded);
     if (tabInfo.cookieStoreId && tabInfo.cookieStoreId.startsWith("firefox-container-")) {
       // This work is done in the background on purpose: making create() async
       // creates all sorts of bugs, because it is called in observers (which
@@ -84,7 +84,7 @@ export default class SideTab {
       this._updatedMuted(changeInfo.mutedInfo.muted);
     }
     if (changeInfo.hasOwnProperty("discarded")) {
-      this._updateDiscarded(changeInfo.discarded);
+      this.updateDiscarded(changeInfo.discarded);
     }
     if (changeInfo.hasOwnProperty("status")) {
       this._updateLoading(changeInfo.status);
@@ -193,7 +193,7 @@ export default class SideTab {
     this.view.classList.toggle("pinned", pinned);
   }
 
-  _updateDiscarded(discarded) {
+  updateDiscarded(discarded) {
     this.discarded = discarded;
     this.view.classList.toggle("discarded", discarded);
   }

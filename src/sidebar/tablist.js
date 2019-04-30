@@ -198,6 +198,10 @@ export default class TabList {
     if (changeInfo.hasOwnProperty("status") && changeInfo.status === "complete") {
       this._maybeUpdateTabThumbnail(sidetab);
     }
+
+    if (changeInfo.hasOwnProperty("discarded") && changeInfo.discarded === true) {
+      this._onTabDiscarded(sidetab);
+    }
   }
 
   // Shift tabs indexes with indexes between |start| and |end| (|end| not included)
@@ -713,6 +717,10 @@ export default class TabList {
     }
     this._appendTabView(sidetab);
     this._maybeShrinkTabs();
+  }
+
+  _onTabDiscarded(sidetab) {
+    sidetab.updateDiscarded(true);
   }
 
   _maybeUpdateTabThumbnail(sidetab) {
