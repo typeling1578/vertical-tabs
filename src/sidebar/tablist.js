@@ -176,6 +176,7 @@ export default class TabList {
   }
 
   _onBrowserTabUpdated(tabId, changeInfo, tab) {
+    // we don’t filter by windowId because it’s already filtered in the listener
     const sidetab = this.getTabById(tabId);
     if (!sidetab) { // if tab hasn’t yet been created in our tablist
       return;
