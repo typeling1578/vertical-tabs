@@ -1,6 +1,7 @@
-import SideTab from "./tab.js";
-import ContextMenu from "./contextmenu.js";
-import fuzzysort from "./lib/fuzzysort.js";
+const fuzzysort = require("fuzzysort")
+
+import SideTab from "./tab.js"
+import ContextMenu from "./contextmenu.js"
 
 const COMPACT_MODE_OFF = 0;
 /*const COMPACT_MODE_DYNAMIC = 1;*/

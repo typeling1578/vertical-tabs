@@ -24,5 +24,8 @@
     "web-ext": "^3.0.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
+  },
+  "dependencies": {
+    "fuzzysort": "^1.1.4"
   }
 }
