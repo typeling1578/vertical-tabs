@@ -1,3 +1,18 @@
+## 0.10.0
+
+* New Tab tooltip also appears when hovering the icon
+* Add option to switch to last tab when clicking current one
+* Change browser toolbar button color according to custom theme
+* Add a private tab indicator where a container indicator should appear
+* Don’t show options relative to containers when in private window
+* Add option to unload tabs in context menu
+* Don’t generate thumbnail when tab is compact
+* Set tab moved from a window as active in the new window
+* Open tab in a new window if it’s dropped outside a sidebar
+* Don’t scroll to background tab if it push active tab outside view
+* Full italian translation
+* Performance improvements
+
 ## 0.9.0
 
 * Make toolbar button work correctly and add on/off indicator
