@@ -123,7 +123,7 @@
         "message": "An Ende verschieben"
     },
     "extensionsLongDescription": {
-        "message": "Tab Center Reborn ist die Weiterentwicklung von <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a>um eine einfache, leistungsstarke und gut integrierte Erweiterung für die vertikale Verwaltung von Tabs bereitzustellen.\n\nDie Erweiterung bietet eine handvoll Einstellungen und ermöglicht es fortgeschrittenen Benutzern, das Erscheinungsbild vollständig mit CSS-Code anzupassen.\n\n<ul>\n<li>Nutze Shift+F1 um die Erweiterung zu öffnen oder zu schließen</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">So blenden Sie die obere Tab-Leiste aus</a>\n</li>\n</ul>\nBitte unterstützen Sie die Erweiterung <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">im Rahmen der Übersetzung, Dokumentation oder mit Code</a>.",
+        "message": "Tab Center Reborn ist die Weiterentwicklung von <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a>um eine einfache, leistungsstarke und gut integrierte Erweiterung für die vertikale Verwaltung von Tabs bereitzustellen.\n\nDie Erweiterung bietet eine handvoll Einstellungen und ermöglicht es fortgeschrittenen Benutzern, das Erscheinungsbild vollständig mit CSS-Code anzupassen.\n\n<ul>\n<li>Nutze Shift+F1 um die Erweiterung zu öffnen oder zu schließen</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">So blenden Sie die obere Tab-Leiste aus</a>\n</li>\n</ul>\nSie können die Erweiterung <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">im Rahmen der Übersetzung, Dokumentation, in dem sie Fehler melden oder mit Code unterstützen</a>!",
         "description": "Long description displayed on addons.mozilla.org."
     },
     "closeTabsAfterWarning": {
@@ -137,5 +137,17 @@
     "optionsThemeIntegrationExplanation": {
         "message": "Ins benutzerdefiniertes Theme integrieren, anstatt das obige Theme zu verwenden. Schließen und öffnen Sie die Sidebar erneut, nachdem Sie wieder zu einem Standardtheme von Firefox gewechselt haben.",
         "description": "Explanation for the Theme Integration option in the options page."
+    },
+    "contextMenuUnloadTab": {
+        "message": "Tab ausladen",
+        "description": "Context menu item label."
+    },
+    "optionsSwitchLastActiveTabExplanation": {
+        "message": "Durch klicken auf den aktiven Tab, wird zum vorher aktiven Tab gewechselt.",
+        "description": "Explanation for the Compact Mode option in options page."
+    },
+    "optionsSwitchLastActiveTab": {
+        "message": "Zum vorher aktiven Tab wechseln",
+        "description": "Option in options page."
     }
 }
