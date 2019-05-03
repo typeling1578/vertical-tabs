@@ -32,11 +32,11 @@
         "description": "Reload Tab context menu item label."
     },
     "contextMenuPinTab": {
-        "message": "Fiksi la langeton",
+        "message": "Alpingli la langeton",
         "description": "Pin Tab context menu item label."
     },
     "contextMenuUnpinTab": {
-        "message": "Malfiksi la langeton",
+        "message": "Depingli la langeton",
         "description": "Unpin Tab context menu item label."
     },
     "contextMenuMuteTab": {
@@ -81,7 +81,7 @@
         "message": "La kompakta modo malgrandiĝas la alto de la langetojn por montri pli da ili. En dinamika agordo, ĝi validiĝas kiam oni ne plu havas ceteran spacon."
     },
     "optionsCompactModeOff": {
-        "message": "Malvalidigita"
+        "message": "Malebligita"
     },
     "optionsCompactModeDynamic": {
         "message": "Dinamika"
@@ -127,7 +127,27 @@
         "description": "Long description displayed on addons.mozilla.org."
     },
     "optionsThemeIntegrationExplanation": {
-        "message": "Integriĝi propran temon anstataŭ uzi la supran temon. Fermu and remalfermu la flankpanelon post kiam vi reebligis unu el la defaŭltaj temoj de Firefox.",
+        "message": "Integriĝi propran temon anstataŭ uzi la supran temon. Fermu and remalfermu la flankan strion post kiam vi reebligis unu el la defaŭltaj temoj de Firefox.",
         "description": "Explanation for the Theme Integration option in the options page."
+    },
+    "closeTabsAfterWarning": {
+        "message": "Ĉu vi vere volas fermi la $COUNT$ subajn langetojn?",
+        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another."
+    },
+    "closeAllTabsExceptWarning": {
+        "message": "Ĉu vi vere volas fermi la $COUNT$ aliajn langetojn?",
+        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
+    },
+    "contextMenuUnloadTab": {
+        "message": "Malŝarĝi langeton",
+        "description": "Context menu item label."
+    },
+    "optionsSwitchLastActiveTabExplanation": {
+        "message": "Alklaki aktivan langeton ŝaltas la laste aktivan.",
+        "description": "Explanation for the Compact Mode option in options page."
+    },
+    "optionsSwitchLastActiveTab": {
+        "message": "Ŝalti laste aktivan langeton",
+        "description": "Option in options page."
     }
 }

@@ -1,9 +1,9 @@
 {
     "extensionDescription": {
-        "message": "Tab Center è un tentativo di risolvere alcuni dei problemi che sono emersi dal modo in cui le persone usano le schede (paricolarmente il problema delle troppe schede contemporaneamente) e di provvedere una base di interfaccia utente più versatile per future innovazioni. La prima versione di questo Add-On dispone le schede in un ordine verticale piuttosto che orizzontale. L'Add-On è pesantemente ispirato e ha preso in prestito idee dall'eccellente estensione VerticalTabs."
+        "message": "Sposta le schede al lato della finestra del browser."
     },
     "browserActionTitle": {
-        "message": "",
+        "message": "Aziona Tab Center Reborn",
         "description": "Tooltip shown when hovering the toolbar button."
     },
     "sidebarTitle": {
@@ -63,7 +63,7 @@
         "message": "Ricarica tutte le schede"
     },
     "contextMenuCloseTabsUnderneath": {
-        "message": "Chiudi le schede al di sotto"
+        "message": "Chiudi le schede sottostanti"
     },
     "contextMenuCloseOtherTabs": {
         "message": "Chiudi le altre schede"
@@ -78,7 +78,7 @@
         "message": "Modalità compatta"
     },
     "optionsCompactModeExplanation": {
-        "message": "La modalità compatta riduce l'altezza delle schede per mostrarne di più. Nella modalità dinamica, si attiverà in mancanza di spazio."
+        "message": "La modalità compatta riduce l'altezza delle schede per mostrarne di più. Nella modalità dinamica, si attiverà solamente in mancanza di spazio."
     },
     "optionsCompactModeOff": {
         "message": "Disabilitato"
@@ -93,22 +93,22 @@
         "message": "Compatta schede fissate"
     },
     "optionsDarkTheme": {
-        "message": "Tema Notturno"
+        "message": "Tema Scuro"
     },
     "optionsThemeIntegration": {
-        "message": ""
+        "message": "Integra con il tema personalizzato"
     },
     "optionsAdvancedTitle": {
         "message": "Avanzate"
     },
     "optionsCustomCSS": {
-        "message": "Foglio di Stile Personalizzato"
+        "message": "Stylesheet personalizzato"
     },
     "optionsCustomCSSWikiLink": {
-        "message": "Modifica CSS articolo wiki"
+        "message": "Risorse per la modifica del CSS"
     },
     "optionsSaveCustomCSS": {
-        "message": "Salvare il CSS"
+        "message": "Salva"
     },
     "contextMenuOpenInContextualTab": {
         "message": "Riapri in contenitore"
@@ -121,5 +121,33 @@
     },
     "contextMenuMoveTabToEnd": {
         "message": "Sposta alla fine"
+    },
+    "extensionsLongDescription": {
+        "message": "Tab Center Reborn continua lo sviluppo di <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> con lo scopo di offrire un'estensione semplice, potente e ben integrata per la gestione delle schede in verticale.\n\nQuesta estensione offre alcune impostazioni e permette agli utenti avanzati di personalizzarne completamente l'aspetto tramite codice CSS.\n\n<ul>\n<li>Premere Shift+F1 per aprire o chiudere l'estensione.</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">Come nascondere la barra delle schede orizzontali.</a></li>\n</ul>\n\nÈ possibile <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">contribuire con traduzioni, documentazione, segnalare problemi e codice</a>!",
+        "description": "Long description displayed on addons.mozilla.org."
+    },
+    "contextMenuUnloadTab": {
+        "message": "Dimentica la scheda",
+        "description": "Context menu item label."
+    },
+    "closeTabsAfterWarning": {
+        "message": "Sei sicuro di voler chiudere le $COUNT$ schede sottostanti?",
+        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another."
+    },
+    "closeAllTabsExceptWarning": {
+        "message": "Sei sicuro di voler chiudere le altre $COUNT$ schede?",
+        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
+    },
+    "optionsSwitchLastActiveTabExplanation": {
+        "message": "Cliccando la scheda attiva si passa all'ultima scheda utilizzata.",
+        "description": "Explanation for the Compact Mode option in options page."
+    },
+    "optionsSwitchLastActiveTab": {
+        "message": "Passa all'ultima scheda utilizzata",
+        "description": "Option in options page."
+    },
+    "optionsThemeIntegrationExplanation": {
+        "message": "Segui lo stile del tema personalizzato. Chiudi e riapri la barra laterale quando torni a uno dei temi di default di Firefox.",
+        "description": "Explanation for the Theme Integration option in the options page."
     }
 }

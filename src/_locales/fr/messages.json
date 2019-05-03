@@ -123,11 +123,31 @@
         "message": "Déplacer vers la fin"
     },
     "extensionsLongDescription": {
-        "message": "Tab Center Reborn est la continuation de <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> pour proposer une extension simple, puissante et bien intégrée pour gérer ses onglets verticalement.\n\nL’extension fournit quelques paramètres et permet aux utilisateur·rice·s avancé·e·s de complètement personnaliser son apparence avec du code CSS.\n\n<ul>\n<li>Utilisez Maj+F1 pour ouvrir ou fermer l’extension</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">Comment cacher la barre d’onglets</a></li>\n</ul>\n\nVous pouvez <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">contribuer avec des traductions, de la documentation ou du code</a>.",
+        "message": "Tab Center Reborn est la continuation de <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> pour proposer une extension simple, puissante et bien intégrée pour gérer ses onglets verticalement.\n\nL’extension fournit quelques paramètres et permet aux utilisateur·rice·s avancé·e·s de complètement personnaliser son apparence avec du code CSS.\n\n<ul>\n<li>Utilisez Maj+F1 pour ouvrir ou fermer l’extension</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">Comment cacher la barre d’onglets</a></li>\n</ul>\n\nVous pouvez <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">contribuer avec des traductions, de la documentation, des rapports de problème ou du code</a> !",
         "description": "Long description displayed on addons.mozilla.org."
     },
     "optionsThemeIntegrationExplanation": {
         "message": "S’intègre avec le thème personnalisé au lieu d’utiliser le thème ci-dessus. Fermez et réouvrez la barre latérale après être revenu·e sur un des thèmes par défaut de Firefox.",
         "description": "Explanation for the Theme Integration option in the options page."
+    },
+    "closeTabsAfterWarning": {
+        "message": "Voulez-vous vraiment fermer les $COUNT$ onglets en dessous ?",
+        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another."
+    },
+    "closeAllTabsExceptWarning": {
+        "message": "Voulez-vous vraiment fermer les $COUNT$ autres onglets ?",
+        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
+    },
+    "contextMenuUnloadTab": {
+        "message": "Décharger l’onglet",
+        "description": "Context menu item label."
+    },
+    "optionsSwitchLastActiveTabExplanation": {
+        "message": "Cliquer sur l’onglet courant active l’onglet utilisé avant.",
+        "description": "Explanation for the Compact Mode option in options page."
+    },
+    "optionsSwitchLastActiveTab": {
+        "message": "Activer l’onglet utilisé avant",
+        "description": "Option in options page."
     }
 }
