@@ -1,10 +1,12 @@
-const fuzzysort = require("fuzzysort")
+/* global browser, requestAnimationFrame */
 
-import SideTab from "./tab.js"
-import ContextMenu from "./contextmenu.js"
+import SideTab from "./tab.js";
+import ContextMenu from "./contextmenu.js";
+
+const fuzzysort = require("fuzzysort");
 
 const COMPACT_MODE_OFF = 0;
-/*const COMPACT_MODE_DYNAMIC = 1;*/
+/* const COMPACT_MODE_DYNAMIC = 1; */
 const COMPACT_MODE_STRICT = 2;
 
 export default class TabList {
@@ -40,7 +42,7 @@ export default class TabList {
     this._populate();
     this._updateScrollShadow();
 
-    browser.browserSettings.closeTabsByDoubleClick.get({}).then(({value}) => {
+    browser.browserSettings.closeTabsByDoubleClick.get({}).then(({ value }) => {
       this.closeTabsByDoubleClick = value;
     });
 
@@ -54,18 +56,21 @@ export default class TabList {
     browser.tabs.onActivated.addListener(activeInfo => this._onBrowserTabActivated(activeInfo));
     browser.tabs.onUpdated.addListener(
       (tabId, changeInfo, tab) => this._onBrowserTabUpdated(tabId, changeInfo, tab),
-      {windowId: this._windowId} // only onUpdated lets us filter by windowId
+      { windowId: this._windowId }, // only onUpdated lets us filter by windowId
     );
     browser.tabs.onRemoved.addListener((tabId, removeInfo) =>
-      this._onBrowserTabRemoved(tabId, removeInfo.windowId, removeInfo.isWindowClosing));
-    browser.tabs.onMoved.addListener(
-      (tabId, moveInfo) => this._onBrowserTabMoved(tabId, moveInfo));
-    browser.tabs.onAttached.addListener(
-      (tabId, attachInfo) => this._onBrowserTabAttached(tabId, attachInfo));
-    browser.tabs.onDetached.addListener(
-      (tabId, detachInfo) => this._onBrowserTabRemoved(tabId, detachInfo.oldWindowId, false));
-    browser.webNavigation.onCompleted.addListener(
-      details => this._webNavigationOnCompleted(details));
+      this._onBrowserTabRemoved(tabId, removeInfo.windowId, removeInfo.isWindowClosing),
+    );
+    browser.tabs.onMoved.addListener((tabId, moveInfo) => this._onBrowserTabMoved(tabId, moveInfo));
+    browser.tabs.onAttached.addListener((tabId, attachInfo) =>
+      this._onBrowserTabAttached(tabId, attachInfo),
+    );
+    browser.tabs.onDetached.addListener((tabId, detachInfo) =>
+      this._onBrowserTabRemoved(tabId, detachInfo.oldWindowId, false),
+    );
+    browser.webNavigation.onCompleted.addListener(details =>
+      this._webNavigationOnCompleted(details),
+    );
 
     // Global ("event-bubbling") listeners
     // Because defining event listeners for each tab is a terrible idea.
@@ -125,7 +130,7 @@ export default class TabList {
     this._create(tab);
   }
 
-  async _onBrowserTabAttached(tabId, {newWindowId, newPosition}) {
+  async _onBrowserTabAttached(tabId, { newWindowId, newPosition }) {
     if (!this._checkWindow(newWindowId)) {
       return;
     }
@@ -149,7 +154,8 @@ export default class TabList {
       return;
     }
     const sidetab = this.getTabById(activeInfo.tabId);
-    if (!sidetab) { // if tab is not moved yet from one window to another
+    if (!sidetab) {
+      // if tab is not moved yet from one window to another
       return;
     }
     this._setActive(sidetab);
@@ -162,7 +168,7 @@ export default class TabList {
       return;
     }
     const sidetab = this.getTabById(tabId);
-    const {fromIndex, toIndex} = moveInfo;
+    const { fromIndex, toIndex } = moveInfo;
     const direction = fromIndex < toIndex ? -1 : 1;
     const start = direction > 0 ? toIndex : fromIndex + 1;
     const end = direction > 0 ? fromIndex : toIndex + 1;
@@ -179,7 +185,8 @@ export default class TabList {
   _onBrowserTabUpdated(tabId, changeInfo, tab) {
     // we don’t filter by windowId because it’s already filtered in the listener
     const sidetab = this.getTabById(tabId);
-    if (!sidetab) { // if tab hasn’t yet been created in our tablist
+    if (!sidetab) {
+      // if tab hasn’t yet been created in our tablist
       return;
     }
     // tab info passed because of https://bugzilla.mozilla.org/show_bug.cgi?id=1450384
@@ -216,12 +223,14 @@ export default class TabList {
     }
   }
 
-  _webNavigationOnCompleted({tabId, frameId}) {
-    if (frameId !== 0) { // We only care about top-level frames.
+  _webNavigationOnCompleted({ tabId, frameId }) {
+    if (frameId !== 0) {
+      // We only care about top-level frames.
       return;
     }
     const sidetab = this.getTabById(tabId);
-    if (!sidetab) { // Could be null because different window.
+    if (!sidetab) {
+      // Could be null because different window.
       return;
     }
     sidetab.burst();
@@ -231,7 +240,6 @@ export default class TabList {
     // Prevent autoscrolling on middle click
     if (e.button === 1) {
       e.preventDefault();
-      return;
     }
   }
 
@@ -240,11 +248,11 @@ export default class TabList {
     if (e.button === 0 && SideTab.isTabEvent(e)) {
       const tabId = SideTab.tabIdForEvent(e);
       if (tabId !== this._active) {
-        browser.tabs.update(tabId, {active: true});
+        browser.tabs.update(tabId, { active: true });
       } else if (this._switchLastActiveTab && this._tabs.size > 1) {
-        browser.tabs.query({currentWindow: true}).then(tabs => {
+        browser.tabs.query({ currentWindow: true }).then(tabs => {
           tabs.sort((a, b) => b.lastAccessed - a.lastAccessed);
-          browser.tabs.update(tabs[1].id, {active: true});
+          browser.tabs.update(tabs[1].id, { active: true });
         });
       }
 
@@ -254,7 +262,6 @@ export default class TabList {
     // Prevent autoscrolling on middle click
     if (e.button === 1) {
       e.preventDefault();
-      return;
     }
   }
 
@@ -269,7 +276,6 @@ export default class TabList {
     if (e.button === 1 && SideTab.isTabEvent(e, false)) {
       browser.tabs.remove(SideTab.tabIdForEvent(e));
       e.preventDefault();
-      return;
     }
   }
 
@@ -297,20 +303,20 @@ export default class TabList {
   }
 
   _scrollIntoViewIfNeeded(tab) {
-    const {top: parentTop, height} = this._view.getBoundingClientRect();
-    const {top, bottom} = tab.view.getBoundingClientRect();
-    if ((top - parentTop) < 0 || (bottom - parentTop) > height) {
+    const { top: parentTop, height } = this._view.getBoundingClientRect();
+    const { top, bottom } = tab.view.getBoundingClientRect();
+    if (top - parentTop < 0 || bottom - parentTop > height) {
       // check if scrolling to tab won’t push active tab outside view
       const activeTab = this.getTabById(this._active);
       if (tab.id !== this._active && !activeTab.pinned) {
-        const {top: activeTop} = activeTab.view.getBoundingClientRect();
+        const { top: activeTop } = activeTab.view.getBoundingClientRect();
         if (activeTop > parentTop) {
           activeTab.view.scrollIntoView(true);
         }
         this._highlightBottomScrollShadow();
         return;
       }
-      tab.view.scrollIntoView({block: "nearest"});
+      tab.view.scrollIntoView({ block: "nearest" });
     }
   }
 
@@ -318,14 +324,18 @@ export default class TabList {
     clearTimeout(this._highlightBottomScrollShadowTimer);
     this._wrapperView.classList.add("highlight-scroll-bottom");
     this._highlightBottomScrollShadowTimer = setTimeout(
-      () => this._wrapperView.classList.remove("highlight-scroll-bottom"), 500);
+      () => this._wrapperView.classList.remove("highlight-scroll-bottom"),
+      500,
+    );
   }
 
   _updateScrollShadow() {
-    const {scrollTop, clientHeight, scrollHeight} = this._view;
+    const { scrollTop, clientHeight, scrollHeight } = this._view;
     this._wrapperView.classList.toggle("can-scroll-top", scrollTop !== 0);
-    this._wrapperView.classList.toggle("can-scroll-bottom",
-      (scrollTop + clientHeight) < scrollHeight);
+    this._wrapperView.classList.toggle(
+      "can-scroll-bottom",
+      scrollTop + clientHeight < scrollHeight,
+    );
   }
 
   _onClick(e) {
@@ -335,7 +345,7 @@ export default class TabList {
     } else if (SideTab.isIconOverlayEvent(e)) {
       const tabId = SideTab.tabIdForEvent(e);
       const tab = this.getTabById(tabId);
-      browser.tabs.update(tabId, {"muted": !tab.muted});
+      browser.tabs.update(tabId, { muted: !tab.muted });
     }
   }
 
@@ -352,15 +362,21 @@ export default class TabList {
     }
     const tabId = SideTab.tabIdForEvent(e);
     const tab = this.getTabById(tabId);
-    e.dataTransfer.setData("text/x-tabcenter-tab", JSON.stringify({
-      tabId: parseInt(SideTab.tabIdForEvent(e)),
-      origWindowId: this._windowId
-    }));
-    e.dataTransfer.setData("text/x-moz-place", JSON.stringify({
-      type: "text/x-moz-place",
-      title: tab.title,
-      uri: tab.url
-    }));
+    e.dataTransfer.setData(
+      "text/x-tabcenter-tab",
+      JSON.stringify({
+        tabId: parseInt(SideTab.tabIdForEvent(e)),
+        origWindowId: this._windowId,
+      }),
+    );
+    e.dataTransfer.setData(
+      "text/x-moz-place",
+      JSON.stringify({
+        type: "text/x-moz-place",
+        title: tab.title,
+        uri: tab.url,
+      }),
+    );
     e.dataTransfer.dropEffect = "move";
   }
 
@@ -384,9 +400,11 @@ export default class TabList {
     this._isDragging = false;
     clearTimeout(this._openInNewWindowTimer);
 
-    if (!SideTab.isTabEvent(e, false) &&
+    if (
+      !SideTab.isTabEvent(e, false) &&
       e.target !== this._spacerView &&
-      e.target !== this._moreTabsView) {
+      e.target !== this._moreTabsView
+    ) {
       return;
     }
     e.preventDefault();
@@ -403,16 +421,15 @@ export default class TabList {
     }
     this._props.openTab({
       url: mozURL,
-      windowId: this._windowId
+      windowId: this._windowId,
     });
-    return;
   }
 
   _handleDroppedTabCenterTab(e, tab) {
-    const {tabId, origWindowId} = tab;
+    const { tabId, origWindowId } = tab;
     if (!this._checkWindow(origWindowId)) {
-      browser.tabs.move(tabId, {windowId: this._windowId, index: -1});
-      browser.tabs.update(tabId, {active: true});
+      browser.tabs.move(tabId, { windowId: this._windowId, index: -1 });
+      browser.tabs.update(tabId, { active: true });
       return;
     }
 
@@ -431,7 +448,8 @@ export default class TabList {
 
     const dropTab = this.getTabById(dropTabId);
 
-    if (curTab.pinned !== dropTab.pinned) { // They can't mix
+    if (curTab.pinned !== dropTab.pinned) {
+      // They can't mix
       if (curTab.pinned) {
         // We tried to move a pinned tab to the non-pinned area, move it to the last
         // position of the pinned tabs.
@@ -445,18 +463,17 @@ export default class TabList {
 
     const curTabPos = curTab.index;
     const dropTabPos = dropTab.index;
-    const newPos = curTabPos < dropTabPos ? Math.min(this._tabs.size, dropTabPos) :
-      Math.max(0, dropTabPos);
-    browser.tabs.move(tabId, {index: newPos});
+    const newPos =
+      curTabPos < dropTabPos ? Math.min(this._tabs.size, dropTabPos) : Math.max(0, dropTabPos);
+    browser.tabs.move(tabId, { index: newPos });
   }
 
   _onDragend(e) {
-    this._openInNewWindowTimer = setTimeout(
-      () => {
-        if (this._isDragging === true) {
-          browser.windows.create({tabId: SideTab.tabIdForView(e.target)});
-        }
-      }, 50);
+    this._openInNewWindowTimer = setTimeout(() => {
+      if (this._isDragging === true) {
+        browser.windows.create({ tabId: SideTab.tabIdForView(e.target) });
+      }
+    }, 50);
   }
 
   _onSpacerDblClick() {
@@ -493,11 +510,12 @@ export default class TabList {
     const tabs = [...this._tabs.values()];
     let notShown = 0;
     if (query.length) {
-      const results = fuzzysort.go(query, tabs, {
-        keys: ["title", "host"],
-        allowTypo: false,
-        threshold: -1000,
-      })
+      const results = fuzzysort
+        .go(query, tabs, {
+          keys: ["title", "host"],
+          allowTypo: false,
+          threshold: -1000,
+        })
         .sort((r1, r2) => r2.score - r1.score)
         .reduce((acc, tabResult, index) => {
           tabResult.order = index;
@@ -511,10 +529,12 @@ export default class TabList {
         tab.resetHighlights();
         tab.resetOrder();
         if (show) {
-          if (result[0]) { // title
+          if (result[0]) {
+            // title
             tab.highlightTitle(fuzzysort.highlight(result[0], "<b>", "</b>"));
           }
-          if (result[1]) { // host
+          if (result[1]) {
+            // host
             tab.highlightHost(fuzzysort.highlight(result[1], "<b>", "</b>"));
           }
           tab.setOrder(result.order);
@@ -541,7 +561,7 @@ export default class TabList {
   }
 
   async _populate() {
-    const tabs = await browser.tabs.query({windowId: this._windowId});
+    const tabs = await browser.tabs.query({ windowId: this._windowId });
     // Sort the tabs by index so we can insert them in sequence.
     tabs.sort((a, b) => a.index - b.index);
     const pinnedFragment = document.createDocumentFragment();
@@ -567,7 +587,7 @@ export default class TabList {
   }
 
   _checkWindow(windowId) {
-    return (windowId === this._windowId);
+    return windowId === this._windowId;
   }
 
   getTabById(tabId) {
@@ -604,8 +624,10 @@ export default class TabList {
   }
 
   __maybeShrinkTabs() {
-    if (this._compactModeMode === COMPACT_MODE_STRICT ||
-      this._compactModeMode === COMPACT_MODE_OFF) {
+    if (
+      this._compactModeMode === COMPACT_MODE_STRICT ||
+      this._compactModeMode === COMPACT_MODE_OFF
+    ) {
       this._tabsShrinked = this._compactModeMode === COMPACT_MODE_STRICT;
       return;
     }
@@ -635,9 +657,10 @@ export default class TabList {
         }
       }
     }
-    estimatedHeight += this._compactPins && numPinnedTabs > 0 ?
-      this._pinnedview.offsetHeight :
-      numPinnedTabs * estimatedTabHeight;
+    estimatedHeight +=
+      this._compactPins && numPinnedTabs > 0
+        ? this._pinnedview.offsetHeight
+        : numPinnedTabs * estimatedTabHeight;
 
     if (estimatedHeight <= wrapperHeight) {
       this._tabsShrinked = false;
@@ -772,25 +795,27 @@ export default class TabList {
   }
 
   moveTabToStart(currentTab) {
-    const minIndex = Math.min(...Array.from(this._tabs)
-      .map(elem => elem[1])
-      .filter(tab => tab.pinned === currentTab.pinned)
-      .map(tab => tab.index));
-    browser.tabs.move(currentTab.id, {index: minIndex});
+    const minIndex = Math.min(
+      ...Array.from(this._tabs)
+        .map(elem => elem[1])
+        .filter(tab => tab.pinned === currentTab.pinned)
+        .map(tab => tab.index),
+    );
+    browser.tabs.move(currentTab.id, { index: minIndex });
   }
 
   async moveTabToEnd(currentTab) {
-    const maxIndex = Math.max(...Array.from(this._tabs)
-      .map(elem => elem[1])
-      .filter(tab => tab.pinned === currentTab.pinned)
-      .map(tab => tab.index));
-    browser.tabs.move(currentTab.id, {index: maxIndex});
+    const maxIndex = Math.max(
+      ...Array.from(this._tabs)
+        .map(elem => elem[1])
+        .filter(tab => tab.pinned === currentTab.pinned)
+        .map(tab => tab.index),
+    );
+    browser.tabs.move(currentTab.id, { index: maxIndex });
   }
 
   closeTabsAfterCount(tabIndex) {
-    return [...this._tabs.values()]
-      .filter(tab => tab.index > tabIndex && !tab.hidden)
-      .length;
+    return [...this._tabs.values()].filter(tab => tab.index > tabIndex && !tab.hidden).length;
   }
 
   closeTabsAfter(tabIndex) {
@@ -801,8 +826,7 @@ export default class TabList {
   }
 
   closeAllTabsExceptCount(tabId) {
-    return [...this._tabs.values()]
-      .filter(tab => tab.id !== tabId && !tab.pinned && !tab.hidden)
+    return [...this._tabs.values()].filter(tab => tab.id !== tabId && !tab.pinned && !tab.hidden)
       .length;
   }
 

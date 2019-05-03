@@ -6,9 +6,9 @@
   "version": "0.10.0",
   "default_locale": "en",
   "browser_specific_settings": {
-  "gecko": {
-    "id": "tabcenter-reborn@ariasuni",
-    "strict_min_version": "64.0"
+    "gecko": {
+      "id": "tabcenter-reborn@ariasuni",
+      "strict_min_version": "64.0"
     }
   },
   "sidebar_action": {
@@ -41,15 +41,18 @@
       "32": "icons/tabcenter.svg"
     },
     "default_title": "__MSG_browserActionTitle__",
-    "theme_icons": [{
-      "dark":  "icons/tabcenter.svg#dark",
-      "light": "icons/tabcenter.svg#light",
-      "size": 16
-    }, {
-      "dark":  "icons/tabcenter.svg#dark",
-      "light": "icons/tabcenter.svg#light",
-      "size": 32
-    }]
+    "theme_icons": [
+      {
+        "dark": "icons/tabcenter.svg#dark",
+        "light": "icons/tabcenter.svg#light",
+        "size": 16
+      },
+      {
+        "dark": "icons/tabcenter.svg#dark",
+        "light": "icons/tabcenter.svg#light",
+        "size": 32
+      }
+    ]
   },
   "background": {
     "scripts": ["background/background.js"]
@@ -57,7 +60,7 @@
   "commands": {
     "_execute_sidebar_action": {
       "suggested_key": {
-          "default": "Shift+F1"
+        "default": "Shift+F1"
       }
     }
   },

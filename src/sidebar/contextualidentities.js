@@ -1,3 +1,5 @@
+/* global browser, location */
+
 let identities = null;
 
 export default function getContextualIdentityItems() {
@@ -9,11 +11,11 @@ export default function getContextualIdentityItems() {
       id: identity.cookieStoreId,
       title: identity.name,
       icons: {
-        "16": `/sidebar/img/contextual-identities/${identity.icon}.svg#${identity.color}`
+        "16": `/sidebar/img/contextual-identities/${identity.icon}.svg#${identity.color}`,
       },
       contexts: ["tab"],
       viewTypes: ["sidebar"],
-      documentUrlPatterns: [`moz-extension://${location.host}/*`]
+      documentUrlPatterns: [`moz-extension://${location.host}/*`],
     };
   });
 }

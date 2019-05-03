@@ -1,3 +1,5 @@
+/* global browser */
+
 import SideTab from "./tab.js";
 import TabList from "./tablist.js";
 import TopMenu from "./topmenu.js";
@@ -7,7 +9,7 @@ export default class TabCenter {
     const search = this._search.bind(this);
     const openTab = this._openTab.bind(this);
     const getFirstTabId = this._getFirstTabId.bind(this);
-    this._topMenu = new TopMenu({openTab, search, getFirstTabId});
+    this._topMenu = new TopMenu({ openTab, search, getFirstTabId });
     // Do other work while the promises are pending.
     const prefsPromise = this._readPrefs();
     const windowPromise = browser.windows.getCurrent();
@@ -19,14 +21,18 @@ export default class TabCenter {
     const prefs = await prefsPromise;
     this._applyPrefs(prefs);
     document.body.setAttribute("incognito", window.incognito);
-    this._tabList = new TabList({windowId: this._windowId, openTab, search, prefs});
+    this._tabList = new TabList({
+      windowId: this._windowId,
+      openTab,
+      search,
+      prefs,
+    });
 
-    browser.runtime.connect(
-      "tabcenter-reborn@ariasuni",
-      {name: this._windowId.toString()}
-    );
+    browser.runtime.connect("tabcenter-reborn@ariasuni", {
+      name: this._windowId.toString(),
+    });
 
-    browser.runtime.getPlatformInfo().then((platform) => {
+    browser.runtime.getPlatformInfo().then(platform => {
       document.body.setAttribute("platform", platform.os);
     });
   }
@@ -35,7 +41,7 @@ export default class TabCenter {
     if (props.afterCurrent) {
       const currentIndex = (await browser.tabs.query({
         windowId: this._windowId,
-        active: true
+        active: true,
       }))[0].index;
       props.index = currentIndex + 1;
     }
@@ -53,16 +59,22 @@ export default class TabCenter {
   }
 
   _setupListeners() {
-    window.addEventListener("contextmenu", (e) => {
-      const target = e.target;
-      // Let the searchbox input and the tabs have a context menu.
-      if (!(target && (target.id === "searchbox-input" || target.id.startsWith("newtab")))
-          && !SideTab.isTabEvent(e, false)) {
-        e.preventDefault();
-      }
-    }, false);
+    window.addEventListener(
+      "contextmenu",
+      e => {
+        const target = e.target;
+        // Let the searchbox input and the tabs have a context menu.
+        if (
+          !(target && (target.id === "searchbox-input" || target.id.startsWith("newtab"))) &&
+          !SideTab.isTabEvent(e, false)
+        ) {
+          e.preventDefault();
+        }
+      },
+      false,
+    );
     browser.storage.onChanged.addListener(changes => this._applyPrefs(unwrapChanges(changes)));
-    this._themeListener = ({theme, windowId}) => {
+    this._themeListener = ({ theme, windowId }) => {
       if (!windowId || windowId === this._windowId) {
         this._applyTheme(theme);
       }
@@ -85,12 +97,12 @@ export default class TabCenter {
       document.body.classList.remove("dark-theme");
     }
 
-    const type = isDarkTheme? "light": "dark";
+    const type = isDarkTheme ? "light" : "dark";
     browser.sidebarAction.setIcon({
       path: {
         16: `/icons/tabcenter.svg#${type}`,
-        32: `/icons/tabcenter.svg#${type}`
-      }
+        32: `/icons/tabcenter.svg#${type}`,
+      },
     });
   }
 
@@ -113,7 +125,7 @@ export default class TabCenter {
     return browser.storage.local.get({
       customCSS: "",
       darkTheme: false,
-      compactModeMode: 1/* COMPACT_MODE_DYNAMIC */,
+      compactModeMode: 1 /* COMPACT_MODE_DYNAMIC */,
       compactPins: true,
       switchLastActiveTab: true,
       themeIntegration: false,
@@ -153,7 +165,7 @@ export default class TabCenter {
       "--input-selected-text": ["toolbar_field_highlight_text", "toolbar_field_text"],
       "--input-text": ["bookmark_text", "toolbar_field_text"],
       "--input-text-focus": ["toolbar_field_text_focus"],
-      "--sidebar-background": ["sidebar", "frame", "accentcolor"]
+      "--sidebar-background": ["sidebar", "frame", "accentcolor"],
     };
 
     for (const [cssVar, themeProps] of Object.entries(cssToThemeProp)) {
@@ -195,7 +207,7 @@ function setBrowserActionColor(color) {
   browser.sidebarAction.setIcon({
     path: {
       16: "/icons/tabcenter.svg",
-      32: "/icons/tabcenter.svg"
-    }
+      32: "/icons/tabcenter.svg",
+    },
   });
 }

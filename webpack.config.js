@@ -5,6 +5,6 @@ module.exports = {
   entry: "./src/sidebar/index.js",
   output: {
     filename: "bundle.js",
-    path: `${__dirname}/src/sidebar/dist`
-  }
+    path: `${__dirname}/src/sidebar/dist`,
+  },
 };

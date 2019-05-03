@@ -1,3 +1,5 @@
+/* global browser */
+
 import getContextualIdentityItems from "./contextualidentities.js";
 
 /* @arg {props}
@@ -25,7 +27,7 @@ export default class TopMenu {
     });
 
     const searchbox = document.getElementById("searchbox");
-    this._searchBoxInput.addEventListener("input", (e) => {
+    this._searchBoxInput.addEventListener("input", e => {
       this._props.search(e.target.value);
     });
     this._searchBoxInput.addEventListener("focus", () => {
@@ -44,24 +46,24 @@ export default class TopMenu {
     });
     this._newTabButtonView.addEventListener("auxclick", e => {
       if (e.button === 1) {
-        this._props.openTab({afterCurrent: true});
+        this._props.openTab({ afterCurrent: true });
       }
     });
-    this._newTabButtonView.addEventListener("contextmenu", (e) => {
+    this._newTabButtonView.addEventListener("contextmenu", e => {
       this._showNewTabPopup(e);
     });
 
-    window.addEventListener("keyup", (e) => {
+    window.addEventListener("keyup", e => {
       if (e.key === "Escape") {
         this._props.search("");
       }
     });
 
-    browser.menus.onClicked.addListener((info) => {
+    browser.menus.onClicked.addListener(info => {
       if (info.menuItemId.startsWith("contextMenuOpenInNewContextualTab_")) {
         this._props.openTab({
           afterCurrent: true,
-          cookieStoreId: info.menuItemId.split("contextMenuOpenInNewContextualTab_")[1]
+          cookieStoreId: info.menuItemId.split("contextMenuOpenInNewContextualTab_")[1],
         });
       }
     });
@@ -90,7 +92,7 @@ export default class TopMenu {
 
     browser.menus.overrideContext({
       context: "tab",
-      tabId: this._props.getFirstTabId()
+      tabId: this._props.getFirstTabId(),
     });
   }
 }

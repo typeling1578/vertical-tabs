@@ -1,3 +1,5 @@
+/* global browser */
+
 class TabCenterOptions {
   constructor() {
     this.setupLabels();
@@ -21,7 +23,7 @@ class TabCenterOptions {
       "optionsAdvancedTitle",
       "optionsCustomCSS",
       "optionsCustomCSSWikiLink",
-      "optionsSaveCustomCSS"
+      "optionsSaveCustomCSS",
     ];
     for (const opt of options) {
       this._setupTextContentLabel(opt);
@@ -40,44 +42,50 @@ class TabCenterOptions {
     this._setupCheckboxOption("switchLastActiveTab", "switchLastActiveTab", true);
 
     // Custom CSS
-    browser.storage.local.get({
-      ["customCSS"]: ""
-    }).then(prefs => {
-      document.getElementById("customCSS").value = prefs["customCSS"];
-    });
+    browser.storage.local
+      .get({
+        customCSS: "",
+      })
+      .then(prefs => {
+        document.getElementById("customCSS").value = prefs["customCSS"];
+      });
     document.getElementById("optionsSaveCustomCSS").addEventListener("click", () => {
       browser.storage.local.set({
-        "customCSS": document.getElementById("customCSS").value
+        customCSS: document.getElementById("customCSS").value,
       });
     });
   }
 
   _setupCheckboxOption(checkboxId, optionName, defaultValue = false) {
     const checkbox = document.getElementById(checkboxId);
-    browser.storage.local.get({
-      [optionName]: defaultValue
-    }).then(prefs => {
-      checkbox.checked = prefs[optionName];
-    });
+    browser.storage.local
+      .get({
+        [optionName]: defaultValue,
+      })
+      .then(prefs => {
+        checkbox.checked = prefs[optionName];
+      });
 
     checkbox.addEventListener("change", e => {
       browser.storage.local.set({
-        [optionName]: e.target.checked
+        [optionName]: e.target.checked,
       });
     });
   }
 
   _setupDropdownOption(drowdownId, optionName) {
     const dropdown = document.getElementById(drowdownId);
-    browser.storage.local.get({
-      [optionName]: 1
-    }).then(prefs => {
-      dropdown.value = prefs[optionName];
-    });
+    browser.storage.local
+      .get({
+        [optionName]: 1,
+      })
+      .then(prefs => {
+        dropdown.value = prefs[optionName];
+      });
 
     dropdown.addEventListener("change", e => {
       browser.storage.local.set({
-        [optionName]: e.target.value
+        [optionName]: e.target.value,
       });
     });
   }

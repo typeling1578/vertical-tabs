@@ -1,779 +1,791 @@
 @import url("lib/photon-colors.css");
 
 :root {
-    /* Theme-independent */
-    --tab-selected-line: var(--blue-50);
-    --button-border-radius: 4px;
-    --close-icon-hover: hsla(0, 0%, 0%, 0.18);
-    --close-icon-active: hsla(0, 0%, 0%, 0.25);
-    --input-border-focus: Highlight;
+  /* Theme-independent */
+  --tab-selected-line: var(--blue-50);
+  --button-border-radius: 4px;
+  --close-icon-hover: hsla(0, 0%, 0%, 0.18);
+  --close-icon-active: hsla(0, 0%, 0%, 0.25);
+  --input-border-focus: Highlight;
 
-    /* Light theme */
-    --icons: var(--grey-90-a80);
-    --button-background-active: var(--grey-40);
-    --button-background-hover: var(--grey-30);
+  /* Light theme */
+  --icons: var(--grey-90-a80);
+  --button-background-active: var(--grey-40);
+  --button-background-hover: var(--grey-30);
 
-    --toolbar-background: var(--grey-10);
-    --toolbar-text: var(--grey-90);
-    --input-background: var(--white-100);
-    --input-border: var(--grey-30);
-    --input-text: var(--grey-50);
+  --toolbar-background: var(--grey-10);
+  --toolbar-text: var(--grey-90);
+  --input-background: var(--white-100);
+  --input-border: var(--grey-30);
+  --input-text: var(--grey-50);
 
-    --background: var(--white-100);
-    --tab-active-background: var(--grey-30);
-    --tab-separator: var(--grey-40);
-    --tab-text: var(--grey-90);
+  --background: var(--white-100);
+  --tab-active-background: var(--grey-30);
+  --tab-separator: var(--grey-40);
+  --tab-text: var(--grey-90);
 }
 
 body.dark-theme {
-    --icons: var(--grey-10-a80);
-    --button-background-active: var(--grey-50);
-    --button-background-hover: var(--grey-60);
+  --icons: var(--grey-10-a80);
+  --button-background-active: var(--grey-50);
+  --button-background-hover: var(--grey-60);
 
-    --toolbar-background: var(--grey-80);
-    --toolbar-text: var(--white-100);
-    --input-background: var(--grey-60);
-    --input-border: var(--grey-50);
-    --input-text: var(--grey-30);
+  --toolbar-background: var(--grey-80);
+  --toolbar-text: var(--white-100);
+  --input-background: var(--grey-60);
+  --input-border: var(--grey-50);
+  --input-text: var(--grey-30);
 
-    --tab-text: var(--white-100);
-    --background: var(--grey-90);
-    --tab-active-background: var(--grey-70);
-    --tab-separator: var(--grey-60);
+  --tab-text: var(--white-100);
+  --background: var(--grey-90);
+  --tab-active-background: var(--grey-70);
+  --tab-separator: var(--grey-60);
 }
 
-body[incognito=true] {
-    --identity-color: var(--purple-50);
+body[incognito="true"] {
+  --identity-color: var(--purple-50);
 }
 
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 body {
-    background-color: var(--background);
-    color: var(--tab-text);
-    font: message-box;
-    display: flex;
-    flex-direction: column;
+  background-color: var(--background);
+  color: var(--tab-text);
+  font: message-box;
+  display: flex;
+  flex-direction: column;
 }
 
 #spacer {
-    flex: 1;
+  flex: 1;
 }
 
 #topmenu {
-    color: var(--toolbar-text);
-    display: flex;
-    height: 40px;
-    padding: 4px 4px;
-    border-bottom: 1px solid hsla(0, 0%, 0%, 0.2);
-    background-color: var(--toolbar-background);
+  color: var(--toolbar-text);
+  display: flex;
+  height: 40px;
+  padding: 4px 4px;
+  border-bottom: 1px solid hsla(0, 0%, 0%, 0.2);
+  background-color: var(--toolbar-background);
 }
 
 #newtab {
-    box-sizing: border-box;
-    display: flex;
-    flex: 0 20 auto;
-    min-width: 24px;
-    align-items: center;
-    padding: 4px 5px;
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 20 auto;
+  min-width: 24px;
+  align-items: center;
+  padding: 4px 5px;
 }
 
 #settings {
-    padding: 5px 2px;
+  padding: 5px 2px;
 }
 
 canvas {
-    display: none;
+  display: none;
 }
 
 /* This is important for event bubbling: when we click a tab, e.target
    will be the tab, and not one of its child elements */
-img, .tab *:not(.clickable) {
-    pointer-events: none;
+img,
+.tab *:not(.clickable) {
+  pointer-events: none;
 }
 
 #newtab-label {
-    vertical-align: middle;
-    margin-left: 4px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  vertical-align: middle;
+  margin-left: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media screen and (max-width: 190px) {
-    #newtab-label {
-        display: none;
-    }
+  #newtab-label {
+    display: none;
+  }
 }
 
 [data-identity-color="blue"] {
-    --identity-color: var(--blue-50);
+  --identity-color: var(--blue-50);
 }
 
 [data-identity-color="turquoise"] {
-    --identity-color: var(--teal-50);
+  --identity-color: var(--teal-50);
 }
 
 [data-identity-color="green"] {
-    --identity-color: var(--green-50);
+  --identity-color: var(--green-50);
 }
 
 [data-identity-color="yellow"] {
-    --identity-color: var(--yellow-50);
+  --identity-color: var(--yellow-50);
 }
 
 [data-identity-color="orange"] {
-    --identity-color: var(--orange-50);
+  --identity-color: var(--orange-50);
 }
 
 [data-identity-color="red"] {
-    --identity-color: var(--red-50);
+  --identity-color: var(--red-50);
 }
 
 [data-identity-color="pink"] {
-    --identity-color: var(--magenta-50);
+  --identity-color: var(--magenta-50);
 }
 
 [data-identity-color="purple"] {
-    --identity-color: var(--purple-50);
+  --identity-color: var(--purple-50);
 }
 
 .topmenu-button {
-    border-radius: var(--button-border-radius);
+  border-radius: var(--button-border-radius);
 }
 
 .topmenu-button:hover {
-    background-color: var(--button-background-hover);
+  background-color: var(--button-background-hover);
 }
 
 .topmenu-button:hover:active {
-    background-color: var(--button-background-active);
+  background-color: var(--button-background-active);
 }
 
 #newtab-icon {
-    min-width: 16px;
-    min-height: 16px;
-    background-size: 16px 16px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url("img/glyph-new-16.svg#standard");
-    -moz-context-properties: fill;
-    fill: var(--icons);
-    filter: url("img/filters.svg#fill");
+  min-width: 16px;
+  min-height: 16px;
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("img/glyph-new-16.svg#standard");
+  -moz-context-properties: fill;
+  fill: var(--icons);
+  filter: url("img/filters.svg#fill");
 }
 
 #searchbox {
-    background-color: var(--input-background);
-    display: flex;
-    margin: 0 4px;
-    padding: 1px;
-    flex: 20 0 auto;
-    min-width: 45px;
-    border-radius: 4px;
-    border: 1px solid var(--input-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,.05);
-    transition: border-color 0.1s, box-shadow 0.1s;
-    cursor: text;
-}
-
-body[platform="win"] #searchbox {
-    border-radius: 0;
+  background-color: var(--input-background);
+  display: flex;
+  margin: 0 4px;
+  padding: 1px;
+  flex: 20 0 auto;
+  min-width: 45px;
+  border-radius: 4px;
+  border: 1px solid var(--input-border);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.1s, box-shadow 0.1s;
+  cursor: text;
 }
 
 #searchbox:hover {
-    box-shadow: 0 1px 6px rgba(0,0,0,.1);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+body[platform="win"] #searchbox {
+  border-radius: 0;
 }
 
 #searchbox.focused {
-    border: 1px solid var(--input-border-focus);
+  border: 1px solid var(--input-border-focus);
+}
+
+body[platform="mac"] #searchbox.focused {
+  border: 1px solid -moz-mac-focusring;
+  box-shadow: 0 0 0 1px -moz-mac-focusring inset, 0 0 0 1px -moz-mac-focusring;
+}
+
+#searchbox-icon {
+  min-width: 24px;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("img/search.svg");
+  -moz-context-properties: fill;
+  fill: var(--input-text);
+  filter: url("img/filters.svg#fill");
+  border-radius: var(--button-border-radius) 0 0 var(--button-border-radius);
+}
+
+#searchbox-input {
+  color: var(--input-text);
+  background-color: var(--input-background);
+  flex: 1;
+  font: inherit; /* needed for windows */
+  padding: 0;
+  box-shadow: none;
+  border: 0;
+  border-radius: 0 var(--button-border-radius) var(--button-border-radius) 0;
+}
+
+#searchbox-input::selection {
+  color: var(--input-selected-text);
+  background-color: var(--input-selected-text-background);
+}
+
+body[platform="mac"] #searchbox-input {
+  font-size: 12px;
+}
+
+body[platform="win"] #searchbox-input:placeholder-shown {
+  font-style: italic;
 }
 
 #searchbox.focused #searchbox-icon,
 #searchbox.focused #searchbox-input {
-    background-color: var(--input-background-focus);
-}
-
-body[platform="mac"] #searchbox.focused {
-    border: 1px solid -moz-mac-focusring;
-    box-shadow: 0 0 0 1px -moz-mac-focusring inset, 0 0 0 1px -moz-mac-focusring;
-}
-
-#searchbox-icon {
-    min-width: 24px;
-    background-size: 14px 14px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url("img/search.svg");
-    -moz-context-properties: fill;
-    fill: var(--input-text);
-    filter: url("img/filters.svg#fill");
-    border-radius: var(--button-border-radius) 0 0 var(--button-border-radius);
-}
-
-#searchbox-input {
-    color: var(--input-text);
-    background-color: var(--input-background);
-    flex: 1;
-    font: inherit; /* needed for windows */
-    padding: 0;
-    box-shadow: none;
-    border: 0;
-    border-radius: 0 var(--button-border-radius) var(--button-border-radius) 0;
-}
-
-#searchbox-input::selection {
-    color: var(--input-selected-text);
-    background-color: var(--input-selected-text-background);
-}
-
-body[platform="mac"] #searchbox-input {
-    font-size: 12px;
-}
-
-body[platform="win"] #searchbox-input:placeholder-shown {
-    font-style: italic;
+  background-color: var(--input-background-focus);
 }
 
 #settings-icon {
-    flex-shrink: 0;
-    padding: 0 12px;
-    background-size: 16px 16px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url("img/settings.svg");
-    -moz-context-properties: fill;
-    fill: var(--icons);
-    filter: url("img/filters.svg#fill");
+  flex-shrink: 0;
+  padding: 0 12px;
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("img/settings.svg");
+  -moz-context-properties: fill;
+  fill: var(--icons);
+  filter: url("img/filters.svg#fill");
 }
 
 #tablist {
-    display: flex;
-    flex-direction: column;
-    scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
 }
 
 .tab {
-    flex-shrink: 0;
-    background: var(--background);
-}
-
-#pinnedtablist:not(.compact) .tab,
-#tablist .tab {
-    padding: 2px 2px;
-    transition: box-shadow 0.2s ease;
-}
-
-#pinnedtablist:not(.compact) .tab.active,
-#tablist .tab.active {
-    box-shadow: inset 4px 0 0px 0px var(--tab-selected-line);
-}
-
-#pinnedtablist:not(.compact) .tab.hasContext .tab-context,
-#tablist .tab.hasContext .tab-context,
-[incognito=true] #pinnedtablist:not(.compact) .tab .tab-context,
-[incognito=true] #tablist .tab .tab-context {
-    position: absolute;
-    height: 80%;
-    width: 100%;
-    box-shadow: inset -3px 0 0px 0px var(--identity-color);
-}
-
-[incognito=true] #pinnedtablist:not(.compact) .tab .tab-context,
-[incognito=true] #tablist .tab .tab-context {
-    height: 100%;
-}
-
-#tablist-wrapper {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-}
-
-#pinnedtablist {
-    z-index: 50;
-    background-color: var(--background);
-}
-
-#tablist,
-#pinnedtablist:not(.compact) {
-    overflow-x: hidden;
-}
-
-#pinnedtablist:not(.compact) .tab,
-.tab:not(.pinned) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 52px;
-    border-bottom: 1px solid var(--tab-separator);
-    position: relative;
-}
-
-#pinnedtablist.compact .tab {
-    display: flex;
-    align-items: center;
-    min-width: 32px;
-    height: 32px;
-    transition: box-shadow 0.2s ease;
-}
-
-#pinnedtablist.compact .tab .tab-meta-image {
-    margin-bottom: -1px; /* Make favicon feel centered even when active */
-}
-
-#pinnedtablist.compact .tab.active {
-    box-shadow: inset 0 3px 0px 0px var(--tab-selected-line);
-}
-
-#pinnedtablist.compact .tab.pinned .tab-context {
-    position: absolute;
-    left: 0;
-    height: 100%;
-    width: 18px;
-    margin-left: 7px;
-}
-
-[incognito=true] #pinnedtablist.compact .tab.pinned .tab-context {
-    width: 100%;
-    margin-left: 0;
-}
-
-#pinnedtablist.compact .tab.pinned.hasContext .tab-context,
-[incognito=true] #pinnedtablist.compact .tab.pinned .tab-context {
-    box-shadow: inset 0 -2px 0px 0px var(--identity-color);
-}
-
-#tablist-wrapper.can-scroll-top .tab:not(.pinned):last-child {
-    border-bottom: 0;
-}
-
-#pinnedtablist.compact:not(:empty) {
-    border-bottom: 1px solid var(--tab-separator);
-}
-
-#topshadow, #bottomshadow {
-    z-index: 25;
-    flex-shrink: 0;
-    width: 100%;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    box-shadow: 0px 0px 7px 5px var(--grey-50);
-}
-
-#topshadow {
-    position: relative;
-}
-
-#bottomshadow {
-    position: absolute;
-    bottom: 0px;
-    transition: box-shadow 0.8s ease;
-}
-
-#tablist-wrapper.highlight-scroll-bottom #bottomshadow {
-    box-shadow: 0px 0px 7px 5px var(--blue-60);
-    transition: box-shadow 0s;
-}
-
-#tablist-wrapper.can-scroll-top #topshadow,
-#tablist-wrapper.can-scroll-bottom #bottomshadow {
-    opacity: 1;
-}
-
-.tab {
-    color: var(--tab-text);
+  flex-shrink: 0;
+  background: var(--background);
+  color: var(--tab-text);
 }
 
 .tab.active,
 .tab:not(.active):hover {
-    background-color: var(--tab-active-background);
+  background-color: var(--tab-active-background);
+}
+
+#tablist .tab,
+#pinnedtablist:not(.compact) .tab {
+  padding: 2px 2px;
+  transition: box-shadow 0.2s ease;
+}
+
+#tablist .tab:not(.pinned),
+#pinnedtablist:not(.compact) .tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  border-bottom: 1px solid var(--tab-separator);
+  position: relative;
 }
 
 .tab-loading-burst {
-    position: absolute;
-    overflow: hidden;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
+  position: absolute;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 
 .tab-loading-burst::before {
-    position: absolute;
-    content: "";
-    /* We set the width to be a percentage of the tab's width so that we can use
+  position: absolute;
+  content: "";
+  /* We set the width to be a percentage of the tab's width so that we can use
        the `scale` transform to scale it up to the full size of the tab when the
        burst occurs. We also need to set margin-top/margin-left so that the
        center of the burst matches the center of the favicon. */
-    width: 5%;
-    height: 100%;
-    margin-left: 17px;
-    margin-top: 10px;
+  width: 5%;
+  height: 100%;
+  margin-left: 17px;
+  margin-top: 10px;
+}
+
+.tab.pinned .tab-loading-burst::before {
+  margin-left: 12px;
+  margin-top: 0px;
 }
 
 #tablist-wrapper.shrinked .tab-loading-burst::before {
-    margin-left: 10px;
-    margin-top: 0px;
+  margin-left: 10px;
+  margin-top: 0px;
 }
 
 .tab-loading-burst.bursting::before {
-    background-image: url("img/loading-burst.svg#standard");
-    -moz-context-properties: fill;
-    fill: var(--tab-loading-indicator);
-    filter: url("img/filters.svg#fill");
-    background-position: center center;
-    background-size: 100% auto;
-    background-repeat: no-repeat;
-    animation: tab-burst-animation 375ms cubic-bezier(0,0,.58,1);
+  background-image: url("img/loading-burst.svg#standard");
+  -moz-context-properties: fill;
+  fill: var(--tab-loading-indicator);
+  filter: url("img/filters.svg#fill");
+  background-position: center center;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  animation: tab-burst-animation 375ms cubic-bezier(0, 0, 0.58, 1);
 }
 
 .tab-loading-burst.bursting[notselectedsinceload]::before {
-    animation-name: tab-burst-animation-light;
+  animation-name: tab-burst-animation-light;
 }
 
 .tab:not(.active) .tab-loading-burst.bursting::before {
-    background-image: url("img/loading-burst.svg#light");
+  background-image: url("img/loading-burst.svg#light");
 }
 
 @keyframes tab-burst-animation {
-    0% {
-        opacity: 0.4;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(40);
-    }
+  0% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40);
+  }
 }
 
 @keyframes tab-burst-animation-light {
-    0% {
-        opacity: 0.2;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(40);
-    }
+  0% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40);
+  }
+}
+
+#tablist .tab.active,
+#pinnedtablist:not(.compact) .tab.active {
+  box-shadow: inset 4px 0 0px 0px var(--tab-selected-line);
+}
+
+[incognito="true"] #tablist .tab .tab-context,
+[incognito="true"] #pinnedtablist:not(.compact) .tab .tab-context {
+  height: 100%;
+}
+
+#pinnedtablist.compact .tab.pinned .tab-context {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 18px;
+  margin-left: 7px;
+}
+
+[incognito="true"] #tablist .tab:not(.hasContext) .tab-context,
+[incognito="false"] #tablist .tab.hasContext .tab-context,
+[incognito="true"] #pinnedtablist:not(.compact) .tab:not(.hasContext) .tab-context,
+[incognito="false"] #pinnedtablist:not(.compact) .tab.hasContext .tab-context {
+  position: absolute;
+  height: 80%;
+  width: 100%;
+  box-shadow: inset -3px 0 0px 0px var(--identity-color);
+}
+
+#tablist-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+#pinnedtablist {
+  z-index: 50;
+  background-color: var(--background);
+}
+
+#tablist,
+#pinnedtablist:not(.compact) {
+  overflow-x: hidden;
+}
+
+#pinnedtablist.compact .tab {
+  display: flex;
+  align-items: center;
+  min-width: 32px;
+  height: 32px;
+  transition: box-shadow 0.2s ease;
+}
+
+.tab.discarded .tab-meta-image {
+  opacity: 0.45;
+}
+
+#pinnedtablist.compact .tab .tab-meta-image {
+  margin-bottom: -1px; /* Make favicon feel centered even when active */
+}
+
+#pinnedtablist.compact .tab.active {
+  box-shadow: inset 0 3px 0px 0px var(--tab-selected-line);
+}
+
+[incognito="true"] #pinnedtablist.compact .tab.pinned .tab-context {
+  width: 100%;
+  margin-left: 0;
+}
+
+#pinnedtablist.compact .tab.pinned.hasContext .tab-context,
+[incognito="true"] #pinnedtablist.compact .tab.pinned .tab-context {
+  box-shadow: inset 0 -2px 0px 0px var(--identity-color);
+}
+
+#tablist-wrapper.can-scroll-top .tab:not(.pinned):last-child {
+  border-bottom: 0;
+}
+
+#pinnedtablist.compact:not(:empty) {
+  border-bottom: 1px solid var(--tab-separator);
+}
+
+#topshadow,
+#bottomshadow {
+  z-index: 25;
+  flex-shrink: 0;
+  width: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  box-shadow: 0px 0px 7px 5px var(--grey-50);
+}
+
+#topshadow {
+  position: relative;
+}
+
+#bottomshadow {
+  position: absolute;
+  bottom: 0px;
+  transition: box-shadow 0.8s ease;
+}
+
+#tablist-wrapper.highlight-scroll-bottom #bottomshadow {
+  box-shadow: 0px 0px 7px 5px var(--blue-60);
+  transition: box-shadow 0s;
+}
+
+#tablist-wrapper.can-scroll-top #topshadow,
+#tablist-wrapper.can-scroll-bottom #bottomshadow {
+  opacity: 1;
 }
 
 .tab-icon-overlay {
-    display: none;
-    z-index: 1;
-    position: absolute;
-    bottom: 3px;
-    right: 1px;
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    background-color: var(--white-100);
-    background-size: contain;
-    background-clip: padding-box;
-    border: 1px solid hsla(0, 0%, 0%, 0.2);
-    box-shadow: 0 1px 0 hsla(0, 0%, 0%, 0.5);
+  display: none;
+  z-index: 1;
+  position: absolute;
+  bottom: 3px;
+  right: 1px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: var(--white-100);
+  background-size: contain;
+  background-clip: padding-box;
+  border: 1px solid hsla(0, 0%, 0%, 0.2);
+  box-shadow: 0 1px 0 hsla(0, 0%, 0%, 0.5);
 }
 
 #tablist-wrapper.shrinked #tablist:not(.compact) .tab-icon-overlay {
-    bottom: 4px;
-    left: 18px;
+  bottom: 4px;
+  left: 18px;
 }
 
 #tablist-wrapper:not(.shrinked) #tablist:not(.compact) .tab-icon-overlay {
-    width: 16px;
-    height: 16px;
-    top: 0;
-    left: 10px;
+  width: 16px;
+  height: 16px;
+  top: 0;
+  left: 10px;
 }
 
 .tab-icon-overlay.sound {
-    display: block;
-    background-image: url("img/tab-audio-small.svg#tab-audio");
+  display: block;
+  background-image: url("img/tab-audio-small.svg#tab-audio");
 }
 
 .tab-icon-overlay.muted {
-    display: block;
-    background-image: url("img/tab-audio-small.svg#tab-audio-muted");
+  display: block;
+  background-image: url("img/tab-audio-small.svg#tab-audio-muted");
+}
+
+#pinnedtablist.compact .tab.pinned > .tab-meta-image {
+  background-image: none !important; /* Because the JS script sets it manually */
 }
 
 #tablist-wrapper:not(.shrinked) #tablist .tab-meta-image,
 #tablist-wrapper:not(.shrinked) #pinnedtablist:not(.compact) .tab-meta-image {
-    margin: auto 6px;
-    min-width: 54px;
-    height: 40px;
-    border: 0;
-    background-image: url("img/thumbnail-blank.svg");
-    background-size: contain;
-    background-color: var(--white-100);
-    background-repeat: no-repeat;
-    box-shadow: 0 0 2px 2px hsla(0, 0%, 0%, 0.02), 0 2px 0 hsla(0, 0%, 0%, 0.05), 0 0 0 1px hsla(0, 0%, 0%, 0.2);
+  margin: auto 6px;
+  min-width: 54px;
+  height: 40px;
+  border: 0;
+  background-image: url("img/thumbnail-blank.svg");
+  background-size: contain;
+  background-color: var(--white-100);
+  background-repeat: no-repeat;
+  box-shadow: 0 0 2px 2px hsla(0, 0%, 0%, 0.02), 0 2px 0 hsla(0, 0%, 0%, 0.05),
+    0 0 0 1px hsla(0, 0%, 0%, 0.2);
 }
 
-#tablist-wrapper.shrinked #tablist .tab-meta-image,
+#tablist-wrapper.shrinked #tablist.compact .tab-meta-image,
+#tablist-wrapper.shrinked #tablist:not(.compact) .tab-meta-image,
 #tablist-wrapper.shrinked #pinnedtablist:not(.compact) .tab-meta-image {
-    background: none !important; /* Because the JS script sets it manually */
-    /* Make it the same size as the favicon it contains */
-    height: 20px;
-    width: 20px;
-    margin-left: 5px;
+  background: none !important; /* Because the JS script sets it manually */
+  /* Make it the same size as the favicon it contains */
+  height: 20px;
+  width: 20px;
+  margin-left: 5px;
 }
 
 #tablist-wrapper:not(.shrinked) #tablist .tab-meta-image.has-thumbnail,
 #tablist-wrapper:not(.shrinked) #pinnedtablist:not(.compact) .tab-meta-image.has-thumbnail {
-    border: 2px solid white;
-}
-
-#tablist-wrapper:not(.shrinked) #tablist .tab-meta-image.has-thumbnail > .tab-icon-wrapper,
-#tablist-wrapper:not(.shrinked) #pinnedtablist:not(.compact) .tab-meta-image.has-thumbnail > .tab-icon-wrapper {
-    margin-left: -2px;
-    margin-top: 18px;
+  border: 2px solid white;
 }
 
 .tab-icon-wrapper {
-    height: 20px;
-    width: 20px;
-    padding: 2px;
+  height: 20px;
+  width: 20px;
+  padding: 2px;
+}
+
+#pinnedtablist.compact .tab.pinned .tab-icon-wrapper {
+  height: 24px;
+  width: 24px;
 }
 
 #tablist-wrapper:not(.shrinked) #tablist .tab-icon-wrapper,
 #tablist-wrapper:not(.shrinked) #pinnedtablist:not(.compact) .tab-icon-wrapper {
-    margin-left: 0px;
-    margin-top: 20px;
-    border-radius: var(--button-border-radius);
-    background-color: var(--white-100);
-    box-shadow: 0 0 2px hsla(0, 0%, 0%, 0.08), 0 0 0 1px hsla(0, 0%, 0%, 0.08);
+  margin-left: 0px;
+  margin-top: 20px;
+  border-radius: var(--button-border-radius);
+  background-color: var(--white-100);
+  box-shadow: 0 0 2px hsla(0, 0%, 0%, 0.08), 0 0 0 1px hsla(0, 0%, 0%, 0.08);
+}
+
+#tablist-wrapper:not(.shrinked) #tablist .tab-meta-image.has-thumbnail > .tab-icon-wrapper,
+#tablist-wrapper:not(.shrinked)
+  #pinnedtablist:not(.compact)
+  .tab-meta-image.has-thumbnail
+  > .tab-icon-wrapper {
+  margin-left: -2px;
+  margin-top: 18px;
 }
 
 .tab-icon {
-    width: 16px;
-    height: 16px;
-    background-image: url("img/defaultFavicon.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    background-origin: content-box;
-    image-rendering: pixelated;
+  width: 16px;
+  height: 16px;
+  background-image: url("img/defaultFavicon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-origin: content-box;
+  image-rendering: pixelated;
 }
 
 .tab-icon.chrome-icon {
-    -moz-context-properties: fill;
-    fill: var(--icons);
-    filter: url("img/filters.svg#fill");
+  -moz-context-properties: fill;
+  fill: var(--icons);
+  filter: url("img/filters.svg#fill");
 }
 
-#tablist-wrapper:not(.shrinked) #tablist .tab-icon.chrome-icon,
-#pinnedtablist:not(.compact) .tab-icon.chrome-icon {
-    fill: var(--grey-90-a80);
+#pinnedtablist:not(.compact) .tab-icon.chrome-icon,
+#tablist-wrapper:not(.shrinked) #tablist .tab-icon.chrome-icon {
+  fill: var(--grey-90-a80);
 }
 
 .tab.loading .tab-icon {
-    position: relative;
-    overflow: hidden;
-    background-image: none !important;
+  position: relative;
+  overflow: hidden;
+  background-image: none !important;
 }
 
 .tab.loading .tab-icon::before {
-    content: "";
-    position: absolute;
-    background-image: url("img/loading-spinner.svg#standard");
-    background-position: left center;
-    background-repeat: no-repeat;
-    width: 960px;
-    height: 100%;
-    animation: tab-throbber-animation 1.05s steps(60) infinite;
-    -moz-context-properties: fill;
+  content: "";
+  position: absolute;
+  background-image: url("img/loading-spinner.svg#standard");
+  background-position: left center;
+  background-repeat: no-repeat;
+  width: 960px;
+  height: 100%;
+  animation: tab-throbber-animation 1.05s steps(60) infinite;
+  -moz-context-properties: fill;
 
-    /* XXX: It would be nice to transition between the "connecting" color and the
+  /* XXX: It would be nice to transition between the "connecting" color and the
      "loading" color (see the `.tab-throbber[progress]::before` rule below);
      however, that currently forces main thread painting. When this is fixed
      (after WebRender lands), we can do something like
      `transition: fill 0.333s, opacity 0.333s;` */
 
-    fill: currentColor;
-    opacity: 0.7;
+  fill: currentColor;
+  opacity: 0.7;
 }
 
 @keyframes tab-throbber-animation {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 @keyframes tab-throbber-animation-rtl {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 .tab-title-wrapper {
-    flex: 1;
-    display: flex;
-    min-width: 0;
-    flex-direction: column;
-}
-
-#tablist-wrapper.shrinked .tab-title-wrapper {
-    margin-left: 6px;
-}
-
-.tab.discarded .tab-title {
-    opacity: 0.5;
-}
-
-.tab.discarded .tab-meta-image {
-    opacity: 0.45;
-}
-
-.tab-title, .tab-host {
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.tab-host {
-    opacity: 0.5;
-}
-
-#tablist-wrapper.shrinked .tab-host {
-    display: none;
-}
-
-.tab-title-wrapper {
-    mask-image: linear-gradient(to left, transparent 0, black 2em);
+  flex: 1;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  mask-image: linear-gradient(to left, transparent 0, black 2em);
 }
 
 .tab:hover:not(.pinned) > .tab-title-wrapper {
-    z-index: 0; /* So that highlighting doesn’t draw above shadows */
-    mask-image: linear-gradient(to left, transparent 28px, black calc(2em + 28px));
+  z-index: 0; /* So that highlighting doesn’t draw above shadows */
+  mask-image: linear-gradient(to left, transparent 28px, black calc(2em + 28px));
+}
+
+#tablist-wrapper.shrinked .tab-title-wrapper {
+  margin-left: 6px;
+}
+
+.tab-title,
+.tab-host {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.tab-host {
+  opacity: 0.5;
+}
+
+.tab.discarded .tab-title {
+  opacity: 0.5;
+}
+
+#tablist-wrapper.shrinked .tab-host {
+  display: none;
 }
 
 .tab-pin {
-    display: none;
+  display: none;
 }
 
 #pinnedtablist:not(.compact) .tab.pinned .tab-pin {
-    min-width: 16px;
-    height: 16px;
-    margin-right: 12px;
-    display: block;
-    background-image: url("img/glyph-pin-pinned-12.svg#standard");
-    -moz-context-properties: fill;
-    fill: var(--icons);
-    filter: url("img/filters.svg#fill");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 12px;
+  min-width: 16px;
+  height: 16px;
+  margin-right: 12px;
+  display: block;
+  background-image: url("img/glyph-pin-pinned-12.svg#standard");
+  -moz-context-properties: fill;
+  fill: var(--icons);
+  filter: url("img/filters.svg#fill");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 12px;
 }
 
 .tab-close {
-    position: absolute;
-    display: block;
-    width: 20px;
-    height: 20px;
-    top: 0;
-    bottom: 0;
-    right: 6px;
-    margin: auto;
-    background-image: url("img/close-icon.svg");
-    -moz-context-properties: fill;
-    fill: var(--icons);
-    filter: url("img/filters.svg#fill");
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 2px;
-    opacity: 0;
-}
-
-.tab:hover > .tab-close {
-    opacity: 1;
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  bottom: 0;
+  right: 6px;
+  margin: auto;
+  background-image: url("img/close-icon.svg");
+  -moz-context-properties: fill;
+  fill: var(--icons);
+  filter: url("img/filters.svg#fill");
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 2px;
+  opacity: 0;
 }
 
 .tab-close:hover {
-    background-color: var(--close-icon-hover);
+  background-color: var(--close-icon-hover);
 }
+
+.tab:hover > .tab-close {
+  opacity: 1;
+}
+
 .tab-close:hover:active {
-    background-color: var(--close-icon-active);
+  background-color: var(--close-icon-active);
 }
 
 #tablist-wrapper.shrinked #tablist .tab,
 #tablist-wrapper.shrinked #pinnedtablist:not(.compact) .tab {
-    height: 36px;
-}
-
-.tab.pinned .tab-loading-burst::before {
-    margin-left: 12px;
-    margin-top: 0px;
-}
-
-#tablist-wrapper #pinnedtablist {
-    flex-shrink: 0;
-}
-
-#tablist-wrapper #pinnedtablist.compact {
-    display: flex;
-    flex-wrap: wrap;
+  height: 36px;
 }
 
 #pinnedtablist:empty {
-    display: none;
+  display: none;
+}
+
+#tablist-wrapper #pinnedtablist {
+  flex-shrink: 0;
+}
+
+#tablist-wrapper #pinnedtablist.compact {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #pinnedtablist.compact .tab.pinned {
-    position: relative;
-    padding: 2px 4px;
-}
-
-#pinnedtablist.compact .tab.pinned > .tab-meta-image {
-    background-image: none !important; /* Because the JS script sets it manually */
-}
-
-#pinnedtablist.compact .tab.pinned .tab-icon-wrapper {
-    height: 24px;
-    width: 24px;
+  position: relative;
+  padding: 2px 4px;
 }
 
 #pinnedtablist.compact .tab.pinned .tab-icon {
-    margin: 2px;
+  margin: 2px;
 }
 
 #pinnedtablist.compact .tab.pinned:not(.loading) .tab-icon {
-    width: 16px;
-    height: 16px;
+  width: 16px;
+  height: 16px;
 }
 
 #pinnedtablist.compact .tab.pinned > .tab-title-wrapper,
 .tab.pinned > .tab-close {
-    display: none;
+  display: none;
 }
 
 #pinnedtablist .tab.pinned.wants-attention {
-    background-image: url("img/tab-attention.svg");
-    background-repeat: no-repeat;
+  background-image: url("img/tab-attention.svg");
+  background-repeat: no-repeat;
 }
 
 #pinnedtablist.compact .tab.pinned.wants-attention {
-    background-position: center bottom;
+  background-position: center bottom;
 }
 
 #pinnedtablist:not(.compact) .tab.pinned.wants-attention {
-    background-position: left center;
-}
-
-#moretabs:not([hasMoreTabs]) {
-    display: none;
+  background-position: left center;
 }
 
 #moretabs {
-    display: flex;
-    align-items: center;
-    height: 36px;
-    padding-left: 31px;
+  display: flex;
+  align-items: center;
+  height: 36px;
+  padding-left: 31px;
 }
 
 #moretabs:hover {
-    background-color: hsla(0, 0%, 0%, 0.1);
+  background-color: hsla(0, 0%, 0%, 0.1);
+}
+
+#moretabs:not([hasMoreTabs]) {
+  display: none;
 }
 
 .hidden {
-    display: none !important;
+  display: none !important;
 }

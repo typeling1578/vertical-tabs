@@ -1,12 +1,60 @@
 {
   "name": "tabcenter-reborn",
   "scripts": {
-    "lint": "eslint .",
-    "webext-lint": "web-ext lint -s src/ -i sidebar/dist/ test/vendor/",
-    "build": "webpack-cli --mode production && web-ext build -s src/ -i test/ 'sidebar/**/*.js' '!sidebar/dist/bundle.js' --overwrite-dest",
+    "lint": "prettier --write \"**/*.{js,yaml,html,css,json,yaml,md}\" && eslint . --fix && stylelint src/{options,sidebar}/*.css",
     "watch": "webpack-cli --mode development --watch --devtool=inline-cheap-source-map --devtool=inline-cheap-module-source-map --devtool=inline-source-map",
     "webext": "web-ext run --start-url about:debugging -s src",
-    "dev": "concurrently --kill-others --raw -s first npm:webext npm:watch"
+    "dev": "concurrently --kill-others --raw -s first npm:webext npm:watch",
+    "webext-lint": "web-ext lint -s src/ -i sidebar/dist/ test/vendor/",
+    "build": "webpack-cli --mode production && web-ext build -s src/ -i test/ 'sidebar/**/*.js' '!sidebar/dist/bundle.js' --overwrite-dest"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "trailingComma": "all",
+    "endOfLine": "lf"
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "browser": true,
+      "webextensions": true
+    },
+    "extends": "prettier",
+    "parserOptions": {
+      "ecmaVersion": 9,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "impliedStrict": true
+      }
+    },
+    "rules": {
+      "eqeqeq": "error",
+      "no-var": "error",
+      "prefer-const": "error",
+      "prefer-template": "error"
+    }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-recommended"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,yaml,html,css,json,yaml,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.css": [
+      "stylelint --fix",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -20,7 +68,13 @@
   "homepage": "https://framagit.org/ariasuni/tabcenter-reborn#readme",
   "devDependencies": {
     "concurrently": "^4.1.0",
-    "eslint": "^5.15.3",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.2.0",
+    "husky": "^2.1.0",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.17.0",
+    "stylelint": "^10.0.1",
+    "stylelint-config-recommended": "^2.2.0",
     "web-ext": "^3.0.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"

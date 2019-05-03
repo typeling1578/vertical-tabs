@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="options.css"/>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="options.css" />
   </head>
   <body>
     <h1 id="optionsTitle"></h1>
     <div id="primaryOptions" class="options">
-        <div><label for="darkTheme" id="optionsDarkTheme"></label></div>
-        <div><input id="darkTheme" type="checkbox" /></div>
-        <div><label for="themeIntegration" id="optionsThemeIntegration"></label></div>
-        <div><input id="themeIntegration" type="checkbox" /></div>
-        <p id="optionsThemeIntegrationExplanation" class="explanation"></p>
-        <div><label for="compactModeMode" id="optionsCompactMode"></label></div>
-        <div>
-            <select name="compactModeMode" id="compactMode">
-              <option value="0" id="optionsCompactModeOff"/>
-              <option value="1" id="optionsCompactModeDynamic"/>
-              <option value="2" id="optionsCompactModeStrict"/>
-            </select>
-        </div>
-        <p id="optionsCompactModeExplanation" class="explanation"></p>
-        <div><label for="compactPins" id="optionsCompactPins"></label></div>
-        <div><input id="compactPins" type="checkbox" /></div>
-        <div><label for="switchLastActiveTab" id="optionsSwitchLastActiveTab"></label></div>
-        <div><input id="switchLastActiveTab" type="checkbox" /></div>
-        <p id="optionsSwitchLastActiveTabExplanation" class="explanation"></p>
+      <div><label for="darkTheme" id="optionsDarkTheme"></label></div>
+      <div><input id="darkTheme" type="checkbox" /></div>
+      <div><label for="themeIntegration" id="optionsThemeIntegration"></label></div>
+      <div><input id="themeIntegration" type="checkbox" /></div>
+      <p id="optionsThemeIntegrationExplanation" class="explanation"></p>
+      <div><label for="compactModeMode" id="optionsCompactMode"></label></div>
+      <div>
+        <select name="compactModeMode" id="compactMode">
+          <option value="0" id="optionsCompactModeOff" />
+          <option value="1" id="optionsCompactModeDynamic" />
+          <option value="2" id="optionsCompactModeStrict" />
+        </select>
+      </div>
+      <p id="optionsCompactModeExplanation" class="explanation"></p>
+      <div><label for="compactPins" id="optionsCompactPins"></label></div>
+      <div><input id="compactPins" type="checkbox" /></div>
+      <div><label for="switchLastActiveTab" id="optionsSwitchLastActiveTab"></label></div>
+      <div><input id="switchLastActiveTab" type="checkbox" /></div>
+      <p id="optionsSwitchLastActiveTabExplanation" class="explanation"></p>
     </div>
     <h1 id="optionsAdvancedTitle"></h1>
     <div class="options">
       <div><label for="customCSS" id="optionsCustomCSS"></label></div>
       <div><textarea id="customCSS"></textarea></div>
-      <div><a id="optionsCustomCSSWikiLink" href="https://framagit.org/ariasuni/tabcenter-reborn/wikis/home"></a></div>
+      <div>
+        <a
+          id="optionsCustomCSSWikiLink"
+          href="https://framagit.org/ariasuni/tabcenter-reborn/wikis/home"
+        ></a>
+      </div>
       <div><button id="optionsSaveCustomCSS" /></div>
     </div>
     <script src="options.js"></script>

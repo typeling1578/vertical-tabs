@@ -1,4 +1,4 @@
-/* global CSSAnimation */
+/* global browser, requestAnimationFrame, requestIdleCallback, CSSAnimation, Image */
 
 export default class SideTab {
   constructor() {
@@ -59,7 +59,9 @@ export default class SideTab {
     close.title = browser.i18n.getMessage("closeTabButtonTooltip");
     this.thumbnailCanvas = tab.querySelector("canvas");
     this.thumbnailCanvas.id = `thumbnail-canvas-${this.id}`;
-    this.thumbnailCanvasCtx = this.thumbnailCanvas.getContext("2d", {alpha: false});
+    this.thumbnailCanvasCtx = this.thumbnailCanvas.getContext("2d", {
+      alpha: false,
+    });
   }
 
   onUpdate(changeInfo, tab) {
@@ -165,8 +167,11 @@ export default class SideTab {
   }
 
   _setIcon(favIconUrl) {
-    if (favIconUrl.startsWith("chrome://") && favIconUrl.endsWith(".svg")
-        && favIconUrl !== "chrome://browser/skin/privatebrowsing/favicon.svg") {
+    if (
+      favIconUrl.startsWith("chrome://") &&
+      favIconUrl.endsWith(".svg") &&
+      favIconUrl !== "chrome://browser/skin/privatebrowsing/favicon.svg"
+    ) {
       this._iconView.classList.add("chrome-icon");
     } else {
       this._iconView.classList.remove("chrome-icon");
@@ -184,7 +189,7 @@ export default class SideTab {
   }
 
   _resetIcon() {
-    this._iconView.style.backgroundImage = "url(\"img/defaultFavicon.svg\")";
+    this._iconView.style.backgroundImage = 'url("img/defaultFavicon.svg")';
     this._iconView.classList.add("chrome-icon");
   }
 
@@ -200,17 +205,16 @@ export default class SideTab {
 
   _updateThumbnail() {
     requestIdleCallback(async () => {
-
       let thumbnailBase64 = null;
       try {
         thumbnailBase64 = await browser.tabs.captureTab(this.id, {
-          format: "png"
+          format: "png",
         });
         await this._updateThumbnailCanvas(thumbnailBase64);
         this._metaImageView.style.backgroundImage = `-moz-element(#${this.thumbnailCanvas.id})`;
         this._metaImageView.classList.add("has-thumbnail");
       } catch (error) {
-        //the tab is not available;
+        // the tab is not available;
       }
     });
   }
@@ -221,7 +225,7 @@ export default class SideTab {
       const img = new Image();
       img.onload = () => {
         // Resize the image to lower the memory consumption.
-        const width = Math.floor(img.width * desiredHeight / img.height);
+        const width = Math.floor((img.width * desiredHeight) / img.height);
         this.thumbnailCanvas.width = width;
         this.thumbnailCanvas.height = desiredHeight;
         this.thumbnailCanvasCtx.drawImage(img, 0, 0, width, desiredHeight);
@@ -269,7 +273,7 @@ export default class SideTab {
     if (!el) {
       return false;
     }
-    const isTabNode = (node) => node && node.classList.contains("tab");
+    const isTabNode = node => node && node.classList.contains("tab");
     if (isTabNode(el)) {
       return true;
     }
@@ -319,16 +323,18 @@ export default class SideTab {
           return;
         }
         const animations = [...icons]
-          .map(tabIcon => tabIcon.getAnimations({subtree: true}))
+          .map(tabIcon => tabIcon.getAnimations({ subtree: true }))
           .reduce((a, b) => a.concat(b))
-          .filter(anim =>
-            anim instanceof CSSAnimation &&
-            anim.animationName === "tab-throbber-animation" &&
-            (anim.playState === "running" || anim.playState === "pending"));
+          .filter(
+            anim =>
+              anim instanceof CSSAnimation &&
+              anim.animationName === "tab-throbber-animation" &&
+              (anim.playState === "running" || anim.playState === "pending"),
+          );
 
         // Synchronize with the oldest running animation, if any.
         const firstStartTime = Math.min(
-          ...animations.map(anim => anim.startTime === null ? Infinity : anim.startTime)
+          ...animations.map(anim => (anim.startTime === null ? Infinity : anim.startTime)),
         );
         if (firstStartTime === Infinity) {
           return;

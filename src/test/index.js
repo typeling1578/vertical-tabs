@@ -10,11 +10,8 @@ function loadScript(src) {
 }
 
 (async () => {
-  await Promise.all([
-    loadScript("../test/vendor/mocha.js"),
-    loadScript("../test/vendor/chai.js")
-  ]);
-  mocha.setup({ui: "tdd", timeout: 10000}).reporter("spec");
+  await Promise.all([loadScript("../test/vendor/mocha.js"), loadScript("../test/vendor/chai.js")]);
+  mocha.setup({ ui: "tdd", timeout: 10000 }).reporter("spec");
 
   await loadScript("../test/tabs-position.test.js");
 
