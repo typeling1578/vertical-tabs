@@ -105,11 +105,23 @@
     },
     "closeTabsAfterWarning": {
         "message": "Do you really want to close the $COUNT$ tabs underneath?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another."
+        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
     },
     "closeAllTabsExceptWarning": {
         "message": "Do you really want to close the $COUNT$ other tabs?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
+        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
     },
     "optionsTitle": {
         "message": "Settings",

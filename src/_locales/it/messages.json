@@ -132,11 +132,23 @@
     },
     "closeTabsAfterWarning": {
         "message": "Sei sicuro di voler chiudere le $COUNT$ schede sottostanti?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another."
+        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
     },
     "closeAllTabsExceptWarning": {
         "message": "Sei sicuro di voler chiudere le altre $COUNT$ schede?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
+        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
     },
     "optionsSwitchLastActiveTabExplanation": {
         "message": "Cliccando la scheda attiva si passa all'ultima scheda utilizzata.",

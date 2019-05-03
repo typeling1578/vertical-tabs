@@ -128,11 +128,23 @@
     },
     "closeTabsAfterWarning": {
         "message": "Möchten Sie wirklich die $COUNT$ unteren Tabs schließen?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another."
+        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
     },
     "closeAllTabsExceptWarning": {
         "message": "Möchten Sie wirklich die $COUNT$ anderen Tabs schließen?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
+        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
     },
     "optionsThemeIntegrationExplanation": {
         "message": "Ins benutzerdefiniertes Theme integrieren, anstatt das obige Theme zu verwenden. Schließen und öffnen Sie die Sidebar erneut, nachdem Sie wieder zu einem Standardtheme von Firefox gewechselt haben.",
