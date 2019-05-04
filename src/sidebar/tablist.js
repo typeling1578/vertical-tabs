@@ -24,6 +24,7 @@ export default class TabList {
     this.__tabsShrinked = false;
     this._windowId = props.windowId;
     this._filterActive = false;
+    this._willMoveTimeout = null;
     this._isDragging = false;
     this._scrollTimer = null;
     this._openInNewWindowTimer = null;
@@ -167,19 +168,29 @@ export default class TabList {
     if (!this._checkWindow(moveInfo.windowId)) {
       return;
     }
+    this._willMoveTimeout = setTimeout(() => {
+      this.__onBrowserTabMoved(tabId, moveInfo);
+    }, 10);
+  }
+
+  __onBrowserTabMoved(tabId, moveInfo) {
+    this._willMoveTimeout = null;
     const sidetab = this.getTabById(tabId);
+    this._updateTabIndex(sidetab, moveInfo);
+    if (sidetab.hidden) {
+      return;
+    }
+    this._appendTabView(sidetab);
+    this.scrollIntoView(sidetab);
+  }
+
+  _updateTabIndex(sidetab, moveInfo) {
     const { fromIndex, toIndex } = moveInfo;
     const direction = fromIndex < toIndex ? -1 : 1;
     const start = direction > 0 ? toIndex : fromIndex + 1;
     const end = direction > 0 ? fromIndex : toIndex + 1;
     this._shiftTabsIndexes(direction, start, end);
     sidetab.index = toIndex;
-
-    if (sidetab.hidden) {
-      return;
-    }
-    this._appendTabView(sidetab);
-    this.scrollIntoView(sidetab);
   }
 
   _onBrowserTabUpdated(tabId, changeInfo, tab) {
@@ -473,7 +484,7 @@ export default class TabList {
       if (this._isDragging === true) {
         browser.windows.create({ tabId: SideTab.tabIdForView(e.target) });
       }
-    }, 50);
+    }, 25);
   }
 
   _onSpacerDblClick() {
@@ -737,11 +748,18 @@ export default class TabList {
   }
 
   _onTabPinned(sidetab) {
+    this._removeTabView(sidetab);
+    sidetab.updatePinned(!sidetab.pinned);
     if (sidetab.pinned && this._compactPins) {
       sidetab.resetThumbnail();
     }
-    this._appendTabView(sidetab);
-    this._maybeShrinkTabs();
+    if (this._willMoveTimeout === null) {
+      this._appendTabView(sidetab);
+      this._maybeShrinkTabs();
+      if (sidetab.active) {
+        this.scrollIntoView(sidetab);
+      }
+    }
   }
 
   _onTabDiscarded(sidetab) {

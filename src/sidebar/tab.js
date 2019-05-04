@@ -27,7 +27,7 @@ export default class SideTab {
     this._updatedMuted(tabInfo.mutedInfo.muted);
     this._updateIcon(tabInfo.favIconUrl);
     this._updateLoading(tabInfo.status);
-    this._updatePinned(tabInfo.pinned);
+    this.updatePinned(tabInfo.pinned);
     this.updateDiscarded(tabInfo.discarded);
     if (tabInfo.cookieStoreId && tabInfo.cookieStoreId.startsWith("firefox-container-")) {
       // This work is done in the background on purpose: making create() async
@@ -90,9 +90,6 @@ export default class SideTab {
     }
     if (changeInfo.hasOwnProperty("status")) {
       this._updateLoading(changeInfo.status);
-    }
-    if (changeInfo.hasOwnProperty("pinned")) {
-      this._updatePinned(changeInfo.pinned);
     }
   }
 
@@ -193,7 +190,7 @@ export default class SideTab {
     this._iconView.classList.add("chrome-icon");
   }
 
-  _updatePinned(pinned) {
+  updatePinned(pinned) {
     this.pinned = pinned;
     this.view.classList.toggle("pinned", pinned);
   }
