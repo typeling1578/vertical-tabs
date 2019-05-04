@@ -316,17 +316,31 @@ export default class TabList {
   _scrollIntoViewIfNeeded(tab) {
     const { top: parentTop, height } = this._view.getBoundingClientRect();
     const { top, bottom } = tab.view.getBoundingClientRect();
-    if (top - parentTop < 0 || bottom - parentTop > height) {
-      // check if scrolling to tab won’t push active tab outside view
-      const activeTab = this.getTabById(this._active);
-      if (tab.id !== this._active && !activeTab.pinned) {
-        const { top: activeTop } = activeTab.view.getBoundingClientRect();
-        if (activeTop > parentTop) {
-          activeTab.view.scrollIntoView(true);
-        }
-        this._highlightBottomScrollShadow();
-        return;
+    // if new tab is not at least partially hidden, there’s nothing to do
+    if (!(top < parentTop || bottom > parentTop + height)) {
+      return;
+    }
+
+    const activeTab = this.getTabById(this._active);
+    // if tab is active or if active tab is pinned, active tab can’t get outside view
+    if (tab.id === this._active || activeTab.pinned) {
+      tab.view.scrollIntoView({ block: "nearest" });
+      return;
+    }
+
+    const { top: activeTop, bottom: activeBottom } = activeTab.view.getBoundingClientRect();
+    const tabHeight = activeBottom - activeTop;
+    // if distance between top of active tab to top of list is less than tab height,
+    // then scrolling to tab will push active tab out of view, so we don’t
+    if (activeTop - parentTop <= tabHeight) {
+      // ask browser to scroll only if active tab is not already on top
+      if (activeTop !== parentTop) {
+        activeTab.view.scrollIntoView(true);
       }
+      // notify that an opened tab has been opened partially or totally outside view
+      this._highlightBottomScrollShadow();
+      // otherwise, we can scroll to tab without pushing active tab out of view
+    } else {
       tab.view.scrollIntoView({ block: "nearest" });
     }
   }
