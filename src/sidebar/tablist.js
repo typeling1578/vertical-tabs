@@ -820,16 +820,14 @@ export default class TabList {
   }
 
   hasTabsUnderneath(currentTab) {
-    return Array.from(this._tabs)
-      .map(elem => elem[1])
+    return Array.from(this._tabs.values())
       .filter(tab => tab.pinned === currentTab.pinned)
       .some(tab => tab.index > currentTab.index);
   }
 
   moveTabToStart(currentTab) {
     const minIndex = Math.min(
-      ...Array.from(this._tabs)
-        .map(elem => elem[1])
+      ...Array.from(this._tabs.values())
         .filter(tab => tab.pinned === currentTab.pinned)
         .map(tab => tab.index),
     );
@@ -838,8 +836,7 @@ export default class TabList {
 
   async moveTabToEnd(currentTab) {
     const maxIndex = Math.max(
-      ...Array.from(this._tabs)
-        .map(elem => elem[1])
+      ...Array.from(this._tabs.values())
         .filter(tab => tab.pinned === currentTab.pinned)
         .map(tab => tab.index),
     );
@@ -847,33 +844,35 @@ export default class TabList {
   }
 
   closeTabsAfterCount(tabIndex) {
-    return [...this._tabs.values()].filter(tab => tab.index > tabIndex && !tab.hidden).length;
+    return this._tabsAfter(tabIndex).map(tab => tab.id).length;
   }
 
   closeTabsAfter(tabIndex) {
-    const toClose = [...this._tabs.values()]
-      .filter(tab => tab.index > tabIndex && !tab.hidden)
-      .map(tab => tab.id);
-    browser.tabs.remove(toClose);
+    browser.tabs.remove(this._tabsAfter(tabIndex).map(tab => tab.id));
+  }
+
+  _tabsAfter(tabIndex) {
+    return [...this._tabs.values()].filter(tab => tab.index > tabIndex && !tab.hidden);
   }
 
   closeAllTabsExceptCount(tabId) {
-    return [...this._tabs.values()].filter(tab => tab.id !== tabId && !tab.pinned && !tab.hidden)
-      .length;
+    return this._allTabsExcept(tabId).length;
   }
 
   closeAllTabsExcept(tabId) {
-    const toClose = [...this._tabs.values()]
-      .filter(tab => tab.id !== tabId && !tab.pinned && !tab.hidden)
-      .map(tab => tab.id);
+    const toClose = this._allTabsExcept(tabId).map(tab => tab.id);
     browser.tabs.remove(toClose);
+  }
+
+  _allTabsExcept(tabId) {
+    return [...this._tabs.values()].filter(tab => tab.id !== tabId && !tab.pinned && !tab.hidden);
   }
 
   async undoCloseTab() {
     const undoTabs = await this._getRecentlyClosedTabs();
-    if (undoTabs.length) {
+    if (undoTabs.length !== 0) {
       browser.sessions.restore(undoTabs[0].sessionId);
+      this.hasRecentlyClosedTabs = undoTabs.length >= 2;
     }
-    this._updateHasRecentlyClosedTabs();
   }
 }
