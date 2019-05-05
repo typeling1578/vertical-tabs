@@ -11,6 +11,14 @@
         "message": "Toggle Tab Center Reborn",
         "description": "Tooltip shown when hovering the toolbar button."
     },
+    "browserActionOn": {
+        "message": "on",
+        "description": "Badge text shown when sidebar is open."
+    },
+    "browserActionOff": {
+        "message": "off",
+        "description": "Badge text shown when sidebar is closed."
+    },
     "sidebarTitle": {
         "message": "Tabs",
         "description": "Label shown in the sidebar selector."
