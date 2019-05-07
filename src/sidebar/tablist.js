@@ -495,7 +495,7 @@ export default class TabList {
 
   _onDragend(e) {
     this._openInNewWindowTimer = setTimeout(() => {
-      if (this._isDragging === true) {
+      if (this._isDragging === true && this._tabs.size !== 1) {
         browser.windows.create({ tabId: SideTab.tabIdForView(e.target) });
       }
     }, 25);
