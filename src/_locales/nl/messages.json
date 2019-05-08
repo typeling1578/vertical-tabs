@@ -121,5 +121,13 @@
     },
     "contextMenuMoveTabToEnd": {
         "message": "Verplaatsen naar einde"
+    },
+    "browserActionOn": {
+        "message": "aan",
+        "description": "Badge text shown when sidebar is open."
+    },
+    "browserActionOff": {
+        "message": "uit",
+        "description": "Badge text shown when sidebar is closed."
     }
 }
