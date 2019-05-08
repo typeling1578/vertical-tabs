@@ -132,23 +132,11 @@
     },
     "closeTabsAfterWarning": {
         "message": "Voulez-vous vraiment fermer les $COUNT$ onglets en dessous ?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
+        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another."
     },
     "closeAllTabsExceptWarning": {
         "message": "Voulez-vous vraiment fermer les $COUNT$ autres onglets ?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
+        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
     },
     "contextMenuUnloadTab": {
         "message": "Décharger l’onglet",
@@ -161,5 +149,13 @@
     "optionsSwitchLastActiveTab": {
         "message": "Activer l’onglet utilisé avant",
         "description": "Option in options page."
+    },
+    "browserActionOn": {
+        "message": "on",
+        "description": "Badge text shown when sidebar is open."
+    },
+    "browserActionOff": {
+        "message": "off",
+        "description": "Badge text shown when sidebar is closed."
     }
 }
