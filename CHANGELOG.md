@@ -1,3 +1,10 @@
+## 0.10.1
+
+- Fix scrolling when pinning/unpinning a tab
+- Don’t highlight bottom shadow when opened tab is fully in view
+- Use on/off text for button so that it displays well for all fonts
+- Don’t open new window when the only tab is dropped outside sidebar
+
 ## 0.10.0
 
 - New Tab tooltip also appears when hovering the icon
@@ -6,7 +13,6 @@
 - Add a private tab indicator where a container indicator should appear
 - Don’t show options relative to containers when in private window
 - Add option to unload tabs in context menu
-- Don’t generate thumbnail when tab is compact
 - Set tab moved from a window as active in the new window
 - Open tab in a new window if it’s dropped outside a sidebar
 - Don’t scroll to background tab if it push active tab outside view
