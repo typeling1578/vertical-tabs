@@ -395,24 +395,10 @@ export default class TabList {
     if (activeTop + height < bottom) {
       // ask browser to scroll only if active tab is not already on top
       if (activeTop !== parentTop) {
-        const activeSideTabsObserver = new IntersectionObserver(
-          entries => {
-            entries.forEach(entry => {
-              // notify that an opened tab has been opened partially or totally outside view
-              this._highlightBottomScrollShadow();
-              activeSideTabsObserver.unobserve(activeTab.view);
-            });
-          },
-          { root: document.querySelector("#tablist"), rootMargin: "0px" },
-        );
-
-        activeSideTabsObserver.observe(activeTab.view);
         activeTab.view.scrollIntoView(true);
-      } else {
-        // notify that an opened tab has been opened partially or totally outside view
-        this._highlightBottomScrollShadow();
       }
-      // otherwise, we can scroll to tab without pushing active tab out of view
+      // notify that an opened tab has been opened partially or totally outside view
+      this._highlightBottomScrollShadow();
     } else {
       tab.view.scrollIntoView({ block: "nearest" });
     }
