@@ -8,8 +8,7 @@ export default class TabCenter {
   async init() {
     const search = this._search.bind(this);
     const openTab = this._openTab.bind(this);
-    const getFirstTabId = this._getFirstTabId.bind(this);
-    this._topMenu = new TopMenu({ openTab, search, getFirstTabId });
+    this._topMenu = new TopMenu({ openTab, search });
     // Do other work while the promises are pending.
     const prefsPromise = this._readPrefs();
     const windowPromise = browser.windows.getCurrent();
@@ -52,10 +51,6 @@ export default class TabCenter {
   _search(val) {
     this._tabList.filter(val);
     this._topMenu.updateSearch(val);
-  }
-
-  _getFirstTabId() {
-    return this._tabList.getFirstTabId();
   }
 
   _setupListeners() {

@@ -787,10 +787,6 @@ export default class TabList {
     sidetab.updateThumbnail();
   }
 
-  getFirstTabId() {
-    return this._tabs.keys().next().value;
-  }
-
   /*
    * Functions below are used by ContextMenu
    */

@@ -190,6 +190,7 @@ export default class ContextMenu {
         identityItem["id"] = `contextMenuOpenInContextualTab_${identityItem["id"]}`;
         browser.menus.create({
           parentId: "contextMenuOpenInContextualTab",
+          contexts: ["tab"],
           ...identityItem,
         });
       });

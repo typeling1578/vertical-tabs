@@ -13,7 +13,6 @@ export default function getContextualIdentityItems() {
       icons: {
         "16": `/sidebar/img/contextual-identities/${identity.icon}.svg#${identity.color}`,
       },
-      contexts: ["tab"],
       viewTypes: ["sidebar"],
       documentUrlPatterns: [`moz-extension://${location.host}/*`],
     };

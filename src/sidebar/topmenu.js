@@ -90,9 +90,6 @@ export default class TopMenu {
       });
     }
 
-    browser.menus.overrideContext({
-      context: "tab",
-      tabId: this._props.getFirstTabId(),
-    });
+    browser.menus.overrideContext({});
   }
 }
