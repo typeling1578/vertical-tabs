@@ -76,8 +76,8 @@ export default class TabCenter {
     };
   }
 
-  set _customCSS(cssText) {
-    document.getElementById("customCSS").textContent = cssText;
+  _applyCustomCSS() {
+    document.getElementById("customCSS").textContent = this._useCustomCSS ? this._customCSS : "";
   }
 
   set _darkTheme(isDarkTheme) {
@@ -118,19 +118,26 @@ export default class TabCenter {
 
   _readPrefs() {
     return browser.storage.local.get({
-      customCSS: "",
       darkTheme: false,
+      themeIntegration: false,
       compactModeMode: 1 /* COMPACT_MODE_DYNAMIC */,
       compactPins: true,
       switchLastActiveTab: true,
       warnBeforeClosing: true,
-      themeIntegration: false,
+      useCustomCSS: true,
+      customCSS: "",
     });
   }
 
   _applyPrefs(prefs) {
+    console.log(prefs);
+    if (prefs.hasOwnProperty("useCustomCSS")) {
+      this._useCustomCSS = prefs.useCustomCSS;
+      this._applyCustomCSS();
+    }
     if (prefs.hasOwnProperty("customCSS")) {
       this._customCSS = prefs.customCSS;
+      this._applyCustomCSS();
     }
     if (prefs.hasOwnProperty("darkTheme")) {
       this._darkTheme = prefs.darkTheme;

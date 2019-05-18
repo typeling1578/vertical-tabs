@@ -40,6 +40,7 @@ class TabCenterOptions {
     this._setupCheckboxOption("compactPins", "compactPins", true);
     this._setupCheckboxOption("switchLastActiveTab", "switchLastActiveTab", true);
     this._setupCheckboxOption("warnBeforeClosing", "warnBeforeClosing", true);
+    this._setupCheckboxOption("useCustomCSS", "useCustomCSS", true);
 
     // Custom CSS
     browser.storage.local
@@ -70,6 +71,10 @@ class TabCenterOptions {
       browser.storage.local.set({
         [optionName]: e.target.checked,
       });
+      if (optionName === "useCustomCSS") {
+        document.getElementById("customCSS").disabled = !e.target.checked;
+        document.getElementById("optionsSaveCustomCSS").disabled = !e.target.checked;
+      }
     });
   }
 
