@@ -123,6 +123,7 @@ export default class TabCenter {
       compactModeMode: 1 /* COMPACT_MODE_DYNAMIC */,
       compactPins: true,
       switchLastActiveTab: true,
+      warnBeforeClosing: true,
       themeIntegration: false,
     });
   }

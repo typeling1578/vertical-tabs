@@ -131,8 +131,8 @@
             }
         }
     },
-    "optionsTitle": {
-        "message": "Settings",
+    "optionsAppearanceTitle": {
+        "message": "Appearance",
         "description": "Section in options page."
     },
     "optionsSwitchLastActiveTabExplanation": {
@@ -178,6 +178,20 @@
     "optionsThemeIntegrationExplanation": {
         "message": "Integrate with custom theme instead of using the above theme. Close and reopen the sidebar after switching back to one of Firefox’s default theme.",
         "description": "Explanation for the Theme Integration option in the options page."
+    },
+    "optionsBehaviorTitle": {
+        "message": "Behavior",
+        "description": "Section in options page."
+    },
+    "optionsWarnBeforeClosing": {
+        "message": "Warn before closing more than $COUNT$ tabs",
+        "description": "Option in options page.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
     },
     "optionsAdvancedTitle": {
         "message": "Advanced",

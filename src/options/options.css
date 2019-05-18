@@ -30,10 +30,10 @@ a:visited {
   padding: 5px;
 }
 
-#primaryOptions {
+.gridOptions {
   display: grid;
   align-items: center;
-  grid-template-columns: 300px auto;
+  grid-template-columns: 380px auto;
   margin-bottom: 10px;
 }
 
