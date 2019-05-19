@@ -96,20 +96,6 @@ img,
   pointer-events: none;
 }
 
-#newtab-label {
-  vertical-align: middle;
-  margin-left: 4px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-@media screen and (max-width: 190px) {
-  #newtab-label {
-    display: none;
-  }
-}
-
 [data-identity-color="blue"] {
   --identity-color: var(--blue-50);
 }

@@ -130,7 +130,6 @@ export default class TabCenter {
   }
 
   _applyPrefs(prefs) {
-    console.log(prefs);
     if (prefs.hasOwnProperty("useCustomCSS")) {
       this._useCustomCSS = prefs.useCustomCSS;
       this._applyCustomCSS();

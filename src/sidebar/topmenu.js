@@ -10,6 +10,8 @@ export default class TopMenu {
   constructor(props) {
     this._props = props;
     this._newTabButtonView = document.getElementById("newtab");
+    this._newTabButtonIconView = document.getElementById("newtab-icon");
+    this._newTabButtonArrowView = document.getElementById("newtab-arrow");
     this._settingsView = document.getElementById("settings");
     this._searchBoxInput = document.getElementById("searchbox-input");
     this._newTabLabelView = document.getElementById("newtab-label");
@@ -25,24 +27,11 @@ export default class TopMenu {
     this._settingsView.addEventListener("click", () => {
       browser.runtime.openOptionsPage();
     });
-
-    const searchbox = document.getElementById("searchbox");
     this._searchBoxInput.addEventListener("input", e => {
       this._props.search(e.target.value);
     });
-    this._searchBoxInput.addEventListener("focus", () => {
-      searchbox.classList.add("focused");
-      this._newTabLabelView.classList.add("hidden");
-    });
-    this._searchBoxInput.addEventListener("blur", () => {
-      searchbox.classList.remove("focused");
-      this._newTabLabelView.classList.remove("hidden");
-    });
-
     this._newTabButtonView.addEventListener("click", () => {
-      if (!this._newTabPopup) {
-        this._props.openTab();
-      }
+      this._props.openTab();
     });
     this._newTabButtonView.addEventListener("auxclick", e => {
       if (e.button === 1) {
@@ -70,7 +59,6 @@ export default class TopMenu {
   }
 
   _setupLabels() {
-    this._newTabLabelView.textContent = browser.i18n.getMessage("newTabBtnLabel");
     this._newTabButtonView.title = browser.i18n.getMessage("newTabBtnTooltip");
     this._settingsView.title = browser.i18n.getMessage("settingsBtnTooltip");
     this._searchBoxInput.placeholder = browser.i18n.getMessage("searchPlaceholder");
