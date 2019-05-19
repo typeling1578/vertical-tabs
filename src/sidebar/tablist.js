@@ -352,7 +352,11 @@ export default class TabList {
 
   _onMouseOver(e) {
     const tabId = SideTab.tabIdForEvent(e);
-    if (tabId && tabId === this._active) {
+    if (!tabId) {
+      //The tab may have been closed
+      return;
+    }
+    if (tabId === this._active) {
       this.scrollIntoView(this.getTabById(tabId));
     }
   }
