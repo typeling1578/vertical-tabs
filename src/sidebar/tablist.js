@@ -198,7 +198,7 @@ export default class TabList {
   }
 
   _onBrowserTabCreated(tab) {
-    if (!this._checkWindow(tab.windowId)) {
+    if (!this.checkWindow(tab.windowId)) {
       return;
     }
     this._shiftTabsIndexes(1, tab.index);
@@ -206,7 +206,7 @@ export default class TabList {
   }
 
   async _onBrowserTabAttached(tabId, { newWindowId, newPosition }) {
-    if (!this._checkWindow(newWindowId)) {
+    if (!this.checkWindow(newWindowId)) {
       return;
     }
     this._shiftTabsIndexes(1, newPosition);
@@ -215,7 +215,7 @@ export default class TabList {
   }
 
   _onBrowserTabRemoved(tabId, windowId, isWindowClosing) {
-    if (!this._checkWindow(windowId) || isWindowClosing) {
+    if (!this.checkWindow(windowId) || isWindowClosing) {
       return;
     }
     const sidetab = this.getTabById(tabId);
@@ -225,7 +225,7 @@ export default class TabList {
   }
 
   _onBrowserTabActivated(activeInfo) {
-    if (!this._checkWindow(activeInfo.windowId)) {
+    if (!this.checkWindow(activeInfo.windowId)) {
       return;
     }
     const sidetab = this.getTabById(activeInfo.tabId);
@@ -239,7 +239,7 @@ export default class TabList {
   }
 
   _onBrowserTabMoved(tabId, moveInfo) {
-    if (!this._checkWindow(moveInfo.windowId)) {
+    if (!this.checkWindow(moveInfo.windowId)) {
       return;
     }
     this._willMoveTimeout = setTimeout(() => {
@@ -506,7 +506,7 @@ export default class TabList {
 
   _handleDroppedTabCenterTab(e, tab) {
     const { tabId, origWindowId } = tab;
-    if (!this._checkWindow(origWindowId)) {
+    if (!this.checkWindow(origWindowId)) {
       browser.tabs.move(tabId, { windowId: this._windowId, index: -1 });
       browser.tabs.update(tabId, { active: true });
       return;
@@ -665,7 +665,7 @@ export default class TabList {
     this._setupFirstAndLastTabsObserver();
   }
 
-  _checkWindow(windowId) {
+  checkWindow(windowId) {
     return windowId === this._windowId;
   }
 
@@ -867,7 +867,7 @@ export default class TabList {
   async _getRecentlyClosedTabs() {
     const sessions = await browser.sessions.getRecentlyClosed();
     return sessions.reduce((acc, session) => {
-      if (session.tab && this._checkWindow(session.tab.windowId)) {
+      if (session.tab && this.checkWindow(session.tab.windowId)) {
         acc.push(session.tab);
       }
       return acc;
