@@ -6,20 +6,22 @@ import TopMenu from "./topmenu.js";
 
 export default class TabCenter {
   async init() {
-    const search = this._search.bind(this);
+    const window = await browser.windows.getCurrent();
+    document.body.setAttribute("incognito", window.incognito);
+    this._windowId = window.id;
+
+    browser.runtime.getPlatformInfo().then(platform => {
+      document.body.setAttribute("platform", platform.os);
+    });
+
     const openTab = this._openTab.bind(this);
+    const search = this._search.bind(this);
     this._topMenu = new TopMenu({ openTab, search });
-    // Do other work while the promises are pending.
-    const prefsPromise = this._readPrefs();
-    const windowPromise = browser.windows.getCurrent();
 
     this._setupListeners();
 
-    const window = await windowPromise;
-    this._windowId = window.id;
-    const prefs = await prefsPromise;
+    const prefs = await this._readPrefs();
     this._applyPrefs(prefs);
-    document.body.setAttribute("incognito", window.incognito);
     this._tabList = new TabList({
       windowId: this._windowId,
       openTab,
@@ -27,13 +29,7 @@ export default class TabCenter {
       prefs,
     });
 
-    browser.runtime.connect("tabcenter-reborn@ariasuni", {
-      name: this._windowId.toString(),
-    });
-
-    browser.runtime.getPlatformInfo().then(platform => {
-      document.body.setAttribute("platform", platform.os);
-    });
+    browser.runtime.connect({ name: this._windowId.toString() });
   }
 
   async _openTab(props = {}) {
