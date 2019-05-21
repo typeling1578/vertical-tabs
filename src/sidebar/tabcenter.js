@@ -91,8 +91,8 @@ export default class TabCenter {
     const type = isDarkTheme ? "light" : "dark";
     browser.sidebarAction.setIcon({
       path: {
-        16: `/icons/tabcenter.svg#${type}`,
-        32: `/icons/tabcenter.svg#${type}`,
+        16: `/tabcenter.svg#${type}`,
+        32: `/tabcenter.svg#${type}`,
       },
     });
   }
@@ -204,8 +204,8 @@ function setBrowserActionColor(color) {
   document.getElementById("default").setAttribute("fill", color);
   browser.sidebarAction.setIcon({
     path: {
-      16: "/icons/tabcenter.svg",
-      32: "/icons/tabcenter.svg",
+      16: "/tabcenter.svg",
+      32: "/tabcenter.svg",
     },
   });
 }
