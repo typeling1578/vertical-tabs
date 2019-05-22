@@ -435,10 +435,12 @@ export default class TabList {
   }
 
   _onDragStart(e) {
-    this._isDragging = true;
     if (!SideTab.isTabEvent(e) || this._filterActive) {
       return;
     }
+
+    this._isDragging = true;
+
     const tabId = SideTab.tabIdForEvent(e);
     const tab = this.getTabById(tabId);
     e.dataTransfer.setData(
@@ -476,9 +478,6 @@ export default class TabList {
   }
 
   _onDrop(e) {
-    this._isDragging = false;
-    clearTimeout(this._openInNewWindowTimer);
-
     if (
       !SideTab.isTabEvent(e, false) &&
       e.target !== this._spacerView &&
@@ -487,6 +486,8 @@ export default class TabList {
       return;
     }
     e.preventDefault();
+    this._isDragging = false;
+    clearTimeout(this._openInNewWindowTimer);
 
     const dt = e.dataTransfer;
     const tabStr = dt.getData("text/x-tabcenter-tab");
@@ -550,6 +551,7 @@ export default class TabList {
   _onDragend(e) {
     this._openInNewWindowTimer = setTimeout(() => {
       if (this._isDragging === true && this._tabs.size !== 1) {
+        this._isDragging === false;
         browser.windows.create({ tabId: SideTab.tabIdForView(e.target) });
       }
     }, 25);
