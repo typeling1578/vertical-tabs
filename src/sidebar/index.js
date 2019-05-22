@@ -21,6 +21,7 @@ window.tabCenter = tabCenter;
     bg.style.left = "0px";
     bg.style.right = "0px";
     bg.style.backgroundColor = "white";
+    bg.style.opacity = "0.5";
     bg.style.zIndex = "9999";
     document.body.appendChild(bg);
   }
