@@ -443,6 +443,8 @@ export default class TabList {
 
     const tabId = SideTab.tabIdForEvent(e);
     const tab = this.getTabById(tabId);
+    //trick to show the "move" effect when dragging over tab viewport.
+    e.dataTransfer.setData("text/uri-list", "");
     e.dataTransfer.setData(
       "text/x-tabcenter-tab",
       JSON.stringify({
