@@ -8,30 +8,29 @@ class TabCenterOptions {
 
   setupLabels() {
     const options = [
-      "optionsTitle",
+      "optionsAppearanceTitle",
       "optionsCompactMode",
       "optionsCompactModeStrict",
       "optionsCompactModeDynamic",
       "optionsCompactModeOff",
       "optionsCompactModeExplanation",
-      "optionsSwitchLastActiveTabExplanation",
-      "optionsSwitchLastActiveTab",
       "optionsCompactPins",
       "optionsDarkTheme",
       "optionsThemeIntegration",
       "optionsThemeIntegrationExplanation",
+      "optionsBehaviorTitle",
+      "optionsSwitchLastActiveTabExplanation",
+      "optionsSwitchLastActiveTab",
       "optionsAdvancedTitle",
       "optionsCustomCSS",
       "optionsCustomCSSWikiLink",
       "optionsSaveCustomCSS",
     ];
     for (const opt of options) {
-      this._setupTextContentLabel(opt);
+      document.getElementById(opt).textContent = browser.i18n.getMessage(opt);
     }
-  }
-
-  _setupTextContentLabel(opt) {
-    document.getElementById(opt).textContent = browser.i18n.getMessage(opt);
+    const opt = "optionsWarnBeforeClosing";
+    document.getElementById(opt).textContent = browser.i18n.getMessage(opt, 5);
   }
 
   setupStateAndListeners() {
@@ -40,6 +39,8 @@ class TabCenterOptions {
     this._setupDropdownOption("compactMode", "compactModeMode");
     this._setupCheckboxOption("compactPins", "compactPins", true);
     this._setupCheckboxOption("switchLastActiveTab", "switchLastActiveTab", true);
+    this._setupCheckboxOption("warnBeforeClosing", "warnBeforeClosing", true);
+    this._setupCheckboxOption("useCustomCSS", "useCustomCSS", true);
 
     // Custom CSS
     browser.storage.local
@@ -70,6 +71,10 @@ class TabCenterOptions {
       browser.storage.local.set({
         [optionName]: e.target.checked,
       });
+      if (optionName === "useCustomCSS") {
+        document.getElementById("customCSS").disabled = !e.target.checked;
+        document.getElementById("optionsSaveCustomCSS").disabled = !e.target.checked;
+      }
     });
   }
 

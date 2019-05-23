@@ -6,21 +6,22 @@ import TopMenu from "./topmenu.js";
 
 export default class TabCenter {
   async init() {
-    const search = this._search.bind(this);
+    const window = await browser.windows.getCurrent();
+    document.body.setAttribute("incognito", window.incognito);
+    this._windowId = window.id;
+
+    browser.runtime.getPlatformInfo().then(platform => {
+      document.body.setAttribute("platform", platform.os);
+    });
+
     const openTab = this._openTab.bind(this);
-    const getFirstTabId = this._getFirstTabId.bind(this);
-    this._topMenu = new TopMenu({ openTab, search, getFirstTabId });
-    // Do other work while the promises are pending.
-    const prefsPromise = this._readPrefs();
-    const windowPromise = browser.windows.getCurrent();
+    const search = this._search.bind(this);
+    this._topMenu = new TopMenu({ openTab, search });
 
     this._setupListeners();
 
-    const window = await windowPromise;
-    this._windowId = window.id;
-    const prefs = await prefsPromise;
+    const prefs = await this._readPrefs();
     this._applyPrefs(prefs);
-    document.body.setAttribute("incognito", window.incognito);
     this._tabList = new TabList({
       windowId: this._windowId,
       openTab,
@@ -28,13 +29,7 @@ export default class TabCenter {
       prefs,
     });
 
-    browser.runtime.connect("tabcenter-reborn@ariasuni", {
-      name: this._windowId.toString(),
-    });
-
-    browser.runtime.getPlatformInfo().then(platform => {
-      document.body.setAttribute("platform", platform.os);
-    });
+    browser.runtime.connect({ name: this._windowId.toString() });
   }
 
   async _openTab(props = {}) {
@@ -52,10 +47,6 @@ export default class TabCenter {
   _search(val) {
     this._tabList.filter(val);
     this._topMenu.updateSearch(val);
-  }
-
-  _getFirstTabId() {
-    return this._tabList.getFirstTabId();
   }
 
   _setupListeners() {
@@ -81,8 +72,8 @@ export default class TabCenter {
     };
   }
 
-  set _customCSS(cssText) {
-    document.getElementById("customCSS").textContent = cssText;
+  _applyCustomCSS() {
+    document.getElementById("customCSS").textContent = this._useCustomCSS ? this._customCSS : "";
   }
 
   set _darkTheme(isDarkTheme) {
@@ -100,8 +91,8 @@ export default class TabCenter {
     const type = isDarkTheme ? "light" : "dark";
     browser.sidebarAction.setIcon({
       path: {
-        16: `/icons/tabcenter.svg#${type}`,
-        32: `/icons/tabcenter.svg#${type}`,
+        16: `/tabcenter.svg#${type}`,
+        32: `/tabcenter.svg#${type}`,
       },
     });
   }
@@ -123,18 +114,25 @@ export default class TabCenter {
 
   _readPrefs() {
     return browser.storage.local.get({
-      customCSS: "",
       darkTheme: false,
+      themeIntegration: false,
       compactModeMode: 1 /* COMPACT_MODE_DYNAMIC */,
       compactPins: true,
       switchLastActiveTab: true,
-      themeIntegration: false,
+      warnBeforeClosing: true,
+      useCustomCSS: true,
+      customCSS: "",
     });
   }
 
   _applyPrefs(prefs) {
+    if (prefs.hasOwnProperty("useCustomCSS")) {
+      this._useCustomCSS = prefs.useCustomCSS;
+      this._applyCustomCSS();
+    }
     if (prefs.hasOwnProperty("customCSS")) {
       this._customCSS = prefs.customCSS;
+      this._applyCustomCSS();
     }
     if (prefs.hasOwnProperty("darkTheme")) {
       this._darkTheme = prefs.darkTheme;
@@ -206,8 +204,8 @@ function setBrowserActionColor(color) {
   document.getElementById("default").setAttribute("fill", color);
   browser.sidebarAction.setIcon({
     path: {
-      16: "/icons/tabcenter.svg",
-      32: "/icons/tabcenter.svg",
+      16: "/tabcenter.svg",
+      32: "/tabcenter.svg",
     },
   });
 }

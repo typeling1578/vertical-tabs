@@ -40,6 +40,7 @@ export default class TabList {
     this._compactModeMode = parseInt(this._props.prefs.compactModeMode);
     this._compactPins = this._props.prefs.compactPins;
     this._switchLastActiveTab = this._props.prefs.switchLastActiveTab;
+    this._warnBeforeClosing = this._props.prefs.warnBeforeClosing;
 
     this._setupListeners();
     this._populate();
@@ -195,6 +196,9 @@ export default class TabList {
     }
     if (changes.switchLastActiveTab) {
       this._switchLastActiveTab = changes.switchLastActiveTab.newValue;
+    }
+    if (changes.warnBeforeClosing) {
+      this._warnBeforeClosing = changes.warnBeforeClosing.newValue;
     }
     this._maybeShrinkTabs();
   }
@@ -846,10 +850,6 @@ export default class TabList {
       return;
     }
     sidetab.updateThumbnail();
-  }
-
-  getFirstTabId() {
-    return this._tabs.keys().next().value;
   }
 
   /*

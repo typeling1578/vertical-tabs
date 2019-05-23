@@ -41,13 +41,21 @@ export default class ContextMenu {
           break;
         case "contextMenuCloseTabsUnderneath":
           count = this._tablist.closeTabsAfterCount(tab.index);
-          if (count < 4 || confirm(browser.i18n.getMessage("closeTabsAfterWarning", count))) {
+          if (
+            !this._tablist._warnBeforeClosing ||
+            count < 4 ||
+            confirm(browser.i18n.getMessage("closeTabsAfterWarning", count))
+          ) {
             this._tablist.closeTabsAfter(tab.index);
           }
           break;
         case "contextMenuCloseOtherTabs":
           count = this._tablist.closeAllTabsExceptCount(tab.id);
-          if (count < 4 || confirm(browser.i18n.getMessage("closeAllTabsExceptWarning", count))) {
+          if (
+            !this._tablist._warnBeforeClosing ||
+            count < 4 ||
+            confirm(browser.i18n.getMessage("closeAllTabsExceptWarning", count))
+          ) {
             this._tablist.closeAllTabsExcept(tab.id);
           }
           break;
@@ -193,6 +201,7 @@ export default class ContextMenu {
         identityItem["id"] = `contextMenuOpenInContextualTab_${identityItem["id"]}`;
         browser.menus.create({
           parentId: "contextMenuOpenInContextualTab",
+          contexts: ["tab"],
           ...identityItem,
         });
       });

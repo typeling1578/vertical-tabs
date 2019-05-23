@@ -23,7 +23,7 @@ See [here](https://framagit.org/ariasuni/tabcenter-reborn/wikis/home).
 - Has a bottom shadow in tab list when it’s possible to scroll down
 - Use native context menus and use same items as Firefox’s default menus
 - Scroll to active tab when hovering it if it’s partially hidden
-- Better page layouts with added explanations
+- Better options page layout with added explanations
 - Show tab as loading if it started loading before sidebar was opened
 
 And lots of others small fixes and improvements!
