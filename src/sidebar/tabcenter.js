@@ -18,6 +18,7 @@ export default class TabCenter {
     const search = this._search.bind(this);
     this._topMenu = new TopMenu({ openTab, search });
 
+    this._currentTheme = {};
     this._setupListeners();
 
     const prefs = await this._readPrefs();
@@ -79,6 +80,7 @@ export default class TabCenter {
   set _darkTheme(isDarkTheme) {
     this._isDarkTheme = isDarkTheme;
     this._useDarkTheme(isDarkTheme);
+    this._applyTheme(this._currentTheme);
   }
 
   _useDarkTheme(isDarkTheme) {
@@ -143,6 +145,7 @@ export default class TabCenter {
   }
 
   _applyTheme(theme) {
+    this._currentTheme = theme;
     const cssToThemeProp = {
       "--background": ["frame", "accentcolor"],
       "--button-background-active": ["button_background_active"],
@@ -162,21 +165,35 @@ export default class TabCenter {
       "--input-selected-text-background": ["toolbar_field_highlight", "button_background_active"],
       "--input-selected-text": ["toolbar_field_highlight_text", "toolbar_field_text"],
       "--input-text": ["bookmark_text", "toolbar_field_text"],
-      "--input-text-focus": ["toolbar_field_text_focus"],
+      "--input-text-focus": ["toolbar_field_text_focus", "toolbar_field_text"],
       "--sidebar-background": ["sidebar", "frame", "accentcolor"],
+      "--sidebar-text": ["sidebar_text", "tab_text", "toolbar_text", "textcolor"],
     };
 
+    let hasInputSelectedTextBackground = false;
+    let hasInputSelectedText = false;
     for (const [cssVar, themeProps] of Object.entries(cssToThemeProp)) {
       for (const prop of themeProps) {
         if (theme.colors && theme.colors[prop]) {
-          if (cssVar === "--sidebar-background") {
+          if (cssVar === "--sidebar-text") {
             setBrowserActionColor(theme.colors[prop]);
           }
           document.body.style.setProperty(cssVar, theme.colors[prop]);
+          if (cssVar === "--input-selected-text-background") {
+            hasInputSelectedTextBackground = true;
+          } else if (cssVar === "--input-selected-text") {
+            hasInputSelectedText = true;
+          }
           break;
         }
         document.body.style.removeProperty(cssVar);
       }
+    }
+
+    if (hasInputSelectedTextBackground && hasInputSelectedText) {
+      document.body.classList.add("has-custom-input-color");
+    } else {
+      document.body.classList.remove("has-custom-input-color");
     }
   }
 
