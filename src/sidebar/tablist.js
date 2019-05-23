@@ -486,16 +486,25 @@ export default class TabList {
   }
 
   _onDrop(e) {
+    const isTopmenuEvent = !this._isEventForId(e, "topmenu");
     if (
+      !isTopmenuEvent &&
       !SideTab.isTabEvent(e, false) &&
       e.target !== this._spacerView &&
       e.target !== this._moreTabsView
     ) {
       return;
     }
-    e.preventDefault();
+    if (!this._isEventForId(e, "searchbox")) {
+      e.preventDefault();
+    }
     this._isDragging = false;
     clearTimeout(this._openInNewWindowTimer);
+
+    // if this is a topmenu event, do not move the tab
+    if (isTopmenuEvent) {
+      return;
+    }
 
     const dt = e.dataTransfer;
     const tabStr = dt.getData("text/x-tabcenter-tab");
@@ -511,6 +520,19 @@ export default class TabList {
       url: mozURL,
       windowId: this._windowId,
     });
+  }
+
+  _isEventForId(e, id) {
+    let elem = e.target;
+    while (true) {
+      if (elem.id === id) {
+        return true;
+      }
+      elem = elem.parentNode;
+      if (elem === null) {
+        return false;
+      }
+    }
   }
 
   _handleDroppedTabCenterTab(e, tab) {
