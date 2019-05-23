@@ -144,8 +144,10 @@ export default class TabList {
   }
 
   _observeFirstAndLastTab() {
-    this.__observeFirstTab();
-    this.__observeLastTab();
+    if (this._tabs.size) {
+      this.__observeFirstTab();
+      this.__observeLastTab();
+    }
   }
 
   __observeFirstTab() {
