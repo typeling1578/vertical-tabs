@@ -26,9 +26,11 @@ export default class TabList {
     this._filterActive = false;
     this._willMoveTimeout = null;
     this._isDragging = false;
-    this._scrollTimer = null;
     this._openInNewWindowTimer = null;
     this._highlightBottomScrollShadowTimer = null;
+    this._firstAndLastTabObserver = null;
+    this._firstTabView = null;
+    this._lastTabView = null;
     this._view = document.getElementById("tablist");
     this._pinnedview = document.getElementById("pinnedtablist");
     this._wrapperView = document.getElementById("tablist-wrapper");
@@ -42,7 +44,6 @@ export default class TabList {
 
     this._setupListeners();
     this._populate();
-    this._updateScrollShadow();
 
     browser.browserSettings.closeTabsByDoubleClick.get({}).then(({ value }) => {
       this.closeTabsByDoubleClick = value;
@@ -91,8 +92,6 @@ export default class TabList {
     this._spacerView.addEventListener("dblclick", () => this._onSpacerDblClick());
     this._spacerView.addEventListener("auxclick", e => this._onSpacerAuxClick(e));
     this._moreTabsView.addEventListener("click", () => this._clearSearch());
-    this._view.addEventListener("scroll", () => this._onScroll());
-    document.defaultView.addEventListener("resize", () => this._onScroll());
 
     // Drag-and-drop.
     document.addEventListener("dragstart", e => this._onDragStart(e));
@@ -109,6 +108,83 @@ export default class TabList {
 
     // Pref changes
     browser.storage.onChanged.addListener(changes => this._onPrefsChanged(changes));
+  }
+
+  _setupFirstAndLastTabsObserver() {
+    const onObserve = entries => {
+      entries.forEach(entry => {
+        if (this._firstTabView && entry.target.id === this._firstTabView.id) {
+          this.__toggleShadow(entry, "can-scroll-top");
+        } else if (this._lastTabView && entry.target.id === this._lastTabView.id) {
+          this.__toggleShadow(entry, "can-scroll-bottom");
+        }
+      });
+    };
+    if (!this._firstAndLastTabObserver) {
+      const options = {
+        root: document.querySelector("#tablist"),
+        rootMargin: "0px",
+        threshold: [0, 1],
+      };
+      this._firstAndLastTabObserver = new IntersectionObserver(onObserve, options);
+    }
+    this._observeFirstAndLastTab();
+  }
+
+  __toggleShadow(entry, className) {
+    if (!entry.isIntersecting) {
+      //tab is not visible, show shadow
+      this._wrapperView.classList.add(className);
+    } else if (entry.intersectionRatio === 1) {
+      //tab is totally visible, don't show shadow
+      this._wrapperView.classList.remove(className);
+    } else {
+      //tab is partially visible, show shadow
+      this._wrapperView.classList.add(className);
+    }
+  }
+
+  _observeFirstAndLastTab() {
+    if (this._tabs.size) {
+      this.__observeFirstTab();
+      this.__observeLastTab();
+    }
+  }
+
+  __observeFirstTab() {
+    if (this._firstTabView) {
+      if (this._firstTabView === this._view.firstChild) {
+        return;
+      }
+      this._firstAndLastTabObserver.unobserve(this._firstTabView);
+    }
+
+    this._firstTabView = this._view.firstChild;
+    this._firstAndLastTabObserver.observe(this._firstTabView);
+  }
+
+  __observeLastTab() {
+    if (this._lastTabView) {
+      if (this._lastTabView === this._view.lastChild) {
+        return;
+      }
+      this._firstAndLastTabObserver.unobserve(this._lastTabView);
+    }
+
+    if (this._view.firstChild !== this._view.lastChild) {
+      this._lastTabView = this._view.lastChild;
+      this._firstAndLastTabObserver.observe(this._lastTabView);
+    }
+  }
+
+  _unObserveTab(tabView) {
+    if (tabView === this._firstTabView) {
+      this._firstAndLastTabObserver.unobserve(this._firstTabView);
+      this._firstTabView = null;
+    } else if (tabView === this._lastTabView) {
+      this._firstAndLastTabObserver.unobserve(this._lastTabView);
+      this._lastTabView = null;
+    }
   }
 
   _onPrefsChanged(changes) {
@@ -128,7 +204,7 @@ export default class TabList {
   }
 
   _onBrowserTabCreated(tab) {
-    if (!this._checkWindow(tab.windowId)) {
+    if (!this.checkWindow(tab.windowId)) {
       return;
     }
     this._shiftTabsIndexes(1, tab.index);
@@ -136,7 +212,7 @@ export default class TabList {
   }
 
   async _onBrowserTabAttached(tabId, { newWindowId, newPosition }) {
-    if (!this._checkWindow(newWindowId)) {
+    if (!this.checkWindow(newWindowId)) {
       return;
     }
     this._shiftTabsIndexes(1, newPosition);
@@ -145,7 +221,7 @@ export default class TabList {
   }
 
   _onBrowserTabRemoved(tabId, windowId, isWindowClosing) {
-    if (!this._checkWindow(windowId) || isWindowClosing) {
+    if (!this.checkWindow(windowId) || isWindowClosing) {
       return;
     }
     const sidetab = this.getTabById(tabId);
@@ -155,7 +231,7 @@ export default class TabList {
   }
 
   _onBrowserTabActivated(activeInfo) {
-    if (!this._checkWindow(activeInfo.windowId)) {
+    if (!this.checkWindow(activeInfo.windowId)) {
       return;
     }
     const sidetab = this.getTabById(activeInfo.tabId);
@@ -169,7 +245,7 @@ export default class TabList {
   }
 
   _onBrowserTabMoved(tabId, moveInfo) {
-    if (!this._checkWindow(moveInfo.windowId)) {
+    if (!this.checkWindow(moveInfo.windowId)) {
       return;
     }
     this._willMoveTimeout = setTimeout(() => {
@@ -282,6 +358,10 @@ export default class TabList {
 
   _onMouseOver(e) {
     const tabId = SideTab.tabIdForEvent(e);
+    if (!tabId) {
+      //The tab may have been closed
+      return;
+    }
     if (tabId === this._active) {
       this.scrollIntoView(this.getTabById(tabId));
     }
@@ -292,18 +372,6 @@ export default class TabList {
       browser.tabs.remove(SideTab.tabIdForEvent(e));
       e.preventDefault();
     }
-  }
-
-  _onScroll() {
-    if (this._scrollTimer !== null) {
-      clearTimeout(this._scrollTimer);
-    } else {
-      this._updateScrollShadow();
-    }
-    this._scrollTimer = setTimeout(() => {
-      this._scrollTimer = null;
-      this._updateScrollShadow();
-    }, 100);
   }
 
   scrollIntoView(tab) {
@@ -332,18 +400,15 @@ export default class TabList {
       return;
     }
 
-    const { top: activeTop, bottom: activeBottom } = activeTab.view.getBoundingClientRect();
-    const tabHeight = activeBottom - activeTop;
-    // if distance between top of active tab to top of list is less than tab height,
-    // then scrolling to tab will push active tab out of view, so we don’t
-    if (activeTop - parentTop <= tabHeight) {
+    // check if scrolling to new tab won’t push active tab out of view
+    const { top: activeTop } = activeTab.view.getBoundingClientRect();
+    if (activeTop + height < bottom) {
       // ask browser to scroll only if active tab is not already on top
       if (activeTop !== parentTop) {
         activeTab.view.scrollIntoView(true);
       }
       // notify that an opened tab has been opened partially or totally outside view
       this._highlightBottomScrollShadow();
-      // otherwise, we can scroll to tab without pushing active tab out of view
     } else {
       tab.view.scrollIntoView({ block: "nearest" });
     }
@@ -355,15 +420,6 @@ export default class TabList {
     this._highlightBottomScrollShadowTimer = setTimeout(
       () => this._wrapperView.classList.remove("highlight-scroll-bottom"),
       500,
-    );
-  }
-
-  _updateScrollShadow() {
-    const { scrollTop, clientHeight, scrollHeight } = this._view;
-    this._wrapperView.classList.toggle("can-scroll-top", scrollTop !== 0);
-    this._wrapperView.classList.toggle(
-      "can-scroll-bottom",
-      scrollTop + clientHeight < scrollHeight,
     );
   }
 
@@ -385,12 +441,16 @@ export default class TabList {
   }
 
   _onDragStart(e) {
-    this._isDragging = true;
     if (!SideTab.isTabEvent(e) || this._filterActive) {
       return;
     }
+
+    this._isDragging = true;
+
     const tabId = SideTab.tabIdForEvent(e);
     const tab = this.getTabById(tabId);
+    //trick to show the "move" effect when dragging over tab viewport.
+    e.dataTransfer.setData("text/uri-list", "");
     e.dataTransfer.setData(
       "text/x-tabcenter-tab",
       JSON.stringify({
@@ -426,9 +486,6 @@ export default class TabList {
   }
 
   _onDrop(e) {
-    this._isDragging = false;
-    clearTimeout(this._openInNewWindowTimer);
-
     if (
       !SideTab.isTabEvent(e, false) &&
       e.target !== this._spacerView &&
@@ -437,6 +494,8 @@ export default class TabList {
       return;
     }
     e.preventDefault();
+    this._isDragging = false;
+    clearTimeout(this._openInNewWindowTimer);
 
     const dt = e.dataTransfer;
     const tabStr = dt.getData("text/x-tabcenter-tab");
@@ -456,7 +515,7 @@ export default class TabList {
 
   _handleDroppedTabCenterTab(e, tab) {
     const { tabId, origWindowId } = tab;
-    if (!this._checkWindow(origWindowId)) {
+    if (!this.checkWindow(origWindowId)) {
       browser.tabs.move(tabId, { windowId: this._windowId, index: -1 });
       browser.tabs.update(tabId, { active: true });
       return;
@@ -500,6 +559,7 @@ export default class TabList {
   _onDragend(e) {
     this._openInNewWindowTimer = setTimeout(() => {
       if (this._isDragging === true && this._tabs.size !== 1) {
+        this._isDragging === false;
         browser.windows.create({ tabId: SideTab.tabIdForView(e.target) });
       }
     }, 25);
@@ -530,7 +590,6 @@ export default class TabList {
       return;
     }
     this._props.search("");
-    this._updateScrollShadow();
   }
 
   filter(query) {
@@ -613,9 +672,10 @@ export default class TabList {
       this._maybeUpdateTabThumbnail(activeTab);
       this.scrollIntoView(activeTab);
     }
+    this._setupFirstAndLastTabsObserver();
   }
 
-  _checkWindow(windowId) {
+  checkWindow(windowId) {
     return windowId === this._windowId;
   }
 
@@ -644,11 +704,7 @@ export default class TabList {
   _maybeShrinkTabs() {
     // Avoid an expensive sync reflow (offsetHeight).
     requestAnimationFrame(() => {
-      const previousTabsShrinked = this._tabsShrinked;
       this.__maybeShrinkTabs();
-      if (this._tabsShrinked !== previousTabsShrinked) {
-        this._updateScrollShadow();
-      }
     });
   }
 
@@ -734,9 +790,11 @@ export default class TabList {
     if (this._active === sidetab.id) {
       this._active = null;
     }
+    this._unObserveTab(sidetab.view);
     sidetab.view.remove();
     this._tabs.delete(sidetab.id);
     this._maybeShrinkTabs();
+    this._observeFirstAndLastTab();
   }
 
   _appendTabView(sidetab) {
@@ -746,6 +804,7 @@ export default class TabList {
     // session restore.
     if (!this._tabs.size) {
       parent.appendChild(element);
+      this._observeFirstAndLastTab();
       return;
     }
     const tabAfter = [...this._tabs.values()]
@@ -757,12 +816,14 @@ export default class TabList {
     } else {
       parent.appendChild(element);
     }
+    this._observeFirstAndLastTab();
   }
 
   _removeTabView(sidetab) {
     const element = sidetab.view;
     const parent = sidetab.pinned ? this._pinnedview : this._view;
     parent.removeChild(element);
+    this._observeFirstAndLastTab();
   }
 
   _onTabPinned(sidetab) {
@@ -812,7 +873,7 @@ export default class TabList {
   async _getRecentlyClosedTabs() {
     const sessions = await browser.sessions.getRecentlyClosed();
     return sessions.reduce((acc, session) => {
-      if (session.tab && this._checkWindow(session.tab.windowId)) {
+      if (session.tab && this.checkWindow(session.tab.windowId)) {
         acc.push(session.tab);
       }
       return acc;
