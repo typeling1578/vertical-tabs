@@ -139,7 +139,7 @@
         "description": "Explanation for the Theme Integration option in the options page."
     },
     "contextMenuUnloadTab": {
-        "message": "Tab ausladen",
+        "message": "Tab entladen",
         "description": "Context menu item label."
     },
     "optionsSwitchLastActiveTabExplanation": {
