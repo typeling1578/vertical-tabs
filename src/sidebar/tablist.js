@@ -206,11 +206,9 @@ export default class TabList {
 
   _unObserveTab(tabView) {
     if (tabView === this._firstTabView) {
-      console.log("_unObserveTab");
       this._firstAndLastTabObserver.unobserve(this._firstTabView);
       this._firstTabView = null;
     } else if (tabView === this._lastTabView) {
-      console.log("_unObserveTab");
       this._firstAndLastTabObserver.unobserve(this._lastTabView);
       this._lastTabView = null;
     }
