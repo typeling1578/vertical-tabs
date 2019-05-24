@@ -146,33 +146,42 @@ export default class TabList {
 
   _observeFirstAndLastTab() {
     if (this._tabs.size) {
-      this.__observeFirstTab();
-      this.__observeLastTab();
+      let firstTabView = this._view.firstChild;
+      let lastTabView = this._view.lastChild;
+
+      if (this._filterActive) {
+        const nodes = this._view.querySelectorAll(".tab:not(.hidden)");
+        firstTabView = nodes[0];
+        lastTabView = nodes[nodes.length - 1];
+      }
+
+      this.__observeFirstTab(firstTabView);
+      this.__observeLastTab(lastTabView);
     }
   }
 
-  __observeFirstTab() {
+  __observeFirstTab(firstTabView) {
     if (this._firstTabView) {
-      if (this._firstTabView === this._view.firstChild) {
+      if (this._firstTabView === firstTabView) {
         return;
       }
       this._firstAndLastTabObserver.unobserve(this._firstTabView);
     }
 
-    this._firstTabView = this._view.firstChild;
+    this._firstTabView = firstTabView;
     this._firstAndLastTabObserver.observe(this._firstTabView);
   }
 
-  __observeLastTab() {
+  __observeLastTab(lastTabView) {
     if (this._lastTabView) {
-      if (this._lastTabView === this._view.lastChild) {
+      if (this._lastTabView === lastTabView) {
         return;
       }
       this._firstAndLastTabObserver.unobserve(this._lastTabView);
     }
 
-    if (this._view.firstChild !== this._view.lastChild) {
-      this._lastTabView = this._view.lastChild;
+    if (this._view.firstChild !== lastTabView) {
+      this._lastTabView = lastTabView;
       this._firstAndLastTabObserver.observe(this._lastTabView);
     }
   }
@@ -590,6 +599,7 @@ export default class TabList {
       return;
     }
     this._props.search("");
+    this._observeFirstAndLastTab();
   }
 
   filter(query) {
@@ -646,6 +656,7 @@ export default class TabList {
       this._moreTabsView.removeAttribute("hasMoreTabs");
     }
     this._maybeShrinkTabs();
+    this._observeFirstAndLastTab();
   }
 
   async _populate() {
