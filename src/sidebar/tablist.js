@@ -617,7 +617,7 @@ export default class TabList {
     this._openInNewWindowTimer = setTimeout(() => {
       if (this._isDragging === true && this._tabs.size !== 1) {
         this._isDragging === false;
-        browser.windows.create({ tabId: SideTab.tabIdForView(e.target) });
+        browser.windows.create({ tabId: SideTab.tabIdForEvent(e) });
         browser.bookmarks.onCreated.removeListener(__onBookmarkCreated);
       }
     }, 50);

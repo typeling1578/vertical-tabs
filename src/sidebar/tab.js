@@ -293,7 +293,7 @@ export default class SideTab {
     return e.target && e.target.classList.contains("tab-icon-overlay");
   }
 
-  static tabIdForView(el) {
+  static _tabIdForView(el) {
     if (!el) {
       return null;
     }
@@ -303,8 +303,8 @@ export default class SideTab {
   static tabIdForEvent(e) {
     let el = e.target;
     // eslint-disable-next-line curly
-    while (!SideTab.tabIdForView(el) && (el = el.parentElement));
-    return SideTab.tabIdForView(el);
+    while (!SideTab._tabIdForView(el) && (el = el.parentElement));
+    return SideTab._tabIdForView(el);
   }
 
   static _syncThrobberAnimations() {
