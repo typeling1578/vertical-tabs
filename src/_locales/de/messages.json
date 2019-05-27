@@ -90,7 +90,7 @@
         "message": "Immer"
     },
     "optionsCompactPins": {
-        "message": "Kompakte angeheftete Tabs"
+        "message": "Angeheftete Tabs nur mit Favicon darstellen"
     },
     "optionsDarkTheme": {
         "message": "Dunkle Darstellung"
@@ -157,5 +157,17 @@
     "browserActionOff": {
         "message": "aus",
         "description": "Badge text shown when sidebar is closed."
+    },
+    "optionsAppearanceTitle": {
+        "message": "Erscheinungsbild",
+        "description": "Section in options page."
+    },
+    "optionsBehaviorTitle": {
+        "message": "Verhalten",
+        "description": "Section in options page."
+    },
+    "optionsWarnBeforeClosing": {
+        "message": "Warnen, bevor mehr als $COUNT$ Tabs geschlossen werden",
+        "description": "Option in options page."
     }
 }
