@@ -152,7 +152,7 @@
         "description": "Option in options page."
     },
     "optionsCompactPins": {
-        "message": "Compact Pinned Tabs",
+        "message": "Favicon-only Pinned Tabs",
         "description": "Option in options page."
     },
     "optionsDarkTheme": {

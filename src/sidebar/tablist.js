@@ -513,16 +513,25 @@ export default class TabList {
   }
 
   _onDrop(e) {
+    const isTopmenuEvent = !this._isEventForId(e, "topmenu");
     if (
+      !isTopmenuEvent &&
       !SideTab.isTabEvent(e, false) &&
       e.target !== this._spacerView &&
       e.target !== this._moreTabsView
     ) {
       return;
     }
-    e.preventDefault();
+    if (!this._isEventForId(e, "searchbox")) {
+      e.preventDefault();
+    }
     this._isDragging = false;
     clearTimeout(this._openInNewWindowTimer);
+
+    // if this is a topmenu event, do not move the tab
+    if (isTopmenuEvent) {
+      return;
+    }
 
     const dt = e.dataTransfer;
     const tabStr = dt.getData("text/x-tabcenter-tab");
@@ -538,6 +547,19 @@ export default class TabList {
       url: mozURL,
       windowId: this._windowId,
     });
+  }
+
+  _isEventForId(e, id) {
+    let elem = e.target;
+    while (true) {
+      if (elem.id === id) {
+        return true;
+      }
+      elem = elem.parentNode;
+      if (elem === null) {
+        return false;
+      }
+    }
   }
 
   _handleDroppedTabCenterTab(e, tab) {
@@ -595,7 +617,7 @@ export default class TabList {
     this._openInNewWindowTimer = setTimeout(() => {
       if (this._isDragging === true && this._tabs.size !== 1) {
         this._isDragging === false;
-        browser.windows.create({ tabId: SideTab.tabIdForView(e.target) });
+        browser.windows.create({ tabId: SideTab.tabIdForEvent(e) });
         browser.bookmarks.onCreated.removeListener(__onBookmarkCreated);
       }
     }, 50);
@@ -652,7 +674,6 @@ export default class TabList {
         const show = !!result;
         tab.updateVisibility(show);
         tab.resetHighlights();
-        tab.resetOrder();
         if (show) {
           if (result[0]) {
             // title
@@ -662,7 +683,6 @@ export default class TabList {
             // host
             tab.highlightHost(fuzzysort.highlight(result[1], "<b>", "</b>"));
           }
-          tab.setOrder(result.order);
         } else {
           notShown += 1;
         }
@@ -671,7 +691,6 @@ export default class TabList {
       for (const tab of tabs) {
         tab.updateVisibility(true);
         tab.resetHighlights();
-        tab.resetOrder();
       }
     }
     if (notShown > 0) {

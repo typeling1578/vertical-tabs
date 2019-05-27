@@ -18,6 +18,7 @@
   --input-background: var(--white-100);
   --input-border: var(--grey-30);
   --input-text: var(--grey-50);
+  --input-text-focus: var(--grey-70);
 
   --background: var(--white-100);
   --tab-active-background: var(--grey-30);
@@ -35,6 +36,7 @@ body.dark-theme {
   --input-background: var(--grey-60);
   --input-border: var(--grey-50);
   --input-text: var(--grey-30);
+  --input-text-focus: var(--grey-20);
 
   --tab-text: var(--white-100);
   --background: var(--grey-90);
@@ -196,7 +198,7 @@ body[platform="mac"] #searchbox.focused {
 }
 
 #searchbox-input {
-  color: var(--input-text);
+  color: var(--input-text-focus);
   background-color: var(--input-background);
   flex: 1;
   font: inherit; /* needed for windows */
@@ -206,7 +208,11 @@ body[platform="mac"] #searchbox.focused {
   border-radius: 0 var(--button-border-radius) var(--button-border-radius) 0;
 }
 
-#searchbox-input::selection {
+#searchbox-input::placeholder {
+  color: var(--input-text);
+}
+
+body.has-custom-input-color #searchbox-input::selection {
   color: var(--input-selected-text);
   background-color: var(--input-selected-text-background);
 }
@@ -441,7 +447,7 @@ body[platform="win"] #searchbox-input:placeholder-shown {
 }
 
 #bottomshadow {
-  position: absolute;
+  position: relative;
   bottom: 0px;
   transition: box-shadow 0.8s ease;
 }
