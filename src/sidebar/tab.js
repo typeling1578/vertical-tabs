@@ -256,14 +256,6 @@ export default class SideTab {
     this._hostView.innerHTML = newHost;
   }
 
-  resetOrder() {
-    this.setOrder(null);
-  }
-
-  setOrder(idx) {
-    this.view.style.order = idx;
-  }
-
   // If strict is true, this will return false for subviews (e.g the close button).
   static isTabEvent(e, strict = true) {
     let el = e.target;

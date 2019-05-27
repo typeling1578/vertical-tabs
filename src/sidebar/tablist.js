@@ -674,7 +674,6 @@ export default class TabList {
         const show = !!result;
         tab.updateVisibility(show);
         tab.resetHighlights();
-        tab.resetOrder();
         if (show) {
           if (result[0]) {
             // title
@@ -684,7 +683,6 @@ export default class TabList {
             // host
             tab.highlightHost(fuzzysort.highlight(result[1], "<b>", "</b>"));
           }
-          tab.setOrder(result.order);
         } else {
           notShown += 1;
         }
@@ -693,7 +691,6 @@ export default class TabList {
       for (const tab of tabs) {
         tab.updateVisibility(true);
         tab.resetHighlights();
-        tab.resetOrder();
       }
     }
     if (notShown > 0) {
