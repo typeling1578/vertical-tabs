@@ -90,7 +90,7 @@
         "message": "Toujours"
     },
     "optionsCompactPins": {
-        "message": "Onglets épinglés compacts"
+        "message": "Favicon uniquement pour les onglets épinglés"
     },
     "optionsDarkTheme": {
         "message": "Thème sombre"
@@ -157,5 +157,17 @@
     "browserActionOff": {
         "message": "off",
         "description": "Badge text shown when sidebar is closed."
+    },
+    "optionsAppearanceTitle": {
+        "message": "Apparence",
+        "description": "Section in options page."
+    },
+    "optionsBehaviorTitle": {
+        "message": "Comportement",
+        "description": "Section in options page."
+    },
+    "optionsWarnBeforeClosing": {
+        "message": "Avertir avant de fermer plus que $COUNT onglets",
+        "description": "Option in options page."
     }
 }
