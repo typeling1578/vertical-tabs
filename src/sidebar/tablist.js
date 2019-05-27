@@ -110,7 +110,7 @@ export default class TabList {
     browser.storage.onChanged.addListener(changes => this._onPrefsChanged(changes));
   }
 
-  _setupFirstAndLastTabsObserver() {
+  _initializeFirstAndLastTabsObserver() {
     const onObserve = entries => {
       entries.forEach(entry => {
         if (this._firstTabView && entry.target.id === this._firstTabView.id) {
@@ -128,7 +128,7 @@ export default class TabList {
       };
       this._firstAndLastTabObserver = new IntersectionObserver(onObserve, options);
     }
-    this._observeFirstAndLastTab();
+    this._setFirstAndLastTabObserver();
   }
 
   __toggleShadow(entry, className) {
@@ -144,35 +144,62 @@ export default class TabList {
     }
   }
 
-  _observeFirstAndLastTab() {
+  _setFirstAndLastTabObserver() {
     if (this._tabs.size) {
-      this.__observeFirstTab();
-      this.__observeLastTab();
+      let firstTabView = null;
+      let lastTabView = null;
+      if (this._filterActive) {
+        const tabViews = this._view.querySelectorAll(".tab:not(.hidden)");
+        if (!tabViews || !tabViews.length) {
+          //no tab visible with current filter
+          this._unObserveTab(this._firstTabView);
+          this._unObserveTab(this.lastTabView);
+          return;
+        }
+        const lastTabOrder = (tabViews.length - 1).toString();
+        for (const tabView of tabViews) {
+          if (firstTabView && lastTabView) {
+            return;
+          }
+          if (tabView.style.order === "0") {
+            firstTabView = tabView;
+          }
+          if (tabView.style.order === lastTabOrder) {
+            lastTabView = tabView;
+          }
+        }
+      } else {
+        firstTabView = this._view.firstChild;
+        lastTabView = this._view.lastChild;
+      }
+
+      this.__observeFirstTab(firstTabView);
+      this.__observeLastTab(lastTabView);
     }
   }
 
-  __observeFirstTab() {
+  __observeFirstTab(firstTabView) {
     if (this._firstTabView) {
-      if (this._firstTabView === this._view.firstChild) {
+      if (this._firstTabView === firstTabView) {
         return;
       }
       this._firstAndLastTabObserver.unobserve(this._firstTabView);
     }
 
-    this._firstTabView = this._view.firstChild;
+    this._firstTabView = firstTabView;
     this._firstAndLastTabObserver.observe(this._firstTabView);
   }
 
-  __observeLastTab() {
+  __observeLastTab(lastTabView) {
     if (this._lastTabView) {
-      if (this._lastTabView === this._view.lastChild) {
+      if (this._lastTabView === lastTabView) {
         return;
       }
       this._firstAndLastTabObserver.unobserve(this._lastTabView);
     }
 
-    if (this._view.firstChild !== this._view.lastChild) {
-      this._lastTabView = this._view.lastChild;
+    if (this._view.firstChild !== lastTabView) {
+      this._lastTabView = lastTabView;
       this._firstAndLastTabObserver.observe(this._lastTabView);
     }
   }
@@ -454,7 +481,7 @@ export default class TabList {
     e.dataTransfer.setData(
       "text/x-tabcenter-tab",
       JSON.stringify({
-        tabId: parseInt(SideTab.tabIdForEvent(e)),
+        tabId: parseInt(tabId),
         origWindowId: this._windowId,
       }),
     );
@@ -557,12 +584,21 @@ export default class TabList {
   }
 
   _onDragend(e) {
+    //listen for bookmark creation
+    const __onBookmarkCreated = (id, bookmarkInfo) => {
+      clearTimeout(this._openInNewWindowTimer);
+      browser.bookmarks.onCreated.removeListener(__onBookmarkCreated);
+    };
+
+    browser.bookmarks.onCreated.addListener(__onBookmarkCreated);
+
     this._openInNewWindowTimer = setTimeout(() => {
       if (this._isDragging === true && this._tabs.size !== 1) {
         this._isDragging === false;
         browser.windows.create({ tabId: SideTab.tabIdForView(e.target) });
+        browser.bookmarks.onCreated.removeListener(__onBookmarkCreated);
       }
-    }, 25);
+    }, 50);
   }
 
   _onSpacerDblClick() {
@@ -590,6 +626,7 @@ export default class TabList {
       return;
     }
     this._props.search("");
+    this._setFirstAndLastTabObserver();
   }
 
   filter(query) {
@@ -646,6 +683,7 @@ export default class TabList {
       this._moreTabsView.removeAttribute("hasMoreTabs");
     }
     this._maybeShrinkTabs();
+    this._setFirstAndLastTabObserver();
   }
 
   async _populate() {
@@ -672,7 +710,7 @@ export default class TabList {
       this._maybeUpdateTabThumbnail(activeTab);
       this.scrollIntoView(activeTab);
     }
-    this._setupFirstAndLastTabsObserver();
+    this._initializeFirstAndLastTabsObserver();
   }
 
   checkWindow(windowId) {
@@ -790,11 +828,12 @@ export default class TabList {
     if (this._active === sidetab.id) {
       this._active = null;
     }
+    //remove observer before to remove the view
     this._unObserveTab(sidetab.view);
     sidetab.view.remove();
     this._tabs.delete(sidetab.id);
     this._maybeShrinkTabs();
-    this._observeFirstAndLastTab();
+    this._setFirstAndLastTabObserver();
   }
 
   _appendTabView(sidetab) {
@@ -804,7 +843,7 @@ export default class TabList {
     // session restore.
     if (!this._tabs.size) {
       parent.appendChild(element);
-      this._observeFirstAndLastTab();
+      this._setFirstAndLastTabObserver();
       return;
     }
     const tabAfter = [...this._tabs.values()]
@@ -816,14 +855,14 @@ export default class TabList {
     } else {
       parent.appendChild(element);
     }
-    this._observeFirstAndLastTab();
+    this._setFirstAndLastTabObserver();
   }
 
   _removeTabView(sidetab) {
     const element = sidetab.view;
     const parent = sidetab.pinned ? this._pinnedview : this._view;
     parent.removeChild(element);
-    this._observeFirstAndLastTab();
+    this._setFirstAndLastTabObserver();
   }
 
   _onTabPinned(sidetab) {
