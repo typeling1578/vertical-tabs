@@ -90,7 +90,7 @@
         "message": "Ĉiam"
     },
     "optionsCompactPins": {
-        "message": "Kompaktaj fiksitaj langetoj"
+        "message": "Nur favorikono por fiksitaj langetoj"
     },
     "optionsDarkTheme": {
         "message": "Malhela etoso"
@@ -157,5 +157,17 @@
     "browserActionOff": {
         "message": "el",
         "description": "Badge text shown when sidebar is closed."
+    },
+    "optionsAppearanceTitle": {
+        "message": "Aspekto",
+        "description": "Section in options page."
+    },
+    "optionsBehaviorTitle": {
+        "message": "Konduto",
+        "description": "Section in options page."
+    },
+    "optionsWarnBeforeClosing": {
+        "message": "Averti antaŭ ol fermi pli ol $COUNT langetojn",
+        "description": "Option in options page."
     }
 }
