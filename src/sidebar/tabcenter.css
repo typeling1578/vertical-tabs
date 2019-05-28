@@ -22,6 +22,7 @@
 
   --background: var(--white-100);
   --tab-active-background: var(--grey-30);
+  --tab-hover-background: hsla(0, 0%, 50%, 0.15);
   --tab-separator: var(--grey-40);
   --tab-text: var(--grey-90);
 }
@@ -31,7 +32,7 @@ body.dark-theme {
   --button-background-active: var(--grey-50);
   --button-background-hover: var(--grey-60);
 
-  --toolbar-background: var(--grey-80);
+  --toolbar-background: var(--grey-70);
   --toolbar-text: var(--white-100);
   --input-background: var(--grey-60);
   --input-border: var(--grey-50);
@@ -39,8 +40,9 @@ body.dark-theme {
   --input-text-focus: var(--grey-20);
 
   --tab-text: var(--white-100);
-  --background: var(--grey-90);
-  --tab-active-background: var(--grey-70);
+  --background: var(--grey-80);
+  --tab-active-background: var(--grey-60);
+  --tab-hover-background: hsla(0, 0%, 50%, 0.15);
   --tab-separator: var(--grey-60);
 }
 
@@ -254,9 +256,12 @@ body[platform="win"] #searchbox-input:placeholder-shown {
   color: var(--tab-text);
 }
 
-.tab.active,
-.tab:not(.active):hover {
+.tab.active {
   background-color: var(--tab-active-background);
+}
+
+.tab:not(.active):hover {
+  background-color: var(--tab-hover-background);
 }
 
 #tablist .tab,

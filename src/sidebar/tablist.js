@@ -513,15 +513,6 @@ export default class TabList {
   }
 
   _onDrop(e) {
-    const isTopmenuEvent = !this._isEventForId(e, "topmenu");
-    if (
-      !isTopmenuEvent &&
-      !SideTab.isTabEvent(e, false) &&
-      e.target !== this._spacerView &&
-      e.target !== this._moreTabsView
-    ) {
-      return;
-    }
     if (!this._isEventForId(e, "searchbox")) {
       e.preventDefault();
     }
@@ -529,7 +520,7 @@ export default class TabList {
     clearTimeout(this._openInNewWindowTimer);
 
     // if this is a topmenu event, do not move the tab
-    if (isTopmenuEvent) {
+    if (this._isEventForId(e, "topmenu")) {
       return;
     }
 
