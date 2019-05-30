@@ -606,11 +606,22 @@ export default class TabList {
     browser.bookmarks.onCreated.addListener(__onBookmarkCreated);
 
     this._openInNewWindowTimer = setTimeout(() => {
-      if (this._isDragging === true && this._tabs.size !== 1) {
-        this._isDragging === false;
-        browser.windows.create({ tabId: SideTab.tabIdForEvent(e) });
-        browser.bookmarks.onCreated.removeListener(__onBookmarkCreated);
+      if (this._isDragging === false) {
+        return;
       }
+      this._isDragging = false;
+      if (this._tabs.size === 1) {
+        return;
+      }
+
+      const tabId = SideTab.tabIdForEvent(e);
+      const tab = this.getTabById(tabId);
+      // if tab has been moved to another window
+      if (!tab) {
+        return;
+      }
+      browser.windows.create({ tabId: tabId });
+      browser.bookmarks.onCreated.removeListener(__onBookmarkCreated);
     }, 50);
   }
 
