@@ -169,8 +169,9 @@ export default class TabList {
           }
         }
       } else {
-        firstTabView = this._view.firstChild;
-        lastTabView = this._view.lastChild;
+        const tabViews = this._view.querySelectorAll(".tab:not(.deleted)");
+        firstTabView = tabViews[0];
+        lastTabView = tabViews[tabViews.length - 1];
       }
 
       this.__observeFirstTab(firstTabView);
@@ -287,6 +288,7 @@ export default class TabList {
     if (sidetab.hidden) {
       return;
     }
+    this._removeTabView(sidetab);
     this._appendTabView(sidetab);
     this.scrollIntoView(sidetab);
   }
@@ -638,7 +640,9 @@ export default class TabList {
   _onAnimationEnd(e) {
     const tabId = SideTab.tabIdForEvent(e);
     const tab = this.getTabById(tabId);
-    tab.onAnimationEnd(e);
+    if (tab) {
+      tab.onAnimationEnd(e);
+    }
   }
 
   _clearSearch() {
@@ -777,20 +781,29 @@ export default class TabList {
     }
 
     const spaceLeft = this._spacerView.offsetHeight;
-    if (!this._tabsShrinked && spaceLeft === 0) {
+    const visibleUnpinnedTabCount = Array.from(this._tabs.values()).filter(
+      tab => !tab.pinned || !tab.visible,
+    ).length;
+
+    const wrapperHeight = this._wrapperView.offsetHeight;
+    if (
+      !this._tabsShrinked &&
+      wrapperHeight < visibleUnpinnedTabCount * 52 + this._pinnedview.offsetHeight
+    ) {
       this._tabsShrinked = true;
       return;
     }
+
     if (!this._tabsShrinked) {
       return;
     }
     // Could we fit everything if we switched back to the "normal" mode?
-    const wrapperHeight = this._wrapperView.offsetHeight;
-    const estimatedTabHeight = 56; // Not very scientific, but it "mostly" works.
+    const estimatedTabHeight = 52; // Not very scientific, but it "mostly" works.
 
     // TODO: We are not accounting for the "More Tabs" element displayed when
     // filtering tabs.
-    let estimatedHeight = 0;
+    // account for one tab more so we don’t switch too often back and forth
+    let estimatedHeight = estimatedTabHeight;
     let numPinnedTabs = 0;
     for (const tab of this._tabs.values()) {
       if (tab.visible) {
@@ -851,7 +864,7 @@ export default class TabList {
     }
     //remove observer before to remove the view
     this._unObserveTab(sidetab.view);
-    sidetab.view.remove();
+    this._removeTabView(sidetab);
     this._tabs.delete(sidetab.id);
     this._maybeShrinkTabs();
     this._setFirstAndLastTabObserver();
@@ -867,22 +880,29 @@ export default class TabList {
       this._setFirstAndLastTabObserver();
       return;
     }
+    element.classList.add("added");
     const tabAfter = [...this._tabs.values()]
       .filter(tab => tab.pinned === sidetab.pinned && !tab.hidden)
       .sort((a, b) => a.index - b.index)
       .find(tab => tab.index > sidetab.index);
-    if (tabAfter) {
-      parent.insertBefore(element, tabAfter.view);
-    } else {
-      parent.appendChild(element);
-    }
+    const newElem = tabAfter
+      ? parent.insertBefore(element, tabAfter.view)
+      : parent.appendChild(element);
+    setTimeout(() => newElem.classList.remove("added"), 20);
     this._setFirstAndLastTabObserver();
   }
 
   _removeTabView(sidetab) {
-    const element = sidetab.view;
-    const parent = sidetab.pinned ? this._pinnedview : this._view;
-    parent.removeChild(element);
+    const oldView = sidetab.view;
+    const newView = sidetab.view.cloneNode(true);
+    oldView.id = String(
+      Math.random()
+        .toString(36)
+        .substr(2, 8),
+    );
+    oldView.addEventListener("transitionend", () => oldView.remove());
+    oldView.classList.add("deleted");
+    sidetab.view = newView;
     this._setFirstAndLastTabObserver();
   }
 
