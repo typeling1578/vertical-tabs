@@ -252,6 +252,9 @@ body[platform="win"] #searchbox-input:placeholder-shown {
 
 .tab {
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tab:not(.active):hover {
@@ -267,19 +270,13 @@ body[platform="win"] #searchbox-input:placeholder-shown {
 }
 
 #tablist .tab.added,
-#pinnedtablist:not(.compact) .tab.added {
-  height: 0 !important;
-}
-
+#pinnedtablist:not(.compact) .tab.added,
 #tablist .tab.deleted,
 #pinnedtablist:not(.compact) .tab.deleted {
   height: 0 !important;
 }
 
 #pinnedtablist.compact .tab {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 32px;
   height: 32px;
   transition: width 0.15s ease, box-shadow 0.2s ease;
@@ -287,26 +284,14 @@ body[platform="win"] #searchbox-input:placeholder-shown {
 
 #tablist .tab:not(.pinned),
 #pinnedtablist:not(.compact) .tab {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 52px;
   border-bottom: 1px solid var(--tab-separator);
   position: relative;
 }
 
-#pinnedtablist.compact .tab:not(:last-child) {
-  border-right: 1px solid var(--tab-separator);
-}
-
-#pinnedtablist.compact .tab.added {
-  padding-left: 0;
-  width: 0 !important;
-}
-
+#pinnedtablist.compact .tab.added,
 #pinnedtablist.compact .tab.deleted {
-  padding-left: 0;
-  width: 0 !important;
+  width: 0;
 }
 
 .tab.active {
