@@ -7,7 +7,8 @@
     "webext": "npm run update-test-libs && web-ext run --start-url about:debugging -s src",
     "dev": "concurrently --kill-others --raw -s first npm:webext npm:watch",
     "webext-lint": "web-ext lint -s src/ -i sidebar/dist/ test/vendor/",
-    "build": "webpack-cli --mode production && web-ext build -s src/ -i test/ 'sidebar/**/*.js' '!sidebar/dist/bundle.js' --overwrite-dest"
+    "build": "webpack-cli --mode production && web-ext build -s src/ -i test/ 'sidebar/**/*.js' '!sidebar/dist/bundle.js' --overwrite-dest",
+    "build-source": "tar cavf web-ext-artifacts/tabcenter-reborn.tar.gz -X .gitignore -X .tarignore ."
   },
   "prettier": {
     "printWidth": 100,
@@ -72,7 +73,7 @@
     "concurrently": "^4.1.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.2.0",
-    "husky": "^2.1.0",
+    "husky": "^2.3.0",
     "lint-staged": "^8.1.5",
     "mocha": "^6.1.4",
     "prettier": "^1.17.0",

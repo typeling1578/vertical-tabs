@@ -7,7 +7,7 @@ import TopMenu from "./topmenu.js";
 export default class TabCenter {
   async init() {
     const window = await browser.windows.getCurrent();
-    document.body.setAttribute("incognito", window.incognito);
+    document.body.classList.toggle("incognito", window.incognito);
     this._windowId = window.id;
 
     browser.runtime.getPlatformInfo().then(platform => {
