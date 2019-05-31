@@ -22,7 +22,7 @@
 
   --background: var(--white-100);
   --tab-active-background: var(--grey-30);
-  --tab-hover-background: hsla(0, 0%, 50%, 0.15);
+  --tab-hover-background: hsla(0, 0%, 50%, 0.2);
   --tab-separator: var(--grey-40);
   --tab-text: var(--grey-90);
 }
@@ -42,7 +42,6 @@ body.dark-theme {
   --tab-text: var(--white-100);
   --background: var(--grey-80);
   --tab-active-background: var(--grey-60);
-  --tab-hover-background: hsla(0, 0%, 50%, 0.15);
   --tab-separator: var(--grey-60);
 }
 
