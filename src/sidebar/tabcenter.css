@@ -794,3 +794,11 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 .hidden {
   display: none !important;
 }
+
+.drag-highlight-up {
+  box-shadow: inset 0 2px 0px 0px var(--tab-selected-line) !important;
+}
+
+.drag-highlight-down {
+  box-shadow: inset 0 -2px 0px 0px var(--tab-selected-line) !important;
+}
