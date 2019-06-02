@@ -134,7 +134,6 @@ export default class TabList {
   }
 
   __toggleShadow(entry, className) {
-    // console.log(entry);
     if (!entry.isIntersecting) {
       //tab is not visible, show shadow
       this._wrapperView.classList.add(className);
@@ -143,30 +142,28 @@ export default class TabList {
       this._wrapperView.classList.remove(className);
     } else {
       //tab is partially visible, show shadow
-      // console.log("tab is partially visible, show shadow");
-      // console.log(entry);
       this._wrapperView.classList.add(className);
     }
   }
 
   _setFirstAndLastTabObserver() {
-    if (this._tabs.size) {
-      const tabViews = this._filterActive
-        ? this._view.querySelectorAll(".tab:not(.hidden):not(.deleted)")
-        : this._view.querySelectorAll(".tab:not(.deleted)");
-
-      if (!tabViews || !tabViews.length) {
-        //no tab visible with current filter
-        this._unObserveTab(this._firstTabView);
-        this._unObserveTab(this._lastTabView);
-        return;
-      }
-
-      const newFirstTabView = tabViews[0];
-      const newLastTabView = tabViews[tabViews.length - 1];
-      this.__observeFirstTab(newFirstTabView);
-      this.__observeLastTab(newLastTabView);
+    if (!this._tabs.size) {
+      return;
     }
+
+    const tabViews = this._view.querySelectorAll(".tab:not(.hidden):not(.deleted)");
+
+    if (tabViews.length <= 2) {
+      this._unObserveTab(this._firstTabView);
+      this._unObserveTab(this._lastTabView);
+      this._wrapperView.classList.remove("can-scroll-top", "can-scroll-bottom");
+      return;
+    }
+
+    const newFirstTabView = tabViews[0];
+    const newLastTabView = tabViews[tabViews.length - 1];
+    this.__observeFirstTab(newFirstTabView);
+    this.__observeLastTab(newLastTabView);
   }
 
   __observeFirstTab(newFirstTabView) {
@@ -196,6 +193,9 @@ export default class TabList {
   }
 
   _unObserveTab(tabView) {
+    if (!tabView) {
+      return;
+    }
     if (tabView === this._firstTabView) {
       this._firstAndLastTabObserver.unobserve(this._firstTabView);
       this._firstTabView = null;
@@ -518,9 +518,15 @@ export default class TabList {
       return;
     }
 
-    dragTabPos > dropTabPos
-      ? dropTab.view.classList.add("drag-highlight-up")
-      : dropTab.view.classList.add("drag-highlight-down");
+    if (dragTabPos > dropTabPos) {
+      dragTab.pinned
+        ? dropTab.view.classList.add("drag-highlight-left")
+        : dropTab.view.classList.add("drag-highlight-up");
+    } else {
+      dragTab.pinned
+        ? dropTab.view.classList.add("drag-highlight-rigth")
+        : dropTab.view.classList.add("drag-highlight-down");
+    }
   }
 
   _onDragLeave(e) {
@@ -530,7 +536,7 @@ export default class TabList {
 
     const dropTabId = SideTab.tabIdForEvent(e);
     const dropTab = this.getTabById(dropTabId);
-    dropTab.view.classList.remove("drag-highlight-up", "drag-highlight-down");
+    this._removeDragHighlight(dropTab);
   }
 
   _findMozURL(dataTransfer) {
@@ -622,7 +628,7 @@ export default class TabList {
       return;
     }
 
-    dropTab.view.classList.remove("drag-highlight-up", "drag-highlight-down");
+    this._removeDragHighlight(dropTab);
 
     const curTabPos = curTab.index;
     const dropTabPos = dropTab.index;
@@ -658,6 +664,12 @@ export default class TabList {
       browser.windows.create({ tabId: tabId });
       browser.bookmarks.onCreated.removeListener(__onBookmarkCreated);
     }, 50);
+  }
+
+  _removeDragHighlight(tab) {
+    tab.pinned
+      ? tab.view.classList.remove("drag-highlight-left", "drag-highlight-rigth")
+      : tab.view.classList.remove("drag-highlight-up", "drag-highlight-down");
   }
 
   _onSpacerDblClick() {

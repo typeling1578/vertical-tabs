@@ -796,9 +796,17 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 }
 
 .drag-highlight-up {
-  box-shadow: inset 0 2px 0px 0px var(--tab-selected-line) !important;
+  box-shadow: inset 0px 2px 0px 0px var(--tab-selected-line) !important;
 }
 
 .drag-highlight-down {
-  box-shadow: inset 0 -2px 0px 0px var(--tab-selected-line) !important;
+  box-shadow: inset 0px -2px 0px 0px var(--tab-selected-line) !important;
+}
+
+.drag-highlight-left {
+  box-shadow: inset 2px 0px 0px 0px var(--tab-selected-line) !important;
+}
+
+.drag-highlight-rigth {
+  box-shadow: inset -2px 0px 0px 0px var(--tab-selected-line) !important;
 }
