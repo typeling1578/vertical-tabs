@@ -265,7 +265,7 @@ body[platform="win"] #searchbox-input:placeholder-shown {
   flex-shrink: 0;
   color: var(--tab-text);
   padding: 0px 2px;
-  transition: height 0.15s ease, box-shadow 0.2s ease;
+  transition: height 0.1s ease, box-shadow 0.2s ease;
 }
 
 #tablist .tab.added,
@@ -278,7 +278,7 @@ body[platform="win"] #searchbox-input:placeholder-shown {
 #pinnedtablist.compact .tab {
   width: 32px;
   height: 32px;
-  transition: width 0.15s ease, box-shadow 0.2s ease;
+  transition: width 0.1s ease, box-shadow 0.2s ease;
 }
 
 #tablist .tab:not(.pinned),

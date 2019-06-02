@@ -412,6 +412,8 @@ export default class TabList {
     // workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1139745#c7
     // we still make a first scrollIntoView so that it starts scrolling right away
     setTimeout(() => this._scrollIntoViewIfNeeded(tab), 100);
+    // also we scroll when a tab has finished animating
+    setTimeout(() => this._scrollIntoViewIfNeeded(tab), 300);
   }
 
   _scrollIntoViewIfNeeded(tab) {
@@ -880,7 +882,10 @@ export default class TabList {
       this._setFirstAndLastTabObserver();
       return;
     }
-    element.classList.add("added");
+    const spaceLeft = this._spacerView.offsetHeight;
+    if (spaceLeft !== 0) {
+      element.classList.add("added");
+    }
     const tabAfter = [...this._tabs.values()]
       .filter(tab => tab.pinned === sidetab.pinned && !tab.hidden)
       .sort((a, b) => a.index - b.index)
