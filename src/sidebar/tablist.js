@@ -21,7 +21,7 @@ export default class TabList {
     this._tabs = new Map();
     this._active = null;
     this.__compactPins = true;
-    this.__tabsShrinked = false;
+    this.__tabsShrinked = true;
     this._windowId = props.windowId;
     this._filterActive = false;
     this._willMoveTimeout = null;
@@ -782,35 +782,38 @@ export default class TabList {
       return;
     }
 
-    const spaceLeft = this._spacerView.offsetHeight;
-    const visibleUnpinnedTabCount = Array.from(this._tabs.values()).filter(
-      tab => !tab.pinned && tab.visible && !tab.hidden,
-    ).length;
-
     const wrapperHeight = this._wrapperView.offsetHeight;
-    if (
-      !this._tabsShrinked &&
-      wrapperHeight < visibleUnpinnedTabCount * 52 + this._pinnedview.offsetHeight
-    ) {
-      this._tabsShrinked = true;
-      return;
-    }
+    const pinnedViewHeight = this._pinnedview.offsetHeight;
+    const notCompactTabHeight = 52; // Doesn’t work exactly if CSS is customized
+    const maxHeight = wrapperHeight - notCompactTabHeight / 2;
+
+    // Can we fit everything without shrinking tabs?
 
     if (!this._tabsShrinked) {
+      const spaceLeft = this._spacerView.offsetHeight;
+      const unpinnedTabCount = Array.from(this._tabs.values()).filter(
+        tab => !tab.pinned && tab.visible && !tab.hidden,
+      ).length;
+
+      if (unpinnedTabCount * notCompactTabHeight + pinnedViewHeight > maxHeight) {
+        this._tabsShrinked = true;
+      }
       return;
     }
-    // Could we fit everything if we switched back to the "normal" mode?
-    const estimatedTabHeight = 52; // Not very scientific, but it "mostly" works.
 
-    // TODO: We are not accounting for the "More Tabs" element displayed when
-    // filtering tabs.
+    // Could we fit everything if we switched back to the "normal" mode?
+
     // account for one tab more so we don’t switch too often back and forth
-    let estimatedHeight = estimatedTabHeight;
+    let estimatedHeight = notCompactTabHeight;
+
+    // take the "Show All Tabs" element displayed when filtering tabs into account
+    estimatedHeight += this._moreTabsView.offsetHeight;
+
     let numPinnedTabs = 0;
     for (const tab of this._tabs.values()) {
       if (tab.visible) {
         if (!tab.pinned) {
-          estimatedHeight += estimatedTabHeight;
+          estimatedHeight += notCompactTabHeight;
         } else {
           numPinnedTabs++;
         }
@@ -819,9 +822,9 @@ export default class TabList {
     estimatedHeight +=
       this._compactPins && numPinnedTabs > 0
         ? this._pinnedview.offsetHeight
-        : numPinnedTabs * estimatedTabHeight;
+        : numPinnedTabs * notCompactTabHeight;
 
-    if (estimatedHeight <= wrapperHeight) {
+    if (estimatedHeight <= maxHeight) {
       this._tabsShrinked = false;
     }
   }
