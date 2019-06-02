@@ -782,7 +782,7 @@ export default class TabList {
 
     const spaceLeft = this._spacerView.offsetHeight;
     const visibleUnpinnedTabCount = Array.from(this._tabs.values()).filter(
-      tab => !tab.pinned || !tab.visible,
+      tab => !tab.pinned && tab.visible && !tab.hidden,
     ).length;
 
     const wrapperHeight = this._wrapperView.offsetHeight;
