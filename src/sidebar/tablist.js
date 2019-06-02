@@ -150,13 +150,14 @@ export default class TabList {
   }
 
   _setFirstAndLastTabObserver() {
-    if (this._tabs.size) {
-      const tabViews = this._filterActive
-        ? this._view.querySelectorAll(".tab:not(.hidden):not(.deleted)")
-        : this._view.querySelectorAll(".tab:not(.deleted)");
+    if (!this._tabs.size) {
+      return;
+    }
 
-      if (!tabViews || !tabViews.length) {
-        //no tab visible with current filter
+    const tabViews = this._view.querySelectorAll(".tab:not(.hidden):not(.deleted)");
+
+    if (tabViews.length <= 2) {
+      // no tab visible with current filter
         this._unObserveTab(this._firstTabView);
         this._unObserveTab(this._lastTabView);
         return;
