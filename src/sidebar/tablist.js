@@ -36,6 +36,7 @@ export default class TabList {
     this._wrapperView = document.getElementById("tablist-wrapper");
     this._spacerView = document.getElementById("spacer");
     this._moreTabsView = document.getElementById("moretabs");
+    this._moreTabsView.textContent = browser.i18n.getMessage("allTabsLabel");
 
     this._compactModeMode = parseInt(this._props.prefs.compactModeMode);
     this._compactPins = this._props.prefs.compactPins;
@@ -660,10 +661,15 @@ export default class TabList {
   }
 
   filter(query) {
+    // if filter wasn’t active and there is no query, there is nothing to do
+    if (!this._filterActive && query.length === 0) {
+      return;
+    }
     this._filterActive = query.length > 0;
 
     const tabs = [...this._tabs.values()];
     let notShown = 0;
+    // if there is a query, update the results
     if (query.length) {
       const results = fuzzysort
         .go(query, tabs, {
@@ -695,20 +701,14 @@ export default class TabList {
           notShown += 1;
         }
       }
+      // otherwise we display again all the tabs
     } else {
       for (const tab of tabs) {
         tab.updateVisibility(true);
         tab.resetHighlights();
       }
     }
-    if (notShown > 0) {
-      // Sadly browser.i18n doesn't support plurals, which is why we
-      // only show a boring "Show all tabs…" message.
-      this._moreTabsView.textContent = browser.i18n.getMessage("allTabsLabel");
-      this._moreTabsView.setAttribute("hasMoreTabs", true);
-    } else {
-      this._moreTabsView.removeAttribute("hasMoreTabs");
-    }
+    this._moreTabsView.classList.toggle("hasMoreTabs", notShown > 0);
     this._maybeShrinkTabs();
     this._setFirstAndLastTabObserver();
   }

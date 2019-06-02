@@ -789,7 +789,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   background-color: hsla(0, 0%, 0%, 0.1);
 }
 
-#moretabs:not([hasMoreTabs]) {
+#moretabs:not(.hasMoreTabs) {
   display: none;
 }
 
