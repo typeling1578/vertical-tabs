@@ -777,6 +777,8 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 }
 
 #moretabs {
+  background-color: var(--background);
+  z-index: 50;
   display: flex;
   align-items: center;
   height: 36px;
