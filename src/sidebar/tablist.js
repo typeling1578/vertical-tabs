@@ -518,15 +518,9 @@ export default class TabList {
       return;
     }
 
-    if (dragTabPos > dropTabPos) {
-      dragTab.pinned
-        ? dropTab.view.classList.add("drag-highlight-left")
-        : dropTab.view.classList.add("drag-highlight-up");
-    } else {
-      dragTab.pinned
-        ? dropTab.view.classList.add("drag-highlight-rigth")
-        : dropTab.view.classList.add("drag-highlight-down");
-    }
+    dragTabPos > dropTabPos
+      ? dropTab.view.classList.add("drag-highlight-previous")
+      : dropTab.view.classList.add("drag-highlight-next");
   }
 
   _onDragLeave(e) {
@@ -536,7 +530,7 @@ export default class TabList {
 
     const dropTabId = SideTab.tabIdForEvent(e);
     const dropTab = this.getTabById(dropTabId);
-    this._removeDragHighlight(dropTab);
+    dropTab.view.classList.remove("drag-highlight-previous", "drag-highlight-next");
   }
 
   _findMozURL(dataTransfer) {
@@ -628,7 +622,7 @@ export default class TabList {
       return;
     }
 
-    this._removeDragHighlight(dropTab);
+    dropTab.view.classList.remove("drag-highlight-previous", "drag-highlight-next");
 
     const curTabPos = curTab.index;
     const dropTabPos = dropTab.index;
@@ -664,12 +658,6 @@ export default class TabList {
       browser.windows.create({ tabId: tabId });
       browser.bookmarks.onCreated.removeListener(__onBookmarkCreated);
     }, 50);
-  }
-
-  _removeDragHighlight(tab) {
-    tab.pinned
-      ? tab.view.classList.remove("drag-highlight-left", "drag-highlight-rigth")
-      : tab.view.classList.remove("drag-highlight-up", "drag-highlight-down");
   }
 
   _onSpacerDblClick() {
