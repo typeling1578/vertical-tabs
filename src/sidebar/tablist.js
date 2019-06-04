@@ -894,14 +894,19 @@ export default class TabList {
       this._setFirstAndLastTabObserver();
       return;
     }
-    const spaceLeft = this._spacerView.offsetHeight;
-    if (spaceLeft !== 0) {
-      element.classList.add("added");
-    }
     const tabAfter = [...this._tabs.values()]
       .filter(tab => tab.pinned === sidetab.pinned && !tab.hidden)
       .sort((a, b) => a.index - b.index)
       .find(tab => tab.index > sidetab.index);
+    const spaceLeft = this._spacerView.offsetHeight;
+    const wrapperHeight = this._wrapperView.offsetHeight;
+    if (
+      sidetab.pinned ||
+      (!tabAfter && spaceLeft !== 0) ||
+      (tabAfter && tabAfter.view.offsetHeight <= wrapperHeight)
+    ) {
+      element.classList.add("added");
+    }
     const newElem = tabAfter
       ? parent.insertBefore(element, tabAfter.view)
       : parent.appendChild(element);
