@@ -23,21 +23,36 @@ export default class TopMenu {
     this._searchBoxInput.value = val;
   }
 
-  _setupListeners() {
+  async _setupListeners() {
+    const newTabPosition = (await browser.browserSettings.newTabPosition.get({})).value;
+    const otherTabPosition = newTabPosition === "afterCurrent" ? "atEnd" : "afterCurrent";
+
     this._settingsView.addEventListener("click", () => {
       browser.runtime.openOptionsPage();
     });
+
     this._searchBoxInput.addEventListener("input", e => {
       this._props.search(e.target.value);
     });
-    this._newTabButtonView.addEventListener("click", () => {
-      this._props.openTab();
-    });
-    this._newTabButtonView.addEventListener("auxclick", e => {
-      if (e.button === 1) {
-        this._props.openTab({ afterCurrent: true });
+
+    this._newTabButtonView.addEventListener("click", e => {
+      if (e.ctrlKey === true && e.shiftKey === true) {
+        browser.windows.create({ incognito: true });
+      } else if (e.ctrlKey === true) {
+        this._props.openTab({ _position: otherTabPosition });
+      } else if (e.shiftKey === true) {
+        browser.windows.create();
+      } else {
+        this._props.openTab(props);
       }
     });
+
+    this._newTabButtonView.addEventListener("auxclick", e => {
+      if (e.button === 1) {
+        this._props.openTab({ _position: otherTabPosition });
+      }
+    });
+
     this._newTabButtonView.addEventListener("contextmenu", e => {
       this._showNewTabPopup(e);
     });
@@ -48,12 +63,18 @@ export default class TopMenu {
       }
     });
 
-    browser.menus.onClicked.addListener(info => {
-      if (info.menuItemId.startsWith("contextMenuOpenInNewContextualTab_")) {
-        this._props.openTab({
-          afterCurrent: true,
-          cookieStoreId: info.menuItemId.split("contextMenuOpenInNewContextualTab_")[1],
-        });
+    browser.menus.onClicked.addListener((info, tab) => {
+      if (!info.menuItemId.startsWith("contextMenuOpenInNewContextualTab_")) {
+        return;
+      }
+      const props = { cookieStoreId: info.menuItemId.split("contextMenuOpenInNewContextualTab_")[1] };
+      if (info.modifiers.includes("Ctrl")) {
+        props["_position"] = otherTabPosition;
+        this._props.openTab(props);
+      } else if (info.modifiers.includes("Shift")) {
+        browser.windows.create(props);
+      } else {
+        this._props.openTab(props);
       }
     });
   }
