@@ -11,7 +11,7 @@ export default class ContextMenu {
     let count;
 
     browser.menus.onClicked.addListener((info, tab) => {
-      if (!this._tablist.checkWindow(tab.windowId)) {
+      if (!tab || !this._tablist.checkWindow(tab.windowId)) {
         return;
       }
       switch (info.menuItemId) {
