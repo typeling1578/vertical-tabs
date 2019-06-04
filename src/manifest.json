@@ -28,6 +28,7 @@
     "cookies",
     "menus",
     "menus.overrideContext",
+    "search",
     "sessions",
     "storage",
     "tabHide",

@@ -530,19 +530,28 @@ export default class TabList {
     }
 
     const dt = e.dataTransfer;
-    const tabStr = dt.getData("text/x-tabcenter-tab");
-    if (tabStr) {
-      return this._handleDroppedTabCenterTab(e, JSON.parse(tabStr));
-    }
-    const mozURL = this._findMozURL(dt);
-    if (!mozURL) {
-      console.warn("Unknown drag-and-drop operation. Aborting.");
+    const tabJson = dt.getData("text/x-tabcenter-tab");
+    if (tabJson) {
+      this._handleDroppedTabCenterTab(e, JSON.parse(tabJson));
       return;
     }
-    this._props.openTab({
-      url: mozURL,
-      windowId: this._windowId,
-    });
+
+    const mozURL = this._findMozURL(dt);
+    if (mozURL) {
+      this._props.openTab({
+        url: mozURL,
+        windowId: this._windowId,
+      });
+      return;
+    }
+
+    const tabStr = dt.getData("text/plain");
+    if (tabStr) {
+      browser.search.search({ query: tabStr });
+      return;
+    }
+
+    console.info("Unknown drag-and-drop operation. Aborting.");
   }
 
   _isEventForId(e, id) {
