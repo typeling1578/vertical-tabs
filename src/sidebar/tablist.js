@@ -97,6 +97,8 @@ export default class TabList {
     // Drag-and-drop.
     document.addEventListener("dragstart", e => this._onDragStart(e));
     document.addEventListener("dragover", e => this._onDragOver(e));
+    document.addEventListener("dragenter", e => this._onDragEnter(e));
+    document.addEventListener("dragleave", e => this._onDragLeave(e));
     document.addEventListener("drop", e => this._onDrop(e));
     document.addEventListener("dragend", e => this._onDragend(e));
 
@@ -146,67 +148,55 @@ export default class TabList {
   }
 
   _setFirstAndLastTabObserver() {
-    if (this._tabs.size) {
-      let firstTabView = null;
-      let lastTabView = null;
-      if (this._filterActive) {
-        const tabViews = this._view.querySelectorAll(".tab:not(.hidden)");
-        if (!tabViews || !tabViews.length) {
-          //no tab visible with current filter
-          this._unObserveTab(this._firstTabView);
-          this._unObserveTab(this.lastTabView);
-          return;
-        }
-        const lastTabOrder = (tabViews.length - 1).toString();
-        for (const tabView of tabViews) {
-          if (firstTabView && lastTabView) {
-            return;
-          }
-          if (tabView.style.order === "0") {
-            firstTabView = tabView;
-          }
-          if (tabView.style.order === lastTabOrder) {
-            lastTabView = tabView;
-          }
-        }
-      } else {
-        const tabViews = this._view.querySelectorAll(".tab:not(.deleted)");
-        firstTabView = tabViews[0];
-        lastTabView = tabViews[tabViews.length - 1];
-      }
-
-      this.__observeFirstTab(firstTabView);
-      this.__observeLastTab(lastTabView);
+    if (!this._tabs.size) {
+      return;
     }
+
+    const tabViews = this._view.querySelectorAll(".tab:not(.hidden):not(.deleted)");
+
+    if (tabViews.length <= 2) {
+      this._unObserveTab(this._firstTabView);
+      this._unObserveTab(this._lastTabView);
+      this._wrapperView.classList.remove("can-scroll-top", "can-scroll-bottom");
+      return;
+    }
+
+    const newFirstTabView = tabViews[0];
+    const newLastTabView = tabViews[tabViews.length - 1];
+    this.__observeFirstTab(newFirstTabView);
+    this.__observeLastTab(newLastTabView);
   }
 
-  __observeFirstTab(firstTabView) {
+  __observeFirstTab(newFirstTabView) {
     if (this._firstTabView) {
-      if (this._firstTabView === firstTabView) {
+      if (this._firstTabView === newFirstTabView) {
         return;
       }
       this._firstAndLastTabObserver.unobserve(this._firstTabView);
     }
 
-    this._firstTabView = firstTabView;
+    this._firstTabView = newFirstTabView;
     this._firstAndLastTabObserver.observe(this._firstTabView);
   }
 
-  __observeLastTab(lastTabView) {
+  __observeLastTab(newLastTabView) {
     if (this._lastTabView) {
-      if (this._lastTabView === lastTabView) {
+      if (this._lastTabView === newLastTabView) {
         return;
       }
       this._firstAndLastTabObserver.unobserve(this._lastTabView);
     }
 
-    if (this._view.firstChild !== lastTabView) {
-      this._lastTabView = lastTabView;
+    if (this._view.firstChild !== newLastTabView) {
+      this._lastTabView = newLastTabView;
       this._firstAndLastTabObserver.observe(this._lastTabView);
     }
   }
 
   _unObserveTab(tabView) {
+    if (!tabView) {
+      return;
+    }
     if (tabView === this._firstTabView) {
       this._firstAndLastTabObserver.unobserve(this._firstTabView);
       this._firstTabView = null;
@@ -505,6 +495,47 @@ export default class TabList {
     e.preventDefault();
   }
 
+  _onDragEnter(e) {
+    if (!SideTab.isTabEvent(e)) {
+      return;
+    }
+
+    const dragTabInfoStr = e.dataTransfer.getData("text/x-tabcenter-tab");
+
+    if (!dragTabInfoStr) {
+      return;
+    }
+
+    const dragTabInfo = JSON.parse(dragTabInfoStr);
+    const dragTab = this.getTabById(dragTabInfo.tabId);
+    const dragTabPos = dragTab.index;
+    const dropTabId = SideTab.tabIdForEvent(e);
+    const dropTab = this.getTabById(dropTabId);
+    const dropTabPos = dropTab.index;
+
+    if (dragTab.id === dropTabId) {
+      return;
+    }
+
+    if (dragTab.pinned !== dropTab.pinned) {
+      return;
+    }
+
+    dragTabPos > dropTabPos
+      ? dropTab.view.classList.add("drag-highlight-previous")
+      : dropTab.view.classList.add("drag-highlight-next");
+  }
+
+  _onDragLeave(e) {
+    if (!SideTab.isTabEvent(e)) {
+      return;
+    }
+
+    const dropTabId = SideTab.tabIdForEvent(e);
+    const dropTab = this.getTabById(dropTabId);
+    dropTab.view.classList.remove("drag-highlight-previous", "drag-highlight-next");
+  }
+
   _findMozURL(dataTransfer) {
     const urlData = dataTransfer.getData("text/x-moz-url-data"); // page link
     if (urlData) {
@@ -602,6 +633,8 @@ export default class TabList {
       }
       return;
     }
+
+    dropTab.view.classList.remove("drag-highlight-previous", "drag-highlight-next");
 
     const curTabPos = curTab.index;
     const dropTabPos = dropTab.index;
@@ -881,7 +914,6 @@ export default class TabList {
     this._removeTabView(sidetab);
     this._tabs.delete(sidetab.id);
     this._maybeShrinkTabs();
-    this._setFirstAndLastTabObserver();
   }
 
   _appendTabView(sidetab) {
@@ -891,7 +923,6 @@ export default class TabList {
     // session restore.
     if (!this._tabs.size) {
       parent.appendChild(element);
-      this._setFirstAndLastTabObserver();
       return;
     }
     const tabAfter = [...this._tabs.values()]

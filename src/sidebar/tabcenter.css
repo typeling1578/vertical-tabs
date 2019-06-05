@@ -796,3 +796,21 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 .hidden {
   display: none !important;
 }
+
+#tablist .tab.drag-highlight-previous,
+#pinnedtablist:not(.compact) .tab.drag-highlight-previous {
+  box-shadow: inset 0px 2px 0px 0px var(--tab-selected-line) !important;
+}
+
+#tablist .tab.drag-highlight-next,
+#pinnedtablist:not(.compact) .tab.drag-highlight-next {
+  box-shadow: inset 0px -2px 0px 0px var(--tab-selected-line) !important;
+}
+
+#pinnedtablist.compact .tab.drag-highlight-previous {
+  box-shadow: inset 2px 0px 0px 0px var(--tab-selected-line) !important;
+}
+
+#pinnedtablist.compact .tab.drag-highlight-next {
+  box-shadow: inset -2px 0px 0px 0px var(--tab-selected-line) !important;
+}
