@@ -43,7 +43,7 @@ export default class TopMenu {
       } else if (e.shiftKey === true) {
         browser.windows.create();
       } else {
-        this._props.openTab();
+        this._props.openTab({ _position: newTabPosition });
       }
     });
 

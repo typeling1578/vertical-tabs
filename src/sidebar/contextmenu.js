@@ -31,11 +31,9 @@ export default class ContextMenu {
           browser.tabs.discard(tab.id);
           break;
         case "contextMenuMoveTabToStart":
-          console.log(tab);
           this._tablist.moveTabToStart(tab);
           break;
         case "contextMenuMoveTabToEnd":
-          console.log(tab);
           this._tablist.moveTabToEnd(tab);
           break;
         case "contextMenuMoveTabToNewWindow":

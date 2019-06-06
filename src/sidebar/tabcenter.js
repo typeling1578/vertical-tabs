@@ -34,18 +34,17 @@ export default class TabCenter {
   }
 
   async _openTab(props = {}) {
-    if (props._position) {
-      if (props._position === "afterCurrent") {
-        const currentIndex = (await browser.tabs.query({
-          windowId: this._windowId,
-          active: true,
-        }))[0].index;
-        props.index = currentIndex + 1;
-      } else if (props._position === "atEnd") {
-        props.index = this._tabList.tabCount();
-      }
-      delete props._position;
+    const activeTab = (await browser.tabs.query({
+      windowId: this._windowId,
+      active: true,
+    }))[0];
+    if (props._position === "afterCurrent") {
+      props.index = activeTab.index + 1;
+    } else {
+      props.index = this._tabList.tabCount();
     }
+    delete props._position;
+    props["openerTabId"] = activeTab.id;
     browser.tabs.create(props);
   }
 
