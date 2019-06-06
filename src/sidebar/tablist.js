@@ -135,14 +135,10 @@ export default class TabList {
   }
 
   __toggleShadow(entry, className) {
-    if (!entry.isIntersecting) {
-      //tab is not visible, show shadow
-      this._wrapperView.classList.add(className);
-    } else if (entry.intersectionRatio === 1) {
+    if (entry.intersectionRatio === 1) {
       //tab is totally visible, don't show shadow
       this._wrapperView.classList.remove(className);
     } else {
-      //tab is partially visible, show shadow
       this._wrapperView.classList.add(className);
     }
   }
@@ -279,8 +275,7 @@ export default class TabList {
     if (sidetab.hidden) {
       return;
     }
-    this._removeTabView(sidetab);
-    this._appendTabView(sidetab);
+    this._appendTabView(sidetab, false);
     this.scrollIntoView(sidetab);
   }
 
@@ -916,7 +911,7 @@ export default class TabList {
     this._maybeShrinkTabs();
   }
 
-  _appendTabView(sidetab) {
+  _appendTabView(sidetab, animate = true) {
     const element = sidetab.view;
     const parent = sidetab.pinned ? this._pinnedview : this._view;
     // Can happen with browser.tabs.closeWindowWithLastTab set to true or during
@@ -932,9 +927,10 @@ export default class TabList {
     const spaceLeft = this._spacerView.offsetHeight;
     const wrapperHeight = this._wrapperView.offsetHeight;
     if (
-      sidetab.pinned ||
-      (!tabAfter && spaceLeft !== 0) ||
-      (tabAfter && tabAfter.view.offsetHeight <= wrapperHeight)
+      animate &&
+      (sidetab.pinned ||
+        (!tabAfter && spaceLeft !== 0) ||
+        (tabAfter && tabAfter.view.offsetHeight <= wrapperHeight))
     ) {
       element.classList.add("added");
     }
@@ -946,16 +942,8 @@ export default class TabList {
   }
 
   _removeTabView(sidetab) {
-    const oldView = sidetab.view;
-    const newView = sidetab.view.cloneNode(true);
-    oldView.id = String(
-      Math.random()
-        .toString(36)
-        .substr(2, 8),
-    );
-    oldView.addEventListener("transitionend", () => oldView.remove());
-    oldView.classList.add("deleted");
-    sidetab.view = newView;
+    sidetab.view.addEventListener("transitionend", () => sidetab.view.remove());
+    sidetab.view.classList.add("deleted");
     this._setFirstAndLastTabObserver();
   }
 
