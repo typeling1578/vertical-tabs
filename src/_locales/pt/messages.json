@@ -62,7 +62,7 @@
     "contextMenuReloadAllTabs": {
         "message": "Recarregar todas as abas"
     },
-    "contextMenuCloseTabsUnderneath": {
+    "contextMenuCloseTabsAfter": {
         "message": "Fechar abas abaixo"
     },
     "contextMenuCloseOtherTabs": {

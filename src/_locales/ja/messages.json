@@ -62,7 +62,7 @@
     "contextMenuReloadAllTabs": {
         "message": "すべてのタブを再読み込み"
     },
-    "contextMenuCloseTabsUnderneath": {
+    "contextMenuCloseTabsAfter": {
         "message": "下のタブをすべて閉じる"
     },
     "contextMenuCloseOtherTabs": {

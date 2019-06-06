@@ -62,7 +62,7 @@
     "contextMenuReloadAllTabs": {
         "message": "Оновити всі вкладки"
     },
-    "contextMenuCloseTabsUnderneath": {
+    "contextMenuCloseTabsAfter": {
         "message": "Закрити вкладки знизу"
     },
     "contextMenuCloseOtherTabs": {

@@ -62,7 +62,7 @@
     "contextMenuReloadAllTabs": {
         "message": "重新載入全部分頁"
     },
-    "contextMenuCloseTabsUnderneath": {
+    "contextMenuCloseTabsAfter": {
         "message": "關閉下方分頁"
     },
     "contextMenuCloseOtherTabs": {

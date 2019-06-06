@@ -62,7 +62,7 @@
     "contextMenuReloadAllTabs": {
         "message": "Alle Tabs neu laden"
     },
-    "contextMenuCloseTabsUnderneath": {
+    "contextMenuCloseTabsAfter": {
         "message": "Schließe alle Tabs unter diesem"
     },
     "contextMenuCloseOtherTabs": {

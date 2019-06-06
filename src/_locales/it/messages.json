@@ -62,7 +62,7 @@
     "contextMenuReloadAllTabs": {
         "message": "Ricarica tutte le schede"
     },
-    "contextMenuCloseTabsUnderneath": {
+    "contextMenuCloseTabsAfter": {
         "message": "Chiudi le schede sottostanti"
     },
     "contextMenuCloseOtherTabs": {

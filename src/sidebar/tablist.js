@@ -988,8 +988,11 @@ export default class TabList {
   /*
    * Functions below are used by ContextMenu
    */
-  tabCount() {
-    return this._tabs.size;
+  tabCount(pinned = null) {
+    if (pinned === null) {
+      return this._tabs.size;
+    }
+    return Array.from(this._tabs.values()).filter(tab => tab.pinned === pinned).length;
   }
 
   isFilterActive() {
@@ -1013,40 +1016,56 @@ export default class TabList {
     }, []);
   }
 
-  hasTabsUnderneath(currentTab) {
-    return Array.from(this._tabs.values())
-      .filter(tab => tab.pinned === currentTab.pinned)
-      .some(tab => tab.index > currentTab.index);
-  }
-
   moveTabToStart(currentTab) {
-    const minIndex = Math.min(
-      ...Array.from(this._tabs.values())
-        .filter(tab => tab.pinned === currentTab.pinned)
-        .map(tab => tab.index),
-    );
+    const minIndex = Math.min(...this._tabsBefore(currentTab).map(tab => tab.index));
     browser.tabs.move(currentTab.id, { index: minIndex });
   }
 
-  async moveTabToEnd(currentTab) {
-    const maxIndex = Math.max(
-      ...Array.from(this._tabs.values())
-        .filter(tab => tab.pinned === currentTab.pinned)
-        .map(tab => tab.index),
-    );
+  moveTabToEnd(currentTab) {
+    const maxIndex = Math.max(...this._tabsAfter(currentTab).map(tab => tab.index));
     browser.tabs.move(currentTab.id, { index: maxIndex });
   }
 
+  _tabsBefore(currentTab) {
+    return [...this._tabs.values()].filter(
+      tab => tab.index < currentTab.index && tab.pinned === currentTab.pinned && !tab.hidden,
+    );
+  }
+
+  hasTabsBefore(currentTab) {
+    // I use _tabBefore() because some() is faster than filter()
+    // because it stops as soon at it founds a match
+    return [...this._tabs.values()].some(
+      tab => tab.index < currentTab.index && tab.pinned === currentTab.pinned && !tab.hidden,
+    );
+  }
+
+  closeTabsBeforeCount(currentTab) {
+    return this._tabsBefore(currentTab).length;
+  }
+
+  closeTabsBefore(currentTab) {
+    browser.tabs.remove(this._tabsBefore(currentTab).map(tab => tab.id));
+  }
+
+  _tabsAfter(currentTab) {
+    return [...this._tabs.values()].filter(
+      tab => tab.index > currentTab.index && tab.pinned === currentTab.pinned && !tab.hidden,
+    );
+  }
+
+  hasTabsAfter(currentTab) {
+    return [...this._tabs.values()].some(
+      tab => tab.index > currentTab.index && tab.pinned === currentTab.pinned && !tab.hidden,
+    );
+  }
+
   closeTabsAfterCount(tabIndex) {
-    return this._tabsAfter(tabIndex).map(tab => tab.id).length;
+    return this._tabsAfter(tabIndex).length;
   }
 
-  closeTabsAfter(tabIndex) {
-    browser.tabs.remove(this._tabsAfter(tabIndex).map(tab => tab.id));
-  }
-
-  _tabsAfter(tabIndex) {
-    return [...this._tabs.values()].filter(tab => tab.index > tabIndex && !tab.hidden);
+  closeTabsAfter(currentTab) {
+    browser.tabs.remove(this._tabsAfter(currentTab).map(tab => tab.id));
   }
 
   closeAllTabsExceptCount(tabId) {

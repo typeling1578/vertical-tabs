@@ -62,7 +62,7 @@
     "contextMenuReloadAllTabs": {
         "message": "Tüm Sekmeleri Yeniden Yükle"
     },
-    "contextMenuCloseTabsUnderneath": {
+    "contextMenuCloseTabsAfter": {
         "message": "Alttaki Sekmeleri Kapat"
     },
     "contextMenuCloseOtherTabs": {

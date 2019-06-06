@@ -62,7 +62,7 @@
     "contextMenuReloadAllTabs": {
         "message": "Odśwież wszystkie karty"
     },
-    "contextMenuCloseTabsUnderneath": {
+    "contextMenuCloseTabsAfter": {
         "message": "Zamknij karty poniżej"
     },
     "contextMenuCloseOtherTabs": {

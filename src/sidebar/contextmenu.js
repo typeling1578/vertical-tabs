@@ -31,15 +31,27 @@ export default class ContextMenu {
           browser.tabs.discard(tab.id);
           break;
         case "contextMenuMoveTabToStart":
+          console.log(tab);
           this._tablist.moveTabToStart(tab);
           break;
         case "contextMenuMoveTabToEnd":
+          console.log(tab);
           this._tablist.moveTabToEnd(tab);
           break;
         case "contextMenuMoveTabToNewWindow":
           browser.windows.create({ tabId: tab.id });
           break;
-        case "contextMenuCloseTabsUnderneath":
+        case "contextMenuCloseTabsBefore":
+          count = this._tablist.closeTabsBeforeCount(tab.index);
+          if (
+            !this._tablist._warnBeforeClosing ||
+            count < 4 ||
+            confirm(browser.i18n.getMessage("closeTabsBeforeWarning", count))
+          ) {
+            this._tablist.closeTabsBefore(tab.index);
+          }
+          break;
+        case "contextMenuCloseTabsAfter":
           count = this._tablist.closeTabsAfterCount(tab.index);
           if (
             !this._tablist._warnBeforeClosing ||
@@ -138,42 +150,50 @@ export default class ContextMenu {
       {
         id: "contextMenuMoveTab",
         title: browser.i18n.getMessage("contextMenuMoveTab"),
-        enabled: this._tablist.tabCount() > 1,
       },
       {
         parentId: "contextMenuMoveTab",
         id: "contextMenuMoveTabToStart",
         title: browser.i18n.getMessage("contextMenuMoveTabToStart"),
-        enabled: tab.index !== 0,
+        enabled: this._tablist.hasTabsBefore(tab),
       },
       {
         parentId: "contextMenuMoveTab",
         id: "contextMenuMoveTabToEnd",
         title: browser.i18n.getMessage("contextMenuMoveTabToEnd"),
-        enabled: tab.index !== this._tablist.tabCount() - 1,
+        enabled: this._tablist.hasTabsAfter(tab),
       },
       {
         parentId: "contextMenuMoveTab",
         id: "contextMenuMoveTabToNewWindow",
         title: browser.i18n.getMessage("contextMenuMoveTabToNewWindow"),
-        enabled: this._tablist.tabCount() !== 1,
+        enabled: this._tablist.tabCount() > 1,
       },
       {
         type: "separator",
       },
       {
-        id: "contextMenuCloseTabsUnderneath",
-        title: browser.i18n.getMessage("contextMenuCloseTabsUnderneath"),
-        enabled: this._tablist.hasTabsUnderneath(tab),
+        id: "contextMenuCloseTabs",
+        title: browser.i18n.getMessage("contextMenuCloseTabs"),
         visible: !this._tablist.isFilterActive(),
+        enabled: this._tablist.tabCount() > 1 && !tab.pinned,
       },
       {
+        parentId: "contextMenuCloseTabs",
+        id: "contextMenuCloseTabsBefore",
+        title: browser.i18n.getMessage("contextMenuCloseTabsBefore"),
+        enabled: this._tablist.hasTabsBefore(tab),
+      },
+      {
+        parentId: "contextMenuCloseTabs",
+        id: "contextMenuCloseTabsAfter",
+        title: browser.i18n.getMessage("contextMenuCloseTabsAfter"),
+        enabled: this._tablist.hasTabsAfter(tab),
+      },
+      {
+        parentId: "contextMenuCloseTabs",
         id: "contextMenuCloseOtherTabs",
         title: browser.i18n.getMessage("contextMenuCloseOtherTabs"),
-        enabled: this._tablist.tabCount() !== 1,
-      },
-      {
-        type: "separator",
       },
       {
         id: "contextMenuUndoCloseTab",

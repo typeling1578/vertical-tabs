@@ -62,8 +62,8 @@
     "contextMenuReloadAllTabs": {
         "message": "Reŝargi ĉiujn langetojn"
     },
-    "contextMenuCloseTabsUnderneath": {
-        "message": "Fermi la subajn langetojn"
+    "contextMenuCloseTabsAfter": {
+        "message": "Fermi la postajn langetojn"
     },
     "contextMenuCloseOtherTabs": {
         "message": "Fermi aliajn langetojn"

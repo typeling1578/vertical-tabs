@@ -62,7 +62,7 @@
     "contextMenuReloadAllTabs": {
         "message": "إعادة تحميل كافة علامات التبويب"
     },
-    "contextMenuCloseTabsUnderneath": {
+    "contextMenuCloseTabsAfter": {
         "message": "أغلق علامات التبويب في الأسفل"
     },
     "contextMenuCloseOtherTabs": {

@@ -62,7 +62,7 @@
     "contextMenuReloadAllTabs": {
         "message": "Obnovit všechny panely"
     },
-    "contextMenuCloseTabsUnderneath": {
+    "contextMenuCloseTabsAfter": {
         "message": "Zavřít panely níže"
     },
     "contextMenuCloseOtherTabs": {

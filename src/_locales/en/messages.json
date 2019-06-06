@@ -83,8 +83,16 @@
         "message": "Move to New Window",
         "description": "Context menu item label."
     },
-    "contextMenuCloseTabsUnderneath": {
-        "message": "Close Tabs Underneath",
+    "contextMenuCloseTabs": {
+        "message": "Close Tabs",
+        "description": "Context Menu item label"
+    },
+    "contextMenuCloseTabsBefore": {
+        "message": "Close Tabs Before",
+        "description": "Context menu item label."
+    },
+    "contextMenuCloseTabsAfter": {
+        "message": "Close Tabs After",
         "description": "Context menu item label."
     },
     "contextMenuCloseOtherTabs": {
@@ -99,9 +107,19 @@
         "message": "Close Tab",
         "description": "Context menu item label."
     },
+    "closeTabsBeforeWarning": {
+        "message": "Do you really want to close the $COUNT$ tabs before?",
+        "description": "Warning shown when trying to close more than 4 tabs when closing tabs before another.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
     "closeTabsAfterWarning": {
-        "message": "Do you really want to close the $COUNT$ tabs underneath?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another.",
+        "message": "Do you really want to close the $COUNT$ tabs after?",
+        "description": "Warning shown when trying to close more than 4 tabs when closing tabs after another.",
         "placeholders": {
             "count": {
                 "content": "$1",

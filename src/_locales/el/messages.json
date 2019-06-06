@@ -62,7 +62,7 @@
     "contextMenuReloadAllTabs": {
         "message": "Ανανέωση όλων των καρτελών"
     },
-    "contextMenuCloseTabsUnderneath": {
+    "contextMenuCloseTabsAfter": {
         "message": "Κλείσιμο των κάτωθι καρτελών"
     },
     "contextMenuCloseOtherTabs": {

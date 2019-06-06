@@ -62,8 +62,8 @@
     "contextMenuReloadAllTabs": {
         "message": "Actualiser tous les onglets"
     },
-    "contextMenuCloseTabsUnderneath": {
-        "message": "Fermer les onglets en dessous"
+    "contextMenuCloseTabsAfter": {
+        "message": "Fermer les onglets après"
     },
     "contextMenuCloseOtherTabs": {
         "message": "Fermer les autres onglets"

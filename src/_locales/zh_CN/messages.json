@@ -62,7 +62,7 @@
     "contextMenuReloadAllTabs": {
         "message": "重新载入全部标签页"
     },
-    "contextMenuCloseTabsUnderneath": {
+    "contextMenuCloseTabsAfter": {
         "message": "关闭下方标签页"
     },
     "contextMenuCloseOtherTabs": {

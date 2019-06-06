@@ -62,7 +62,7 @@
     "contextMenuReloadAllTabs": {
         "message": "Alle tabbladen vernieuwen"
     },
-    "contextMenuCloseTabsUnderneath": {
+    "contextMenuCloseTabsAfter": {
         "message": "Onderliggende tabbladen sluiten"
     },
     "contextMenuCloseOtherTabs": {
