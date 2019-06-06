@@ -69,23 +69,20 @@ body {
 #topmenu {
   color: var(--toolbar-text);
   display: flex;
-  min-height: 40px;
+  height: 40px;
   padding: 4px 4px;
   border-bottom: 1px solid hsla(0, 0%, 0%, 0.2);
   background-color: var(--toolbar-background);
 }
 
-#newtab {
+#newtab,
+#settings {
   box-sizing: border-box;
   display: flex;
   flex: 0 20 auto;
   min-width: 24px;
   align-items: center;
   padding: 4px 5px;
-}
-
-#settings {
-  padding: 5px 2px;
 }
 
 canvas {
@@ -143,16 +140,22 @@ img,
   background-color: var(--button-background-active);
 }
 
-#newtab-icon {
-  min-width: 16px;
-  min-height: 16px;
-  background-size: 16px 16px;
-  background-repeat: no-repeat;
+#newtab-icon,
+#settings-icon {
+  width: 16px;
+  height: 16px;
   background-position: center;
-  background-image: url("img/glyph-new-16.svg#standard");
   -moz-context-properties: fill;
   fill: var(--icons);
   filter: url("img/filters.svg#fill");
+}
+
+#newtab-icon {
+  background-image: url("img/glyph-new-16.svg#standard");
+}
+
+#settings-icon {
+  background-image: url("img/settings.svg");
 }
 
 #searchbox {
@@ -229,18 +232,6 @@ body[platform="win"] #searchbox-input:placeholder-shown {
 #searchbox.focused #searchbox-icon,
 #searchbox.focused #searchbox-input {
   background-color: var(--input-background-focus);
-}
-
-#settings-icon {
-  flex-shrink: 0;
-  padding: 0 12px;
-  background-size: 16px 16px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url("img/settings.svg");
-  -moz-context-properties: fill;
-  fill: var(--icons);
-  filter: url("img/filters.svg#fill");
 }
 
 #tablist {
