@@ -1,3 +1,23 @@
+## 1.0.0
+
+- New awesome logo! No more on/off badge to make it stand out.
+- Lots of changes to improve performances!
+- Animations for opening/closing/moving tabs!
+- Add option to disable warning when closing more than 5 tabs
+- Add option to quickly disable or re-enable custom CSS
+- Don’t use label for new tab button so search bar is always expanded
+- Improve a bit custom theme handling
+- Don’t open new window when tab is dropped on topmenu or Firefox’s bookmark bar
+- Use “Favicon-only pinned tabs” label instead of “Compact pinned tabs”
+- Don’t reorder tabs when filtering
+- Reintroduce different color when hovering tab and improve dark theme
+- Search with default engine when dropping text onto sidebar
+- Add shortcuts when clicking New Tab button and menu
+  - Ctrl + click opens after current tab if default is at the end
+    (and opens at the end if default is after current tab)
+  - Shift + click opens a new window
+  - Ctrl + Shift + click opens a new private window
+
 ## 0.10.1
 
 - Fix scrolling when pinning/unpinning a tab
