@@ -43,7 +43,7 @@ export default class TopMenu {
       } else if (e.shiftKey === true) {
         browser.windows.create();
       } else {
-        this._props.openTab(props);
+        this._props.openTab();
       }
     });
 
@@ -67,7 +67,9 @@ export default class TopMenu {
       if (!info.menuItemId.startsWith("contextMenuOpenInNewContextualTab_")) {
         return;
       }
-      const props = { cookieStoreId: info.menuItemId.split("contextMenuOpenInNewContextualTab_")[1] };
+      const props = {
+        cookieStoreId: info.menuItemId.split("contextMenuOpenInNewContextualTab_")[1],
+      };
       if (info.modifiers.includes("Ctrl")) {
         props["_position"] = otherTabPosition;
         this._props.openTab(props);
