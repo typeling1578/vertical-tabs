@@ -1,6 +1,6 @@
 {
     "extensionDescription": {
-        "message": "Tab Center — это попытка решить некоторые проблемы, возникшие из-за того, что люди используют вкладки (точнее “слишком много вкладок”) и предоставить более универсальный интерфейс для будущих инноваций. Первая версия этого дополнения для Firefox, упорядочивает вкладки вертикально, а не горизонтально. Вдохновение и идеи были заимствованы из отличного расширения VerticalTabs."
+        "message": "Передвиньте ваши вкладки к боковой грани окна."
     },
     "browserActionTitle": {
         "message": "Панель Tab Center Reborn",
@@ -90,13 +90,13 @@
         "message": "Всегда"
     },
     "optionsCompactPins": {
-        "message": "Компактные закрепленные вкладки"
+        "message": "Закреплённые вкладки (только иконки)"
     },
     "optionsDarkTheme": {
         "message": "Темная тема"
     },
     "optionsThemeIntegration": {
-        "message": ""
+        "message": "Интегрировать свою тему"
     },
     "optionsAdvancedTitle": {
         "message": "Расширенные настройки"
@@ -121,5 +121,45 @@
     },
     "contextMenuMoveTabToEnd": {
         "message": "Переместить в конец"
+    },
+    "extensionsLongDescription": {
+        "message": "Tab Center Reborn продолжает <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> и его цель - простое, мощное и изящно вписанное расширение для управления вкладками в вертикальном режиме.\n\nРасширение имеет многочисленные настройки и позволяет продвинутым пользователям полностью перенастроить внешний вид с помощью CSS-кода.\n\n<ul>\n<li>Используйте Shift+F1 для открытия и скрытия расширения</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">Как скрыть верхнюю панель вкладок</a></li>\n</ul>\n\nВы можете <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">помочь с переводом, документацией, исправлением ошибок и кодом</a>!",
+        "description": "Long description displayed on addons.mozilla.org."
+    },
+    "contextMenuUnloadTab": {
+        "message": "Выгрузить вкладку",
+        "description": "Context menu item label."
+    },
+    "closeTabsAfterWarning": {
+        "message": "Вы точно хотите закрыть все $COUNT$ вкладок?",
+        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another."
+    },
+    "closeAllTabsExceptWarning": {
+        "message": "Вы точно хотите закрыть $COUNT$ других вкладок?",
+        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
+    },
+    "optionsAppearanceTitle": {
+        "message": "Внешний вид",
+        "description": "Section in options page."
+    },
+    "optionsSwitchLastActiveTabExplanation": {
+        "message": "Кликая активную вкладку, переключайтесь на предыдущую активную.",
+        "description": "Explanation for the Compact Mode option in options page."
+    },
+    "optionsSwitchLastActiveTab": {
+        "message": "Переключить последнюю активную вкладку",
+        "description": "Option in options page."
+    },
+    "optionsThemeIntegrationExplanation": {
+        "message": "Интегрировать свою тему вместо использования темы выше. Закройте и снова откройте боковую панель после переключения к одной из тем Firefox по-умолчанию.",
+        "description": "Explanation for the Theme Integration option in the options page."
+    },
+    "optionsBehaviorTitle": {
+        "message": "Поведение",
+        "description": "Section in options page."
+    },
+    "optionsWarnBeforeClosing": {
+        "message": "Предупреждать перед закрытием более чем $COUNT$ вкладок",
+        "description": "Option in options page."
     }
 }
