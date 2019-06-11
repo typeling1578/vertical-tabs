@@ -58,8 +58,6 @@ body {
   background-color: var(--background);
   color: var(--tab-text);
   font: message-box;
-  display: flex;
-  flex-direction: column;
 }
 
 #spacer {
@@ -69,7 +67,8 @@ body {
 #topmenu {
   color: var(--toolbar-text);
   display: flex;
-  height: 40px;
+  flex-shrink: 0;
+  height: 38px;
   padding: 4px 4px;
   border-bottom: 1px solid hsla(0, 0%, 0%, 0.2);
   background-color: var(--toolbar-background);
