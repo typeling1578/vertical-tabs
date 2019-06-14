@@ -135,71 +135,18 @@ export default class TabList {
   }
 
   __toggleShadow(entry, className) {
-    if (entry.intersectionRatio === 1) {
-      //tab is totally visible, don't show shadow
-      this._wrapperView.classList.remove(className);
-    } else {
-      this._wrapperView.classList.add(className);
-    }
+    this._wrapperView.classList.toggle(className, entry.intersectionRatio !== 1);
   }
 
   _setFirstAndLastTabObserver() {
-    if (!this._tabs.size) {
-      return;
-    }
-
+    this._firstAndLastTabObserver.disconnect();
     const tabViews = this._view.querySelectorAll(".tab:not(.hidden):not(.deleted)");
 
-    if (tabViews.length <= 2) {
-      this._unObserveTab(this._firstTabView);
-      this._unObserveTab(this._lastTabView);
-      this._wrapperView.classList.remove("can-scroll-top", "can-scroll-bottom");
-      return;
-    }
-
-    const newFirstTabView = tabViews[0];
-    const newLastTabView = tabViews[tabViews.length - 1];
-    this.__observeFirstTab(newFirstTabView);
-    this.__observeLastTab(newLastTabView);
-  }
-
-  __observeFirstTab(newFirstTabView) {
-    if (this._firstTabView) {
-      if (this._firstTabView === newFirstTabView) {
-        return;
-      }
-      this._firstAndLastTabObserver.unobserve(this._firstTabView);
-    }
-
-    this._firstTabView = newFirstTabView;
+    this._firstTabView = tabViews[0];
     this._firstAndLastTabObserver.observe(this._firstTabView);
-  }
 
-  __observeLastTab(newLastTabView) {
-    if (this._lastTabView) {
-      if (this._lastTabView === newLastTabView) {
-        return;
-      }
-      this._firstAndLastTabObserver.unobserve(this._lastTabView);
-    }
-
-    if (this._view.firstChild !== newLastTabView) {
-      this._lastTabView = newLastTabView;
-      this._firstAndLastTabObserver.observe(this._lastTabView);
-    }
-  }
-
-  _unObserveTab(tabView) {
-    if (!tabView) {
-      return;
-    }
-    if (tabView === this._firstTabView) {
-      this._firstAndLastTabObserver.unobserve(this._firstTabView);
-      this._firstTabView = null;
-    } else if (tabView === this._lastTabView) {
-      this._firstAndLastTabObserver.unobserve(this._lastTabView);
-      this._lastTabView = null;
-    }
+    this._lastTabView = tabViews[tabViews.length - 1];
+    this._firstAndLastTabObserver.observe(this._lastTabView);
   }
 
   _onPrefsChanged(changes) {
@@ -904,8 +851,6 @@ export default class TabList {
     if (this._active === sidetab.id) {
       this._active = null;
     }
-    //remove observer before to remove the view
-    this._unObserveTab(sidetab.view);
     this._removeTabView(sidetab);
     this._tabs.delete(sidetab.id);
     this._maybeShrinkTabs();
