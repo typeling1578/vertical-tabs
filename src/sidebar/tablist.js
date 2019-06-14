@@ -1048,8 +1048,8 @@ export default class TabList {
     );
   }
 
-  closeTabsAfterCount(tabIndex) {
-    return this._tabsAfter(tabIndex).length;
+  closeTabsAfterCount(currentTab) {
+    return this._tabsAfter(currentTab).length;
   }
 
   closeTabsAfter(currentTab) {

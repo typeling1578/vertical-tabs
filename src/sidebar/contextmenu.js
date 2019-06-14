@@ -40,23 +40,23 @@ export default class ContextMenu {
           browser.windows.create({ tabId: tab.id });
           break;
         case "contextMenuCloseTabsBefore":
-          count = this._tablist.closeTabsBeforeCount(tab.index);
+          count = this._tablist.closeTabsBeforeCount(tab);
           if (
             !this._tablist._warnBeforeClosing ||
             count < 4 ||
             confirm(browser.i18n.getMessage("closeTabsBeforeWarning", count))
           ) {
-            this._tablist.closeTabsBefore(tab.index);
+            this._tablist.closeTabsBefore(tab);
           }
           break;
         case "contextMenuCloseTabsAfter":
-          count = this._tablist.closeTabsAfterCount(tab.index);
+          count = this._tablist.closeTabsAfterCount(tab);
           if (
             !this._tablist._warnBeforeClosing ||
             count < 4 ||
             confirm(browser.i18n.getMessage("closeTabsAfterWarning", count))
           ) {
-            this._tablist.closeTabsAfter(tab.index);
+            this._tablist.closeTabsAfter(tab);
           }
           break;
         case "contextMenuCloseOtherTabs":
@@ -66,7 +66,7 @@ export default class ContextMenu {
             count < 4 ||
             confirm(browser.i18n.getMessage("closeAllTabsExceptWarning", count))
           ) {
-            this._tablist.closeAllTabsExcept(tab.id);
+            this._tablist.closeAllTabsExcept(tab);
           }
           break;
         case "contextMenuUndoCloseTab":
