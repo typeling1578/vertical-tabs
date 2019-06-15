@@ -28,9 +28,11 @@ export default class TabList {
     this._isDragging = false;
     this._openInNewWindowTimer = null;
     this._highlightBottomScrollShadowTimer = null;
+
     this._firstAndLastTabObserver = null;
     this._firstTabView = null;
     this._lastTabView = null;
+
     this._view = document.getElementById("tablist");
     this._pinnedview = document.getElementById("pinnedtablist");
     this._wrapperView = document.getElementById("tablist-wrapper");
@@ -141,6 +143,9 @@ export default class TabList {
   _setFirstAndLastTabObserver() {
     this._firstAndLastTabObserver.disconnect();
     const tabViews = this._view.querySelectorAll(".tab:not(.hidden):not(.deleted)");
+    if (tabViews.length < 3) {
+      return;
+    }
 
     this._firstTabView = tabViews[0];
     this._firstAndLastTabObserver.observe(this._firstTabView);
@@ -887,8 +892,10 @@ export default class TabList {
   }
 
   _removeTabView(sidetab) {
-    sidetab.view.addEventListener("transitionend", () => sidetab.view.remove());
-    sidetab.view.classList.add("deleted");
+    const oldView = sidetab.view;
+    sidetab.view = oldView.cloneNode(true);
+    oldView.addEventListener("transitionend", () => oldView.remove());
+    oldView.classList.add("deleted");
     this._setFirstAndLastTabObserver();
   }
 
@@ -966,8 +973,8 @@ export default class TabList {
   }
 
   hasTabsBefore(currentTab) {
-    // I use _tabBefore() because some() is faster than filter()
-    // because it stops as soon at it founds a match
+    // This function is useful some() is faster than filter(),
+    // since it stops as soon at it founds a match
     return [...this._tabs.values()].some(
       tab => tab.index < currentTab.index && tab.pinned === currentTab.pinned && !tab.hidden,
     );
