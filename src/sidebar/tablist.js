@@ -658,6 +658,7 @@ export default class TabList {
 
     const tabs = [...this._tabs.values()];
     let notShown = 0;
+    let pinnedTabShown = 0;
     // if there is a query, update the results
     if (query.length) {
       const results = fuzzysort
@@ -678,6 +679,9 @@ export default class TabList {
         tab.updateVisibility(show);
         tab.resetHighlights();
         if (show) {
+          if (tab.pinned) {
+            pinnedTabShown += 1;
+          }
           if (result[0]) {
             // title
             tab.highlightTitle(fuzzysort.highlight(result[0], "<b>", "</b>"));
@@ -690,11 +694,13 @@ export default class TabList {
           notShown += 1;
         }
       }
+      this._pinnedview.classList.toggle("hidden", pinnedTabShown === 0);
       // otherwise we display again all the tabs
     } else {
       for (const tab of tabs) {
         tab.updateVisibility(true);
         tab.resetHighlights();
+        this._pinnedview.classList.remove("hidden");
       }
     }
     this._moreTabsView.classList.toggle("hasMoreTabs", notShown > 0);
