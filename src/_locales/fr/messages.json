@@ -131,7 +131,7 @@
         "description": "Explanation for the Theme Integration option in the options page."
     },
     "closeTabsAfterWarning": {
-        "message": "Voulez-vous vraiment fermer les $COUNT$ onglets en dessous ?",
+        "message": "Voulez-vous vraiment fermer les $COUNT$ onglets suivant ?",
         "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another."
     },
     "closeAllTabsExceptWarning": {
@@ -169,5 +169,23 @@
     "optionsWarnBeforeClosing": {
         "message": "Avertir avant de fermer plus que $COUNT onglets",
         "description": "Option in options page."
+    },
+    "closeTabsBeforeWarning": {
+        "message": "Voulez-vous vraiment fermer les $COUNT$ onglets précédent ?",
+        "description": "Warning shown when trying to close more than 4 tabs when closing tabs before another.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "contextMenuCloseTabsBefore": {
+        "message": "Fermer les onglets précédent",
+        "description": "Context menu item label."
+    },
+    "contextMenuCloseTabs": {
+        "message": "Fermer des onglets",
+        "description": "Context Menu item label"
     }
 }
