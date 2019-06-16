@@ -90,7 +90,7 @@
         "message": "Toujours"
     },
     "optionsCompactPins": {
-        "message": "Onglets épinglés compacts"
+        "message": "Favicon uniquement pour les onglets épinglés"
     },
     "optionsDarkTheme": {
         "message": "Thème sombre"
@@ -132,23 +132,11 @@
     },
     "closeTabsAfterWarning": {
         "message": "Voulez-vous vraiment fermer les $COUNT$ onglets en dessous ?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
+        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another."
     },
     "closeAllTabsExceptWarning": {
         "message": "Voulez-vous vraiment fermer les $COUNT$ autres onglets ?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
+        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
     },
     "contextMenuUnloadTab": {
         "message": "Décharger l’onglet",
@@ -169,5 +157,17 @@
     "browserActionOff": {
         "message": "off",
         "description": "Badge text shown when sidebar is closed."
+    },
+    "optionsAppearanceTitle": {
+        "message": "Apparence",
+        "description": "Section in options page."
+    },
+    "optionsBehaviorTitle": {
+        "message": "Comportement",
+        "description": "Section in options page."
+    },
+    "optionsWarnBeforeClosing": {
+        "message": "Avertir avant de fermer plus que $COUNT onglets",
+        "description": "Option in options page."
     }
 }

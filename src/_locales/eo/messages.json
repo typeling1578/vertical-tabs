@@ -90,7 +90,7 @@
         "message": "Ĉiam"
     },
     "optionsCompactPins": {
-        "message": "Kompaktaj fiksitaj langetoj"
+        "message": "Nur favorikono por fiksitaj langetoj"
     },
     "optionsDarkTheme": {
         "message": "Malhela etoso"
@@ -132,23 +132,11 @@
     },
     "closeTabsAfterWarning": {
         "message": "Ĉu vi vere volas fermi la $COUNT$ subajn langetojn?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
+        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another."
     },
     "closeAllTabsExceptWarning": {
         "message": "Ĉu vi vere volas fermi la $COUNT$ aliajn langetojn?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
+        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
     },
     "contextMenuUnloadTab": {
         "message": "Malŝarĝi langeton",
@@ -169,5 +157,17 @@
     "browserActionOff": {
         "message": "el",
         "description": "Badge text shown when sidebar is closed."
+    },
+    "optionsAppearanceTitle": {
+        "message": "Aspekto",
+        "description": "Section in options page."
+    },
+    "optionsBehaviorTitle": {
+        "message": "Konduto",
+        "description": "Section in options page."
+    },
+    "optionsWarnBeforeClosing": {
+        "message": "Averti antaŭ ol fermi pli ol $COUNT langetojn",
+        "description": "Option in options page."
     }
 }
