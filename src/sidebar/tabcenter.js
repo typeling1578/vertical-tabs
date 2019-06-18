@@ -44,6 +44,9 @@ export default class TabCenter {
       props.index = this._tabList.tabCount();
     }
     delete props._position;
+    if (props["cookieStoreId"] === undefined) {
+      props["cookieStoreId"] = "firefox-default";
+    }
     props["openerTabId"] = activeTab.id;
     browser.tabs.create(props);
   }
