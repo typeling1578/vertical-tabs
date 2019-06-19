@@ -27,6 +27,14 @@
         "message": "Open settings",
         "description": "Tooltip of the settings button in the top menu."
     },
+    "muteTabButtonTooltip": {
+        "message": "Mute tab",
+        "description": "Tooltip of the audible icon on tabs, displayed on the favicon."
+    },
+    "unmuteTabButtonTooltip": {
+        "message": "Unmute tab",
+        "description": "Tooltip of the unmute icon on tabs, displayed on the favicon."
+    },
     "closeTabButtonTooltip": {
         "message": "Close tab",
         "description": "Tooltip of the close button on tabs."

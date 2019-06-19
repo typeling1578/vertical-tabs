@@ -123,11 +123,13 @@ export default class SideTab {
 
   _updateAudible(audible) {
     this._iconOverlayView.classList.toggle("sound", audible);
+    this._iconOverlayView.title = audible ? browser.i18n.getMessage("muteTabButtonTooltip") : "";
   }
 
   _updatedMuted(muted) {
     this.muted = muted;
     this._iconOverlayView.classList.toggle("muted", muted);
+    this._iconOverlayView.title = muted ? browser.i18n.getMessage("unmuteTabButtonTooltip") : "";
   }
 
   _updateLoading(status) {
