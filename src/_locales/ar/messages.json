@@ -129,5 +129,13 @@
     "browserActionOff": {
         "message": "معطّل",
         "description": "Badge text shown when sidebar is closed."
+    },
+    "contextMenuCloseTabsBefore": {
+        "message": "اغلق الألسنة قبل",
+        "description": "Context menu item label."
+    },
+    "contextMenuCloseTabs": {
+        "message": "اغلق الألسنة",
+        "description": "Context Menu item label"
     }
 }
