@@ -13,11 +13,11 @@
     },
     "sidebarTitle": {
         "message": "Tabs",
-        "description": "Label shown in the sidebar selector."
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=176230. Label shown in the sidebar selector."
     },
     "newTabBtnTooltip": {
-        "message": "Open a new tab",
-        "description": "Tooltip of the New Tab button in the top menu."
+        "message": "Open new tab",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=74421. Tooltip of the New Tab button in the top menu."
     },
     "searchPlaceholder": {
         "message": "Search tabs",
@@ -29,15 +29,15 @@
     },
     "muteTabButtonTooltip": {
         "message": "Mute tab",
-        "description": "Tooltip of the audible icon on tabs, displayed on the favicon."
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
     },
     "unmuteTabButtonTooltip": {
         "message": "Unmute tab",
-        "description": "Tooltip of the unmute icon on tabs, displayed on the favicon."
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
     },
     "closeTabButtonTooltip": {
-        "message": "Close tab",
-        "description": "Tooltip of the close button on tabs."
+        "message": "Close Tab",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197248. Tooltip of the close button on tabs."
     },
     "allTabsLabel": {
         "message": "Show all tabs…",
@@ -45,27 +45,27 @@
     },
     "contextMenuReloadTab": {
         "message": "Reload Tab",
-        "description": "Context menu item label."
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197237. Context menu item label."
     },
     "contextMenuPinTab": {
         "message": "Pin Tab",
-        "description": "Context menu item label."
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197249. Context menu item label."
     },
     "contextMenuUnpinTab": {
         "message": "Unpin Tab",
-        "description": "Context menu item label."
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197266. Context menu item label."
     },
     "contextMenuMuteTab": {
         "message": "Mute Tab",
-        "description": "Context menu item label."
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Context menu item label and tooltip of the audible icon on tabs."
     },
     "contextMenuUnmuteTab": {
         "message": "Unmute Tab",
-        "description": "Context menu item label."
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Context menu item label and tooltip of the unmute icon on tabs."
     },
     "contextMenuDuplicateTab": {
         "message": "Duplicate Tab",
-        "description": "Context menu item label."
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197263. Context menu item label."
     },
     "contextMenuUnloadTab": {
         "message": "Unload Tab",
@@ -73,11 +73,11 @@
     },
     "contextMenuOpenInContextualTab": {
         "message": "Reopen in Container",
-        "description": "Context menu item label."
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197234. Context menu item label."
     },
     "contextMenuMoveTab": {
         "message": "Move Tab",
-        "description": "Context menu item label."
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197269. Context menu item label."
     },
     "contextMenuMoveTabToStart": {
         "message": "Move to Start",
@@ -89,11 +89,11 @@
     },
     "contextMenuMoveTabToNewWindow": {
         "message": "Move to New Window",
-        "description": "Context menu item label."
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197261. Context menu item label."
     },
     "contextMenuCloseTabs": {
         "message": "Close Tabs",
-        "description": "Context Menu item label"
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=. Context Menu item label"
     },
     "contextMenuCloseTabsBefore": {
         "message": "Close Tabs Before",
@@ -105,15 +105,15 @@
     },
     "contextMenuCloseOtherTabs": {
         "message": "Close Other Tabs",
-        "description": "Context menu item label."
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197270. Context menu item label."
     },
     "contextMenuUndoCloseTab": {
         "message": "Undo Close Tab",
-        "description": "Context menu item label."
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197236. Context menu item label."
     },
     "contextMenuCloseTab": {
         "message": "Close Tab",
-        "description": "Context menu item label."
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197248. Context menu item label."
     },
     "optionsAppearanceTitle": {
         "message": "Appearance",
@@ -183,7 +183,7 @@
     },
     "optionsAdvancedTitle": {
         "message": "Advanced",
-        "description": "Section in options page."
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=176300. Section in options page."
     },
     "optionsCustomCSS": {
         "message": "Custom Stylesheet",
