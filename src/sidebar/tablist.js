@@ -1,9 +1,10 @@
 /* global browser, requestAnimationFrame */
 
+import fuzzysort from "fuzzysort";
+import smoothScrollIntoView from "smooth-scroll-into-view-if-needed";
+
 import SideTab from "./tab.js";
 import ContextMenu from "./contextmenu.js";
-
-const fuzzysort = require("fuzzysort");
 
 const COMPACT_MODE_OFF = 0;
 /* const COMPACT_MODE_DYNAMIC = 1; */
@@ -346,41 +347,12 @@ export default class TabList {
     if (tab.pinned) {
       return;
     }
-    this._scrollIntoViewIfNeeded(tab);
-    // workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1139745#c7
-    // we still make a first scrollIntoView so that it starts scrolling right away
-    setTimeout(() => this._scrollIntoViewIfNeeded(tab), 100);
-    // also we scroll when a tab has finished animating
-    setTimeout(() => this._scrollIntoViewIfNeeded(tab), 300);
-  }
-
-  _scrollIntoViewIfNeeded(tab) {
-    const { top: parentTop, height } = this._view.getBoundingClientRect();
-    const { top, bottom } = tab.view.getBoundingClientRect();
-    // if new tab is not at least partially hidden, there’s nothing to do
-    if (!(top < parentTop || bottom > parentTop + height)) {
-      return;
-    }
-
-    const activeTab = this.getTabById(this._active);
-    // if tab is active or if active tab is pinned, active tab can’t get outside view
-    if (tab.id === this._active || activeTab.pinned) {
-      tab.view.scrollIntoView({ block: "nearest" });
-      return;
-    }
-
-    // check if scrolling to new tab won’t push active tab out of view
-    const { top: activeTop } = activeTab.view.getBoundingClientRect();
-    if (activeTop + height < bottom) {
-      // ask browser to scroll only if active tab is not already on top
-      if (activeTop !== parentTop) {
-        activeTab.view.scrollIntoView(true);
-      }
-      // notify that an opened tab has been opened partially or totally outside view
-      this._highlightBottomScrollShadow();
-    } else {
-      tab.view.scrollIntoView({ block: "nearest" });
-    }
+    const scrollBehavior = getComputedStyle(this._view).getPropertyValue("scroll-behavior");
+    smoothScrollIntoView(tab.view, {
+      scrollMode: "if-needed",
+      block: "nearest",
+      behavior: scrollBehavior === "smooth" ? "smooth" : "auto",
+    });
   }
 
   _highlightBottomScrollShadow() {
