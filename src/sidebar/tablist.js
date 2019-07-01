@@ -158,7 +158,7 @@ export default class TabList {
     const tabViews = this._view.querySelectorAll(
       ".tab:not(.hidden):not(.deleted):not(.will-be-deleted)",
     );
-    if (tabViews.length <= 1) {
+    if (tabViews.length <= 2) {
       return;
     }
 
