@@ -115,36 +115,6 @@
         "message": "Close Tab",
         "description": "Context menu item label."
     },
-    "closeTabsBeforeWarning": {
-        "message": "Do you really want to close the $COUNT$ tabs before?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing tabs before another.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
-    },
-    "closeTabsAfterWarning": {
-        "message": "Do you really want to close the $COUNT$ tabs after?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing tabs after another.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
-    },
-    "closeAllTabsExceptWarning": {
-        "message": "Do you really want to close the $COUNT$ other tabs?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
-    },
     "optionsAppearanceTitle": {
         "message": "Appearance",
         "description": "Section in options page."
@@ -197,9 +167,13 @@
         "message": "Behavior",
         "description": "Section in options page."
     },
-    "optionsWarnBeforeClosing": {
-        "message": "Warn before closing more than $COUNT$ tabs",
-        "description": "Option in options page.",
+    "optionsNotifyClosingManyTabs": {
+        "message": "Notify when closing many tabs",
+        "description": "Option in options page."
+    },
+    "optionsNotifyClosingManyTabsExplanation": {
+        "message": "Display a notification to let you undo when closing more than $COUNT$ tabs.",
+        "description": "Explanation for the Notify when closing many tabs option in options page.",
         "placeholders": {
             "count": {
                 "content": "$1",
@@ -222,5 +196,19 @@
     "optionsSaveCustomCSS": {
         "message": "Save CSS",
         "description": "Option in options page."
+    },
+    "notificationDeletedTitle": {
+        "message": "$COUNT$ closed tabs",
+        "description": "Title of the notification when deleting many tabs.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "notificationDeletedMessage": {
+        "message": "Click on the notification to undo.",
+        "description": "Title of the notification when deleting many tabs."
     }
 }

@@ -21,6 +21,7 @@ class TabCenterOptions {
       "optionsBehaviorTitle",
       "optionsSwitchLastActiveTabExplanation",
       "optionsSwitchLastActiveTab",
+      "optionsNotifyClosingManyTabs",
       "optionsAdvancedTitle",
       "optionsCustomCSS",
       "optionsCustomCSSWikiLink",
@@ -29,7 +30,7 @@ class TabCenterOptions {
     for (const opt of options) {
       document.getElementById(opt).textContent = browser.i18n.getMessage(opt);
     }
-    const opt = "optionsWarnBeforeClosing";
+    const opt = "optionsNotifyClosingManyTabsExplanation";
     document.getElementById(opt).textContent = browser.i18n.getMessage(opt, 5);
   }
 
@@ -39,7 +40,7 @@ class TabCenterOptions {
     this._setupDropdownOption("compactMode", "compactModeMode");
     this._setupCheckboxOption("compactPins", "compactPins", true);
     this._setupCheckboxOption("switchLastActiveTab", "switchLastActiveTab", true);
-    this._setupCheckboxOption("warnBeforeClosing", "warnBeforeClosing", true);
+    this._setupCheckboxOption("notifyClosingManyTabs", "notifyClosingManyTabs", true);
     this._setupCheckboxOption("useCustomCSS", "useCustomCSS", true);
 
     // Custom CSS

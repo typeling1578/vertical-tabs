@@ -28,6 +28,7 @@
     "cookies",
     "menus",
     "menus.overrideContext",
+    "notifications",
     "search",
     "sessions",
     "storage",

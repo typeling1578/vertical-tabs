@@ -9,6 +9,7 @@ import ContextMenu from "./contextmenu.js";
 const COMPACT_MODE_OFF = 0;
 /* const COMPACT_MODE_DYNAMIC = 1; */
 const COMPACT_MODE_STRICT = 2;
+const NOTIFICATION_DELETE_ID = "notification-delete";
 
 export default class TabList {
   /* @arg {props}
@@ -25,10 +26,13 @@ export default class TabList {
     this.__tabsShrinked = true;
     this._windowId = props.windowId;
     this._filterActive = false;
+
     this._willMoveTimeout = null;
     this._isDragging = false;
     this._openInNewWindowTimer = null;
     this._highlightBottomScrollShadowTimer = null;
+    this._willBeDeletedIds = null;
+    this._willBeDeletedWasActive = null;
 
     this._firstAndLastTabObserver = null;
     this._firstTabView = null;
@@ -44,7 +48,7 @@ export default class TabList {
     this._compactModeMode = parseInt(this._props.prefs.compactModeMode);
     this._compactPins = this._props.prefs.compactPins;
     this._switchLastActiveTab = this._props.prefs.switchLastActiveTab;
-    this._warnBeforeClosing = this._props.prefs.warnBeforeClosing;
+    this._notifyClosingManyTabs = this._props.prefs.notifyClosingManyTabs;
 
     this._setupListeners();
     this._populate();
@@ -114,6 +118,14 @@ export default class TabList {
 
     // Pref changes
     browser.storage.onChanged.addListener(changes => this._onPrefsChanged(changes));
+
+    // Handle notifications
+    browser.notifications.onClicked.addListener(notificationId =>
+      this._onNotificationDeleteClicked(notificationId),
+    );
+    browser.notifications.onClosed.addListener(notificationId =>
+      this._onNotificationDeleteClosed(notificationId),
+    );
   }
 
   _initializeFirstAndLastTabsObserver() {
@@ -143,8 +155,10 @@ export default class TabList {
 
   _setFirstAndLastTabObserver() {
     this._firstAndLastTabObserver.disconnect();
-    const tabViews = this._view.querySelectorAll(".tab:not(.hidden):not(.deleted)");
-    if (tabViews.length < 3) {
+    const tabViews = this._view.querySelectorAll(
+      ".tab:not(.hidden):not(.deleted):not(.will-be-deleted)",
+    );
+    if (tabViews.length <= 1) {
       return;
     }
 
@@ -165,8 +179,8 @@ export default class TabList {
     if (changes.switchLastActiveTab) {
       this._switchLastActiveTab = changes.switchLastActiveTab.newValue;
     }
-    if (changes.warnBeforeClosing) {
-      this._warnBeforeClosing = changes.warnBeforeClosing.newValue;
+    if (changes.notifyClosingManyTabs) {
+      this._notifyClosingManyTabs = changes.notifyClosingManyTabs.newValue;
     }
     this._maybeShrinkTabs();
   }
@@ -609,6 +623,35 @@ export default class TabList {
     }
   }
 
+  _onNotificationDeleteClicked(notificationId) {
+    if (notificationId !== NOTIFICATION_DELETE_ID) {
+      return;
+    }
+
+    const tabIds = this._willBeDeletedIds;
+    this._willBeDeletedIds = null;
+    for (const tab of this._tabs.values()) {
+      if (tabIds.includes(tab.id)) {
+        tab.view.classList.remove("will-be-deleted");
+      }
+    }
+    if (this._willBeDeletedWasActive !== null) {
+      browser.tabs.update(this._willBeDeletedWasActive, { active: true });
+      this._willBeDeletedWasActive = null;
+    }
+
+    this._setFirstAndLastTabObserver();
+  }
+
+  _onNotificationDeleteClosed(notificationId) {
+    if (notificationId !== NOTIFICATION_DELETE_ID || this._willBeDeletedIds === null) {
+      return;
+    }
+    browser.tabs.remove(this._willBeDeletedIds);
+    this._willBedeletedIds = null;
+    this._willBeDeletedWasActive = null;
+  }
+
   _clearSearch() {
     // _clearSearch() is called every time we open a new tab (see _create()),
     // which subsequently calls the expensive filter() method.
@@ -903,6 +946,43 @@ export default class TabList {
     sidetab.updateThumbnail();
   }
 
+  async _deleteTabs(currentTabId, tabIds) {
+    if (!this._notifyClosingManyTabs || tabIds.length < 4) {
+      browser.tabs.remove(tabIds);
+      return;
+    }
+
+    if (this._willBeDeletedIds !== null) {
+      for (const tabId of this._willBeDeletedIds) {
+        tabIds.splice(tabIds.indexOf(tabId), 1);
+      }
+      await browser.tabs.remove(this._willBeDeletedIds);
+      this._willBeDeletedIds = null;
+      this._willBeDeletedWasActive = null;
+    }
+
+    // apparently, we need those two await to prevent
+    // _onNotificationDeleteClosed() to be triggered too late
+    await browser.notifications.clear(NOTIFICATION_DELETE_ID);
+    await browser.notifications.create(NOTIFICATION_DELETE_ID, {
+      type: "basic",
+      title: browser.i18n.getMessage("notificationDeletedTitle", tabIds.length),
+      message: browser.i18n.getMessage("notificationDeletedMessage"),
+    });
+
+    this._willBeDeletedIds = tabIds;
+    for (const tab of this._tabs.values()) {
+      if (tabIds.includes(tab.id)) {
+        tab.view.classList.add("will-be-deleted");
+        if (tab.active) {
+          browser.tabs.update(currentTabId, { active: true });
+          this._willBeDeletedWasActive = tab.id;
+        }
+      }
+    }
+    this._setFirstAndLastTabObserver();
+  }
+
   /*
    * Functions below are used by ContextMenu
    */
@@ -963,7 +1043,7 @@ export default class TabList {
   }
 
   closeTabsBefore(currentTab) {
-    browser.tabs.remove(this._tabsBefore(currentTab).map(tab => tab.id));
+    this._deleteTabs(currentTab.id, this._tabsBefore(currentTab).map(tab => tab.id));
   }
 
   _tabsAfter(currentTab) {
@@ -983,16 +1063,15 @@ export default class TabList {
   }
 
   closeTabsAfter(currentTab) {
-    browser.tabs.remove(this._tabsAfter(currentTab).map(tab => tab.id));
+    this._deleteTabs(currentTab.id, this._tabsAfter(currentTab).map(tab => tab.id));
   }
 
   closeAllTabsExceptCount(tabId) {
     return this._allTabsExcept(tabId).length;
   }
 
-  closeAllTabsExcept(tabId) {
-    const toClose = this._allTabsExcept(tabId).map(tab => tab.id);
-    browser.tabs.remove(toClose);
+  closeAllTabsExcept(currentTab) {
+    this._deleteTabs(currentTab.id, this._allTabsExcept(currentTab.id).map(tab => tab.id));
   }
 
   _allTabsExcept(tabId) {
