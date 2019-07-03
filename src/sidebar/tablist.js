@@ -132,9 +132,9 @@ export default class TabList {
     const onObserve = entries => {
       entries.forEach(entry => {
         if (this._firstTabView && entry.target.id === this._firstTabView.id) {
-          this.__toggleShadow(entry, "can-scroll-top");
+          this.__toggleShadow("can-scroll-top", entry.intersectionRatio !== 1);
         } else if (this._lastTabView && entry.target.id === this._lastTabView.id) {
-          this.__toggleShadow(entry, "can-scroll-bottom");
+          this.__toggleShadow("can-scroll-bottom", entry.intersectionRatio !== 1);
         }
       });
     };
@@ -149,8 +149,8 @@ export default class TabList {
     this._setFirstAndLastTabObserver();
   }
 
-  __toggleShadow(entry, className) {
-    this._wrapperView.classList.toggle(className, entry.intersectionRatio !== 1);
+  __toggleShadow(className, force) {
+    this._wrapperView.classList.toggle(className, force);
   }
 
   _setFirstAndLastTabObserver() {
@@ -159,6 +159,8 @@ export default class TabList {
       ".tab:not(.hidden):not(.deleted):not(.will-be-deleted)",
     );
     if (tabViews.length <= 2) {
+      this.__toggleShadow("can-scroll-top", false);
+      this.__toggleShadow("can-scroll-bottom", false);
       return;
     }
 
