@@ -1016,6 +1016,29 @@ export default class TabList {
     }, []);
   }
 
+  /* tabs.duplicate is limited and buggy:
+   * - Doesn’t provide an option to open the duplicated tab at a given index
+   *   https://bugzilla.mozilla.org/show_bug.cgi?id=1560218
+   * - First reports that the duplicated tab is pinned even when it isn’t
+   *   https://bugzilla.mozilla.org/show_bug.cgi?id=1563380
+   * We use this function instead of having to use ugly workarounds.
+   */
+  duplicate(tab, props) {
+    const defaultProps = {
+      active: true,
+      cookieStoreId: tab.cookieStoreId,
+      index: tab.pinned
+        ? Math.min(...[...this._tabs.values()].filter(tab => !tab.pinned).map(tab => tab.index))
+        : tab.index + 1,
+      openerTabId: tab.openerTabId,
+      openInReaderMode: tab.openInReaderMode,
+      pinned: false,
+      url: tab.url,
+    };
+    const newProps = Object.assign(defaultProps, props);
+    openTab(newProps);
+  }
+
   moveTabToStart(currentTab) {
     const minIndex = Math.min(...this._tabsBefore(currentTab).map(tab => tab.index));
     browser.tabs.move(currentTab.id, { index: minIndex });
