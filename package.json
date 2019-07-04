@@ -2,7 +2,7 @@
   "name": "tabcenter-reborn",
   "scripts": {
     "lint": "prettier --write \"**/*.{js,yaml,html,css,json,yaml,md}\" && eslint . --fix && stylelint src/{options,sidebar}/*.css",
-    "watch": "webpack-cli --mode development --watch --devtool=inline-cheap-source-map --devtool=inline-cheap-module-source-map --devtool=inline-source-map",
+    "watch": "webpack-cli --mode development --watch --devtool=inline-source-map",
     "update-test-libs": "cp -u node_modules/chai/chai.js src/test/vendor/chai.js && cp -u node_modules/mocha/mocha.js src/test/vendor/mocha.js",
     "webext": "npm run update-test-libs && web-ext run --start-url about:debugging -s src",
     "dev": "concurrently --kill-others --raw -s first npm:webext npm:watch",
