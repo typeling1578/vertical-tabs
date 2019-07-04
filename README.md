@@ -2,7 +2,7 @@
 
 A vertical tabs extension, continuation of [Tab Center Redux](https://github.com/eoger/tabcenter-redux).
 
-[![Install the extension](https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_2.png)](https://addons.mozilla.org/fr/firefox/addon/tabcenter-reborn/)
+[![Install the extension](https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_2.png)](https://addons.mozilla.org/firefox/addon/tabcenter-reborn/)
 
 ## Usage
 
@@ -19,7 +19,7 @@ See [here](https://framagit.org/ariasuni/tabcenter-reborn/wikis/home).
 - Better, prettier style
   - Follow more closely Firefox’s colors (Photon)
   - Integrate better with custom themes
-  - Separate active and contextual identity indicator so it’s easier to distinguish
+  - Separate active and contextual identity indicator so they are easier to distinguish
 - Has a bottom shadow in tab list when it’s possible to scroll down
 - Use native context menus and use same items as Firefox’s default menus
 - Scroll to active tab when hovering it if it’s partially hidden
