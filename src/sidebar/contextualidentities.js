@@ -12,6 +12,7 @@ export default function getContextualIdentityItems() {
       title: identity.name,
       icons: {
         "16": `/sidebar/img/contextual-identities/${identity.icon}.svg#${identity.color}`,
+        "32": `/sidebar/img/contextual-identities/${identity.icon}.svg#${identity.color}`,
       },
       viewTypes: ["sidebar"],
       documentUrlPatterns: [`moz-extension://${location.host}/*`],
@@ -20,14 +21,14 @@ export default function getContextualIdentityItems() {
 }
 
 async function updateContextualIdentities() {
-  if (browser.contextualIdentities === undefined) {
-    identities = null;
-  } else {
-    identities = await browser.contextualIdentities.query({});
-  }
+  identities = await browser.contextualIdentities.query({});
 }
 
-updateContextualIdentities();
-browser.contextualIdentities.onCreated.addListener(updateContextualIdentities);
-browser.contextualIdentities.onRemoved.addListener(updateContextualIdentities);
-browser.contextualIdentities.onUpdated.addListener(updateContextualIdentities);
+if (browser.contextualIdentities === undefined) {
+  identities = null;
+} else {
+  updateContextualIdentities();
+  browser.contextualIdentities.onCreated.addListener(updateContextualIdentities);
+  browser.contextualIdentities.onRemoved.addListener(updateContextualIdentities);
+  browser.contextualIdentities.onUpdated.addListener(updateContextualIdentities);
+}
