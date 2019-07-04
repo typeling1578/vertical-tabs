@@ -61,7 +61,7 @@ export default class TabList {
     this.tabContextMenu = new ContextMenu(this);
   }
 
-  _setupListeners() {
+  async _setupListeners() {
     // Tab events
     browser.tabs.onCreated.addListener(tab => this._onBrowserTabCreated(tab));
     browser.tabs.onActivated.addListener(activeInfo => this._onBrowserTabActivated(activeInfo));
@@ -127,7 +127,7 @@ export default class TabList {
     );
   }
 
-  _initializeFirstAndLastTabsObserver() {
+  async _initializeFirstAndLastTabsObserver() {
     const onObserve = entries => {
       entries.forEach(entry => {
         if (this._firstTabView && entry.target.id === this._firstTabView.id) {
@@ -152,7 +152,7 @@ export default class TabList {
     this._wrapperView.classList.toggle(className, force);
   }
 
-  _setFirstAndLastTabObserver() {
+  async _setFirstAndLastTabObserver() {
     this._firstAndLastTabObserver.disconnect();
     const tabViews = this._view.querySelectorAll(
       ".tab:not(.hidden):not(.deleted):not(.will-be-deleted)",
