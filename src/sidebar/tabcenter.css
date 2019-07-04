@@ -255,7 +255,7 @@ body[platform="win"] #searchbox-input:placeholder-shown {
   flex-shrink: 0;
   color: var(--tab-text);
   padding: 0px 2px;
-  transition: height 0.1s ease, box-shadow 0.2s ease;
+  transition: height 0.1s ease, box-shadow 0.1s ease, border-color 0.1s ease;
 }
 
 #tablist .tab.added,
@@ -480,6 +480,12 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   background-clip: padding-box;
   border: 1px solid hsla(0, 0%, 0%, 0.2);
   box-shadow: 0 1px 0 hsla(0, 0%, 0%, 0.5);
+}
+
+.tab-drag-overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 #tablist-wrapper.shrinked #tablist:not(.compact) .tab-icon-overlay {
@@ -787,20 +793,27 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   display: none !important;
 }
 
-#tablist .tab.drag-highlight-previous,
-#pinnedtablist:not(.compact) .tab.drag-highlight-previous {
+/* stylelint-disable */
+#tablist .tab.drag-highlight-previous .tab-drag-overlay,
+#pinnedtablist:not(.compact) .tab.drag-highlight-previous .tab-drag-overlay {
   box-shadow: inset 0px 2px 0px 0px var(--tab-selected-line) !important;
 }
 
 #tablist .tab.drag-highlight-next,
 #pinnedtablist:not(.compact) .tab.drag-highlight-next {
-  box-shadow: inset 0px -2px 0px 0px var(--tab-selected-line) !important;
+  border-bottom-color: var(--tab-selected-line);
 }
 
-#pinnedtablist.compact .tab.drag-highlight-previous {
+#tablist .tab.drag-highlight-next .tab-drag-overlay,
+#pinnedtablist:not(.compact) .tab.drag-highlight-next .tab-drag-overlay {
+  box-shadow: inset 0px -1px 0px 0px var(--tab-selected-line) !important;
+}
+/* stylelint-enable */
+
+#pinnedtablist.compact .tab.drag-highlight-previous .tab-drag-overlay {
   box-shadow: inset 2px 0px 0px 0px var(--tab-selected-line) !important;
 }
 
-#pinnedtablist.compact .tab.drag-highlight-next {
+#pinnedtablist.compact .tab.drag-highlight-next .tab-drag-overlay {
   box-shadow: inset -2px 0px 0px 0px var(--tab-selected-line) !important;
 }

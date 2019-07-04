@@ -104,7 +104,6 @@ export default class TabList {
     // Drag-and-drop.
     document.addEventListener("dragstart", e => this._onDragStart(e));
     document.addEventListener("dragover", e => this._onDragOver(e));
-    document.addEventListener("dragenter", e => this._onDragEnter(e));
     document.addEventListener("dragleave", e => this._onDragLeave(e));
     document.addEventListener("drop", e => this._onDrop(e));
     document.addEventListener("dragend", e => this._onDragend(e));
@@ -188,6 +187,8 @@ export default class TabList {
   }
 
   _onBrowserTabCreated(tab) {
+    this._isDragging = true;
+    clearTimeout(this._openInNewWindowTimer);
     if (!this.checkWindow(tab.windowId)) {
       return;
     }
@@ -426,49 +427,81 @@ export default class TabList {
     e.dataTransfer.dropEffect = "move";
   }
 
-  _onDragOver(e) {
-    e.preventDefault();
+  // return tab with the provided pinned state and index, if it exists
+  _getTabByIndex(index, pinned) {
+    return [...this._tabs.values()]
+      .filter(tab => tab.pinned === pinned)
+      .find(tab => tab.index === index);
   }
 
-  _onDragEnter(e) {
-    if (!SideTab.isTabEvent(e)) {
-      return;
+  _getLastTab(pinned) {
+    const maxIndex = Math.max(
+      ...Array.from(this._tabs.values())
+        .filter(tab => tab.pinned === pinned)
+        .map(tab => tab.index),
+    );
+    return Array.from(this._tabs.values()).find(tab => tab.index === maxIndex);
+  }
+
+  // whereToDropInfo.tab === null if tablist is empty or we are over the topmenu
+  _whereToDrop(e) {
+    if (this._isEventForId(e, "topmenu")) {
+      return null;
     }
 
-    const dragTabInfoStr = e.dataTransfer.getData("text/x-tabcenter-tab");
-
-    if (!dragTabInfoStr) {
-      return;
-    }
-
-    const dragTabInfo = JSON.parse(dragTabInfoStr);
-    const dragTab = this.getTabById(dragTabInfo.tabId);
-    const dragTabPos = dragTab.index;
     const dropTabId = SideTab.tabIdForEvent(e);
+    if (!dropTabId) {
+      const lastTab = this._getLastTab(e.target === this._pinnedview);
+      return {
+        tab: lastTab ? lastTab : null,
+        before: false,
+      };
+    }
+
     const dropTab = this.getTabById(dropTabId);
-    const dropTabPos = dropTab.index;
+    const rect = dropTab.view.getBoundingClientRect();
+    const isOnFirstHalf = dropTab.pinned
+      ? e.clientX < rect.x + rect.width / 2
+      : e.clientY < rect.y + rect.height / 2;
+    if (isOnFirstHalf) {
+      const previousTab = this._getTabByIndex(dropTab.index - 1, dropTab.pinned);
+      if (previousTab) {
+        return {
+          tab: previousTab,
+          before: false,
+        };
+      }
+    }
+    return {
+      tab: dropTab,
+      before: isOnFirstHalf,
+    };
+  }
 
-    if (dragTab.id === dropTabId) {
+  _removeDragHighlight() {
+    for (const tabView of document.querySelectorAll(
+      ".drag-highlight-previous,.drag-highlight-next",
+    )) {
+      tabView.classList.remove("drag-highlight-previous", "drag-highlight-next");
+    }
+  }
+
+  _onDragOver(e) {
+    e.preventDefault();
+
+    const whereToDropInfo = this._whereToDrop(e);
+    if (whereToDropInfo === null || whereToDropInfo.tab === null) {
       return;
     }
 
-    if (dragTab.pinned !== dropTab.pinned) {
-      return;
-    }
-
-    dragTabPos > dropTabPos
-      ? dropTab.view.classList.add("drag-highlight-previous")
-      : dropTab.view.classList.add("drag-highlight-next");
+    this._removeDragHighlight();
+    const { tab, before } = whereToDropInfo;
+    tab.view.classList.toggle("drag-highlight-previous", before);
+    tab.view.classList.toggle("drag-highlight-next", !before);
   }
 
   _onDragLeave(e) {
-    if (!SideTab.isTabEvent(e)) {
-      return;
-    }
-
-    const dropTabId = SideTab.tabIdForEvent(e);
-    const dropTab = this.getTabById(dropTabId);
-    dropTab.view.classList.remove("drag-highlight-previous", "drag-highlight-next");
+    this._removeDragHighlight();
   }
 
   _findMozURL(dataTransfer) {
@@ -483,37 +516,56 @@ export default class TabList {
     return null;
   }
 
-  _onDrop(e) {
+  async _onDrop(e) {
+    this._isDragging = false;
+    clearTimeout(this._openInNewWindowTimer);
+
+    this._removeDragHighlight();
+
     if (!this._isEventForId(e, "searchbox")) {
       e.preventDefault();
     }
-    this._isDragging = false;
-    clearTimeout(this._openInNewWindowTimer);
 
     // if this is a topmenu event, do not move the tab
     if (this._isEventForId(e, "topmenu")) {
       return;
     }
 
+    const whereToDropInfo = this._whereToDrop(e);
+    if (whereToDropInfo === null) {
+      return;
+    }
+
     const dt = e.dataTransfer;
     const tabJson = dt.getData("text/x-tabcenter-tab");
     if (tabJson) {
-      this._handleDroppedTabCenterTab(e, JSON.parse(tabJson));
+      await this._handleDroppedTabCenterTab(e, JSON.parse(tabJson), whereToDropInfo);
       return;
+    }
+
+    const { tab, before } = whereToDropInfo;
+    let newIndex;
+    if (tab === null) {
+      newIndex = -1;
+    } else {
+      newIndex = before ? tab.index : tab.index + 1;
     }
 
     const mozURL = this._findMozURL(dt);
     if (mozURL) {
-      this._props.openTab({
+      openTab({
         url: mozURL,
         windowId: this._windowId,
+        pinned: tab.pinned,
+        index: newIndex,
       });
       return;
     }
 
-    const tabStr = dt.getData("text/plain");
-    if (tabStr) {
-      browser.search.search({ query: tabStr });
+    const query = dt.getData("text/plain");
+    if (query) {
+      const newTab = await browser.tabs.create({ pinned: tab.pinned, index: newIndex });
+      browser.search.search({ query, tabId: newTab.id });
       return;
     }
 
@@ -533,49 +585,39 @@ export default class TabList {
     }
   }
 
-  _handleDroppedTabCenterTab(e, tab) {
-    const { tabId, origWindowId } = tab;
-    if (!this.checkWindow(origWindowId)) {
-      browser.tabs.move(tabId, { windowId: this._windowId, index: -1 });
-      browser.tabs.update(tabId, { active: true });
-      return;
-    }
+  async _handleDroppedTabCenterTab(e, dragTabInfo, whereToDropInfo) {
+    const toDuplicate = e.ctrlKey;
 
-    const curTab = this.getTabById(tabId);
-
-    if (e.target === this._spacerView || e.target === this._moreTabsView) {
-      this.moveTabToEnd(curTab);
-      return;
-    }
-
-    const dropTabId = SideTab.tabIdForEvent(e);
-
-    if (tabId === dropTabId) {
-      return;
-    }
-
-    const dropTab = this.getTabById(dropTabId);
-
-    if (curTab.pinned !== dropTab.pinned) {
-      // They can't mix
-      if (curTab.pinned) {
-        // We tried to move a pinned tab to the non-pinned area, move it to the last
-        // position of the pinned tabs.
-        this.moveTabToEnd(curTab);
-      } else {
-        // Reverse of the previous statement
-        this.moveTabToStart(curTab);
+    const dragTab = await browser.tabs.get(dragTabInfo.tabId);
+    const { tab, before } = whereToDropInfo;
+    let newIndex;
+    if (tab === null) {
+      newIndex = -1;
+    } else {
+      newIndex = before ? tab.index : tab.index + 1;
+      // when moving a tab in the same window, the tab is first removed then inserted
+      // so the index has to be decremented to match the earlier removal
+      if (this.checkWindow(dragTabInfo.origWindowId) && dragTab.index < newIndex && !toDuplicate) {
+        newIndex -= 1;
       }
-      return;
     }
 
-    dropTab.view.classList.remove("drag-highlight-previous", "drag-highlight-next");
-
-    const curTabPos = curTab.index;
-    const dropTabPos = dropTab.index;
-    const newPos =
-      curTabPos < dropTabPos ? Math.min(this._tabs.size, dropTabPos) : Math.max(0, dropTabPos);
-    browser.tabs.move(tabId, { index: newPos });
+    if (toDuplicate) {
+      this.duplicate(dragTab, {
+        windowId: this._windowId,
+        index: newIndex,
+        pinned: tab ? tab.pinned : false,
+      });
+    } else {
+      browser.tabs.update(dragTab.id, { pinned: tab ? tab.pinned : false });
+      browser.tabs.move(dragTab.id, {
+        windowId: this._windowId,
+        index: newIndex,
+      });
+      if (!this.checkWindow(dragTabInfo.origWindowId)) {
+        browser.tabs.update(dragTab.id, { active: true });
+      }
+    }
   }
 
   _onDragend(e) {
@@ -910,16 +952,21 @@ export default class TabList {
     const newElem = tabAfter
       ? parent.insertBefore(element, tabAfter.view)
       : parent.appendChild(element);
-    setTimeout(() => newElem.classList.remove("added"), 20);
     this._setFirstAndLastTabObserver();
+    setTimeout(() => newElem.classList.remove("added"), 20);
   }
 
   _removeTabView(sidetab) {
-    const oldView = sidetab.view;
-    sidetab.view = oldView.cloneNode(true);
+    // when we (un)pin a tab, we want two views animating at the same so we make a copy
+    const oldView = sidetab.view.cloneNode(true);
+    const parent = sidetab.pinned ? this._pinnedview : this._view;
+    parent.replaceChild(oldView, sidetab.view);
     oldView.addEventListener("transitionend", () => oldView.remove());
-    oldView.classList.add("deleted");
-    this._setFirstAndLastTabObserver();
+    oldView.addEventListener("animationend", () => oldView.remove());
+    setTimeout(() => {
+      oldView.classList.add("deleted");
+      this._setFirstAndLastTabObserver();
+    }, 20);
   }
 
   _onTabPinned(sidetab) {
