@@ -108,6 +108,16 @@ export default class TabList {
     document.addEventListener("drop", e => this._onDrop(e));
     document.addEventListener("dragend", e => this._onDragend(e));
 
+    this._view.addEventListener("transitionend", event => {
+      if (event.target.classList.contains("tab")) {
+        if (event.target.classList.contains("deleted")) {
+          event.target.remove();
+        } else if (event.target.classList.contains("being-added")) {
+          event.target.classList.remove("being-added");
+        }
+      }
+    });
+
     // Disable zooming.
     document.addEventListener("wheel", e => {
       if (e.metaKey || e.ctrlKey) {
@@ -977,7 +987,7 @@ export default class TabList {
         (!tabAfter && spaceLeft !== 0) ||
         (tabAfter && tabAfter.view.offsetHeight <= wrapperHeight))
     ) {
-      element.classList.add("added");
+      element.classList.add("added", "being-added");
     }
     const newElem = tabAfter
       ? parent.insertBefore(element, tabAfter.view)

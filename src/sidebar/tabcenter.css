@@ -257,7 +257,10 @@ body[platform="win"] #searchbox-input:placeholder-shown {
   flex-shrink: 0;
   color: var(--tab-text);
   padding: 0px 2px;
-  transition: height 0.1s ease, box-shadow 0.1s ease, border-color 0.1s ease;
+  height: var(--tab-height-compact);
+  max-height: var(--tab-height-normal);
+  min-height: 0;
+  transition: height 0.1s ease;
 }
 
 #tablist .tab.added,
@@ -268,14 +271,16 @@ body[platform="win"] #searchbox-input:placeholder-shown {
 }
 
 #pinnedtablist.compact .tab {
-  width: 32px;
-  height: 32px;
-  transition: width 0.1s ease, box-shadow 0.2s ease;
+  width: var(--tab-height-compact);
+  max-width: var(--tab-height-compact);
+  min-width: 0;
+  transition: width 0.1s ease;
 }
 
 #tablist .tab:not(.pinned),
 #pinnedtablist:not(.compact) .tab {
   height: var(--tab-height-normal);
+  max-height: var(--tab-height-normal);
   border-bottom: 1px solid var(--tab-separator);
   position: relative;
 }
@@ -283,6 +288,11 @@ body[platform="win"] #searchbox-input:placeholder-shown {
 #pinnedtablist.compact .tab.added,
 #pinnedtablist.compact .tab.deleted {
   width: 0;
+}
+
+.tab.being-added *,
+.tab.deleted * {
+  opacity: 0;
 }
 
 .tab.active {
@@ -728,6 +738,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 #tablist-wrapper.shrinked #tablist .tab,
 #tablist-wrapper.shrinked #pinnedtablist:not(.compact) .tab {
   height: var(--tab-height-compact);
+  max-height: var(--tab-height-normal);
 }
 
 #pinnedtablist:empty {
