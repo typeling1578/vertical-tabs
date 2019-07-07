@@ -7,6 +7,8 @@
   --close-icon-hover: hsla(0, 0%, 0%, 0.18);
   --close-icon-active: hsla(0, 0%, 0%, 0.25);
   --input-border-focus: Highlight;
+  --tab-height-normal: 52px;
+  --tab-height-compact: 36px;
 
   /* Light theme */
   --icons: var(--grey-90-a80);
@@ -273,7 +275,7 @@ body[platform="win"] #searchbox-input:placeholder-shown {
 
 #tablist .tab:not(.pinned),
 #pinnedtablist:not(.compact) .tab {
-  height: 52px;
+  height: var(--tab-height-normal);
   border-bottom: 1px solid var(--tab-separator);
   position: relative;
 }
@@ -725,7 +727,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 
 #tablist-wrapper.shrinked #tablist .tab,
 #tablist-wrapper.shrinked #pinnedtablist:not(.compact) .tab {
-  height: 36px;
+  height: var(--tab-height-compact);
 }
 
 #pinnedtablist:empty {
@@ -777,7 +779,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   z-index: 50;
   display: flex;
   align-items: center;
-  height: 36px;
+  height: var(--tab-height-compact);
   padding-left: 31px;
 }
 

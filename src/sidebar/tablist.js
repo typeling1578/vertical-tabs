@@ -6,8 +6,8 @@ import smoothScrollIntoView from "smooth-scroll-into-view-if-needed";
 import SideTab from "./tab.js";
 import ContextMenu from "./contextmenu.js";
 
-const COMPACT_MODE_OFF = 0;
-/* const COMPACT_MODE_DYNAMIC = 1; */
+// const COMPACT_MODE_OFF = 0;
+const COMPACT_MODE_DYNAMIC = 1;
 const COMPACT_MODE_STRICT = 2;
 const NOTIFICATION_DELETE_ID = "notification-delete";
 
@@ -861,17 +861,20 @@ export default class TabList {
   }
 
   __maybeShrinkTabs() {
-    if (
-      this._compactModeMode === COMPACT_MODE_STRICT ||
-      this._compactModeMode === COMPACT_MODE_OFF
-    ) {
+    if (this._compactModeMode !== COMPACT_MODE_DYNAMIC) {
       this._tabsShrinked = this._compactModeMode === COMPACT_MODE_STRICT;
       return;
     }
 
     const wrapperHeight = this._wrapperView.offsetHeight;
     const pinnedViewHeight = this._pinnedview.offsetHeight;
-    const notCompactTabHeight = 52; // Doesn’t work exactly if CSS is customized
+    const style = getComputedStyle(document.body);
+    let notCompactTabHeight = parseInt(
+      style.getPropertyValue("--tab-height-normal").split("px")[0],
+    );
+    if (Number.isNaN(notCompactTabHeight)) {
+      notCompactTabHeight = 52;
+    }
     const maxHeight = wrapperHeight - notCompactTabHeight / 2;
     const visibleTabs = this._getVisibleTabs();
 
