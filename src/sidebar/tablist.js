@@ -170,6 +170,10 @@ export default class TabList {
     this._firstAndLastTabObserver.observe(this._lastTabView);
   }
 
+  _getVisibleTabs() {
+    return [...this._tabs.values()].filter(tab => tab.isVisible());
+  }
+
   _onPrefsChanged(changes) {
     if (changes.compactModeMode) {
       this._compactModeMode = parseInt(changes.compactModeMode.newValue);
@@ -429,18 +433,47 @@ export default class TabList {
 
   // return tab with the provided pinned state and index, if it exists
   _getTabByIndex(index, pinned) {
-    return [...this._tabs.values()]
+    return this._getVisibleTabs()
       .filter(tab => tab.pinned === pinned)
       .find(tab => tab.index === index);
   }
 
+  _getTabBefore(currentTab, samePinnedStatus = false) {
+    let previousTab = null;
+    for (const tab of this._getVisibleTabs()) {
+      if (
+        tab.index < currentTab.index &&
+        (!previousTab || tab.index > previousTab.index) &&
+        (!samePinnedStatus || tab.pinned === currentTab.pinned)
+      ) {
+        previousTab = tab;
+      }
+    }
+    return previousTab;
+  }
+
+  _getTabAfter(currentTab, samePinnedStatus = false) {
+    let nextTab = null;
+    for (const tab of this._getVisibleTabs()) {
+      if (
+        tab.index > currentTab.index &&
+        (!nextTab || tab.index < nextTab.index) &&
+        (!samePinnedStatus || tab.pinned === currentTab.pinned)
+      ) {
+        nextTab = tab;
+      }
+    }
+    return nextTab;
+  }
+
   _getLastTab(pinned) {
-    const maxIndex = Math.max(
-      ...Array.from(this._tabs.values())
-        .filter(tab => tab.pinned === pinned)
-        .map(tab => tab.index),
-    );
-    return Array.from(this._tabs.values()).find(tab => tab.index === maxIndex);
+    let lastTab = null;
+    for (const tab of this._getVisibleTabs()) {
+      if (tab.pinned === pinned && (!lastTab || tab.index > currentTab.index)) {
+        lastTab = tab;
+      }
+    }
+    return lastTab;
   }
 
   // whereToDropInfo.tab === null if tablist is empty or we are over the topmenu
@@ -464,7 +497,7 @@ export default class TabList {
       ? e.clientX < rect.x + rect.width / 2
       : e.clientY < rect.y + rect.height / 2;
     if (isOnFirstHalf) {
-      const previousTab = this._getTabByIndex(dropTab.index - 1, dropTab.pinned);
+      const previousTab = this._getTabBefore(dropTab, true);
       if (previousTab) {
         return {
           tab: previousTab,
@@ -676,7 +709,7 @@ export default class TabList {
     this._willBeDeletedIds = null;
     for (const tab of this._tabs.values()) {
       if (tabIds.includes(tab.id)) {
-        tab.view.classList.remove("will-be-deleted");
+        tab.updateWillBeDeletedVisibility(true);
       }
     }
     if (this._willBeDeletedWasActive !== null) {
@@ -735,7 +768,7 @@ export default class TabList {
       for (const tab of tabs) {
         const result = results[tab.id];
         const show = !!result;
-        tab.updateVisibility(show);
+        tab.updateSearchVisibility(show);
         tab.resetHighlights();
         if (show) {
           if (tab.pinned) {
@@ -757,7 +790,7 @@ export default class TabList {
       // otherwise we display again all the tabs
     } else {
       for (const tab of tabs) {
-        tab.updateVisibility(true);
+        tab.updateSearchVisibility(true);
         tab.resetHighlights();
         this._pinnedview.classList.remove("hidden");
       }
@@ -840,14 +873,13 @@ export default class TabList {
     const pinnedViewHeight = this._pinnedview.offsetHeight;
     const notCompactTabHeight = 52; // Doesn’t work exactly if CSS is customized
     const maxHeight = wrapperHeight - notCompactTabHeight / 2;
+    const visibleTabs = this._getVisibleTabs();
 
     // Can we fit everything without shrinking tabs?
 
     if (!this._tabsShrinked) {
       const spaceLeft = this._spacerView.offsetHeight;
-      const unpinnedTabCount = Array.from(this._tabs.values()).filter(
-        tab => !tab.pinned && tab.visible && !tab.hidden,
-      ).length;
+      const unpinnedTabCount = visibleTabs.filter(tab => !tab.pinned).length;
 
       if (unpinnedTabCount * notCompactTabHeight + pinnedViewHeight > maxHeight) {
         this._tabsShrinked = true;
@@ -864,13 +896,11 @@ export default class TabList {
     estimatedHeight += this._moreTabsView.offsetHeight;
 
     let numPinnedTabs = 0;
-    for (const tab of this._tabs.values()) {
-      if (tab.visible) {
-        if (!tab.pinned) {
-          estimatedHeight += notCompactTabHeight;
-        } else {
-          numPinnedTabs++;
-        }
+    for (const tab of visibleTabs) {
+      if (!tab.pinned) {
+        estimatedHeight += notCompactTabHeight;
+      } else {
+        numPinnedTabs++;
       }
     }
     estimatedHeight +=
@@ -935,10 +965,7 @@ export default class TabList {
       parent.appendChild(element);
       return;
     }
-    const tabAfter = [...this._tabs.values()]
-      .filter(tab => tab.pinned === sidetab.pinned && !tab.hidden)
-      .sort((a, b) => a.index - b.index)
-      .find(tab => tab.index > sidetab.index);
+    const tabAfter = this._getTabAfter(sidetab, true);
     const spaceLeft = this._spacerView.offsetHeight;
     const wrapperHeight = this._wrapperView.offsetHeight;
     if (
@@ -1022,7 +1049,7 @@ export default class TabList {
     this._willBeDeletedIds = tabIds;
     for (const tab of this._tabs.values()) {
       if (tabIds.includes(tab.id)) {
-        tab.view.classList.add("will-be-deleted");
+        tab.updateWillBeDeletedVisibility(false);
         if (tab.active) {
           browser.tabs.update(currentTabId, { active: true });
           this._willBeDeletedWasActive = tab.id;
@@ -1037,9 +1064,9 @@ export default class TabList {
    */
   tabCount(pinned = null) {
     if (pinned === null) {
-      return this._tabs.size;
+      return this._getVisibleTabs().length;
     }
-    return Array.from(this._tabs.values()).filter(tab => tab.pinned === pinned).length;
+    return this._getVisibleTabs().filter(tab => tab.pinned === pinned).length;
   }
 
   isFilterActive() {
@@ -1075,7 +1102,11 @@ export default class TabList {
       active: true,
       cookieStoreId: tab.cookieStoreId,
       index: tab.pinned
-        ? Math.min(...[...this._tabs.values()].filter(tab => !tab.pinned).map(tab => tab.index))
+        ? Math.min(
+            ...this._getVisibleTabs()
+              .filter(tab => !tab.pinned)
+              .map(tab => tab.index),
+          )
         : tab.index + 1,
       openerTabId: tab.openerTabId,
       openInReaderMode: tab.openInReaderMode,
@@ -1097,16 +1128,16 @@ export default class TabList {
   }
 
   _tabsBefore(currentTab) {
-    return [...this._tabs.values()].filter(
-      tab => tab.index < currentTab.index && tab.pinned === currentTab.pinned && !tab.hidden,
+    return this._getVisibleTabs().filter(
+      tab => tab.index < currentTab.index && tab.pinned === currentTab.pinned,
     );
   }
 
   hasTabsBefore(currentTab) {
-    // This function is useful some() is faster than filter(),
+    // This function uses some() which is faster than filter(),
     // since it stops as soon at it founds a match
-    return [...this._tabs.values()].some(
-      tab => tab.index < currentTab.index && tab.pinned === currentTab.pinned && !tab.hidden,
+    return this._getVisibleTabs().some(
+      tab => tab.index < currentTab.index && tab.pinned === currentTab.pinned,
     );
   }
 
@@ -1119,14 +1150,14 @@ export default class TabList {
   }
 
   _tabsAfter(currentTab) {
-    return [...this._tabs.values()].filter(
-      tab => tab.index > currentTab.index && tab.pinned === currentTab.pinned && !tab.hidden,
+    return this._getVisibleTabs().filter(
+      tab => tab.index > currentTab.index && tab.pinned === currentTab.pinned,
     );
   }
 
   hasTabsAfter(currentTab) {
-    return [...this._tabs.values()].some(
-      tab => tab.index > currentTab.index && tab.pinned === currentTab.pinned && !tab.hidden,
+    return this._getVisibleTabs().some(
+      tab => tab.index > currentTab.index && tab.pinned === currentTab.pinned,
     );
   }
 
@@ -1147,7 +1178,7 @@ export default class TabList {
   }
 
   _allTabsExcept(tabId) {
-    return [...this._tabs.values()].filter(tab => tab.id !== tabId && !tab.pinned && !tab.hidden);
+    return this._getVisibleTabs().filter(tab => tab.id !== tabId && !tab.pinned && !tab.hidden);
   }
 
   async undoCloseTab() {

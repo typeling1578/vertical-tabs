@@ -9,7 +9,9 @@ export default class SideTab {
     this.pinned = null;
     this.active = false;
     this.discarded = false;
-    this.visible = true;
+    this.hidden = false;
+    this._filtered = false;
+    this._willBeDeleted = false;
   }
 
   init(tabInfo) {
@@ -160,9 +162,18 @@ export default class SideTab {
     }
   }
 
-  updateVisibility(show) {
-    this.visible = show;
-    this.view.classList.toggle("hidden", !show);
+  updateSearchVisibility(show) {
+    this._filtered = !show;
+    tab.view.classList.toggle("filtered", !show);
+  }
+
+  updateWillBeDeletedVisibility(show) {
+    this._willBeDeleted = !show;
+    tab.view.classList.toggle("will-be-deleted", !show);
+  }
+
+  isVisible() {
+    return !this.hidden && !this._filtered && !this._willBeDeleted;
   }
 
   _setIcon(favIconUrl) {
