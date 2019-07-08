@@ -1001,8 +1001,6 @@ export default class TabList {
     const oldView = sidetab.view.cloneNode(true);
     const parent = sidetab.pinned ? this._pinnedview : this._view;
     parent.replaceChild(oldView, sidetab.view);
-    oldView.addEventListener("transitionend", () => oldView.remove());
-    oldView.addEventListener("animationend", () => oldView.remove());
     setTimeout(() => {
       oldView.classList.add("deleted");
       this._setFirstAndLastTabObserver();
