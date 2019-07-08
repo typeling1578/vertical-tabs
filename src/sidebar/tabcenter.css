@@ -486,10 +486,10 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   display: none;
   z-index: 1;
   position: absolute;
-  bottom: 3px;
+  bottom: 2px;
   right: 1px;
-  width: 13px;
-  height: 13px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background-color: var(--white-100);
   background-size: contain;
@@ -505,7 +505,6 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 }
 
 #tablist-wrapper.shrinked #tablist:not(.compact) .tab-icon-overlay {
-  bottom: 4px;
   left: 18px;
 }
 
@@ -711,19 +710,19 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 .tab-close {
   position: absolute;
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 28px;
+  height: 100%;
   top: 0;
   bottom: 0;
-  right: 6px;
+  right: 0;
   margin: auto;
   background-image: url("img/close-icon.svg");
+  background-size: 18px;
   -moz-context-properties: fill;
   fill: var(--icons);
   filter: url("img/filters.svg#fill");
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 2px;
   opacity: 0;
 }
 
