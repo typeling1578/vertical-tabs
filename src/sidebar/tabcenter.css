@@ -256,7 +256,7 @@ body[platform="win"] #searchbox-input:placeholder-shown {
 #pinnedtablist:not(.compact) .tab {
   flex-shrink: 0;
   padding: 0px 2px;
-  height: var(--tab-height-compact);
+  height: var(--tab-height-normal);
   max-height: var(--tab-height-normal);
   min-height: 0;
   transition: height 0.1s ease;
@@ -267,10 +267,11 @@ body[platform="win"] #searchbox-input:placeholder-shown {
 #tablist .tab.deleted,
 #pinnedtablist:not(.compact) .tab.deleted {
   height: 0 !important;
-  opacity: 0;
 }
 
 #pinnedtablist.compact .tab {
+  height: var(--tab-height-compact);
+  max-height: var(--tab-height-compact);
   width: var(--tab-height-compact);
   max-width: var(--tab-height-compact);
   min-width: 0;
@@ -415,6 +416,11 @@ body:not(.incognito) #pinnedtablist:not(.compact) .tab.hasContext .tab-context {
 #pinnedtablist {
   z-index: 50;
   background-color: var(--background);
+}
+
+#pinnedtablist.compact {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #tablist,
@@ -657,8 +663,8 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 .tab-title-wrapper {
   flex: 1;
   display: flex;
-  min-width: 0;
   flex-direction: column;
+  min-width: 0;
   mask-image: linear-gradient(to left, transparent 0, black 2em);
 }
 
@@ -750,11 +756,6 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 
 #tablist-wrapper #pinnedtablist {
   flex-shrink: 0;
-}
-
-#tablist-wrapper #pinnedtablist.compact {
-  display: flex;
-  flex-wrap: wrap;
 }
 
 #pinnedtablist.compact .tab.pinned {
