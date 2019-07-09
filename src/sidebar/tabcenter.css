@@ -621,9 +621,9 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   background-image: url("img/loading-spinner.svg#standard");
   background-position: left center;
   background-repeat: no-repeat;
-  width: 960px;
+  width: 480px;
   height: 100%;
-  animation: tab-throbber-animation 1.05s steps(60) infinite;
+  animation: tab-throbber-animation 1.05s steps(30) infinite;
   -moz-context-properties: fill;
 
   /* XXX: It would be nice to transition between the "connecting" color and the
