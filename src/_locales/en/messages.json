@@ -109,7 +109,7 @@
     },
     "contextMenuCloseTabs": {
         "message": "Close Tabs",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=. Context Menu item label"
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197250. Context Menu item label"
     },
     "contextMenuCloseTabsBefore": {
         "message": "Close Tabs Before",
