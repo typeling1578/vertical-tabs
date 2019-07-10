@@ -259,6 +259,9 @@ export default class TabList {
     if (sidetab.hidden) {
       return;
     }
+    // if another extension uses tabs.duplicate(), it is necessary
+    // because the tab will never finish its transition and .being-added will stay
+    sidetab.view.classList.remove("being-added");
     this._appendTabView(sidetab, false);
     this.scrollIntoView(sidetab);
   }
