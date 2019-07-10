@@ -372,7 +372,6 @@ export default class TabList {
   }
 
   _onMouseOut(e) {
-    console.log(e);
     this._shrinkTabsTimer = setTimeout(
       () => this._wrapperView.classList.toggle("shrinked", this._tabsShrinked),
       500,
@@ -840,16 +839,15 @@ export default class TabList {
         fragment.appendChild(sidetab.view);
       }
     }
+    this._pinnedview.appendChild(pinnedFragment);
+    this._view.appendChild(unpinnedFragment);
     this._maybeShrinkTabs(true);
-    requestAnimationFrame(() => {
-      this._pinnedview.appendChild(pinnedFragment);
-      this._view.appendChild(unpinnedFragment);
-      if (activeTab) {
-        this._maybeUpdateTabThumbnail(activeTab);
-        this.scrollIntoView(activeTab);
-      }
-      this._initializeFirstAndLastTabsObserver();
-    });
+    if (activeTab) {
+      this._maybeUpdateTabThumbnail(activeTab);
+      this.scrollIntoView(activeTab);
+    }
+    this._initializeFirstAndLastTabsObserver();
+    setTimeout(() => document.body.classList.add("loaded"), 20);
   }
 
   checkWindow(windowId) {
