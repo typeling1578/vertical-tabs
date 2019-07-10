@@ -110,15 +110,7 @@ export default class TabList {
     document.addEventListener("drop", e => this._onDrop(e));
     document.addEventListener("dragend", e => this._onDragend(e));
 
-    this._view.addEventListener("transitionend", event => {
-      if (event.target.classList.contains("tab")) {
-        if (event.target.classList.contains("deleted")) {
-          event.target.remove();
-        } else if (event.target.classList.contains("being-added")) {
-          event.target.classList.remove("being-added");
-        }
-      }
-    });
+    this._wrapperView.addEventListener("transitionend", e => this._onTransitionEnd(e));
 
     // Disable zooming.
     document.addEventListener("wheel", e => {
@@ -704,6 +696,16 @@ export default class TabList {
     }, 50);
   }
 
+  _onTransitionEnd(e) {
+    if (event.target.classList.contains("tab")) {
+      if (event.target.classList.contains("deleted")) {
+        event.target.remove();
+      } else if (event.target.classList.contains("being-added")) {
+        event.target.classList.remove("being-added");
+      }
+    }
+  }
+
   _onSpacerDblClick() {
     openTab();
   }
@@ -993,6 +995,9 @@ export default class TabList {
 
   _appendTabView(sidetab, animate = true) {
     const element = sidetab.view;
+    // if another extension uses tabs.duplicate(), it is necessary
+    // because the tab will never finish its transition and .being-added will stay
+    element.classList.remove("being-added");
     const parent = sidetab.pinned ? this._pinnedview : this._view;
     // Can happen with browser.tabs.closeWindowWithLastTab set to true or during
     // session restore.
@@ -1021,8 +1026,7 @@ export default class TabList {
   _removeTabView(sidetab) {
     // when we (un)pin a tab, we want two views animating at the same so we make a copy
     const oldView = sidetab.view.cloneNode(true);
-    const parent = sidetab.pinned ? this._pinnedview : this._view;
-    parent.replaceChild(oldView, sidetab.view);
+    sidetab.view.parentNode.replaceChild(oldView, sidetab.view);
     setTimeout(() => {
       oldView.classList.add("deleted");
       this._setFirstAndLastTabObserver();

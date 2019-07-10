@@ -259,7 +259,7 @@ body[platform="win"] #searchbox-input:placeholder-shown {
   height: var(--tab-height-normal);
   max-height: var(--tab-height-normal);
   min-height: 0;
-  transition: height 0.1s ease;
+  min-width: 0;
 }
 
 #tablist .tab.added,
@@ -275,7 +275,6 @@ body[platform="win"] #searchbox-input:placeholder-shown {
   width: var(--tab-height-compact);
   max-width: var(--tab-height-compact);
   min-width: 0;
-  transition: width 0.1s ease;
 }
 
 #tablist .tab:not(.pinned),
@@ -290,6 +289,17 @@ body[platform="win"] #searchbox-input:placeholder-shown {
 #pinnedtablist:not(.compact) .tab.deleted + .tab {
   border-top: 1px solid var(--tab-separator);
 }
+
+/* stylelint-disable no-descending-specificity */
+body.loaded #tablist .tab,
+body.loaded #pinnedtablist:not(.compact) .tab {
+  transition: height 0.1s ease;
+}
+
+body.loaded #pinnedtablist.compact .tab {
+  transition: width 0.1s ease;
+}
+/* stylelint-enable */
 
 #pinnedtablist.compact .tab.added,
 #pinnedtablist.compact .tab.deleted {
