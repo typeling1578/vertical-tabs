@@ -187,5 +187,57 @@
     "contextMenuCloseTabs": {
         "message": "Fermer des onglets",
         "description": "Context Menu item label"
+    },
+    "notificationDeletedMessage": {
+        "message": "Cliquez sur la notification pour annuler.",
+        "description": "Title of the notification when deleting many tabs."
+    },
+    "notificationDeletedTitle": {
+        "message": "$COUNT$ onglets fermés",
+        "description": "Title of the notification when deleting many tabs.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "optionsNotifyClosingManyTabsExplanation": {
+        "message": "Afficher une notification vous permettant d’annuler lors de la fermeture de plus de $COUNT onglets.",
+        "description": "Explanation for the Notify when closing many tabs option in options page.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "optionsNotifyClosingManyTabs": {
+        "message": "Notifier lors de la fermeture de beaucoup d’onglets",
+        "description": "Option in options page."
+    },
+    "unmuteTabButtonTooltip": {
+        "message": "Réactiver le son de l’onglet",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
+    },
+    "muteTabButtonTooltip": {
+        "message": "Rendre l’onglet muet",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
+    },
+    "newTabContextMenuOpenInPrivateWindow": {
+        "message": "Nouvelle fenêtre de navigation privée",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?search=New+private+window&string=75628. New Tab context menu item."
+    },
+    "newTabContextMenuOpenInWindow": {
+        "message": "Nouvelle fenêtre",
+        "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?search=New+window&string=75625. New Tab context menu item."
+    },
+    "newTabContextMenuOpneAfterCurrent": {
+        "message": "Après l’onglet courant",
+        "description": "New Tab context menu item."
+    },
+    "newTabContextMenuOpenAtEnd": {
+        "message": "À la fin",
+        "description": "New Tab context menu item."
     }
 }
