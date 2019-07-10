@@ -15,7 +15,7 @@
         "description": "Label of the New Tab button in the top menu."
     },
     "newTabBtnTooltip": {
-        "message": "Malfermas novan langeton"
+        "message": "Malfermi novan langeton"
     },
     "searchPlaceholder": {
         "message": "Serĉi langetojn"
@@ -90,7 +90,7 @@
         "message": "Ĉiam"
     },
     "optionsCompactPins": {
-        "message": "Kompaktaj fiksitaj langetoj"
+        "message": "Nur favorikono por fiksitaj langetoj"
     },
     "optionsDarkTheme": {
         "message": "Malhela etoso"
@@ -131,24 +131,12 @@
         "description": "Explanation for the Theme Integration option in the options page."
     },
     "closeTabsAfterWarning": {
-        "message": "Ĉu vi vere volas fermi la $COUNT$ subajn langetojn?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
+        "message": "Ĉu vi vere volas fermi la $COUNT$ postajn langetojn?",
+        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another."
     },
     "closeAllTabsExceptWarning": {
         "message": "Ĉu vi vere volas fermi la $COUNT$ aliajn langetojn?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
+        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
     },
     "contextMenuUnloadTab": {
         "message": "Malŝarĝi langeton",
@@ -169,5 +157,87 @@
     "browserActionOff": {
         "message": "el",
         "description": "Badge text shown when sidebar is closed."
+    },
+    "optionsAppearanceTitle": {
+        "message": "Aspekto",
+        "description": "Section in options page."
+    },
+    "optionsBehaviorTitle": {
+        "message": "Konduto",
+        "description": "Section in options page."
+    },
+    "optionsWarnBeforeClosing": {
+        "message": "Averti antaŭ ol fermi pli ol $COUNT langetojn",
+        "description": "Option in options page."
+    },
+    "closeTabsBeforeWarning": {
+        "message": "Ĉu vi vere volas fermi la $COUNT$ antaŭajn langetojn?",
+        "description": "Warning shown when trying to close more than 4 tabs when closing tabs before another.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "contextMenuCloseTabsBefore": {
+        "message": "Fermi la antaŭajn langetojn",
+        "description": "Context menu item label."
+    },
+    "contextMenuCloseTabs": {
+        "message": "Fermi langetojn",
+        "description": "Context Menu item label"
+    },
+    "notificationDeletedMessage": {
+        "message": "Alklaku la sciigon por malfari.",
+        "description": "Title of the notification when deleting many tabs."
+    },
+    "notificationDeletedTitle": {
+        "message": "$COUNT$ langetoj fermitaj",
+        "description": "Title of the notification when deleting many tabs.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "optionsNotifyClosingManyTabsExplanation": {
+        "message": "Montri sciigon por ke vi povas malfari kiam pli ol $COUNT langetoj fermiĝis.",
+        "description": "Explanation for the Notify when closing many tabs option in options page.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "optionsNotifyClosingManyTabs": {
+        "message": "Sciigi kiam multaj langetoj fermiĝas",
+        "description": "Option in options page."
+    },
+    "unmuteTabButtonTooltip": {
+        "message": "Malsilentigi langeton",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
+    },
+    "muteTabButtonTooltip": {
+        "message": "Silentigi langeton",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
+    },
+    "newTabContextMenuOpenInPrivateWindow": {
+        "message": "Nova privata fenestro",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?search=New+private+window&string=75628. New Tab context menu item."
+    },
+    "newTabContextMenuOpenInWindow": {
+        "message": "Nova fenestro",
+        "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?search=New+window&string=75625. New Tab context menu item."
+    },
+    "newTabContextMenuOpneAfterCurrent": {
+        "message": "Post la aktiva langeto",
+        "description": "New Tab context menu item."
+    },
+    "newTabContextMenuOpenAtEnd": {
+        "message": "Al la fino",
+        "description": "New Tab context menu item."
     }
 }

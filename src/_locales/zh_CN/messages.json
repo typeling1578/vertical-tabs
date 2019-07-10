@@ -1,6 +1,6 @@
 {
     "extensionDescription": {
-        "message": "标签页中心旨在解决人们使用标签页（尤其是太多标签页）时遇到的一些问题，并为未来的创新功能提供更多的基础。此 Firefox 附加组件以垂直方式而非水平方式排列标签页。它的灵感极大来源于附加组件 VerticalTabs 的想法。"
+        "message": "将标签页移动到您浏览器的窗口边。"
     },
     "browserActionTitle": {
         "message": "开关 Tab Center Reborn",
@@ -90,13 +90,13 @@
         "message": "始终"
     },
     "optionsCompactPins": {
-        "message": "紧凑型固定标签页"
+        "message": "固定标签页仅显示网站图标"
     },
     "optionsDarkTheme": {
         "message": "深色主题"
     },
     "optionsThemeIntegration": {
-        "message": "配合当前主题"
+        "message": "搭配自定义主题"
     },
     "optionsAdvancedTitle": {
         "message": "高级"
@@ -111,7 +111,7 @@
         "message": "保存 CSS"
     },
     "contextMenuOpenInContextualTab": {
-        "message": "使用身份标签页打开"
+        "message": "使用容器标签页打开"
     },
     "contextMenuMoveTab": {
         "message": "移动标签页"
@@ -121,5 +121,81 @@
     },
     "contextMenuMoveTabToEnd": {
         "message": "移动到末尾"
+    },
+    "optionsWarnBeforeClosing": {
+        "message": "在关闭 $COUNT$ 个标签页前警告我",
+        "description": "Option in options page.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "optionsBehaviorTitle": {
+        "message": "行为",
+        "description": "Section in options page."
+    },
+    "optionsThemeIntegrationExplanation": {
+        "message": "与您自定义的主题集成。如果您换回了 Firefox 的默认主题，需要重新打开侧边栏。",
+        "description": "Explanation for the Theme Integration option in the options page."
+    },
+    "optionsSwitchLastActiveTab": {
+        "message": "切换到上一次活动的标签页",
+        "description": "Option in options page."
+    },
+    "optionsSwitchLastActiveTabExplanation": {
+        "message": "点击当前活动标签页时切换到上一个活动的标签页。",
+        "description": "Explanation for the Compact Mode option in options page."
+    },
+    "optionsAppearanceTitle": {
+        "message": "外观",
+        "description": "Section in options page."
+    },
+    "closeAllTabsExceptWarning": {
+        "message": "您真的想关闭其它 $COUNT$ 个标签页吗？",
+        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "closeTabsAfterWarning": {
+        "message": "您真的想关闭下方 $COUNT$ 个标签页吗？",
+        "description": "Warning shown when trying to close more than 4 tabs when closing tabs after another.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "closeTabsBeforeWarning": {
+        "message": "您真的想关闭上方 $COUNT$ 个标签页吗？",
+        "description": "Warning shown when trying to close more than 4 tabs when closing tabs before another.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "contextMenuCloseTabsBefore": {
+        "message": "关闭上方标签页",
+        "description": "Context menu item label."
+    },
+    "contextMenuCloseTabs": {
+        "message": "关闭多个标签页",
+        "description": "Context Menu item label"
+    },
+    "contextMenuUnloadTab": {
+        "message": "释放标签页",
+        "description": "Context menu item label."
+    },
+    "extensionsLongDescription": {
+        "message": "Tab Center Reborn 是已停止开发的 <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\"> Tab Center Redux </a> 后继者，目的是为了提供一个简单、功能强大且集成性良好的垂直管理标签扩展。\n\n本扩展程序提供了一些设置，并且允许高级用户使用 CSS 代码来自定义外观。\n\n<ul>\n<li>使用 Shift + F1 来打开或关闭该扩展</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">如何隐藏顶部标签栏</a></li>\n</ul>\n\n您可以<a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">贡献翻译、文档代码或者汇报 Bug</a>！",
+        "description": "Long description displayed on addons.mozilla.org."
     }
 }

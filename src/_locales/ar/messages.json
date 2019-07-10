@@ -1,6 +1,6 @@
 {
     "extensionDescription": {
-        "message": "إن إضافة Tab Center هي محاولة لحل بعض المشاكل التي ظهرت من الطريقة التي يستخدم بها الناس علامات التبويب (ما يعرف بمشكلة \"عدد تبويبات كثيرة\") و تقدم الإضافة واجهة أكثر تنوعاً و تماشياً مع التطورات المستقبلية. أول نسخة من هذه الإضافة لمتصفح فايرفوكس تقوم بترتيب علامات التبويب بشكل طولي و ليس عرضي. و هي مستوحاة بشكل كبير و تستعير أفكار من الإضافة الممتازة VerticalTabs."
+        "message": "أنقل ألسنتك إلى جانب مِن نافذة متصفحك."
     },
     "browserActionTitle": {
         "message": "تفعيل/إلغاء الإضافة",
@@ -121,5 +121,21 @@
     },
     "contextMenuMoveTabToEnd": {
         "message": "انقل إلى النهاية"
+    },
+    "browserActionOn": {
+        "message": "نَشِط",
+        "description": "Badge text shown when sidebar is open."
+    },
+    "browserActionOff": {
+        "message": "معطّل",
+        "description": "Badge text shown when sidebar is closed."
+    },
+    "contextMenuCloseTabsBefore": {
+        "message": "اغلق الألسنة قبل",
+        "description": "Context menu item label."
+    },
+    "contextMenuCloseTabs": {
+        "message": "اغلق الألسنة",
+        "description": "Context Menu item label"
     }
 }
