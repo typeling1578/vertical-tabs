@@ -90,12 +90,14 @@ export default class TabList {
       view.addEventListener("click", e => this._onClick(e));
       view.addEventListener("dblclick", e => this._onDblClick(e));
       view.addEventListener("auxclick", e => this._onAuxClick(e));
-      view.addEventListener("mousedown", e => this._onMouseDown(e));
-      view.addEventListener("mouseup", e => this._onMouseUp(e));
-      view.addEventListener("mouseover", e => this._onMouseOver(e));
+      view.addEventListener("pointerdown", e => this._onMouseDown(e));
+      view.addEventListener("pointerup", e => this._onMouseUp(e));
+      view.addEventListener("pointerover", e => this._onMouseOver(e));
       view.addEventListener("contextmenu", e => this.tabContextMenu.open(e), true);
       view.addEventListener("animationend", e => this._onAnimationEnd(e));
     }
+
+    this._wrapperView.addEventListener("pointerout", e => this._onMouseOut(e));
 
     this._spacerView.addEventListener("dblclick", () => this._onSpacerDblClick());
     this._spacerView.addEventListener("auxclick", e => this._onSpacerAuxClick(e));
@@ -367,6 +369,14 @@ export default class TabList {
     if (tabId === this._active) {
       this.scrollIntoView(this.getTabById(tabId));
     }
+  }
+
+  _onMouseOut(e) {
+    console.log(e);
+    this._shrinkTabsTimer = setTimeout(
+      () => this._wrapperView.classList.toggle("shrinked", this._tabsShrinked),
+      500,
+    );
   }
 
   _onAuxClick(e) {
@@ -830,14 +840,16 @@ export default class TabList {
         fragment.appendChild(sidetab.view);
       }
     }
-    this._pinnedview.appendChild(pinnedFragment);
-    this._view.appendChild(unpinnedFragment);
-    this._maybeShrinkTabs();
-    if (activeTab) {
-      this._maybeUpdateTabThumbnail(activeTab);
-      this.scrollIntoView(activeTab);
-    }
-    this._initializeFirstAndLastTabsObserver();
+    this._maybeShrinkTabs(true);
+    requestAnimationFrame(() => {
+      this._pinnedview.appendChild(pinnedFragment);
+      this._view.appendChild(unpinnedFragment);
+      if (activeTab) {
+        this._maybeUpdateTabThumbnail(activeTab);
+        this.scrollIntoView(activeTab);
+      }
+      this._initializeFirstAndLastTabsObserver();
+    });
   }
 
   checkWindow(windowId) {
@@ -863,19 +875,21 @@ export default class TabList {
 
   set _tabsShrinked(shrinked) {
     this.__tabsShrinked = shrinked;
-    this._wrapperView.classList.toggle("shrinked", shrinked);
   }
 
-  _maybeShrinkTabs() {
+  _maybeShrinkTabs(immediate = false) {
     // Avoid an expensive sync reflow (offsetHeight).
     requestAnimationFrame(() => {
-      this.__maybeShrinkTabs();
+      this.__maybeShrinkTabs(immediate);
     });
   }
 
-  __maybeShrinkTabs() {
+  __maybeShrinkTabs(immediate) {
     if (this._compactModeMode !== COMPACT_MODE_DYNAMIC) {
       this._tabsShrinked = this._compactModeMode === COMPACT_MODE_STRICT;
+      if (immediate) {
+        this._wrapperView.classList.toggle("shrinked", this._tabsShrinked);
+      }
       return;
     }
 
@@ -897,16 +911,20 @@ export default class TabList {
       const spaceLeft = this._spacerView.offsetHeight;
       const unpinnedTabCount = visibleTabs.filter(tab => !tab.pinned).length;
 
-      if (unpinnedTabCount * notCompactTabHeight + pinnedViewHeight > maxHeight) {
+      // count one more tab to only unshrink if there is a comfortable white space underneath
+      if ((unpinnedTabCount + 1) * notCompactTabHeight + pinnedViewHeight > maxHeight) {
         this._tabsShrinked = true;
+        if (immediate) {
+          this._wrapperView.classList.toggle("shrinked", this._tabsShrinked);
+        }
       }
       return;
     }
 
     // Could we fit everything if we switched back to the "normal" mode?
 
-    // account for one tab more so we don’t switch too often back and forth
-    let estimatedHeight = notCompactTabHeight;
+    // account for two tabs more, one more than above, so we don’t switch too often back and forth
+    let estimatedHeight = notCompactTabHeight * 2;
 
     // take the "Show All Tabs" element displayed when filtering tabs into account
     estimatedHeight += this._moreTabsView.offsetHeight;
@@ -926,6 +944,9 @@ export default class TabList {
 
     if (estimatedHeight <= maxHeight) {
       this._tabsShrinked = false;
+      if (immediate) {
+        this._wrapperView.classList.toggle("shrinked", this._tabsShrinked);
+      }
     }
   }
 
