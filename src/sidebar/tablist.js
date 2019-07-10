@@ -3,6 +3,7 @@
 import fuzzysort from "fuzzysort";
 import smoothScrollIntoView from "smooth-scroll-into-view-if-needed";
 
+import { openTab } from "./tabcenter.js";
 import SideTab from "./tab.js";
 import ContextMenu from "./contextmenu.js";
 
@@ -14,7 +15,6 @@ const NOTIFICATION_DELETE_ID = "notification-delete";
 export default class TabList {
   /* @arg {props}
    * windowId
-   * openTab
    * search
    * prefs
    */
@@ -693,12 +693,12 @@ export default class TabList {
   }
 
   _onSpacerDblClick() {
-    this._props.openTab();
+    openTab();
   }
 
   _onSpacerAuxClick(e) {
     if (e.button === 1) {
-      this._props.openTab();
+      openTab();
     }
   }
 

@@ -14,9 +14,8 @@ export default class TabCenter {
       document.body.setAttribute("platform", platform.os);
     });
 
-    const openTab = this._openTab.bind(this);
     const search = this._search.bind(this);
-    this._topMenu = new TopMenu({ openTab, search });
+    this._topMenu = new TopMenu({ search });
 
     this._currentTheme = {};
     this._setupListeners();
@@ -25,30 +24,11 @@ export default class TabCenter {
     this._applyPrefs(prefs);
     this._tabList = new TabList({
       windowId: this._windowId,
-      openTab,
       search,
       prefs,
     });
 
     browser.runtime.connect({ name: this._windowId.toString() });
-  }
-
-  async _openTab(props = {}) {
-    const activeTab = (await browser.tabs.query({
-      windowId: this._windowId,
-      active: true,
-    }))[0];
-    if (props._position === "afterCurrent") {
-      props.index = activeTab.index + 1;
-    } else {
-      props.index = this._tabList.tabCount();
-    }
-    delete props._position;
-    if (props["cookieStoreId"] === undefined) {
-      props["cookieStoreId"] = "firefox-default";
-    }
-    props["openerTabId"] = activeTab.id;
-    browser.tabs.create(props);
   }
 
   _search(val) {
@@ -235,4 +215,29 @@ function setBrowserActionColor(color) {
       32: svgStr,
     },
   });
+}
+
+export async function openTab(props = {}) {
+  const tabs = await browser.tabs.query({ windowId: browser.windows.WINDOW_ID_CURRENT });
+  const activeTab = tabs.find(tab => tab.active);
+  if (!props.index) {
+    if (props._position === "afterCurrent") {
+      props.index = activeTab.index + 1;
+    } else {
+      props.index = tabs.length;
+    }
+  }
+  delete props._position;
+
+  if (props["cookieStoreId"] === undefined) {
+    props["cookieStoreId"] = "firefox-default";
+  }
+
+  props["openerTabId"] = activeTab.id;
+
+  if (props["url"] === "about:newtab") {
+    delete props["url"];
+  }
+
+  browser.tabs.create(props);
 }

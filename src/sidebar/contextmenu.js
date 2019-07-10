@@ -1,5 +1,6 @@
-/* global browser, confirm, location */
+/* global browser, location */
 
+import { openTab } from "./tabcenter.js";
 import SideTab from "./tab.js";
 import getContextualIdentityItems from "./contextualidentities.js";
 
@@ -10,62 +11,67 @@ export default class ContextMenu {
     this._tablist = tablist;
     let count;
 
-    browser.menus.onClicked.addListener((info, tab) => {
-      if (!tab || !this._tablist.checkWindow(tab.windowId)) {
-        return;
-      }
-      switch (info.menuItemId) {
-        case "contextMenuReloadTab":
-          browser.tabs.reload(tab.id);
-          break;
-        case "contextMenuMuteTab":
-          browser.tabs.update(tab.id, { muted: !tab.mutedInfo.muted });
-          break;
-        case "contextMenuPinTab":
-          browser.tabs.update(tab.id, { pinned: !tab.pinned });
-          break;
-        case "contextMenuDuplicateTab":
-          browser.tabs.duplicate(tab.id);
-          break;
-        case "contextMenuUnloadTab":
-          browser.tabs.discard(tab.id);
-          break;
-        case "contextMenuMoveTabToStart":
-          this._tablist.moveTabToStart(tab);
-          break;
-        case "contextMenuMoveTabToEnd":
-          this._tablist.moveTabToEnd(tab);
-          break;
-        case "contextMenuMoveTabToNewWindow":
-          browser.windows.create({ tabId: tab.id });
-          break;
-        case "contextMenuCloseTabsBefore":
-          this._tablist.closeTabsBefore(tab);
-          break;
-        case "contextMenuCloseTabsAfter":
-          this._tablist.closeTabsAfter(tab);
-          break;
-        case "contextMenuCloseOtherTabs":
-          this._tablist.closeAllTabsExcept(tab);
-          break;
-        case "contextMenuUndoCloseTab":
-          this._tablist.undoCloseTab();
-          break;
-        case "contextMenuCloseTab":
-          browser.tabs.remove(tab.id);
-          break;
-      }
+    browser.menus.onClicked.addListener((info, tab) => this._onContextMenuClicked(info, tab));
+  }
 
-      if (info.menuItemId.startsWith("contextMenuOpenInContextualTab_")) {
-        const newTab = {
-          cookieStoreId: info.menuItemId.split("contextMenuOpenInContextualTab_")[1],
-        };
-        if (tab.url !== "about:newtab") {
-          newTab["url"] = tab.url;
-        }
-        browser.tabs.create(newTab);
-      }
-    });
+  _onContextMenuClicked(info, tab) {
+    if (
+      !tab ||
+      !this._tablist.checkWindow(tab.windowId) ||
+      !info.menuItemId.startsWith("contextMenu")
+    ) {
+      return;
+    }
+    switch (info.menuItemId) {
+      case "contextMenuReloadTab":
+        browser.tabs.reload(tab.id);
+        return;
+      case "contextMenuMuteTab":
+        browser.tabs.update(tab.id, { muted: !tab.mutedInfo.muted });
+        return;
+      case "contextMenuPinTab":
+        browser.tabs.update(tab.id, { pinned: !tab.pinned });
+        return;
+      case "contextMenuDuplicateTab":
+        this._tablist.duplicate(tab);
+        return;
+      case "contextMenuUnloadTab":
+        browser.tabs.discard(tab.id);
+        return;
+      case "contextMenuMoveTabToStart":
+        this._tablist.moveTabToStart(tab);
+        return;
+      case "contextMenuMoveTabToEnd":
+        this._tablist.moveTabToEnd(tab);
+        return;
+      case "contextMenuMoveTabToNewWindow":
+        browser.windows.create({ tabId: tab.id });
+        return;
+      case "contextMenuCloseTabsBefore":
+        this._tablist.closeTabsBefore(tab);
+        return;
+      case "contextMenuCloseTabsAfter":
+        this._tablist.closeTabsAfter(tab);
+        return;
+      case "contextMenuCloseOtherTabs":
+        this._tablist.closeAllTabsExcept(tab);
+        return;
+      case "contextMenuUndoCloseTab":
+        this._tablist.undoCloseTab();
+        return;
+      case "contextMenuCloseTab":
+        browser.tabs.remove(tab.id);
+        return;
+    }
+
+    if (!info.menuItemId.startsWith("contextMenuOpenInContextualTab_")) {
+      return;
+    }
+    const newTab = {
+      cookieStoreId: info.menuItemId.split("contextMenuOpenInContextualTab_")[1],
+      url: tab.url,
+    };
+    openTab(newTab);
   }
 
   open(e) {
@@ -97,15 +103,12 @@ export default class ContextMenu {
       {
         id: "contextMenuDuplicateTab",
         title: browser.i18n.getMessage("contextMenuDuplicateTab"),
+        enabled: ContextMenu.canOpen(tab.url),
       },
       {
         id: "contextMenuUnloadTab",
         title: browser.i18n.getMessage("contextMenuUnloadTab"),
-        enabled:
-          !tab.active &&
-          !tab.discarded &&
-          !tab.url.startsWith("about:") &&
-          !tab.url.startsWith("chrome:"),
+        enabled: ContextMenu.canUnload(tab),
       },
       {
         type: "separator",
@@ -116,10 +119,7 @@ export default class ContextMenu {
        */ {
         id: "contextMenuOpenInContextualTab",
         title: browser.i18n.getMessage("contextMenuOpenInContextualTab"),
-        enabled:
-          !IS_PRIVILEGED_PAGE_URL.test(tab.url) ||
-          tab.url === "about:newtab" ||
-          tab.url === "about:blank",
+        enabled: ContextMenu.canOpen(tab.url),
         visible:
           browser.contextualIdentities !== undefined &&
           !document.body.classList.contains("incognito"),
@@ -210,5 +210,18 @@ export default class ContextMenu {
       context: "tab",
       tabId: tabId,
     });
+  }
+
+  static canUnload(tab) {
+    return (
+      !tab.active &&
+      !tab.discarded &&
+      !tab.url.startsWith("about:") &&
+      !tab.url.startsWith("chrome:")
+    );
+  }
+
+  static canOpen(url) {
+    return !IS_PRIVILEGED_PAGE_URL.test(url) || url === "about:newtab" || url === "about:blank";
   }
 }

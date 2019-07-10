@@ -27,6 +27,22 @@
         "message": "Open settings",
         "description": "Tooltip of the settings button in the top menu."
     },
+    "newTabContextMenuOpenAtEnd": {
+        "message": "At End",
+        "description": "New Tab context menu item."
+    },
+    "newTabContextMenuOpneAfterCurrent": {
+        "message": "Next to Current Tab",
+        "description": "New Tab context menu item."
+    },
+    "newTabContextMenuOpenInWindow": {
+        "message": "New Window",
+        "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?search=New+window&string=75625. New Tab context menu item."
+    },
+    "newTabContextMenuOpenInPrivateWindow": {
+        "message": "New Private Window",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?search=New+private+window&string=75628. New Tab context menu item."
+    },
     "muteTabButtonTooltip": {
         "message": "Mute tab",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."

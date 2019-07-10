@@ -1,9 +1,9 @@
 /* global browser */
 
+import { openTab } from "./tabcenter.js";
 import getContextualIdentityItems from "./contextualidentities.js";
 
 /* @arg {props}
- * openTab
  * search
  */
 export default class TopMenu {
@@ -15,6 +15,14 @@ export default class TopMenu {
     this._settingsView = document.getElementById("settings");
     this._searchBoxInput = document.getElementById("searchbox-input");
     this._newTabLabelView = document.getElementById("newtab-label");
+    browser.extension
+      .isAllowedIncognitoAccess()
+      .then(isAllowed => (this._isIncognitoAccessAllowed = isAllowed));
+    browser.browserSettings.newTabPosition.get({}).then(setting => {
+      this._newTabPosition = setting.value;
+      this._alternateNewTabPosition = setting.value === "afterCurrent" ? "atEnd" : "afterCurrent";
+    });
+
     this._setupLabels();
     this._setupListeners();
   }
@@ -24,9 +32,6 @@ export default class TopMenu {
   }
 
   async _setupListeners() {
-    const newTabPosition = (await browser.browserSettings.newTabPosition.get({})).value;
-    const otherTabPosition = newTabPosition === "afterCurrent" ? "atEnd" : "afterCurrent";
-
     this._settingsView.addEventListener("click", () => {
       browser.runtime.openOptionsPage();
     });
@@ -37,19 +42,21 @@ export default class TopMenu {
 
     this._newTabButtonView.addEventListener("click", e => {
       if (e.ctrlKey === true && e.shiftKey === true) {
-        browser.windows.create({ incognito: true });
+        if (this._isIncognitoAccessAllowed) {
+          browser.windows.create({ incognito: true });
+        }
       } else if (e.ctrlKey === true) {
-        this._props.openTab({ _position: otherTabPosition });
+        openTab({ _position: this._alternateNewTabPosition });
       } else if (e.shiftKey === true) {
         browser.windows.create();
       } else {
-        this._props.openTab({ _position: newTabPosition });
+        openTab({ _position: this._newTabPosition });
       }
     });
 
-    this._newTabButtonView.addEventListener("auxclick", e => {
+    this._newTabButtonView.addEventListener("auxclick", async e => {
       if (e.button === 1) {
-        this._props.openTab({ _position: otherTabPosition });
+        openTab({ _position: this._alternateNewTabPosition });
       }
     });
 
@@ -63,44 +70,104 @@ export default class TopMenu {
       }
     });
 
-    browser.menus.onClicked.addListener((info, tab) => {
-      if (!info.menuItemId.startsWith("contextMenuOpenInNewContextualTab_")) {
-        return;
-      }
-      const props = {
-        cookieStoreId: info.menuItemId.split("contextMenuOpenInNewContextualTab_")[1],
-      };
-      if (info.modifiers.includes("Ctrl")) {
-        props["_position"] = otherTabPosition;
-        this._props.openTab(props);
-      } else if (info.modifiers.includes("Shift")) {
-        browser.windows.create(props);
-      } else {
-        this._props.openTab(props);
-      }
-    });
+    browser.menus.onClicked.addListener(info => this._onNewTabContextMenuClicked(info));
   }
 
-  _setupLabels() {
+  async _onNewTabContextMenuClicked(info) {
+    if (!info.menuItemId.startsWith("newTabContextMenu")) {
+      return;
+    }
+
+    const currentWindow = await browser.windows.getCurrent();
+    const lastFocusedWindow = await browser.windows.getLastFocused();
+    if (currentWindow.id !== lastFocusedWindow.id) {
+      return;
+    }
+
+    switch (info.menuItemId) {
+      case "newTabContextMenuOpenAlternatePosition":
+        openTab({ _position: this._alternateNewTabPosition });
+        return;
+      case "newTabContextMenuOpenInWindow":
+        browser.windows.create();
+        return;
+      case "newTabContextMenuOpenInPrivateWindow":
+        browser.windows.create({ incognito: true });
+        return;
+    }
+
+    if (!info.menuItemId.startsWith("newTabContextMenuOpenInNewContextualTab_")) {
+      return;
+    }
+
+    const props = {
+      cookieStoreId: info.menuItemId.split("newTabContextMenuOpenInNewContextualTab_")[1],
+    };
+    if (info.modifiers.includes("Ctrl")) {
+      props["_position"] = otherTabPosition;
+      openTab(props);
+    } else if (info.modifiers.includes("Shift")) {
+      browser.windows.create(props);
+    } else {
+      openTab(props);
+    }
+  }
+
+  async _setupLabels() {
     this._newTabButtonView.title = browser.i18n.getMessage("newTabBtnTooltip");
     this._settingsView.title = browser.i18n.getMessage("settingsBtnTooltip");
     this._searchBoxInput.placeholder = browser.i18n.getMessage("searchPlaceholder");
   }
 
-  _showNewTabPopup(e) {
+  async _showNewTabPopup(e) {
     browser.menus.removeAll();
-    if (document.body.classList.contains("incognito")) {
-      e.preventDefault();
-      return;
-    }
-    const identityItems = getContextualIdentityItems();
-    if (identityItems !== null) {
-      identityItems.forEach(identityItem => {
-        identityItem["id"] = `contextMenuOpenInNewContextualTab_${identityItem["id"]}`;
-        browser.menus.create(identityItem);
-      });
+
+    const items = [
+      {
+        id: "newTabContextMenuOpenAlternatePosition",
+        title:
+          this._alternateNewTabPosition === "atEnd"
+            ? browser.i18n.getMessage("newTabContextMenuOpenAtEnd")
+            : browser.i18n.getMessage("newTabContextMenuOpneAfterCurrent"),
+      },
+      {
+        type: "separator",
+      },
+      {
+        id: "newTabContextMenuOpenInWindow",
+        title: browser.i18n.getMessage("newTabContextMenuOpenInWindow"),
+        icons: {
+          "16": `/sidebar/img/new-window.svg`,
+          "32": `/sidebar/img/private-browsing.svg`,
+        },
+      },
+      {
+        id: "newTabContextMenuOpenInPrivateWindow",
+        title: browser.i18n.getMessage("newTabContextMenuOpenInPrivateWindow"),
+        icons: {
+          "16": `/sidebar/img/private-browsing.svg`,
+          "32": `/sidebar/img/private-browsing.svg`,
+        },
+        enabled: this._isIncognitoAccessAllowed,
+      },
+      {
+        type: "separator",
+      },
+    ];
+
+    if (!document.body.classList.contains("incognito")) {
+      const identityItems = getContextualIdentityItems();
+      if (identityItems !== null) {
+        identityItems.forEach(identityItem => {
+          identityItem["id"] = `newTabContextMenuOpenInNewContextualTab_${identityItem["id"]}`;
+          items.push(identityItem);
+        });
+      }
     }
 
+    for (const item of items) {
+      browser.menus.create(item);
+    }
     browser.menus.overrideContext({});
   }
 }
