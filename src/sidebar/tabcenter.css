@@ -806,7 +806,8 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   display: none;
 }
 
-.hidden {
+.hidden,
+.will-be-deleted {
   display: none !important;
 }
 
