@@ -123,7 +123,7 @@
         "message": "An Ende verschieben"
     },
     "extensionsLongDescription": {
-        "message": "Tab Center Reborn ist die Weiterentwicklung von <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> um eine einfache, leistungsstarke und gut integrierte Erweiterung für die vertikale Verwaltung von Tabs bereitzustellen.\n\nDie Erweiterung bietet eine handvoll Einstellungen und ermöglicht es fortgeschrittenen Benutzern, das Erscheinungsbild vollständig mit CSS-Code anzupassen.\n\n<ul>\n<li>Nutze Shift+F1 um die Erweiterung zu öffnen oder zu schließen</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">So blenden Sie die obere Tab-Leiste aus</a>\n</li>\n</ul>\n\nSie können die Erweiterung <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">im Rahmen der Übersetzung, Dokumentation, in dem sie Fehler melden oder mit Code unterstützen</a>!",
+        "message": "Tab Center Reborn ist die Weiterentwicklung von <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> um eine einfache, leistungsstarke und gut integrierte Erweiterung für die vertikale Verwaltung von Tabs bereitzustellen.\n\nDie Erweiterung bietet eine handvoll Einstellungen und ermöglicht es fortgeschrittenen Benutzern, das Erscheinungsbild vollständig mit CSS-Code anzupassen.\n\n<ul>\n<li>Nutze Shift+F1 um die Erweiterung zu öffnen oder zu schließen</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">So blenden Sie die obere Tab-Leiste aus</a>\n</li>\n</ul>\n\nSie können die Erweiterung <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">im Rahmen der Übersetzung, Dokumentation, in dem sie Fehler melden oder mit Code unterstützen</a>!\n\nVerwendete Berechtigungen:\n\n<ul>\n<li>Auf Ihre Daten für alle Websites zugreifen: Um Tab-Umgebungen nutzen zu können.</li>\n<li>Lesezeichen lesen und verändern: Um kein neues Fenster zu öffnen, wenn ein Tab außerhalb der Sidebar auf der Lesezeichen-Symbolleiste abgelegt wird.</li>\n<li>Browser-Einstellungen lesen und verändern: Um die Firefox-Einstellungen und das Design nutzen zu können.</li>\n<li>Benachrichtigungen anzeigen: Um eine Benachrichtigung anzuzeigen, wenn Sie viele Tabs geschlossen haben, sodass Sie dies rückgängig machen können.</li>\n<li>Auf kürzlich geschlossene Tabs zugreifen: Um zum letzten Tab zu wechseln.</li>\n<li>Browsertabs ausblenden und anzeigen: Nur in Tests verwendet.</li>\n<li>Auf Browsertabs zugreifen: Um die URL, den Titel und das Favicon der Tabs zu erhalten.</li>\n<li>Auf Browseraktivität während Seitenwechsel zugreifen: Um eine zusätzliche Animation auszulösen, wenn eine Seite das Laden ihrer Ressourcen beendet hat.</li>\n</ul>",
         "description": "Long description displayed on addons.mozilla.org."
     },
     "closeTabsAfterWarning": {
@@ -229,5 +229,9 @@
     "newTabContextMenuOpenAtEnd": {
         "message": "Am Ende",
         "description": "New Tab context menu item."
+    },
+    "optionsCustomCSSChangelogLink": {
+        "message": "Sehen Sie sich die neuen Funktionen an, um sich über Änderungen zu informieren, die die Kompatibilität beeinträchtigen.",
+        "description": "Text for a link to the changelog."
     }
 }
