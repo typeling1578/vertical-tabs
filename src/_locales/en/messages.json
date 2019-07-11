@@ -205,9 +205,13 @@
         "message": "Custom Stylesheet",
         "description": "Option in options page."
     },
+    "optionsCustomCSSChangelogLink": {
+        "message": "Check the changelog for breaking changes.",
+        "description": "Text for a link to the changelog."
+    },
     "optionsCustomCSSWikiLink": {
         "message": "CSS Tweaks Wiki Article",
-        "description": "Option in options page."
+        "description": "Text for a link to the wiki."
     },
     "optionsSaveCustomCSS": {
         "message": "Save CSS",

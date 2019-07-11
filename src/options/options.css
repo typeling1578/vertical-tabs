@@ -33,7 +33,7 @@ a:visited {
 .gridOptions {
   display: grid;
   align-items: center;
-  grid-template-columns: 380px auto;
+  grid-template-columns: 400px auto;
   margin-bottom: 10px;
 }
 
@@ -43,8 +43,8 @@ input[type="checkbox"] {
 
 #customCSS {
   width: 100%;
-  max-width: 25rem;
-  height: 15rem;
+  max-width: 40rem;
+  height: 25rem;
   resize: vertical;
   overflow: auto;
 }

@@ -25,6 +25,7 @@ class TabCenterOptions {
       "optionsAdvancedTitle",
       "optionsCustomCSS",
       "optionsCustomCSSWikiLink",
+      "optionsCustomCSSChangelogLink",
       "optionsSaveCustomCSS",
     ];
     for (const opt of options) {
