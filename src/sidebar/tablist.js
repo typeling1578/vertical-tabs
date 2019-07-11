@@ -484,7 +484,7 @@ export default class TabList {
   _getLastTab(pinned) {
     let lastTab = null;
     for (const tab of this._getVisibleTabs()) {
-      if (tab.pinned === pinned && (!lastTab || tab.index > currentTab.index)) {
+      if (tab.pinned === pinned && (!lastTab || tab.index > lastTab.index)) {
         lastTab = tab;
       }
     }
