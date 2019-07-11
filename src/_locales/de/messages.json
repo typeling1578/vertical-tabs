@@ -15,7 +15,7 @@
         "description": "Label of the New Tab button in the top menu."
     },
     "newTabBtnTooltip": {
-        "message": "Einen neuen Tab öffnen"
+        "message": "Neuen Tab öffnen"
     },
     "searchPlaceholder": {
         "message": "Tabs durchsuchen"
@@ -123,7 +123,7 @@
         "message": "An Ende verschieben"
     },
     "extensionsLongDescription": {
-        "message": "Tab Center Reborn ist die Weiterentwicklung von <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a>um eine einfache, leistungsstarke und gut integrierte Erweiterung für die vertikale Verwaltung von Tabs bereitzustellen.\n\nDie Erweiterung bietet eine handvoll Einstellungen und ermöglicht es fortgeschrittenen Benutzern, das Erscheinungsbild vollständig mit CSS-Code anzupassen.\n\n<ul>\n<li>Nutze Shift+F1 um die Erweiterung zu öffnen oder zu schließen</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">So blenden Sie die obere Tab-Leiste aus</a>\n</li>\n</ul>\nSie können die Erweiterung <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">im Rahmen der Übersetzung, Dokumentation, in dem sie Fehler melden oder mit Code unterstützen</a>!",
+        "message": "Tab Center Reborn ist die Weiterentwicklung von <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> um eine einfache, leistungsstarke und gut integrierte Erweiterung für die vertikale Verwaltung von Tabs bereitzustellen.\n\nDie Erweiterung bietet eine handvoll Einstellungen und ermöglicht es fortgeschrittenen Benutzern, das Erscheinungsbild vollständig mit CSS-Code anzupassen.\n\n<ul>\n<li>Nutze Shift+F1 um die Erweiterung zu öffnen oder zu schließen</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">So blenden Sie die obere Tab-Leiste aus</a>\n</li>\n</ul>\n\nSie können die Erweiterung <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">im Rahmen der Übersetzung, Dokumentation, in dem sie Fehler melden oder mit Code unterstützen</a>!",
         "description": "Long description displayed on addons.mozilla.org."
     },
     "closeTabsAfterWarning": {
@@ -169,5 +169,65 @@
     "optionsWarnBeforeClosing": {
         "message": "Warnen, bevor mehr als $COUNT$ Tabs geschlossen werden",
         "description": "Option in options page."
+    },
+    "notificationDeletedMessage": {
+        "message": "Klicken Sie auf die Benachrichtigung, um den Vorgang rückgängig zu machen.",
+        "description": "Title of the notification when deleting many tabs."
+    },
+    "notificationDeletedTitle": {
+        "message": "$COUNT$ geschlossene Tabs",
+        "description": "Title of the notification when deleting many tabs.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "optionsNotifyClosingManyTabsExplanation": {
+        "message": "Zeigt eine Benachrichtigung an, mit der Sie das Schließen von mehr als $COUNT$ Tabs rückgängig machen können.",
+        "description": "Explanation for the Notify when closing many tabs option in options page.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "optionsNotifyClosingManyTabs": {
+        "message": "Benachrichtigen, wenn viele Tabs geschlossen werden",
+        "description": "Option in options page."
+    },
+    "contextMenuCloseTabsBefore": {
+        "message": "Vorherige Tabs schließen",
+        "description": "Context menu item label."
+    },
+    "contextMenuCloseTabs": {
+        "message": "Tabs schließen",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197250. Context Menu item label"
+    },
+    "unmuteTabButtonTooltip": {
+        "message": "Stummschaltung für Tab aufheben",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
+    },
+    "muteTabButtonTooltip": {
+        "message": "Tab stummschalten",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
+    },
+    "newTabContextMenuOpenInPrivateWindow": {
+        "message": "Neues privates Fenster",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
+    },
+    "newTabContextMenuOpenInWindow": {
+        "message": "Neues Fenster",
+        "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
+    },
+    "newTabContextMenuOpneAfterCurrent": {
+        "message": "Neben dem aktuellen Tab",
+        "description": "New Tab context menu item."
+    },
+    "newTabContextMenuOpenAtEnd": {
+        "message": "Am Ende",
+        "description": "New Tab context menu item."
     }
 }
