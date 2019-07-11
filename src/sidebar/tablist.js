@@ -358,6 +358,7 @@ export default class TabList {
       //The tab may have been closed
       return;
     }
+    clearTimeout(this._shrinkTabsTimer);
     if (tabId === this._active) {
       this.scrollIntoView(this.getTabById(tabId));
     }
@@ -366,7 +367,7 @@ export default class TabList {
   _onMouseOut(e) {
     this._shrinkTabsTimer = setTimeout(
       () => this._wrapperView.classList.toggle("shrinked", this._tabsShrinked),
-      500,
+      300,
     );
   }
 
@@ -875,6 +876,7 @@ export default class TabList {
 
   set _tabsShrinked(shrinked) {
     this.__tabsShrinked = shrinked;
+    this._onMouseOut(null);
   }
 
   _maybeShrinkTabs(immediate = false) {
