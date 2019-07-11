@@ -285,21 +285,14 @@ body[platform="win"] #searchbox-input:placeholder-shown {
   position: relative;
 }
 
+body.loaded #tablist-wrapper .tab {
+  transition: box-shadow 0.1s ease, height 0.1s ease, width 0.1s ease;
+}
+
 #tablist .tab.deleted + .tab,
 #pinnedtablist:not(.compact) .tab.deleted + .tab {
   border-top: 1px solid var(--tab-separator);
 }
-
-/* stylelint-disable no-descending-specificity */
-body.loaded #tablist .tab,
-body.loaded #pinnedtablist:not(.compact) .tab {
-  transition: height 0.1s ease;
-}
-
-body.loaded #pinnedtablist.compact .tab {
-  transition: width 0.1s ease;
-}
-/* stylelint-enable */
 
 #pinnedtablist.compact .tab.added,
 #pinnedtablist.compact .tab.deleted {
