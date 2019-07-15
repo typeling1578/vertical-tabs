@@ -141,7 +141,7 @@ export default class TabCenter {
       "--tab-selected-line": ["tab_line"],
       "--tab-loading-indicator": ["tab_loading"],
       "--tab-active-background": ["tab_selected", "toolbar"],
-      "--tab-text": ["tab_text", "toolbar_text", "textcolor"],
+      "--tab-text": ["tab_text", "toolbar_text", "tab_background_text", "textcolor"],
       "--toolbar-background": ["toolbar", "frame", "accentcolor"],
       "--toolbar-text": ["toolbar_text", "textcolor"],
       "--input-background": ["toolbar_field"],
