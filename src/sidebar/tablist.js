@@ -3,7 +3,7 @@
 import fuzzysort from "fuzzysort";
 import smoothScrollIntoView from "smooth-scroll-into-view-if-needed";
 
-import { openTab } from "./tabcenter.js";
+import { openTab } from "./utils.js";
 import SideTab from "./tab.js";
 import ContextMenu from "./contextmenu.js";
 
@@ -1226,5 +1226,19 @@ export default class TabList {
       browser.sessions.restore(undoTabs[0].sessionId);
       this.hasRecentlyClosedTabs = undoTabs.length >= 2;
     }
+  }
+
+  _activateTabFromCurrent(incr) {
+    const currentTab = this.getTabById(this._active);
+    let tab;
+    const sortedTabs = this._getVisibleTabs().sort((a, b) => a.index - b.index);
+    if (incr > 0) {
+      // activate next tab
+      tab = this._getTabAfter(currentTab) || sortedTabs[0];
+    } else {
+      // activate previous tab
+      tab = this._getTabBefore(currentTab) || sortedTabs.reverse()[0];
+    }
+    browser.tabs.update(tab.id, { active: true });
   }
 }

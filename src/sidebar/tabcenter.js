@@ -3,6 +3,7 @@
 import SideTab from "./tab.js";
 import TabList from "./tablist.js";
 import TopMenu from "./topmenu.js";
+import { throttled } from "./utils.js";
 
 export default class TabCenter {
   async init() {
@@ -57,6 +58,13 @@ export default class TabCenter {
         this._applyTheme(theme);
       }
     };
+    const handleWheel = e => {
+      if (e.ctrlKey) {
+        const scrollDirection = e.deltaY < 0 ? -1 : 1;
+        this._tabList._activateTabFromCurrent(scrollDirection);
+      }
+    };
+    window.addEventListener("wheel", throttled(50, handleWheel));
   }
 
   _applyCustomCSS() {
@@ -215,29 +223,4 @@ function setBrowserActionColor(color) {
       32: svgStr,
     },
   });
-}
-
-export async function openTab(props = {}) {
-  const tabs = await browser.tabs.query({ windowId: browser.windows.WINDOW_ID_CURRENT });
-  const activeTab = tabs.find(tab => tab.active);
-  if (!props.index) {
-    if (props._position === "afterCurrent") {
-      props.index = activeTab.index + 1;
-    } else {
-      props.index = tabs.length;
-    }
-  }
-  delete props._position;
-
-  if (props["cookieStoreId"] === undefined) {
-    props["cookieStoreId"] = "firefox-default";
-  }
-
-  props["openerTabId"] = activeTab.id;
-
-  if (props["url"] === "about:newtab") {
-    delete props["url"];
-  }
-
-  browser.tabs.create(props);
 }

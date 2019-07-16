@@ -1,5 +1,7 @@
 /* global browser, requestAnimationFrame, requestIdleCallback, CSSAnimation, Image */
 
+import { debounce } from "./utils";
+
 export default class SideTab {
   constructor() {
     this.id = null;
@@ -357,17 +359,4 @@ export default class SideTab {
       }, 0);
     });
   }
-}
-
-function debounce(fn, delay) {
-  let timeoutID;
-  return (...args) => {
-    if (timeoutID) {
-      clearTimeout(timeoutID);
-    }
-    timeoutID = setTimeout(() => {
-      timeoutID = null;
-      fn(...args);
-    }, delay);
-  };
 }
