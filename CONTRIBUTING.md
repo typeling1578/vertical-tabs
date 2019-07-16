@@ -14,7 +14,7 @@ You need to have a recent version of Node.js.
 
 1. Clone this repository
 2. Install the dependencies with `npm i`.
-3. Run `npm run dev` and start hacking! [Here is a list of some things](https://github.com/eoger/tabcenter-redux/issues?q=is%3Aopen+is%3Aissue+label%3AA-P2) you could work on.
+3. Run `npm run dev` and start hacking! [Here is a list of some things](https://framagit.org/ariasuni/tabcenter-reborn/issues) you could work on.
 
    If you don’t have Firefox Release installed, `WEB_EXT_FIREFOX=nightly npm run dev` or `WEB_EXT_FIREFOX=beta npm run dev` should work much better.
 

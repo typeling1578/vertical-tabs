@@ -1,6 +1,6 @@
 /* global browser, location */
 
-import { openTab } from "./tabcenter.js";
+import { openTab } from "./utils.js";
 import SideTab from "./tab.js";
 import getContextualIdentityItems from "./contextualidentities.js";
 

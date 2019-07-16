@@ -1,6 +1,6 @@
 /* global browser */
 
-import { openTab } from "./tabcenter.js";
+import { openTab } from "./utils.js";
 import getContextualIdentityItems from "./contextualidentities.js";
 
 /* @arg {props}
