@@ -203,7 +203,7 @@
         }
     },
     "optionsNotifyClosingManyTabsExplanation": {
-        "message": "Afficher une notification vous permettant d’annuler lors de la fermeture de plus de $COUNT onglets.",
+        "message": "Afficher une notification vous permettant d’annuler lors de la fermeture de plus de $COUNT$ onglets.",
         "description": "Explanation for the Notify when closing many tabs option in options page.",
         "placeholders": {
             "count": {
