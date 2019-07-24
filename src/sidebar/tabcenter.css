@@ -540,7 +540,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 
 #tablist-wrapper:not(.shrinked) #tablist .tab-meta-image,
 #tablist-wrapper:not(.shrinked) #pinnedtablist:not(.compact) .tab-meta-image {
-  margin: auto 6px;
+  margin-left: 6px;
   min-width: 54px;
   height: 40px;
   border: 0;
@@ -669,6 +669,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   flex-direction: column;
   min-width: 0;
   mask-image: linear-gradient(to left, transparent 0, black 2em);
+  margin-left: 6px;
 }
 
 .tab:hover:not(.pinned) > .tab-title-wrapper {
