@@ -5,6 +5,7 @@ class TabCenterBackground {
     this.openedSidebarWindows = {};
     browser.runtime.onConnect.addListener(port => this.onConnect(port));
     browser.browserAction.onClicked.addListener(tab => this.onClick(tab));
+    browser.commands.onCommand.addListener(command => this.onCommand(command));
   }
 
   onConnect(port) {
@@ -20,6 +21,16 @@ class TabCenterBackground {
       browser.sidebarAction.close();
     } else {
       browser.sidebarAction.open();
+    }
+  }
+
+  onCommand(command) {
+    switch (command) {
+      case "switch-to-last-active-tab":
+        browser.tabs.query({ currentWindow: true }).then(tabs => {
+          tabs.sort((a, b) => b.lastAccessed - a.lastAccessed);
+          browser.tabs.update(tabs[1].id, { active: true });
+        });
     }
   }
 }
