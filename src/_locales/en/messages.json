@@ -139,6 +139,10 @@
         "message": "Clicking active tab switch to the last active one.",
         "description": "Explanation for the Compact Mode option in options page."
     },
+    "OptionsAnimations": {
+        "message": "Animations",
+        "description": "Option in options page."
+    },
     "optionsCompactMode": {
         "message": "Compact Mode",
         "description": "Option in options page."

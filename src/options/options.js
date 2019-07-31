@@ -10,6 +10,7 @@ class TabCenterOptions {
   async setupLabels() {
     const options = [
       "optionsAppearanceTitle",
+      "optionsAnimations",
       "optionsCompactMode",
       "optionsCompactModeStrict",
       "optionsCompactModeDynamic",
@@ -38,6 +39,7 @@ class TabCenterOptions {
 
   async setupState() {
     const defaultPrefs = {
+      animations: true,
       darkTheme: false,
       themeIntegration: false,
       compactMode: 1,

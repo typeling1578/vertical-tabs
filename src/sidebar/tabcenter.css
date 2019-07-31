@@ -285,11 +285,12 @@ body[platform="win"] #searchbox-input:placeholder-shown {
   position: relative;
 }
 
-body.loaded #tablist-wrapper .tab {
+body.loaded.animated #tablist-wrapper .tab {
   transition: box-shadow 0.1s ease, height 0.1s ease, width 0.1s ease;
 }
 
-#tablist .tab.deleted + .tab,
+#tablist.compact .tab.deleted + .tab,
+#tablist:not(.compact) .tab.deleted + .tab,
 #pinnedtablist:not(.compact) .tab.deleted + .tab {
   border-top: 1px solid var(--tab-separator);
 }

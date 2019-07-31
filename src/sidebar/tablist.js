@@ -45,6 +45,8 @@ export default class TabList {
     this._moreTabsView = document.getElementById("moretabs");
     this._moreTabsView.textContent = browser.i18n.getMessage("allTabsLabel");
 
+    this._animations = this._props.prefs.animations;
+    document.body.classList.toggle("animated", this._animations);
     this._compactMode = parseInt(this._props.prefs.compactMode);
     this._compactPins = this._props.prefs.compactPins;
     this._switchLastActiveTab = this._props.prefs.switchLastActiveTab;
@@ -179,6 +181,10 @@ export default class TabList {
   }
 
   _onPrefsChanged(changes) {
+    if (changes.animations) {
+      this._animations = changes.animations.newValue;
+      document.body.classList.toggle("animated", this._animations);
+    }
     if (changes.compactMode) {
       this._compactMode = parseInt(changes.compactMode.newValue);
     }
@@ -383,11 +389,13 @@ export default class TabList {
     if (tab.pinned) {
       return;
     }
-    const scrollBehavior = getComputedStyle(this._view).getPropertyValue("scroll-behavior");
+    const scrollBehavior = !this._animations
+      ? "instant"
+      : getComputedStyle(this._view).getPropertyValue("scroll-behavior");
     smoothScrollIntoView(tab.view, {
       scrollMode: "if-needed",
       block: "nearest",
-      behavior: scrollBehavior === "smooth" ? "smooth" : "auto",
+      behavior: scrollBehavior === "auto" || scrollBehavior === "smooth" ? "smooth" : "instant",
     });
   }
 
@@ -887,6 +895,10 @@ export default class TabList {
   }
 
   __maybeShrinkTabs(immediate) {
+    if (!this._animation) {
+      immediate = true;
+    }
+
     if (this._compactMode !== COMPACT_MODE_DYNAMIC) {
       this._tabsShrinked = this._compactMode === COMPACT_MODE_STRICT;
       if (immediate) {
@@ -1011,6 +1023,7 @@ export default class TabList {
     const spaceLeft = this._spacerView.offsetHeight;
     const wrapperHeight = this._wrapperView.offsetHeight;
     if (
+      this._animations &&
       animate &&
       (sidetab.pinned ||
         (!tabAfter && spaceLeft !== 0) ||
@@ -1026,6 +1039,11 @@ export default class TabList {
   }
 
   _removeTabView(sidetab) {
+    if (!this._animations) {
+      sidetab.view.remove();
+      this._setFirstAndLastTabObserver();
+      return;
+    }
     // when we (un)pin a tab, we want two views animating at the same so we make a copy
     const oldView = sidetab.view.cloneNode(true);
     sidetab.view.parentNode.replaceChild(oldView, sidetab.view);
