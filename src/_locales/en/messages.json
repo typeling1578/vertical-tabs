@@ -8,7 +8,7 @@
         "description": "Long description displayed on addons.mozilla.org."
     },
     "browserActionTitle": {
-        "message": "Toggle Tab Center Reborn",
+        "message": "Show/hide Tab Center Reborn",
         "description": "Tooltip shown when hovering the toolbar button."
     },
     "sidebarTitle": {
@@ -160,7 +160,7 @@
         "description": "Possible value for Compact Mode option in options page."
     },
     "optionsSwitchLastActiveTab": {
-        "message": "Switch Last Active Tab",
+        "message": "Switch to Last Active Tab",
         "description": "Option in options page."
     },
     "optionsCompactPins": {
