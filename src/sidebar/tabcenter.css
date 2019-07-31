@@ -393,10 +393,9 @@ body.incognito #pinnedtablist:not(.compact) .tab .tab-context {
 
 body #pinnedtablist.compact .tab.pinned .tab-context {
   position: absolute;
-  left: 0;
   height: 100%;
-  width: 18px;
-  margin-left: 7px;
+  width: 20px;
+  margin: 0 auto;
 }
 
 body.incognito #tablist .tab:not(.hasContext) .tab-context,
@@ -557,8 +556,8 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 #tablist-wrapper.shrinked #pinnedtablist:not(.compact) .tab-meta-image {
   background: none !important; /* Because the JS script sets it manually */
   /* Make it the same size as the favicon it contains */
-  height: 20px;
-  width: 20px;
+  height: 24px;
+  width: 24px;
   margin-left: 5px;
 }
 
@@ -568,10 +567,6 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 }
 
 .tab-icon-wrapper {
-  padding: 2px;
-}
-
-#pinnedtablist.compact .tab.pinned .tab-icon-wrapper {
   height: 24px;
   width: 24px;
 }
@@ -597,14 +592,14 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 }
 
 .tab-icon {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   background-image: url("img/defaultFavicon.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   background-origin: content-box;
-  image-rendering: pixelated;
+  margin: 4px auto;
 }
 
 .tab-icon.chrome-icon {
@@ -625,24 +620,20 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 }
 
 .tab.loading .tab-icon::before {
+  /* Code from https://hg.mozilla.org/mozilla-central/file/tip/browser/themes/shared/tabs.inc.css */
   content: "";
   position: absolute;
   background-image: url("img/loading-spinner.svg#standard");
   background-position: left center;
   background-repeat: no-repeat;
-  width: 480px;
+  width: 540px;
   height: 100%;
   animation: tab-throbber-animation 1.05s steps(30) infinite;
   -moz-context-properties: fill;
-
-  /* XXX: It would be nice to transition between the "connecting" color and the
-     "loading" color (see the `.tab-throbber[progress]::before` rule below);
-     however, that currently forces main thread painting. When this is fixed
-     (after WebRender lands), we can do something like
-     `transition: fill 0.333s, opacity 0.333s;` */
-
   fill: currentColor;
   opacity: 0.7;
+  /* End of copied code */
+  background-size: contain;
 }
 
 @keyframes tab-throbber-animation {
@@ -767,12 +758,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 }
 
 #pinnedtablist.compact .tab.pinned .tab-icon {
-  margin: 2px;
-}
-
-#pinnedtablist.compact .tab.pinned:not(.loading) .tab-icon {
-  width: 16px;
-  height: 16px;
+  margin: 4px auto;
 }
 
 #pinnedtablist.compact .tab.pinned > .tab-title-wrapper,
