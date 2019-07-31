@@ -7,6 +7,8 @@ import { throttled } from "./utils.js";
 
 export default class TabCenter {
   async init() {
+    this._prefsLocalToSync();
+
     const window = await browser.windows.getCurrent();
     document.body.classList.toggle("incognito", window.incognito);
     this._windowId = window.id;
@@ -30,6 +32,30 @@ export default class TabCenter {
     });
 
     browser.runtime.connect({ name: this._windowId.toString() });
+  }
+
+  // migrate user settings from local storage to sync storage
+  async _prefsLocalToSync() {
+    const prefDefaults = {
+      darkTheme: false,
+      themeIntegration: false,
+      compactModeMode: 1,
+      compactPins: true,
+      switchLastActiveTab: true,
+      notifyClosingManyTabs: true,
+      useCustomCSS: true,
+      customCSS: "",
+    };
+    const localPrefs = await browser.storage.local.get(prefDefaults);
+
+    // rename (typo) setting `compactModeMode` to `compactMode`
+    localPrefs["compactMode"] = localPrefs["compactModeMode"];
+    delete localPrefs["compactModeMode"];
+
+    // merge with sync prefs and clear local storage
+    const prefs = await browser.storage.sync.get(localPrefs);
+    browser.storage.sync.set(prefs);
+    browser.storage.local.clear();
   }
 
   _search(val) {
@@ -109,10 +135,10 @@ export default class TabCenter {
   }
 
   _readPrefs() {
-    return browser.storage.local.get({
+    return browser.storage.sync.get({
       darkTheme: false,
       themeIntegration: false,
-      compactModeMode: 1 /* COMPACT_MODE_DYNAMIC */,
+      compactMode: 1 /* COMPACT_MODE_DYNAMIC */,
       compactPins: true,
       switchLastActiveTab: true,
       warnBeforeClosing: true,

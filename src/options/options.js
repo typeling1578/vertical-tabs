@@ -3,10 +3,11 @@
 class TabCenterOptions {
   constructor() {
     this.setupLabels();
-    this.setupStateAndListeners();
+    this.setupState();
+    this.setupListeners();
   }
 
-  setupLabels() {
+  async setupLabels() {
     const options = [
       "optionsAppearanceTitle",
       "optionsCompactMode",
@@ -35,66 +36,57 @@ class TabCenterOptions {
     document.getElementById(opt).textContent = browser.i18n.getMessage(opt, 5);
   }
 
-  setupStateAndListeners() {
-    this._setupCheckboxOption("darkTheme", "darkTheme");
-    this._setupCheckboxOption("themeIntegration", "themeIntegration");
-    this._setupDropdownOption("compactMode", "compactModeMode");
-    this._setupCheckboxOption("compactPins", "compactPins", true);
-    this._setupCheckboxOption("switchLastActiveTab", "switchLastActiveTab", true);
-    this._setupCheckboxOption("notifyClosingManyTabs", "notifyClosingManyTabs", true);
-    this._setupCheckboxOption("useCustomCSS", "useCustomCSS", true);
+  async setupState() {
+    const defaultPrefs = {
+      darkTheme: false,
+      themeIntegration: false,
+      compactMode: 1,
+      compactPins: true,
+      switchLastActiveTab: true,
+      notifyClosingManyTabs: true,
+      useCustomCSS: true,
+      customCSS: "",
+    };
 
-    // Custom CSS
-    browser.storage.local
-      .get({
-        customCSS: "",
-      })
-      .then(prefs => {
-        document.getElementById("customCSS").value = prefs["customCSS"];
-      });
+    const prefs = await browser.storage.sync.get(defaultPrefs);
+
+    for (const pref of Object.entries(prefs)) {
+      const element = document.getElementById(pref[0]);
+      if (pref[0] === "customCSS") {
+        element.value = pref[1];
+      } else if (pref[0] === "compactMode") {
+        element.value = parseInt(pref[1]);
+      } else {
+        element.checked = pref[1];
+        if (pref[0] === "useCustomCSS") {
+          this.updateCustomCSSEnabled(pref[1]);
+        }
+      }
+    }
+  }
+
+  setupListeners() {
+    document.body.addEventListener("change", e => {
+      if (e.target.tagName === "SELECT" || e.target.tagName === "TEXTAREA") {
+        browser.storage.sync.set({ [e.target.id]: e.target.value });
+      } else if (e.target.tagName === "INPUT") {
+        browser.storage.sync.set({ [e.target.id]: e.target.checked });
+        if (e.target.id === "useCustomCSS") {
+          this.updateCustomCSSEnabled(e.target.checked);
+        }
+      }
+    });
+
     document.getElementById("optionsSaveCustomCSS").addEventListener("click", () => {
-      browser.storage.local.set({
+      browser.storage.sync.set({
         customCSS: document.getElementById("customCSS").value,
       });
     });
   }
 
-  _setupCheckboxOption(checkboxId, optionName, defaultValue = false) {
-    const checkbox = document.getElementById(checkboxId);
-    browser.storage.local
-      .get({
-        [optionName]: defaultValue,
-      })
-      .then(prefs => {
-        checkbox.checked = prefs[optionName];
-      });
-
-    checkbox.addEventListener("change", e => {
-      browser.storage.local.set({
-        [optionName]: e.target.checked,
-      });
-      if (optionName === "useCustomCSS") {
-        document.getElementById("customCSS").disabled = !e.target.checked;
-        document.getElementById("optionsSaveCustomCSS").disabled = !e.target.checked;
-      }
-    });
-  }
-
-  _setupDropdownOption(drowdownId, optionName) {
-    const dropdown = document.getElementById(drowdownId);
-    browser.storage.local
-      .get({
-        [optionName]: 1,
-      })
-      .then(prefs => {
-        dropdown.value = prefs[optionName];
-      });
-
-    dropdown.addEventListener("change", e => {
-      browser.storage.local.set({
-        [optionName]: e.target.value,
-      });
-    });
+  updateCustomCSSEnabled(enabled) {
+    document.getElementById("customCSS").disabled = !enabled;
+    document.getElementById("optionsSaveCustomCSS").disabled = !enabled;
   }
 }
 

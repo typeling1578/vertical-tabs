@@ -23,7 +23,7 @@ export default class TabList {
     this._tabs = new Map();
     this._active = null;
     this.__compactPins = true;
-    this.__tabsShrinked = true;
+    this.__tabsShrinked = false;
     this._windowId = props.windowId;
     this._filterActive = false;
 
@@ -45,7 +45,7 @@ export default class TabList {
     this._moreTabsView = document.getElementById("moretabs");
     this._moreTabsView.textContent = browser.i18n.getMessage("allTabsLabel");
 
-    this._compactModeMode = parseInt(this._props.prefs.compactModeMode);
+    this._compactMode = parseInt(this._props.prefs.compactMode);
     this._compactPins = this._props.prefs.compactPins;
     this._switchLastActiveTab = this._props.prefs.switchLastActiveTab;
     this._notifyClosingManyTabs = this._props.prefs.notifyClosingManyTabs;
@@ -179,8 +179,8 @@ export default class TabList {
   }
 
   _onPrefsChanged(changes) {
-    if (changes.compactModeMode) {
-      this._compactModeMode = parseInt(changes.compactModeMode.newValue);
+    if (changes.compactMode) {
+      this._compactMode = parseInt(changes.compactMode.newValue);
     }
     if (changes.compactPins) {
       this._compactPins = changes.compactPins.newValue;
@@ -887,8 +887,8 @@ export default class TabList {
   }
 
   __maybeShrinkTabs(immediate) {
-    if (this._compactModeMode !== COMPACT_MODE_DYNAMIC) {
-      this._tabsShrinked = this._compactModeMode === COMPACT_MODE_STRICT;
+    if (this._compactMode !== COMPACT_MODE_DYNAMIC) {
+      this._tabsShrinked = this._compactMode === COMPACT_MODE_STRICT;
       if (immediate) {
         this._wrapperView.classList.toggle("shrinked", this._tabsShrinked);
       }
