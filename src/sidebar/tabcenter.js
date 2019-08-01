@@ -171,7 +171,11 @@ export default class TabCenter {
       "--button-background-active": ["button_background_active"],
       "--button-background-hover": ["button_background_hover"],
       "--icons": ["icons", "textcolor"],
-      "--tab-separator": ["tab_background_separator", "toolbar_top_separator"],
+      "--tab-separator": [
+        "tab_background_separator",
+        "toolbar_field_separator",
+        "toolbar_top_separator",
+      ],
       "--tab-selected-line": ["tab_line"],
       "--tab-loading-indicator": ["tab_loading"],
       "--tab-active-background": ["tab_selected", "toolbar"],
@@ -190,8 +194,6 @@ export default class TabCenter {
       "--sidebar-text": ["sidebar_text", "tab_text", "toolbar_text", "textcolor"],
     };
 
-    let hasInputSelectedTextBackground = false;
-    let hasInputSelectedText = false;
     for (const [cssVar, themeProps] of Object.entries(cssToThemeProp)) {
       for (const prop of themeProps) {
         if (theme.colors && theme.colors[prop]) {
@@ -199,22 +201,17 @@ export default class TabCenter {
             setBrowserActionColor(theme.colors[prop]);
           }
           document.body.style.setProperty(cssVar, theme.colors[prop]);
-          if (cssVar === "--input-selected-text-background") {
-            hasInputSelectedTextBackground = true;
-          } else if (cssVar === "--input-selected-text") {
-            hasInputSelectedText = true;
-          }
           break;
         }
         document.body.style.removeProperty(cssVar);
       }
     }
 
-    if (hasInputSelectedTextBackground && hasInputSelectedText) {
-      document.body.classList.add("has-custom-input-color");
-    } else {
-      document.body.classList.remove("has-custom-input-color");
-    }
+    document.body.classList.toggle(
+      "has-custom-input-color",
+      document.body.hasOwnProperty("--input-selected-text") &&
+        document.body.hasOwnProperty("--input-selected-text-background"),
+    );
   }
 
   _resetTheme() {

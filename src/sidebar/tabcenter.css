@@ -4,6 +4,8 @@
   /* Theme-independent */
   --tab-selected-line: var(--blue-50);
   --button-border-radius: 4px;
+  --button-background-active: hsla(0, 0%, 70%, 0.6);
+  --button-background-hover: hsla(0, 0%, 70%, 0.4);
   --close-icon-hover: hsla(0, 0%, 0%, 0.18);
   --close-icon-active: hsla(0, 0%, 0%, 0.25);
   --input-border-focus: Highlight;
@@ -12,9 +14,6 @@
 
   /* Light theme */
   --icons: var(--grey-90-a80);
-  --button-background-active: var(--grey-40);
-  --button-background-hover: var(--grey-30);
-
   --toolbar-background: var(--grey-10);
   --toolbar-text: var(--grey-90);
   --input-background: var(--white-100);
@@ -31,9 +30,6 @@
 
 body.dark-theme {
   --icons: var(--grey-10-a80);
-  --button-background-active: var(--grey-50);
-  --button-background-hover: var(--grey-60);
-
   --toolbar-background: var(--grey-70);
   --toolbar-text: var(--white-100);
   --input-background: var(--grey-60);
