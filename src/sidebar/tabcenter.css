@@ -1,46 +1,32 @@
 @import url("lib/photon-colors.css");
 
 :root {
-  /* Theme-independent */
-  --tab-selected-line: var(--blue-50);
   --button-border-radius: 4px;
   --button-background-active: hsla(0, 0%, 70%, 0.6);
   --button-background-hover: hsla(0, 0%, 70%, 0.4);
+
   --close-icon-hover: hsla(0, 0%, 0%, 0.18);
   --close-icon-active: hsla(0, 0%, 0%, 0.25);
-  --input-border-focus: Highlight;
+
   --tab-height-normal: 52px;
   --tab-height-compact: 36px;
 
-  /* Light theme */
   --icons: var(--grey-90-a80);
   --toolbar-background: var(--grey-10);
   --toolbar-text: var(--grey-90);
+
   --input-background: var(--white-100);
   --input-border: var(--grey-30);
+  --input-border-focus: var(--blue-50);
   --input-text: var(--grey-50);
   --input-text-focus: var(--grey-70);
 
   --background: var(--white-100);
+  --tab-selected-line: var(--blue-60);
   --tab-active-background: var(--grey-30);
   --tab-hover-background: hsla(0, 0%, 50%, 0.2);
   --tab-separator: var(--grey-40);
   --tab-text: var(--grey-90);
-}
-
-body.dark-theme {
-  --icons: var(--grey-10-a80);
-  --toolbar-background: var(--grey-70);
-  --toolbar-text: var(--white-100);
-  --input-background: var(--grey-60);
-  --input-border: var(--grey-50);
-  --input-text: var(--grey-30);
-  --input-text-focus: var(--grey-20);
-
-  --tab-text: var(--white-100);
-  --background: var(--grey-80);
-  --tab-active-background: var(--grey-60);
-  --tab-separator: var(--grey-60);
 }
 
 body.incognito {
@@ -155,67 +141,46 @@ img,
   background-image: url("img/settings.svg");
 }
 
-#searchbox {
+#searchbox-icon {
+  min-width: 30px;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("img/search.svg");
+  margin: 0 0 0 4px;
+  -moz-context-properties: fill;
+  fill: var(--input-text);
+  filter: url("img/filters.svg#fill");
+  border-radius: var(--button-border-radius);
+}
+
+#searchbox-input {
+  color: var(--input-text);
   background-color: var(--input-background);
   display: flex;
-  margin: 0 4px;
-  padding: 1px;
-  flex: 20 0 auto;
-  min-width: 45px;
-  border-radius: 4px;
+  flex: 1;
+  font: inherit; /* needed for windows */
+  margin-left: -30px;
+  margin-right: 4px;
+  padding: 2px;
+  padding-left: 26px;
   border: 1px solid var(--input-border);
+  border-radius: var(--button-border-radius);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   transition: border-color 0.1s, box-shadow 0.1s;
   cursor: text;
 }
 
-#searchbox:hover {
+#searchbox-input:hover {
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
 }
 
-body[platform="win"] #searchbox {
-  border-radius: 0;
-}
-
-#searchbox.focused {
+#searchbox-input:focus {
   border: 1px solid var(--input-border-focus);
 }
 
-body[platform="mac"] #searchbox.focused {
-  border: 1px solid -moz-mac-focusring;
-  box-shadow: 0 0 0 1px -moz-mac-focusring inset, 0 0 0 1px -moz-mac-focusring;
-}
-
-#searchbox-icon {
-  min-width: 24px;
-  background-size: 14px 14px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url("img/search.svg");
-  -moz-context-properties: fill;
-  fill: var(--input-text);
-  filter: url("img/filters.svg#fill");
-  border-radius: var(--button-border-radius) 0 0 var(--button-border-radius);
-}
-
-#searchbox-input {
-  color: var(--input-text-focus);
-  background-color: var(--input-background);
-  flex: 1;
-  font: inherit; /* needed for windows */
-  padding: 0;
-  box-shadow: none;
-  border: 0;
-  border-radius: 0 var(--button-border-radius) var(--button-border-radius) 0;
-}
-
-#searchbox-input::placeholder {
-  color: var(--input-text);
-}
-
-body.has-custom-input-color #searchbox-input::selection {
-  color: var(--input-selected-text);
-  background-color: var(--input-selected-text-background);
+body[platform="win"] #searchbox-input {
+  border-radius: 0;
 }
 
 body[platform="mac"] #searchbox-input {
@@ -226,9 +191,18 @@ body[platform="win"] #searchbox-input:placeholder-shown {
   font-style: italic;
 }
 
-#searchbox.focused #searchbox-icon,
-#searchbox.focused #searchbox-input {
-  background-color: var(--input-background-focus);
+body[platform="mac"] #searchbox-input:focus {
+  border: 1px solid -moz-mac-focusring;
+  box-shadow: 0 0 0 1px -moz-mac-focusring inset, 0 0 0 1px -moz-mac-focusring;
+}
+
+#searchbox-input::placeholder {
+  color: var(--input-text);
+}
+
+body.has-custom-input-color #searchbox-input::selection {
+  color: var(--input-selected-text);
+  background-color: var(--input-selected-text-background);
 }
 
 #tablist {
@@ -302,6 +276,7 @@ body.loaded.animated #tablist-wrapper .tab {
 }
 
 .tab.active {
+  color: var(--tab-active-text);
   background-color: var(--tab-active-background);
 }
 
@@ -676,7 +651,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 }
 
 .tab-host {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .tab.discarded .tab-title {

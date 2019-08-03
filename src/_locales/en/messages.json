@@ -171,16 +171,12 @@
         "message": "Favicon-only Pinned Tabs",
         "description": "Option in options page."
     },
-    "optionsDarkTheme": {
-        "message": "Dark Theme",
-        "description": "Option in options page."
-    },
     "optionsThemeIntegration": {
         "message": "Integrate with custom theme",
         "description": "Option in options page."
     },
     "optionsThemeIntegrationExplanation": {
-        "message": "Integrate with custom theme instead of using the above theme. Close and reopen the sidebar after switching back to one of Firefox’s default theme.",
+        "message": "Integrate with custom theme instead of using the default theme.",
         "description": "Explanation for the Theme Integration option in the options page."
     },
     "optionsBehaviorTitle": {

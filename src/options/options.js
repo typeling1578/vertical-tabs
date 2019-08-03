@@ -17,7 +17,6 @@ class TabCenterOptions {
       "optionsCompactModeOff",
       "optionsCompactModeExplanation",
       "optionsCompactPins",
-      "optionsDarkTheme",
       "optionsThemeIntegration",
       "optionsThemeIntegrationExplanation",
       "optionsBehaviorTitle",
@@ -40,8 +39,7 @@ class TabCenterOptions {
   async setupState() {
     const defaultPrefs = {
       animations: true,
-      darkTheme: false,
-      themeIntegration: false,
+      themeIntegration: true,
       compactMode: 1,
       compactPins: true,
       switchLastActiveTab: true,
