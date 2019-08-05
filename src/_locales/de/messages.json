@@ -3,7 +3,7 @@
         "message": "Verschieben Sie Ihre Tabs an die Seite Ihres Browserfensters."
     },
     "browserActionTitle": {
-        "message": "Tab Center Reborn aktivieren/deaktivieren",
+        "message": "Tab Center Reborn anzeigen/ausblenden",
         "description": "Tooltip shown when hovering the toolbar button."
     },
     "sidebarTitle": {
@@ -147,7 +147,7 @@
         "description": "Explanation for the Compact Mode option in options page."
     },
     "optionsSwitchLastActiveTab": {
-        "message": "Zum vorher aktiven Tab wechseln",
+        "message": "Zum letzten aktiven Tab wechseln",
         "description": "Option in options page."
     },
     "browserActionOn": {
