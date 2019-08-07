@@ -123,7 +123,7 @@
         "message": "Déplacer vers la fin"
     },
     "extensionsLongDescription": {
-        "message": "Tab Center Reborn est la continuation de <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> pour proposer une extension simple, puissante et bien intégrée pour gérer ses onglets verticalement.\n\nL’extension fournit quelques paramètres et permet aux utilisateur·rice·s avancé·e·s de complètement personnaliser son apparence avec du code CSS.\n\n<ul>\n<li>Utilisez Maj+F1 pour ouvrir ou fermer l’extension</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">Comment cacher la barre d’onglets</a></li>\n</ul>\n\nVous pouvez <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">contribuer avec des traductions, de la documentation, des rapports de problème ou du code</a> !",
+        "message": "Tab Center Reborn est la continuation de <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> pour proposer une extension simple, puissante et bien intégrée pour gérer ses onglets verticalement.\n\nL’extension fournit quelques paramètres et permet aux utilisateur·rice·s avancé·e·s de complètement personnaliser son apparence avec du CSS.\n\n<ul>\n<li>Utilisez Maj+F1 pour ouvrir ou fermer l’extension</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">Comment cacher la barre d’onglets</a></li>\n</ul>\n\nVous pouvez <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">contribuer avec des traductions, de la documentation, des rapports de problème ou du code</a> !\n\nPermissions utilisées :\n\n<ul>\n<li>Accéder à vos données pour tous les sites web: pour utiliser les conteneurs.</li>\n<li>Consulter et modifier les marque-pages: pour ne pas ouvrir une nouvelle fenêtre lorsqu’un onglet est lâché en dehors de la barre latérale mais sur la barre de marque-pages.</li>\n<li>Consulter et modifier les paramètres du navigateur: pour respecter les paramètres et le thème de Firefox.</li>\n<li>Vous afficher des notifications: pour afficher une notification quand vous avez fermé beaucoup d’onglets, vous permettant d’annuler cela.</li>\n<li>Accéder aux onglets récemment fermés: pour activer l’onglet utilisé avant.</li>\n<li>Afficher ou masquer les onglets du navigateur: utilisé uniquement dans les tests.</li>\n<li>Accéder aux onglets du navigateur: pour obtenir l’URL, le titre et le favicon des onglets.</li>\n<li>Accéder à l’activité du navigateur pendant la navigation: pour déclencher une animation supplémentaire quand une page a fini de charger ses ressources.</li>\n</ul>",
         "description": "Long description displayed on addons.mozilla.org."
     },
     "optionsThemeIntegrationExplanation": {
@@ -203,7 +203,7 @@
         }
     },
     "optionsNotifyClosingManyTabsExplanation": {
-        "message": "Afficher une notification vous permettant d’annuler lors de la fermeture de plus de $COUNT onglets.",
+        "message": "Afficher une notification vous permettant d’annuler lors de la fermeture de plus de $COUNT$ onglets.",
         "description": "Explanation for the Notify when closing many tabs option in options page.",
         "placeholders": {
             "count": {
@@ -239,5 +239,9 @@
     "newTabContextMenuOpenAtEnd": {
         "message": "À la fin",
         "description": "New Tab context menu item."
+    },
+    "optionsCustomCSSChangelogLink": {
+        "message": "Consultez les nouveautés pour vous informer des changements cassant la compatibilité",
+        "description": "Text for a link to the changelog."
     }
 }
