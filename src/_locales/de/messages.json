@@ -96,7 +96,7 @@
         "message": "Dunkle Darstellung"
     },
     "optionsThemeIntegration": {
-        "message": "Ins benutzerdefinierten Theme integrieren"
+        "message": "Ins benutzerdefinierten Design integrieren"
     },
     "optionsAdvancedTitle": {
         "message": "Weitere Einstellungen"
@@ -135,7 +135,7 @@
         "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
     },
     "optionsThemeIntegrationExplanation": {
-        "message": "Ins benutzerdefiniertes Theme integrieren, anstatt das obige Theme zu verwenden. Schließen und öffnen Sie die Sidebar erneut, nachdem Sie wieder zu einem Standardtheme von Firefox gewechselt haben.",
+        "message": "In das benutzerdefinierte Design integrieren, anstatt das Standard-Design zu verwenden.",
         "description": "Explanation for the Theme Integration option in the options page."
     },
     "contextMenuUnloadTab": {
@@ -233,5 +233,9 @@
     "optionsCustomCSSChangelogLink": {
         "message": "Sehen Sie sich die neuen Funktionen an, um sich über Änderungen zu informieren, die die Kompatibilität beeinträchtigen",
         "description": "Text for a link to the changelog."
+    },
+    "OptionsAnimations": {
+        "message": "Animationen",
+        "description": "Option in options page."
     }
 }
