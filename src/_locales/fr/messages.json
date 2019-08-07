@@ -127,7 +127,7 @@
         "description": "Long description displayed on addons.mozilla.org."
     },
     "optionsThemeIntegrationExplanation": {
-        "message": "S’intègre avec le thème personnalisé au lieu d’utiliser le thème ci-dessus. Fermez et réouvrez la barre latérale après être revenu·e sur un des thèmes par défaut de Firefox.",
+        "message": "S’intègre avec le thème personnalisé au lieu d’utiliser le thème par défaut.",
         "description": "Explanation for the Theme Integration option in the options page."
     },
     "closeTabsAfterWarning": {
@@ -243,5 +243,9 @@
     "optionsCustomCSSChangelogLink": {
         "message": "Consultez les nouveautés pour vous informer des changements cassant la compatibilité",
         "description": "Text for a link to the changelog."
+    },
+    "OptionsAnimations": {
+        "message": "Animations",
+        "description": "Option in options page."
     }
 }
