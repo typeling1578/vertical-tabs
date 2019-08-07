@@ -127,7 +127,7 @@
         "description": "Long description displayed on addons.mozilla.org."
     },
     "optionsThemeIntegrationExplanation": {
-        "message": "Integriĝi propran temon anstataŭ uzi la supran temon. Fermu and remalfermu la flankan strion post kiam vi reebligis unu el la defaŭltaj temoj de Firefox.",
+        "message": "Integriĝi propran temon anstataŭ uzi la defaŭltan temon.",
         "description": "Explanation for the Theme Integration option in the options page."
     },
     "closeTabsAfterWarning": {
@@ -243,5 +243,9 @@
     "optionsCustomCSSChangelogLink": {
         "message": "Kontroli la novaĵojn por koni la malkongruajn ŝanĝojn",
         "description": "Text for a link to the changelog."
+    },
+    "OptionsAnimations": {
+        "message": "Animacioj",
+        "description": "Option in options page."
     }
 }
