@@ -239,5 +239,9 @@
     "newTabContextMenuOpenAtEnd": {
         "message": "Al la fino",
         "description": "New Tab context menu item."
+    },
+    "optionsCustomCSSChangelogLink": {
+        "message": "Kontroli la novaĵojn por koni la malkongruajn ŝanĝojn",
+        "description": "Text for a link to the changelog."
     }
 }
