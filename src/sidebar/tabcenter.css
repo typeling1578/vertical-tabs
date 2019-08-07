@@ -148,8 +148,9 @@ img,
   background-position: center;
   background-image: url("img/search.svg");
   margin: 0 0 0 4px;
-  -moz-context-properties: fill;
+  -moz-context-properties: fill, fill-opacity;
   fill: var(--input-text);
+  fill-opacity: 0.5;
   filter: url("img/filters.svg#fill");
   border-radius: var(--button-border-radius);
 }
