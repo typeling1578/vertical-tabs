@@ -4,7 +4,7 @@
         "description": "Extension description shown in the options page and as short description on addons.mozilla.org."
     },
     "extensionsLongDescription": {
-        "message": "",
+        "message": "!!Occitan not available on AMO!!",
         "description": "Long description displayed on addons.mozilla.org."
     },
     "browserActionTitle": {
@@ -44,11 +44,11 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
     },
     "muteTabButtonTooltip": {
-        "message": "",
+        "message": "Rendre l’onglet mut",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
     },
     "unmuteTabButtonTooltip": {
-        "message": "",
+        "message": "Rendre pas l'onglet mut",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
     },
     "closeTabButtonTooltip": {
@@ -72,15 +72,15 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197266. Context menu item label."
     },
     "contextMenuMuteTab": {
-        "message": "",
+        "message": "Rendre l’onglet mut",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Context menu item label and tooltip of the audible icon on tabs."
     },
     "contextMenuUnmuteTab": {
-        "message": "",
+        "message": "Rendre pas l’onglet mut",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Context menu item label and tooltip of the unmute icon on tabs."
     },
     "contextMenuDuplicateTab": {
-        "message": "",
+        "message": "Duplicar l’onglet",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197263. Context menu item label."
     },
     "contextMenuUnloadTab": {
@@ -88,7 +88,7 @@
         "description": "Context menu item label."
     },
     "contextMenuOpenInContextualTab": {
-        "message": "",
+        "message": "Tornar dobrir dins un onglet isolat",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197234. Context menu item label."
     },
     "contextMenuMoveTab": {
@@ -104,7 +104,7 @@
         "description": "Context menu item label."
     },
     "contextMenuMoveTabToNewWindow": {
-        "message": "",
+        "message": "Desplaçar cap a una fenèstra novèla",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197261. Context menu item label."
     },
     "contextMenuCloseTabs": {
@@ -120,15 +120,15 @@
         "description": "Context menu item label."
     },
     "contextMenuCloseOtherTabs": {
-        "message": "",
+        "message": "Tampar los autres onglets",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197270. Context menu item label."
     },
     "contextMenuUndoCloseTab": {
-        "message": "",
+        "message": "Anullar la tampadura de l’onglet",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197236. Context menu item label."
     },
     "contextMenuCloseTab": {
-        "message": "",
+        "message": "Tampar l’onglet",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197248. Context menu item label."
     },
     "optionsAppearanceTitle": {
@@ -198,7 +198,7 @@
         }
     },
     "optionsAdvancedTitle": {
-        "message": "",
+        "message": "Avançat",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=176300. Section in options page."
     },
     "optionsCustomCSS": {
