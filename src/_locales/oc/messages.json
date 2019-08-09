@@ -8,27 +8,27 @@
         "description": "Long description displayed on addons.mozilla.org."
     },
     "browserActionTitle": {
-        "message": "",
+        "message": "Activar/Desactivar Tab Center Reborn",
         "description": "Tooltip shown when hovering the toolbar button."
     },
     "sidebarTitle": {
-        "message": "",
+        "message": "Onglets",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=176230. Label shown in the sidebar selector."
     },
     "newTabBtnTooltip": {
-        "message": "",
+        "message": "Dobrir un onglet novèl",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=74421. Tooltip of the New Tab button in the top menu."
     },
     "searchPlaceholder": {
-        "message": "",
+        "message": "Recercar pels onglets",
         "description": "Placehorder of the Search bar in the top menu."
     },
     "settingsBtnTooltip": {
-        "message": "",
+        "message": "Dobrir los paramètres",
         "description": "Tooltip of the settings button in the top menu."
     },
     "newTabContextMenuOpenAtEnd": {
-        "message": "",
+        "message": "A la fin",
         "description": "New Tab context menu item."
     },
     "newTabContextMenuOpneAfterCurrent": {
@@ -36,11 +36,11 @@
         "description": "New Tab context menu item."
     },
     "newTabContextMenuOpenInWindow": {
-        "message": "",
+        "message": "Fenèstra novèla",
         "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
     },
     "newTabContextMenuOpenInPrivateWindow": {
-        "message": "",
+        "message": "Fenèstra novèla de navegacion privada",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
     },
     "muteTabButtonTooltip": {
@@ -52,23 +52,23 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
     },
     "closeTabButtonTooltip": {
-        "message": "",
+        "message": "Tampar l’onglet",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197248. Tooltip of the close button on tabs."
     },
     "allTabsLabel": {
-        "message": "",
+        "message": "Mostrar totes los onglets…",
         "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
     },
     "contextMenuReloadTab": {
-        "message": "",
+        "message": "Actualizar l’onglet",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197237. Context menu item label."
     },
     "contextMenuPinTab": {
-        "message": "",
+        "message": "Penjar l’onglet",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197249. Context menu item label."
     },
     "contextMenuUnpinTab": {
-        "message": "",
+        "message": "Despenjar l’onglet",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197266. Context menu item label."
     },
     "contextMenuMuteTab": {
@@ -92,15 +92,15 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197234. Context menu item label."
     },
     "contextMenuMoveTab": {
-        "message": "",
+        "message": "Desplaçar l’onglet",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197269. Context menu item label."
     },
     "contextMenuMoveTabToStart": {
-        "message": "",
+        "message": "Desplaçar cap a la debuta",
         "description": "Context menu item label."
     },
     "contextMenuMoveTabToEnd": {
-        "message": "",
+        "message": "Desplaçar cap a la fin",
         "description": "Context menu item label."
     },
     "contextMenuMoveTabToNewWindow": {
@@ -108,7 +108,7 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197261. Context menu item label."
     },
     "contextMenuCloseTabs": {
-        "message": "",
+        "message": "Tampar los onglets",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197250. Context Menu item label"
     },
     "contextMenuCloseTabsBefore": {
