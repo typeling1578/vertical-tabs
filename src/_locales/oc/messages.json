@@ -60,11 +60,11 @@
         "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
     },
     "contextMenuReloadTab": {
-        "message": "Actualizar l’onglet",
+        "message": "Tornar cargar l’onglet",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197237. Context menu item label."
     },
     "contextMenuPinTab": {
-        "message": "Penjar l’onglet",
+        "message": "Penjar l’onglets",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197249. Context menu item label."
     },
     "contextMenuUnpinTab": {
