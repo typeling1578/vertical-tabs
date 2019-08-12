@@ -136,7 +136,7 @@
         "description": "Section in options page."
     },
     "optionsSwitchLastActiveTabExplanation": {
-        "message": "Clicking active tab switch to the last active one.",
+        "message": "Click active tab to switch to the last active one.",
         "description": "Explanation for the Compact Mode option in options page."
     },
     "OptionsAnimations": {
@@ -172,11 +172,11 @@
         "description": "Option in options page."
     },
     "optionsThemeIntegration": {
-        "message": "Integrate with custom theme",
+        "message": "Use current browser theme",
         "description": "Option in options page."
     },
     "optionsThemeIntegrationExplanation": {
-        "message": "Integrate with custom theme instead of using the default theme.",
+        "message": "Use current browser theme instead of default light theme.",
         "description": "Explanation for the Theme Integration option in the options page."
     },
     "optionsBehaviorTitle": {
