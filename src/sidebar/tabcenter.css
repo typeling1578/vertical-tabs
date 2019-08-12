@@ -150,7 +150,7 @@ img,
   margin: 0 0 0 4px;
   -moz-context-properties: fill, fill-opacity;
   fill: var(--input-text);
-  fill-opacity: 0.5;
+  fill-opacity: 0.5; /* it displays the icon as the intented color, though I don’t know why */
   filter: url("img/filters.svg#fill");
   border-radius: var(--button-border-radius);
 }
