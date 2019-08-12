@@ -96,7 +96,7 @@
         "message": "Thème sombre"
     },
     "optionsThemeIntegration": {
-        "message": "Intégrer avec le thème personnalisé"
+        "message": "Utiliser le thème courant du navigateur"
     },
     "optionsAdvancedTitle": {
         "message": "Avancé"
@@ -127,7 +127,7 @@
         "description": "Long description displayed on addons.mozilla.org."
     },
     "optionsThemeIntegrationExplanation": {
-        "message": "S’intègre avec le thème personnalisé au lieu d’utiliser le thème par défaut.",
+        "message": "Utiliser le thème courant du navigateur au lieu du thème clair par défaut.",
         "description": "Explanation for the Theme Integration option in the options page."
     },
     "closeTabsAfterWarning": {
