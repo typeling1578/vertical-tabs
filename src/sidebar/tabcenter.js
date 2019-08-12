@@ -112,6 +112,7 @@ export default class TabCenter {
 
   _readPrefs() {
     return browser.storage.sync.get({
+      animations: true,
       themeIntegration: true,
       compactMode: 1 /* COMPACT_MODE_DYNAMIC */,
       compactPins: true,
