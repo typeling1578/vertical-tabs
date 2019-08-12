@@ -76,7 +76,7 @@ export default class TabCenter {
       },
       false,
     );
-    browser.storage.onChanged.addListener(changes => this._applyPrefs(unwrapChanges(changes)));
+    browser.storage.onChanged.addListener(changes => this._applyPrefs(changes));
     this._themeListener = ({ theme, windowId }) => {
       if (!windowId || windowId === this._windowId) {
         this._applyTheme(theme);
@@ -220,14 +220,6 @@ export default class TabCenter {
     script.src = "../test/index.js";
     document.head.appendChild(script);
   }
-}
-
-function unwrapChanges(changes) {
-  const unwrapped = {};
-  for (const [pref, change] of Object.entries(changes)) {
-    unwrapped[pref] = change.newValue;
-  }
-  return unwrapped;
 }
 
 function setBrowserActionColor(browserColor, sidebarColor) {
