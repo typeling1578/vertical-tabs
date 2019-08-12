@@ -123,12 +123,16 @@ export default class TabCenter {
   }
 
   _applyPrefs(prefs) {
-    if (prefs.hasOwnProperty("useCustomCSS")) {
-      this._useCustomCSS = prefs.useCustomCSS;
-      this._applyCustomCSS();
+    const hasCustomCSSChanged = prefs.hasOwnProperty("customCSS");
+    const hasUseCustomCSSChanged = prefs.hasOwnProperty("useCustomCSS");
+
+    if (hasCustomCSSChanged) {
+      this._customCSS = prefs.customCSS.newValue;
     }
-    if (prefs.hasOwnProperty("customCSS")) {
-      this._customCSS = prefs.customCSS;
+    if (hasUseCustomCSSChanged) {
+      this._useCustomCSS = prefs.useCustomCSS.newValue;
+    }
+    if (hasCustomCSSChanged || hasUseCustomCSSChanged) {
       this._applyCustomCSS();
     }
     if (prefs.hasOwnProperty("themeIntegration")) {
