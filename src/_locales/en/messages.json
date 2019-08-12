@@ -160,7 +160,7 @@
         "description": "Possible value for Compact Mode option in options page."
     },
     "optionsCompactModeStrict": {
-        "message": "Always",
+        "message": "Enabled",
         "description": "Possible value for Compact Mode option in options page."
     },
     "optionsSwitchLastActiveTab": {
