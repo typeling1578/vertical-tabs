@@ -104,7 +104,7 @@ export default class TopMenu {
       cookieStoreId: info.menuItemId.split("newTabContextMenuOpenInNewContextualTab_")[1],
     };
     if (info.modifiers.includes("Ctrl")) {
-      props["_position"] = otherTabPosition;
+      props["_position"] = this._alternateNewTabPosition;
       openTab(props);
     } else if (info.modifiers.includes("Shift")) {
       browser.windows.create(props);
