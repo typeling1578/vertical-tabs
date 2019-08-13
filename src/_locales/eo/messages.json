@@ -96,7 +96,7 @@
         "message": "Malhela etoso"
     },
     "optionsThemeIntegration": {
-        "message": "Integriĝi propran temon"
+        "message": "Uzi nunan temon de retumilo"
     },
     "optionsAdvancedTitle": {
         "message": "Altnivela"
@@ -127,7 +127,7 @@
         "description": "Long description displayed on addons.mozilla.org."
     },
     "optionsThemeIntegrationExplanation": {
-        "message": "Integriĝi propran temon anstataŭ uzi la defaŭltan temon.",
+        "message": "Uzi la nunan temon de la retumilo anstataŭ uzi la malhelan defaŭltan temon.",
         "description": "Explanation for the Theme Integration option in the options page."
     },
     "closeTabsAfterWarning": {
@@ -143,7 +143,7 @@
         "description": "Context menu item label."
     },
     "optionsSwitchLastActiveTabExplanation": {
-        "message": "Alklaki aktivan langeton ŝaltas la laste aktivan.",
+        "message": "Alklaki aktivan langeton por ŝalti la laste aktivan.",
         "description": "Explanation for the Compact Mode option in options page."
     },
     "optionsSwitchLastActiveTab": {
