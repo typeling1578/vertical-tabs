@@ -24,6 +24,7 @@ h1 {
 a,
 a:visited {
   color: rgb(10, 141, 255);
+  text-decoration: none;
 }
 
 .options > div {
@@ -47,4 +48,9 @@ input[type="checkbox"] {
   height: 25rem;
   resize: vertical;
   overflow: auto;
+}
+
+ul {
+  font-size: 1.1rem;
+  padding-left: 20px;
 }
