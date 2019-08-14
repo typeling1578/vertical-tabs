@@ -6,6 +6,7 @@ class TabCenterBackground {
     browser.runtime.onConnect.addListener(port => this.onConnect(port));
     browser.browserAction.onClicked.addListener(tab => this.onClick(tab));
     browser.commands.onCommand.addListener(command => this.onCommand(command));
+    this.reloadOptionPage();
   }
 
   onConnect(port) {
@@ -32,6 +33,17 @@ class TabCenterBackground {
           browser.tabs.update(tabs[1].id, { active: true });
         });
     }
+  }
+
+  // Reload option page so that it’s never out-of-sync when hot-reloading during dev
+  reloadOptionPage() {
+    browser.tabs.query({}).then(tabs => {
+      for (const tab of tabs) {
+        if (tab.url === "about:addons") {
+          browser.tabs.reload(tab.id);
+        }
+      }
+    });
   }
 }
 
