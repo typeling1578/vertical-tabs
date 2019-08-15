@@ -20,16 +20,16 @@ export default class TabCenter {
     const search = this._search.bind(this);
     this._topMenu = new TopMenu({ search });
 
-    this._setupListeners();
-
     const prefs = await this._readPrefs();
-    this._onStorageChanged(prefs);
+    this._initPrefs(prefs);
+
     this._tablist = new TabList({
       windowId: this._windowId,
       search,
       prefs,
     });
 
+    this._setupListeners();
     browser.runtime.connect({ name: this._windowId.toString() });
   }
 
@@ -59,6 +59,15 @@ export default class TabCenter {
   _search(val) {
     this._tablist.filter(val);
     this._topMenu.updateSearch(val);
+  }
+
+  async _initPrefs(prefs) {
+    this._customCSS = prefs.customCSS;
+    this._useCustomCSS = prefs.useCustomCSS;
+    this._applyCustomCSS();
+    this._themeIntegrationEnabled = prefs.themeIntegration;
+    this._theme = await browser.theme.getCurrent(this._windowId);
+    this._applyTheme(this._theme);
   }
 
   _setupListeners() {
@@ -100,6 +109,7 @@ export default class TabCenter {
 
   _onThemeUpdated(theme, windowId) {
     if (!windowId || windowId === this._windowId) {
+      this._theme = theme;
       this._applyTheme(theme);
     }
   }
@@ -136,7 +146,7 @@ export default class TabCenter {
     }
     if (changes.hasOwnProperty("themeIntegration")) {
       this._themeIntegrationEnabled = changes.themeIntegration.newValue;
-      this._applyTheme();
+      this._applyTheme(this._theme);
     }
   }
 
@@ -145,22 +155,22 @@ export default class TabCenter {
 
     // fallbacks for theme colors
     const cssToThemeProp = {
-      "--background": ["frame", "accentcolor"],
+      "--background": ["frame"],
       "--button-background-active": ["button_background_active"],
       "--button-background-hover": ["button_background_hover"],
-      "--icons": ["icons", "toolbar_text", "textcolor"],
+      "--icons": ["icons", "toolbar_text", "bookmark_text", "tab_background_text", "tab_text"],
       "--tab-separator": [
         "tab_background_separator",
         "toolbar_field_separator",
         "toolbar_top_separator",
       ],
-      "--tab-selected-line": ["tab_line"],
+      "--tab-selected-line": ["tab_line", "tab_text", "tab_background_text"],
       "--tab-loading-indicator": ["tab_loading"],
       "--tab-active-background": ["tab_selected", "toolbar"],
-      "--tab-active-text": ["tab_text", "toolbar_text", "tab_background_text", "textcolor"],
-      "--tab-text": ["tab_background_text", "textcolor", "tab_text", "toolbar_text"],
-      "--toolbar-background": ["toolbar", "frame", "accentcolor"],
-      "--toolbar-text": ["toolbar_text", "textcolor"],
+      "--tab-active-text": ["tab_text", "toolbar_text", "bookmark_text", "tab_background_text"],
+      "--tab-text": ["tab_background_text", "tab_text", "toolbar_text", "bookmark_text"],
+      "--toolbar-background": ["toolbar", "frame"],
+      "--toolbar-text": ["toolbar_text", "bookmark_text"],
       "--input-background": ["toolbar_field"],
       "--input-border": ["toolbar_field_border"],
       "--input-border-focus": ["toolbar_field_border_focus"],
@@ -169,9 +179,6 @@ export default class TabCenter {
       "--input-selected-text": ["toolbar_field_highlight_text", "toolbar_field_text"],
       "--input-text": ["bookmark_text", "toolbar_field_text"],
       "--input-text-focus": ["toolbar_field_text_focus", "toolbar_field_text"],
-      "--sidebar-background": ["sidebar", "frame", "accentcolor"],
-      "--sidebar-text": ["sidebar_text", "tab_text", "toolbar_text", "textcolor"],
-      "sidebar-text": ["sidebar_text"],
     };
 
     // get the effective values we will be using
@@ -191,9 +198,16 @@ export default class TabCenter {
 
     setButtonsActionColor(
       themeColors["--icons"] || "#5a5b5c",
-      themeColors["sidebar-text"] || "#5a5b5c",
+      theme.colors["sidebar_text"] || "#5a5b5c",
     );
-    delete themeColors["sidebar-text"];
+
+    // if theme integration is disabled or theme is not usable, remove css variables then return
+    if (!this._themeIntegrationEnabled || (theme.images && !theme.colors["sidebar"])) {
+      for (const cssVar of Object.keys(themeColors)) {
+        style.removeProperty(cssVar);
+      }
+      return;
+    }
 
     // swap background and tab-active-background colors if background is light
     if (themeColors["--background"] !== null && isLight(themeColors["--background"])) {

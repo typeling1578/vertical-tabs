@@ -581,8 +581,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   filter: url("img/filters.svg#fill");
 }
 
-#pinnedtablist:not(.compact) .tab-icon.chrome-icon,
-#tablist-wrapper:not(.shrinked) #tablist .tab-icon.chrome-icon {
+#tablist-wrapper:not(.shrinked) :not(.compact) .tab-icon.chrome-icon {
   fill: var(--grey-90-a80);
 }
 
@@ -668,9 +667,9 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 }
 
 #pinnedtablist:not(.compact) .tab.pinned .tab-pin {
-  min-width: 16px;
-  height: 16px;
-  margin-right: 12px;
+  width: 14px;
+  height: 14px;
+  margin-right: 7px;
   display: block;
   background-image: url("img/glyph-pin-pinned-12.svg#standard");
   -moz-context-properties: fill;
@@ -678,7 +677,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   filter: url("img/filters.svg#fill");
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 12px;
+  background-size: 16px;
 }
 
 .tab-close {
