@@ -23,8 +23,8 @@ export default class TabCenter {
     this._setupListeners();
 
     const prefs = await this._readPrefs();
-    this._applyPrefs(prefs);
-    this._tabList = new TabList({
+    this._onStorageChanged(prefs);
+    this._tablist = new TabList({
       windowId: this._windowId,
       search,
       prefs,
@@ -57,57 +57,55 @@ export default class TabCenter {
   }
 
   _search(val) {
-    this._tabList.filter(val);
+    this._tablist.filter(val);
     this._topMenu.updateSearch(val);
   }
 
   _setupListeners() {
-    window.addEventListener(
-      "contextmenu",
-      e => {
-        const target = e.target;
-        // Let the searchbox input and the tabs have a context menu.
-        if (
-          !(target && (target.id === "searchbox-input" || target.id.startsWith("newtab"))) &&
-          !SideTab.isTabEvent(e, false)
-        ) {
-          e.preventDefault();
-        }
-      },
-      false,
-    );
-    browser.storage.onChanged.addListener(changes => this._applyPrefs(changes));
-    this._themeListener = ({ theme, windowId }) => {
-      if (!windowId || windowId === this._windowId) {
-        this._applyTheme(theme);
-      }
-    };
-    const handleWheel = e => {
-      if (e.ctrlKey) {
-        const scrollDirection = e.deltaY < 0 ? -1 : 1;
-        this._tabList._activateTabFromCurrent(scrollDirection);
-      }
-    };
-    window.addEventListener("wheel", throttled(50, handleWheel));
+    browser.storage.onChanged.addListener(changes => {
+      this._onStorageChanged(changes);
+      this._tablist.onStorageChanged(changes);
+    });
+
+    if (browser.theme.onUpdated) {
+      browser.theme.onUpdated.addListener(({ theme, windowId }) =>
+        this._onThemeUpdated(theme, windowId),
+      );
+    }
+
+    window.addEventListener("contextmenu", e => this._onContextMenu(e), false);
+    window.addEventListener("wheel", e => throttled(50, this._onWheel(e)));
+  }
+
+  _onContextMenu(e) {
+    const target = e.target;
+    // Let the searchbox input and the tabs have a context menu.
+    if (
+      !(target && (target.id === "searchbox-input" || target.id.startsWith("newtab"))) &&
+      !SideTab.isTabEvent(e, false)
+    ) {
+      e.preventDefault();
+    }
+  }
+
+  _onWheel(e) {
+    if (e.metaKey || e.ctrlKey) {
+      e.preventDefault();
+    }
+    if (e.ctrlKey) {
+      const scrollDirection = e.deltaY < 0 ? -1 : 1;
+      this._tablist._activateTabFromCurrent(scrollDirection);
+    }
+  }
+
+  _onThemeUpdated(theme, windowId) {
+    if (!windowId || windowId === this._windowId) {
+      this._applyTheme(theme);
+    }
   }
 
   _applyCustomCSS() {
     document.getElementById("customCSS").textContent = this._useCustomCSS ? this._customCSS : "";
-  }
-
-  set _themeIntegration(enabled) {
-    if (!browser.theme.onUpdated) {
-      return;
-    }
-    if (!enabled) {
-      this._applyTheme({});
-      if (browser.theme.onUpdated.hasListener(this._themeListener)) {
-        browser.theme.onUpdated.removeListener(this._themeListener);
-      }
-    } else {
-      browser.theme.onUpdated.addListener(this._themeListener);
-      browser.theme.getCurrent(this._windowId).then(this._applyTheme.bind(this));
-    }
   }
 
   _readPrefs() {
@@ -123,21 +121,22 @@ export default class TabCenter {
     });
   }
 
-  _applyPrefs(prefs) {
-    const hasCustomCSSChanged = prefs.hasOwnProperty("customCSS");
-    const hasUseCustomCSSChanged = prefs.hasOwnProperty("useCustomCSS");
+  _onStorageChanged(changes) {
+    const hasCustomCSSChanged = changes.hasOwnProperty("customCSS");
+    const hasUseCustomCSSChanged = changes.hasOwnProperty("useCustomCSS");
 
     if (hasCustomCSSChanged) {
-      this._customCSS = prefs.customCSS.newValue;
+      this._customCSS = changes.customCSS.newValue;
     }
     if (hasUseCustomCSSChanged) {
-      this._useCustomCSS = prefs.useCustomCSS.newValue;
+      this._useCustomCSS = changes.useCustomCSS.newValue;
     }
     if (hasCustomCSSChanged || hasUseCustomCSSChanged) {
       this._applyCustomCSS();
     }
-    if (prefs.hasOwnProperty("themeIntegration")) {
-      this._themeIntegration = prefs.themeIntegration;
+    if (changes.hasOwnProperty("themeIntegration")) {
+      this._themeIntegrationEnabled = changes.themeIntegration.newValue;
+      this._applyTheme();
     }
   }
 

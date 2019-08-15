@@ -121,9 +121,6 @@ export default class TabList {
       }
     });
 
-    // Pref changes
-    browser.storage.onChanged.addListener(changes => this._onPrefsChanged(changes));
-
     // Handle notifications
     browser.notifications.onClicked.addListener(notificationId =>
       this._onNotificationDeleteClicked(notificationId),
@@ -180,7 +177,7 @@ export default class TabList {
     return [...this._tabs.values()].filter(tab => tab.isVisible());
   }
 
-  _onPrefsChanged(changes) {
+  onStorageChanged(changes) {
     if (changes.animations) {
       this._animations = changes.animations.newValue;
       document.body.classList.toggle("animated", this._animations);
