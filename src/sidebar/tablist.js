@@ -92,14 +92,14 @@ export default class TabList {
       view.addEventListener("click", e => this._onClick(e));
       view.addEventListener("dblclick", e => this._onDblClick(e));
       view.addEventListener("auxclick", e => this._onAuxClick(e));
-      view.addEventListener("pointerdown", e => this._onMouseDown(e));
-      view.addEventListener("pointerup", e => this._onMouseUp(e));
-      view.addEventListener("pointerover", e => this._onMouseOver(e));
+      view.addEventListener("pointerdown", e => this._onPointerDown(e));
+      view.addEventListener("pointerup", e => this._onPointerUp(e));
+      view.addEventListener("pointerover", e => this._onPointerOver(e));
       view.addEventListener("contextmenu", e => this.tabContextMenu.open(e), true);
       view.addEventListener("animationend", e => this._onAnimationEnd(e));
     }
 
-    this._wrapperView.addEventListener("pointerout", e => this._onMouseOut(e));
+    this._wrapperView.addEventListener("pointerout", e => this._onPointerOut(e));
 
     this._spacerView.addEventListener("dblclick", () => this._onSpacerDblClick());
     this._spacerView.addEventListener("auxclick", e => this._onSpacerAuxClick(e));
@@ -326,36 +326,21 @@ export default class TabList {
     sidetab.burst();
   }
 
-  _onMouseDown(e) {
+  _onPointerDown(e) {
     // Prevent autoscrolling on middle click
     if (e.button === 1) {
       e.preventDefault();
     }
   }
 
-  _onMouseUp(e) {
-    // Don't put preventDefault here or drag-and-drop won't work
-    if (e.button === 0 && SideTab.isTabEvent(e)) {
-      const tabId = SideTab.tabIdForEvent(e);
-      if (tabId !== this._active) {
-        browser.tabs.update(tabId, { active: true });
-      } else if (this._switchLastActiveTab && this._tabs.size > 1) {
-        browser.tabs.query({ currentWindow: true }).then(tabs => {
-          tabs.sort((a, b) => b.lastAccessed - a.lastAccessed);
-          browser.tabs.update(tabs[1].id, { active: true });
-        });
-      }
-
-      this._props.search("");
-      return;
-    }
+  _onPointerUp(e) {
     // Prevent autoscrolling on middle click
     if (e.button === 1) {
       e.preventDefault();
     }
   }
 
-  _onMouseOver(e) {
+  _onPointerOver(e) {
     const tabId = SideTab.tabIdForEvent(e);
     if (!tabId) {
       //The tab may have been closed
@@ -367,7 +352,7 @@ export default class TabList {
     }
   }
 
-  _onMouseOut(e) {
+  _onPointerOut(e) {
     this._shrinkTabsTimer = setTimeout(
       () => this._wrapperView.classList.toggle("shrinked", this._tabsShrinked),
       300,
@@ -406,6 +391,7 @@ export default class TabList {
   }
 
   _onClick(e) {
+    // Don't put preventDefault here or drag-and-drop won't work
     if (SideTab.isCloseButtonEvent(e)) {
       const tabId = SideTab.tabIdForEvent(e);
       browser.tabs.remove(tabId);
@@ -413,6 +399,19 @@ export default class TabList {
       const tabId = SideTab.tabIdForEvent(e);
       const tab = this.getTabById(tabId);
       browser.tabs.update(tabId, { muted: !tab.muted });
+    } else if (e.button === 0 && SideTab.isTabEvent(e)) {
+      const tabId = SideTab.tabIdForEvent(e);
+      if (tabId !== this._active) {
+        browser.tabs.update(tabId, { active: true });
+      } else if (this._switchLastActiveTab && this._tabs.size > 1) {
+        browser.tabs.query({ currentWindow: true }).then(tabs => {
+          tabs.sort((a, b) => b.lastAccessed - a.lastAccessed);
+          browser.tabs.update(tabs[1].id, { active: true });
+        });
+      }
+
+      this._props.search("");
+      return;
     }
   }
 
@@ -881,7 +880,7 @@ export default class TabList {
 
   set _tabsShrinked(shrinked) {
     this.__tabsShrinked = shrinked;
-    this._onMouseOut(null);
+    this._onPointerOut(null);
   }
 
   _maybeShrinkTabs(immediate = false) {
