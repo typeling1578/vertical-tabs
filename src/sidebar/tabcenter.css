@@ -572,7 +572,6 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   background-position: center;
   background-size: contain;
   background-origin: content-box;
-  margin: 4px auto;
 }
 
 .tab-icon.chrome-icon {
@@ -581,7 +580,8 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   filter: url("img/filters.svg#fill");
 }
 
-#tablist-wrapper:not(.shrinked) :not(.compact) .tab-icon.chrome-icon {
+#tablist-wrapper #pinnedtablist:not(.compact) .tab-icon.chrome-icon,
+#tablist-wrapper:not(.shrinked) #tablist .tab-icon.chrome-icon {
   fill: var(--grey-90-a80);
 }
 
