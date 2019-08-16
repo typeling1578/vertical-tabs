@@ -257,7 +257,7 @@ body.has-custom-input-color #searchbox-input::selection {
 }
 
 body.loaded.animated #tablist-wrapper .tab {
-  transition: box-shadow 0.1s ease, height 0.1s ease, width 0.1s ease;
+  transition: box-shadow 0.1s ease, height 0.08s linear, width 0.08s linear;
 }
 
 #tablist.compact .tab.deleted + .tab,
