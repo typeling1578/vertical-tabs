@@ -52,8 +52,8 @@ export default class TabList {
     this._switchLastActiveTab = this._props.prefs.switchLastActiveTab;
     this._notifyClosingManyTabs = this._props.prefs.notifyClosingManyTabs;
 
-    this._setupListeners();
     this._populate();
+    this._setupListeners();
 
     browser.browserSettings.closeTabsByDoubleClick.get({}).then(({ value }) => {
       this.closeTabsByDoubleClick = value;
@@ -835,23 +835,23 @@ export default class TabList {
     tabs.sort((a, b) => a.index - b.index);
     const pinnedFragment = document.createDocumentFragment();
     const unpinnedFragment = document.createDocumentFragment();
-    let activeTab;
+    let activeTab = null;
     for (const tab of tabs) {
       const sidetab = this.__create(tab);
       if (tab.active) {
         activeTab = sidetab;
       }
-      const fragment = tab.pinned ? pinnedFragment : unpinnedFragment;
       if (!tab.hidden) {
+        const fragment = tab.pinned ? pinnedFragment : unpinnedFragment;
         fragment.appendChild(sidetab.view);
       }
     }
     this._pinnedview.appendChild(pinnedFragment);
     this._view.appendChild(unpinnedFragment);
     this._maybeShrinkTabs(true);
-    if (activeTab) {
-      this._maybeUpdateTabThumbnail(activeTab);
+    if (activeTab !== null) {
       this.scrollIntoView(activeTab);
+      this._maybeUpdateTabThumbnail(activeTab);
     }
     this._initializeFirstAndLastTabsObserver();
     setTimeout(() => document.body.classList.add("loaded"), 20);
