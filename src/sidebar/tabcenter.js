@@ -7,20 +7,18 @@ import { throttled } from "./utils.js";
 
 export default class TabCenter {
   async init() {
-    this._prefsLocalToSync();
-
     const window = await browser.windows.getCurrent();
     document.body.classList.toggle("incognito", window.incognito);
     this._windowId = window.id;
 
-    browser.runtime.getPlatformInfo().then(platform => {
-      document.body.setAttribute("platform", platform.os);
-    });
+    const platform = await browser.runtime.getPlatformInfo();
+    document.body.setAttribute("platform", platform.os);
 
     const search = this._search.bind(this);
     this._topMenu = new TopMenu({ search });
 
-    const prefs = await this._readPrefs();
+    const prefs = await this._getPrefs();
+    console.log(prefs);
     this._initPrefs(prefs);
 
     this._tablist = new TabList({
@@ -29,31 +27,8 @@ export default class TabCenter {
       prefs,
     });
 
-    this._setupListeners();
     browser.runtime.connect({ name: this._windowId.toString() });
-  }
-
-  // migrate user settings from local storage to sync storage
-  async _prefsLocalToSync() {
-    const prefDefaults = {
-      themeIntegration: true,
-      compactModeMode: 1,
-      compactPins: true,
-      switchLastActiveTab: true,
-      notifyClosingManyTabs: true,
-      useCustomCSS: true,
-      customCSS: "",
-    };
-    const localPrefs = await browser.storage.local.get(prefDefaults);
-
-    // rename (typo) setting `compactModeMode` to `compactMode`
-    localPrefs["compactMode"] = localPrefs["compactModeMode"];
-    delete localPrefs["compactModeMode"];
-
-    // merge with sync prefs and clear local storage
-    const prefs = await browser.storage.sync.get(localPrefs);
-    browser.storage.sync.set(prefs);
-    browser.storage.local.clear();
+    this._setupListeners();
   }
 
   _search(val) {
@@ -118,7 +93,17 @@ export default class TabCenter {
     document.getElementById("customCSS").textContent = this._useCustomCSS ? this._customCSS : "";
   }
 
-  _readPrefs() {
+  async _getPrefs() {
+    // migrate user settings from local storage to sync storage
+    const localPrefs = await browser.storage.local.get();
+    if (Object.keys(localPrefs).length !== 0) {
+      // rename (typo) setting `compactModeMode` to `compactMode`
+      localPrefs["compactMode"] = localPrefs["compactModeMode"];
+      delete localPrefs["compactModeMode"];
+      browser.storage.sync.set(localPrefs);
+      browser.storage.local.clear();
+    }
+
     return browser.storage.sync.get({
       animations: true,
       themeIntegration: true,
