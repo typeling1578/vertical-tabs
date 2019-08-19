@@ -135,7 +135,7 @@
         "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
     },
     "optionsThemeIntegrationExplanation": {
-        "message": "Das aktuelle Browsertheme anstelle des Standard Themes mit hellen Farben zu verwenden.",
+        "message": "Das aktuelle Browsertheme anstelle des Standard Themes mit hellen Farben verwenden.",
         "description": "Explanation for the Theme Integration option in the options page."
     },
     "contextMenuUnloadTab": {
