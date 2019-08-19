@@ -21,7 +21,7 @@
         "message": "البحث في علامات التبويب"
     },
     "closeTabButtonTooltip": {
-        "message": "أغلق علامة التبويب"
+        "message": "اغلق اللسان"
     },
     "allTabsLabel": {
         "message": "أظهر كل علامات التبويب…",
@@ -137,5 +137,21 @@
     "contextMenuCloseTabs": {
         "message": "اغلق الألسنة",
         "description": "Context Menu item label"
+    },
+    "optionsBehaviorTitle": {
+        "message": "السلوك",
+        "description": "Section in options page."
+    },
+    "optionsAppearanceTitle": {
+        "message": "المظهر",
+        "description": "Section in options page."
+    },
+    "newTabContextMenuOpenInPrivateWindow": {
+        "message": "نافذة خاصة جديدة",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
+    },
+    "newTabContextMenuOpenInWindow": {
+        "message": "نافذه جديدة",
+        "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
     }
 }

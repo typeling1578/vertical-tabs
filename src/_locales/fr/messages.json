@@ -87,7 +87,7 @@
         "message": "Dynamique"
     },
     "optionsCompactModeStrict": {
-        "message": "Toujours"
+        "message": "Activé"
     },
     "optionsCompactPins": {
         "message": "Favicon uniquement pour les onglets épinglés"
@@ -96,7 +96,7 @@
         "message": "Thème sombre"
     },
     "optionsThemeIntegration": {
-        "message": "Intégrer avec le thème personnalisé"
+        "message": "Utiliser le thème courant du navigateur"
     },
     "optionsAdvancedTitle": {
         "message": "Avancé"
@@ -123,11 +123,11 @@
         "message": "Déplacer vers la fin"
     },
     "extensionsLongDescription": {
-        "message": "Tab Center Reborn est la continuation de <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> pour proposer une extension simple, puissante et bien intégrée pour gérer ses onglets verticalement.\n\nL’extension fournit quelques paramètres et permet aux utilisateur·rice·s avancé·e·s de complètement personnaliser son apparence avec du CSS.\n\n<ul>\n<li>Utilisez Maj+F1 pour ouvrir ou fermer l’extension</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">Comment cacher la barre d’onglets</a></li>\n</ul>\n\nVous pouvez <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">contribuer avec des traductions, de la documentation, des rapports de problème ou du code</a> !\n\nPermissions utilisées :\n\n<ul>\n<li>Accéder à vos données pour tous les sites web: pour utiliser les conteneurs.</li>\n<li>Consulter et modifier les marque-pages: pour ne pas ouvrir une nouvelle fenêtre lorsqu’un onglet est lâché en dehors de la barre latérale mais sur la barre de marque-pages.</li>\n<li>Consulter et modifier les paramètres du navigateur: pour respecter les paramètres et le thème de Firefox.</li>\n<li>Vous afficher des notifications: pour afficher une notification quand vous avez fermé beaucoup d’onglets, vous permettant d’annuler cela.</li>\n<li>Accéder aux onglets récemment fermés: pour activer l’onglet utilisé avant.</li>\n<li>Afficher ou masquer les onglets du navigateur: utilisé uniquement dans les tests.</li>\n<li>Accéder aux onglets du navigateur: pour obtenir l’URL, le titre et le favicon des onglets.</li>\n<li>Accéder à l’activité du navigateur pendant la navigation: pour déclencher une animation supplémentaire quand une page a fini de charger ses ressources.</li>\n</ul>",
+        "message": "Tab Center Reborn est la continuation de <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> pour proposer une extension simple, puissante et bien intégrée pour gérer ses onglets verticalement.\n\nL’extension fournit quelques paramètres et permet aux utilisateur·rice·s avancé·e·s de complètement personnaliser son apparence avec du code CSS.\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home\n\nVous pourriez être particulièrement intéressés pour cacher la barre d’onglets du haut:\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\n\n\nFonctionnalités:\n– Toutes les fonctionnalités de la barre d’onglets de Firefox (épingler, dupliquer, déplacer au début/à la fin, fermer les onglets après, etc.)\n– Options “Décharger l’onglet” et “Fermer les onglets avant” pour s’adapter à la gestion de beaucoup d’onglets\n– Une notification vous permet d’annuler si “Fermer les onglets avant”, “Fermer les onglets après” ou “Fermer les autres onglets” a fermé plus de 5 onglets\n– A une apparence et un comportement natif, a des animations (désactivables)\n– Fonctionne et utilise les conteneurs: https://support.mozilla.org/en-US/kb/containers\n– Utilise le thème courant de Firefox, et est compatible avec Firefox Color: https://color.firefox.com/\n– Synchronise vos paramètres avec Firefox Sync\n\nRaccourcis globaux:\n– Maj + F1: ouvre ou ferme la barre latérale\n– Maj + F2: active l’onglet utilisé avant\nNotez que vous pouvez les configurer: https://support.mozilla.org/en-US/kb/manage-extension-shortcuts-firefox\n\nRaccourcis quand vous cliquez sur le bouton nouvel onglet/nom d’un conteneur dans le menu contextuel de nouvel onglet (clic-droit):\n– Ctrl + click: ouvre après l’onglet courant si c’est à la fin par défaut (et ouvre à la fin si c’est après l’onglet courant par défaut)\n– Maj + click: ouvre une nouvelle fenêtre\n– Ctrl + Maj + click: ouvre dans une fenêtre de navigation privée (si Tab Center Reborn est autorisé à s’exécuter dans les fenêtres privées)\n\n\nVous pouvez contribuer en rapportant des problèmes, en traduisant, en ajoutant de la documentation ou en développant!\nhttps://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\n\nPermissions utilisées:\n– Accéder à vos données pour tous les sites web: pour utiliser les conteneurs.\n– Consulter et modifier les marque-pages: pour ne pas ouvrir une nouvelle fenêtre lorsqu’un onglet est lâché en dehors de la barre latérale mais sur la barre de marque-pages.\n– Consulter et modifier les paramètres du navigateur: pour respecter les paramètres et le thème de Firefox.\n– Vous afficher des notifications: pour afficher une notification quand vous avez fermé beaucoup d’onglets, vous permettant d’annuler cela.\n– Accéder aux onglets récemment fermés: pour activer l’onglet utilisé avant.\n– Accéder aux onglets du navigateur: pour obtenir l’URL, le titre et le favicon des onglets.\n– Accéder à l’activité du navigateur pendant la navigation: pour déclencher une animation supplémentaire quand une page a fini de charger ses ressources.",
         "description": "Long description displayed on addons.mozilla.org."
     },
     "optionsThemeIntegrationExplanation": {
-        "message": "S’intègre avec le thème personnalisé au lieu d’utiliser le thème par défaut.",
+        "message": "Utiliser le thème courant du navigateur au lieu du thème clair par défaut.",
         "description": "Explanation for the Theme Integration option in the options page."
     },
     "closeTabsAfterWarning": {

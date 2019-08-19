@@ -87,7 +87,7 @@
         "message": "Dynamisch"
     },
     "optionsCompactModeStrict": {
-        "message": "Immer"
+        "message": "Aktiv"
     },
     "optionsCompactPins": {
         "message": "Angeheftete Tabs nur mit Favicon darstellen"
@@ -96,7 +96,7 @@
         "message": "Dunkle Darstellung"
     },
     "optionsThemeIntegration": {
-        "message": "Ins benutzerdefinierten Theme integrieren"
+        "message": "Das aktuelle Browsertheme verwenden"
     },
     "optionsAdvancedTitle": {
         "message": "Weitere Einstellungen"
@@ -123,7 +123,7 @@
         "message": "An Ende verschieben"
     },
     "extensionsLongDescription": {
-        "message": "Tab Center Reborn ist die Weiterentwicklung von <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> um eine einfache, leistungsstarke und gut integrierte Erweiterung für die vertikale Verwaltung von Tabs bereitzustellen.\n\nDie Erweiterung bietet eine handvoll Einstellungen und ermöglicht es fortgeschrittenen Benutzern, das Erscheinungsbild vollständig mit CSS-Code anzupassen.\n\n<ul>\n<li>Nutze Shift+F1 um die Erweiterung zu öffnen oder zu schließen</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">So blenden Sie die obere Tab-Leiste aus</a>\n</li>\n</ul>\n\nSie können die Erweiterung <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">im Rahmen der Übersetzung, Dokumentation, in dem sie Fehler melden oder mit Code unterstützen</a>!\n\nVerwendete Berechtigungen:\n\n<ul>\n<li>Auf Ihre Daten für alle Websites zugreifen: Um Tab-Umgebungen nutzen zu können.</li>\n<li>Lesezeichen lesen und verändern: Um kein neues Fenster zu öffnen, wenn ein Tab außerhalb der Sidebar auf der Lesezeichen-Symbolleiste abgelegt wird.</li>\n<li>Browser-Einstellungen lesen und verändern: Um die Firefox-Einstellungen und das Design nutzen zu können.</li>\n<li>Benachrichtigungen anzeigen: Um eine Benachrichtigung anzuzeigen, wenn Sie viele Tabs geschlossen haben, sodass Sie dies rückgängig machen können.</li>\n<li>Auf kürzlich geschlossene Tabs zugreifen: Um zum letzten Tab zu wechseln.</li>\n<li>Browsertabs ausblenden und anzeigen: Nur in Tests verwendet.</li>\n<li>Auf Browsertabs zugreifen: Um die URL, den Titel und das Favicon der Tabs zu erhalten.</li>\n<li>Auf Browseraktivität während Seitenwechsel zugreifen: Um eine zusätzliche Animation auszulösen, wenn eine Seite das Laden ihrer Ressourcen beendet hat.</li>\n</ul>",
+        "message": "Tab Center Reborn ist die Weiterentwicklung von <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> um eine einfache, leistungsstarke und gut integrierte Erweiterung für die vertikale Verwaltung von Tabs bereitzustellen.\n\nDie Erweiterung bietet eine handvoll Einstellungen und ermöglicht es fortgeschrittenen Benutzern, das Erscheinungsbild vollständig mit CSS-Code anzupassen.\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home\n\nFalls Sie daran interessiert sind, die obere Tab-Leiste auszulebend:\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\n\n\nFunktionen:\n– alle Funktionen der Firefox Tab-Leiste (anheften, duplizieren, Tab an den Anfang/ans Ende verschieben, alle Tabs unter dem aktuellen schließen)\n– die Optionen \"Tab entladen\" und \"Schließe alle Tabs von diesem\" dienen der Verwaltung vieler Tabs\n– eine Benachrichtigung ermöglicht es Ihnen, die Funktionen \"Schließe alle Tabs von diesem\", \"Schließe alle Tabs nach diesem\", \"Andere Tabs schließen\" rückgängig zu machen, falls Sie mehr als fünf Tabs auf einmal geschlossen haben\n– sieht und verhält sich nativ und bietet Animationen (können deaktiviert werden)\n– funktioniert und nutzt Tab-Umgebungen: https://support.mozilla.org/de/kb/firefox-tab-container\n– nutzt das aktuelle Firefox-Theme und ist ebenfalls kompatibel mit Firefox Color: https://color.firefox.com/\n– synchronisieren Sie Ihre Einstellungen mit Firefox Sync\n\nAllgemeine Tastenkombinationen:\n– Umschalt + F1: Öffnet oder schließt die Sidebar\n– Umschalt + F2: wechselt zum letzten aktiven Tab\nBeachten Sie, dass Sie die Tastenkombinationen konfigurieren können: https://support.mozilla.org/de/kb/tastenkombinationen-fur-erweiterungen-verwalten\n\nTastenkombinationen beim Klicken auf die \"neuen Tab\"-Schaltfläche/den Namen der Tab-Umgebungen im Kontextmenü (Rechtsklick):\n– Strg + klick: öffnet den Tab nach dem aktuellen, sofern am Ende öffnen der gesetzte Standard (und öffnet den neuen Tab am Ende, sofern nach dem aktuellen öffnen als Standard gesetzt ist)\n– Shift + klick: öffnet ein neues Fenster\n– Strg+ Shift + klick: öffnet ein neues privates Fenster (sofern Tab Center Reborn im privaten Fenster ausgeführt werden darf)\n\n\nSie können die Erweiterung im Rahmen der Übersetzung, Dokumentation, in dem sie Fehler melden oder mit Code unterstützen!\nhttps://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\n\nVerwendete Berechtigungen:\n– Auf Ihre Daten für alle Websites zugreifen: Um Tab-Umgebungen nutzen zu können.\n– Lesezeichen lesen und verändern: Um kein neues Fenster zu öffnen, wenn ein Tab außerhalb der Sidebar auf der Lesezeichen-Symbolleiste abgelegt wird.\n– Browser-Einstellungen lesen und verändern: Um die Firefox-Einstellungen und das Design nutzen zu können.\n– Benachrichtigungen anzeigen: Um eine Benachrichtigung anzuzeigen, wenn Sie viele Tabs geschlossen haben, sodass Sie dies rückgängig machen können\n– Auf kürzlich geschlossene Tabs zugreifen: Um zum letzten Tab zu wechseln.\n– Auf Browsertabs zugreifen: Um die URL, den Titel und das Favicon der Tabs zu erhalten.\n– Auf Browser Aktivität während des Seitenwechsels zugreifen: Um eine zusätzliche Animation auszulösen, wenn eine Seite das Laden Ihrer Ressourcen beendet hat.",
         "description": "Long description displayed on addons.mozilla.org."
     },
     "closeTabsAfterWarning": {
@@ -135,7 +135,7 @@
         "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
     },
     "optionsThemeIntegrationExplanation": {
-        "message": "Ins benutzerdefiniertes Theme integrieren, anstatt das obige Theme zu verwenden. Schließen und öffnen Sie die Sidebar erneut, nachdem Sie wieder zu einem Standardtheme von Firefox gewechselt haben.",
+        "message": "Das aktuelle Browsertheme anstelle des Standard Themes mit hellen Farben zu verwenden.",
         "description": "Explanation for the Theme Integration option in the options page."
     },
     "contextMenuUnloadTab": {
@@ -143,7 +143,7 @@
         "description": "Context menu item label."
     },
     "optionsSwitchLastActiveTabExplanation": {
-        "message": "Durch klicken auf den aktiven Tab, wird zum vorher aktiven Tab gewechselt.",
+        "message": "Auf den aktiven Tab klicken, um zum vorher aktiven Tab zu wechseln.",
         "description": "Explanation for the Compact Mode option in options page."
     },
     "optionsSwitchLastActiveTab": {
@@ -233,5 +233,9 @@
     "optionsCustomCSSChangelogLink": {
         "message": "Sehen Sie sich die neuen Funktionen an, um sich über Änderungen zu informieren, die die Kompatibilität beeinträchtigen",
         "description": "Text for a link to the changelog."
+    },
+    "OptionsAnimations": {
+        "message": "Animationen",
+        "description": "Option in options page."
     }
 }
