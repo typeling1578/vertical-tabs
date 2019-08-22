@@ -241,10 +241,10 @@ body.has-custom-input-color #searchbox-input::selection {
 }
 
 #pinnedtablist.compact .tab {
-  height: var(--tab-height-compact);
-  max-height: var(--tab-height-compact);
-  width: var(--tab-height-compact);
-  max-width: var(--tab-height-compact);
+  height: calc(var(--tab-height-compact) - 2px);
+  max-height: calc(var(--tab-height-compact) - 2px);
+  width: calc(var(--tab-height-compact) - 2px);
+  max-width: calc(var(--tab-height-compact) - 2px);
   min-width: 0;
 }
 
@@ -572,6 +572,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   background-position: center;
   background-size: contain;
   background-origin: content-box;
+  margin: 3px auto;
 }
 
 .tab-icon.chrome-icon {
