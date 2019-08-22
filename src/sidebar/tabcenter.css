@@ -1,5 +1,15 @@
 @import url("lib/photon-colors.css");
 
+body > * {
+  /* display: none; */
+  visibility: hidden;
+}
+
+body.loaded > * {
+  /* display: inherit; */
+  visibility: visible;
+}
+
 :root {
   --button-border-radius: 4px;
   --button-background-active: hsla(0, 0%, 70%, 0.6);
@@ -256,8 +266,8 @@ body.has-custom-input-color #searchbox-input::selection {
   position: relative;
 }
 
-body.loaded.animated #tablist-wrapper .tab {
-  transition: box-shadow 0.1s ease, height 0.08s linear, width 0.08s linear;
+body.animated #tablist-wrapper .tab {
+  transition: box-shadow 0.1s ease, height 0.1s ease, width 0.1s ease;
 }
 
 #tablist.compact .tab.deleted + .tab,

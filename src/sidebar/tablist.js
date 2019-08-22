@@ -46,7 +46,6 @@ export default class TabList {
     this._moreTabsView.textContent = browser.i18n.getMessage("allTabsLabel");
 
     this._animations = this._props.prefs.animations;
-    document.body.classList.toggle("animated", this._animations);
     this._compactMode = parseInt(this._props.prefs.compactMode);
     this._compactPins = this._props.prefs.compactPins;
     this._switchLastActiveTab = this._props.prefs.switchLastActiveTab;
@@ -63,7 +62,7 @@ export default class TabList {
     this.tabContextMenu = new ContextMenu(this);
   }
 
-  async _setupListeners() {
+  _setupListeners() {
     // Tab events
     browser.tabs.onCreated.addListener(tab => this._onBrowserTabCreated(tab));
     browser.tabs.onActivated.addListener(activeInfo => this._onBrowserTabActivated(activeInfo));
@@ -848,13 +847,14 @@ export default class TabList {
     }
     this._pinnedview.appendChild(pinnedFragment);
     this._view.appendChild(unpinnedFragment);
+    document.body.classList.add("loaded");
     this._maybeShrinkTabs(true);
     if (activeTab !== null) {
       this.scrollIntoView(activeTab);
       this._maybeUpdateTabThumbnail(activeTab);
     }
     this._initializeFirstAndLastTabsObserver();
-    setTimeout(() => document.body.classList.add("loaded"), 20);
+    setTimeout(() => document.body.classList.toggle("animated", this._animations), 30);
   }
 
   checkWindow(windowId) {

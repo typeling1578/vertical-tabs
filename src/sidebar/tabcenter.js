@@ -18,7 +18,6 @@ export default class TabCenter {
     this._topMenu = new TopMenu({ search });
 
     const prefs = await this._getPrefs();
-    console.log(prefs);
     this._initPrefs(prefs);
 
     this._tablist = new TabList({
