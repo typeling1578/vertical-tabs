@@ -68,7 +68,7 @@
   },
   "homepage": "https://framagit.org/ariasuni/tabcenter-reborn#readme",
   "devDependencies": {
-    "concurrently": "^4.1.1",
+    "concurrently": "^4.1.2",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "husky": "^2.7.0",
@@ -79,8 +79,8 @@
     "stylelint": "^10.1.0",
     "stylelint-config-recommended": "^2.2.0",
     "web-ext": "^3.1.1",
-    "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6"
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
   },
   "dependencies": {
     "fuzzysort": "^1.1.4"
