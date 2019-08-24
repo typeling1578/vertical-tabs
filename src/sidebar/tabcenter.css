@@ -418,7 +418,7 @@ body:not(.incognito) #pinnedtablist:not(.compact) .tab.hasContext .tab-context {
 }
 
 #pinnedtablist.compact .tab .tab-meta-image {
-  margin-bottom: -1px; /* Make favicon feel centered even when active */
+  margin-bottom: -1px; /* Make favicon feel centered even when tab is active */
 }
 
 #pinnedtablist.compact .tab.active {
@@ -779,7 +779,12 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   display: none;
 }
 
+#tablist-wrapper:not(.can-scroll-top):not(.can-scroll-bottom) #moretabs {
+  border-bottom: 1px solid var(--tab-separator);
+}
+
 .hidden,
+.filtered,
 .will-be-deleted {
   display: none !important;
 }

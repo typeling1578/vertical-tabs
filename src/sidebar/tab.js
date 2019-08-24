@@ -166,12 +166,12 @@ export default class SideTab {
 
   updateSearchVisibility(show) {
     this._filtered = !show;
-    tab.view.classList.toggle("filtered", !show);
+    this.view.classList.toggle("filtered", !show);
   }
 
   updateWillBeDeletedVisibility(show) {
     this._willBeDeleted = !show;
-    tab.view.classList.toggle("will-be-deleted", !show);
+    this.view.classList.toggle("will-be-deleted", !show);
   }
 
   isVisible() {

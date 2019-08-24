@@ -157,7 +157,7 @@ export default class TabList {
   async _setFirstAndLastTabObserver() {
     this._firstAndLastTabObserver.disconnect();
     const tabViews = this._view.querySelectorAll(
-      ".tab:not(.hidden):not(.deleted):not(.will-be-deleted)",
+      ".tab:not(.hidden):not(.filtered):not(.deleted):not(.will-be-deleted)",
     );
     if (tabViews.length <= 2) {
       this.__toggleShadow("can-scroll-top", false);
