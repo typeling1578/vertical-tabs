@@ -102,6 +102,7 @@ export default class TabCenter {
       delete localPrefs["warnBeforeClosing"];
 
       browser.storage.sync.set(localPrefs);
+      browser.storage.sync.remove("warnBeforeClosing");
       browser.storage.local.clear();
     }
 
