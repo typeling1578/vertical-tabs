@@ -1,3 +1,30 @@
+## 2.0.0
+
+- Fix wrong focus after closing new tab opened with new tab button
+- Don’t animate tab moving to avoid scrollbar jumps
+- Don’t display pinned tab list when searching and no result is pinned
+- Add tooltip to audible/unmute button on tabs
+- Notify and allows to undo when closing many tabs, instead of asking
+- Fix bottom shadow appearing when there’s only one tab remaining
+- Use a replacement for tabs.duplicate() to avoid limitations and bugs
+- Improve how tabs hiding is managed to avoid bugs
+- Improve performance of animations of opening/closing of tab
+- Make close button bigger so it’s much easier to click on
+- Update spinner (use current one from Firefox) to improve performance
+- Add entries to new tab context menu (right-click menu)
+- (Un)shrink tabs only if pointer is out of the sidebar
+- Synchronize settings with Firefox Sync
+- Improved theme integration, removed Dark theme since it’s no longer useful
+- Add keyboard shortcut Shift + F2 to switch to last active tab
+- Add option to disable animations
+- Improve sidebar startup performance
+
+For Custom CSS users:
+
+- Use `--tab-height-normal` and `--tab-height-compact` to change tab height.
+- Dark theme is available on the wiki if you want to apply it manually:
+  https://framagit.org/ariasuni/tabcenter-reborn/wikis/themes
+
 ## 1.0.0
 
 - New awesome logo! No more on/off badge to make it stand out.
