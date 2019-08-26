@@ -99,6 +99,8 @@ export default class TabCenter {
       // rename (typo) setting `compactModeMode` to `compactMode`
       localPrefs["compactMode"] = localPrefs["compactModeMode"];
       delete localPrefs["compactModeMode"];
+      delete localPrefs["warnBeforeClosing"];
+
       browser.storage.sync.set(localPrefs);
       browser.storage.local.clear();
     }
@@ -109,7 +111,7 @@ export default class TabCenter {
       compactMode: 1 /* COMPACT_MODE_DYNAMIC */,
       compactPins: true,
       switchLastActiveTab: true,
-      warnBeforeClosing: true,
+      notifyClosingManyTabs: true,
       useCustomCSS: true,
       customCSS: "",
     });

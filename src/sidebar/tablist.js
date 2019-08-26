@@ -46,7 +46,7 @@ export default class TabList {
     this._moreTabsView.textContent = browser.i18n.getMessage("allTabsLabel");
 
     this._animations = this._props.prefs.animations;
-    this._compactMode = parseInt(this._props.prefs.compactMode);
+    this._compactMode = this._props.prefs.compactMode;
     this._compactPins = this._props.prefs.compactPins;
     this._switchLastActiveTab = this._props.prefs.switchLastActiveTab;
     this._notifyClosingManyTabs = this._props.prefs.notifyClosingManyTabs;
