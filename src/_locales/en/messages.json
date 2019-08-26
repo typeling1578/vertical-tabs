@@ -28,19 +28,19 @@
         "description": "Tooltip of the settings button in the top menu."
     },
     "newTabContextMenuOpenAtEnd": {
-        "message": "At End",
+        "message": "At &End",
         "description": "New Tab context menu item."
     },
     "newTabContextMenuOpneAfterCurrent": {
-        "message": "Next to Current Tab",
+        "message": "&Next to Current Tab",
         "description": "New Tab context menu item."
     },
     "newTabContextMenuOpenInWindow": {
-        "message": "New Window",
+        "message": "New &Window",
         "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
     },
     "newTabContextMenuOpenInPrivateWindow": {
-        "message": "New Private Window",
+        "message": "New &Private Window",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
     },
     "muteTabButtonTooltip": {
@@ -60,75 +60,75 @@
         "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
     },
     "contextMenuReloadTab": {
-        "message": "Reload Tab",
+        "message": "&Reload Tab",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197237. Context menu item label."
     },
     "contextMenuPinTab": {
-        "message": "Pin Tab",
+        "message": "&Pin Tab",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197249. Context menu item label."
     },
     "contextMenuUnpinTab": {
-        "message": "Unpin Tab",
+        "message": "Un&pin Tab",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197266. Context menu item label."
     },
     "contextMenuMuteTab": {
-        "message": "Mute Tab",
+        "message": "&Mute Tab",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Context menu item label and tooltip of the audible icon on tabs."
     },
     "contextMenuUnmuteTab": {
-        "message": "Unmute Tab",
+        "message": "Un&mute Tab",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Context menu item label and tooltip of the unmute icon on tabs."
     },
     "contextMenuDuplicateTab": {
-        "message": "Duplicate Tab",
+        "message": "&Duplicate Tab",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197263. Context menu item label."
     },
     "contextMenuUnloadTab": {
-        "message": "Unload Tab",
+        "message": "Un&load Tab",
         "description": "Context menu item label."
     },
     "contextMenuOpenInContextualTab": {
-        "message": "Reopen in Container",
+        "message": "Reopen in C&ontainer",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197234. Context menu item label."
     },
     "contextMenuMoveTab": {
-        "message": "Move Tab",
+        "message": "Mo&ve Tab",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197269. Context menu item label."
     },
     "contextMenuMoveTabToStart": {
-        "message": "Move to Start",
+        "message": "Move to &Start",
         "description": "Context menu item label."
     },
     "contextMenuMoveTabToEnd": {
-        "message": "Move to End",
+        "message": "Move to &End",
         "description": "Context menu item label."
     },
     "contextMenuMoveTabToNewWindow": {
-        "message": "Move to New Window",
+        "message": "Move to New &Window",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197261. Context menu item label."
     },
     "contextMenuCloseTabs": {
-        "message": "Close Tabs",
+        "message": "Close Tab&s",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197250. Context Menu item label"
     },
     "contextMenuCloseTabsBefore": {
-        "message": "Close Tabs Before",
+        "message": "Close Tabs &Before",
         "description": "Context menu item label."
     },
     "contextMenuCloseTabsAfter": {
-        "message": "Close Tabs After",
+        "message": "Close Tabs &After",
         "description": "Context menu item label."
     },
     "contextMenuCloseOtherTabs": {
-        "message": "Close Other Tabs",
+        "message": "Close &Other Tabs",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197270. Context menu item label."
     },
     "contextMenuUndoCloseTab": {
-        "message": "Undo Close Tab",
+        "message": "&Undo Close Tab",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197236. Context menu item label."
     },
     "contextMenuCloseTab": {
-        "message": "Close Tab",
+        "message": "&Close Tab",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197248. Context menu item label."
     },
     "optionsAppearanceTitle": {
