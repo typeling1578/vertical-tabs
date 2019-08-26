@@ -16,7 +16,7 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=176230. Label shown in the sidebar selector."
     },
     "newTabBtnTooltip": {
-        "message": "Obrir una nova pestanya",
+        "message": "Obre una pestanya nova",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=74421. Tooltip of the New Tab button in the top menu."
     },
     "searchPlaceholder": {
@@ -40,7 +40,7 @@
         "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
     },
     "newTabContextMenuOpenInPrivateWindow": {
-        "message": "Nova finestres de navegació privada",
+        "message": "Finestra privada nova",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
     },
     "muteTabButtonTooltip": {
@@ -60,27 +60,27 @@
         "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
     },
     "contextMenuReloadTab": {
-        "message": "",
+        "message": "Torna a carregar la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197237. Context menu item label."
     },
     "contextMenuPinTab": {
-        "message": "",
+        "message": "Fixa la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197249. Context menu item label."
     },
     "contextMenuUnpinTab": {
-        "message": "",
+        "message": "No fixis la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197266. Context menu item label."
     },
     "contextMenuMuteTab": {
-        "message": "",
+        "message": "Silencia la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Context menu item label and tooltip of the audible icon on tabs."
     },
     "contextMenuUnmuteTab": {
-        "message": "",
+        "message": "No silenciïs la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Context menu item label and tooltip of the unmute icon on tabs."
     },
     "contextMenuDuplicateTab": {
-        "message": "",
+        "message": "Duplica la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197263. Context menu item label."
     },
     "contextMenuUnloadTab": {
@@ -88,11 +88,11 @@
         "description": "Context menu item label."
     },
     "contextMenuOpenInContextualTab": {
-        "message": "",
+        "message": "Torna a obrir en un contenidor",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197234. Context menu item label."
     },
     "contextMenuMoveTab": {
-        "message": "",
+        "message": "Mou la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197269. Context menu item label."
     },
     "contextMenuMoveTabToStart": {
@@ -104,11 +104,11 @@
         "description": "Context menu item label."
     },
     "contextMenuMoveTabToNewWindow": {
-        "message": "",
+        "message": "Mou a una finestra nova",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197261. Context menu item label."
     },
     "contextMenuCloseTabs": {
-        "message": "",
+        "message": "Tanca les pestanyes",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197250. Context Menu item label"
     },
     "contextMenuCloseTabsBefore": {
@@ -120,15 +120,15 @@
         "description": "Context menu item label."
     },
     "contextMenuCloseOtherTabs": {
-        "message": "",
+        "message": "Tanca les altres pestanyes",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197270. Context menu item label."
     },
     "contextMenuUndoCloseTab": {
-        "message": "",
+        "message": "Desfés el tancament de la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197236. Context menu item label."
     },
     "contextMenuCloseTab": {
-        "message": "",
+        "message": "Tanca la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197248. Context menu item label."
     },
     "optionsAppearanceTitle": {
@@ -198,7 +198,7 @@
         }
     },
     "optionsAdvancedTitle": {
-        "message": "",
+        "message": "Avançat",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=176300. Section in options page."
     },
     "optionsCustomCSS": {
