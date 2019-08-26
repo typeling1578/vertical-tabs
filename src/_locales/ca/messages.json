@@ -8,7 +8,7 @@
         "description": "Long description displayed on addons.mozilla.org. Don’t forget to change links for the current language. You can copy translated permissions from your language version of https://support.mozilla.org/en-US/kb/permission-request-messages-firefox-extensions."
     },
     "browserActionTitle": {
-        "message": "",
+        "message": "Activar/desactivar Tab Center Reborn",
         "description": "Tooltip shown when hovering the toolbar button."
     },
     "sidebarTitle": {
@@ -56,7 +56,7 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197248. Tooltip of the close button on tabs."
     },
     "allTabsLabel": {
-        "message": "",
+        "message": "Mostrar totes les pestanyes …",
         "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
     },
     "contextMenuReloadTab": {
@@ -84,7 +84,7 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197263. Context menu item label."
     },
     "contextMenuUnloadTab": {
-        "message": "",
+        "message": "Descarregar la pestanya",
         "description": "Context menu item label."
     },
     "contextMenuOpenInContextualTab": {
@@ -96,11 +96,11 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197269. Context menu item label."
     },
     "contextMenuMoveTabToStart": {
-        "message": "",
+        "message": "Moure a l'inici",
         "description": "Context menu item label."
     },
     "contextMenuMoveTabToEnd": {
-        "message": "",
+        "message": "Moure cap al final",
         "description": "Context menu item label."
     },
     "contextMenuMoveTabToNewWindow": {
@@ -112,11 +112,11 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197250. Context Menu item label"
     },
     "contextMenuCloseTabsBefore": {
-        "message": "",
+        "message": "Tancar les pestanyes anteriors",
         "description": "Context menu item label."
     },
     "contextMenuCloseTabsAfter": {
-        "message": "",
+        "message": "Tancar les pestanyes de després",
         "description": "Context menu item label."
     },
     "contextMenuCloseOtherTabs": {
@@ -132,7 +132,7 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197248. Context menu item label."
     },
     "optionsAppearanceTitle": {
-        "message": "",
+        "message": "Aparença",
         "description": "Section in options page."
     },
     "optionsSwitchLastActiveTabExplanation": {
@@ -140,11 +140,11 @@
         "description": "Explanation for the Compact Mode option in options page."
     },
     "OptionsAnimations": {
-        "message": "",
+        "message": "Animacions",
         "description": "Option in options page."
     },
     "optionsCompactMode": {
-        "message": "",
+        "message": "Mode compacte",
         "description": "Option in options page."
     },
     "optionsCompactModeExplanation": {
