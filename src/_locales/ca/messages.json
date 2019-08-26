@@ -12,11 +12,11 @@
         "description": "Tooltip shown when hovering the toolbar button."
     },
     "sidebarTitle": {
-        "message": "",
+        "message": "Pestanyes",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=176230. Label shown in the sidebar selector."
     },
     "newTabBtnTooltip": {
-        "message": "",
+        "message": "Obrir una nova pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=74421. Tooltip of the New Tab button in the top menu."
     },
     "searchPlaceholder": {
@@ -24,7 +24,7 @@
         "description": "Placehorder of the Search bar in the top menu."
     },
     "settingsBtnTooltip": {
-        "message": "",
+        "message": "Obrir la configuració",
         "description": "Tooltip of the settings button in the top menu."
     },
     "newTabContextMenuOpenAtEnd": {
@@ -36,11 +36,11 @@
         "description": "New Tab context menu item."
     },
     "newTabContextMenuOpenInWindow": {
-        "message": "",
+        "message": "Nova finestra",
         "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
     },
     "newTabContextMenuOpenInPrivateWindow": {
-        "message": "",
+        "message": "Nova finestres de navegació privada",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
     },
     "muteTabButtonTooltip": {
