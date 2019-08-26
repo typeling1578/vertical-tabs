@@ -191,7 +191,7 @@ img,
 }
 
 body[platform="win"] #searchbox-input {
-  border-radius: 0;
+  border-radius: 2px;
 }
 
 body[platform="mac"] #searchbox-input {
