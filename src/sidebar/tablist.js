@@ -91,7 +91,7 @@ export default class TabList {
       view.addEventListener("click", e => this._onClick(e));
       view.addEventListener("dblclick", e => this._onDblClick(e));
       view.addEventListener("auxclick", e => this._onAuxClick(e));
-      view.addEventListener("pointerdown", e => this._onPointerDown(e));
+      view.addEventListener("mousedown", e => this._onMouseDown(e));
       view.addEventListener("pointerup", e => this._onPointerUp(e));
       view.addEventListener("pointerover", e => this._onPointerOver(e));
       view.addEventListener("contextmenu", e => this.tabContextMenu.open(e), true);
@@ -325,7 +325,7 @@ export default class TabList {
     sidetab.burst();
   }
 
-  _onPointerDown(e) {
+  _onMouseDown(e) {
     // Prevent autoscrolling on middle click
     if (e.button === 1) {
       e.preventDefault();
