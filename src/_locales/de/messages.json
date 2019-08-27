@@ -1,6 +1,6 @@
 {
     "extensionDescription": {
-        "message": "Verschieben Sie Ihre Tabs an die Seite Ihres Browserfensters."
+        "message": "Einfache und leistungsstarke vertikale Tab-Leiste"
     },
     "browserActionTitle": {
         "message": "Tab Center Reborn anzeigen/ausblenden",
@@ -28,45 +28,45 @@
         "description": "Shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
     },
     "contextMenuReloadTab": {
-        "message": "Tab neu laden",
+        "message": "Tab &neu laden",
         "description": "Reload Tab context menu item label."
     },
     "contextMenuPinTab": {
-        "message": "Tab anheften",
+        "message": "Tab &anheften",
         "description": "Pin Tab context menu item label."
     },
     "contextMenuUnpinTab": {
-        "message": "Tab ablösen",
+        "message": "Tab &ablösen",
         "description": "Unpin Tab context menu item label."
     },
     "contextMenuMuteTab": {
-        "message": "Tab stummschalten",
+        "message": "Tab stu&mmschalten",
         "description": "Mute Tab context menu item label."
     },
     "contextMenuUnmuteTab": {
-        "message": "Stummschaltung für Tab aufheben",
+        "message": "Stu&mmschaltung für Tab aufheben",
         "description": "Unmute Tab context menu item label."
     },
     "contextMenuCloseTab": {
-        "message": "Tab schließen"
+        "message": "Tab &schließen"
     },
     "contextMenuUndoCloseTab": {
-        "message": "Tab wiederherstellen"
+        "message": "Geschlossenen Tab &wiederherstellen"
     },
     "contextMenuDuplicateTab": {
-        "message": "Tab klonen"
+        "message": "Tab &klonen"
     },
     "contextMenuMoveTabToNewWindow": {
-        "message": "In neues Fenster verschieben"
+        "message": "In neues &Fenster verschieben"
     },
     "contextMenuReloadAllTabs": {
         "message": "Alle Tabs neu laden"
     },
     "contextMenuCloseTabsAfter": {
-        "message": "Schließe alle Tabs unter diesem"
+        "message": "&Nächsten Tabs schließen"
     },
     "contextMenuCloseOtherTabs": {
-        "message": "Andere Tabs schließen"
+        "message": "&Andere Tabs schließen"
     },
     "settingsBtnTooltip": {
         "message": "Einstellungen öffnen"
@@ -111,19 +111,19 @@
         "message": "Stylesheet speichern"
     },
     "contextMenuOpenInContextualTab": {
-        "message": "In Tab-Umgebung öffnen"
+        "message": "In Tab-&Umgebung öffnen"
     },
     "contextMenuMoveTab": {
-        "message": "Tab verschieben"
+        "message": "Tab &verschieben"
     },
     "contextMenuMoveTabToStart": {
-        "message": "An Anfang verschieben"
+        "message": "An &Anfang verschieben"
     },
     "contextMenuMoveTabToEnd": {
-        "message": "An Ende verschieben"
+        "message": "An &Ende verschieben"
     },
     "extensionsLongDescription": {
-        "message": "Tab Center Reborn ist die Weiterentwicklung von <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> um eine einfache, leistungsstarke und gut integrierte Erweiterung für die vertikale Verwaltung von Tabs bereitzustellen.\n\nDie Erweiterung bietet eine handvoll Einstellungen und ermöglicht es fortgeschrittenen Benutzern, das Erscheinungsbild vollständig mit CSS-Code anzupassen.\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home\n\nFalls Sie daran interessiert sind, die obere Tab-Leiste auszulebend:\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\n\n\nFunktionen:\n– alle Funktionen der Firefox Tab-Leiste (anheften, duplizieren, Tab an den Anfang/ans Ende verschieben, alle Tabs unter dem aktuellen schließen)\n– die Optionen \"Tab entladen\" und \"Schließe alle Tabs von diesem\" dienen der Verwaltung vieler Tabs\n– eine Benachrichtigung ermöglicht es Ihnen, die Funktionen \"Schließe alle Tabs von diesem\", \"Schließe alle Tabs nach diesem\", \"Andere Tabs schließen\" rückgängig zu machen, falls Sie mehr als fünf Tabs auf einmal geschlossen haben\n– sieht und verhält sich nativ und bietet Animationen (können deaktiviert werden)\n– funktioniert und nutzt Tab-Umgebungen: https://support.mozilla.org/de/kb/firefox-tab-container\n– nutzt das aktuelle Firefox-Theme und ist ebenfalls kompatibel mit Firefox Color: https://color.firefox.com/\n– synchronisieren Sie Ihre Einstellungen mit Firefox Sync\n\nAllgemeine Tastenkombinationen:\n– Umschalt + F1: Öffnet oder schließt die Sidebar\n– Umschalt + F2: wechselt zum letzten aktiven Tab\nBeachten Sie, dass Sie die Tastenkombinationen konfigurieren können: https://support.mozilla.org/de/kb/tastenkombinationen-fur-erweiterungen-verwalten\n\nTastenkombinationen beim Klicken auf die \"neuen Tab\"-Schaltfläche/den Namen der Tab-Umgebungen im Kontextmenü (Rechtsklick):\n– Strg + klick: öffnet den Tab nach dem aktuellen, sofern am Ende öffnen der gesetzte Standard (und öffnet den neuen Tab am Ende, sofern nach dem aktuellen öffnen als Standard gesetzt ist)\n– Shift + klick: öffnet ein neues Fenster\n– Strg+ Shift + klick: öffnet ein neues privates Fenster (sofern Tab Center Reborn im privaten Fenster ausgeführt werden darf)\n\n\nSie können die Erweiterung im Rahmen der Übersetzung, Dokumentation, in dem sie Fehler melden oder mit Code unterstützen!\nhttps://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\n\nVerwendete Berechtigungen:\n– Auf Ihre Daten für alle Websites zugreifen: Um Tab-Umgebungen nutzen zu können.\n– Lesezeichen lesen und verändern: Um kein neues Fenster zu öffnen, wenn ein Tab außerhalb der Sidebar auf der Lesezeichen-Symbolleiste abgelegt wird.\n– Browser-Einstellungen lesen und verändern: Um die Firefox-Einstellungen und das Design nutzen zu können.\n– Benachrichtigungen anzeigen: Um eine Benachrichtigung anzuzeigen, wenn Sie viele Tabs geschlossen haben, sodass Sie dies rückgängig machen können\n– Auf kürzlich geschlossene Tabs zugreifen: Um zum letzten Tab zu wechseln.\n– Auf Browsertabs zugreifen: Um die URL, den Titel und das Favicon der Tabs zu erhalten.\n– Auf Browser Aktivität während des Seitenwechsels zugreifen: Um eine zusätzliche Animation auszulösen, wenn eine Seite das Laden Ihrer Ressourcen beendet hat.",
+        "message": "Tab Center Reborn ist die Weiterentwicklung von <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> um eine einfache, leistungsstarke und gut integrierte Erweiterung für die vertikale Verwaltung von Tabs bereitzustellen.\n\nDie Erweiterung bietet eine handvoll Einstellungen und ermöglicht es fortgeschrittenen Benutzern, das Erscheinungsbild vollständig mit CSS-Code anzupassen.\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home\n\nFalls Sie daran interessiert sind, die obere Tab-Leiste auszulebend:\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\n\n\nFunktionen:\n– alle Funktionen der Firefox Tab-Leiste (anheften, duplizieren, Tab an den Anfang/ans Ende verschieben, alle Tabs unter dem aktuellen schließen)\n– die Optionen \"Tab entladen\" und \"Schließe alle Tabs von diesem\" dienen der Verwaltung vieler Tabs\n– eine Benachrichtigung ermöglicht es Ihnen, die Funktionen \"Schließe alle Tabs von diesem\", \"Schließe alle Tabs nach diesem\", \"Andere Tabs schließen\" rückgängig zu machen, falls Sie mehr als fünf Tabs auf einmal geschlossen haben\n– sieht und verhält sich nativ und bietet Animationen (können deaktiviert werden)\n– funktioniert und nutzt Tab-Umgebungen: https://support.mozilla.org/de/kb/firefox-tab-container\n– lässt sich vollständig in die Firefox-Themes integrieren (einfachere Themes bieten nicht genügend Farben, um mit ihnen zu arbeiten)\n– synchronisieren Sie Ihre Einstellungen mit Firefox Sync\n\nAllgemeine Tastenkombinationen:\n– Umschalt + F1: Öffnet oder schließt die Sidebar\n– Umschalt + F2: wechselt zum letzten aktiven Tab\nBeachten Sie, dass Sie die Tastenkombinationen konfigurieren können: https://support.mozilla.org/de/kb/tastenkombinationen-fur-erweiterungen-verwalten\n\nTastenkombinationen beim Klicken auf die \"neuen Tab\"-Schaltfläche/den Namen der Tab-Umgebungen im Kontextmenü (Rechtsklick):\n– Strg + klick: öffnet den Tab nach dem aktuellen, sofern am Ende öffnen der gesetzte Standard (und öffnet den neuen Tab am Ende, sofern nach dem aktuellen öffnen als Standard gesetzt ist)\n– Shift + klick: öffnet ein neues Fenster\n– Strg+ Shift + klick: öffnet ein neues privates Fenster (sofern Tab Center Reborn im privaten Fenster ausgeführt werden darf)\n\n\nSie können die Erweiterung im Rahmen der Übersetzung, Dokumentation, in dem sie Fehler melden oder mit Code unterstützen!\nhttps://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\n\nVerwendete Berechtigungen:\n– Auf Ihre Daten für alle Websites zugreifen: Um Tab-Umgebungen nutzen zu können.\n– Lesezeichen lesen und verändern: Um kein neues Fenster zu öffnen, wenn ein Tab außerhalb der Sidebar auf der Lesezeichen-Symbolleiste abgelegt wird.\n– Browser-Einstellungen lesen und verändern: Um die Firefox-Einstellungen und das Design nutzen zu können.\n– Benachrichtigungen anzeigen: Um eine Benachrichtigung anzuzeigen, wenn Sie viele Tabs geschlossen haben, sodass Sie dies rückgängig machen können\n– Auf kürzlich geschlossene Tabs zugreifen: Um zum letzten Tab zu wechseln.\n– Auf Browsertabs zugreifen: Um die URL, den Titel und das Favicon der Tabs zu erhalten.\n– Auf Browseraktivität während Seitenwechsel zugreifen: Um eine zusätzliche Animation auszulösen, wenn eine Seite das Laden Ihrer Ressourcen beendet hat.",
         "description": "Long description displayed on addons.mozilla.org."
     },
     "closeTabsAfterWarning": {
@@ -139,7 +139,7 @@
         "description": "Explanation for the Theme Integration option in the options page."
     },
     "contextMenuUnloadTab": {
-        "message": "Tab entladen",
+        "message": "Tab &entladen",
         "description": "Context menu item label."
     },
     "optionsSwitchLastActiveTabExplanation": {
@@ -199,11 +199,11 @@
         "description": "Option in options page."
     },
     "contextMenuCloseTabsBefore": {
-        "message": "Vorherige Tabs schließen",
+        "message": "&Vorherige Tabs schließen",
         "description": "Context menu item label."
     },
     "contextMenuCloseTabs": {
-        "message": "Tabs schließen",
+        "message": "&Tabs schließen",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197250. Context Menu item label"
     },
     "unmuteTabButtonTooltip": {
@@ -215,19 +215,19 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
     },
     "newTabContextMenuOpenInPrivateWindow": {
-        "message": "Neues privates Fenster",
+        "message": "Neues &privates Fenster",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
     },
     "newTabContextMenuOpenInWindow": {
-        "message": "Neues Fenster",
+        "message": "Neues &Fenster",
         "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
     },
     "newTabContextMenuOpneAfterCurrent": {
-        "message": "Neben dem aktuellen Tab",
+        "message": "&Neben dem aktuellen Tab",
         "description": "New Tab context menu item."
     },
     "newTabContextMenuOpenAtEnd": {
-        "message": "Am Ende",
+        "message": "Am &Ende",
         "description": "New Tab context menu item."
     },
     "optionsCustomCSSChangelogLink": {

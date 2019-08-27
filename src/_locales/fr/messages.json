@@ -1,6 +1,6 @@
 {
     "extensionDescription": {
-        "message": "Barre d’onglet verticale simple et puissante"
+        "message": "Barre d’onglets verticale simple et puissante"
     },
     "browserActionTitle": {
         "message": "Activer/désactiver Tab Center Reborn",
@@ -28,45 +28,45 @@
         "description": "Shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
     },
     "contextMenuReloadTab": {
-        "message": "Actualiser l'onglet",
+        "message": "&Actualiser l'onglet",
         "description": "Reload Tab context menu item label."
     },
     "contextMenuPinTab": {
-        "message": "Épingler l'onglet",
+        "message": "É&pingler cet onglet",
         "description": "Pin Tab context menu item label."
     },
     "contextMenuUnpinTab": {
-        "message": "Détacher l'onglet",
+        "message": "Désé&pingler cet onglet",
         "description": "Unpin Tab context menu item label."
     },
     "contextMenuMuteTab": {
-        "message": "Rendre l'onglet muet",
+        "message": "&Rendre l'onglet muet",
         "description": "Mute Tab context menu item label."
     },
     "contextMenuUnmuteTab": {
-        "message": "Réactiver le son de l'onglet",
+        "message": "&Réactiver le son de l'onglet",
         "description": "Unmute Tab context menu item label."
     },
     "contextMenuCloseTab": {
-        "message": "Fermer l'onglet"
+        "message": "&Fermer l'onglet"
     },
     "contextMenuUndoCloseTab": {
-        "message": "Annuler la fermeture de l'onglet"
+        "message": "A&nnuler la fermeture de l'onglet"
     },
     "contextMenuDuplicateTab": {
-        "message": "Dupliquer l'onglet"
+        "message": "D&upliquer l'onglet"
     },
     "contextMenuMoveTabToNewWindow": {
-        "message": "Déplacer vers une nouvelle fenêtre"
+        "message": "Déplacer vers une &nouvelle fenêtre"
     },
     "contextMenuReloadAllTabs": {
         "message": "Actualiser tous les onglets"
     },
     "contextMenuCloseTabsAfter": {
-        "message": "Fermer les onglets après"
+        "message": "Fermer les onglets &suivants"
     },
     "contextMenuCloseOtherTabs": {
-        "message": "Fermer les autres onglets"
+        "message": "Fermer les &autres onglets"
     },
     "settingsBtnTooltip": {
         "message": "Ouvrir les paramètres"
@@ -111,19 +111,19 @@
         "message": "Enregistrer la CSS"
     },
     "contextMenuOpenInContextualTab": {
-        "message": "Rouvrir dans un onglet contextuel"
+        "message": "Rouvrir dans un onglet c&ontextuel"
     },
     "contextMenuMoveTab": {
-        "message": "Déplacer l’onglet"
+        "message": "&Déplacer l’onglet"
     },
     "contextMenuMoveTabToStart": {
-        "message": "Déplacer vers le début"
+        "message": "Déplacer vers le &début"
     },
     "contextMenuMoveTabToEnd": {
-        "message": "Déplacer vers la fin"
+        "message": "Déplacer vers la &fin"
     },
     "extensionsLongDescription": {
-        "message": "Tab Center Reborn est la continuation de <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> pour proposer une extension simple, puissante et bien intégrée pour gérer ses onglets verticalement.\n\nL’extension fournit quelques paramètres et permet aux utilisateur·rice·s avancé·e·s de complètement personnaliser son apparence avec du code CSS.\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home\n\nVous pourriez être particulièrement intéressés pour cacher la barre d’onglets du haut:\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\n\n\nFonctionnalités:\n– Toutes les fonctionnalités de la barre d’onglets de Firefox (épingler, dupliquer, déplacer au début/à la fin, fermer les onglets après, etc.)\n– Options “Décharger l’onglet” et “Fermer les onglets avant” pour s’adapter à la gestion de beaucoup d’onglets\n– Une notification vous permet d’annuler si “Fermer les onglets avant”, “Fermer les onglets après” ou “Fermer les autres onglets” a fermé plus de 5 onglets\n– A une apparence et un comportement natif, a des animations (désactivables)\n– Fonctionne et utilise les conteneurs: https://support.mozilla.org/fr/kb/onglets-contextuels-avec-les-containers\n– S’intègre avec les thèmes Firefox complets (les thèmes plus simples ne fournissent pas assez de couleurs pour travailler avec)\n– Synchronise vos paramètres avec Firefox Sync\n\nRaccourcis globaux:\n– Maj + F1: ouvre ou ferme la barre latérale\n– Maj + F2: active l’onglet utilisé avant\nNotez que vous pouvez les configurer: https://support.mozilla.org/fr/kb/gerer-raccourcis-extensions-firefox\n\nRaccourcis quand vous cliquez sur le bouton nouvel onglet/nom d’un conteneur dans le menu contextuel de nouvel onglet (clic-droit):\n– Ctrl + click: ouvre après l’onglet courant si c’est à la fin par défaut (et ouvre à la fin si c’est après l’onglet courant par défaut)\n– Maj + click: ouvre une nouvelle fenêtre\n– Ctrl + Maj + click: ouvre dans une fenêtre de navigation privée (si Tab Center Reborn est autorisé à s’exécuter dans les fenêtres privées)\n\n\nVous pouvez contribuer en rapportant des problèmes, en traduisant, en ajoutant de la documentation ou en développant!\nhttps://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\n\nPermissions utilisées:\n– Accéder à vos données pour tous les sites web: pour utiliser les conteneurs.\n– Consulter et modifier les marque-pages: pour ne pas ouvrir une nouvelle fenêtre lorsqu’un onglet est lâché en dehors de la barre latérale mais sur la barre de marque-pages.\n– Consulter et modifier les paramètres du navigateur: pour respecter les paramètres et le thème de Firefox.\n– Vous afficher des notifications: pour afficher une notification quand vous avez fermé beaucoup d’onglets, vous permettant d’annuler cela.\n– Accéder aux onglets récemment fermés: pour activer l’onglet utilisé avant.\n– Accéder aux onglets du navigateur: pour obtenir l’URL, le titre et le favicon des onglets.\n– Accéder à l’activité du navigateur pendant la navigation: pour déclencher une animation supplémentaire quand une page a fini de charger ses ressources.",
+        "message": "Tab Center Reborn est la continuation de <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> pour proposer une extension simple, puissante et bien intégrée pour gérer ses onglets verticalement.\n\nL’extension fournit quelques paramètres et permet aux utilisateur·rice·s avancé·e·s de complètement personnaliser son apparence avec du code CSS.\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home\n\nVous pourriez être particulièrement intéressés pour cacher la barre d’onglets du haut:\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\n\n\nFonctionnalités:\n– Toutes les fonctionnalités de la barre d’onglets de Firefox (épingler, dupliquer, déplacer au début/à la fin, fermer les onglets après, etc.)\n– Options “Décharger l’onglet” et “Fermer les onglets avant” pour s’adapter à la gestion de beaucoup d’onglets\n– Une notification vous permet d’annuler si “Fermer les onglets avant”, “Fermer les onglets après” ou “Fermer les autres onglets” a fermé plus de 5 onglets\n– A une apparence et un comportement natif, a des animations (désactivables)\n– Fonctionne et utilise les conteneurs: https://support.mozilla.org/fr/kb/onglets-contextuels-avec-les-containers\n– S’intègre avec les thèmes Firefox complets (les thèmes plus simples ne fournissent pas assez de couleurs pour travailler avec)\n– Synchronise vos paramètres avec Firefox Sync\n\nRaccourcis globaux:\n– Maj + F1: ouvre ou ferme le panneau latéral\n– Maj + F2: active l’onglet utilisé avant\nNotez que vous pouvez les configurer: https://support.mozilla.org/fr/kb/gerer-raccourcis-extensions-firefox\n\nRaccourcis quand vous cliquez sur le bouton nouvel onglet/nom d’un conteneur dans le menu contextuel de nouvel onglet (clic-droit):\n– Ctrl + click: ouvre après l’onglet courant si c’est à la fin par défaut (et ouvre à la fin si c’est après l’onglet courant par défaut)\n– Maj + click: ouvre une nouvelle fenêtre\n– Ctrl + Maj + click: ouvre dans une fenêtre de navigation privée (si Tab Center Reborn est autorisé à s’exécuter dans les fenêtres privées)\n\n\nVous pouvez contribuer en rapportant des problèmes, en traduisant, en ajoutant de la documentation ou en développant!\nhttps://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\n\nPermissions utilisées:\n– Accéder à vos données pour tous les sites web: pour utiliser les conteneurs.\n– Consulter et modifier les marque-pages: pour ne pas ouvrir une nouvelle fenêtre lorsqu’un onglet est lâché en dehors du panneau latérale mais sur la barre de marque-pages.\n– Consulter et modifier les paramètres du navigateur: pour respecter les paramètres et le thème de Firefox.\n– Vous afficher des notifications: pour afficher une notification quand vous avez fermé beaucoup d’onglets, vous permettant d’annuler cela.\n– Accéder aux onglets récemment fermés: pour activer l’onglet utilisé avant.\n– Accéder aux onglets du navigateur: pour obtenir l’URL, le titre et le favicon des onglets.\n– Accéder à l’activité du navigateur pendant la navigation: pour déclencher une animation supplémentaire quand une page a fini de charger ses ressources.",
         "description": "Long description displayed on addons.mozilla.org."
     },
     "optionsThemeIntegrationExplanation": {
@@ -139,7 +139,7 @@
         "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
     },
     "contextMenuUnloadTab": {
-        "message": "Décharger l’onglet",
+        "message": "Dé&charger l’onglet",
         "description": "Context menu item label."
     },
     "optionsSwitchLastActiveTabExplanation": {
@@ -181,11 +181,11 @@
         }
     },
     "contextMenuCloseTabsBefore": {
-        "message": "Fermer les onglets précédent",
+        "message": "Fermer les onglets &précédents",
         "description": "Context menu item label."
     },
     "contextMenuCloseTabs": {
-        "message": "Fermer des onglets",
+        "message": "Fermer des onglet&s",
         "description": "Context Menu item label"
     },
     "notificationDeletedMessage": {
@@ -225,19 +225,19 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
     },
     "newTabContextMenuOpenInPrivateWindow": {
-        "message": "Nouvelle fenêtre de navigation privée",
+        "message": "Nouvelle fenêtre de navigation &privée",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?search=New+private+window&string=75628. New Tab context menu item."
     },
     "newTabContextMenuOpenInWindow": {
-        "message": "Nouvelle fenêtre",
+        "message": "&Nouvelle fenêtre",
         "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?search=New+window&string=75625. New Tab context menu item."
     },
     "newTabContextMenuOpneAfterCurrent": {
-        "message": "Après l’onglet courant",
+        "message": "&Après l’onglet courant",
         "description": "New Tab context menu item."
     },
     "newTabContextMenuOpenAtEnd": {
-        "message": "À la fin",
+        "message": "À la &fin",
         "description": "New Tab context menu item."
     },
     "optionsCustomCSSChangelogLink": {

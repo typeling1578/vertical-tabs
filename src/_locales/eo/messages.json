@@ -28,45 +28,45 @@
         "description": "Shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
     },
     "contextMenuReloadTab": {
-        "message": "Reŝargi la langeton",
+        "message": "&Reŝargi la langeton",
         "description": "Reload Tab context menu item label."
     },
     "contextMenuPinTab": {
-        "message": "Alpingli la langeton",
+        "message": "Al&pingli la langeton",
         "description": "Pin Tab context menu item label."
     },
     "contextMenuUnpinTab": {
-        "message": "Depingli la langeton",
+        "message": "De&pingli la langeton",
         "description": "Unpin Tab context menu item label."
     },
     "contextMenuMuteTab": {
-        "message": "Silentigi la langeton",
+        "message": "&Silentigi la langeton",
         "description": "Mute Tab context menu item label."
     },
     "contextMenuUnmuteTab": {
-        "message": "Malsilentigi la langeton",
+        "message": "Mal&silentigi la langeton",
         "description": "Unmute Tab context menu item label."
     },
     "contextMenuCloseTab": {
-        "message": "Fermi la langeton"
+        "message": "&Fermi la langeton"
     },
     "contextMenuUndoCloseTab": {
-        "message": "Malfari fermon de la langeto"
+        "message": "Ma&lfari fermon de la langeto"
     },
     "contextMenuDuplicateTab": {
-        "message": "Duobligi la langeton"
+        "message": "&Duobligi la langeton"
     },
     "contextMenuMoveTabToNewWindow": {
-        "message": "Movi al nova fenestro"
+        "message": "Movi al &nova fenestro"
     },
     "contextMenuReloadAllTabs": {
         "message": "Reŝargi ĉiujn langetojn"
     },
     "contextMenuCloseTabsAfter": {
-        "message": "Fermi la postajn langetojn"
+        "message": "Fermi la &postajn langetojn"
     },
     "contextMenuCloseOtherTabs": {
-        "message": "Fermi aliajn langetojn"
+        "message": "Fermi aliajn langeto&jn"
     },
     "settingsBtnTooltip": {
         "message": "Malfermi agordojn"
@@ -111,16 +111,16 @@
         "message": "Konservi la stilfolion"
     },
     "contextMenuOpenInContextualTab": {
-        "message": "Remalfermi en ingo"
+        "message": "Remalfermi en &ingo"
     },
     "contextMenuMoveTab": {
-        "message": "Movi langeton"
+        "message": "Mo&vi langeton"
     },
     "contextMenuMoveTabToStart": {
-        "message": "Movi al la komenco"
+        "message": "Movi al la &komenco"
     },
     "contextMenuMoveTabToEnd": {
-        "message": "Movi al la fino"
+        "message": "Movi al la &fino"
     },
     "extensionsLongDescription": {
         "message": "!!Esperanto not available on AMO!!",
@@ -139,7 +139,7 @@
         "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
     },
     "contextMenuUnloadTab": {
-        "message": "Malŝarĝi langeton",
+        "message": "M&alŝarĝi langeton",
         "description": "Context menu item label."
     },
     "optionsSwitchLastActiveTabExplanation": {
@@ -181,11 +181,11 @@
         }
     },
     "contextMenuCloseTabsBefore": {
-        "message": "Fermi la antaŭajn langetojn",
+        "message": "Fermi la &antaŭajn langetojn",
         "description": "Context menu item label."
     },
     "contextMenuCloseTabs": {
-        "message": "Fermi langetojn",
+        "message": "Fermi langeto&jn",
         "description": "Context Menu item label"
     },
     "notificationDeletedMessage": {
@@ -225,19 +225,19 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
     },
     "newTabContextMenuOpenInPrivateWindow": {
-        "message": "Nova privata fenestro",
+        "message": "Nova &privata fenestro",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?search=New+private+window&string=75628. New Tab context menu item."
     },
     "newTabContextMenuOpenInWindow": {
-        "message": "Nova fenestro",
+        "message": "&Nova fenestro",
         "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?search=New+window&string=75625. New Tab context menu item."
     },
     "newTabContextMenuOpneAfterCurrent": {
-        "message": "Post la aktiva langeto",
+        "message": "Post la &aktiva langeto",
         "description": "New Tab context menu item."
     },
     "newTabContextMenuOpenAtEnd": {
-        "message": "Al la fino",
+        "message": "Al la &fino",
         "description": "New Tab context menu item."
     },
     "optionsCustomCSSChangelogLink": {

@@ -1,9 +1,9 @@
 {
     "extensionDescription": {
-        "message": "Sposta le schede al lato della finestra del browser."
+        "message": "Sbarra di schede verticale semplice e potente"
     },
     "browserActionTitle": {
-        "message": "Aziona Tab Center Reborn",
+        "message": "Attiva/disattiva Tab Center Reborn",
         "description": "Tooltip shown when hovering the toolbar button."
     },
     "sidebarTitle": {
@@ -28,45 +28,45 @@
         "description": "Shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
     },
     "contextMenuReloadTab": {
-        "message": "Ricarica la scheda",
+        "message": "&Ricarica la scheda",
         "description": "Reload Tab context menu item label."
     },
     "contextMenuPinTab": {
-        "message": "Fissa la scheda in alto",
+        "message": "&Appunta scheda",
         "description": "Pin Tab context menu item label."
     },
     "contextMenuUnpinTab": {
-        "message": "Rimuovi dall'alto",
+        "message": "Ril&ascia scheda",
         "description": "Unpin Tab context menu item label."
     },
     "contextMenuMuteTab": {
-        "message": "Muta la scheda",
+        "message": "Disa&ttiva audio nella scheda",
         "description": "Mute Tab context menu item label."
     },
     "contextMenuUnmuteTab": {
-        "message": "Riattiva volume",
+        "message": "A&ttiva audio nella schneda",
         "description": "Unmute Tab context menu item label."
     },
     "contextMenuCloseTab": {
-        "message": "Chiudi la scheda"
+        "message": "&Chiudi scheda"
     },
     "contextMenuUndoCloseTab": {
-        "message": "Annulla la chiusura"
+        "message": "R&iapri scheda chiusa"
     },
     "contextMenuDuplicateTab": {
-        "message": "Duplica la scheda"
+        "message": "&Duplica scheda"
     },
     "contextMenuMoveTabToNewWindow": {
-        "message": "Sposta in una nuova finestra"
+        "message": "Sposta in una &nuova finestra"
     },
     "contextMenuReloadAllTabs": {
         "message": "Ricarica tutte le schede"
     },
     "contextMenuCloseTabsAfter": {
-        "message": "Chiudi le schede sottostanti"
+        "message": "Chiudi le schede &sottostanti"
     },
     "contextMenuCloseOtherTabs": {
-        "message": "Chiudi le altre schede"
+        "message": "Chiudi le &altre schede"
     },
     "settingsBtnTooltip": {
         "message": "Apri le impostazioni"
@@ -87,16 +87,16 @@
         "message": "Dinamico"
     },
     "optionsCompactModeStrict": {
-        "message": "Sempre"
+        "message": "Attivata"
     },
     "optionsCompactPins": {
-        "message": "Compatta schede fissate"
+        "message": "Favicon solo per le schede fissate"
     },
     "optionsDarkTheme": {
         "message": "Tema Scuro"
     },
     "optionsThemeIntegration": {
-        "message": "Integra con il tema personalizzato"
+        "message": "Usa il tema personalizzato di Firefox"
     },
     "optionsAdvancedTitle": {
         "message": "Avanzate"
@@ -111,23 +111,23 @@
         "message": "Salva"
     },
     "contextMenuOpenInContextualTab": {
-        "message": "Riapri in contenitore"
+        "message": "Riapri in c&ontenitore"
     },
     "contextMenuMoveTab": {
-        "message": "Sposta scheda"
+        "message": "S&posta scheda"
     },
     "contextMenuMoveTabToStart": {
-        "message": "Sposta all’inizio"
+        "message": "Sposta all’&inizio"
     },
     "contextMenuMoveTabToEnd": {
-        "message": "Sposta alla fine"
+        "message": "Sposta alla &fine"
     },
     "extensionsLongDescription": {
-        "message": "Tab Center Reborn continua lo sviluppo di <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> con lo scopo di offrire un'estensione semplice, potente e ben integrata per la gestione delle schede in verticale.\n\nQuesta estensione offre alcune impostazioni e permette agli utenti avanzati di personalizzarne completamente l'aspetto tramite codice CSS.\n\n<ul>\n<li>Premere Shift+F1 per aprire o chiudere l'estensione.</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">Come nascondere la barra delle schede orizzontali.</a></li>\n</ul>\n\nÈ possibile <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">contribuire con traduzioni, documentazione, segnalare problemi e codice</a>!",
+        "message": "Tab Center Reborn continua lo sviluppo di <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> con lo scopo di offrire un'estensione semplice, potente e ben integrata per la gestione delle schede in verticale.\n\nQuesta estensione offre alcune impostazioni e permette agli utenti avanzati di personalizzarne completamente l'aspetto tramite codice CSS.\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home\n\nPotresti essere particolarmente interessata/o dal nascondere la sbarra di schede del alto:\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\n\n\nFunzionalità:\n– Tutte le funzionalità della sbarra di schede di Firefox (fissa, duplica, sposta all’inizio/la fine, chiudi le schede seguenti, ecc.)\n– opzioni «Scarica la scheda» e «Chiudi le schede prima» per adattarsi alla gestione di molte schede\n– una notificazione ti permette di annullare se «Chiudi le schede prima», «Chiudi le schede dopo», o «Chiudi le altre schede» a chiuso più di 5 schede\n– ha un’apparenza e un comportamento nativo, ha animazioni (disattivabile)\n– funziona e usa i contenitori: https://support.mozilla.org/it/kb/containers-schede-contenitore-firefox\n– si integra con i temi Firefox completi (i temi più semplici non forniscono abbastanza colori per lavorare con)\n– sincronizza i tuoi parametri con Firefox Sync\n\nScorciatoie globale:\n– Maiuscola + F1: apri o chiudi la sbarra laterale\n– Maiuscola + F2: attiva la scheda usata prima\nNota che puoi configurarle: https://support.mozilla.org/it/kb/gestire-scorciatoie-componenti-aggiuntivi-firefox\n\nScorciatoie quando clicchi sul tasto nuova scheda/nome del contenitore nel menu contestuale di nuova scheda (clic destro):\n– Ctrl + clic: apri dopo la scheda corrente se è alla fine di default (e apri alla fine se è dopo la scheda corrente di default)\n– Maiuscola + clic: apri una nuova finestra\n– Ctrl + Maiuscola + clic: apri in una finestra anonima (se Tab Center Reborn è autorizzato a eseguirsi nelle finestre anonime)\n\n\nVous pouvez contribuer en rapportant des problèmes, en traduisant, en ajoutant de la documentation ou en développant!\nhttps://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\n\nPermessi usati:\n– Accedere ai tuoi dati per tutti i siti web: per usare i contenitori.\n– Consultare e modificare i segnalibri: per non aprire una nuova finestra quando una scheda è rilasciata fuori la sbarra laterale ma sulla sbarra dei segnalibri.\n– Consultare e modificare i parametri di Firefox: perrispettare i parametri e il tema di Firefox.\n– Mostrarti notificazioni: per mostrarti una notificazione quando avete chiuso molte schede, permettendoti di annulare questo.\n– Accedere alle schede recentemente chiuse: per attivare la scheda usata prima.\n– Accedere alle schede di Firefox: per ottenere l’URL, il titolo e le favicon delle schede.\n– Accedere all’attività di Firefox mentre la navigazione: per azionare un’animazione supplementare quando una pagina a finito di caricare le sue risorse.",
         "description": "Long description displayed on addons.mozilla.org."
     },
     "contextMenuUnloadTab": {
-        "message": "Dimentica la scheda",
+        "message": "&Scarica scheda",
         "description": "Context menu item label."
     },
     "closeTabsAfterWarning": {
@@ -151,7 +151,7 @@
         }
     },
     "optionsSwitchLastActiveTabExplanation": {
-        "message": "Cliccando la scheda attiva si passa all'ultima scheda utilizzata.",
+        "message": "Clicca la scheda attiva per passare all'ultima scheda utilizzata.",
         "description": "Explanation for the Compact Mode option in options page."
     },
     "optionsSwitchLastActiveTab": {
@@ -159,7 +159,83 @@
         "description": "Option in options page."
     },
     "optionsThemeIntegrationExplanation": {
-        "message": "Segui lo stile del tema personalizzato. Chiudi e riapri la barra laterale quando torni a uno dei temi di default di Firefox.",
+        "message": "Usa il tema corrente di Firefox invece del tema chiaro di default.",
         "description": "Explanation for the Theme Integration option in the options page."
+    },
+    "newTabContextMenuOpenInPrivateWindow": {
+        "message": "Nuova finestra &anonima",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
+    },
+    "newTabContextMenuOpenInWindow": {
+        "message": "&Nuova finestra",
+        "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
+    },
+    "newTabContextMenuOpneAfterCurrent": {
+        "message": "&Dopo la scheda corrente",
+        "description": "New Tab context menu item."
+    },
+    "contextMenuCloseTabsBefore": {
+        "message": "Chiudi le schede &precedenti",
+        "description": "Context menu item label."
+    },
+    "contextMenuCloseTabs": {
+        "message": "Chiudi sched&e",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197250. Context Menu item label"
+    },
+    "newTabContextMenuOpenAtEnd": {
+        "message": "Alla &fine",
+        "description": "New Tab context menu item."
+    },
+    "notificationDeletedMessage": {
+        "message": "Clicca la notificazione per annullare",
+        "description": "Title of the notification when deleting many tabs."
+    },
+    "optionsCustomCSSChangelogLink": {
+        "message": "Verifica le nuovità per informarti dei cambiamenti rompendo la compatibilità",
+        "description": "Text for a link to the changelog."
+    },
+    "OptionsAnimations": {
+        "message": "Animazioni",
+        "description": "Option in options page."
+    },
+    "optionsNotifyClosingManyTabs": {
+        "message": "Notifica alla chiusura di molte schede",
+        "description": "Option in options page."
+    },
+    "notificationDeletedTitle": {
+        "message": "$COUNT$ schede chiuse",
+        "description": "Title of the notification when deleting many tabs.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "optionsNotifyClosingManyTabsExplanation": {
+        "message": "Mostra una notificazione permettendoti di annullare alla chiusura di $COUNT$ schede.",
+        "description": "Explanation for the Notify when closing many tabs option in options page.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "optionsBehaviorTitle": {
+        "message": "Comportamento",
+        "description": "Section in options page."
+    },
+    "optionsAppearanceTitle": {
+        "message": "Aspetto",
+        "description": "Section in options page."
+    },
+    "unmuteTabButtonTooltip": {
+        "message": "Attiva audio nella scheda",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
+    },
+    "muteTabButtonTooltip": {
+        "message": "Disattiva audio nella scheda",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
     }
 }

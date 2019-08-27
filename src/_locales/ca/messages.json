@@ -1,194 +1,194 @@
 {
     "extensionDescription": {
-        "message": "Simple and powerful vertical tab bar",
+        "message": "",
         "description": "Extension description shown in the options page and as short description on addons.mozilla.org."
     },
     "extensionsLongDescription": {
-        "message": "Tab Center Reborn is the continuation of <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> to provide a simple, powerful and well-integrated extension to manage tabs vertically.\n\nThe extension provides a handful of settings and allows power-users to customize its appearance completely with CSS code.\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home\n\nYou might especially be interested in hiding the top tab bar:\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\n\n\nFeatures:\n– All features of Firefox tab bar (pinning, duplicating, moving to start/end, closing tabs after, etc.)\n– “Unload Tab” and “Close Tabs Before” options to accommodate managing a lot of tabs\n– A notification allows you to undo if “Close Tabs Before”, “Close Tabs After” or “Close Other Tabs” closed more than 5 tabs\n– Looks and act native, has animations (can be disabled)\n– Works with and uses containers: https://support.mozilla.org/en-US/kb/containers\n– Adapt to full Firefox themes (simpler themes don’t provide enough colors to work with)\n– Synchronizes your settings with Firefox Sync\n\nGlobal shortcuts:\n– Shift + F1: opens or closes the sidebar\n– Shift + F2: switches to last active tab\nNote that you can configure those: https://support.mozilla.org/en-US/kb/manage-extension-shortcuts-firefox\n\nShortcuts when clicking new tab button/container name in new tab context menu (right-click):\n– Ctrl + click: opens after current tab if default is at the end (and opens at the end if default is after current tab)\n– Shift + click: opens a new window\n– Ctrl + Shift + click: opens a new private window (if Tab Center Reborn is allowed to run in private windows)\n\n\nYou can contribute by reporting issues, translating, adding documentation or developing!\nhttps://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\n\nPermissions used:\n– Access your data for all websites: to use containers.\n– Read and modify bookmarks: to not open a new window when a tab has been dropped outside the sidebar but on the bookmark bar.\n– Read and modify browser settings: to follow Firefox settings and theme.\n– Display notifications to you: to display a notification when you closed a lot of tabs, letting you undo.\n– Access recently closed tabs: to switch to last tab.\n– Access browser tabs: to get URL, title and favicons of tabs.\n– Access browser activity during navigation: to trigger an extra animation when a page has finished loading its resources.",
+        "message": "",
         "description": "Long description displayed on addons.mozilla.org. Don’t forget to change links for the current language. You can copy translated permissions from your language version of https://support.mozilla.org/en-US/kb/permission-request-messages-firefox-extensions."
     },
     "browserActionTitle": {
-        "message": "Show/hide Tab Center Reborn",
+        "message": "Activar/desactivar Tab Center Reborn",
         "description": "Tooltip shown when hovering the toolbar button."
     },
     "sidebarTitle": {
-        "message": "Tabs",
+        "message": "Pestanyes",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=176230. Label shown in the sidebar selector."
     },
     "newTabBtnTooltip": {
-        "message": "Open new tab",
+        "message": "Obre una pestanya nova",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=74421. Tooltip of the New Tab button in the top menu."
     },
     "searchPlaceholder": {
-        "message": "Search tabs",
+        "message": "",
         "description": "Placehorder of the Search bar in the top menu."
     },
     "settingsBtnTooltip": {
-        "message": "Open settings",
+        "message": "Obrir la configuració",
         "description": "Tooltip of the settings button in the top menu."
     },
     "newTabContextMenuOpenAtEnd": {
-        "message": "At &End",
+        "message": "",
         "description": "New Tab context menu item."
     },
     "newTabContextMenuOpneAfterCurrent": {
-        "message": "&Next to Current Tab",
+        "message": "",
         "description": "New Tab context menu item."
     },
     "newTabContextMenuOpenInWindow": {
-        "message": "New &Window",
+        "message": "Nova finestra",
         "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
     },
     "newTabContextMenuOpenInPrivateWindow": {
-        "message": "New &Private Window",
+        "message": "Finestra privada nova",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
     },
     "muteTabButtonTooltip": {
-        "message": "Mute tab",
+        "message": "Silencia la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
     },
     "unmuteTabButtonTooltip": {
-        "message": "Unmute tab",
+        "message": "No silenciïs la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
     },
     "closeTabButtonTooltip": {
-        "message": "Close Tab",
+        "message": "Tanca la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197248. Tooltip of the close button on tabs."
     },
     "allTabsLabel": {
-        "message": "Show all tabs…",
+        "message": "Mostrar totes les pestanyes …",
         "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
     },
     "contextMenuReloadTab": {
-        "message": "&Reload Tab",
+        "message": "Torna a carregar la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197237. Context menu item label."
     },
     "contextMenuPinTab": {
-        "message": "&Pin Tab",
+        "message": "Fixa la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197249. Context menu item label."
     },
     "contextMenuUnpinTab": {
-        "message": "Un&pin Tab",
+        "message": "No fixis la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197266. Context menu item label."
     },
     "contextMenuMuteTab": {
-        "message": "&Mute Tab",
+        "message": "Silencia la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Context menu item label and tooltip of the audible icon on tabs."
     },
     "contextMenuUnmuteTab": {
-        "message": "Un&mute Tab",
+        "message": "No silenciïs la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Context menu item label and tooltip of the unmute icon on tabs."
     },
     "contextMenuDuplicateTab": {
-        "message": "&Duplicate Tab",
+        "message": "Duplica la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197263. Context menu item label."
     },
     "contextMenuUnloadTab": {
-        "message": "Un&load Tab",
+        "message": "Descarregar la pestanya",
         "description": "Context menu item label."
     },
     "contextMenuOpenInContextualTab": {
-        "message": "Reopen in C&ontainer",
+        "message": "Torna a obrir en un contenidor",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197234. Context menu item label."
     },
     "contextMenuMoveTab": {
-        "message": "Mo&ve Tab",
+        "message": "Mou la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197269. Context menu item label."
     },
     "contextMenuMoveTabToStart": {
-        "message": "Move to &Start",
+        "message": "Moure a l'inici",
         "description": "Context menu item label."
     },
     "contextMenuMoveTabToEnd": {
-        "message": "Move to &End",
+        "message": "Moure cap al final",
         "description": "Context menu item label."
     },
     "contextMenuMoveTabToNewWindow": {
-        "message": "Move to New &Window",
+        "message": "Mou a una finestra nova",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197261. Context menu item label."
     },
     "contextMenuCloseTabs": {
-        "message": "Close Tab&s",
+        "message": "Tanca les pestanyes",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197250. Context Menu item label"
     },
     "contextMenuCloseTabsBefore": {
-        "message": "Close Tabs &Before",
+        "message": "Tancar les pestanyes anteriors",
         "description": "Context menu item label."
     },
     "contextMenuCloseTabsAfter": {
-        "message": "Close Tabs &After",
+        "message": "Tancar les pestanyes de després",
         "description": "Context menu item label."
     },
     "contextMenuCloseOtherTabs": {
-        "message": "Close &Other Tabs",
+        "message": "Tanca les altres pestanyes",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197270. Context menu item label."
     },
     "contextMenuUndoCloseTab": {
-        "message": "&Undo Close Tab",
+        "message": "Desfés el tancament de la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197236. Context menu item label."
     },
     "contextMenuCloseTab": {
-        "message": "&Close Tab",
+        "message": "Tanca la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197248. Context menu item label."
     },
     "optionsAppearanceTitle": {
-        "message": "Appearance",
+        "message": "Aparença",
         "description": "Section in options page."
     },
     "optionsSwitchLastActiveTabExplanation": {
-        "message": "Click active tab to switch to the last active one.",
+        "message": "",
         "description": "Explanation for the Compact Mode option in options page."
     },
     "OptionsAnimations": {
-        "message": "Animations",
+        "message": "Animacions",
         "description": "Option in options page."
     },
     "optionsCompactMode": {
-        "message": "Compact Mode",
+        "message": "Mode compacte",
         "description": "Option in options page."
     },
     "optionsCompactModeExplanation": {
-        "message": "The Compact Mode reduces the height of tabs to show more of them. In the Dynamic setting, it will engage once we have no space left.",
+        "message": "",
         "description": "Explanation for the Compact Mode option in options page."
     },
     "optionsCompactModeOff": {
-        "message": "Disabled",
+        "message": "",
         "description": "Possible value for Compact Mode option in options page."
     },
     "optionsCompactModeDynamic": {
-        "message": "Dynamic",
+        "message": "",
         "description": "Possible value for Compact Mode option in options page."
     },
     "optionsCompactModeStrict": {
-        "message": "Enabled",
+        "message": "",
         "description": "Possible value for Compact Mode option in options page."
     },
     "optionsSwitchLastActiveTab": {
-        "message": "Switch to Last Active Tab",
+        "message": "",
         "description": "Option in options page."
     },
     "optionsCompactPins": {
-        "message": "Favicon-only Pinned Tabs",
+        "message": "",
         "description": "Option in options page."
     },
     "optionsThemeIntegration": {
-        "message": "Use current browser theme",
+        "message": "",
         "description": "Option in options page."
     },
     "optionsThemeIntegrationExplanation": {
-        "message": "Use current browser theme instead of default light theme.",
+        "message": "",
         "description": "Explanation for the Theme Integration option in the options page."
     },
     "optionsBehaviorTitle": {
-        "message": "Behavior",
+        "message": "",
         "description": "Section in options page."
     },
     "optionsNotifyClosingManyTabs": {
-        "message": "Notify when closing many tabs",
+        "message": "",
         "description": "Option in options page."
     },
     "optionsNotifyClosingManyTabsExplanation": {
-        "message": "Display a notification to let you undo when closing more than $COUNT$ tabs.",
+        "message": "",
         "description": "Explanation for the Notify when closing many tabs option in options page.",
         "placeholders": {
             "count": {
@@ -198,27 +198,27 @@
         }
     },
     "optionsAdvancedTitle": {
-        "message": "Advanced",
+        "message": "Avançat",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=176300. Section in options page."
     },
     "optionsCustomCSS": {
-        "message": "Custom Stylesheet",
+        "message": "",
         "description": "Option in options page."
     },
     "optionsCustomCSSChangelogLink": {
-        "message": "Check the changelog for breaking changes",
+        "message": "",
         "description": "Text for a link to the changelog."
     },
     "optionsCustomCSSWikiLink": {
-        "message": "CSS Tweaks Wiki Article",
+        "message": "",
         "description": "Text for a link to the wiki."
     },
     "optionsSaveCustomCSS": {
-        "message": "Save CSS",
+        "message": "",
         "description": "Option in options page."
     },
     "notificationDeletedTitle": {
-        "message": "$COUNT$ closed tabs",
+        "message": "",
         "description": "Title of the notification when deleting many tabs.",
         "placeholders": {
             "count": {
@@ -228,7 +228,7 @@
         }
     },
     "notificationDeletedMessage": {
-        "message": "Click on the notification to undo.",
+        "message": "",
         "description": "Title of the notification when deleting many tabs."
     }
 }
