@@ -266,6 +266,7 @@ body.has-custom-input-color #searchbox-input::selection {
   position: relative;
 }
 
+/* HACK: keep in sync with animation time in JS */
 body.animated #tablist-wrapper .tab {
   transition: box-shadow 0.1s ease, height 0.1s ease, width 0.1s ease;
 }

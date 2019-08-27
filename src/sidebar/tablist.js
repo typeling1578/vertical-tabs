@@ -12,6 +12,9 @@ const COMPACT_MODE_DYNAMIC = 1;
 const COMPACT_MODE_STRICT = 2;
 const NOTIFICATION_DELETE_ID = "notification-delete";
 
+// HACK: keep in sync with animation time in CSS
+const TAB_ANIMATION_TIME_MS = 100;
+
 export default class TabList {
   /* @arg {props}
    * windowId
@@ -110,8 +113,6 @@ export default class TabList {
     document.addEventListener("dragleave", e => this._onDragLeave(e));
     document.addEventListener("drop", e => this._onDrop(e));
     document.addEventListener("dragend", e => this._onDragend(e));
-
-    this._wrapperView.addEventListener("transitionend", e => this._onTransitionEnd(e));
 
     // Disable zooming.
     document.addEventListener("wheel", e => {
@@ -700,16 +701,6 @@ export default class TabList {
     }, 50);
   }
 
-  _onTransitionEnd(e) {
-    if (event.target.classList.contains("tab")) {
-      if (event.target.classList.contains("deleted")) {
-        event.target.remove();
-      } else if (event.target.classList.contains("being-added")) {
-        event.target.classList.remove("being-added");
-      }
-    }
-  }
-
   _onSpacerDblClick() {
     openTab();
   }
@@ -1026,6 +1017,7 @@ export default class TabList {
         (tabAfter && tabAfter.view.offsetHeight <= wrapperHeight))
     ) {
       element.classList.add("added", "being-added");
+      setTimeout(() => element.classList.remove("being-added"), TAB_ANIMATION_TIME_MS);
     }
     const newElem = tabAfter
       ? parent.insertBefore(element, tabAfter.view)
@@ -1045,6 +1037,7 @@ export default class TabList {
     sidetab.view.parentNode.replaceChild(oldView, sidetab.view);
     setTimeout(() => {
       oldView.classList.add("deleted");
+      setTimeout(() => oldView.remove(), TAB_ANIMATION_TIME_MS);
       this._setFirstAndLastTabObserver();
     }, 20);
   }
