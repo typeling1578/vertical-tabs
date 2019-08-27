@@ -34,3 +34,16 @@ You need to have a recent version of Node.js.
    `env WEB_EXT_FIREFOX=<exe> npm run dev` where `exe` can be `stable`, `beta`, `nightly`, the command to launch Firefox, or a path to the Firefox executable.
 
 4. Make sure your changes are correct by testing them in different situations, with containers, search, private browsing and several windows open when it is relevant.
+
+## Make my Firefox theme work with Tab Center Reborn
+
+Any theme not using a background image and working well with Firefox should be fine, otherwise it might be a bug.
+
+If your theme uses a background image, you need to define explicitly declare a color for the sidebar header (`sidebar` key), either by using a color that suits your theme or redefining it to the default value (`#ffffff`).
+
+You can also look at popular themes that works well with Tab Center Reborn:
+
+- [Matte Black V2](https://addons.mozilla.org/firefox/addon/matte-black-v2/)
+- [Arc Dark Theme](https://addons.mozilla.org/firefox/addon/arc-dark-theme-we/)
+- [Dark Theme for Firefox](https://addons.mozilla.org/firefox/addon/dark-theme-for-firefox/)
+- [Arc Theme](https://addons.mozilla.org/firefox/addon/arc-theme-we/)
