@@ -1,4 +1,4 @@
-# Tab Center Reborn
+# Tab Center Reborn (alias TCRn)
 
 Simple and powerful vertical tab bar extension for Firefox, continuation of [Tab Center Redux](https://github.com/eoger/tabcenter-redux).
 
