@@ -1,3 +1,7 @@
+## 2.0.2
+
+- Translation updates (100%: English, Esperanto, French, Italian)
+
 ## 2.0.1
 
 - Make settings handling and migration to sync more reliable
