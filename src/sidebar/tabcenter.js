@@ -18,6 +18,9 @@ export default class TabCenter {
     this._topMenu = new TopMenu({ search });
 
     const prefs = await this._getPrefs();
+    if (typeof prefs.compactMode === "string") {
+      prefs.compactMode = parseInt(prefs.compactMode);
+    }
     this._initPrefs(prefs);
 
     this._tablist = new TabList({

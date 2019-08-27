@@ -67,7 +67,9 @@ class TabCenterOptions {
 
   setupListeners() {
     document.body.addEventListener("change", e => {
-      if (e.target.tagName === "SELECT" || e.target.tagName === "TEXTAREA") {
+      if (e.target.tagName === "SELECT")
+        browser.storage.sync.set({ [e.target.id]: parseInt(e.target.value) });
+      if (e.target.tagName === "TEXTAREA") {
         browser.storage.sync.set({ [e.target.id]: e.target.value });
       } else if (e.target.tagName === "INPUT") {
         browser.storage.sync.set({ [e.target.id]: e.target.checked });
