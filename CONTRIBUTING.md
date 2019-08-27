@@ -13,9 +13,24 @@ Choose your language and [start translating and reviewing](https://translate.fun
 
 If a string has a comment starting with “Taken from Firefox”, follow the link then click on “LOCALES”, and copy the translation matching your language (if it is present).
 
+Also, context menu items can have accessibility keys. An accessibility key is a letter of the title that is underlined, to inform that hitting that key triggers the action. To set which letter is the accessibility key, put a `&` in front of it. Try not to have duplicates and makes them easy to remember. See section “title” of [menus.create()](https://beta.developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/menus/create).
+
+Example with English for tab context menu:
+
+- &Reload Tab (the first letter doesn’t conflict with others, so use it)
+- &Mute Tab / Un&mute table (try to use the same key for both)
+- &Pin / Un&pin Tab (same as above)
+- &Duplicate Tab (it could have been U or P if a more frequent action used that)
+- Un&load Tab (since U is used later and it has to do with (un)loading)
+- Reopen in C&ontainer (R, P and C are already used, focus on container)
+- Mo&ve Tabs (M is already used and V is an important sound in the word)
+- Close Tab&s (S is significant since it’s the only difference with the last item)
+- &Undo Close Tab (D is already taken, N is present in both Unload and Undo)
+- &Close Tab (the most frequent action is given priority for first letter)
+
 [![Translation status](https://translate.funkwhale.audio/widgets/tabcenter-reborn/-/interface/svg-badge.svg)](https://translate.funkwhale.audio/engage/tabcenter-reborn/?utm_source=widget)
 
-## Documentating
+## Documenting
 
 You can add or improve tweaks to the [wiki](https://framagit.org/ariasuni/tabcenter-reborn/wikis/home).
 
