@@ -1,3 +1,11 @@
+## 2.0.1
+
+- Make settings handling and migration to sync more reliable
+- Make search field on Windows slightly rounded, like the url bar
+- Fix tabs sometimes not being fully/correctly removed
+- Improve contributing guide for translations
+- Add to contributing guide section on how to make theme compatible with TCRn
+
 ## 2.0.0
 
 - Fix wrong focus after closing new tab opened with new tab button
