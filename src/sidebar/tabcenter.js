@@ -60,7 +60,8 @@ export default class TabCenter {
     }
 
     window.addEventListener("contextmenu", e => this._onContextMenu(e), false);
-    window.addEventListener("wheel", e => throttled(50, this._onWheel(e)));
+    this._onWheel = throttled(e => this.__onWheel(e), 50);
+    window.addEventListener("wheel", e => this._onWheel(e));
   }
 
   _onContextMenu(e) {
@@ -74,7 +75,7 @@ export default class TabCenter {
     }
   }
 
-  _onWheel(e) {
+  __onWheel(e) {
     if (e.metaKey || e.ctrlKey) {
       e.preventDefault();
     }

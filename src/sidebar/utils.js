@@ -23,7 +23,7 @@ export async function openTab(props = {}) {
   browser.tabs.create(props);
 }
 
-export function debounce(fn, delay) {
+export function debounced(fn, delay) {
   let timeoutID;
   return (...args) => {
     if (timeoutID) {
@@ -36,7 +36,7 @@ export function debounce(fn, delay) {
   };
 }
 
-export function throttled(delay, fn) {
+export function throttled(fn, delay) {
   let lastCall = 0;
   return function(...args) {
     const now = new Date().getTime();

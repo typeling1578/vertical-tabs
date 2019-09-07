@@ -1,6 +1,6 @@
 /* global browser, requestAnimationFrame, requestIdleCallback, CSSAnimation, Image */
 
-import { debounce } from "./utils";
+import { debounced } from "./utils";
 
 export default class SideTab {
   constructor() {
@@ -45,7 +45,7 @@ export default class SideTab {
         this.view.setAttribute("data-identity-color", context.color);
       });
     }
-    this.updateThumbnail = debounce(() => this._updateThumbnail(), 500);
+    this.updateThumbnail = debounced(() => this._updateThumbnail(), 500);
   }
 
   _buildViewStructure() {
