@@ -20,7 +20,7 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=74421. Tooltip of the New Tab button in the top menu."
     },
     "searchPlaceholder": {
-        "message": "",
+        "message": "Cercar pestanyes",
         "description": "Placehorder of the Search bar in the top menu."
     },
     "settingsBtnTooltip": {
@@ -72,7 +72,7 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197266. Context menu item label."
     },
     "contextMenuMuteTab": {
-        "message": "Silencia la pestanya",
+        "message": "&Silencia la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Context menu item label and tooltip of the audible icon on tabs."
     },
     "contextMenuUnmuteTab": {
@@ -84,7 +84,7 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197263. Context menu item label."
     },
     "contextMenuUnloadTab": {
-        "message": "Descarregar la pestanya",
+        "message": "Des&carregar la pestanya",
         "description": "Context menu item label."
     },
     "contextMenuOpenInContextualTab": {
@@ -96,15 +96,15 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197269. Context menu item label."
     },
     "contextMenuMoveTabToStart": {
-        "message": "Moure a l'inici",
+        "message": "Moure a l'&inici",
         "description": "Context menu item label."
     },
     "contextMenuMoveTabToEnd": {
-        "message": "Moure cap al final",
+        "message": "Moure cap al &final",
         "description": "Context menu item label."
     },
     "contextMenuMoveTabToNewWindow": {
-        "message": "Mou a una finestra nova",
+        "message": "Mou a una &finestra nova",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197261. Context menu item label."
     },
     "contextMenuCloseTabs": {
@@ -136,7 +136,7 @@
         "description": "Section in options page."
     },
     "optionsSwitchLastActiveTabExplanation": {
-        "message": "",
+        "message": "Clica la pestanya activa per canviar a la última activa",
         "description": "Explanation for the Compact Mode option in options page."
     },
     "OptionsAnimations": {
@@ -148,47 +148,47 @@
         "description": "Option in options page."
     },
     "optionsCompactModeExplanation": {
-        "message": "",
+        "message": "El mode compacte redueix la alçada de les pestanyes per mostrar més d'elles. En la configuració dinàmica, s'activarà quan no quedi espai.",
         "description": "Explanation for the Compact Mode option in options page."
     },
     "optionsCompactModeOff": {
-        "message": "",
+        "message": "Desactivat",
         "description": "Possible value for Compact Mode option in options page."
     },
     "optionsCompactModeDynamic": {
-        "message": "",
+        "message": "Dinàmic",
         "description": "Possible value for Compact Mode option in options page."
     },
     "optionsCompactModeStrict": {
-        "message": "",
+        "message": "Activat",
         "description": "Possible value for Compact Mode option in options page."
     },
     "optionsSwitchLastActiveTab": {
-        "message": "",
+        "message": "Canviar a la darrera pestanya activa",
         "description": "Option in options page."
     },
     "optionsCompactPins": {
-        "message": "",
+        "message": "Pestanyes sols amb Favicon",
         "description": "Option in options page."
     },
     "optionsThemeIntegration": {
-        "message": "",
+        "message": "Usar el tema actual del navegador",
         "description": "Option in options page."
     },
     "optionsThemeIntegrationExplanation": {
-        "message": "",
+        "message": "Usar el tema actual del navegador en comptes del tema lleuger base.",
         "description": "Explanation for the Theme Integration option in the options page."
     },
     "optionsBehaviorTitle": {
-        "message": "",
+        "message": "Comportament",
         "description": "Section in options page."
     },
     "optionsNotifyClosingManyTabs": {
-        "message": "",
+        "message": "Notificar quan es tanquin moltes pestanyes",
         "description": "Option in options page."
     },
     "optionsNotifyClosingManyTabsExplanation": {
-        "message": "",
+        "message": "Mostrar una notificació per permetre't desfer quan tanques més de $COUNT$ pestanyes.",
         "description": "Explanation for the Notify when closing many tabs option in options page.",
         "placeholders": {
             "count": {
@@ -202,7 +202,7 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=176300. Section in options page."
     },
     "optionsCustomCSS": {
-        "message": "",
+        "message": "Full d'estils personalitzat",
         "description": "Option in options page."
     },
     "optionsCustomCSSChangelogLink": {
@@ -214,11 +214,11 @@
         "description": "Text for a link to the wiki."
     },
     "optionsSaveCustomCSS": {
-        "message": "",
+        "message": "Desar CSS",
         "description": "Option in options page."
     },
     "notificationDeletedTitle": {
-        "message": "",
+        "message": "$COUNT$ pestanyes tancades",
         "description": "Title of the notification when deleting many tabs.",
         "placeholders": {
             "count": {
@@ -228,7 +228,7 @@
         }
     },
     "notificationDeletedMessage": {
-        "message": "",
+        "message": "Clica sobre la notificació per desfer.",
         "description": "Title of the notification when deleting many tabs."
     }
 }
