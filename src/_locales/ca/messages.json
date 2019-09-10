@@ -40,7 +40,7 @@
         "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
     },
     "newTabContextMenuOpenInPrivateWindow": {
-        "message": "Finestra privada nova",
+        "message": "Finestra nova i privada",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
     },
     "muteTabButtonTooltip": {
@@ -60,11 +60,11 @@
         "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
     },
     "contextMenuReloadTab": {
-        "message": "Torna a carregar la pestanya",
+        "message": "&Torna a carregar la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197237. Context menu item label."
     },
     "contextMenuPinTab": {
-        "message": "Fixa la pestanya",
+        "message": "&Fixa la pestanya",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197249. Context menu item label."
     },
     "contextMenuUnpinTab": {
