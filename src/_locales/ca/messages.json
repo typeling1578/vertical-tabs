@@ -136,7 +136,7 @@
         "description": "Section in options page."
     },
     "optionsSwitchLastActiveTabExplanation": {
-        "message": "Clica la pestanya activa per canviar a la última activa",
+        "message": "Clica la pestanya activa per canviar a la última activa.",
         "description": "Explanation for the Compact Mode option in options page."
     },
     "OptionsAnimations": {
