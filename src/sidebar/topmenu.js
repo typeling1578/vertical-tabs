@@ -166,7 +166,11 @@ export default class TopMenu {
     }
 
     for (const item of items) {
-      browser.menus.create(item);
+      browser.menus.create({
+        ...item,
+        viewTypes: ["sidebar"],
+        documentUrlPatterns: [`moz-extension://${location.host}/*`],
+      });
     }
     browser.menus.overrideContext({});
   }

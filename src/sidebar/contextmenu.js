@@ -67,11 +67,10 @@ export default class ContextMenu {
     if (!info.menuItemId.startsWith("contextMenuOpenInContextualTab_")) {
       return;
     }
-    const newTab = {
+    openTab({
       cookieStoreId: info.menuItemId.split("contextMenuOpenInContextualTab_")[1],
       url: tab.url,
-    };
-    openTab(newTab);
+    });
   }
 
   open(e) {
@@ -183,24 +182,23 @@ export default class ContextMenu {
       },
     ];
 
-    items.forEach(item => {
+    const identityItems = getContextualIdentityItems();
+    if (identityItems !== null) {
+      identityItems.forEach(identityItem => {
+        identityItem["id"] = `contextMenuOpenInContextualTab_${identityItem["id"]}`;
+        items.push({
+          parentId: "contextMenuOpenInContextualTab",
+          ...identityItem,
+        });
+      });
+    }
+
+    for (const item of items) {
       browser.menus.create({
         ...item,
         contexts: ["tab"],
         viewTypes: ["sidebar"],
         documentUrlPatterns: [`moz-extension://${location.host}/*`],
-      });
-    });
-
-    const identityItems = getContextualIdentityItems();
-    if (identityItems !== null) {
-      identityItems.forEach(identityItem => {
-        identityItem["id"] = `contextMenuOpenInContextualTab_${identityItem["id"]}`;
-        browser.menus.create({
-          parentId: "contextMenuOpenInContextualTab",
-          contexts: ["tab"],
-          ...identityItem,
-        });
       });
     }
 
