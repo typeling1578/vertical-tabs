@@ -4,53 +4,64 @@ html {
 }
 
 body {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.2rem;
   font-weight: normal;
-  margin: 0;
+  padding-left: 2px;
   padding-bottom: 4px;
+  margin: 0;
   margin-bottom: 4px;
-  border-bottom: 1px solid hsla(0, 0%, 0%, 0.2);
+  border-bottom: 1px solid hsla(0, 0%, 0%, 0.3);
 }
 
-.explanation {
-  font-size: 1rem;
-  grid-column: 1 / span 2;
+p + h1 {
+  margin-top: 10px;
 }
 
-a,
-a:visited {
-  color: rgb(10, 141, 255);
-  text-decoration: none;
-}
-
-.options > div {
-  padding: 5px;
-}
-
-.gridOptions {
-  display: grid;
-  align-items: center;
-  grid-template-columns: 400px auto;
-  margin-bottom: 10px;
+p {
+  margin: 10px 0px;
 }
 
 input[type="checkbox"] {
-  margin-left: 0;
+  vertical-align: bottom;
+}
+
+input[type="radio"] {
+  vertical-align: top;
+}
+
+.radiogroup {
+  display: inline-block;
+  position: absolute;
+  right: 5px;
+}
+
+.explanation {
+  opacity: 0.8;
+  margin-top: 0;
 }
 
 #customCSS {
   width: 100%;
-  max-width: 40rem;
   height: 25rem;
   resize: vertical;
   overflow: auto;
 }
 
 ul {
-  font-size: 1.1rem;
   padding-left: 20px;
+}
+
+a,
+a:visited {
+  color: #0a84ff; /* --blue-50 */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0060df; /* --blue-60 */
+  text-decoration: underline;
 }

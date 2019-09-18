@@ -6,60 +6,80 @@
   </head>
   <body>
     <h1 id="optionsAppearanceTitle"></h1>
-    <div class="options gridOptions">
-      <div><label for="animations" id="optionsAnimations"></label></div>
-      <div><input id="animations" type="checkbox" /></div>
-      <div><label for="themeIntegration" id="optionsThemeIntegration"></label></div>
-      <div><input id="themeIntegration" type="checkbox" /></div>
-      <p id="optionsThemeIntegrationExplanation" class="explanation"></p>
-      <div><label for="compactMode" id="optionsCompactMode"></label></div>
-      <div>
-        <select name="compactMode" id="compactMode">
-          <option value="1" id="optionsCompactModeDynamic" />
-          <option value="2" id="optionsCompactModeStrict" />
-          <option value="0" id="optionsCompactModeOff" />
-        </select>
-      </div>
-      <p id="optionsCompactModeExplanation" class="explanation"></p>
-      <div><label for="compactPins" id="optionsCompactPins"></label></div>
-      <div><input id="compactPins" type="checkbox" /></div>
-    </div>
+    <p>
+      <input id="animations" type="checkbox" />
+      <label for="animations" id="optionsAnimations"></label>
+    </p>
+
+    <p>
+      <input id="themeIntegration" type="checkbox" />
+      <label for="themeIntegration" id="optionsThemeIntegration"></label>
+    </p>
+    <p id="optionsThemeIntegrationExplanation" class="explanation"></p>
+
+    <p>
+      <label for="compactMode" id="optionsCompactMode"></label>
+      <span class="radiogroup">
+        <input id="radioCompactModeDynamic" name="compactMode" type="radio" value="1" />
+        <label for="radioCompactModeDynamic" id="optionsCompactModeDynamic">Dynamic</label>
+        <input id="radioCompactModeStrict" name="compactMode" type="radio" value="2" />
+        <label for="radioCompactModeStrict" id="optionsCompactModeStrict">Enabled</label>
+        <input id="radioCompactModeOff" name="compactMode" type="radio" value="0" />
+        <label for="radioCompactModeOff" id="optionsCompactModeOff">Disabled</label>
+      </span>
+    </p>
+    <p id="optionsCompactModeExplanation" class="explanation"></p>
+
+    <p>
+      <input id="compactPins" type="checkbox" />
+      <label for="compactPins" id="optionsCompactPins"></label>
+    </p>
+
     <h1 id="optionsBehaviorTitle"></h1>
-    <div class="options gridOptions">
-      <div><label for="switchLastActiveTab" id="optionsSwitchLastActiveTab"></label></div>
-      <div><input id="switchLastActiveTab" type="checkbox" /></div>
-      <p id="optionsSwitchLastActiveTabExplanation" class="explanation"></p>
-      <div><label for="notifyClosingManyTabs" id="optionsNotifyClosingManyTabs"></label></div>
-      <div><input id="notifyClosingManyTabs" type="checkbox" /></div>
-      <p id="optionsNotifyClosingManyTabsExplanation" class="explanation"></p>
-    </div>
+
+    <p>
+      <input id="switchLastActiveTab" type="checkbox" />
+      <label for="switchLastActiveTab" id="optionsSwitchLastActiveTab"></label>
+    </p>
+    <p id="optionsSwitchLastActiveTabExplanation" class="explanation"></p>
+
+    <p>
+      <input id="notifyClosingManyTabs" type="checkbox" />
+      <label for="notifyClosingManyTabs" id="optionsNotifyClosingManyTabs"></label>
+    </p>
+    <p id="optionsNotifyClosingManyTabsExplanation" class="explanation"></p>
+
     <h1 id="optionsAdvancedTitle"></h1>
-    <div class="options gridOptions">
-      <div><label for="useCustomCSS" id="optionsCustomCSS"></label></div>
-      <div><input id="useCustomCSS" type="checkbox" /></div>
-    </div>
-    <div>
-      <textarea
-        id="customCSS"
-        autocomplete="off"
-        autocorrect="off"
-        autocapitalize="off"
-        spellcheck="false"
-      ></textarea>
-    </div>
-    <div><button id="optionsSaveCustomCSS" /></div>
+
+    <p>
+      <input id="useCustomCSS" type="checkbox" />
+      <label for="useCustomCSS" id="optionsCustomCSS"></label>
+    </p>
+
+    <textarea
+      id="customCSS"
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+    >
+    </textarea>
+    <p><button id="optionsSaveCustomCSS"></button></p>
+
     <ul>
       <li>
         <a
           id="optionsCustomCSSWikiLink"
           href="https://framagit.org/ariasuni/tabcenter-reborn/wikis/home"
-        ></a>
+        >
+        </a>
       </li>
       <li>
         <a
           id="optionsCustomCSSChangelogLink"
           href="https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CHANGELOG.md"
-        ></a>
+        >
+        </a>
       </li>
     </ul>
     <script src="options.js"></script>

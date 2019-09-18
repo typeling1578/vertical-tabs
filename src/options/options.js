@@ -55,7 +55,7 @@ class TabCenterOptions {
       if (pref[0] === "customCSS") {
         element.value = pref[1];
       } else if (pref[0] === "compactMode") {
-        element.value = parseInt(pref[1]);
+        document.querySelector(`[value="${parseInt(pref[1])}"]`).checked = true;
       } else {
         element.checked = pref[1];
         if (pref[0] === "useCustomCSS") {
@@ -67,14 +67,16 @@ class TabCenterOptions {
 
   setupListeners() {
     document.body.addEventListener("change", e => {
-      if (e.target.tagName === "SELECT")
-        browser.storage.sync.set({ [e.target.id]: parseInt(e.target.value) });
       if (e.target.tagName === "TEXTAREA") {
         browser.storage.sync.set({ [e.target.id]: e.target.value });
       } else if (e.target.tagName === "INPUT") {
-        browser.storage.sync.set({ [e.target.id]: e.target.checked });
-        if (e.target.id === "useCustomCSS") {
-          this.updateCustomCSSEnabled(e.target.checked);
+        if (e.target.type === "radio") {
+          browser.storage.sync.set({ [e.target.name]: parseInt(e.target.value) });
+        } else {
+          browser.storage.sync.set({ [e.target.id]: e.target.checked });
+          if (e.target.id === "useCustomCSS") {
+            this.updateCustomCSSEnabled(e.target.checked);
+          }
         }
       }
     });
