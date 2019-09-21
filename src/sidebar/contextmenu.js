@@ -126,6 +126,7 @@ export default class ContextMenu {
       {
         id: "contextMenuMoveTab",
         title: browser.i18n.getMessage("contextMenuMoveTab"),
+        enabled: this._tablist.hasTabsBefore(tab) || this._tablist.hasTabsAfter(tab),
       },
       {
         parentId: "contextMenuMoveTab",
@@ -143,7 +144,6 @@ export default class ContextMenu {
         parentId: "contextMenuMoveTab",
         id: "contextMenuMoveTabToNewWindow",
         title: browser.i18n.getMessage("contextMenuMoveTabToNewWindow"),
-        enabled: this._tablist.tabCount() > 1,
       },
       {
         type: "separator",
