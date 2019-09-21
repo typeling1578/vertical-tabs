@@ -744,7 +744,7 @@ export default class TabList {
       return;
     }
     browser.tabs.remove(this._willBeDeletedIds);
-    this._willBedeletedIds = null;
+    this._willBeDeletedIds = null;
     this._willBeDeletedWasActive = null;
   }
 
