@@ -90,7 +90,7 @@
         "message": "Attivata"
     },
     "optionsCompactPins": {
-        "message": "Favicon solo per le schede fissate"
+        "message": "Solo-icona per le schede fissate"
     },
     "optionsDarkTheme": {
         "message": "Tema Scuro"
@@ -187,11 +187,11 @@
         "description": "New Tab context menu item."
     },
     "notificationDeletedMessage": {
-        "message": "Clicca la notificazione per annullare",
+        "message": "Clicca la notifica per annullare.",
         "description": "Title of the notification when deleting many tabs."
     },
     "optionsCustomCSSChangelogLink": {
-        "message": "Verifica le nuovità per informarti dei cambiamenti rompendo la compatibilità",
+        "message": "Controlla l'elenco delle modifiche per aggiornamenti che potrebbero rompere la compatibilità",
         "description": "Text for a link to the changelog."
     },
     "OptionsAnimations": {
