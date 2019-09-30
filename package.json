@@ -1,5 +1,6 @@
 {
   "name": "tabcenter-reborn",
+  "sideEffects": false,
   "scripts": {
     "lint": "prettier --write \"**/*.{js,yaml,html,css,json,yaml,md}\" && eslint . --fix && stylelint src/{options,sidebar}/*.css",
     "watch": "webpack-cli --mode development --watch --devtool=inline-source-map",
@@ -69,18 +70,18 @@
   "homepage": "https://framagit.org/ariasuni/tabcenter-reborn#readme",
   "devDependencies": {
     "concurrently": "^4.1.2",
-    "eslint": "^5.16.0",
-    "eslint-config-prettier": "^4.3.0",
-    "husky": "^2.7.0",
-    "lint-staged": "^8.2.1",
+    "eslint": "^6.5.0",
+    "eslint-config-prettier": "^6.3.0",
+    "husky": "^3.0.7",
+    "lint-staged": "^9.4.0",
     "prettier": "^1.18.2",
     "scroll-into-view-if-needed": "^2.2.20",
     "smooth-scroll-into-view-if-needed": "^1.1.23",
-    "stylelint": "^10.1.0",
-    "stylelint-config-recommended": "^2.2.0",
-    "web-ext": "^3.1.1",
-    "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.7"
+    "stylelint": "^11.0.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "web-ext": "^3.2.0",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
   },
   "dependencies": {
     "fuzzysort": "^1.1.4"
