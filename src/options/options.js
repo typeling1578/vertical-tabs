@@ -1,13 +1,7 @@
 /* global browser */
 
-class TabCenterOptions {
+class Options {
   constructor() {
-    this.setupLabels();
-    this.setupState();
-    this.setupListeners();
-  }
-
-  async setupLabels() {
     const options = [
       "optionsAppearanceTitle",
       "optionsAnimations",
@@ -29,14 +23,29 @@ class TabCenterOptions {
       "optionsCustomCSSChangelogLink",
       "optionsSaveCustomCSS",
     ];
-    for (const opt of options) {
-      document.getElementById(opt).textContent = browser.i18n.getMessage(opt);
-    }
-    const opt = "optionsNotifyClosingManyTabsExplanation";
-    document.getElementById(opt).textContent = browser.i18n.getMessage(opt, 5);
+    const changes = [];
+
+    requestAnimationFrame(() => {
+      // Group reading the DOM
+      for (const opt of options) {
+        changes.push([opt, document.getElementById(opt)]);
+      }
+      const option = "optionsNotifyClosingManyTabsExplanation";
+      const optionNode = document.getElementById(option);
+
+      // Group writing the DOM
+      for (const [opt, node] of changes) {
+        const textNode = document.createTextNode(browser.i18n.getMessage(opt));
+        node.appendChild(textNode);
+      }
+      optionNode.appendChild(document.createTextNode(browser.i18n.getMessage(option, 5)));
+      document.body.classList.add("loaded");
+
+      this.setupState();
+    });
   }
 
-  async setupState() {
+  setupState() {
     const defaultPrefs = {
       animations: true,
       themeIntegration: true,
@@ -48,21 +57,24 @@ class TabCenterOptions {
       customCSS: "",
     };
 
-    const prefs = await browser.storage.sync.get(defaultPrefs);
-
-    for (const pref of Object.entries(prefs)) {
-      const element = document.getElementById(pref[0]);
-      if (pref[0] === "customCSS") {
-        element.value = pref[1];
-      } else if (pref[0] === "compactMode") {
-        document.querySelector(`[value="${parseInt(pref[1])}"]`).checked = true;
-      } else {
-        element.checked = pref[1];
-        if (pref[0] === "useCustomCSS") {
-          this.updateCustomCSSEnabled(pref[1]);
+    browser.storage.sync.get(defaultPrefs).then(prefs => {
+      requestAnimationFrame(() => {
+        for (const pref of Object.entries(prefs)) {
+          const element = document.getElementById(pref[0]);
+          if (pref[0] === "customCSS") {
+            element.value = pref[1];
+          } else if (pref[0] === "compactMode") {
+            document.querySelector(`[value="${parseInt(pref[1])}"]`).checked = true;
+          } else {
+            element.checked = pref[1];
+            if (pref[0] === "useCustomCSS") {
+              this.updateCustomCSSEnabled(pref[1]);
+            }
+          }
         }
-      }
-    }
+        this.setupListeners();
+      });
+    });
   }
 
   setupListeners() {
@@ -94,4 +106,4 @@ class TabCenterOptions {
   }
 }
 
-new TabCenterOptions();
+new Options();

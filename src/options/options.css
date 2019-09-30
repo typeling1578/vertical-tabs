@@ -1,10 +1,16 @@
 html {
   font: message-box;
   color: #333;
+  overflow-y: hidden;
 }
 
 body {
   font-size: 1.1rem;
+  opacity: 0;
+}
+
+body.loaded {
+  opacity: 1;
 }
 
 h1 {
