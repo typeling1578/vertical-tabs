@@ -2,37 +2,50 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <title>Tab Center Reborn options</title>
     <link rel="stylesheet" href="options.css" />
   </head>
   <body>
     <h1 id="optionsAppearanceTitle"></h1>
     <p>
-      <input id="animations" type="checkbox" />
-      <label for="animations" id="optionsAnimations"></label>
+      <label for="animations">
+        <input id="animations" type="checkbox" />
+        <span id="optionsAnimations"></span>
+      </label>
     </p>
 
     <p>
-      <input id="themeIntegration" type="checkbox" />
-      <label for="themeIntegration" id="optionsThemeIntegration"></label>
+      <label for="themeIntegration">
+        <input id="themeIntegration" type="checkbox" />
+        <span id="optionsThemeIntegration"></span>
+      </label>
     </p>
     <p id="optionsThemeIntegrationExplanation" class="explanation"></p>
 
     <p>
-      <label for="compactMode" id="optionsCompactMode"></label>
+      <span id="optionsCompactMode"></span>
       <span class="radiogroup">
-        <input id="radioCompactModeDynamic" name="compactMode" type="radio" value="1" />
-        <label for="radioCompactModeDynamic" id="optionsCompactModeDynamic">Dynamic</label>
-        <input id="radioCompactModeStrict" name="compactMode" type="radio" value="2" />
-        <label for="radioCompactModeStrict" id="optionsCompactModeStrict">Enabled</label>
-        <input id="radioCompactModeOff" name="compactMode" type="radio" value="0" />
-        <label for="radioCompactModeOff" id="optionsCompactModeOff">Disabled</label>
+        <label for="radioCompactModeDynamic">
+          <input id="radioCompactModeDynamic" name="compactMode" type="radio" value="1" />
+          <span id="optionsCompactModeDynamic"></span>
+        </label>
+        <label for="radioCompactModeStrict">
+          <input id="radioCompactModeStrict" name="compactMode" type="radio" value="2" />
+          <span id="optionsCompactModeStrict"></span>
+        </label>
+        <label for="radioCompactModeOff">
+          <input id="radioCompactModeOff" name="compactMode" type="radio" value="0" />
+          <span id="optionsCompactModeOff"></span>
+        </label>
       </span>
     </p>
     <p id="optionsCompactModeExplanation" class="explanation"></p>
 
     <p>
-      <input id="compactPins" type="checkbox" />
-      <label for="compactPins" id="optionsCompactPins"></label>
+      <label for="compactPins">
+        <input id="compactPins" type="checkbox" />
+        <span id="optionsCompactPins"></span>
+      </label>
     </p>
 
     <h1 id="optionsBehaviorTitle"></h1>
@@ -52,18 +65,13 @@
     <h1 id="optionsAdvancedTitle"></h1>
 
     <p>
-      <input id="useCustomCSS" type="checkbox" />
-      <label for="useCustomCSS" id="optionsCustomCSS"></label>
+      <label for="useCustomCSS">
+        <input id="useCustomCSS" type="checkbox" />
+        <span id="optionsCustomCSS"></span>
+      </label>
     </p>
 
-    <textarea
-      id="customCSS"
-      autocomplete="off"
-      autocorrect="off"
-      autocapitalize="off"
-      spellcheck="false"
-    >
-    </textarea>
+    <textarea id="customCSS" autocomplete="off" autocapitalize="off" spellcheck="false"></textarea>
     <p><button id="optionsSaveCustomCSS"></button></p>
 
     <ul>
@@ -82,6 +90,7 @@
         </a>
       </li>
     </ul>
+
     <script src="options.js"></script>
   </body>
 </html>
