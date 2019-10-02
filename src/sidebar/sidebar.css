@@ -264,7 +264,11 @@ body.has-custom-input-color #searchbox-input::selection {
 
 /* HACK: keep in sync with animation time in JS */
 body.animated #tablist-wrapper .tab {
-  transition: box-shadow 0.1s ease, height 0.1s ease, width 0.1s ease;
+  transition: box-shadow 0.1s ease, height 0.05s linear;
+}
+
+body.animated #pinnedtablist.compact .tab {
+  transition: box-shadow 0.1s ease, width 0.1s linear;
 }
 
 #tablist.compact .tab.deleted + .tab,

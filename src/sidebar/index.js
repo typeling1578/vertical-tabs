@@ -1,8 +1,5 @@
-import TabCenter from "./tabcenter.js";
+import Sidebar from "./sidebar.js";
 
 // Start-it up!
-const tabCenter = new TabCenter();
-tabCenter.init();
-
-// For testing!
-window.tabCenter = tabCenter;
+const sidebar = new Sidebar();
+sidebar.init();

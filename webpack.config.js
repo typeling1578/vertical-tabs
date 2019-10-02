@@ -4,7 +4,7 @@
 module.exports = {
   entry: "./src/sidebar/index.js",
   output: {
-    filename: "bundle.js",
+    filename: "sidebar.bundle.js",
     path: `${__dirname}/src/sidebar/dist`,
   },
 };

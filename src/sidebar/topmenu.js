@@ -6,7 +6,7 @@ import getContextualIdentityItems from "./contextualidentities.js";
 /* @arg {props}
  * search
  */
-export default class TopMenu {
+export default class Topmenu {
   constructor(props) {
     this._props = props;
     this._newTabButtonView = document.getElementById("newtab");

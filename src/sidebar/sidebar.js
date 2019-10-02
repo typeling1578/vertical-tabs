@@ -1,11 +1,11 @@
 /* global browser */
 
-import SideTab from "./tab.js";
-import TabList from "./tablist.js";
-import TopMenu from "./topmenu.js";
+import Sidetab from "./sidetab.js";
+import Tablist from "./tablist.js";
+import Topmenu from "./topmenu.js";
 import { throttled } from "./utils.js";
 
-export default class TabCenter {
+export default class Sidebar {
   async init() {
     const window = await browser.windows.getCurrent();
     document.body.classList.toggle("incognito", window.incognito);
@@ -15,7 +15,7 @@ export default class TabCenter {
     document.body.setAttribute("platform", platform.os);
 
     const search = this._search.bind(this);
-    this._topMenu = new TopMenu({ search });
+    this._topMenu = new Topmenu({ search });
 
     const prefs = await this._getPrefs();
     if (typeof prefs.compactMode === "string") {
@@ -23,7 +23,7 @@ export default class TabCenter {
     }
     this._initPrefs(prefs);
 
-    this._tablist = new TabList({
+    this._tablist = new Tablist({
       windowId: this._windowId,
       search,
       prefs,
@@ -69,7 +69,7 @@ export default class TabCenter {
     // Let the searchbox input and the tabs have a context menu.
     if (
       !(target && (target.id === "searchbox-input" || target.id.startsWith("newtab"))) &&
-      !SideTab.isTabEvent(e, false)
+      !Sidetab.isTabEvent(e, false)
     ) {
       e.preventDefault();
     }

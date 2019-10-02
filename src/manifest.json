@@ -13,7 +13,7 @@
   },
   "sidebar_action": {
     "default_title": "__MSG_sidebarTitle__",
-    "default_panel": "sidebar/tabcenter.html",
+    "default_panel": "sidebar/sidebar.html",
     "default_icon": "tabcenter.svg"
   },
   "icons": {

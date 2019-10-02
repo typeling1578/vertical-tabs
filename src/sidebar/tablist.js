@@ -4,7 +4,7 @@ import fuzzysort from "fuzzysort";
 import smoothScrollIntoView from "smooth-scroll-into-view-if-needed";
 
 import { openTab } from "./utils.js";
-import SideTab from "./tab.js";
+import Sidetab from "./sidetab.js";
 import ContextMenu from "./contextmenu.js";
 
 // const COMPACT_MODE_OFF = 0;
@@ -15,7 +15,7 @@ const NOTIFICATION_DELETE_ID = "notification-delete";
 // HACK: keep in sync with animation time in CSS
 const TAB_ANIMATION_TIME_MS = 100;
 
-export default class TabList {
+export default class Tablist {
   /* @arg {props}
    * windowId
    * search
@@ -341,7 +341,7 @@ export default class TabList {
   }
 
   _onPointerOver(e) {
-    const tabId = SideTab.tabIdForEvent(e);
+    const tabId = Sidetab.tabIdForEvent(e);
     if (!tabId) {
       //The tab may have been closed
       return;
@@ -360,8 +360,8 @@ export default class TabList {
   }
 
   _onAuxClick(e) {
-    if (e.button === 1 && SideTab.isTabEvent(e, false)) {
-      browser.tabs.remove(SideTab.tabIdForEvent(e));
+    if (e.button === 1 && Sidetab.isTabEvent(e, false)) {
+      browser.tabs.remove(Sidetab.tabIdForEvent(e));
       e.preventDefault();
     }
   }
@@ -392,15 +392,15 @@ export default class TabList {
 
   _onClick(e) {
     // Don't put preventDefault here or drag-and-drop won't work
-    if (SideTab.isCloseButtonEvent(e)) {
-      const tabId = SideTab.tabIdForEvent(e);
+    if (Sidetab.isCloseButtonEvent(e)) {
+      const tabId = Sidetab.tabIdForEvent(e);
       browser.tabs.remove(tabId);
-    } else if (SideTab.isIconOverlayEvent(e)) {
-      const tabId = SideTab.tabIdForEvent(e);
+    } else if (Sidetab.isIconOverlayEvent(e)) {
+      const tabId = Sidetab.tabIdForEvent(e);
       const tab = this.getTabById(tabId);
       browser.tabs.update(tabId, { muted: !tab.muted });
-    } else if (e.button === 0 && SideTab.isTabEvent(e)) {
-      const tabId = SideTab.tabIdForEvent(e);
+    } else if (e.button === 0 && Sidetab.isTabEvent(e)) {
+      const tabId = Sidetab.tabIdForEvent(e);
       if (tabId !== this._active) {
         browser.tabs.update(tabId, { active: true });
       } else if (this._switchLastActiveTab && this._tabs.size > 1) {
@@ -416,19 +416,19 @@ export default class TabList {
   }
 
   _onDblClick(e) {
-    if (SideTab.isTabEvent(e) && this.closeTabsByDoubleClick) {
-      browser.tabs.remove(SideTab.tabIdForEvent(e));
+    if (Sidetab.isTabEvent(e) && this.closeTabsByDoubleClick) {
+      browser.tabs.remove(Sidetab.tabIdForEvent(e));
     }
   }
 
   _onDragStart(e) {
-    if (!SideTab.isTabEvent(e) || this._filterActive) {
+    if (!Sidetab.isTabEvent(e) || this._filterActive) {
       return;
     }
 
     this._isDragging = true;
 
-    const tabId = SideTab.tabIdForEvent(e);
+    const tabId = Sidetab.tabIdForEvent(e);
     const tab = this.getTabById(tabId);
     //trick to show the "move" effect when dragging over tab viewport.
     e.dataTransfer.setData("text/uri-list", "");
@@ -501,7 +501,7 @@ export default class TabList {
       return null;
     }
 
-    const dropTabId = SideTab.tabIdForEvent(e);
+    const dropTabId = Sidetab.tabIdForEvent(e);
     if (!dropTabId) {
       const lastTab = this._getLastTab(e.target === this._pinnedview);
       return {
@@ -591,7 +591,7 @@ export default class TabList {
     const dt = e.dataTransfer;
     const tabJson = dt.getData("text/x-tabcenter-tab");
     if (tabJson) {
-      await this._handleDroppedTabCenterTab(e, JSON.parse(tabJson), whereToDropInfo);
+      await this._handleDroppedSidetab(e, JSON.parse(tabJson), whereToDropInfo);
       return;
     }
 
@@ -637,7 +637,7 @@ export default class TabList {
     }
   }
 
-  async _handleDroppedTabCenterTab(e, dragTabInfo, whereToDropInfo) {
+  async _handleDroppedSidetab(e, dragTabInfo, whereToDropInfo) {
     const toDuplicate = e.ctrlKey;
 
     const dragTab = await browser.tabs.get(dragTabInfo.tabId);
@@ -690,7 +690,7 @@ export default class TabList {
         return;
       }
 
-      const tabId = SideTab.tabIdForEvent(e);
+      const tabId = Sidetab.tabIdForEvent(e);
       const tab = this.getTabById(tabId);
       // if tab has been moved to another window
       if (!tab) {
@@ -712,7 +712,7 @@ export default class TabList {
   }
 
   _onAnimationEnd(e) {
-    const tabId = SideTab.tabIdForEvent(e);
+    const tabId = Sidetab.tabIdForEvent(e);
     const tab = this.getTabById(tabId);
     if (tab) {
       tab.onAnimationEnd(e);
@@ -952,7 +952,7 @@ export default class TabList {
   }
 
   __create(tabInfo) {
-    const tab = new SideTab();
+    const tab = new Sidetab();
     this._tabs.set(tabInfo.id, tab);
     tab.init(tabInfo);
     if (tabInfo.active) {

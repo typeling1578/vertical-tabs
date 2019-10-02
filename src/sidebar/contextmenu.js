@@ -1,7 +1,7 @@
 /* global browser, location */
 
 import { openTab } from "./utils.js";
-import SideTab from "./tab.js";
+import Sidetab from "./sidetab.js";
 import getContextualIdentityItems from "./contextualidentities.js";
 
 const IS_PRIVILEGED_PAGE_URL = /^(about|chrome|data|file|javascript):*/;
@@ -74,13 +74,13 @@ export default class ContextMenu {
   }
 
   open(e) {
-    if (!SideTab.isTabEvent(e, false)) {
+    if (!Sidetab.isTabEvent(e, false)) {
       e.preventDefault();
       return;
     }
     browser.menus.removeAll();
 
-    const tabId = SideTab.tabIdForEvent(e);
+    const tabId = Sidetab.tabIdForEvent(e);
     const tab = this._tablist.getTabById(tabId);
 
     const items = [

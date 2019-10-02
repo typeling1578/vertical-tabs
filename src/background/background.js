@@ -1,6 +1,6 @@
 /* global browser */
 
-class TabCenterBackground {
+class Background {
   constructor() {
     this.updateTheme();
     this.openedSidebarWindows = {};
@@ -84,7 +84,7 @@ class TabCenterBackground {
   }
 }
 
-new TabCenterBackground();
+new Background();
 
 // Toolbar icon takes a different color than the sidebar header icon
 function setButtonsActionColor(browserColor, sidebarColor) {

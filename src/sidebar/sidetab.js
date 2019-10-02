@@ -2,7 +2,7 @@
 
 import { debounced } from "./utils";
 
-export default class SideTab {
+export default class Sidetab {
   constructor() {
     this.id = null;
     this.url = null;
@@ -139,7 +139,7 @@ export default class SideTab {
   _updateLoading(status) {
     this.view.classList.toggle("loading", status === "loading");
     if (status === "loading") {
-      SideTab._syncThrobberAnimations();
+      Sidetab._syncThrobberAnimations();
       this._notselectedsinceload = !this.view.classList.contains("active");
     } else {
       if (this._notselectedsinceload) {
@@ -310,8 +310,8 @@ export default class SideTab {
   static tabIdForEvent(e) {
     let el = e.target;
     // eslint-disable-next-line curly
-    while (!SideTab._tabIdForView(el) && (el = el.parentElement));
-    return SideTab._tabIdForView(el);
+    while (!Sidetab._tabIdForView(el) && (el = el.parentElement));
+    return Sidetab._tabIdForView(el);
   }
 
   static _syncThrobberAnimations() {
