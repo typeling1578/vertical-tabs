@@ -1,3 +1,5 @@
+"use strict";
+
 import Sidebar from "./sidebar.js";
 
 // Start-it up!
