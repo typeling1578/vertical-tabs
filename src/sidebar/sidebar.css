@@ -144,7 +144,7 @@ img,
 }
 
 #newtab-icon {
-  background-image: url("img/glyph-new-16.svg#standard");
+  background-image: url("img/new.svg#standard");
 }
 
 #settings-icon {
@@ -578,7 +578,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 .tab-icon {
   width: 18px;
   height: 18px;
-  background-image: url("img/defaultFavicon.svg");
+  background-image: url("img/default-favicon.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -683,7 +683,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   height: 14px;
   margin-right: 7px;
   display: block;
-  background-image: url("img/glyph-pin-pinned-12.svg#standard");
+  background-image: url("img/pinned.svg#standard");
   -moz-context-properties: fill;
   fill: var(--icons);
   filter: url("img/filters.svg#fill");
@@ -701,7 +701,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   bottom: 0;
   right: 0;
   margin: auto;
-  background-image: url("img/close-icon.svg");
+  background-image: url("img/close.svg");
   background-size: 18px;
   -moz-context-properties: fill;
   fill: var(--icons);

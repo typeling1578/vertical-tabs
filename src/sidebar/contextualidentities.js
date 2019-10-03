@@ -10,7 +10,7 @@ export default function getContextualIdentityItems() {
     return {
       id: identity.cookieStoreId,
       title: identity.name,
-      icons: { "16": `/sidebar/img/contextual-identities/${identity.icon}.svg#${identity.color}` },
+      icons: { "16": `/sidebar/img/identities/${identity.icon}.svg#${identity.color}` },
     };
   });
 }

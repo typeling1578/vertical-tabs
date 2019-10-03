@@ -2,8 +2,8 @@
 
 cd "$(dirname "$0")"/src/sidebar/img
 
-mkdir -p contextual-identities
-cd contextual-identities
+mkdir -p identities
+cd identities
 
 BASE='https://hg.mozilla.org/mozilla-central/raw-file/tip/browser/components/contextualidentity/content/'
 
