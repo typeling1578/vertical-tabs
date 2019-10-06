@@ -57,10 +57,6 @@ export default class Tablist {
     this._populate();
     this._setupListeners();
 
-    browser.browserSettings.closeTabsByDoubleClick.get({}).then(({ value }) => {
-      this.closeTabsByDoubleClick = value;
-    });
-
     this._updateHasRecentlyClosedTabs();
     this.tabContextMenu = new ContextMenu(this);
   }
@@ -92,7 +88,6 @@ export default class Tablist {
     // Read more here: https://davidwalsh.name/event-delegate
     for (const view of [this._view, this._pinnedview]) {
       view.addEventListener("click", e => this._onClick(e));
-      view.addEventListener("dblclick", e => this._onDblClick(e));
       view.addEventListener("auxclick", e => this._onAuxClick(e));
       view.addEventListener("mousedown", e => this._onMouseDown(e));
       view.addEventListener("pointerup", e => this._onPointerUp(e));
@@ -412,12 +407,6 @@ export default class Tablist {
 
       this._props.search("");
       return;
-    }
-  }
-
-  _onDblClick(e) {
-    if (Sidetab.isTabEvent(e) && this.closeTabsByDoubleClick) {
-      browser.tabs.remove(Sidetab.tabIdForEvent(e));
     }
   }
 
