@@ -75,8 +75,6 @@
     "husky": "^3.0.7",
     "lint-staged": "^9.4.0",
     "prettier": "^1.18.2",
-    "scroll-into-view-if-needed": "^2.2.20",
-    "smooth-scroll-into-view-if-needed": "^1.1.23",
     "stylelint": "^11.0.0",
     "stylelint-config-recommended": "^3.0.0",
     "web-ext": "^3.2.0",
@@ -84,6 +82,8 @@
     "webpack-cli": "^3.3.9"
   },
   "dependencies": {
-    "fuzzysort": "^1.1.4"
+    "@ctrl/tinycolor": "^2.5.3",
+    "fuzzysort": "^1.1.4",
+    "smooth-scroll-into-view-if-needed": "^1.1.23"
   }
 }

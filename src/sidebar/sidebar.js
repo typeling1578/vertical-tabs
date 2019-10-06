@@ -5,6 +5,37 @@ import Tablist from "./tablist.js";
 import Topmenu from "./topmenu.js";
 import { throttled } from "./utils.js";
 
+import { TinyColor, readability } from "@ctrl/tinycolor";
+
+// fallbacks for theme colors
+const CSS_TO_THEME_PROPS = {
+  "--background": ["frame"],
+  "--button-background-active": ["button_background_active"],
+  "--button-background-hover": ["button_background_hover"],
+  "--icons": ["icons", "toolbar_text", "bookmark_text", "tab_background_text", "tab_text"],
+  "--tab-separator": [
+    "tab_background_separator",
+    "toolbar_field_separator",
+    "toolbar_top_separator",
+  ],
+  "--tab-selected-line": ["tab_line", "tab_text", "tab_background_text"],
+  "--tab-loading-indicator": ["tab_loading"],
+  "--tab-active-background": ["tab_selected", "toolbar"],
+  "--tab-active-text": ["tab_text", "toolbar_text", "bookmark_text", "tab_background_text"],
+  "--tab-text": ["tab_background_text", "tab_text", "toolbar_text", "bookmark_text"],
+  "--toolbar-background": ["toolbar", "frame"],
+  "--toolbar-text": ["toolbar_text", "bookmark_text"],
+  "--input-background": ["toolbar_field"],
+  "--input-border": ["toolbar_field_border"],
+  "--input-border-focus": ["toolbar_field_border_focus"],
+  "--input-background-focus": ["toolbar_field_focus"],
+  "--input-selected-text-background": ["toolbar_field_highlight", "button_background_active"],
+  "--input-selected-text": ["toolbar_field_highlight_text", "toolbar_field_text"],
+  "--input-text": ["bookmark_text", "toolbar_field_text"],
+  "--input-text-focus": ["toolbar_field_text_focus", "toolbar_field_text"],
+};
+
+
 export default class Sidebar {
   async init() {
     const window = await browser.windows.getCurrent();
@@ -144,37 +175,9 @@ export default class Sidebar {
   _applyTheme(theme) {
     const style = document.body.style;
 
-    // fallbacks for theme colors
-    const cssToThemeProp = {
-      "--background": ["frame"],
-      "--button-background-active": ["button_background_active"],
-      "--button-background-hover": ["button_background_hover"],
-      "--icons": ["icons", "toolbar_text", "bookmark_text", "tab_background_text", "tab_text"],
-      "--tab-separator": [
-        "tab_background_separator",
-        "toolbar_field_separator",
-        "toolbar_top_separator",
-      ],
-      "--tab-selected-line": ["tab_line", "tab_text", "tab_background_text"],
-      "--tab-loading-indicator": ["tab_loading"],
-      "--tab-active-background": ["tab_selected", "toolbar"],
-      "--tab-active-text": ["tab_text", "toolbar_text", "bookmark_text", "tab_background_text"],
-      "--tab-text": ["tab_background_text", "tab_text", "toolbar_text", "bookmark_text"],
-      "--toolbar-background": ["toolbar", "frame"],
-      "--toolbar-text": ["toolbar_text", "bookmark_text"],
-      "--input-background": ["toolbar_field"],
-      "--input-border": ["toolbar_field_border"],
-      "--input-border-focus": ["toolbar_field_border_focus"],
-      "--input-background-focus": ["toolbar_field_focus"],
-      "--input-selected-text-background": ["toolbar_field_highlight", "button_background_active"],
-      "--input-selected-text": ["toolbar_field_highlight_text", "toolbar_field_text"],
-      "--input-text": ["bookmark_text", "toolbar_field_text"],
-      "--input-text-focus": ["toolbar_field_text_focus", "toolbar_field_text"],
-    };
-
     // if theme integration is disabled or theme is not usable, remove css variables then return
     if (!this._themeIntegrationEnabled || (theme.images && !theme.colors["sidebar"])) {
-      for (const cssVar of Object.keys(cssToThemeProp)) {
+      for (const cssVar of Object.keys(CSS_TO_THEME_PROPS)) {
         style.removeProperty(cssVar);
       }
       return;
@@ -182,7 +185,7 @@ export default class Sidebar {
 
     // get the effective values we will be using
     const themeColors = {};
-    for (const [cssVar, themeProps] of Object.entries(cssToThemeProp)) {
+    for (const [cssVar, themeProps] of Object.entries(CSS_TO_THEME_PROPS)) {
       for (const prop of themeProps) {
         themeColors[cssVar] = null;
         if (!theme.colors) {
@@ -196,7 +199,7 @@ export default class Sidebar {
     }
 
     // swap background and tab-active-background colors if background is light
-    if (themeColors["--background"] !== null && isLight(themeColors["--background"])) {
+    if (themeColors["--background"] !== null && new TinyColor(themeColors["--background"]).isLight()) {
       if (themeColors["--tab-active-background"] !== null) {
         let tmp = themeColors["--background"];
         themeColors["--background"] = themeColors["--tab-active-background"];
@@ -205,6 +208,15 @@ export default class Sidebar {
         tmp = themeColors["--tab-active-text"];
         themeColors["--tab-active-text"] = themeColors["--tab-text"];
         themeColors["--tab-text"] = tmp;
+      }
+    }
+
+    // Since Firefox Color uses additional_backgrounds instead of theme_frame,
+    // TCRn won’t fall back to default theme even if colors aren’t readable,
+    // so the user won’t think that TCRn is buggy with regards to Firefox Color
+    if (theme.images && theme.images.theme_frame && !isThemeReadable(themeColors)) {
+      for (const cssVar of Object.keys(cssToThemeProp)) {
+        themeColors[cssVar] = null;
       }
     }
 
@@ -225,21 +237,23 @@ export default class Sidebar {
   }
 }
 
-// from https://awik.io/determine-color-bright-dark-using-javascript/
-function isLight(color) {
-  let r, g, b;
-  if (color.match(/^rgb/)) {
-    // If HEX, store the red, green, blue values in separate variables
-    [r, g, b] = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/).slice(1);
-  } else {
-    // If RGB, convert it to HEX: http://gist.github.com/983661
-    color = `0x${color.slice(1).replace(color.length < 5 && /./g, "$&$&")}`;
-    r = color >> 16;
-    g = (color >> 8) & 255;
-    b = color & 255;
-  }
+function isThemeReadable(themeColors) {
+  // if a value is not defined, we use its default value to check if it is actually readable
+  return (
+    isReadable(themeColors["--background"] || "#ffffff", themeColors["--tab-text"] || "#0c0c0d") &&
+    isReadable(
+      themeColors["--tab-active-background"] || "#d7d7db",
+      themeColors["--tab-active-text"] || "#0c0c0d",
+    ) &&
+    isReadable(
+      themeColors["--toolbar-background"] || "#f9f9fa",
+      themeColors["--icons"] || "rgba(249, 249, 250, 0.8)",
+    )
+  );
+}
 
-  // HSP (Highly Sensitive Poo) equation from http://alienryderflex.com/hsp.html
-  const hsp = Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b));
-  return hsp > 127.5;
+// Some theme have bad contrast, but we only want to avoid incorrect themes
+// So we don’t check constrast >= AA but some arbitrary value to avoid white on white…
+function isReadable(color1, color2) {
+  return readability(color1, color2) >= 2;
 }
