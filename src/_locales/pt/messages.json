@@ -3,7 +3,7 @@
         "message": "Tab Center é uma tentativa de resolver alguns dos problemas que surgiram a partir da forma como as pessoas usam abas (notavelmente o problema de \"abas demais\") e fornecer uma base de interface de usuário mais versátil para inovação futura. A primeira versão desta extensão para o Firefox organiza abas verticalmente, em vez de horizontalmente. Ela é fortemente inspirada e toma emprestado ideias da excelente extensão VerticalTabs."
     },
     "browserActionTitle": {
-        "message": "Alternar Tab Center Reborn",
+        "message": "Mostrar/esconder Tab Center Reborn",
         "description": "Tooltip shown when hovering the toolbar button."
     },
     "sidebarTitle": {
@@ -15,7 +15,7 @@
         "description": "Label of the New Tab button in the top menu."
     },
     "newTabBtnTooltip": {
-        "message": "Abrir uma nova aba"
+        "message": "Abrir nova aba"
     },
     "searchPlaceholder": {
         "message": "Buscar abas"
@@ -121,5 +121,17 @@
     },
     "contextMenuMoveTabToEnd": {
         "message": "Mover para o fim"
+    },
+    "notificationDeletedMessage": {
+        "message": "Clique na notificação para desfazer.",
+        "description": "Title of the notification when deleting many tabs."
+    },
+    "unmuteTabButtonTooltip": {
+        "message": "Não silenciar aba",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
+    },
+    "muteTabButtonTooltip": {
+        "message": "Silenciar aba",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
     }
 }
