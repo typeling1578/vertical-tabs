@@ -372,7 +372,7 @@ export default class Tablist {
     smoothScrollIntoView(tab.view, {
       scrollMode: "if-needed",
       block: "nearest",
-      behavior: scrollBehavior === "auto" || scrollBehavior === "smooth" ? "smooth" : "instant",
+      behavior: scrollBehavior === "smooth" ? "smooth" : "instant",
     });
   }
 
