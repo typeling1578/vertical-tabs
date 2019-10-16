@@ -90,7 +90,7 @@
         "message": "Activé"
     },
     "optionsCompactPins": {
-        "message": "Favicon uniquement pour les onglets épinglés"
+        "message": "Afficher uniquement la favicon pour les onglets épinglés"
     },
     "optionsDarkTheme": {
         "message": "Thème sombre"
