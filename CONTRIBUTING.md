@@ -50,15 +50,20 @@ You need to have a recent version of Node.js.
 
 4. Make sure your changes are correct by testing them in different situations, with containers, search, private browsing and several windows open when it is relevant.
 
-## Make my Firefox theme work with Tab Center Reborn
+## Making my Firefox theme work with Tab Center Reborn
 
-Any theme not using a background image and working well with Firefox should be fine, otherwise it might be a bug.
+Themes using a background image are checked for readability before being used.
 
-If your theme uses a background image, you need to define explicitly declare a color for the sidebar header (`sidebar` key), either by using a color that suits your theme or redefining it to the default value (`#ffffff`).
+Note however that themes made with Firefox Color (using the [`additional_backgrounds`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/theme#images) key) will always work right now, so that integration won’t stop working seemingly (to the users) randomly when the contrast is insufficient. Still, you are advised to follow the advices below.
 
-You can also look at popular themes that works well with Tab Center Reborn:
+To make your theme compatible/work well with Tab Center Reborn, you need to define a background color (likely matching your the color of your background image — Firefox Color already does that for you) with sufficient contrast with your text/icon color.
 
-- [Matte Black V2](https://addons.mozilla.org/firefox/addon/matte-black-v2/)
-- [Arc Dark Theme](https://addons.mozilla.org/firefox/addon/arc-dark-theme-we/)
-- [Dark Theme for Firefox](https://addons.mozilla.org/firefox/addon/dark-theme-for-firefox/)
-- [Arc Theme](https://addons.mozilla.org/firefox/addon/arc-theme-we/)
+Tab Center Reborn checks those colors for contrast:
+
+- Toolbar background and icon
+- Tab background and tab text
+- Active tab background and active tab text
+
+[Test your colors](https://contrast-ratio.com/), and please aim for at least AA contrast.
+
+Note: Tab Center Reborn accepts worse contrasts to be compatible with less accessible themes, but please avoid relying on it and instead improve the contrast of your theme. This only makes it better for your users!
