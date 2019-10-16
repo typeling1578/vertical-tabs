@@ -3,7 +3,6 @@
 import Sidetab from "./sidetab.js";
 import Tablist from "./tablist.js";
 import Topmenu from "./topmenu.js";
-import { throttled } from "./utils.js";
 
 import { TinyColor, readability } from "@ctrl/tinycolor";
 
@@ -91,8 +90,6 @@ export default class Sidebar {
     }
 
     window.addEventListener("contextmenu", e => this._onContextMenu(e), false);
-    this._onWheel = throttled(e => this.__onWheel(e), 50);
-    window.addEventListener("wheel", e => this._onWheel(e));
   }
 
   _onContextMenu(e) {
@@ -103,16 +100,6 @@ export default class Sidebar {
       !Sidetab.isTabEvent(e, false)
     ) {
       e.preventDefault();
-    }
-  }
-
-  __onWheel(e) {
-    if (e.metaKey || e.ctrlKey) {
-      e.preventDefault();
-    }
-    if (e.ctrlKey) {
-      const scrollDirection = e.deltaY < 0 ? -1 : 1;
-      this._tablist._activateTabFromCurrent(scrollDirection);
     }
   }
 
@@ -144,9 +131,10 @@ export default class Sidebar {
     return browser.storage.sync.get({
       animations: true,
       themeIntegration: true,
-      compactMode: 1 /* COMPACT_MODE_DYNAMIC */,
+      compactMode: 1, /* COMPACT_MODE_DYNAMIC */
       compactPins: true,
       switchLastActiveTab: true,
+      switchByScrolling: 0, /* SWITCH_BY_SCROLLING_WITH_CTRL */
       notifyClosingManyTabs: true,
       useCustomCSS: true,
       customCSS: "",

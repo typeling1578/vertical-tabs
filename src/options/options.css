@@ -39,7 +39,7 @@ input[type="radio"] {
   vertical-align: top;
 }
 
-.radiogroup {
+.inline-radiogroup {
   display: inline-block;
   position: absolute;
   right: 5px;

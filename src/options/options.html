@@ -24,7 +24,7 @@
 
     <p>
       <span id="optionsCompactMode"></span>
-      <span class="radiogroup">
+      <span class="inline-radiogroup">
         <label for="radioCompactModeDynamic">
           <input id="radioCompactModeDynamic" name="compactMode" type="radio" value="1" />
           <span id="optionsCompactModeDynamic"></span>
@@ -55,6 +55,25 @@
       <label for="switchLastActiveTab" id="optionsSwitchLastActiveTab"></label>
     </p>
     <p id="optionsSwitchLastActiveTabExplanation" class="explanation"></p>
+
+    <p>
+      <span id="optionsSwitchByScrolling"></span>
+      <span class="inline-radiogroup">
+        <label for="radioSwitchByScrollingWithCtrl">
+          <input id="radioSwitchByScrollingWithCtrl" name="switchByScrolling" type="radio" value="0" />
+          <span id="optionsSwitchByScrollingWithCtrl"></span>
+        </label>
+        <label for="radioSwitchByScrollingAlways">
+          <input id="radioSwitchByScrollingAlways" name="switchByScrolling" type="radio" value="1" />
+          <span id="optionsSwitchByScrollingAlways"></span>
+        </label>
+        <label for="radioSwitchByScrollingNever">
+          <input id="radioSwitchByScrollingNever" name="switchByScrolling" type="radio" value="2" />
+          <span id="optionsSwitchByScrollingNever"></span>
+        </label>
+      </span>
+    </p>
+    <p id="optionsSwitchByScrollingWithCtrlExplanation" class="explanation"></p>
 
     <p>
       <input id="notifyClosingManyTabs" type="checkbox" />

@@ -3,13 +3,18 @@
 import fuzzysort from "fuzzysort";
 import smoothScrollIntoView from "smooth-scroll-into-view-if-needed";
 
-import { openTab } from "./utils.js";
+import { openTab, throttled } from "./utils.js";
 import Sidetab from "./sidetab.js";
 import ContextMenu from "./contextmenu.js";
 
 // const COMPACT_MODE_OFF = 0;
 const COMPACT_MODE_DYNAMIC = 1;
 const COMPACT_MODE_STRICT = 2;
+
+const SWITCH_BY_SCROLLING_WITH_CTRL = 0;
+const SWITCH_BY_SCROLLING_ALWAYS = 1;
+// const SWITCH_BY_SCROLLING_NEVER = 2;
+
 const NOTIFICATION_DELETE_ID = "notification-delete";
 
 // HACK: keep in sync with animation time in CSS
@@ -52,6 +57,7 @@ export default class Tablist {
     this._compactMode = this._props.prefs.compactMode;
     this._compactPins = this._props.prefs.compactPins;
     this._switchLastActiveTab = this._props.prefs.switchLastActiveTab;
+    this._switchByScrolling = this._props.prefs.switchByScrolling;
     this._notifyClosingManyTabs = this._props.prefs.notifyClosingManyTabs;
 
     this._populate();
@@ -109,11 +115,13 @@ export default class Tablist {
     document.addEventListener("drop", e => this._onDrop(e));
     document.addEventListener("dragend", e => this._onDragend(e));
 
-    // Disable zooming.
-    document.addEventListener("wheel", e => {
-      if (e.metaKey || e.ctrlKey) {
+    this._onWheel = throttled(e => this.__onWheel(e), 20);
+    window.addEventListener("wheel", e => {
+      // disable zooming
+      if (e.metaKey || e.ctrlKey || this._scrollShouldSwitch(e)) {
         e.preventDefault();
       }
+      this._onWheel(e);
     });
 
     // Handle notifications
@@ -182,6 +190,9 @@ export default class Tablist {
     }
     if (changes.compactPins) {
       this._compactPins = changes.compactPins.newValue;
+    }
+    if (changes.switchByScrolling) {
+      this._switchByScrolling = parseInt(changes.switchByScrolling.newValue);
     }
     if (changes.switchLastActiveTab) {
       this._switchLastActiveTab = changes.switchLastActiveTab.newValue;
@@ -688,6 +699,17 @@ export default class Tablist {
       browser.windows.create({ tabId: tabId });
       browser.bookmarks.onCreated.removeListener(__onBookmarkCreated);
     }, 50);
+  }
+
+  __onWheel(e) {
+    if (this._scrollShouldSwitch(e)) {
+      this._activateTabFromCurrent(e.deltaY);
+    }
+  }
+
+  _scrollShouldSwitch(e) {
+    return this._switchByScrolling === SWITCH_BY_SCROLLING_ALWAYS ||
+      (this._switchByScrolling === SWITCH_BY_SCROLLING_WITH_CTRL && e.ctrlKey);
   }
 
   _onSpacerDblClick() {

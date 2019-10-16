@@ -183,6 +183,26 @@
         "message": "Behavior",
         "description": "Section in options page."
     },
+    "optionsSwitchByScrolling": {
+        "message": "Switch active tab by scrolling",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingWithCtrl": {
+        "message": "With Ctrl",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingAlways": {
+        "message": "Always",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingNever": {
+        "message": "Never",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingWithCtrlExplanation": {
+        "message": "Activate the next or previous tab instead of scrolling under certain circumstances.",
+        "description": "Explanation for the Switch by scrolling options in options page."
+    },
     "optionsNotifyClosingManyTabs": {
         "message": "Notify when closing many tabs",
         "description": "Option in options page."
