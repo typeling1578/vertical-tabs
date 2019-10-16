@@ -247,5 +247,25 @@
     "OptionsAnimations": {
         "message": "Animations",
         "description": "Option in options page."
+    },
+    "optionsSwitchByScrollingWithCtrlExplanation": {
+        "message": "Active l’onglet suivant ou précédent au lieu de défiler sous certaines conditions.",
+        "description": "Explanation for the Switch by scrolling options in options page."
+    },
+    "optionsSwitchByScrollingNever": {
+        "message": "Jamais",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingAlways": {
+        "message": "Toujours",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingWithCtrl": {
+        "message": "Avec Ctrl",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrolling": {
+        "message": "Change l’onglet actif en défilant",
+        "description": "Option in options page"
     }
 }
