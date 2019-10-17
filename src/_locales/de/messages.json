@@ -237,5 +237,25 @@
     "OptionsAnimations": {
         "message": "Animationen",
         "description": "Option in options page."
+    },
+    "optionsSwitchByScrollingWithCtrlExplanation": {
+        "message": "Aktiviert den nächsten oder den vorherigen Tab, anstatt unter bestimmten Umständen zu scrollen.",
+        "description": "Explanation for the Switch by scrolling options in options page."
+    },
+    "optionsSwitchByScrollingNever": {
+        "message": "Nie",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingAlways": {
+        "message": "Immer",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingWithCtrl": {
+        "message": "Mit Strg",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrolling": {
+        "message": "Wechseln des aktiven Tabs durch Scrollen",
+        "description": "Option in options page"
     }
 }
