@@ -247,5 +247,25 @@
     "OptionsAnimations": {
         "message": "Animacioj",
         "description": "Option in options page."
+    },
+    "optionsSwitchByScrollingWithCtrlExplanation": {
+        "message": "Aktivigi la postan aŭ antaŭan langeton anstataŭ rulumadi sub iu kondiĉoj.",
+        "description": "Explanation for the Switch by scrolling options in options page."
+    },
+    "optionsSwitchByScrollingNever": {
+        "message": "Neniam",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingAlways": {
+        "message": "Ĉiam",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingWithCtrl": {
+        "message": "Kun Ctrl",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrolling": {
+        "message": "Ŝanĝi aktivan langeton per rulumado",
+        "description": "Option in options page"
     }
 }
