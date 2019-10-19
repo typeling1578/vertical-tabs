@@ -237,5 +237,25 @@
     "muteTabButtonTooltip": {
         "message": "Disattiva audio nella scheda",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
+    },
+    "optionsSwitchByScrollingWithCtrl": {
+        "message": "Con Ctrl",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrolling": {
+        "message": "Passa alla scheda attiva facendo scorrere",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingWithCtrlExplanation": {
+        "message": "Attiva la prossima o la scorsa scheda invece di scorrere sotto certe circostanze",
+        "description": "Explanation for the Switch by scrolling options in options page."
+    },
+    "optionsSwitchByScrollingNever": {
+        "message": "Mai",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingAlways": {
+        "message": "Sempre",
+        "description": "Option in options page"
     }
 }
