@@ -329,12 +329,7 @@ body.animated #pinnedtablist.compact .tab {
   margin-top: 0px;
 }
 
-#tablist-wrapper.shrinked .tab-loading-burst::before {
-  margin-left: 10px;
-  margin-top: 0px;
-}
-
-.tab-loading-burst.bursting::before {
+.tab.bursting .tab-loading-burst::before {
   background-image: url("img/loading-burst.svg#standard");
   -moz-context-properties: fill;
   fill: var(--tab-loading-indicator);
@@ -345,12 +340,17 @@ body.animated #pinnedtablist.compact .tab {
   animation: tab-burst-animation 375ms cubic-bezier(0, 0, 0.58, 1);
 }
 
-.tab-loading-burst.bursting[notselectedsinceload]::before {
+.tab.bursting.not-selected-since-load .tab-loading-burst::before {
   animation-name: tab-burst-animation-light;
 }
 
-.tab:not(.active) .tab-loading-burst.bursting::before {
+.tab:not(.active).bursting .tab-loading-burst::before {
   background-image: url("img/loading-burst.svg#light");
+}
+
+#tablist-wrapper.shrinked .tab-loading-burst::before {
+  margin-left: 10px;
+  margin-top: 0px;
 }
 
 @keyframes tab-burst-animation {
@@ -516,12 +516,12 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   left: 10px;
 }
 
-.tab-icon-overlay.sound {
+.tab.sound:not(.muted) .tab-icon-overlay-audible {
   display: block;
   background-image: url("img/tab-audio-small.svg#tab-audio");
 }
 
-.tab-icon-overlay.muted {
+.tab.muted .tab-icon-overlay-muted {
   display: block;
   background-image: url("img/tab-audio-small.svg#tab-audio-muted");
 }

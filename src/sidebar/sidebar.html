@@ -24,13 +24,13 @@
       <div id="moretabs" draggable="true"></div>
       <div id="spacer" draggable="true"></div>
     </div>
-    <script src="./dist/sidebar.bundle.js"></script>
     <template id="tab-template">
       <div class="tab" draggable="true">
         <div class="tab-drag-overlay"></div>
         <div class="tab-loading-burst"></div>
         <div class="tab-context"></div>
-        <div class="tab-icon-overlay clickable"></div>
+        <div class="tab-icon-overlay tab-icon-overlay-audible clickable"></div>
+        <div class="tab-icon-overlay tab-icon-overlay-muted clickable"></div>
         <div class="tab-meta-image">
           <div class="tab-icon-wrapper">
             <div class="tab-icon"></div>
@@ -47,5 +47,6 @@
         <canvas></canvas>
       </div>
     </template>
+    <script src="./dist/sidebar.bundle.js"></script>
   </body>
 </html>

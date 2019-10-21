@@ -2,6 +2,17 @@
 
 import { debounced } from "./utils";
 
+const TAB_TEMPLATE = document.getElementById("tab-template");
+TAB_TEMPLATE.content.querySelector(".tab-close").title = browser.i18n.getMessage(
+  "closeTabButtonTooltip",
+);
+TAB_TEMPLATE.content.querySelector(".tab-icon-overlay-audible").title = browser.i18n.getMessage(
+  "unmuteTabButtonTooltip",
+);
+TAB_TEMPLATE.content.querySelector(".tab-icon-overlay-muted").title = browser.i18n.getMessage(
+  "muteTabButtonTooltip",
+);
+
 export default class Sidetab {
   constructor() {
     this.id = null;
@@ -10,6 +21,7 @@ export default class Sidetab {
     this.muted = null;
     this.pinned = null;
     this.active = false;
+    this._notSelectedSinceLoad = false;
     this.discarded = false;
     this.hidden = false;
     this._filtered = false;
@@ -49,18 +61,12 @@ export default class Sidetab {
   }
 
   _buildViewStructure() {
-    const template = document.getElementById("tab-template");
-    const tab = template.content.children[0].cloneNode(true);
+    const tab = TAB_TEMPLATE.content.children[0].cloneNode(true);
     this.view = tab;
-    this._burstView = tab.querySelector(".tab-loading-burst");
-    this._contextView = tab.querySelector(".tab-context");
-    this._iconOverlayView = tab.querySelector(".tab-icon-overlay");
     this._metaImageView = tab.querySelector(".tab-meta-image");
     this._iconView = tab.querySelector(".tab-icon");
     this._titleView = tab.querySelector(".tab-title");
     this._hostView = tab.querySelector(".tab-host");
-    const close = tab.querySelector(".tab-close");
-    close.title = browser.i18n.getMessage("closeTabButtonTooltip");
     this.thumbnailCanvas = tab.querySelector("canvas");
     this.thumbnailCanvas.id = `thumbnail-canvas-${this.id}`;
     this.thumbnailCanvasCtx = this.thumbnailCanvas.getContext("2d", {
@@ -110,6 +116,7 @@ export default class Sidetab {
     this.title = title;
     this._titleView.textContent = title;
     this.view.title = title;
+    this.view.setAttribute("data-title", title);
   }
 
   _updateIcon(favIconUrl) {
@@ -122,45 +129,39 @@ export default class Sidetab {
 
   _updateURL(url) {
     this.url = url;
+    this.view.setAttribute("data-url", url);
     this._hostView.innerText = this.host;
   }
 
   _updateAudible(audible) {
-    this._iconOverlayView.classList.toggle("sound", audible);
-    this._iconOverlayView.title = audible ? browser.i18n.getMessage("muteTabButtonTooltip") : "";
+    this.view.classList.toggle("sound", audible);
   }
 
   _updatedMuted(muted) {
     this.muted = muted;
-    this._iconOverlayView.classList.toggle("muted", muted);
-    this._iconOverlayView.title = muted ? browser.i18n.getMessage("unmuteTabButtonTooltip") : "";
+    this.view.classList.toggle("muted", muted);
   }
 
   _updateLoading(status) {
     this.view.classList.toggle("loading", status === "loading");
     if (status === "loading") {
       Sidetab._syncThrobberAnimations();
-      this._notselectedsinceload = !this.view.classList.contains("active");
+      this._notSelectedSinceLoad = !this.view.classList.contains("active");
     } else {
-      if (this._notselectedsinceload) {
-        this.view.setAttribute("notselectedsinceload", "true");
-      } else {
-        this.view.removeAttribute("notselectedsinceload");
-      }
+      this.view.classList.toggle("not-selected-since-load", this._notSelectedSinceLoad);
     }
   }
 
   burst() {
-    this._burstView.classList.add("bursting");
+    this.view.classList.add("bursting");
   }
 
   updateActive(active) {
     this.active = active;
     this.view.classList.toggle("active", active);
     if (active) {
-      this._notselectedsinceload = false;
-      this.view.removeAttribute("notselectedsinceload");
-      this.view.classList.remove("wants-attention");
+      this._notSelectedSinceLoad = false;
+      this.view.classList.remove("not-selected-since-load", "wants-attention");
     }
   }
 
@@ -254,7 +255,7 @@ export default class Sidetab {
 
   onAnimationEnd(e) {
     if (e.target.classList.contains("tab-loading-burst")) {
-      this._burstView.classList.remove("bursting");
+      this.view.classList.remove("bursting");
     }
   }
 
@@ -315,12 +316,12 @@ export default class Sidetab {
   }
 
   static _syncThrobberAnimations() {
+    // this API is available only in Dev Edition/Nightly so far
+    // https://developer.mozilla.org/en-US/docs/Web/API/Document/getAnimations
+    if (!document.body.getAnimations) {
+      return;
+    }
     requestAnimationFrame(() => {
-      // this API is available only in Dev Edition/Nightly so far
-      // https://developer.mozilla.org/en-US/docs/Web/API/Document/getAnimations
-      if (!document.body.getAnimations) {
-        return;
-      }
       setTimeout(() => {
         const icons = document.querySelectorAll(".tab.loading .tab-icon");
         if (!icons.length) {
