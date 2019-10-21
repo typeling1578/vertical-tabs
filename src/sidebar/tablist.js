@@ -708,8 +708,10 @@ export default class Tablist {
   }
 
   _scrollShouldSwitch(e) {
-    return this._switchByScrolling === SWITCH_BY_SCROLLING_ALWAYS ||
-      (this._switchByScrolling === SWITCH_BY_SCROLLING_WITH_CTRL && e.ctrlKey);
+    return (
+      this._switchByScrolling === SWITCH_BY_SCROLLING_ALWAYS ||
+      (this._switchByScrolling === SWITCH_BY_SCROLLING_WITH_CTRL && e.ctrlKey)
+    );
   }
 
   _onSpacerDblClick() {

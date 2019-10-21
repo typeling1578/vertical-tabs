@@ -7,4 +7,5 @@ module.exports = {
     filename: "sidebar.bundle.js",
     path: `${__dirname}/src/sidebar/dist`,
   },
+  node: false,
 };

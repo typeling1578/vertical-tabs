@@ -55,10 +55,10 @@ class Options {
     const defaultPrefs = {
       animations: true,
       themeIntegration: true,
-      compactMode: 1, /* COMPACT_MODE_DYNAMIC */
+      compactMode: 1 /* COMPACT_MODE_DYNAMIC */,
       compactPins: true,
       switchLastActiveTab: true,
-      switchByScrolling: 0, /* SWITCH_BY_SCROLLING_WITH_CTRL */
+      switchByScrolling: 0 /* SWITCH_BY_SCROLLING_WITH_CTRL */,
       notifyClosingManyTabs: true,
       useCustomCSS: true,
       customCSS: "",
@@ -71,7 +71,9 @@ class Options {
           if (pref[0] === "customCSS") {
             element.value = pref[1];
           } else if (pref[0] === "compactMode" || pref[0] === "switchByScrolling") {
-            document.querySelector(`[name="${pref[0]}"][value="${parseInt(pref[1])}"]`).checked = true;
+            document.querySelector(
+              `[name="${pref[0]}"][value="${parseInt(pref[1])}"]`,
+            ).checked = true;
           } else {
             element.checked = pref[1];
             if (pref[0] === "useCustomCSS") {

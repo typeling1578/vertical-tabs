@@ -92,9 +92,9 @@ export default class ContextMenu {
       {
         id: "contextMenuMuteTab",
         title: browser.i18n.getMessage(tab.muted ? "contextMenuUnmuteTab" : "contextMenuMuteTab"),
-        icons: tab.muted ?
-          { "16": "/sidebar/img/audio-sound.svg" } :
-          { "16": "/sidebar/img/audio-mute.svg" },
+        icons: tab.muted
+          ? { "16": "/sidebar/img/audio-sound.svg" }
+          : { "16": "/sidebar/img/audio-mute.svg" },
       },
       {
         type: "separator",
@@ -102,9 +102,7 @@ export default class ContextMenu {
       {
         id: "contextMenuPinTab",
         title: browser.i18n.getMessage(tab.pinned ? "contextMenuUnpinTab" : "contextMenuPinTab"),
-        icons: tab.pinned ?
-          { "16": "/sidebar/img/unpin.svg" } :
-          { "16": "/sidebar/img/pin.svg" },
+        icons: tab.pinned ? { "16": "/sidebar/img/unpin.svg" } : { "16": "/sidebar/img/pin.svg" },
       },
       {
         id: "contextMenuDuplicateTab",

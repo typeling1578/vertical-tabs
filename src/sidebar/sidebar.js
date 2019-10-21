@@ -34,7 +34,6 @@ const CSS_TO_THEME_PROPS = {
   "--input-text-focus": ["toolbar_field_text_focus", "toolbar_field_text"],
 };
 
-
 export default class Sidebar {
   async init() {
     const window = await browser.windows.getCurrent();
@@ -131,10 +130,10 @@ export default class Sidebar {
     return browser.storage.sync.get({
       animations: true,
       themeIntegration: true,
-      compactMode: 1, /* COMPACT_MODE_DYNAMIC */
+      compactMode: 1 /* COMPACT_MODE_DYNAMIC */,
       compactPins: true,
       switchLastActiveTab: true,
-      switchByScrolling: 0, /* SWITCH_BY_SCROLLING_WITH_CTRL */
+      switchByScrolling: 0 /* SWITCH_BY_SCROLLING_WITH_CTRL */,
       notifyClosingManyTabs: true,
       useCustomCSS: true,
       customCSS: "",
@@ -187,7 +186,10 @@ export default class Sidebar {
     }
 
     // swap background and tab-active-background colors if background is light
-    if (themeColors["--background"] !== null && new TinyColor(themeColors["--background"]).isLight()) {
+    if (
+      themeColors["--background"] !== null &&
+      new TinyColor(themeColors["--background"]).isLight()
+    ) {
       if (themeColors["--tab-active-background"] !== null) {
         let tmp = themeColors["--background"];
         themeColors["--background"] = themeColors["--tab-active-background"];
