@@ -1,3 +1,19 @@
+## 2.1.0
+
+- Improve a lot options page appearance, match Firefox design
+- Fix closing more than 4 tabs not working under certain circumstances
+- Add icons to each items of the tab context menu
+- Better handle theme integration to work with Firefox Color
+- At startup, scroll to the current tab before displaying the sidebar
+- Add “Switch by scrolling” option
+- Lots of small fixes and improvements
+
+For Custom CSS users:
+
+- use `.not-selected-since-load` instead of `[notselectedsinceload=true]`
+- `.sound` and `.audible` are now on the tab instead of the favicon overlay
+- you can now use `[data-url]` to style tabs depending on URL content
+
 ## 2.0.2
 
 - Translation updates (100%: English, Esperanto, French, Italian)
