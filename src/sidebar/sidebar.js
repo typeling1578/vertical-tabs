@@ -163,7 +163,7 @@ export default class Sidebar {
     const style = document.body.style;
 
     // if theme integration is disabled or theme is not usable, remove css variables then return
-    if (!this._themeIntegrationEnabled || (theme.images && !theme.colors["sidebar"])) {
+    if (!this._themeIntegrationEnabled) {
       for (const cssVar of Object.keys(CSS_TO_THEME_PROPS)) {
         style.removeProperty(cssVar);
       }
@@ -205,7 +205,7 @@ export default class Sidebar {
     // TCRn won’t fall back to default theme even if colors aren’t readable,
     // so the user won’t think that TCRn is buggy with regards to Firefox Color
     if (theme.images && theme.images.theme_frame && !isThemeReadable(themeColors)) {
-      for (const cssVar of Object.keys(cssToThemeProp)) {
+      for (const cssVar of Object.keys(CSS_TO_THEME_PROPS)) {
         themeColors[cssVar] = null;
       }
     }
