@@ -1,3 +1,7 @@
+## 2.1.2
+
+- Fix Firefox Color support
+
 ## 2.1.1
 
 - Fix pinned tab not staying at the top of the view while scrolling
