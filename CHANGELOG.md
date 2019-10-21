@@ -1,3 +1,7 @@
+## 2.1.1
+
+- Fix pinned tab not staying at the top of the view while scrolling
+
 ## 2.1.0
 
 - Improve a lot options page appearance, match Firefox design
