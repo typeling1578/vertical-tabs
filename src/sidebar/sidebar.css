@@ -419,6 +419,7 @@ body:not(.incognito) #pinnedtablist:not(.compact) .tab.hasContext .tab-context {
   flex-wrap: wrap;
 }
 
+#tablist,
 #pinnedtablist:not(.compact) {
   overflow-x: hidden;
 }
