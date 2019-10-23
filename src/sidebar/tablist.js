@@ -20,6 +20,7 @@ const NOTIFICATION_DELETE_ID = "notification-delete";
 // HACK: keep in sync with animation time in CSS
 const TAB_ANIMATION_TIME_MS = 100;
 
+
 export default class Tablist {
   /* @arg {props}
    * windowId
@@ -42,11 +43,9 @@ export default class Tablist {
     this._willBeDeletedIds = null;
     this._willBeDeletedWasActive = null;
 
-    this._firstAndLastTabObserver = null;
-    this._firstTabView = null;
-    this._lastTabView = null;
-
     this._view = document.getElementById("tablist");
+    this._topVisibilityChecker = document.getElementById("top-visibility-checker");
+    this._bottomVisibilityChecker = document.getElementById("bottom-visibility-checker");
     this._pinnedview = document.getElementById("pinnedtablist");
     this._wrapperView = document.getElementById("tablist-wrapper");
     this._spacerView = document.getElementById("spacer");
@@ -59,6 +58,7 @@ export default class Tablist {
     this._switchLastActiveTab = this._props.prefs.switchLastActiveTab;
     this._switchByScrolling = this._props.prefs.switchByScrolling;
     this._notifyClosingManyTabs = this._props.prefs.notifyClosingManyTabs;
+    this._initCanScrollShadowObservers();
 
     this._populate();
     this._setupListeners();
@@ -133,47 +133,23 @@ export default class Tablist {
     );
   }
 
-  async _initializeFirstAndLastTabsObserver() {
-    const onObserve = entries => {
-      entries.forEach(entry => {
-        if (this._firstTabView && entry.target.id === this._firstTabView.id) {
-          this.__toggleShadow("can-scroll-top", entry.intersectionRatio !== 1);
-        } else if (this._lastTabView && entry.target.id === this._lastTabView.id) {
-          this.__toggleShadow("can-scroll-bottom", entry.intersectionRatio !== 1);
-        }
-      });
-    };
-    if (!this._firstAndLastTabObserver) {
-      const options = {
-        root: document.querySelector("#tablist"),
-        rootMargin: "0px",
-        threshold: [0, 1],
-      };
-      this._firstAndLastTabObserver = new IntersectionObserver(onObserve, options);
+  async _initCanScrollShadowObservers() {
+    const scrollingOptions = {
+      root: this._view,
+      rootMargin: "0px",
+      threshold: [0, 1],
     }
-    this._setFirstAndLastTabObserver();
-  }
+    const scrollingObserver = new IntersectionObserver((entries, observer) => {
+      for (const entry of entries) {
+        const classToApply = entry.target.id === "top-visibility-checker"
+          ? "can-scroll-top"
+          : "can-scroll-bottom";
+        this._wrapperView.classList.toggle(classToApply, !entry.isIntersecting);
+      }
+    }, scrollingOptions);
 
-  __toggleShadow(className, force) {
-    this._wrapperView.classList.toggle(className, force);
-  }
-
-  async _setFirstAndLastTabObserver() {
-    this._firstAndLastTabObserver.disconnect();
-    const tabViews = this._view.querySelectorAll(
-      ".tab:not(.hidden):not(.filtered):not(.deleted):not(.will-be-deleted)",
-    );
-    if (tabViews.length <= 2) {
-      this.__toggleShadow("can-scroll-top", false);
-      this.__toggleShadow("can-scroll-bottom", false);
-      return;
-    }
-
-    this._firstTabView = tabViews[0];
-    this._firstAndLastTabObserver.observe(this._firstTabView);
-
-    this._lastTabView = tabViews[tabViews.length - 1];
-    this._firstAndLastTabObserver.observe(this._lastTabView);
+    scrollingObserver.observe(this._topVisibilityChecker);
+    scrollingObserver.observe(this._bottomVisibilityChecker);
   }
 
   _getVisibleTabs() {
@@ -748,8 +724,6 @@ export default class Tablist {
       browser.tabs.update(this._willBeDeletedWasActive, { active: true });
       this._willBeDeletedWasActive = null;
     }
-
-    this._setFirstAndLastTabObserver();
   }
 
   _onNotificationDeleteClosed(notificationId) {
@@ -770,7 +744,6 @@ export default class Tablist {
       return;
     }
     this._props.search("");
-    this._setFirstAndLastTabObserver();
   }
 
   filter(query) {
@@ -829,7 +802,6 @@ export default class Tablist {
     }
     this._moreTabsView.classList.toggle("hasMoreTabs", notShown > 0);
     this._maybeShrinkTabs();
-    this._setFirstAndLastTabObserver();
   }
 
   async _populate() {
@@ -850,14 +822,14 @@ export default class Tablist {
       }
     }
     this._pinnedview.appendChild(pinnedFragment);
-    this._view.appendChild(unpinnedFragment);
+    this._view.insertBefore(unpinnedFragment, this._bottomVisibilityChecker);
     document.body.classList.add("loaded");
     this._maybeShrinkTabs(true);
     if (activeTab !== null) {
       this.scrollIntoView(activeTab);
       this._maybeUpdateTabThumbnail(activeTab);
     }
-    this._initializeFirstAndLastTabsObserver();
+    this._initCanScrollShadowObservers();
     setTimeout(() => document.body.classList.toggle("animated", this._animations), 30);
   }
 
@@ -1013,12 +985,6 @@ export default class Tablist {
     // because the tab will never finish its transition and .being-added will stay
     element.classList.remove("being-added");
     const parent = sidetab.pinned ? this._pinnedview : this._view;
-    // Can happen with browser.tabs.closeWindowWithLastTab set to true or during
-    // session restore.
-    if (!this._tabs.size) {
-      parent.appendChild(element);
-      return;
-    }
     const tabAfter = this._getTabAfter(sidetab, true);
     const spaceLeft = this._spacerView.offsetHeight;
     const wrapperHeight = this._wrapperView.offsetHeight;
@@ -1034,15 +1000,15 @@ export default class Tablist {
     }
     const newElem = tabAfter
       ? parent.insertBefore(element, tabAfter.view)
-      : parent.appendChild(element);
-    this._setFirstAndLastTabObserver();
+      : sidetab.pinned
+        ? parent.appendChild(element)
+        : parent.insertBefore(element, this._bottomVisibilityChecker);
     setTimeout(() => newElem.classList.remove("added"), 20);
   }
 
   _removeTabView(sidetab) {
     if (!this._animations) {
       sidetab.view.remove();
-      this._setFirstAndLastTabObserver();
       return;
     }
     // when we (un)pin a tab, we want two views animating at the same so we make a copy
@@ -1051,7 +1017,6 @@ export default class Tablist {
     setTimeout(() => {
       oldView.classList.add("deleted");
       setTimeout(() => oldView.remove(), TAB_ANIMATION_TIME_MS);
-      this._setFirstAndLastTabObserver();
     }, 20);
   }
 
@@ -1115,7 +1080,6 @@ export default class Tablist {
         }
       }
     }
-    this._setFirstAndLastTabObserver();
   }
 
   /*
