@@ -258,7 +258,7 @@ body.has-custom-input-color #searchbox-input::selection {
   min-width: 0;
 }
 
-#tablist .tab:not(.pinned),
+#tablist .tab,
 #pinnedtablist:not(.compact) .tab {
   height: var(--tab-height-normal);
   max-height: var(--tab-height-normal);
@@ -322,7 +322,7 @@ body.animated #pinnedtablist.compact .tab {
   margin-top: 10px;
 }
 
-.tab.pinned .tab-loading-burst::before {
+#pinnedtablist .tab .tab-loading-burst::before {
   margin-left: 12px;
   margin-top: 0px;
 }
@@ -383,17 +383,17 @@ body.incognito #pinnedtablist:not(.compact) .tab .tab-context {
   height: 100%;
 }
 
-body #pinnedtablist.compact .tab.pinned .tab-context {
+body #pinnedtablist.compact .tab .tab-context {
   position: absolute;
   height: 100%;
   width: 20px;
   margin: 0 auto;
 }
 
-body.incognito #tablist .tab:not(.hasContext) .tab-context,
-body:not(.incognito) #tablist .tab.hasContext .tab-context,
-body.incognito #pinnedtablist:not(.compact) .tab:not(.hasContext) .tab-context,
-body:not(.incognito) #pinnedtablist:not(.compact) .tab.hasContext .tab-context {
+body.incognito #tablist .tab .tab-context,
+body #tablist .tab[data-identity-color] .tab-context,
+body.incognito #pinnedtablist:not(.compact) .tab .tab-context,
+body #pinnedtablist:not(.compact) .tab[data-identity-color] .tab-context {
   position: absolute;
   height: 80%;
   width: 100%;
@@ -417,8 +417,7 @@ body:not(.incognito) #pinnedtablist:not(.compact) .tab.hasContext .tab-context {
   flex-wrap: wrap;
 }
 
-#tablist,
-#pinnedtablist:not(.compact) {
+#tablist {
   overflow-x: hidden;
 }
 
@@ -434,17 +433,17 @@ body:not(.incognito) #pinnedtablist:not(.compact) .tab.hasContext .tab-context {
   box-shadow: inset 0 3px 0px 0px var(--tab-selected-line);
 }
 
-body.incognito #pinnedtablist.compact .tab.pinned .tab-context {
+body.incognito #pinnedtablist.compact .tab .tab-context {
   width: 100%;
   margin-left: 0;
 }
 
-body.incognito #pinnedtablist.compact .tab.pinned .tab-context,
-body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context {
+body.incognito #pinnedtablist.compact .tab .tab-context,
+body:not(.incognito) #pinnedtablist.compact .tab.hasContext .tab-context {
   box-shadow: inset 0 -2px 0px 0px var(--identity-color);
 }
 
-#tablist-wrapper.can-scroll-top .tab:not(.pinned):last-child {
+#tablist-wrapper.can-scroll-top #tablist .tab:last-child {
   border-bottom: 0;
 }
 
@@ -515,7 +514,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   left: 10px;
 }
 
-.tab.sound:not(.muted) .tab-icon-overlay-audible {
+.tab.audible:not(.muted) .tab-icon-overlay-audible {
   display: block;
   background-image: url("img/tab-audio-small.svg#tab-audio");
 }
@@ -525,7 +524,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   background-image: url("img/tab-audio-small.svg#tab-audio-muted");
 }
 
-#pinnedtablist.compact .tab.pinned > .tab-meta-image {
+#pinnedtablist.compact .tab > .tab-meta-image {
   background-image: none !important; /* Because the JS script sets it manually */
 }
 
@@ -586,7 +585,6 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 .tab-icon {
   width: 18px;
   height: 18px;
-  background-image: url("img/default-favicon.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -600,7 +598,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   filter: url("img/filters.svg#fill");
 }
 
-#tablist-wrapper #pinnedtablist:not(.compact) .tab-icon.chrome-icon,
+#tablist-wrapper:not(.shrinked) #pinnedtablist:not(.compact) .tab-icon.chrome-icon,
 #tablist-wrapper:not(.shrinked) #tablist .tab-icon.chrome-icon {
   fill: var(--grey-90-a80);
 }
@@ -655,7 +653,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   margin-left: 6px;
 }
 
-.tab:hover:not(.pinned) > .tab-title-wrapper {
+#tablist .tab:hover > .tab-title-wrapper {
   z-index: 0; /* So that highlighting doesn’t draw above shadows */
   mask-image: linear-gradient(to left, transparent 28px, black calc(2em + 28px));
 }
@@ -665,12 +663,12 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
 }
 
 .tab-title,
-.tab-host {
+.tab-url {
   white-space: nowrap;
   overflow: hidden;
 }
 
-.tab-host {
+.tab-url {
   opacity: 0.6;
 }
 
@@ -678,7 +676,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   opacity: 0.5;
 }
 
-#tablist-wrapper.shrinked .tab-host {
+#tablist-wrapper.shrinked .tab-url {
   display: none;
 }
 
@@ -686,7 +684,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   display: none;
 }
 
-#pinnedtablist:not(.compact) .tab.pinned .tab-pin {
+#pinnedtablist:not(.compact) .tab .tab-pin {
   width: 14px;
   height: 14px;
   margin-right: 7px;
@@ -745,30 +743,23 @@ body:not(.incognito) #pinnedtablist.compact .tab.pinned.hasContext .tab-context 
   flex-shrink: 0;
 }
 
-#pinnedtablist.compact .tab.pinned {
+#pinnedtablist.compact .tab {
   position: relative;
 }
 
-#pinnedtablist.compact .tab.pinned .tab-icon {
+#pinnedtablist.compact .tab .tab-icon {
   margin: 4px auto;
 }
 
-#pinnedtablist.compact .tab.pinned > .tab-title-wrapper,
-.tab.pinned > .tab-close {
+#pinnedtablist.compact .tab > .tab-title-wrapper,
+#pinnedtablist .tab > .tab-close {
   display: none;
 }
 
-#pinnedtablist .tab.pinned.wants-attention {
+#pinnedtablist.compact .tab.wants-attention {
   background-image: url("img/tab-attention.svg");
   background-repeat: no-repeat;
-}
-
-#pinnedtablist.compact .tab.pinned.wants-attention {
   background-position: center bottom;
-}
-
-#pinnedtablist:not(.compact) .tab.pinned.wants-attention {
-  background-position: left center;
 }
 
 #moretabs {

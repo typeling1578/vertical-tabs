@@ -2,72 +2,55 @@
 
 import { debounced } from "./utils";
 
-const TAB_TEMPLATE = document.getElementById("tab-template");
-TAB_TEMPLATE.content.querySelector(".tab-close").title = browser.i18n.getMessage(
-  "closeTabButtonTooltip",
-);
-TAB_TEMPLATE.content.querySelector(".tab-icon-overlay-audible").title = browser.i18n.getMessage(
-  "unmuteTabButtonTooltip",
-);
-TAB_TEMPLATE.content.querySelector(".tab-icon-overlay-muted").title = browser.i18n.getMessage(
-  "muteTabButtonTooltip",
-);
+let TAB_TEMPLATE = null;
+
 
 export default class Sidetab {
-  constructor() {
-    this.id = null;
-    this.url = null;
-    this.title = null;
-    this.muted = null;
-    this.pinned = null;
-    this.active = false;
-    this._notSelectedSinceLoad = false;
-    this.discarded = false;
-    this.hidden = false;
-    this._filtered = false;
-    this._willBeDeleted = false;
-  }
-
-  init(tabInfo) {
+  constructor(tabInfo) {
+    // fields that are taken as is from tabs.Tab
     this.id = tabInfo.id;
     this.index = tabInfo.index;
-    this._buildViewStructure();
+    this.url = null;
+    this.title = null;
+    this.favIconUrl = null;
+    this.muted = null;
+    this.pinned = tabInfo.pinned;
+    this.active = null;
+    this.discarded = null;
+    this.hidden = null;
+    // if filtered because it doesn’t match the filter entered into toolbar field
+    this._filtered = false;
+    // if has been batch “closed”, waiting to be restored in view or closed for real
+    this._willBeDeleted = false;
+    // if it’s either hidden, filtered, or willBeDeleted
+    this._isVisible = null;
+    // if has not been active since last page loading
+    this._unread = false;
 
+    this._buildViewStructure();
     this.view.id = `tab-${this.id}`;
     this.view.setAttribute("data-tab-id", this.id);
 
-    this.hidden = tabInfo.hidden;
-    this._updateTitle(tabInfo.title);
-    this._updateURL(tabInfo.url);
-    this._updateAudible(tabInfo.audible);
-    this._updatedMuted(tabInfo.mutedInfo.muted);
-    this._updateIcon(tabInfo.favIconUrl);
-    this._updateLoading(tabInfo.status);
-    this.updatePinned(tabInfo.pinned);
-    this.updateDiscarded(tabInfo.discarded);
-
-    if (tabInfo.cookieStoreId && tabInfo.cookieStoreId.startsWith("firefox-container-")) {
-      browser.contextualIdentities.get(tabInfo.cookieStoreId).then(
-        context => {
-          if (!context) {
-            return;
-          }
-          this.view.classList.add("hasContext");
-          this.view.setAttribute("data-identity-color", context.color);
-        },
-        () => {},
-      );
+    if (!tabInfo.hasOwnProperty("favIconUrl")) {
+      tabInfo.favIconUrl = null;
     }
-    this.updateThumbnail = debounced(() => this._updateThumbnail(), 500);
+    this.update(tabInfo);
+    if (tabInfo.cookieStoreId && tabInfo.cookieStoreId.startsWith("firefox-container-")
+        && browser.contextualIdentities) {
+      browser.contextualIdentities.get(tabInfo.cookieStoreId).then(context => {
+        this.view.setAttribute("data-identity-color", context.color);
+      }, () => {});
+    }
+    this.updateThumbnail = debounced(this._updateThumbnail, 500);
   }
 
   _buildViewStructure() {
-    const tab = TAB_TEMPLATE.content.children[0].cloneNode(true);
+    const tab = this._get_tab_template().content.children[0].cloneNode(true);
     this.view = tab;
     this._metaImageView = tab.querySelector(".tab-meta-image");
     this._iconView = tab.querySelector(".tab-icon");
     this._titleView = tab.querySelector(".tab-title");
-    this._hostView = tab.querySelector(".tab-host");
+    this._urlView = tab.querySelector(".tab-url");
     this.thumbnailCanvas = tab.querySelector("canvas");
     this.thumbnailCanvas.id = `thumbnail-canvas-${this.id}`;
     this.thumbnailCanvasCtx = this.thumbnailCanvas.getContext("2d", {
@@ -75,44 +58,55 @@ export default class Sidetab {
     });
   }
 
-  onUpdate(changeInfo, tab) {
-    if (changeInfo.hasOwnProperty("hidden")) {
-      this.hidden = changeInfo.hidden;
+  _get_tab_template() {
+    if (TAB_TEMPLATE !== null) {
+      return TAB_TEMPLATE;
     }
-    if (changeInfo.hasOwnProperty("title")) {
-      this._updateTitle(changeInfo.title);
-    }
-    // to work around https://bugzilla.mozilla.org/show_bug.cgi?id=1450384
-    // if (changeInfo.hasOwnProperty("favIconUrl")) {
-    //   this._updateIcon(changeInfo.favIconUrl);
-    // }
-    this._updateIcon(tab.favIconUrl);
-    if (changeInfo.hasOwnProperty("url")) {
-      this._updateURL(changeInfo.url);
-    }
-    if (changeInfo.hasOwnProperty("audible")) {
-      this._updateAudible(changeInfo.audible);
-    }
-    if (changeInfo.hasOwnProperty("mutedInfo")) {
-      this._updatedMuted(changeInfo.mutedInfo.muted);
-    }
-    if (changeInfo.hasOwnProperty("discarded")) {
-      this.updateDiscarded(changeInfo.discarded);
-    }
-    if (changeInfo.hasOwnProperty("status")) {
-      this._updateLoading(changeInfo.status);
-    }
+    TAB_TEMPLATE = document.getElementById("tab-template");
+    TAB_TEMPLATE.content.querySelector(".tab-close").title = browser.i18n.getMessage(
+      "closeTabButtonTooltip",
+    );
+    TAB_TEMPLATE.content.querySelector(".tab-icon-overlay-audible").title = browser.i18n.getMessage(
+      "unmuteTabButtonTooltip",
+    );
+    TAB_TEMPLATE.content.querySelector(".tab-icon-overlay-muted").title = browser.i18n.getMessage(
+      "muteTabButtonTooltip",
+    );
+    return TAB_TEMPLATE;
   }
 
-  get host() {
-    return new URL(this.url).host || this.url;
+  update(info, tab) {
+    for (const [key, value] of Object.entries(info)) {
+      switch (key) {
+      case "attention": this._updateAttention(value);
+      break;
+      case "audible": this._updateAudible(value);
+      break;
+      case "discarded": this.updateDiscarded(value);
+      break;
+      case "favIconUrl": this._updateIcon(value);
+      break;
+      case "hidden": this._updateHidden(value);
+      break;
+      case "mutedInfo": this._updatedMuted(value)
+      break;
+      case "status": this._updateLoading(value);
+      break;
+      case "title": this._updateTitle(value);
+      break;
+      case "url": this._updateURL(value);
+      break;
+      }
+    }
   }
 
   _updateTitle(title) {
-    if (this.title && this.title !== title) {
-      if (!this.view.classList.contains("active")) {
-        this.view.classList.add("wants-attention");
-      }
+    if (this.title === title) {
+      return;
+    }
+
+    if (this.title && !this.active) {
+      this.view.classList.add("wants-attention");
     }
     this.title = title;
     this._titleView.textContent = title;
@@ -120,25 +114,26 @@ export default class Sidetab {
     this.view.setAttribute("data-title", title);
   }
 
-  _updateIcon(favIconUrl) {
-    if (favIconUrl) {
-      this._setIcon(favIconUrl);
-    } else {
-      this._resetIcon();
-    }
+  static formatUrl(url) {
+    return url.replace(/^(http|https):\/\//, "");
   }
 
   _updateURL(url) {
     this.url = url;
     this.view.setAttribute("data-url", url);
-    this._hostView.innerText = this.host;
+    this._urlView.innerText = Sidetab.formatUrl(url);
+  }
+
+  _updateAttention(attention) {
+    this.view.classList.toggle("wants-attention", attention);
   }
 
   _updateAudible(audible) {
-    this.view.classList.toggle("sound", audible);
+    this.view.classList.toggle("audible", audible);
   }
 
-  _updatedMuted(muted) {
+  _updatedMuted(mutedInfo) {
+    const muted = mutedInfo.muted;
     this.muted = muted;
     this.view.classList.toggle("muted", muted);
   }
@@ -147,9 +142,9 @@ export default class Sidetab {
     this.view.classList.toggle("loading", status === "loading");
     if (status === "loading") {
       Sidetab._syncThrobberAnimations();
-      this._notSelectedSinceLoad = !this.view.classList.contains("active");
+      this._unread = !this.active;
     } else {
-      this.view.classList.toggle("not-selected-since-load", this._notSelectedSinceLoad);
+      this.view.classList.toggle("unread", this._unread);
     }
   }
 
@@ -161,55 +156,66 @@ export default class Sidetab {
     this.active = active;
     this.view.classList.toggle("active", active);
     if (active) {
-      this._notSelectedSinceLoad = false;
-      this.view.classList.remove("not-selected-since-load", "wants-attention");
+      this._unread = false;
+      this.view.classList.remove("unread", "wants-attention");
     }
   }
 
-  updateSearchVisibility(show) {
-    this._filtered = !show;
-    this.view.classList.toggle("filtered", !show);
+  _updateHidden(hidden) {
+    this.hidden = hidden;
+    this._updateVisible();
   }
 
-  updateWillBeDeletedVisibility(show) {
-    this._willBeDeleted = !show;
-    this.view.classList.toggle("will-be-deleted", !show);
+  updateSearchHidden(hidden) {
+    this._filtered = hidden;
+    this._updateVisible();
+  }
+
+  updateWillBeDeletedHidden(hidden) {
+    this._willBeDeleted = hidden;
+    this._updateVisible();
+  }
+
+  _updateVisible() {
+    const isVisible = !this.hidden && !this._filtered && !this._willBeDeleted;
+    if (isVisible === this._visible) {
+      return;
+    }
+    this._visible = isVisible;
+    this.view.classList.toggle("hidden", !isVisible);
   }
 
   isVisible() {
-    return !this.hidden && !this._filtered && !this._willBeDeleted;
+    return this._visible;
   }
 
-  _setIcon(favIconUrl) {
-    if (
+  _updateIcon(favIconUrl) {
+    if (!favIconUrl) {
+      this._resetIcon();
+      return;
+    }
+    this.favIconUrl = favIconUrl;
+
+    this._iconView.classList.toggle("chrome-icon", (
       favIconUrl.startsWith("chrome://") &&
       favIconUrl.endsWith(".svg") &&
       favIconUrl !== "chrome://browser/skin/privatebrowsing/favicon.svg"
-    ) {
-      this._iconView.classList.add("chrome-icon");
-    } else {
-      this._iconView.classList.remove("chrome-icon");
-    }
+    ));
     // https://bugzilla.mozilla.org/show_bug.cgi?id=1462948
     if (favIconUrl === "chrome://mozapps/skin/extensions/extensionGeneric-16.svg") {
       favIconUrl = "img/extensions.svg";
     }
+
     this._iconView.style.backgroundImage = `url("${favIconUrl}")`;
     const imgTest = document.createElement("img");
+    imgTest.onerror = this._resetIcon;
     imgTest.src = favIconUrl;
-    imgTest.onerror = () => {
-      this._resetIcon();
-    };
   }
 
   _resetIcon() {
+    this.favIconUrl = null;
     this._iconView.style.backgroundImage = 'url("img/default-favicon.svg")';
     this._iconView.classList.add("chrome-icon");
-  }
-
-  updatePinned(pinned) {
-    this.pinned = pinned;
-    this.view.classList.toggle("pinned", pinned);
   }
 
   updateDiscarded(discarded) {
@@ -262,7 +268,7 @@ export default class Sidetab {
 
   resetHighlights() {
     this._titleView.innerText = this.title;
-    this._hostView.innerText = this.host;
+    this._urlView.innerText = Sidetab.formatUrl(this.url);
   }
 
   highlightTitle(newTitle) {
@@ -270,7 +276,7 @@ export default class Sidetab {
   }
 
   highlightHost(newHost) {
-    this._hostView.innerHTML = newHost;
+    this._urlView.innerHTML = newHost;
   }
 
   // If strict is true, this will return false for subviews (e.g the close button).

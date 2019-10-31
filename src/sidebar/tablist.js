@@ -231,8 +231,12 @@ export default class Tablist {
       // if tab hasn’t yet been created in our tablist
       return;
     }
-    // tab info passed because of https://bugzilla.mozilla.org/show_bug.cgi?id=1450384
-    sidetab.onUpdate(changeInfo, tab);
+
+    if (!changeInfo.hasOwnProperty("favIconUrl")) {
+      // to work around https://bugzilla.mozilla.org/show_bug.cgi?id=1450384
+      changeInfo["favIconUrl"] = tab.favIconUrl;
+    }
+    sidetab.update(changeInfo);
 
     if (changeInfo.hasOwnProperty("hidden")) {
       if (changeInfo.hidden) {
@@ -689,7 +693,7 @@ export default class Tablist {
     this._willBeDeletedIds = null;
     for (const tab of this._tabs.values()) {
       if (tabIds.includes(tab.id)) {
-        tab.updateWillBeDeletedVisibility(true);
+        tab.updateWillBeDeletedHidden(false);
       }
     }
     if (this._willBeDeletedWasActive !== null) {
@@ -744,10 +748,10 @@ export default class Tablist {
         }, {});
       for (const tab of tabs) {
         const result = results[tab.id];
-        const show = !!result;
-        tab.updateSearchVisibility(show);
+        const hidden = !result;
+        tab.updateSearchHidden(hidden);
         tab.resetHighlights();
-        if (show) {
+        if (!hidden) {
           if (tab.pinned) {
             pinnedTabShown += 1;
           }
@@ -767,7 +771,7 @@ export default class Tablist {
       // otherwise we display again all the tabs
     } else {
       for (const tab of tabs) {
-        tab.updateSearchVisibility(true);
+        tab.updateSearchHidden(false);
         tab.resetHighlights();
         this._pinnedview.classList.remove("hidden");
       }
@@ -928,9 +932,8 @@ export default class Tablist {
   }
 
   __create(tabInfo) {
-    const tab = new Sidetab();
+    const tab = new Sidetab(tabInfo);
     this._tabs.set(tabInfo.id, tab);
-    tab.init(tabInfo);
     if (tabInfo.active) {
       this._setActive(tab);
     }
@@ -1013,7 +1016,7 @@ export default class Tablist {
 
   _onTabPinned(sidetab) {
     this._removeTabView(sidetab);
-    sidetab.updatePinned(!sidetab.pinned);
+    sidetab.pinned = !sidetab.pinned;
     if (sidetab.pinned && this._compactPins) {
       sidetab.resetThumbnail();
     }
@@ -1064,7 +1067,7 @@ export default class Tablist {
     this._willBeDeletedIds = tabIds;
     for (const tab of this._tabs.values()) {
       if (tabIds.includes(tab.id)) {
-        tab.updateWillBeDeletedVisibility(false);
+        tab.updateWillBeDeletedHidden(true);
         if (tab.active) {
           browser.tabs.update(currentTabId, { active: true });
           this._willBeDeletedWasActive = tab.id;

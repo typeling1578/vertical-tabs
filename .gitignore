@@ -1,4 +1,5 @@
 .DS_Store
-node_modules
+coverage/
+node_modules/
 **/*.bundle.js
 web-ext-artifacts
