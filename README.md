@@ -6,6 +6,14 @@ See [the wiki](https://framagit.org/ariasuni/tabcenter-reborn/wikis/home) for ad
 
 [![Install the extension](https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_2.png)](https://addons.mozilla.org/firefox/addon/tabcenter-reborn/)
 
+## Supporting
+
+There are several ways to support this extension:
+
+- Tell your friends, relatives and followers;
+- [Rate the extension and add a review on addons.mozilla.org](https://addons.mozilla.org/firefox/addon/tabcenter-reborn/);
+- Make a [one-time](https://www.buymeacoffee.com/IRz4hvpVf) or [recurrent donation](https://liberapay.com/ariasuni/) to the main developer.
+
 ## Contributing
 
 See [Contributing](https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md) for instructions on the different ways to contribute.
