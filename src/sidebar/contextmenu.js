@@ -1,6 +1,5 @@
 /* global browser, location */
 
-import { openTab } from "./utils.js";
 import Sidetab from "./sidetab.js";
 import getContextualIdentityItems from "./contextualidentities.js";
 
@@ -67,8 +66,9 @@ export default class ContextMenu {
     if (!info.menuItemId.startsWith("contextMenuOpenInContextualTab_")) {
       return;
     }
-    openTab({
+    createTab({
       cookieStoreId: info.menuItemId.split("contextMenuOpenInContextualTab_")[1],
+      openerTabId: tab.id,
       url: tab.url,
     });
   }

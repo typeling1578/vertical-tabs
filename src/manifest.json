@@ -8,7 +8,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "tabcenter-reborn@ariasuni",
-      "strict_min_version": "64.0"
+      "strict_min_version": "65.0"
     }
   },
   "sidebar_action": {

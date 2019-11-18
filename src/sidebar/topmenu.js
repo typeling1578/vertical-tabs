@@ -1,11 +1,5 @@
 /* global browser */
 
-import { openTab } from "./utils.js";
-import getContextualIdentityItems from "./contextualidentities.js";
-
-/* @arg {props}
- * search
- */
 export default class Topmenu {
   constructor(props) {
     this._props = props;
@@ -46,17 +40,17 @@ export default class Topmenu {
           browser.windows.create({ incognito: true });
         }
       } else if (e.ctrlKey === true) {
-        openTab({ _position: this._alternateNewTabPosition });
+        this._sidebar.createTab({}, { position: this._alternateNewTabPosition });
       } else if (e.shiftKey === true) {
         browser.windows.create();
       } else {
-        openTab({ _position: this._newTabPosition });
+        this._sidebar.createTab({}, { position: this._newTabPosition });
       }
     });
 
     this._newTabButtonView.addEventListener("auxclick", async e => {
       if (e.button === 1) {
-        openTab({ _position: this._alternateNewTabPosition });
+        this._sidebar.createTab({ _position: this._alternateNewTabPosition });
       }
     });
 
@@ -86,7 +80,7 @@ export default class Topmenu {
 
     switch (info.menuItemId) {
       case "newTabContextMenuOpenAlternatePosition":
-        openTab({ _position: this._alternateNewTabPosition });
+        this._sidebar.createTab({}, { successorTab: true, position: this._alternateNewTabPosition });
         return;
       case "newTabContextMenuOpenInWindow":
         browser.windows.create();
@@ -104,12 +98,14 @@ export default class Topmenu {
       cookieStoreId: info.menuItemId.split("newTabContextMenuOpenInNewContextualTab_")[1],
     };
     if (info.modifiers.includes("Ctrl")) {
-      props["_position"] = this._alternateNewTabPosition;
-      openTab(props);
+      this._sidebar.createTab(props, {
+        successorTab: true,
+        _position: this._alternateNewTabPosition,
+      });
     } else if (info.modifiers.includes("Shift")) {
       browser.windows.create(props);
     } else {
-      openTab(props);
+      this._sidebar.createTab(props, { successorTab: true });
     }
   }
 

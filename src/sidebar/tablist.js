@@ -3,7 +3,7 @@
 import fuzzysort from "fuzzysort";
 import smoothScrollIntoView from "smooth-scroll-into-view-if-needed";
 
-import { openTab, throttled } from "./utils.js";
+import { throttled } from "./utils.js";
 import Sidetab from "./sidetab.js";
 import ContextMenu from "./contextmenu.js";
 
@@ -329,8 +329,8 @@ export default class Tablist {
       return;
     }
     clearTimeout(this._shrinkTabsTimer);
-    if (tabId === this._active) {
-      this.scrollIntoView(this.getTabById(tabId));
+    if (tabId === this._active.id) {
+      this.scrollIntoView(this._active);
     }
   }
 
@@ -383,7 +383,7 @@ export default class Tablist {
       browser.tabs.update(tabId, { muted: !tab.muted });
     } else if (e.button === 0 && Sidetab.isTabEvent(e)) {
       const tabId = Sidetab.tabIdForEvent(e);
-      if (tabId !== this._active) {
+      if (tabId !== this._active.id) {
         browser.tabs.update(tabId, { active: true });
       } else if (this._switchLastActiveTab && this._tabs.size > 1) {
         browser.tabs.query({ currentWindow: true }).then(tabs => {
@@ -581,9 +581,10 @@ export default class Tablist {
 
     const mozURL = this._findMozURL(dt);
     if (mozURL) {
-      openTab({
-        url: mozURL,
+      this.createTab({
         windowId: this._windowId,
+        active: false,
+        url: mozURL,
         pinned: tab.pinned,
         index: newIndex,
       });
@@ -592,7 +593,7 @@ export default class Tablist {
 
     const query = dt.getData("text/plain");
     if (query) {
-      const newTab = await browser.tabs.create({ pinned: tab.pinned, index: newIndex });
+      const newTab = await this.createTab({ active: false, pinned: tab.pinned, index: newIndex });
       browser.search.search({ query, tabId: newTab.id });
       return;
     }
@@ -633,6 +634,7 @@ export default class Tablist {
     if (toDuplicate) {
       this.duplicate(dragTab, {
         windowId: this._windowId,
+        active: false,
         index: newIndex,
         pinned: tab ? tab.pinned : false,
       });
@@ -691,12 +693,12 @@ export default class Tablist {
   }
 
   _onSpacerDblClick() {
-    openTab();
+    this.createTab({}, { successorTab: true });
   }
 
   _onSpacerAuxClick(e) {
     if (e.button === 1) {
-      openTab();
+      this.createTab({}, { successorTab: true });
     }
   }
 
@@ -936,6 +938,30 @@ export default class Tablist {
     }
   }
 
+  async createTab(props, options = {}) {
+    if (options.hasOwnProperty("position")) {
+      if (options.position === "afterCurrent") {
+        props.index = this._active.index + 1;
+      } else {
+        props.index = this._tabs.size;
+      }
+    }
+
+    if (props["url"] === "about:newtab") {
+     delete props["url"];
+    }
+
+    if (props["cookieStoreId"] === undefined) {
+      props["cookieStoreId"] = "firefox-default";
+    }
+
+    let newTab = await browser.tabs.create(props);
+
+    if (options["successorTab"] === true) {
+      browser.tabs.update(newTab.id, { successorTabId: this._active.id });
+    }
+  }
+
   __create(tabInfo) {
     const tab = new Sidetab();
     this._tabs.set(tabInfo.id, tab);
@@ -961,17 +987,17 @@ export default class Tablist {
 
   _setActive(sidetab) {
     if (this._active) {
-      if (this._active === sidetab.id) {
+      if (this._active.id === sidetab.id) {
         return;
       }
-      this.getTabById(this._active).updateActive(false);
+      this._active.updateActive(false);
     }
     sidetab.updateActive(true);
-    this._active = sidetab.id;
+    this._active = sidetab;
   }
 
   _remove(sidetab) {
-    if (this._active === sidetab.id) {
+    if (this._active.id === sidetab.id) {
       this._active = null;
     }
     this._removeTabView(sidetab);
@@ -1137,7 +1163,7 @@ export default class Tablist {
       url: tab.url,
     };
     const newProps = Object.assign(defaultProps, props);
-    openTab(newProps);
+    createTab(newProps);
   }
 
   moveTabToStart(currentTab) {
@@ -1213,7 +1239,7 @@ export default class Tablist {
   }
 
   _activateTabFromCurrent(incr) {
-    const currentTab = this.getTabById(this._active);
+    const currentTab = this._active;
     let tab;
     const sortedTabs = this._getVisibleTabs().sort((a, b) => a.index - b.index);
     if (incr > 0) {
