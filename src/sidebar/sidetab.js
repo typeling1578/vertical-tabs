@@ -45,17 +45,15 @@ export default class Sidetab {
     this._updateLoading(tabInfo.status);
     this.updatePinned(tabInfo.pinned);
     this.updateDiscarded(tabInfo.discarded);
+
     if (tabInfo.cookieStoreId && tabInfo.cookieStoreId.startsWith("firefox-container-")) {
-      // This work is done in the background on purpose: making create() async
-      // creates all sorts of bugs, because it is called in observers (which
-      // cannot be async).
       browser.contextualIdentities.get(tabInfo.cookieStoreId).then(context => {
         if (!context) {
           return;
         }
         this.view.classList.add("hasContext");
         this.view.setAttribute("data-identity-color", context.color);
-      });
+      }, () => {});
     }
     this.updateThumbnail = debounced(() => this._updateThumbnail(), 500);
   }

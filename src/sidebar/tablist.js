@@ -27,13 +27,14 @@ export default class Tablist {
    * search
    * prefs
    */
-  constructor(props) {
-    this._props = props;
+  constructor(sidebar) {
+    this._windowId = sidebar.windowId;
+    this._prefs = sidebar.prefs;
+    this._search = sidebar.search;
+
     this._tabs = new Map();
     this._active = null;
-    this.__compactPins = true;
     this.__tabsShrinked = false;
-    this._windowId = props.windowId;
     this._filterActive = false;
 
     this._willMoveTimeout = null;
@@ -52,19 +53,13 @@ export default class Tablist {
     this._moreTabsView = document.getElementById("moretabs");
     this._moreTabsView.textContent = browser.i18n.getMessage("allTabsLabel");
 
-    this._animations = this._props.prefs.animations;
-    this._compactMode = this._props.prefs.compactMode;
-    this._compactPins = this._props.prefs.compactPins;
-    this._switchLastActiveTab = this._props.prefs.switchLastActiveTab;
-    this._switchByScrolling = this._props.prefs.switchByScrolling;
-    this._notifyClosingManyTabs = this._props.prefs.notifyClosingManyTabs;
     this._initCanScrollShadowObservers();
 
     this._populate();
     this._setupListeners();
 
     this._updateHasRecentlyClosedTabs();
-    this.tabContextMenu = new ContextMenu(this);
+    this.tabContextMenu = new ContextMenu(sidebar, this);
   }
 
   _setupListeners() {
@@ -154,29 +149,6 @@ export default class Tablist {
 
   _getVisibleTabs() {
     return [...this._tabs.values()].filter(tab => tab.isVisible());
-  }
-
-  onStorageChanged(changes) {
-    if (changes.animations) {
-      this._animations = changes.animations.newValue;
-      document.body.classList.toggle("animated", this._animations);
-    }
-    if (changes.compactMode) {
-      this._compactMode = parseInt(changes.compactMode.newValue);
-    }
-    if (changes.compactPins) {
-      this._compactPins = changes.compactPins.newValue;
-    }
-    if (changes.switchByScrolling) {
-      this._switchByScrolling = parseInt(changes.switchByScrolling.newValue);
-    }
-    if (changes.switchLastActiveTab) {
-      this._switchLastActiveTab = changes.switchLastActiveTab.newValue;
-    }
-    if (changes.notifyClosingManyTabs) {
-      this._notifyClosingManyTabs = changes.notifyClosingManyTabs.newValue;
-    }
-    this._maybeShrinkTabs();
   }
 
   _onBrowserTabCreated(tab) {
@@ -353,7 +325,7 @@ export default class Tablist {
     if (tab.pinned) {
       return;
     }
-    const scrollBehavior = !this._animations
+    const scrollBehavior = !this._prefs.animations
       ? "instant"
       : getComputedStyle(this._view).getPropertyValue("scroll-behavior");
     smoothScrollIntoView(tab.view, {
@@ -385,14 +357,16 @@ export default class Tablist {
       const tabId = Sidetab.tabIdForEvent(e);
       if (tabId !== this._active.id) {
         browser.tabs.update(tabId, { active: true });
-      } else if (this._switchLastActiveTab && this._tabs.size > 1) {
+      } else if (this._prefs.switchLastActiveTab && this._tabs.size > 1) {
         browser.tabs.query({ currentWindow: true }).then(tabs => {
           tabs.sort((a, b) => b.lastAccessed - a.lastAccessed);
           browser.tabs.update(tabs[1].id, { active: true });
         });
       }
 
-      this._props.search("");
+      if (this._filterActive) {
+        this._search("");
+      }
       return;
     }
   }
@@ -597,8 +571,6 @@ export default class Tablist {
       browser.search.search({ query, tabId: newTab.id });
       return;
     }
-
-    console.info("Unknown drag-and-drop operation. Aborting.");
   }
 
   _isEventForId(e, id) {
@@ -687,8 +659,8 @@ export default class Tablist {
 
   _scrollShouldSwitch(e) {
     return (
-      this._switchByScrolling === SWITCH_BY_SCROLLING_ALWAYS ||
-      (this._switchByScrolling === SWITCH_BY_SCROLLING_WITH_CTRL && e.ctrlKey)
+      this._prefs.switchByScrolling === SWITCH_BY_SCROLLING_ALWAYS ||
+      (this._prefs.switchByScrolling === SWITCH_BY_SCROLLING_WITH_CTRL && e.ctrlKey)
     );
   }
 
@@ -745,7 +717,7 @@ export default class Tablist {
     if (!this._filterActive) {
       return;
     }
-    this._props.search("");
+    this._search("");
   }
 
   filter(query) {
@@ -832,7 +804,7 @@ export default class Tablist {
       this._maybeUpdateTabThumbnail(activeTab);
     }
     this._initCanScrollShadowObservers();
-    setTimeout(() => document.body.classList.toggle("animated", this._animations), 30);
+    setTimeout(() => document.body.classList.toggle("animated", this._prefs.animations), 30);
   }
 
   checkWindow(windowId) {
@@ -843,13 +815,8 @@ export default class Tablist {
     return this._tabs.get(tabId, null);
   }
 
-  get _compactPins() {
-    return this.__compactPins;
-  }
-
-  set _compactPins(compact) {
-    this.__compactPins = compact;
-    this._pinnedview.classList.toggle("compact", compact);
+  setCompactPins() {
+    this._pinnedview.classList.toggle("compact", this._prefs.compactPins);
   }
 
   get _tabsShrinked() {
@@ -873,8 +840,8 @@ export default class Tablist {
       immediate = true;
     }
 
-    if (this._compactMode !== COMPACT_MODE_DYNAMIC) {
-      this._tabsShrinked = this._compactMode === COMPACT_MODE_STRICT;
+    if (this._prefs.compactMode !== COMPACT_MODE_DYNAMIC) {
+      this._tabsShrinked = this._prefs.compactMode === COMPACT_MODE_STRICT;
       if (immediate) {
         this._wrapperView.classList.toggle("shrinked", this._tabsShrinked);
       }
@@ -926,7 +893,7 @@ export default class Tablist {
       }
     }
     estimatedHeight +=
-      this._compactPins && numPinnedTabs > 0
+      this._prefs.compactPins && numPinnedTabs > 0
         ? this._pinnedview.offsetHeight
         : numPinnedTabs * notCompactTabHeight;
 
@@ -1015,7 +982,7 @@ export default class Tablist {
     const spaceLeft = this._spacerView.offsetHeight;
     const wrapperHeight = this._wrapperView.offsetHeight;
     if (
-      this._animations &&
+      this._prefs.animations &&
       animate &&
       (sidetab.pinned ||
         (!tabAfter && spaceLeft !== 0) ||
@@ -1033,7 +1000,7 @@ export default class Tablist {
   }
 
   _removeTabView(sidetab) {
-    if (!this._animations) {
+    if (!this._prefs.animations) {
       sidetab.view.remove();
       return;
     }
@@ -1066,14 +1033,14 @@ export default class Tablist {
   }
 
   _maybeUpdateTabThumbnail(sidetab) {
-    if (this._tabsShrinked || (sidetab.pinned && this._compactPins)) {
+    if (this._tabsShrinked || (sidetab.pinned && this._prefs.compactPins)) {
       return;
     }
     sidetab.updateThumbnail();
   }
 
   async _deleteTabs(currentTabId, tabIds) {
-    if (!this._notifyClosingManyTabs || tabIds.length < 4) {
+    if (!this._prefs.notifyClosingManyTabs || tabIds.length < 4) {
       browser.tabs.remove(tabIds);
       return;
     }

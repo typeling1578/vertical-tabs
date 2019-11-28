@@ -22,3 +22,11 @@ export function throttled(fn, delay) {
     return fn(...args);
   };
 }
+
+export function extractNew(changes) {
+  let values = {};
+  for (let [key, change] of Object.entries(changes)) {
+    values[key] = change.newValue;
+  }
+  return values;
+}

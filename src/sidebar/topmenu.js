@@ -1,14 +1,15 @@
 /* global browser */
 
 export default class Topmenu {
-  constructor(props) {
-    this._props = props;
+  constructor(sidebar) {
+    this._sidebar = sidebar;
     this._newTabButtonView = document.getElementById("newtab");
     this._newTabButtonIconView = document.getElementById("newtab-icon");
     this._newTabButtonArrowView = document.getElementById("newtab-arrow");
     this._settingsView = document.getElementById("settings");
     this._searchBoxInput = document.getElementById("searchbox-input");
     this._newTabLabelView = document.getElementById("newtab-label");
+
     browser.extension
       .isAllowedIncognitoAccess()
       .then(isAllowed => (this._isIncognitoAccessAllowed = isAllowed));
@@ -31,7 +32,7 @@ export default class Topmenu {
     });
 
     this._searchBoxInput.addEventListener("input", e => {
-      this._props.search(e.target.value);
+      this._sidebar.search(e.target.value);
     });
 
     this._newTabButtonView.addEventListener("click", e => {
@@ -60,7 +61,7 @@ export default class Topmenu {
 
     window.addEventListener("keyup", e => {
       if (e.key === "Escape") {
-        this._props.search("");
+        this._sidebar.search("");
       }
     });
 
@@ -146,18 +147,20 @@ export default class Topmenu {
         },
         enabled: this._isIncognitoAccessAllowed,
       },
-      {
-        type: "separator",
-      },
     ];
 
-    if (!document.body.classList.contains("incognito")) {
-      const identityItems = getContextualIdentityItems();
-      if (identityItems !== null) {
-        identityItems.forEach(identityItem => {
-          identityItem["id"] = `newTabContextMenuOpenInNewContextualTab_${identityItem["id"]}`;
-          items.push(identityItem);
+    if (!this._sidebar.incognito) {
+      const identityItems = this._sidebar.getContextualIdentityItems();
+      if (identityItems.length !== 0) {
+        items.push({
+          type: "separator",
         });
+        for (const identityItem of identityItems) {
+          items.push({
+            ...identityItem,
+            id: `newTabContextMenuOpenInNewContextualTab_${identityItem["id"]}`,
+          });
+        }
       }
     }
 

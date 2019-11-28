@@ -1,12 +1,13 @@
 /* global browser, location */
 
 import Sidetab from "./sidetab.js";
-import getContextualIdentityItems from "./contextualidentities.js";
 
 const IS_PRIVILEGED_PAGE_URL = /^(about|chrome|data|file|javascript):*/;
 
+
 export default class ContextMenu {
-  constructor(tablist) {
+  constructor(sidebar, tablist) {
+    this._sidebar = sidebar;
     this._tablist = tablist;
     let count;
 
@@ -82,6 +83,7 @@ export default class ContextMenu {
 
     const tabId = Sidetab.tabIdForEvent(e);
     const tab = this._tablist.getTabById(tabId);
+    const identityItems = this._sidebar.getContextualIdentityItems();
 
     const items = [
       {
@@ -127,9 +129,7 @@ export default class ContextMenu {
         title: browser.i18n.getMessage("contextMenuOpenInContextualTab"),
         enabled: ContextMenu.canOpen(tab.url),
         icons: { "16": "/sidebar/img/containers.svg" },
-        visible:
-          browser.contextualIdentities !== undefined &&
-          !document.body.classList.contains("incognito"),
+        visible: identityItems.length !== 0 && !this._sidebar.incognito,
       },
       {
         id: "contextMenuMoveTab",
@@ -200,14 +200,11 @@ export default class ContextMenu {
       },
     ];
 
-    const identityItems = getContextualIdentityItems();
-    if (identityItems !== null) {
-      identityItems.forEach(identityItem => {
-        identityItem["id"] = `contextMenuOpenInContextualTab_${identityItem["id"]}`;
-        items.push({
-          parentId: "contextMenuOpenInContextualTab",
-          ...identityItem,
-        });
+    for (const identityItem of identityItems) {
+      items.push({
+        ...identityItem,
+        id: `contextMenuOpenInContextualTab_${identityItem["id"]}`,
+        parentId: "contextMenuOpenInContextualTab",
       });
     }
 
