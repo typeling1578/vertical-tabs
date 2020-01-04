@@ -1,10 +1,9 @@
 import Sidetab from "../sidetab.js";
 
 const jsdom = require("jsdom");
-const fs = require( 'fs' );
+const fs = require("fs");
 
-
-const html = fs.readFileSync( __dirname + '/../sidebar.html' ).toString();
+const html = fs.readFileSync(`${__dirname}/../sidebar.html`).toString();
 const browser = {
   contextualIdentities: {
     get: jest.fn(_cookieStoreId => new Promise(resolve => resolve({ color: "blue" }))),
@@ -15,13 +14,11 @@ const browser = {
 };
 Object.defineProperty(global, "browser", { value: browser });
 
-
 beforeEach(() => {
   const { window } = new jsdom.JSDOM(html);
   Object.defineProperty(global, "window", { value: window });
   Object.defineProperty(global, "document", { value: window.document });
 });
-
 
 test("template is correctly filled once during creation of the first sidetab", () => {
   const sidetab = new Sidetab({
@@ -29,8 +26,12 @@ test("template is correctly filled once during creation of the first sidetab", (
     index: 1,
   });
   expect(sidetab.view.querySelector(".tab-close").title).toBe("Translated<closeTabButtonTooltip>");
-  expect(sidetab.view.querySelector(".tab-icon-overlay-audible").title).toBe("Translated<unmuteTabButtonTooltip>");
-  expect(sidetab.view.querySelector(".tab-icon-overlay-muted").title).toBe("Translated<muteTabButtonTooltip>");
+  expect(sidetab.view.querySelector(".tab-icon-overlay-audible").title).toBe(
+    "Translated<unmuteTabButtonTooltip>",
+  );
+  expect(sidetab.view.querySelector(".tab-icon-overlay-muted").title).toBe(
+    "Translated<muteTabButtonTooltip>",
+  );
 
   Object.defineProperty(global, "document", { value: null });
   const sidetab2 = new Sidetab({
@@ -38,7 +39,6 @@ test("template is correctly filled once during creation of the first sidetab", (
     index: 2,
   });
 });
-
 
 test("sidetab correctly displays host", () => {
   const sidetab = new Sidetab({
@@ -55,15 +55,18 @@ test("sidetab correctly displays host", () => {
   expect(sidetab.view.querySelector(".tab-url").innerText).toBe("about:config");
 
   sidetab.update({ url: "chrome://browser/skin/privatebrowsing/favicon.svg" });
-  expect(sidetab.view.querySelector(".tab-url").innerText).toBe("chrome://browser/skin/privatebrowsing/favicon.svg");
+  expect(sidetab.view.querySelector(".tab-url").innerText).toBe(
+    "chrome://browser/skin/privatebrowsing/favicon.svg",
+  );
 
   sidetab.update({ url: "file:///home/user" });
   expect(sidetab.view.querySelector(".tab-url").innerText).toBe("file:///home/user");
 
   sidetab.update({ url: "data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D" });
-  expect(sidetab.view.querySelector(".tab-url").innerText).toBe("data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D");
+  expect(sidetab.view.querySelector(".tab-url").innerText).toBe(
+    "data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D",
+  );
 });
-
 
 test("sidetab is marked correctly if tab is in a container", () => {
   const sidetab = new Sidetab({
@@ -71,13 +74,12 @@ test("sidetab is marked correctly if tab is in a container", () => {
     index: 1,
     cookieStoreId: "firefox-container-1",
   });
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve(expect(sidetab.view.getAttribute("data-identity-color")).toBe("blue"));
     }, 20);
   });
 });
-
 
 test("sidetab updates correctly its appearance depending on its values", () => {
   const sidetab = new Sidetab({
@@ -115,7 +117,6 @@ test("sidetab updates correctly its appearance depending on its values", () => {
   expect(sidetab.view.classList.contains("loading")).toBe(false);
 });
 
-
 test("sidetab is marked as .wants-attention if its title changed when not active", () => {
   const sidetab = new Sidetab({
     id: 1,
@@ -135,7 +136,6 @@ test("sidetab is marked as .wants-attention if its title changed when not active
   expect(sidetab.view.classList.contains("wants-attention")).toBe(false);
 });
 
-
 test("sidetab is marked as .unread if it hasn’t been active since last page loading", () => {
   const sidetab = new Sidetab({
     id: 1,
@@ -150,7 +150,6 @@ test("sidetab is marked as .unread if it hasn’t been active since last page lo
   expect(sidetab.view.classList.contains("unread")).toBe(false);
 });
 
-
 test("sidetab handles correctly Firefox favicons", () => {
   let sidetab = new Sidetab({
     id: 1,
@@ -160,7 +159,7 @@ test("sidetab handles correctly Firefox favicons", () => {
   expect(iconView.style.backgroundImage).toBe(`url(img/default-favicon.svg)`);
   expect(iconView.classList.contains("chrome-icon")).toBe(true);
 
-  sidetab.update({ favIconUrl: "chrome://browser/skin/developer.svg" })
+  sidetab.update({ favIconUrl: "chrome://browser/skin/developer.svg" });
   expect(iconView.classList.contains("chrome-icon")).toBe(true);
 
   sidetab = new Sidetab({
@@ -180,7 +179,6 @@ test("sidetab handles correctly Firefox favicons", () => {
   expect(iconView.style.backgroundImage).toBe(`url(img/extensions.svg)`);
   expect(iconView.classList.contains("chrome-icon")).toBe(true);
 });
-
 
 test("sidetab handles correctly highlighting title and URL", () => {
   const originalTitle = "Test";
@@ -206,7 +204,6 @@ test("sidetab handles correctly highlighting title and URL", () => {
   expect(titleView.textContent).toBe(originalTitle);
   expect(urlView.textContent).toBe(originalUrl.slice(8));
 });
-
 
 test("sidetab handles correctly hiding", () => {
   const sidetab = new Sidetab({

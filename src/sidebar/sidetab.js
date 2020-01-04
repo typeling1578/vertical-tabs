@@ -4,7 +4,6 @@ import { debounced } from "./utils";
 
 let TAB_TEMPLATE = null;
 
-
 export default class Sidetab {
   constructor(tabInfo) {
     // fields that are taken as is from tabs.Tab
@@ -35,11 +34,17 @@ export default class Sidetab {
       tabInfo.favIconUrl = null;
     }
     this.update(tabInfo);
-    if (tabInfo.cookieStoreId && tabInfo.cookieStoreId.startsWith("firefox-container-")
-        && browser.contextualIdentities) {
-      browser.contextualIdentities.get(tabInfo.cookieStoreId).then(context => {
-        this.view.setAttribute("data-identity-color", context.color);
-      }, () => {});
+    if (
+      tabInfo.cookieStoreId &&
+      tabInfo.cookieStoreId.startsWith("firefox-container-") &&
+      browser.contextualIdentities
+    ) {
+      browser.contextualIdentities.get(tabInfo.cookieStoreId).then(
+        context => {
+          this.view.setAttribute("data-identity-color", context.color);
+        },
+        () => {},
+      );
     }
     this.updateThumbnail = debounced(this._updateThumbnail, 500);
   }
@@ -78,24 +83,33 @@ export default class Sidetab {
   update(info, tab) {
     for (const [key, value] of Object.entries(info)) {
       switch (key) {
-      case "attention": this._updateAttention(value);
-      break;
-      case "audible": this._updateAudible(value);
-      break;
-      case "discarded": this.updateDiscarded(value);
-      break;
-      case "favIconUrl": this._updateIcon(value);
-      break;
-      case "hidden": this._updateHidden(value);
-      break;
-      case "mutedInfo": this._updatedMuted(value)
-      break;
-      case "status": this._updateLoading(value);
-      break;
-      case "title": this._updateTitle(value);
-      break;
-      case "url": this._updateURL(value);
-      break;
+        case "attention":
+          this._updateAttention(value);
+          break;
+        case "audible":
+          this._updateAudible(value);
+          break;
+        case "discarded":
+          this.updateDiscarded(value);
+          break;
+        case "favIconUrl":
+          this._updateIcon(value);
+          break;
+        case "hidden":
+          this._updateHidden(value);
+          break;
+        case "mutedInfo":
+          this._updatedMuted(value);
+          break;
+        case "status":
+          this._updateLoading(value);
+          break;
+        case "title":
+          this._updateTitle(value);
+          break;
+        case "url":
+          this._updateURL(value);
+          break;
       }
     }
   }
@@ -196,11 +210,12 @@ export default class Sidetab {
     }
     this.favIconUrl = favIconUrl;
 
-    this._iconView.classList.toggle("chrome-icon", (
+    this._iconView.classList.toggle(
+      "chrome-icon",
       favIconUrl.startsWith("chrome://") &&
-      favIconUrl.endsWith(".svg") &&
-      favIconUrl !== "chrome://browser/skin/privatebrowsing/favicon.svg"
-    ));
+        favIconUrl.endsWith(".svg") &&
+        favIconUrl !== "chrome://browser/skin/privatebrowsing/favicon.svg",
+    );
     // https://bugzilla.mozilla.org/show_bug.cgi?id=1462948
     if (favIconUrl === "chrome://mozapps/skin/extensions/extensionGeneric-16.svg") {
       favIconUrl = "img/extensions.svg";
