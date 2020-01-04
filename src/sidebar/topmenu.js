@@ -73,9 +73,8 @@ export default class Topmenu {
       return;
     }
 
-    const currentWindow = await browser.windows.getCurrent();
     const lastFocusedWindow = await browser.windows.getLastFocused();
-    if (currentWindow.id !== lastFocusedWindow.id) {
+    if (this._sidebar.windowId !== lastFocusedWindow.id) {
       return;
     }
 
