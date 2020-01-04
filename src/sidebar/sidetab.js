@@ -47,13 +47,16 @@ export default class Sidetab {
     this.updateDiscarded(tabInfo.discarded);
 
     if (tabInfo.cookieStoreId && tabInfo.cookieStoreId.startsWith("firefox-container-")) {
-      browser.contextualIdentities.get(tabInfo.cookieStoreId).then(context => {
-        if (!context) {
-          return;
-        }
-        this.view.classList.add("hasContext");
-        this.view.setAttribute("data-identity-color", context.color);
-      }, () => {});
+      browser.contextualIdentities.get(tabInfo.cookieStoreId).then(
+        context => {
+          if (!context) {
+            return;
+          }
+          this.view.classList.add("hasContext");
+          this.view.setAttribute("data-identity-color", context.color);
+        },
+        () => {},
+      );
     }
     this.updateThumbnail = debounced(() => this._updateThumbnail(), 500);
   }

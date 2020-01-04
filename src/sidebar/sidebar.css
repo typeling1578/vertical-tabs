@@ -1,12 +1,10 @@
 @import url("lib/photon-colors.css");
 
 body > * {
-  /* display: none; */
   visibility: hidden;
 }
 
 body.loaded > * {
-  /* display: inherit; */
   visibility: visible;
 }
 

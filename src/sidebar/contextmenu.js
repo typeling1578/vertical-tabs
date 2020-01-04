@@ -4,7 +4,6 @@ import Sidetab from "./sidetab.js";
 
 const IS_PRIVILEGED_PAGE_URL = /^(about|chrome|data|file|javascript):*/;
 
-
 export default class ContextMenu {
   constructor(sidebar, tablist) {
     this._sidebar = sidebar;

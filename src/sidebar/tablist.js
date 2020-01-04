@@ -20,7 +20,6 @@ const NOTIFICATION_DELETE_ID = "notification-delete";
 // HACK: keep in sync with animation time in CSS
 const TAB_ANIMATION_TIME_MS = 100;
 
-
 export default class Tablist {
   /* @arg {props}
    * windowId
@@ -133,12 +132,11 @@ export default class Tablist {
       root: this._view,
       rootMargin: "0px",
       threshold: [0, 1],
-    }
+    };
     const scrollingObserver = new IntersectionObserver((entries, observer) => {
       for (const entry of entries) {
-        const classToApply = entry.target.id === "top-visibility-checker"
-          ? "can-scroll-top"
-          : "can-scroll-bottom";
+        const classToApply =
+          entry.target.id === "top-visibility-checker" ? "can-scroll-top" : "can-scroll-bottom";
         this._wrapperView.classList.toggle(classToApply, !entry.isIntersecting);
       }
     }, scrollingOptions);
@@ -915,14 +913,14 @@ export default class Tablist {
     }
 
     if (props["url"] === "about:newtab") {
-     delete props["url"];
+      delete props["url"];
     }
 
     if (props["cookieStoreId"] === undefined) {
       props["cookieStoreId"] = "firefox-default";
     }
 
-    let newTab = await browser.tabs.create(props);
+    const newTab = await browser.tabs.create(props);
 
     if (options["successorTab"] === true) {
       browser.tabs.update(newTab.id, { successorTabId: this._active.id });
@@ -994,8 +992,8 @@ export default class Tablist {
     const newElem = tabAfter
       ? parent.insertBefore(element, tabAfter.view)
       : sidetab.pinned
-        ? parent.appendChild(element)
-        : parent.insertBefore(element, this._bottomVisibilityChecker);
+      ? parent.appendChild(element)
+      : parent.insertBefore(element, this._bottomVisibilityChecker);
     setTimeout(() => newElem.classList.remove("added"), 20);
   }
 

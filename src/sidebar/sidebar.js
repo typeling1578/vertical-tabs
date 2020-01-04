@@ -35,7 +35,6 @@ const CSS_TO_THEME_PROPS = {
   "--input-text-focus": ["toolbar_field_text_focus", "toolbar_field_text"],
 };
 
-
 export default class Sidebar {
   async init() {
     const window = await browser.windows.getCurrent();
@@ -108,7 +107,9 @@ export default class Sidebar {
   }
 
   _applyCustomCSS() {
-    document.getElementById("customCSS").textContent = this.prefs.useCustomCSS ? this.prefs.customCSS : "";
+    document.getElementById("customCSS").textContent = this.prefs.useCustomCSS
+      ? this.prefs.customCSS
+      : "";
   }
 
   async _getPrefs() {
@@ -168,10 +169,11 @@ export default class Sidebar {
     if (changes.hasOwnProperty("compactPins")) {
       this._tablist.setCompactPins();
     }
-    if (changes.hasOwnProperty("compactMode") ||
-        changes.hasOwnProperty("compactPins") ||
-        changes.hasOwnProperty("customCSS") ||
-        changes.hasOwnProperty("useCustomCSS")
+    if (
+      changes.hasOwnProperty("compactMode") ||
+      changes.hasOwnProperty("compactPins") ||
+      changes.hasOwnProperty("customCSS") ||
+      changes.hasOwnProperty("useCustomCSS")
     ) {
       this._tablist._maybeShrinkTabs();
     }
@@ -249,18 +251,20 @@ export default class Sidebar {
   }
 
   _updateContextualIdentities() {
-    browser.contextualIdentities.query({}).then(identities => {
-      this.identityItems = identities.map(identity => {
-        return {
-          id: identity.cookieStoreId,
-          title: identity.name,
-          icons: { "16": `/sidebar/img/identities/${identity.icon}.svg#${identity.color}` },
-        };
-      });
-    },
-    () => {
-      this.identityItems = [];
-    });
+    browser.contextualIdentities.query({}).then(
+      identities => {
+        this.identityItems = identities.map(identity => {
+          return {
+            id: identity.cookieStoreId,
+            title: identity.name,
+            icons: { "16": `/sidebar/img/identities/${identity.icon}.svg#${identity.color}` },
+          };
+        });
+      },
+      () => {
+        this.identityItems = [];
+      },
+    );
   }
 }
 

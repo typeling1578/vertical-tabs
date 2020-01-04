@@ -81,7 +81,10 @@ export default class Topmenu {
 
     switch (info.menuItemId) {
       case "newTabContextMenuOpenAlternatePosition":
-        this._sidebar.createTab({}, { successorTab: true, position: this._alternateNewTabPosition });
+        this._sidebar.createTab(
+          {},
+          { successorTab: true, position: this._alternateNewTabPosition },
+        );
         return;
       case "newTabContextMenuOpenInWindow":
         browser.windows.create();

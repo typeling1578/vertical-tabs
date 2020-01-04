@@ -24,8 +24,8 @@ export function throttled(fn, delay) {
 }
 
 export function extractNew(changes) {
-  let values = {};
-  for (let [key, change] of Object.entries(changes)) {
+  const values = {};
+  for (const [key, change] of Object.entries(changes)) {
     values[key] = change.newValue;
   }
   return values;
