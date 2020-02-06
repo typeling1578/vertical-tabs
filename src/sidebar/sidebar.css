@@ -725,7 +725,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.hasContext .tab-context {
   max-height: var(--tab-height-normal);
 }
 
-#tablist-wrapper.can-scroll-top #tablist .tab:last-child {
+#tablist-wrapper.can-scroll-top #tablist .tab:last-of-type {
   border-bottom: 0;
 }
 
