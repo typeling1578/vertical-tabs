@@ -6,10 +6,6 @@
         "message": "Ενεργοποίηση\\/Απενεργοποίηση Tab Center Reborn",
         "description": "Tooltip shown when hovering the toolbar button."
     },
-    "sidebarTitle": {
-        "message": "Καρτέλες",
-        "description": "Label shown in the sidebar selector."
-    },
     "newTabBtnLabel": {
         "message": "Νέα Καρτέλα",
         "description": "Label of the New Tab button in the top menu."
