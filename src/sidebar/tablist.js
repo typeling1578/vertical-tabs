@@ -28,6 +28,7 @@ export default class Tablist {
    */
   constructor(sidebar) {
     this._windowId = sidebar.windowId;
+    this._incognito = sidebar.incognito;
     this._prefs = sidebar.prefs;
     this._search = sidebar.search;
 
@@ -920,7 +921,7 @@ export default class Tablist {
       delete props["url"];
     }
 
-    if (props["cookieStoreId"] === undefined) {
+    if (!this._incognito && props["cookieStoreId"] === undefined) {
       props["cookieStoreId"] = "firefox-default";
     }
 
