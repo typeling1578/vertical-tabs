@@ -17,7 +17,7 @@
     },
     "searchPlaceholder": {
         "message": "Cercar pestanyes",
-        "description": "Placehorder of the Search bar in the top menu."
+        "description": "Placehorder of the filter bar in the top menu."
     },
     "settingsBtnTooltip": {
         "message": "Obrir la configuració",
@@ -53,7 +53,7 @@
     },
     "allTabsLabel": {
         "message": "Mostrar totes les pestanyes …",
-        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
+        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by a query."
     },
     "contextMenuReloadTab": {
         "message": "&Torna a carregar la pestanya",

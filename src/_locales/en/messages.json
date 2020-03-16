@@ -16,8 +16,8 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=74421. Tooltip of the New Tab button in the top menu."
     },
     "searchPlaceholder": {
-        "message": "Search tabs",
-        "description": "Placehorder of the Search bar in the top menu."
+        "message": "Filter tabs",
+        "description": "Placehorder of the filter bar in the top menu."
     },
     "settingsBtnTooltip": {
         "message": "Open settings",
@@ -53,7 +53,7 @@
     },
     "allTabsLabel": {
         "message": "Show all tabs…",
-        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
+        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by a query."
     },
     "contextMenuReloadTab": {
         "message": "&Reload Tab",

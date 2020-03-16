@@ -21,7 +21,7 @@
     },
     "allTabsLabel": {
         "message": "顯示所有分頁…",
-        "description": "Shown at the bottom of the list of tabs if some tabs are filtered by the current search query."
+        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by a query."
     },
     "contextMenuReloadTab": {
         "message": "重新載入分頁",
