@@ -38,7 +38,7 @@ export default class Tablist {
     this._filterActive = false;
 
     this._willMoveTimeout = null;
-    this._isDragging = false;
+    this._isDraggingSince = null;
     this._openInNewWindowTimer = null;
     this._highlightBottomScrollShadowTimer = null;
     this._willBeDeletedIds = null;
@@ -151,7 +151,6 @@ export default class Tablist {
   }
 
   _onBrowserTabCreated(tab) {
-    this._isDragging = true;
     clearTimeout(this._openInNewWindowTimer);
     if (!this.checkWindow(tab.windowId)) {
       return;
@@ -375,11 +374,10 @@ export default class Tablist {
   }
 
   _onDragStart(e) {
+    this._isDraggingSince = null;
     if (!Sidetab.isTabEvent(e) || this._filterActive) {
       return;
     }
-
-    this._isDragging = true;
 
     const tabId = Sidetab.tabIdForEvent(e);
     const tab = this.getTabById(tabId);
@@ -492,6 +490,8 @@ export default class Tablist {
   }
 
   _onDragOver(e) {
+    // This is from there that the real drag is starting and that you will be able to drop a tab
+    this._isDraggingSince = Date.now();
     e.preventDefault();
 
     const whereToDropInfo = this._whereToDrop(e);
@@ -522,7 +522,7 @@ export default class Tablist {
   }
 
   async _onDrop(e) {
-    this._isDragging = false;
+    this._isDraggingSince = null;
     clearTimeout(this._openInNewWindowTimer);
 
     this._removeDragHighlight();
@@ -635,10 +635,11 @@ export default class Tablist {
     browser.bookmarks.onCreated.addListener(__onBookmarkCreated);
 
     this._openInNewWindowTimer = setTimeout(() => {
-      if (this._isDragging === false) {
+      // drag-and-dropping a tab for a few pixels quickly can trigger dragover but still not drop
+      // so we also check that it’s not a misclick (drag and drop events just seem unreliable…)
+      if (this._isDraggingSince === null || Date.now() - this._isDraggingSince < 100) {
         return;
       }
-      this._isDragging = false;
       if (this._tabs.size === 1) {
         return;
       }
