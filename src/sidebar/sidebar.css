@@ -18,6 +18,8 @@ body.loaded > * {
 
   --tab-height-normal: 52px;
   --tab-height-compact: 36px;
+  --favicon-size: 18px;
+  --favicon-size-only: var(--favicon-size);
 
   --icons: var(--grey-90-a80);
   --toolbar-background: var(--grey-10);
@@ -548,14 +550,15 @@ body:not(.incognito) #pinnedtablist.compact .tab.hasContext .tab-context {
 }
 
 .tab-icon-wrapper {
+  display: flex;
   height: 24px;
   width: 24px;
 }
 
 #tablist-wrapper:not(.shrinked) #tablist .tab-icon-wrapper,
 #tablist-wrapper:not(.shrinked) #pinnedtablist:not(.compact) .tab-icon-wrapper {
-  height: 20px;
-  width: 20px;
+  height: calc(var(--favicon-size) + 2px);
+  width: calc(var(--favicon-size) + 2px);
   margin-left: 0px;
   margin-top: 20px;
   border-radius: var(--button-border-radius);
@@ -573,13 +576,11 @@ body:not(.incognito) #pinnedtablist.compact .tab.hasContext .tab-context {
 }
 
 .tab-icon {
-  width: 18px;
-  height: 18px;
+  height: var(--favicon-size);
+  width: var(--favicon-size);
   background-repeat: no-repeat;
-  background-position: center;
   background-size: contain;
-  background-origin: content-box;
-  margin: 3px auto;
+  margin: auto;
 }
 
 .tab-icon.chrome-icon {
@@ -599,6 +600,10 @@ body:not(.incognito) #pinnedtablist.compact .tab.hasContext .tab-context {
   background-image: none !important;
 }
 
+#pinnedtablist.compact .tab-icon {
+  --favicon-size: var(--favicon-size-only);
+}
+
 .tab.loading .tab-icon::before {
   /* Code from https://hg.mozilla.org/mozilla-central/file/tip/browser/themes/shared/tabs.inc.css */
   content: "";
@@ -606,7 +611,7 @@ body:not(.incognito) #pinnedtablist.compact .tab.hasContext .tab-context {
   background-image: url("img/loading-spinner.svg#standard");
   background-position: left center;
   background-repeat: no-repeat;
-  width: 540px;
+  width: calc(30 * var(--favicon-size));
   height: 100%;
   animation: tab-throbber-animation 1.05s steps(30) infinite;
   -moz-context-properties: fill;
@@ -735,10 +740,6 @@ body:not(.incognito) #pinnedtablist.compact .tab.hasContext .tab-context {
 
 #tablist-wrapper #pinnedtablist {
   flex-shrink: 0;
-}
-
-#pinnedtablist.compact .tab .tab-icon {
-  margin: 4px auto;
 }
 
 #pinnedtablist.compact .tab > .tab-title-wrapper,
