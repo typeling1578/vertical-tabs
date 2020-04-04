@@ -5,9 +5,9 @@ class Background {
   constructor() {
     this.updateTheme();
     this.openedSidebarWindows = {};
-    browser.runtime.onConnect.addListener(port => this.onConnect(port));
-    browser.browserAction.onClicked.addListener(tab => this.onClick(tab));
-    browser.commands.onCommand.addListener(command => this.onCommand(command));
+    browser.runtime.onConnect.addListener((port) => this.onConnect(port));
+    browser.browserAction.onClicked.addListener((tab) => this.onClick(tab));
+    browser.commands.onCommand.addListener((command) => this.onCommand(command));
     this.reloadOptionPage();
   }
 
@@ -50,7 +50,7 @@ class Background {
   onConnect(port) {
     const windowId = parseInt(port.name);
     this.openedSidebarWindows[windowId] = port;
-    port.onDisconnect.addListener(port => {
+    port.onDisconnect.addListener((port) => {
       delete this.openedSidebarWindows[parseInt(port.name)];
     });
   }
@@ -66,7 +66,7 @@ class Background {
   onCommand(command) {
     switch (command) {
       case "switch-to-last-active-tab":
-        browser.tabs.query({ currentWindow: true }).then(tabs => {
+        browser.tabs.query({ currentWindow: true }).then((tabs) => {
           tabs.sort((a, b) => b.lastAccessed - a.lastAccessed);
           browser.tabs.update(tabs[1].id, { active: true });
         });
@@ -75,7 +75,7 @@ class Background {
 
   // Reload option page so that it’s never out-of-sync when hot-reloading during dev
   reloadOptionPage() {
-    browser.tabs.query({}).then(tabs => {
+    browser.tabs.query({}).then((tabs) => {
       for (const tab of tabs) {
         if (tab.url === "about:addons") {
           browser.tabs.reload(tab.id);

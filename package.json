@@ -2,13 +2,12 @@
   "name": "tabcenter-reborn",
   "sideEffects": false,
   "scripts": {
-    "lint-prettier": "prettier --write \"**/*.{js,yaml,html,css,json,yaml,md}\"",
+    "lint-prettier": "prettier --write ./src/**/*.{js,html,css,json} *.{md,yml}",
     "lint-eslint": "eslint . --fix",
-    "lint-stylelint": "stylelint **/*.css",
+    "lint-stylelint": "stylelint ./src/**/*.css",
     "lint": "npm run lint-prettier && npm run lint-eslint && npm run lint-stylelint",
-    "test": "jest --coverage",
     "watch": "webpack-cli --mode development --watch --devtool=inline-source-map",
-    "webext": "web-ext run --start-url about:debugging -s src",
+    "webext": "web-ext run --start-url 'about:debugging#/runtime/this-firefox' -s src",
     "dev": "concurrently --kill-others --raw -s first npm:webext npm:watch",
     "webext-lint": "web-ext lint -s src/ -i sidebar/dist",
     "build": "webpack-cli --mode production && web-ext build -s src/ -i 'sidebar/**/*.js' '!sidebar/dist/sidebar.bundle.js' --overwrite-dest",
@@ -73,26 +72,21 @@
   },
   "homepage": "https://framagit.org/ariasuni/tabcenter-reborn#readme",
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.7.7",
-    "concurrently": "^5.0.2",
+    "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.9.0",
-    "husky": "^3.1.0",
-    "jest": "^24.9.0",
-    "jest-environment-jsdom-fifteen": "^1.0.2",
-    "jsdom": "^15.2.1",
-    "lint-staged": "^9.5.0",
-    "prettier": "^1.19.1",
-    "stylelint": "^12.0.1",
+    "eslint-config-prettier": "^6.10.1",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.9",
+    "prettier": "^2.0.2",
+    "stylelint": "^13.2.1",
     "stylelint-config-recommended": "^3.0.0",
-    "web-ext": "^4.0.0",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
+    "web-ext": "^4.1.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "@ctrl/tinycolor": "^2.6.0",
+    "@ctrl/tinycolor": "^2.6.1",
     "fuzzysort": "^1.1.4",
-    "smooth-scroll-into-view-if-needed": "^1.1.25"
+    "smooth-scroll-into-view-if-needed": "^1.1.27"
   }
 }

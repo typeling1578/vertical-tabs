@@ -70,7 +70,7 @@ export default class Sidebar {
   }
 
   _setupListeners() {
-    browser.storage.onChanged.addListener(changes => {
+    browser.storage.onChanged.addListener((changes) => {
       this._onStorageChanged(extractNew(changes));
     });
 
@@ -85,7 +85,7 @@ export default class Sidebar {
     browser.contextualIdentities.onRemoved.addListener(this._updateContextualIdentities);
     browser.contextualIdentities.onUpdated.addListener(this._updateContextualIdentities);
 
-    window.addEventListener("contextmenu", e => this._onContextMenu(e), false);
+    window.addEventListener("contextmenu", (e) => this._onContextMenu(e), false);
   }
 
   _onContextMenu(e) {
@@ -252,8 +252,8 @@ export default class Sidebar {
 
   _updateContextualIdentities() {
     browser.contextualIdentities.query({}).then(
-      identities => {
-        this.identityItems = identities.map(identity => {
+      (identities) => {
+        this.identityItems = identities.map((identity) => {
           return {
             id: identity.cookieStoreId,
             title: identity.name,

@@ -12,8 +12,8 @@ export default class Topmenu {
 
     browser.extension
       .isAllowedIncognitoAccess()
-      .then(isAllowed => (this._isIncognitoAccessAllowed = isAllowed));
-    browser.browserSettings.newTabPosition.get({}).then(setting => {
+      .then((isAllowed) => (this._isIncognitoAccessAllowed = isAllowed));
+    browser.browserSettings.newTabPosition.get({}).then((setting) => {
       this._newTabPosition = setting.value;
       this._alternateNewTabPosition = setting.value === "afterCurrent" ? "atEnd" : "afterCurrent";
     });
@@ -31,11 +31,11 @@ export default class Topmenu {
       browser.runtime.openOptionsPage();
     });
 
-    this._searchBoxInput.addEventListener("input", e => {
+    this._searchBoxInput.addEventListener("input", (e) => {
       this._sidebar.search(e.target.value);
     });
 
-    this._newTabButtonView.addEventListener("click", e => {
+    this._newTabButtonView.addEventListener("click", (e) => {
       if (e.ctrlKey === true && e.shiftKey === true) {
         if (this._isIncognitoAccessAllowed) {
           browser.windows.create({ incognito: true });
@@ -49,23 +49,23 @@ export default class Topmenu {
       }
     });
 
-    this._newTabButtonView.addEventListener("auxclick", async e => {
+    this._newTabButtonView.addEventListener("auxclick", async (e) => {
       if (e.button === 1) {
         this._sidebar.createTab({ _position: this._alternateNewTabPosition });
       }
     });
 
-    this._newTabButtonView.addEventListener("contextmenu", e => {
+    this._newTabButtonView.addEventListener("contextmenu", (e) => {
       this._showNewTabPopup(e);
     });
 
-    window.addEventListener("keyup", e => {
+    window.addEventListener("keyup", (e) => {
       if (e.key === "Escape") {
         this._sidebar.search("");
       }
     });
 
-    browser.menus.onClicked.addListener(info => this._onNewTabContextMenuClicked(info));
+    browser.menus.onClicked.addListener((info) => this._onNewTabContextMenuClicked(info));
   }
 
   async _onNewTabContextMenuClicked(info) {

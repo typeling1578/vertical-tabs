@@ -38,10 +38,10 @@ You can add or improve tweaks to the [wiki](https://framagit.org/ariasuni/tabcen
 
 First, check [Design](https://framagit.org/ariasuni/tabcenter-reborn/blob/main/DESIGN.md) and [Technical choices](https://framagit.org/ariasuni/tabcenter-reborn/blob/main/TECHNICAL.md) documents.
 
-You need to have a recent version of Node.js.
+You need to have a recent version of Node.js and npm.
 
 1. Clone this repository
-2. Install the dependencies with `npm i`.
+2. Install the dependencies with `npm install`.
 3. Run `npm run dev` and start hacking! [Here is a list of some things](https://framagit.org/ariasuni/tabcenter-reborn/issues) you could work on.
 
    If you don’t have Firefox Release installed, you should use:

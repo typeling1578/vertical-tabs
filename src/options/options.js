@@ -64,7 +64,7 @@ class Options {
       customCSS: "",
     };
 
-    browser.storage.sync.get(defaultPrefs).then(prefs => {
+    browser.storage.sync.get(defaultPrefs).then((prefs) => {
       requestAnimationFrame(() => {
         for (const pref of Object.entries(prefs)) {
           const element = document.getElementById(pref[0]);
@@ -87,7 +87,7 @@ class Options {
   }
 
   setupListeners() {
-    document.body.addEventListener("change", e => {
+    document.body.addEventListener("change", (e) => {
       if (e.target.tagName === "TEXTAREA") {
         browser.storage.sync.set({ [e.target.id]: e.target.value });
       } else if (e.target.tagName === "INPUT") {

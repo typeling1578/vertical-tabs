@@ -64,8 +64,8 @@ export default class Tablist {
 
   _setupListeners() {
     // Tab events
-    browser.tabs.onCreated.addListener(tab => this._onBrowserTabCreated(tab));
-    browser.tabs.onActivated.addListener(activeInfo => this._onBrowserTabActivated(activeInfo));
+    browser.tabs.onCreated.addListener((tab) => this._onBrowserTabCreated(tab));
+    browser.tabs.onActivated.addListener((activeInfo) => this._onBrowserTabActivated(activeInfo));
     browser.tabs.onUpdated.addListener(
       (tabId, changeInfo, tab) => this._onBrowserTabUpdated(tabId, changeInfo, tab),
       { windowId: this._windowId }, // only onUpdated lets us filter by windowId
@@ -80,7 +80,7 @@ export default class Tablist {
     browser.tabs.onDetached.addListener((tabId, detachInfo) =>
       this._onBrowserTabRemoved(tabId, detachInfo.oldWindowId, false),
     );
-    browser.webNavigation.onCompleted.addListener(details =>
+    browser.webNavigation.onCompleted.addListener((details) =>
       this._webNavigationOnCompleted(details),
     );
 
@@ -88,30 +88,30 @@ export default class Tablist {
     // Because defining event listeners for each tab is a terrible idea.
     // Read more here: https://davidwalsh.name/event-delegate
     for (const view of [this._view, this._pinnedview]) {
-      view.addEventListener("click", e => this._onClick(e));
-      view.addEventListener("auxclick", e => this._onAuxClick(e));
-      view.addEventListener("mousedown", e => this._onMouseDown(e));
-      view.addEventListener("pointerup", e => this._onPointerUp(e));
-      view.addEventListener("pointerover", e => this._onPointerOver(e));
-      view.addEventListener("contextmenu", e => this.tabContextMenu.open(e), true);
-      view.addEventListener("animationend", e => this._onAnimationEnd(e));
+      view.addEventListener("click", (e) => this._onClick(e));
+      view.addEventListener("auxclick", (e) => this._onAuxClick(e));
+      view.addEventListener("mousedown", (e) => this._onMouseDown(e));
+      view.addEventListener("pointerup", (e) => this._onPointerUp(e));
+      view.addEventListener("pointerover", (e) => this._onPointerOver(e));
+      view.addEventListener("contextmenu", (e) => this.tabContextMenu.open(e), true);
+      view.addEventListener("animationend", (e) => this._onAnimationEnd(e));
     }
 
-    this._wrapperView.addEventListener("pointerout", e => this._onPointerOut(e));
+    this._wrapperView.addEventListener("pointerout", (e) => this._onPointerOut(e));
 
     this._spacerView.addEventListener("dblclick", () => this._onSpacerDblClick());
-    this._spacerView.addEventListener("auxclick", e => this._onSpacerAuxClick(e));
+    this._spacerView.addEventListener("auxclick", (e) => this._onSpacerAuxClick(e));
     this._moreTabsView.addEventListener("click", () => this._clearSearch());
 
     // Drag-and-drop.
-    document.addEventListener("dragstart", e => this._onDragStart(e));
-    document.addEventListener("dragover", e => this._onDragOver(e));
-    document.addEventListener("dragleave", e => this._onDragLeave(e));
-    document.addEventListener("drop", e => this._onDrop(e));
-    document.addEventListener("dragend", e => this._onDragend(e));
+    document.addEventListener("dragstart", (e) => this._onDragStart(e));
+    document.addEventListener("dragover", (e) => this._onDragOver(e));
+    document.addEventListener("dragleave", (e) => this._onDragLeave(e));
+    document.addEventListener("drop", (e) => this._onDrop(e));
+    document.addEventListener("dragend", (e) => this._onDragend(e));
 
-    this._onWheel = throttled(e => this.__onWheel(e), 20);
-    window.addEventListener("wheel", e => {
+    this._onWheel = throttled((e) => this.__onWheel(e), 20);
+    window.addEventListener("wheel", (e) => {
       // disable zooming
       if (e.metaKey || e.ctrlKey || this._scrollShouldSwitch(e)) {
         e.preventDefault();
@@ -120,10 +120,10 @@ export default class Tablist {
     });
 
     // Handle notifications
-    browser.notifications.onClicked.addListener(notificationId =>
+    browser.notifications.onClicked.addListener((notificationId) =>
       this._onNotificationDeleteClicked(notificationId),
     );
-    browser.notifications.onClosed.addListener(notificationId =>
+    browser.notifications.onClosed.addListener((notificationId) =>
       this._onNotificationDeleteClosed(notificationId),
     );
   }
@@ -147,7 +147,7 @@ export default class Tablist {
   }
 
   _getVisibleTabs() {
-    return [...this._tabs.values()].filter(tab => tab.isVisible());
+    return [...this._tabs.values()].filter((tab) => tab.isVisible());
   }
 
   _onBrowserTabCreated(tab) {
@@ -360,7 +360,7 @@ export default class Tablist {
       if (tabId !== this._active.id) {
         browser.tabs.update(tabId, { active: true });
       } else if (this._prefs.switchLastActiveTab && this._tabs.size > 1) {
-        browser.tabs.query({ currentWindow: true }).then(tabs => {
+        browser.tabs.query({ currentWindow: true }).then((tabs) => {
           tabs.sort((a, b) => b.lastAccessed - a.lastAccessed);
           browser.tabs.update(tabs[1].id, { active: true });
         });
@@ -404,8 +404,8 @@ export default class Tablist {
   // return tab with the provided pinned state and index, if it exists
   _getTabByIndex(index, pinned) {
     return this._getVisibleTabs()
-      .filter(tab => tab.pinned === pinned)
-      .find(tab => tab.index === index);
+      .filter((tab) => tab.pinned === pinned)
+      .find((tab) => tab.index === index);
   }
 
   _getTabBefore(currentTab, samePinnedStatus = false) {
@@ -868,7 +868,7 @@ export default class Tablist {
 
     if (!this._tabsShrinked) {
       const spaceLeft = this._spacerView.offsetHeight;
-      const unpinnedTabCount = visibleTabs.filter(tab => !tab.pinned).length;
+      const unpinnedTabCount = visibleTabs.filter((tab) => !tab.pinned).length;
 
       // count one more tab to only unshrink if there is a comfortable white space underneath
       if ((unpinnedTabCount + 1) * notCompactTabHeight + pinnedViewHeight > maxHeight) {
@@ -1085,7 +1085,7 @@ export default class Tablist {
     if (pinned === null) {
       return this._getVisibleTabs().length;
     }
-    return this._getVisibleTabs().filter(tab => tab.pinned === pinned).length;
+    return this._getVisibleTabs().filter((tab) => tab.pinned === pinned).length;
   }
 
   isFilterActive() {
@@ -1123,8 +1123,8 @@ export default class Tablist {
       index: tab.pinned
         ? Math.min(
             ...this._getVisibleTabs()
-              .filter(tab => !tab.pinned)
-              .map(tab => tab.index),
+              .filter((tab) => !tab.pinned)
+              .map((tab) => tab.index),
           )
         : tab.index + 1,
       openerTabId: tab.openerTabId,
@@ -1137,18 +1137,18 @@ export default class Tablist {
   }
 
   moveTabToStart(currentTab) {
-    const minIndex = Math.min(...this._tabsBefore(currentTab).map(tab => tab.index));
+    const minIndex = Math.min(...this._tabsBefore(currentTab).map((tab) => tab.index));
     browser.tabs.move(currentTab.id, { index: minIndex });
   }
 
   moveTabToEnd(currentTab) {
-    const maxIndex = Math.max(...this._tabsAfter(currentTab).map(tab => tab.index));
+    const maxIndex = Math.max(...this._tabsAfter(currentTab).map((tab) => tab.index));
     browser.tabs.move(currentTab.id, { index: maxIndex });
   }
 
   _tabsBefore(currentTab) {
     return this._getVisibleTabs().filter(
-      tab => tab.index < currentTab.index && tab.pinned === currentTab.pinned,
+      (tab) => tab.index < currentTab.index && tab.pinned === currentTab.pinned,
     );
   }
 
@@ -1156,7 +1156,7 @@ export default class Tablist {
     // This function uses some() which is faster than filter(),
     // since it stops as soon at it founds a match
     return this._getVisibleTabs().some(
-      tab => tab.index < currentTab.index && tab.pinned === currentTab.pinned,
+      (tab) => tab.index < currentTab.index && tab.pinned === currentTab.pinned,
     );
   }
 
@@ -1167,19 +1167,19 @@ export default class Tablist {
   closeTabsBefore(currentTab) {
     this._deleteTabs(
       currentTab.id,
-      this._tabsBefore(currentTab).map(tab => tab.id),
+      this._tabsBefore(currentTab).map((tab) => tab.id),
     );
   }
 
   _tabsAfter(currentTab) {
     return this._getVisibleTabs().filter(
-      tab => tab.index > currentTab.index && tab.pinned === currentTab.pinned,
+      (tab) => tab.index > currentTab.index && tab.pinned === currentTab.pinned,
     );
   }
 
   hasTabsAfter(currentTab) {
     return this._getVisibleTabs().some(
-      tab => tab.index > currentTab.index && tab.pinned === currentTab.pinned,
+      (tab) => tab.index > currentTab.index && tab.pinned === currentTab.pinned,
     );
   }
 
@@ -1190,7 +1190,7 @@ export default class Tablist {
   closeTabsAfter(currentTab) {
     this._deleteTabs(
       currentTab.id,
-      this._tabsAfter(currentTab).map(tab => tab.id),
+      this._tabsAfter(currentTab).map((tab) => tab.id),
     );
   }
 
@@ -1201,12 +1201,12 @@ export default class Tablist {
   closeAllTabsExcept(currentTab) {
     this._deleteTabs(
       currentTab.id,
-      this._allTabsExcept(currentTab.id).map(tab => tab.id),
+      this._allTabsExcept(currentTab.id).map((tab) => tab.id),
     );
   }
 
   _allTabsExcept(tabId) {
-    return this._getVisibleTabs().filter(tab => tab.id !== tabId && !tab.pinned && !tab.hidden);
+    return this._getVisibleTabs().filter((tab) => tab.id !== tabId && !tab.pinned && !tab.hidden);
   }
 
   async undoCloseTab() {

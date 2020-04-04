@@ -40,7 +40,7 @@ export default class Sidetab {
       browser.contextualIdentities
     ) {
       browser.contextualIdentities.get(tabInfo.cookieStoreId).then(
-        context => {
+        (context) => {
           this.view.setAttribute("data-identity-color", context.color);
         },
         () => {},
@@ -256,7 +256,7 @@ export default class Sidetab {
 
   _updateThumbnailCanvas(base64Str) {
     const desiredHeight = 192;
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       const img = new Image();
       img.onload = () => {
         // Resize the image to lower the memory consumption.
@@ -300,7 +300,7 @@ export default class Sidetab {
     if (!el) {
       return false;
     }
-    const isTabNode = node => node && node.classList.contains("tab");
+    const isTabNode = (node) => node && node.classList.contains("tab");
     if (isTabNode(el)) {
       return true;
     }
@@ -350,10 +350,10 @@ export default class Sidetab {
           return;
         }
         const animations = [...icons]
-          .map(tabIcon => tabIcon.getAnimations({ subtree: true }))
+          .map((tabIcon) => tabIcon.getAnimations({ subtree: true }))
           .reduce((a, b) => a.concat(b))
           .filter(
-            anim =>
+            (anim) =>
               anim instanceof CSSAnimation &&
               anim.animationName === "tab-throbber-animation" &&
               (anim.playState === "running" || anim.playState === "pending"),
@@ -361,7 +361,7 @@ export default class Sidetab {
 
         // Synchronize with the oldest running animation, if any.
         const firstStartTime = Math.min(
-          ...animations.map(anim => (anim.startTime === null ? Infinity : anim.startTime)),
+          ...animations.map((anim) => (anim.startTime === null ? Infinity : anim.startTime)),
         );
         if (firstStartTime === Infinity) {
           return;
