@@ -38,15 +38,15 @@ You can add or improve tweaks to the [wiki](https://framagit.org/ariasuni/tabcen
 
 First, check [Design](https://framagit.org/ariasuni/tabcenter-reborn/blob/main/DESIGN.md) and [Technical choices](https://framagit.org/ariasuni/tabcenter-reborn/blob/main/TECHNICAL.md) documents.
 
-You need to have a recent version of Node.js and npm.
+You need to have a recent version of Node.js and yarn.
 
 1. Clone this repository
-2. Install the dependencies with `npm install`.
-3. Run `npm run dev` and start hacking! [Here is a list of some things](https://framagit.org/ariasuni/tabcenter-reborn/issues) you could work on.
+2. Install the dependencies with `yarn install`.
+3. Run `yarn run dev` and start hacking! [Here is a list of some things](https://framagit.org/ariasuni/tabcenter-reborn/issues) you could work on.
 
    If you don’t have Firefox Release installed, you should use:
 
-   `env WEB_EXT_FIREFOX=<exe> npm run dev` where `exe` can be `stable`, `beta`, `nightly`, the command to launch Firefox, or a path to the Firefox executable.
+   `env WEB_EXT_FIREFOX=<exe> yarn run dev` where `exe` can be `stable`, `beta`, `nightly`, the command to launch Firefox, or a path to the Firefox executable.
 
 4. Make sure your changes are correct by testing them in different situations, with containers, search, private browsing and several windows open when it is relevant.
 

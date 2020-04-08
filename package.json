@@ -8,7 +8,7 @@
     "lint": "npm run lint-prettier && npm run lint-eslint && npm run lint-stylelint",
     "watch": "webpack-cli --mode development --watch --devtool=inline-source-map",
     "webext": "web-ext run --start-url 'about:debugging#/runtime/this-firefox' -s src",
-    "dev": "concurrently --kill-others --raw -s first npm:webext npm:watch",
+    "dev": "concurrently --kill-others --raw -s first 'yarn run webext' 'yarn run watch'",
     "webext-lint": "web-ext lint -s src/ -i sidebar/dist",
     "build": "webpack-cli --mode production && web-ext build -s src/ -i 'sidebar/**/*.js' '!sidebar/dist/sidebar.bundle.js' --overwrite-dest",
     "build-source": "tar cavf web-ext-artifacts/tabcenter-reborn.tar.gz -X .gitignore -X .tarignore ."
@@ -49,16 +49,13 @@
   },
   "lint-staged": {
     "*.{js,yaml,html,css,json,yaml,md}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ],
     "*.js": [
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ],
     "*.css": [
-      "stylelint --fix",
-      "git add"
+      "stylelint --fix"
     ]
   },
   "repository": {
@@ -76,9 +73,9 @@
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "husky": "^4.2.3",
-    "lint-staged": "^10.0.9",
+    "lint-staged": "^10.1.1",
     "prettier": "^2.0.2",
-    "stylelint": "^13.2.1",
+    "stylelint": "^13.3.0",
     "stylelint-config-recommended": "^3.0.0",
     "web-ext": "^4.1.0",
     "webpack": "^4.42.1",
