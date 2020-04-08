@@ -246,23 +246,37 @@ export default class Sidebar {
     );
   }
 
-  getContextualIdentityItems() {
-    return this.identityItems;
+  getContextualIdentityItems(cookieStoreId = "firefox-default") {
+    const tabInContainer = cookieStoreId !== "firefox-default";
+    const items = [
+      {
+        id: "firefox-default",
+        title: browser.i18n.getMessage("contextMenuNoContainer"),
+        visible: tabInContainer,
+      },
+      {
+        type: "separator",
+        visible: tabInContainer,
+      },
+    ];
+    for (const identity of this.contextualIdentities) {
+      items.push({
+        id: identity.cookieStoreId,
+        title: identity.name,
+        icons: { "16": `/sidebar/img/identities/${identity.icon}.svg#${identity.color}` },
+        visible: cookieStoreId !== identity.cookieStoreId,
+      });
+    }
+    return items;
   }
 
   _updateContextualIdentities() {
     browser.contextualIdentities.query({}).then(
       (identities) => {
-        this.identityItems = identities.map((identity) => {
-          return {
-            id: identity.cookieStoreId,
-            title: identity.name,
-            icons: { "16": `/sidebar/img/identities/${identity.icon}.svg#${identity.color}` },
-          };
-        });
+        this.contextualIdentities = identities;
       },
       () => {
-        this.identityItems = [];
+        this.contextualIdentities = [];
       },
     );
   }

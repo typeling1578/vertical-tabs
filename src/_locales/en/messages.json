@@ -87,6 +87,10 @@
         "message": "Reopen in C&ontainer",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197234. Context menu item label."
     },
+    "contextMenuNoContainer": {
+        "message": "&No Container",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153932. Context menu item label."
+    },
     "contextMenuMoveTab": {
         "message": "Mo&ve Tab",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197269. Context menu item label."

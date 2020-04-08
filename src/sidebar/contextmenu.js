@@ -82,7 +82,7 @@ export default class ContextMenu {
 
     const tabId = Sidetab.tabIdForEvent(e);
     const tab = this._tablist.getTabById(tabId);
-    const identityItems = this._sidebar.getContextualIdentityItems();
+    const identityItems = this._sidebar.getContextualIdentityItems(tab.cookieStoreId);
 
     const items = [
       {

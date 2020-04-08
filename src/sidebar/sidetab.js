@@ -12,6 +12,7 @@ export default class Sidetab {
     this.url = null;
     this.title = null;
     this.favIconUrl = null;
+    this.cookieStoreId = tabInfo.cookieStoreId;
     this.muted = null;
     this.pinned = tabInfo.pinned;
     this.active = null;
