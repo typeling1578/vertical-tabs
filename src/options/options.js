@@ -88,24 +88,35 @@ class Options {
 
   setupListeners() {
     document.body.addEventListener("change", (e) => {
-      if (e.target.tagName === "TEXTAREA") {
-        browser.storage.sync.set({ [e.target.id]: e.target.value });
-      } else if (e.target.tagName === "INPUT") {
+      if (e.target.tagName === "INPUT") {
         if (e.target.type === "radio") {
           browser.storage.sync.set({ [e.target.name]: parseInt(e.target.value) });
-        } else {
+        } else if (e.target.type === "checkbox") {
           browser.storage.sync.set({ [e.target.id]: e.target.checked });
           if (e.target.id === "useCustomCSS") {
-            this.updateCustomCSSEnabled(e.target.checked);
+            const enabled = e.target.checked;
+            this.updateCustomCSSEnabled(enabled);
+            if (!enabled) {
+              this.saveCustomCSS();
+            }
           }
         }
       }
     });
 
-    document.getElementById("optionsSaveCustomCSS").addEventListener("click", () => {
-      browser.storage.sync.set({
-        customCSS: document.getElementById("customCSS").value,
-      });
+    document
+      .getElementById("optionsSaveCustomCSS")
+      .addEventListener("click", () => this.saveCustomCSS());
+    document.getElementById("customCSS").addEventListener("keydown", (e) => {
+      if (e.ctrlKey && e.key === "Enter") {
+        this.saveCustomCSS();
+      }
+    });
+  }
+
+  saveCustomCSS() {
+    browser.storage.sync.set({
+      customCSS: document.getElementById("customCSS").value,
     });
   }
 
