@@ -389,6 +389,11 @@ body.incognito #pinnedtablist:not(.compact) .tab .tab-context {
   height: 100%;
 }
 
+body.incognito #pinnedtablist.compact .tab .tab-context,
+body:not(.incognito) #pinnedtablist.compact .tab-context {
+  box-shadow: inset 0 -2px 0px 0px var(--identity-color);
+}
+
 body #tablist .tab[data-identity-color] .tab-context,
 body.incognito #tablist .tab .tab-context,
 body.incognito #pinnedtablist:not(.compact) .tab .tab-context,
@@ -432,11 +437,6 @@ body #pinnedtablist:not(.compact) .tab[data-identity-color] .tab-context {
 body.incognito #pinnedtablist.compact .tab .tab-context {
   width: 100%;
   margin-left: 0;
-}
-
-body.incognito #pinnedtablist.compact .tab .tab-context,
-body:not(.incognito) #pinnedtablist.compact .tab.hasContext .tab-context {
-  box-shadow: inset 0 -2px 0px 0px var(--identity-color);
 }
 
 #pinnedtablist.compact:not(:empty) {
