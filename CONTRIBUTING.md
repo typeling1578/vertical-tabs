@@ -44,9 +44,9 @@ You need to have a recent version of Node.js and yarn.
 2. Install the dependencies with `yarn install`.
 3. Run `yarn run dev` and start hacking! [Here is a list of some things](https://framagit.org/ariasuni/tabcenter-reborn/issues) you could work on.
 
-   If you don’t have Firefox Release installed, you should use:
+   To use a version of Firefox other than Release, you need to set the environment variable `WEB_EXT_FIREFOX`, as described in the [web-ext documentation](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#--firefox).
 
-   `env WEB_EXT_FIREFOX=<exe> yarn run dev` where `exe` can be `stable`, `beta`, `nightly`, the command to launch Firefox, or a path to the Firefox executable.
+   For example, on Linux I use `env WEB_EXT_FIREFOX=nightly yarn run dev` to launch Firefox Nightly instead.
 
 4. Make sure your changes are correct by testing them in different situations, with containers, search, private browsing and several windows open when it is relevant.
 
