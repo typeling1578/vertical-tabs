@@ -81,9 +81,9 @@ export default class Sidebar {
     }
 
     this._updateContextualIdentities();
-    browser.contextualIdentities.onCreated.addListener(this._updateContextualIdentities);
-    browser.contextualIdentities.onRemoved.addListener(this._updateContextualIdentities);
-    browser.contextualIdentities.onUpdated.addListener(this._updateContextualIdentities);
+    browser.contextualIdentities.onCreated.addListener(() => this._updateContextualIdentities());
+    browser.contextualIdentities.onRemoved.addListener(() => this._updateContextualIdentities());
+    browser.contextualIdentities.onUpdated.addListener(() => this._updateContextualIdentities());
 
     window.addEventListener("contextmenu", (e) => this._onContextMenu(e), false);
   }
