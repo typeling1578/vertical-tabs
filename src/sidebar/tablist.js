@@ -527,24 +527,31 @@ export default class Tablist {
 
     this._removeDragHighlight();
 
-    if (!this._isEventForId(e, "filterbox")) {
-      e.preventDefault();
-    }
-
     // if this is a topmenu event, do not move the tab
-    if (this._isEventForId(e, "topmenu")) {
+    const isTopmenuEvent = this._isEventForId(e, "topmenu");
+    const isFilterboxInputEvent = this._isEventForId(e, "filterbox-input");
+    if (isTopmenuEvent && !isFilterboxInputEvent) {
       return;
     }
 
-    const whereToDropInfo = this._whereToDrop(e);
-    if (whereToDropInfo === null) {
-      return;
+    let whereToDropInfo;
+    if (!isFilterboxInputEvent) {
+      whereToDropInfo = this._whereToDrop(e);
+      if (whereToDropInfo === null) {
+        return;
+      }
     }
 
     const dt = e.dataTransfer;
     const tabJson = dt.getData("text/x-tabcenter-tab");
     if (tabJson) {
-      await this._handleDroppedSidetab(e, JSON.parse(tabJson), whereToDropInfo);
+      const tabDroppedData = JSON.parse(tabJson);
+      if (isFilterboxInputEvent) {
+        const tabDroppedUrl = this.getTabById(tabDroppedData.tabId).url;
+        this._filter(this._getUrlCore(tabDroppedUrl));
+      } else {
+        await this._handleDroppedSidetab(e, tabDroppedData, whereToDropInfo);
+      }
       return;
     }
 
@@ -622,6 +629,18 @@ export default class Tablist {
       if (!this.checkWindow(dragTabInfo.origWindowId)) {
         browser.tabs.update(dragTab.id, { active: true });
       }
+    }
+  }
+
+  _getUrlCore(url_string) {
+    const url = new URL(url_string);
+    if (url.protocol === "https:" || url.protocol === "http:") {
+      // easiest way to remove username, password, port, path, parameters, fragment from URL
+      return url.hostname;
+    } else {
+      // about:, file:///, chrome://, data:, chrome://, moz-extension://, resource://, view-source:
+      // Used rarely so mostly likely only protocol is useful for filtering
+      return url_string.match(/^[\w-]*:\/*/)[0];
     }
   }
 
