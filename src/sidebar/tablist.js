@@ -30,7 +30,7 @@ export default class Tablist {
     this._windowId = sidebar.windowId;
     this._incognito = sidebar.incognito;
     this._prefs = sidebar.prefs;
-    this._search = sidebar.search.bind(sidebar);
+    this._filter = sidebar.filter.bind(sidebar);
 
     this._tabs = new Map();
     this._active = null;
@@ -367,7 +367,7 @@ export default class Tablist {
       }
 
       if (this._filterActive) {
-        this._search("");
+        this._filter("");
       }
       return;
     }
@@ -527,7 +527,7 @@ export default class Tablist {
 
     this._removeDragHighlight();
 
-    if (!this._isEventForId(e, "searchbox")) {
+    if (!this._isEventForId(e, "filterbox")) {
       e.preventDefault();
     }
 
@@ -721,7 +721,7 @@ export default class Tablist {
     if (!this._filterActive) {
       return;
     }
-    this._search("");
+    this._filter("");
   }
 
   filter(query) {

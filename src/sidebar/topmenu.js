@@ -7,7 +7,7 @@ export default class Topmenu {
     this._newTabButtonIconView = document.getElementById("newtab-icon");
     this._newTabButtonArrowView = document.getElementById("newtab-arrow");
     this._settingsView = document.getElementById("settings");
-    this._searchBoxInput = document.getElementById("searchbox-input");
+    this._filterboxInput = document.getElementById("filterbox-input");
     this._newTabLabelView = document.getElementById("newtab-label");
 
     browser.extension
@@ -23,7 +23,7 @@ export default class Topmenu {
   }
 
   updateSearch(val) {
-    this._searchBoxInput.value = val;
+    this._filterboxInput.value = val;
   }
 
   async _setupListeners() {
@@ -31,8 +31,8 @@ export default class Topmenu {
       browser.runtime.openOptionsPage();
     });
 
-    this._searchBoxInput.addEventListener("input", (e) => {
-      this._sidebar.search(e.target.value);
+    this._filterboxInput.addEventListener("input", (e) => {
+      this._sidebar.filter(e.target.value);
     });
 
     this._newTabButtonView.addEventListener("click", (e) => {
@@ -61,7 +61,7 @@ export default class Topmenu {
 
     window.addEventListener("keyup", (e) => {
       if (e.key === "Escape") {
-        this._sidebar.search("");
+        this._sidebar.filter("");
       }
     });
 
@@ -115,7 +115,7 @@ export default class Topmenu {
   async _setupLabels() {
     this._newTabButtonView.title = browser.i18n.getMessage("newTabBtnTooltip");
     this._settingsView.title = browser.i18n.getMessage("settingsBtnTooltip");
-    this._searchBoxInput.placeholder = browser.i18n.getMessage("searchPlaceholder");
+    this._filterboxInput.placeholder = browser.i18n.getMessage("searchPlaceholder");
   }
 
   async _showNewTabPopup(e) {

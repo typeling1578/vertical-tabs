@@ -151,7 +151,7 @@ img,
   background-image: url("img/settings.svg");
 }
 
-#searchbox-icon {
+#filterbox-icon {
   min-width: 30px;
   background-size: 14px 14px;
   background-repeat: no-repeat;
@@ -165,7 +165,7 @@ img,
   border-radius: var(--button-border-radius);
 }
 
-#searchbox-input {
+#filterbox-input {
   color: var(--input-text);
   background-color: var(--input-background);
   display: flex;
@@ -182,32 +182,32 @@ img,
   cursor: text;
 }
 
-#searchbox-input:hover {
+#filterbox-input:hover {
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
 }
 
-#searchbox-input:focus {
+#filterbox-input:focus {
   border: 1px solid var(--input-border-focus);
 }
 
-body[platform="win"] #searchbox-input {
+body[platform="win"] #filterbox-input {
   border-radius: 2px;
 }
 
-body[platform="mac"] #searchbox-input {
+body[platform="mac"] #filterbox-input {
   font-size: 12px;
 }
 
-body[platform="mac"] #searchbox-input:focus {
+body[platform="mac"] #filterbox-input:focus {
   border: 1px solid -moz-mac-focusring;
   box-shadow: 0 0 0 1px -moz-mac-focusring inset, 0 0 0 1px -moz-mac-focusring;
 }
 
-#searchbox-input::placeholder {
+#filterbox-input::placeholder {
   color: var(--input-text);
 }
 
-body.has-custom-input-color #searchbox-input::selection {
+body.has-custom-input-color #filterbox-input::selection {
   color: var(--input-selected-text);
   background-color: var(--input-selected-text-background);
 }

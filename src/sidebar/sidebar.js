@@ -55,7 +55,7 @@ export default class Sidebar {
     this._setupListeners();
   }
 
-  search(val) {
+  filter(val) {
     this._tablist.filter(val);
     this._topMenu.updateSearch(val);
   }
@@ -90,9 +90,9 @@ export default class Sidebar {
 
   _onContextMenu(e) {
     const target = e.target;
-    // Let the searchbox input and the tabs have a context menu.
+    // Let the filterbox input and the tabs have a context menu.
     if (
-      !(target && (target.id === "searchbox-input" || target.id.startsWith("newtab"))) &&
+      !(target && (target.id === "filterbox-input" || target.id.startsWith("newtab"))) &&
       !Sidetab.isTabEvent(e, false)
     ) {
       e.preventDefault();
