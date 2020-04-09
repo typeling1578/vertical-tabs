@@ -794,8 +794,8 @@ export default class Tablist {
       for (const tab of tabs) {
         tab.updateSearchHidden(false);
         tab.resetHighlights();
-        this._pinnedview.classList.remove("hidden");
       }
+      this._pinnedview.classList.remove("hidden");
     }
     this._moreTabsView.classList.toggle("hasMoreTabs", notShown > 0);
     this._maybeShrinkTabs();
