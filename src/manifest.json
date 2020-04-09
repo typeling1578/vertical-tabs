@@ -45,19 +45,19 @@
     "default_title": "__MSG_browserActionTitle__",
     "theme_icons": [
       {
-        "dark": "tabcenter.svg#dark",
+        "dark": "tabcenter.svg",
         "light": "tabcenter.svg#light",
         "size": 16
       },
       {
-        "dark": "tabcenter.svg#dark",
+        "dark": "tabcenter.svg",
         "light": "tabcenter.svg#light",
         "size": 32
       }
     ]
   },
   "background": {
-    "scripts": ["background/background.js"]
+    "scripts": ["background/background.bundle.js"]
   },
   "commands": {
     "_execute_sidebar_action": {
