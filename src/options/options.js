@@ -1,6 +1,8 @@
 "use strict";
 /* global browser */
 
+import { DEFAULT_PREFS } from "../common.js";
+
 class Options {
   constructor() {
     const options = [
@@ -52,19 +54,7 @@ class Options {
   }
 
   setupState() {
-    const defaultPrefs = {
-      animations: true,
-      themeIntegration: true,
-      compactMode: 1 /* COMPACT_MODE_DYNAMIC */,
-      compactPins: true,
-      switchLastActiveTab: true,
-      switchByScrolling: 0 /* SWITCH_BY_SCROLLING_WITH_CTRL */,
-      notifyClosingManyTabs: true,
-      useCustomCSS: true,
-      customCSS: "",
-    };
-
-    browser.storage.sync.get(defaultPrefs).then((prefs) => {
+    browser.storage.sync.get(DEFAULT_PREFS).then((prefs) => {
       requestAnimationFrame(() => {
         for (const pref of Object.entries(prefs)) {
           const element = document.getElementById(pref[0]);

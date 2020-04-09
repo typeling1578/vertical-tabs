@@ -57,7 +57,7 @@
     ]
   },
   "background": {
-    "scripts": ["background/background.bundle.js"]
+    "scripts": ["dist/background.bundle.js"]
   },
   "commands": {
     "_execute_sidebar_action": {

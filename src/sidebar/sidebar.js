@@ -3,7 +3,7 @@
 import Sidetab from "./sidetab.js";
 import Tablist from "./tablist.js";
 import Topmenu from "./topmenu.js";
-import { extractNew } from "./utils.js";
+import { DEFAULT_PREFS, extractNew } from "../common.js";
 
 import { TinyColor, readability } from "@ctrl/tinycolor";
 
@@ -126,17 +126,7 @@ export default class Sidebar {
       browser.storage.local.clear();
     }
 
-    const prefs = await browser.storage.sync.get({
-      animations: true,
-      themeIntegration: true,
-      compactMode: 1 /* COMPACT_MODE_DYNAMIC */,
-      compactPins: true,
-      switchLastActiveTab: true,
-      switchByScrolling: 0 /* SWITCH_BY_SCROLLING_WITH_CTRL */,
-      notifyClosingManyTabs: true,
-      useCustomCSS: true,
-      customCSS: "",
-    });
+    const prefs = await browser.storage.sync.get(DEFAULT_PREFS);
 
     if (typeof prefs.compactMode === "string") {
       prefs.compactMode = parseInt(prefs.compactMode);

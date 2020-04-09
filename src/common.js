@@ -1,3 +1,27 @@
+export const COMPACT_MODE = {
+  OFF: 0,
+  DYNAMIC: 1,
+  STRICT: 2,
+};
+
+export const SWITCH_BY_SCROLLING = {
+  WITH_CTRL: 0,
+  ALWAYS: 1,
+  NEVER: 2,
+};
+
+export const DEFAULT_PREFS = {
+  animations: true,
+  themeIntegration: true,
+  compactMode: COMPACT_MODE.DYNAMIC,
+  compactPins: true,
+  switchLastActiveTab: true,
+  switchByScrolling: SWITCH_BY_SCROLLING.WITH_CTRL,
+  notifyClosingManyTabs: true,
+  useCustomCSS: true,
+  customCSS: "",
+};
+
 export function debounced(fn, delay) {
   let timeoutID;
   return (...args) => {

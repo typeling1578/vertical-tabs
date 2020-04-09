@@ -1,6 +1,6 @@
 /* global browser, requestAnimationFrame, requestIdleCallback, CSSAnimation, Image */
 
-import { debounced } from "./utils";
+import { debounced } from "../common";
 
 let TAB_TEMPLATE = null;
 

@@ -3,20 +3,11 @@
 import fuzzysort from "fuzzysort";
 import smoothScrollIntoView from "smooth-scroll-into-view-if-needed";
 
-import { throttled } from "./utils.js";
+import { COMPACT_MODE, SWITCH_BY_SCROLLING, throttled } from "../common.js";
 import Sidetab from "./sidetab.js";
 import ContextMenu from "./contextmenu.js";
 
-// const COMPACT_MODE_OFF = 0;
-const COMPACT_MODE_DYNAMIC = 1;
-const COMPACT_MODE_STRICT = 2;
-
-const SWITCH_BY_SCROLLING_WITH_CTRL = 0;
-const SWITCH_BY_SCROLLING_ALWAYS = 1;
-// const SWITCH_BY_SCROLLING_NEVER = 2;
-
 const NOTIFICATION_DELETE_ID = "notification-delete";
-
 // HACK: keep in sync with animation time in CSS
 const TAB_ANIMATION_TIME_MS = 100;
 
@@ -682,8 +673,8 @@ export default class Tablist {
 
   _scrollShouldSwitch(e) {
     return (
-      this._prefs.switchByScrolling === SWITCH_BY_SCROLLING_ALWAYS ||
-      (this._prefs.switchByScrolling === SWITCH_BY_SCROLLING_WITH_CTRL && e.ctrlKey)
+      this._prefs.switchByScrolling === SWITCH_BY_SCROLLING.ALWAYS ||
+      (this._prefs.switchByScrolling === SWITCH_BY_SCROLLING.WITH_CTRL && e.ctrlKey)
     );
   }
 
@@ -863,8 +854,8 @@ export default class Tablist {
       immediate = true;
     }
 
-    if (this._prefs.compactMode !== COMPACT_MODE_DYNAMIC) {
-      this._tabsShrinked = this._prefs.compactMode === COMPACT_MODE_STRICT;
+    if (this._prefs.compactMode !== COMPACT_MODE.DYNAMIC) {
+      this._tabsShrinked = this._prefs.compactMode === COMPACT_MODE.STRICT;
       if (immediate) {
         this._wrapperView.classList.toggle("shrinked", this._tabsShrinked);
       }

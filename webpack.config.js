@@ -1,11 +1,16 @@
 /* global __dirname:true */
 /* global module:true */
 
+const path = require("path");
+
 module.exports = {
-  entry: "./src/sidebar/index.js",
-  output: {
-    filename: "sidebar.bundle.js",
-    path: `${__dirname}/src/sidebar/dist`,
+  entry: {
+    background: "./src/background/background.js",
+    sidebar: "./src/sidebar/index.js",
+    options: "./src/options/options.js",
   },
-  node: false,
+  output: {
+    path: path.resolve(__dirname, "src"),
+    filename: "dist/[name].bundle.js",
+  },
 };
