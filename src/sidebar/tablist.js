@@ -30,7 +30,7 @@ export default class Tablist {
     this._windowId = sidebar.windowId;
     this._incognito = sidebar.incognito;
     this._prefs = sidebar.prefs;
-    this._search = sidebar.search;
+    this._search = sidebar.search.bind(sidebar);
 
     this._tabs = new Map();
     this._active = null;
@@ -738,7 +738,7 @@ export default class Tablist {
     if (query.length) {
       const results = fuzzysort
         .go(query, tabs, {
-          keys: ["title", "host"],
+          keys: ["title", "_formattedUrl"],
           allowTypo: false,
           threshold: -1000,
         })

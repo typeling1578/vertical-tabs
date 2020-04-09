@@ -18,6 +18,9 @@ export default class Sidetab {
     this.active = null;
     this.discarded = null;
     this.hidden = null;
+
+    // what’s displayed in the tab
+    this._formattedUrl = null;
     // if filtered because it doesn’t match the filter entered into toolbar field
     this._filtered = false;
     // if has been batch “closed”, waiting to be restored in view or closed for real
@@ -136,7 +139,8 @@ export default class Sidetab {
   _updateURL(url) {
     this.url = url;
     this.view.setAttribute("data-url", url);
-    this._urlView.innerText = Sidetab.formatUrl(url);
+    this._formattedUrl = Sidetab.formatUrl(url);
+    this._urlView.innerText = this._formattedUrl;
   }
 
   _updateAttention(attention) {
