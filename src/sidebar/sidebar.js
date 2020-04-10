@@ -31,7 +31,7 @@ const CSS_TO_THEME_PROPS = {
   "--input-background-focus": ["toolbar_field_focus"],
   "--input-selected-text-background": ["toolbar_field_highlight", "button_background_active"],
   "--input-selected-text": ["toolbar_field_highlight_text", "toolbar_field_text"],
-  "--input-text": ["bookmark_text", "toolbar_field_text"],
+  "--input-text": ["toolbar_field_text", "bookmark_text"],
   "--input-text-focus": ["toolbar_field_text_focus", "toolbar_field_text"],
 };
 
