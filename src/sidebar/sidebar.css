@@ -595,6 +595,10 @@ body.incognito #pinnedtablist.compact .tab .tab-context {
   filter: url("img/filters.svg#fill");
 }
 
+.tab-icon.chrome-icon.default-favicon {
+  fill-opacity: 0.6;
+}
+
 #tablist-wrapper:not(.shrinked) #tablist .tab-icon.chrome-icon,
 #tablist-wrapper:not(.shrinked) #pinnedtablist:not(.compact) .tab-icon.chrome-icon {
   fill: var(--grey-90-a80);

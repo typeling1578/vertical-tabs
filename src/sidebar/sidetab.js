@@ -215,6 +215,7 @@ export default class Sidetab {
     }
     this.favIconUrl = favIconUrl;
 
+    this._iconView.classList.remove("default-favicon");
     this._iconView.classList.toggle(
       "chrome-icon",
       favIconUrl.startsWith("chrome://") &&
@@ -235,7 +236,7 @@ export default class Sidetab {
   _resetIcon() {
     this.favIconUrl = null;
     this._iconView.style.backgroundImage = 'url("img/default-favicon.svg")';
-    this._iconView.classList.add("chrome-icon");
+    this._iconView.classList.add("chrome-icon", "default-favicon");
   }
 
   updateDiscarded(discarded) {
