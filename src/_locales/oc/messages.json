@@ -1,6 +1,6 @@
 {
     "OptionsAnimations": {
-        "message": ""
+        "message": "Animacions"
     },
     "allTabsLabel": {
         "message": "Mostrar totes los onglets…"
@@ -99,10 +99,10 @@
         "message": "Avançat"
     },
     "optionsAppearanceTitle": {
-        "message": ""
+        "message": "Aparéncia"
     },
     "optionsBehaviorTitle": {
-        "message": ""
+        "message": "Compòrtament"
     },
     "optionsCompactMode": {
         "message": ""
