@@ -156,7 +156,7 @@
         "message": "Salva"
     },
     "optionsSwitchByScrolling": {
-        "message": "Passa alla scheda attiva facendo scorrere"
+        "message": "Passa alla scheda attiva scorrendo"
     },
     "optionsSwitchByScrollingAlways": {
         "message": "Sempre"
@@ -168,7 +168,7 @@
         "message": "Con Ctrl"
     },
     "optionsSwitchByScrollingWithCtrlExplanation": {
-        "message": "Attiva la prossima o la scorsa scheda invece di scorrere sotto certe circostanze"
+        "message": "Attiva la prossima o la scorsa scheda invece di scorrere sotto certe circostanze."
     },
     "optionsSwitchLastActiveTab": {
         "message": "Passa all'ultima scheda utilizzata"
@@ -186,7 +186,7 @@
         "message": "Impostazioni"
     },
     "searchPlaceholder": {
-        "message": "Cerca nelle schede"
+        "message": "Filtra schede"
     },
     "settingsBtnTooltip": {
         "message": "Apri le impostazioni"
