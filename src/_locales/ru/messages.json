@@ -1,77 +1,96 @@
 {
-    "extensionDescription": {
-        "message": "Передвиньте ваши вкладки к боковой грани окна."
+    "allTabsLabel": {
+        "message": "Показать все вкладки…"
     },
     "browserActionTitle": {
-        "message": "Панель Tab Center Reborn",
-        "description": "Tooltip shown when hovering the toolbar button."
+        "message": "Панель Tab Center Reborn"
     },
-    "newTabBtnLabel": {
-        "message": "Новая вкладка",
-        "description": "Label of the New Tab button in the top menu."
-    },
-    "newTabBtnTooltip": {
-        "message": "Открыть новую вкладку"
-    },
-    "searchPlaceholder": {
-        "message": "Найти вкладку"
+    "closeAllTabsExceptWarning": {
+        "message": "Вы точно хотите закрыть $COUNT$ других вкладок?"
     },
     "closeTabButtonTooltip": {
         "message": "Закрыть вкладку"
     },
-    "allTabsLabel": {
-        "message": "Показать все вкладки…",
-        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by a query."
-    },
-    "contextMenuReloadTab": {
-        "message": "Перезагрузить вкладку",
-        "description": "Reload Tab context menu item label."
-    },
-    "contextMenuPinTab": {
-        "message": "Закрепить вкладку",
-        "description": "Pin Tab context menu item label."
-    },
-    "contextMenuUnpinTab": {
-        "message": "Открепить вкладку",
-        "description": "Unpin Tab context menu item label."
-    },
-    "contextMenuMuteTab": {
-        "message": "Убрать звук во вкладке",
-        "description": "Mute Tab context menu item label."
-    },
-    "contextMenuUnmuteTab": {
-        "message": "Восстановить звук во вкладке",
-        "description": "Unmute Tab context menu item label."
-    },
-    "contextMenuCloseTab": {
-        "message": "Закрыть вкладку"
-    },
-    "contextMenuUndoCloseTab": {
-        "message": "Вернуть закрытую вкладку"
-    },
-    "contextMenuDuplicateTab": {
-        "message": "Дублировать вкладку"
-    },
-    "contextMenuMoveTabToNewWindow": {
-        "message": "Переместить в новое окно"
-    },
-    "contextMenuReloadAllTabs": {
-        "message": "Перезагрузить все вкладки"
-    },
-    "contextMenuCloseTabsAfter": {
-        "message": "Закрыть вкладки ниже"
+    "closeTabsAfterWarning": {
+        "message": "Вы точно хотите закрыть все $COUNT$ вкладок?"
     },
     "contextMenuCloseOtherTabs": {
         "message": "Закрыть другие вкладки"
     },
-    "settingsBtnTooltip": {
-        "message": "Открыть настройки"
+    "contextMenuCloseTab": {
+        "message": "Закрыть вкладку"
     },
-    "optionsTitle": {
-        "message": "Настройки"
+    "contextMenuCloseTabsAfter": {
+        "message": "Закрыть вкладки ниже"
+    },
+    "contextMenuDuplicateTab": {
+        "message": "Дублировать вкладку"
+    },
+    "contextMenuMoveTab": {
+        "message": "Переместить вкладку"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "Переместить в конец"
+    },
+    "contextMenuMoveTabToNewWindow": {
+        "message": "Переместить в новое окно"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "Переместить в начало"
+    },
+    "contextMenuMuteTab": {
+        "message": "Убрать звук во вкладке"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "Переоткрыть в контейнере"
+    },
+    "contextMenuPinTab": {
+        "message": "Закрепить вкладку"
+    },
+    "contextMenuReloadAllTabs": {
+        "message": "Перезагрузить все вкладки"
+    },
+    "contextMenuReloadTab": {
+        "message": "Перезагрузить вкладку"
+    },
+    "contextMenuUndoCloseTab": {
+        "message": "Вернуть закрытую вкладку"
+    },
+    "contextMenuUnloadTab": {
+        "message": "Выгрузить вкладку"
+    },
+    "contextMenuUnmuteTab": {
+        "message": "Восстановить звук во вкладке"
+    },
+    "contextMenuUnpinTab": {
+        "message": "Открепить вкладку"
+    },
+    "extensionDescription": {
+        "message": "Передвиньте ваши вкладки к боковой грани окна."
+    },
+    "extensionsLongDescription": {
+        "message": "Tab Center Reborn продолжает <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> и его цель - простое, мощное и изящно вписанное расширение для управления вкладками в вертикальном режиме.\n\nРасширение имеет многочисленные настройки и позволяет продвинутым пользователям полностью перенастроить внешний вид с помощью CSS-кода.\n\n<ul>\n<li>Используйте Shift+F1 для открытия и скрытия расширения</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">Как скрыть верхнюю панель вкладок</a></li>\n</ul>\n\nВы можете <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">помочь с переводом, документацией, исправлением ошибок и кодом</a>!"
+    },
+    "newTabBtnLabel": {
+        "message": "Новая вкладка"
+    },
+    "newTabBtnTooltip": {
+        "message": "Открыть новую вкладку"
+    },
+    "optionsAdvancedTitle": {
+        "message": "Расширенные настройки"
+    },
+    "optionsAppearanceTitle": {
+        "message": "Внешний вид"
+    },
+    "optionsBehaviorTitle": {
+        "message": "Поведение"
     },
     "optionsCompactMode": {
         "message": "Компактный режим"
+    },
+    "optionsCompactModeDynamic": {
+        "message": "Автоматическая подстройка"
     },
     "optionsCompactModeExplanation": {
         "message": "Компактный режим уменьшает высоту вкладок, позволяя отобразить их большее количество. Опция \"Динамический\" активирует компактный режим автоматически, когда заканчивается свободное место."
@@ -79,23 +98,11 @@
     "optionsCompactModeOff": {
         "message": "Отключен"
     },
-    "optionsCompactModeDynamic": {
-        "message": "Автоматическая подстройка"
-    },
     "optionsCompactModeStrict": {
         "message": "Всегда"
     },
     "optionsCompactPins": {
         "message": "Закреплённые вкладки (только иконки)"
-    },
-    "optionsDarkTheme": {
-        "message": "Темная тема"
-    },
-    "optionsThemeIntegration": {
-        "message": "Интегрировать свою тему"
-    },
-    "optionsAdvancedTitle": {
-        "message": "Расширенные настройки"
     },
     "optionsCustomCSS": {
         "message": "Пользовательские стили"
@@ -103,59 +110,34 @@
     "optionsCustomCSSWikiLink": {
         "message": "Вики-статья CSS Tweaks"
     },
+    "optionsDarkTheme": {
+        "message": "Темная тема"
+    },
     "optionsSaveCustomCSS": {
         "message": "Сохранить CSS"
     },
-    "contextMenuOpenInContextualTab": {
-        "message": "Переоткрыть в контейнере"
-    },
-    "contextMenuMoveTab": {
-        "message": "Переместить вкладку"
-    },
-    "contextMenuMoveTabToStart": {
-        "message": "Переместить в начало"
-    },
-    "contextMenuMoveTabToEnd": {
-        "message": "Переместить в конец"
-    },
-    "extensionsLongDescription": {
-        "message": "Tab Center Reborn продолжает <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> и его цель - простое, мощное и изящно вписанное расширение для управления вкладками в вертикальном режиме.\n\nРасширение имеет многочисленные настройки и позволяет продвинутым пользователям полностью перенастроить внешний вид с помощью CSS-кода.\n\n<ul>\n<li>Используйте Shift+F1 для открытия и скрытия расширения</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">Как скрыть верхнюю панель вкладок</a></li>\n</ul>\n\nВы можете <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">помочь с переводом, документацией, исправлением ошибок и кодом</a>!",
-        "description": "Long description displayed on addons.mozilla.org."
-    },
-    "contextMenuUnloadTab": {
-        "message": "Выгрузить вкладку",
-        "description": "Context menu item label."
-    },
-    "closeTabsAfterWarning": {
-        "message": "Вы точно хотите закрыть все $COUNT$ вкладок?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another."
-    },
-    "closeAllTabsExceptWarning": {
-        "message": "Вы точно хотите закрыть $COUNT$ других вкладок?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
-    },
-    "optionsAppearanceTitle": {
-        "message": "Внешний вид",
-        "description": "Section in options page."
+    "optionsSwitchLastActiveTab": {
+        "message": "Переключить последнюю активную вкладку"
     },
     "optionsSwitchLastActiveTabExplanation": {
-        "message": "Кликая активную вкладку, переключайтесь на предыдущую активную.",
-        "description": "Explanation for the Compact Mode option in options page."
+        "message": "Кликая активную вкладку, переключайтесь на предыдущую активную."
     },
-    "optionsSwitchLastActiveTab": {
-        "message": "Переключить последнюю активную вкладку",
-        "description": "Option in options page."
+    "optionsThemeIntegration": {
+        "message": "Интегрировать свою тему"
     },
     "optionsThemeIntegrationExplanation": {
-        "message": "Интегрировать свою тему вместо использования темы выше. Закройте и снова откройте боковую панель после переключения к одной из тем Firefox по-умолчанию.",
-        "description": "Explanation for the Theme Integration option in the options page."
+        "message": "Интегрировать свою тему вместо использования темы выше. Закройте и снова откройте боковую панель после переключения к одной из тем Firefox по-умолчанию."
     },
-    "optionsBehaviorTitle": {
-        "message": "Поведение",
-        "description": "Section in options page."
+    "optionsTitle": {
+        "message": "Настройки"
     },
     "optionsWarnBeforeClosing": {
-        "message": "Предупреждать перед закрытием более чем $COUNT$ вкладок",
-        "description": "Option in options page."
+        "message": "Предупреждать перед закрытием более чем $COUNT$ вкладок"
+    },
+    "searchPlaceholder": {
+        "message": "Найти вкладку"
+    },
+    "settingsBtnTooltip": {
+        "message": "Открыть настройки"
     }
 }

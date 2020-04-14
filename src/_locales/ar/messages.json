@@ -1,77 +1,102 @@
 {
-    "extensionDescription": {
-        "message": "أنقل ألسنتك إلى جانب مِن نافذة متصفحك."
+    "allTabsLabel": {
+        "message": "أظهر كل علامات التبويب…"
+    },
+    "browserActionOff": {
+        "message": "معطّل"
+    },
+    "browserActionOn": {
+        "message": "نَشِط"
     },
     "browserActionTitle": {
-        "message": "تفعيل/إلغاء الإضافة",
-        "description": "Tooltip shown when hovering the toolbar button."
-    },
-    "newTabBtnLabel": {
-        "message": "علامة تبويب جديدة",
-        "description": "Label of the New Tab button in the top menu."
-    },
-    "newTabBtnTooltip": {
-        "message": "افتح علامة تبويب جديدة"
-    },
-    "searchPlaceholder": {
-        "message": "البحث في علامات التبويب"
+        "message": "تفعيل/إلغاء الإضافة"
     },
     "closeTabButtonTooltip": {
         "message": "اغلق اللسان"
     },
-    "allTabsLabel": {
-        "message": "أظهر كل علامات التبويب…",
-        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by a query."
-    },
-    "contextMenuReloadTab": {
-        "message": "أعِد تحميل الصفحة",
-        "description": "Reload Tab context menu item label."
-    },
-    "contextMenuPinTab": {
-        "message": "ثبّت علامة التبويب",
-        "description": "Pin Tab context menu item label."
-    },
-    "contextMenuUnpinTab": {
-        "message": "أزل تثبيت علامة التبويب",
-        "description": "Unpin Tab context menu item label."
-    },
-    "contextMenuMuteTab": {
-        "message": "كتم علامة التبويب",
-        "description": "Mute Tab context menu item label."
-    },
-    "contextMenuUnmuteTab": {
-        "message": "إلغاء كتم علامة التبويب",
-        "description": "Unmute Tab context menu item label."
+    "contextMenuCloseOtherTabs": {
+        "message": "أغلق علامات التبويب الأُخرى"
     },
     "contextMenuCloseTab": {
         "message": "أغلق علامة التبويب"
     },
-    "contextMenuUndoCloseTab": {
-        "message": "التراجع عن إغلاق علامة التبويب"
-    },
-    "contextMenuDuplicateTab": {
-        "message": "تكرار علامة التبويب"
-    },
-    "contextMenuMoveTabToNewWindow": {
-        "message": "إنتقل إلى نافذة جديدة"
-    },
-    "contextMenuReloadAllTabs": {
-        "message": "إعادة تحميل كافة علامات التبويب"
+    "contextMenuCloseTabs": {
+        "message": "اغلق الألسنة"
     },
     "contextMenuCloseTabsAfter": {
         "message": "أغلق علامات التبويب في الأسفل"
     },
-    "contextMenuCloseOtherTabs": {
-        "message": "أغلق علامات التبويب الأُخرى"
+    "contextMenuCloseTabsBefore": {
+        "message": "اغلق الألسنة قبل"
     },
-    "settingsBtnTooltip": {
-        "message": "افتح الإعدادات"
+    "contextMenuDuplicateTab": {
+        "message": "تكرار علامة التبويب"
     },
-    "optionsTitle": {
-        "message": "الإعدادات"
+    "contextMenuMoveTab": {
+        "message": "انقل اللسان"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "انقل إلى النهاية"
+    },
+    "contextMenuMoveTabToNewWindow": {
+        "message": "إنتقل إلى نافذة جديدة"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "انقل إلى البداية"
+    },
+    "contextMenuMuteTab": {
+        "message": "كتم علامة التبويب"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "أعِد فتحها في الحاوية"
+    },
+    "contextMenuPinTab": {
+        "message": "ثبّت علامة التبويب"
+    },
+    "contextMenuReloadAllTabs": {
+        "message": "إعادة تحميل كافة علامات التبويب"
+    },
+    "contextMenuReloadTab": {
+        "message": "أعِد تحميل الصفحة"
+    },
+    "contextMenuUndoCloseTab": {
+        "message": "التراجع عن إغلاق علامة التبويب"
+    },
+    "contextMenuUnmuteTab": {
+        "message": "إلغاء كتم علامة التبويب"
+    },
+    "contextMenuUnpinTab": {
+        "message": "أزل تثبيت علامة التبويب"
+    },
+    "extensionDescription": {
+        "message": "أنقل ألسنتك إلى جانب مِن نافذة متصفحك."
+    },
+    "newTabBtnLabel": {
+        "message": "علامة تبويب جديدة"
+    },
+    "newTabBtnTooltip": {
+        "message": "افتح علامة تبويب جديدة"
+    },
+    "newTabContextMenuOpenInPrivateWindow": {
+        "message": "نافذة خاصة جديدة"
+    },
+    "newTabContextMenuOpenInWindow": {
+        "message": "نافذه جديدة"
+    },
+    "optionsAdvancedTitle": {
+        "message": "متقدّم"
+    },
+    "optionsAppearanceTitle": {
+        "message": "المظهر"
+    },
+    "optionsBehaviorTitle": {
+        "message": "السلوك"
     },
     "optionsCompactMode": {
         "message": "الوضع المختصر"
+    },
+    "optionsCompactModeDynamic": {
+        "message": "ديناميكي"
     },
     "optionsCompactModeExplanation": {
         "message": "إن الوضع المختصر يقلل من إرتفاع علامات التبويب لكي يتم إظهار عدد أكبر منهم. بينما في الإعدادات الديناميكية, سيتم تفعيل الوضع المختصر فقط عندما لا يبقى مساحة كافية."
@@ -79,23 +104,11 @@
     "optionsCompactModeOff": {
         "message": "معطّل"
     },
-    "optionsCompactModeDynamic": {
-        "message": "ديناميكي"
-    },
     "optionsCompactModeStrict": {
         "message": "دوماً"
     },
     "optionsCompactPins": {
         "message": "إظهار علامات التبويب المثبّتة بشكل مختصر"
-    },
-    "optionsDarkTheme": {
-        "message": "قالب ألوان داكنة"
-    },
-    "optionsThemeIntegration": {
-        "message": "دمج مع السمة الحالية"
-    },
-    "optionsAdvancedTitle": {
-        "message": "متقدّم"
     },
     "optionsCustomCSS": {
         "message": "إضافة كود css مخصص"
@@ -103,51 +116,22 @@
     "optionsCustomCSSWikiLink": {
         "message": "مقالة الويكي لتخصيص كود ال css"
     },
+    "optionsDarkTheme": {
+        "message": "قالب ألوان داكنة"
+    },
     "optionsSaveCustomCSS": {
         "message": "حفظ كود ال css"
     },
-    "contextMenuOpenInContextualTab": {
-        "message": "أعِد فتحها في الحاوية"
+    "optionsThemeIntegration": {
+        "message": "دمج مع السمة الحالية"
     },
-    "contextMenuMoveTab": {
-        "message": "انقل اللسان"
+    "optionsTitle": {
+        "message": "الإعدادات"
     },
-    "contextMenuMoveTabToStart": {
-        "message": "انقل إلى البداية"
+    "searchPlaceholder": {
+        "message": "البحث في علامات التبويب"
     },
-    "contextMenuMoveTabToEnd": {
-        "message": "انقل إلى النهاية"
-    },
-    "browserActionOn": {
-        "message": "نَشِط",
-        "description": "Badge text shown when sidebar is open."
-    },
-    "browserActionOff": {
-        "message": "معطّل",
-        "description": "Badge text shown when sidebar is closed."
-    },
-    "contextMenuCloseTabsBefore": {
-        "message": "اغلق الألسنة قبل",
-        "description": "Context menu item label."
-    },
-    "contextMenuCloseTabs": {
-        "message": "اغلق الألسنة",
-        "description": "Context Menu item label"
-    },
-    "optionsBehaviorTitle": {
-        "message": "السلوك",
-        "description": "Section in options page."
-    },
-    "optionsAppearanceTitle": {
-        "message": "المظهر",
-        "description": "Section in options page."
-    },
-    "newTabContextMenuOpenInPrivateWindow": {
-        "message": "نافذة خاصة جديدة",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
-    },
-    "newTabContextMenuOpenInWindow": {
-        "message": "نافذه جديدة",
-        "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
+    "settingsBtnTooltip": {
+        "message": "افتح الإعدادات"
     }
 }

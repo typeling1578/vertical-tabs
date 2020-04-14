@@ -1,77 +1,135 @@
 {
-    "extensionDescription": {
-        "message": "Vertikala breto de langetoj simpla kaj potenca"
+    "OptionsAnimations": {
+        "message": "Animacioj"
+    },
+    "allTabsLabel": {
+        "message": "Montri ĉiujn langetojn…"
+    },
+    "browserActionOff": {
+        "message": "el"
+    },
+    "browserActionOn": {
+        "message": "al"
     },
     "browserActionTitle": {
-        "message": "Ŝalti Tab Center Reborn",
-        "description": "Tooltip shown when hovering the toolbar button."
+        "message": "Ŝalti Tab Center Reborn"
     },
-    "newTabBtnLabel": {
-        "message": "Nova langeto",
-        "description": "Label of the New Tab button in the top menu."
-    },
-    "newTabBtnTooltip": {
-        "message": "Malfermi novan langeton"
-    },
-    "searchPlaceholder": {
-        "message": "Serĉi langetojn"
+    "closeAllTabsExceptWarning": {
+        "message": "Ĉu vi vere volas fermi la $COUNT$ aliajn langetojn?"
     },
     "closeTabButtonTooltip": {
         "message": "Fermi la langeton"
     },
-    "allTabsLabel": {
-        "message": "Montri ĉiujn langetojn…",
-        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by a query."
+    "closeTabsAfterWarning": {
+        "message": "Ĉu vi vere volas fermi la $COUNT$ postajn langetojn?"
     },
-    "contextMenuReloadTab": {
-        "message": "&Reŝargi la langeton",
-        "description": "Reload Tab context menu item label."
-    },
-    "contextMenuPinTab": {
-        "message": "Al&pingli la langeton",
-        "description": "Pin Tab context menu item label."
-    },
-    "contextMenuUnpinTab": {
-        "message": "De&pingli la langeton",
-        "description": "Unpin Tab context menu item label."
-    },
-    "contextMenuMuteTab": {
-        "message": "&Silentigi la langeton",
-        "description": "Mute Tab context menu item label."
-    },
-    "contextMenuUnmuteTab": {
-        "message": "Mal&silentigi la langeton",
-        "description": "Unmute Tab context menu item label."
-    },
-    "contextMenuCloseTab": {
-        "message": "&Fermi la langeton"
-    },
-    "contextMenuUndoCloseTab": {
-        "message": "Ma&lfari fermon de la langeto"
-    },
-    "contextMenuDuplicateTab": {
-        "message": "&Duobligi la langeton"
-    },
-    "contextMenuMoveTabToNewWindow": {
-        "message": "Movi al &nova fenestro"
-    },
-    "contextMenuReloadAllTabs": {
-        "message": "Reŝargi ĉiujn langetojn"
-    },
-    "contextMenuCloseTabsAfter": {
-        "message": "Fermi la &postajn langetojn"
+    "closeTabsBeforeWarning": {
+        "message": "Ĉu vi vere volas fermi la $COUNT$ antaŭajn langetojn?"
     },
     "contextMenuCloseOtherTabs": {
         "message": "Fermi aliajn langeto&jn"
     },
-    "settingsBtnTooltip": {
-        "message": "Malfermi agordojn"
+    "contextMenuCloseTab": {
+        "message": "&Fermi la langeton"
     },
-    "optionsTitle": {
-        "message": "Agordoj"
+    "contextMenuCloseTabs": {
+        "message": "Fermi langeto&jn"
+    },
+    "contextMenuCloseTabsAfter": {
+        "message": "Fermi la &postajn langetojn"
+    },
+    "contextMenuCloseTabsBefore": {
+        "message": "Fermi la &antaŭajn langetojn"
+    },
+    "contextMenuDuplicateTab": {
+        "message": "&Duobligi la langeton"
+    },
+    "contextMenuMoveTab": {
+        "message": "Mo&vi langeton"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "Movi al la &fino"
+    },
+    "contextMenuMoveTabToNewWindow": {
+        "message": "Movi al &nova fenestro"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "Movi al la &komenco"
+    },
+    "contextMenuMuteTab": {
+        "message": "&Silentigi la langeton"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "Remalfermi en &ingo"
+    },
+    "contextMenuPinTab": {
+        "message": "Al&pingli la langeton"
+    },
+    "contextMenuReloadAllTabs": {
+        "message": "Reŝargi ĉiujn langetojn"
+    },
+    "contextMenuReloadTab": {
+        "message": "&Reŝargi la langeton"
+    },
+    "contextMenuUndoCloseTab": {
+        "message": "Ma&lfari fermon de la langeto"
+    },
+    "contextMenuUnloadTab": {
+        "message": "M&alŝarĝi langeton"
+    },
+    "contextMenuUnmuteTab": {
+        "message": "Mal&silentigi la langeton"
+    },
+    "contextMenuUnpinTab": {
+        "message": "De&pingli la langeton"
+    },
+    "extensionDescription": {
+        "message": "Vertikala breto de langetoj simpla kaj potenca"
+    },
+    "extensionsLongDescription": {
+        "message": "!!Esperanto not available on AMO!!"
+    },
+    "muteTabButtonTooltip": {
+        "message": "Silentigi langeton"
+    },
+    "newTabBtnLabel": {
+        "message": "Nova langeto"
+    },
+    "newTabBtnTooltip": {
+        "message": "Malfermi novan langeton"
+    },
+    "newTabContextMenuOpenAtEnd": {
+        "message": "Al la &fino"
+    },
+    "newTabContextMenuOpenInPrivateWindow": {
+        "message": "Nova &privata fenestro"
+    },
+    "newTabContextMenuOpenInWindow": {
+        "message": "&Nova fenestro"
+    },
+    "newTabContextMenuOpneAfterCurrent": {
+        "message": "Post la &aktiva langeto"
+    },
+    "notificationDeletedMessage": {
+        "message": "Alklaku la sciigon por malfari."
+    },
+    "notificationDeletedTitle": {
+        "message": "$COUNT$ langetoj fermitaj"
+    },
+    "optionsAdvancedTitle": {
+        "message": "Altnivela"
+    },
+    "optionsAppearanceTitle": {
+        "message": "Aspekto"
+    },
+    "optionsBehaviorTitle": {
+        "message": "Konduto"
     },
     "optionsCompactMode": {
         "message": "Kompakta modo"
+    },
+    "optionsCompactModeDynamic": {
+        "message": "Dinamika"
     },
     "optionsCompactModeExplanation": {
         "message": "La kompakta modo malgrandiĝas la alto de la langetojn por montri pli da ili. En dinamika agordo, ĝi validiĝas kiam oni ne plu havas ceteran spacon."
@@ -79,189 +137,73 @@
     "optionsCompactModeOff": {
         "message": "Malebligita"
     },
-    "optionsCompactModeDynamic": {
-        "message": "Dinamika"
-    },
     "optionsCompactModeStrict": {
         "message": "Ebligita"
     },
     "optionsCompactPins": {
         "message": "Nur favorikono por fiksitaj langetoj"
     },
-    "optionsDarkTheme": {
-        "message": "Malhela etoso"
-    },
-    "optionsThemeIntegration": {
-        "message": "Uzi nunan temon de retumilo"
-    },
-    "optionsAdvancedTitle": {
-        "message": "Altnivela"
-    },
     "optionsCustomCSS": {
         "message": "Propra stilfolio"
+    },
+    "optionsCustomCSSChangelogLink": {
+        "message": "Kontroli la novaĵojn por koni la malkongruajn ŝanĝojn"
     },
     "optionsCustomCSSWikiLink": {
         "message": "Vikia artikolo pri stilfiliaj adaptoj"
     },
+    "optionsDarkTheme": {
+        "message": "Malhela etoso"
+    },
+    "optionsNotifyClosingManyTabs": {
+        "message": "Sciigi kiam multaj langetoj fermiĝas"
+    },
+    "optionsNotifyClosingManyTabsExplanation": {
+        "message": "Montri sciigon por ke vi povas malfari kiam pli ol $COUNT langetoj fermiĝis."
+    },
     "optionsSaveCustomCSS": {
         "message": "Konservi la stilfolion"
     },
-    "contextMenuOpenInContextualTab": {
-        "message": "Remalfermi en &ingo"
-    },
-    "contextMenuMoveTab": {
-        "message": "Mo&vi langeton"
-    },
-    "contextMenuMoveTabToStart": {
-        "message": "Movi al la &komenco"
-    },
-    "contextMenuMoveTabToEnd": {
-        "message": "Movi al la &fino"
-    },
-    "extensionsLongDescription": {
-        "message": "!!Esperanto not available on AMO!!",
-        "description": "Long description displayed on addons.mozilla.org."
-    },
-    "optionsThemeIntegrationExplanation": {
-        "message": "Uzi la nunan temon de la retumilo anstataŭ uzi la malhelan defaŭltan temon.",
-        "description": "Explanation for the Theme Integration option in the options page."
-    },
-    "closeTabsAfterWarning": {
-        "message": "Ĉu vi vere volas fermi la $COUNT$ postajn langetojn?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another."
-    },
-    "closeAllTabsExceptWarning": {
-        "message": "Ĉu vi vere volas fermi la $COUNT$ aliajn langetojn?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
-    },
-    "contextMenuUnloadTab": {
-        "message": "M&alŝarĝi langeton",
-        "description": "Context menu item label."
-    },
-    "optionsSwitchLastActiveTabExplanation": {
-        "message": "Alklaki aktivan langeton por ŝalti la laste aktivan.",
-        "description": "Explanation for the Compact Mode option in options page."
-    },
-    "optionsSwitchLastActiveTab": {
-        "message": "Ŝalti laste aktivan langeton",
-        "description": "Option in options page."
-    },
-    "browserActionOn": {
-        "message": "al",
-        "description": "Badge text shown when sidebar is open."
-    },
-    "browserActionOff": {
-        "message": "el",
-        "description": "Badge text shown when sidebar is closed."
-    },
-    "optionsAppearanceTitle": {
-        "message": "Aspekto",
-        "description": "Section in options page."
-    },
-    "optionsBehaviorTitle": {
-        "message": "Konduto",
-        "description": "Section in options page."
-    },
-    "optionsWarnBeforeClosing": {
-        "message": "Averti antaŭ ol fermi pli ol $COUNT langetojn",
-        "description": "Option in options page."
-    },
-    "closeTabsBeforeWarning": {
-        "message": "Ĉu vi vere volas fermi la $COUNT$ antaŭajn langetojn?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing tabs before another.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
-    },
-    "contextMenuCloseTabsBefore": {
-        "message": "Fermi la &antaŭajn langetojn",
-        "description": "Context menu item label."
-    },
-    "contextMenuCloseTabs": {
-        "message": "Fermi langeto&jn",
-        "description": "Context Menu item label"
-    },
-    "notificationDeletedMessage": {
-        "message": "Alklaku la sciigon por malfari.",
-        "description": "Title of the notification when deleting many tabs."
-    },
-    "notificationDeletedTitle": {
-        "message": "$COUNT$ langetoj fermitaj",
-        "description": "Title of the notification when deleting many tabs.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
-    },
-    "optionsNotifyClosingManyTabsExplanation": {
-        "message": "Montri sciigon por ke vi povas malfari kiam pli ol $COUNT langetoj fermiĝis.",
-        "description": "Explanation for the Notify when closing many tabs option in options page.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
-    },
-    "optionsNotifyClosingManyTabs": {
-        "message": "Sciigi kiam multaj langetoj fermiĝas",
-        "description": "Option in options page."
-    },
-    "unmuteTabButtonTooltip": {
-        "message": "Malsilentigi langeton",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
-    },
-    "muteTabButtonTooltip": {
-        "message": "Silentigi langeton",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
-    },
-    "newTabContextMenuOpenInPrivateWindow": {
-        "message": "Nova &privata fenestro",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?search=New+private+window&string=75628. New Tab context menu item."
-    },
-    "newTabContextMenuOpenInWindow": {
-        "message": "&Nova fenestro",
-        "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?search=New+window&string=75625. New Tab context menu item."
-    },
-    "newTabContextMenuOpneAfterCurrent": {
-        "message": "Post la &aktiva langeto",
-        "description": "New Tab context menu item."
-    },
-    "newTabContextMenuOpenAtEnd": {
-        "message": "Al la &fino",
-        "description": "New Tab context menu item."
-    },
-    "optionsCustomCSSChangelogLink": {
-        "message": "Kontroli la novaĵojn por koni la malkongruajn ŝanĝojn",
-        "description": "Text for a link to the changelog."
-    },
-    "OptionsAnimations": {
-        "message": "Animacioj",
-        "description": "Option in options page."
-    },
-    "optionsSwitchByScrollingWithCtrlExplanation": {
-        "message": "Aktivigi la postan aŭ antaŭan langeton anstataŭ rulumadi sub iu kondiĉoj.",
-        "description": "Explanation for the Switch by scrolling options in options page."
-    },
-    "optionsSwitchByScrollingNever": {
-        "message": "Neniam",
-        "description": "Option in options page"
+    "optionsSwitchByScrolling": {
+        "message": "Ŝanĝi aktivan langeton per rulumado"
     },
     "optionsSwitchByScrollingAlways": {
-        "message": "Ĉiam",
-        "description": "Option in options page"
+        "message": "Ĉiam"
+    },
+    "optionsSwitchByScrollingNever": {
+        "message": "Neniam"
     },
     "optionsSwitchByScrollingWithCtrl": {
-        "message": "Kun Ctrl",
-        "description": "Option in options page"
+        "message": "Kun Ctrl"
     },
-    "optionsSwitchByScrolling": {
-        "message": "Ŝanĝi aktivan langeton per rulumado",
-        "description": "Option in options page"
+    "optionsSwitchByScrollingWithCtrlExplanation": {
+        "message": "Aktivigi la postan aŭ antaŭan langeton anstataŭ rulumadi sub iu kondiĉoj."
+    },
+    "optionsSwitchLastActiveTab": {
+        "message": "Ŝalti laste aktivan langeton"
+    },
+    "optionsSwitchLastActiveTabExplanation": {
+        "message": "Alklaki aktivan langeton por ŝalti la laste aktivan."
+    },
+    "optionsThemeIntegration": {
+        "message": "Uzi nunan temon de retumilo"
+    },
+    "optionsThemeIntegrationExplanation": {
+        "message": "Uzi la nunan temon de la retumilo anstataŭ uzi la malhelan defaŭltan temon."
+    },
+    "optionsTitle": {
+        "message": "Agordoj"
+    },
+    "optionsWarnBeforeClosing": {
+        "message": "Averti antaŭ ol fermi pli ol $COUNT langetojn"
+    },
+    "searchPlaceholder": {
+        "message": "Serĉi langetojn"
+    },
+    "settingsBtnTooltip": {
+        "message": "Malfermi agordojn"
+    },
+    "unmuteTabButtonTooltip": {
+        "message": "Malsilentigi langeton"
     }
 }

@@ -1,77 +1,78 @@
 {
-    "extensionDescription": {
-        "message": "Tab Center は、ユーザーのタブの使い方から生じるいくつかの問題 (特に「タブを開きすぎてしまう」状況) を解決し、将来の革新に向けてより自在な UI の基礎を提供しようとする試みです。この Firefox アドオンの初回版では、タブを水平ではなく垂直に配置してみました。これは素晴らしい VerticalTabs アドオンに強く触発され、そのアイデアを借用したものです。"
+    "allTabsLabel": {
+        "message": "すべてのタブを表示…"
     },
     "browserActionTitle": {
-        "message": "",
-        "description": "Tooltip shown when hovering the toolbar button."
-    },
-    "newTabBtnLabel": {
-        "message": "新しいタブ",
-        "description": "Label of the New Tab button in the top menu."
-    },
-    "newTabBtnTooltip": {
-        "message": "新しいタブを開きます"
-    },
-    "searchPlaceholder": {
-        "message": "タブを探索"
+        "message": ""
     },
     "closeTabButtonTooltip": {
         "message": "タブを閉じます"
     },
-    "allTabsLabel": {
-        "message": "すべてのタブを表示…",
-        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by a query."
-    },
-    "contextMenuReloadTab": {
-        "message": "タブを再読み込み",
-        "description": "Reload Tab context menu item label."
-    },
-    "contextMenuPinTab": {
-        "message": "タブをピン留め",
-        "description": "Pin Tab context menu item label."
-    },
-    "contextMenuUnpinTab": {
-        "message": "タブのピン留めを外す",
-        "description": "Unpin Tab context menu item label."
-    },
-    "contextMenuMuteTab": {
-        "message": "タブをミュート",
-        "description": "Mute Tab context menu item label."
-    },
-    "contextMenuUnmuteTab": {
-        "message": "タブのミュートを解除",
-        "description": "Unmute Tab context menu item label."
+    "contextMenuCloseOtherTabs": {
+        "message": "他のタブをすべて閉じる"
     },
     "contextMenuCloseTab": {
         "message": "タブを閉じる"
     },
-    "contextMenuUndoCloseTab": {
-        "message": "閉じたタブを元に戻す"
+    "contextMenuCloseTabsAfter": {
+        "message": "下のタブをすべて閉じる"
     },
     "contextMenuDuplicateTab": {
         "message": "タブを複製"
     },
+    "contextMenuMoveTab": {
+        "message": "タブを移動"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "最後のタブへ移動"
+    },
     "contextMenuMoveTabToNewWindow": {
         "message": "新しいウィンドウへ移動"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "最初のタブへ移動"
+    },
+    "contextMenuMuteTab": {
+        "message": "タブをミュート"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "コンテナーを開きなおす"
+    },
+    "contextMenuPinTab": {
+        "message": "タブをピン留め"
     },
     "contextMenuReloadAllTabs": {
         "message": "すべてのタブを再読み込み"
     },
-    "contextMenuCloseTabsAfter": {
-        "message": "下のタブをすべて閉じる"
+    "contextMenuReloadTab": {
+        "message": "タブを再読み込み"
     },
-    "contextMenuCloseOtherTabs": {
-        "message": "他のタブをすべて閉じる"
+    "contextMenuUndoCloseTab": {
+        "message": "閉じたタブを元に戻す"
     },
-    "settingsBtnTooltip": {
-        "message": "設定を変更します"
+    "contextMenuUnmuteTab": {
+        "message": "タブのミュートを解除"
     },
-    "optionsTitle": {
-        "message": "設定"
+    "contextMenuUnpinTab": {
+        "message": "タブのピン留めを外す"
+    },
+    "extensionDescription": {
+        "message": "Tab Center は、ユーザーのタブの使い方から生じるいくつかの問題 (特に「タブを開きすぎてしまう」状況) を解決し、将来の革新に向けてより自在な UI の基礎を提供しようとする試みです。この Firefox アドオンの初回版では、タブを水平ではなく垂直に配置してみました。これは素晴らしい VerticalTabs アドオンに強く触発され、そのアイデアを借用したものです。"
+    },
+    "newTabBtnLabel": {
+        "message": "新しいタブ"
+    },
+    "newTabBtnTooltip": {
+        "message": "新しいタブを開きます"
+    },
+    "optionsAdvancedTitle": {
+        "message": "上級者設定"
     },
     "optionsCompactMode": {
         "message": "コンパクトモード"
+    },
+    "optionsCompactModeDynamic": {
+        "message": "動的"
     },
     "optionsCompactModeExplanation": {
         "message": "コンパクトモードではタブの高さを減らし、より多くのタブを表示します。ダイナミック設定では一定のスペースが残っていないと動作しません。"
@@ -79,23 +80,11 @@
     "optionsCompactModeOff": {
         "message": "無効"
     },
-    "optionsCompactModeDynamic": {
-        "message": "動的"
-    },
     "optionsCompactModeStrict": {
         "message": "常時"
     },
     "optionsCompactPins": {
         "message": "ピン留めタブをアイコン表示"
-    },
-    "optionsDarkTheme": {
-        "message": "暗いテーマ"
-    },
-    "optionsThemeIntegration": {
-        "message": ""
-    },
-    "optionsAdvancedTitle": {
-        "message": "上級者設定"
     },
     "optionsCustomCSS": {
         "message": "CSSを保存"
@@ -103,19 +92,22 @@
     "optionsCustomCSSWikiLink": {
         "message": ""
     },
+    "optionsDarkTheme": {
+        "message": "暗いテーマ"
+    },
     "optionsSaveCustomCSS": {
         "message": "CSSを保存"
     },
-    "contextMenuOpenInContextualTab": {
-        "message": "コンテナーを開きなおす"
+    "optionsThemeIntegration": {
+        "message": ""
     },
-    "contextMenuMoveTab": {
-        "message": "タブを移動"
+    "optionsTitle": {
+        "message": "設定"
     },
-    "contextMenuMoveTabToStart": {
-        "message": "最初のタブへ移動"
+    "searchPlaceholder": {
+        "message": "タブを探索"
     },
-    "contextMenuMoveTabToEnd": {
-        "message": "最後のタブへ移動"
+    "settingsBtnTooltip": {
+        "message": "設定を変更します"
     }
 }

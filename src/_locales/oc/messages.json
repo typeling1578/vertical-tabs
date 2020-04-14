@@ -1,230 +1,164 @@
 {
-    "extensionDescription": {
-        "message": "",
-        "description": "Extension description shown in the options page and as short description on addons.mozilla.org."
-    },
-    "extensionsLongDescription": {
-        "message": "!!Occitan not available on AMO!!",
-        "description": "Long description displayed on addons.mozilla.org."
-    },
-    "browserActionTitle": {
-        "message": "Activar/Desactivar Tab Center Reborn",
-        "description": "Tooltip shown when hovering the toolbar button."
-    },
-    "newTabBtnTooltip": {
-        "message": "Dobrir un onglet novèl",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=74421. Tooltip of the New Tab button in the top menu."
-    },
-    "searchPlaceholder": {
-        "message": "Recercar pels onglets",
-        "description": "Placehorder of the filter bar in the top menu."
-    },
-    "settingsBtnTooltip": {
-        "message": "Dobrir los paramètres",
-        "description": "Tooltip of the settings button in the top menu."
-    },
-    "newTabContextMenuOpenAtEnd": {
-        "message": "A la fin",
-        "description": "New Tab context menu item."
-    },
-    "newTabContextMenuOpneAfterCurrent": {
-        "message": "",
-        "description": "New Tab context menu item."
-    },
-    "newTabContextMenuOpenInWindow": {
-        "message": "Fenèstra novèla",
-        "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
-    },
-    "newTabContextMenuOpenInPrivateWindow": {
-        "message": "Fenèstra novèla de navegacion privada",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
-    },
-    "muteTabButtonTooltip": {
-        "message": "Rendre l’onglet mut",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
-    },
-    "unmuteTabButtonTooltip": {
-        "message": "Rendre pas l'onglet mut",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
-    },
-    "closeTabButtonTooltip": {
-        "message": "Tampar l’onglet",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197248. Tooltip of the close button on tabs."
+    "OptionsAnimations": {
+        "message": ""
     },
     "allTabsLabel": {
-        "message": "Mostrar totes los onglets…",
-        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by a query."
+        "message": "Mostrar totes los onglets…"
     },
-    "contextMenuReloadTab": {
-        "message": "Tornar cargar l’onglet",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197237. Context menu item label."
+    "browserActionTitle": {
+        "message": "Activar/Desactivar Tab Center Reborn"
     },
-    "contextMenuPinTab": {
-        "message": "Penjar l’onglets",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197249. Context menu item label."
-    },
-    "contextMenuUnpinTab": {
-        "message": "Despenjar l’onglet",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197266. Context menu item label."
-    },
-    "contextMenuMuteTab": {
-        "message": "Rendre l’onglet mut",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Context menu item label and tooltip of the audible icon on tabs."
-    },
-    "contextMenuUnmuteTab": {
-        "message": "Rendre pas l’onglet mut",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Context menu item label and tooltip of the unmute icon on tabs."
-    },
-    "contextMenuDuplicateTab": {
-        "message": "Duplicar l’onglet",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197263. Context menu item label."
-    },
-    "contextMenuUnloadTab": {
-        "message": "",
-        "description": "Context menu item label."
-    },
-    "contextMenuOpenInContextualTab": {
-        "message": "Tornar dobrir dins un onglet isolat",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197234. Context menu item label."
-    },
-    "contextMenuMoveTab": {
-        "message": "Desplaçar l’onglet",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197269. Context menu item label."
-    },
-    "contextMenuMoveTabToStart": {
-        "message": "Desplaçar cap a la debuta",
-        "description": "Context menu item label."
-    },
-    "contextMenuMoveTabToEnd": {
-        "message": "Desplaçar cap a la fin",
-        "description": "Context menu item label."
-    },
-    "contextMenuMoveTabToNewWindow": {
-        "message": "Desplaçar cap a una fenèstra novèla",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197261. Context menu item label."
-    },
-    "contextMenuCloseTabs": {
-        "message": "Tampar los onglets",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197250. Context Menu item label"
-    },
-    "contextMenuCloseTabsBefore": {
-        "message": "",
-        "description": "Context menu item label."
-    },
-    "contextMenuCloseTabsAfter": {
-        "message": "",
-        "description": "Context menu item label."
+    "closeTabButtonTooltip": {
+        "message": "Tampar l’onglet"
     },
     "contextMenuCloseOtherTabs": {
-        "message": "Tampar los autres onglets",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197270. Context menu item label."
-    },
-    "contextMenuUndoCloseTab": {
-        "message": "Anullar la tampadura de l’onglet",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197236. Context menu item label."
+        "message": "Tampar los autres onglets"
     },
     "contextMenuCloseTab": {
-        "message": "Tampar l’onglet",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197248. Context menu item label."
+        "message": "Tampar l’onglet"
     },
-    "optionsAppearanceTitle": {
-        "message": "",
-        "description": "Section in options page."
+    "contextMenuCloseTabs": {
+        "message": "Tampar los onglets"
     },
-    "optionsSwitchLastActiveTabExplanation": {
-        "message": "",
-        "description": "Explanation for the Compact Mode option in options page."
+    "contextMenuCloseTabsAfter": {
+        "message": ""
     },
-    "OptionsAnimations": {
-        "message": "",
-        "description": "Option in options page."
+    "contextMenuCloseTabsBefore": {
+        "message": ""
     },
-    "optionsCompactMode": {
-        "message": "",
-        "description": "Option in options page."
+    "contextMenuDuplicateTab": {
+        "message": "Duplicar l’onglet"
     },
-    "optionsCompactModeExplanation": {
-        "message": "",
-        "description": "Explanation for the Compact Mode option in options page."
+    "contextMenuMoveTab": {
+        "message": "Desplaçar l’onglet"
     },
-    "optionsCompactModeOff": {
-        "message": "",
-        "description": "Possible value for Compact Mode option in options page."
+    "contextMenuMoveTabToEnd": {
+        "message": "Desplaçar cap a la fin"
     },
-    "optionsCompactModeDynamic": {
-        "message": "",
-        "description": "Possible value for Compact Mode option in options page."
+    "contextMenuMoveTabToNewWindow": {
+        "message": "Desplaçar cap a una fenèstra novèla"
     },
-    "optionsCompactModeStrict": {
-        "message": "",
-        "description": "Possible value for Compact Mode option in options page."
+    "contextMenuMoveTabToStart": {
+        "message": "Desplaçar cap a la debuta"
     },
-    "optionsSwitchLastActiveTab": {
-        "message": "",
-        "description": "Option in options page."
+    "contextMenuMuteTab": {
+        "message": "Rendre l’onglet mut"
     },
-    "optionsCompactPins": {
-        "message": "",
-        "description": "Option in options page."
+    "contextMenuOpenInContextualTab": {
+        "message": "Tornar dobrir dins un onglet isolat"
     },
-    "optionsThemeIntegration": {
-        "message": "",
-        "description": "Option in options page."
+    "contextMenuPinTab": {
+        "message": "Penjar l’onglets"
     },
-    "optionsThemeIntegrationExplanation": {
-        "message": "",
-        "description": "Explanation for the Theme Integration option in the options page."
+    "contextMenuReloadTab": {
+        "message": "Tornar cargar l’onglet"
     },
-    "optionsBehaviorTitle": {
-        "message": "",
-        "description": "Section in options page."
+    "contextMenuUndoCloseTab": {
+        "message": "Anullar la tampadura de l’onglet"
     },
-    "optionsNotifyClosingManyTabs": {
-        "message": "",
-        "description": "Option in options page."
+    "contextMenuUnloadTab": {
+        "message": ""
     },
-    "optionsNotifyClosingManyTabsExplanation": {
-        "message": "",
-        "description": "Explanation for the Notify when closing many tabs option in options page.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
+    "contextMenuUnmuteTab": {
+        "message": "Rendre pas l’onglet mut"
     },
-    "optionsAdvancedTitle": {
-        "message": "Avançat",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=176300. Section in options page."
+    "contextMenuUnpinTab": {
+        "message": "Despenjar l’onglet"
     },
-    "optionsCustomCSS": {
-        "message": "",
-        "description": "Option in options page."
+    "extensionDescription": {
+        "message": ""
     },
-    "optionsCustomCSSChangelogLink": {
-        "message": "",
-        "description": "Text for a link to the changelog."
+    "extensionsLongDescription": {
+        "message": "!!Occitan not available on AMO!!"
     },
-    "optionsCustomCSSWikiLink": {
-        "message": "",
-        "description": "Text for a link to the wiki."
+    "muteTabButtonTooltip": {
+        "message": "Rendre l’onglet mut"
     },
-    "optionsSaveCustomCSS": {
-        "message": "",
-        "description": "Option in options page."
+    "newTabBtnTooltip": {
+        "message": "Dobrir un onglet novèl"
     },
-    "notificationDeletedTitle": {
-        "message": "",
-        "description": "Title of the notification when deleting many tabs.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
+    "newTabContextMenuOpenAtEnd": {
+        "message": "A la fin"
+    },
+    "newTabContextMenuOpenInPrivateWindow": {
+        "message": "Fenèstra novèla de navegacion privada"
+    },
+    "newTabContextMenuOpenInWindow": {
+        "message": "Fenèstra novèla"
+    },
+    "newTabContextMenuOpneAfterCurrent": {
+        "message": ""
     },
     "notificationDeletedMessage": {
-        "message": "",
-        "description": "Title of the notification when deleting many tabs."
+        "message": ""
+    },
+    "notificationDeletedTitle": {
+        "message": ""
+    },
+    "optionsAdvancedTitle": {
+        "message": "Avançat"
+    },
+    "optionsAppearanceTitle": {
+        "message": ""
+    },
+    "optionsBehaviorTitle": {
+        "message": ""
+    },
+    "optionsCompactMode": {
+        "message": ""
+    },
+    "optionsCompactModeDynamic": {
+        "message": ""
+    },
+    "optionsCompactModeExplanation": {
+        "message": ""
+    },
+    "optionsCompactModeOff": {
+        "message": ""
+    },
+    "optionsCompactModeStrict": {
+        "message": ""
+    },
+    "optionsCompactPins": {
+        "message": ""
+    },
+    "optionsCustomCSS": {
+        "message": ""
+    },
+    "optionsCustomCSSChangelogLink": {
+        "message": ""
+    },
+    "optionsCustomCSSWikiLink": {
+        "message": ""
+    },
+    "optionsNotifyClosingManyTabs": {
+        "message": ""
+    },
+    "optionsNotifyClosingManyTabsExplanation": {
+        "message": ""
+    },
+    "optionsSaveCustomCSS": {
+        "message": ""
+    },
+    "optionsSwitchLastActiveTab": {
+        "message": ""
+    },
+    "optionsSwitchLastActiveTabExplanation": {
+        "message": ""
+    },
+    "optionsThemeIntegration": {
+        "message": ""
+    },
+    "optionsThemeIntegrationExplanation": {
+        "message": ""
+    },
+    "searchPlaceholder": {
+        "message": "Recercar pels onglets"
+    },
+    "settingsBtnTooltip": {
+        "message": "Dobrir los paramètres"
+    },
+    "unmuteTabButtonTooltip": {
+        "message": "Rendre pas l'onglet mut"
     }
 }

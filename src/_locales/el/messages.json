@@ -1,77 +1,78 @@
 {
-    "extensionDescription": {
-        "message": "Το Tab Center είναι μια προσπάθεια επίλυσης ορισμένων προβλημάτων που προέκυψαν από τον τρόπο με τον οποίο οι χρήστες χρησιμοποιούν τις καρτέλες (κυρίως το πρόβλημα «πάρα πολλών καρτελών») και παρέχει μια πιο ευέλικτη και καινοτομική βάση UI. Η πρώτη έκδοση αυτού του πρόσθετου του Firefox ταξινομεί τις καρτέλες καθέτως και όχι σε οριζοντίως. Είναι έντονα εμπνευσμένο από τις ιδέες του εξαιρετικού προσθέτου VerticalTabs."
+    "allTabsLabel": {
+        "message": "Εμφάνιση όλων των καρτελών…"
     },
     "browserActionTitle": {
-        "message": "Ενεργοποίηση\\/Απενεργοποίηση Tab Center Reborn",
-        "description": "Tooltip shown when hovering the toolbar button."
-    },
-    "newTabBtnLabel": {
-        "message": "Νέα Καρτέλα",
-        "description": "Label of the New Tab button in the top menu."
-    },
-    "newTabBtnTooltip": {
-        "message": "Άνοιγμα Νέας Καρτέλας"
-    },
-    "searchPlaceholder": {
-        "message": "Αναζήτηση Καρτελών"
+        "message": "Ενεργοποίηση\\/Απενεργοποίηση Tab Center Reborn"
     },
     "closeTabButtonTooltip": {
         "message": "Κλείσιμο Καρτέλας"
     },
-    "allTabsLabel": {
-        "message": "Εμφάνιση όλων των καρτελών…",
-        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by a query."
-    },
-    "contextMenuReloadTab": {
-        "message": "Ανανέωση Καρτέλας",
-        "description": "Reload Tab context menu item label."
-    },
-    "contextMenuPinTab": {
-        "message": "Καρφίτσωμα Καρτέλας",
-        "description": "Pin Tab context menu item label."
-    },
-    "contextMenuUnpinTab": {
-        "message": "Ξεκαρφίτσωμα Καρτέλας",
-        "description": "Unpin Tab context menu item label."
-    },
-    "contextMenuMuteTab": {
-        "message": "Σίγαση Καρτέλας",
-        "description": "Mute Tab context menu item label."
-    },
-    "contextMenuUnmuteTab": {
-        "message": "Αναίρεση Σίγασης Καρτέλας",
-        "description": "Unmute Tab context menu item label."
+    "contextMenuCloseOtherTabs": {
+        "message": "Κλείσιμο των άλλων καρτελών"
     },
     "contextMenuCloseTab": {
         "message": "Κλείσιμο Καρτέλας"
     },
-    "contextMenuUndoCloseTab": {
-        "message": "Αναίρεση Κλεισίματος Καρτέλας"
+    "contextMenuCloseTabsAfter": {
+        "message": "Κλείσιμο των κάτωθι καρτελών"
     },
     "contextMenuDuplicateTab": {
         "message": "Κλωνοποίηση Καρτέλας"
     },
+    "contextMenuMoveTab": {
+        "message": "Μετακίνηση καρτέλας"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "Μετακίνηση στο τέλος"
+    },
     "contextMenuMoveTabToNewWindow": {
         "message": "Μετακίνηση σε νέο παράθυρο"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "Μετακίνηση στην αρχή"
+    },
+    "contextMenuMuteTab": {
+        "message": "Σίγαση Καρτέλας"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "Άνοιγμα ξανά σε θεματική καρτέλα"
+    },
+    "contextMenuPinTab": {
+        "message": "Καρφίτσωμα Καρτέλας"
     },
     "contextMenuReloadAllTabs": {
         "message": "Ανανέωση όλων των καρτελών"
     },
-    "contextMenuCloseTabsAfter": {
-        "message": "Κλείσιμο των κάτωθι καρτελών"
+    "contextMenuReloadTab": {
+        "message": "Ανανέωση Καρτέλας"
     },
-    "contextMenuCloseOtherTabs": {
-        "message": "Κλείσιμο των άλλων καρτελών"
+    "contextMenuUndoCloseTab": {
+        "message": "Αναίρεση Κλεισίματος Καρτέλας"
     },
-    "settingsBtnTooltip": {
-        "message": "Άνοιγμα Ρυθμίσεων"
+    "contextMenuUnmuteTab": {
+        "message": "Αναίρεση Σίγασης Καρτέλας"
     },
-    "optionsTitle": {
-        "message": "Ρυθμίσεις"
+    "contextMenuUnpinTab": {
+        "message": "Ξεκαρφίτσωμα Καρτέλας"
+    },
+    "extensionDescription": {
+        "message": "Το Tab Center είναι μια προσπάθεια επίλυσης ορισμένων προβλημάτων που προέκυψαν από τον τρόπο με τον οποίο οι χρήστες χρησιμοποιούν τις καρτέλες (κυρίως το πρόβλημα «πάρα πολλών καρτελών») και παρέχει μια πιο ευέλικτη και καινοτομική βάση UI. Η πρώτη έκδοση αυτού του πρόσθετου του Firefox ταξινομεί τις καρτέλες καθέτως και όχι σε οριζοντίως. Είναι έντονα εμπνευσμένο από τις ιδέες του εξαιρετικού προσθέτου VerticalTabs."
+    },
+    "newTabBtnLabel": {
+        "message": "Νέα Καρτέλα"
+    },
+    "newTabBtnTooltip": {
+        "message": "Άνοιγμα Νέας Καρτέλας"
+    },
+    "optionsAdvancedTitle": {
+        "message": "Για προχωρημένους"
     },
     "optionsCompactMode": {
         "message": "Συμπαγής Λειτουργία"
+    },
+    "optionsCompactModeDynamic": {
+        "message": "Δυναμική"
     },
     "optionsCompactModeExplanation": {
         "message": "Η Συμπαγής Λειτουργία μειώνει το ύψος των καρτελών για την εμφάνιση περισσοτέρων αυτών. Στη Δυναμική Ρύθμιση ενεργοποιείτε όταν δεν υπάρχει άλλος χώρος."
@@ -79,23 +80,11 @@
     "optionsCompactModeOff": {
         "message": "Απενεργοποιημένη"
     },
-    "optionsCompactModeDynamic": {
-        "message": "Δυναμική"
-    },
     "optionsCompactModeStrict": {
         "message": "Πάντα"
     },
     "optionsCompactPins": {
         "message": "Συμπαγής καρφιτσωμένες καρτέλες"
-    },
-    "optionsDarkTheme": {
-        "message": "Σκούρο θέμα"
-    },
-    "optionsThemeIntegration": {
-        "message": ""
-    },
-    "optionsAdvancedTitle": {
-        "message": "Για προχωρημένους"
     },
     "optionsCustomCSS": {
         "message": "Προσαρμογή Stylesheet"
@@ -103,19 +92,22 @@
     "optionsCustomCSSWikiLink": {
         "message": "Αρθρογραφία Wiki - Βελτιώσεις CSS"
     },
+    "optionsDarkTheme": {
+        "message": "Σκούρο θέμα"
+    },
     "optionsSaveCustomCSS": {
         "message": "Αποθήκευση CSS"
     },
-    "contextMenuOpenInContextualTab": {
-        "message": "Άνοιγμα ξανά σε θεματική καρτέλα"
+    "optionsThemeIntegration": {
+        "message": ""
     },
-    "contextMenuMoveTab": {
-        "message": "Μετακίνηση καρτέλας"
+    "optionsTitle": {
+        "message": "Ρυθμίσεις"
     },
-    "contextMenuMoveTabToStart": {
-        "message": "Μετακίνηση στην αρχή"
+    "searchPlaceholder": {
+        "message": "Αναζήτηση Καρτελών"
     },
-    "contextMenuMoveTabToEnd": {
-        "message": "Μετακίνηση στο τέλος"
+    "settingsBtnTooltip": {
+        "message": "Άνοιγμα Ρυθμίσεων"
     }
 }

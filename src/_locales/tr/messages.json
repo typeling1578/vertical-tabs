@@ -1,77 +1,78 @@
 {
-    "extensionDescription": {
-        "message": "Tab Center insanların sekmeleri kullanma şeklinden kaynaklanan bazı sorunları (en dikkat çekeni \"çok fazla sekme\" sorunu) çözme ve gelecek yeniliklerin temeli için daha kullanışlı bir arayüz sağlama girişimidir. Firefox eklentisinin ilk sürümü, sekmeleri moda olduğu şekliyle yatay değil dikey olarak düzenler. Bu, muhteşem VerticalTabs eklentisinden ödünç alınmış bir fikir ve ondan yoğun bir şekilde ilham alır."
+    "allTabsLabel": {
+        "message": "Tüm sekmeleri göster…"
     },
     "browserActionTitle": {
-        "message": "Tab Center Reborn'a Geç",
-        "description": "Tooltip shown when hovering the toolbar button."
-    },
-    "newTabBtnLabel": {
-        "message": "Yeni Sekme",
-        "description": "Label of the New Tab button in the top menu."
-    },
-    "newTabBtnTooltip": {
-        "message": "Yeni bir sekme aç"
-    },
-    "searchPlaceholder": {
-        "message": "Sekmeleri ara"
+        "message": "Tab Center Reborn'a Geç"
     },
     "closeTabButtonTooltip": {
         "message": "Sekmeyi kapat"
     },
-    "allTabsLabel": {
-        "message": "Tüm sekmeleri göster…",
-        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by a query."
-    },
-    "contextMenuReloadTab": {
-        "message": "Sekmeyi Yeniden Yükle",
-        "description": "Reload Tab context menu item label."
-    },
-    "contextMenuPinTab": {
-        "message": "Sekmeyi İğnele",
-        "description": "Pin Tab context menu item label."
-    },
-    "contextMenuUnpinTab": {
-        "message": "Sekmeden İğneyi Kaldır",
-        "description": "Unpin Tab context menu item label."
-    },
-    "contextMenuMuteTab": {
-        "message": "Sekmenin Sesini Kapat",
-        "description": "Mute Tab context menu item label."
-    },
-    "contextMenuUnmuteTab": {
-        "message": "Sekmenin Sesini Aç",
-        "description": "Unmute Tab context menu item label."
+    "contextMenuCloseOtherTabs": {
+        "message": "Diğer Sekmeleri Kapat"
     },
     "contextMenuCloseTab": {
         "message": "Sekmeyi Kapat"
     },
-    "contextMenuUndoCloseTab": {
-        "message": "Kapatılan Sekmeyi Yeniden Aç"
+    "contextMenuCloseTabsAfter": {
+        "message": "Alttaki Sekmeleri Kapat"
     },
     "contextMenuDuplicateTab": {
         "message": "Sekmeyi Çoğalt"
     },
+    "contextMenuMoveTab": {
+        "message": "Sekmeyi taşı"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "En sona taşı"
+    },
     "contextMenuMoveTabToNewWindow": {
         "message": "Yeni Pencereye Geç"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "En başa taşı"
+    },
+    "contextMenuMuteTab": {
+        "message": "Sekmenin Sesini Kapat"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "Kapsayıcıda yeniden aç"
+    },
+    "contextMenuPinTab": {
+        "message": "Sekmeyi İğnele"
     },
     "contextMenuReloadAllTabs": {
         "message": "Tüm Sekmeleri Yeniden Yükle"
     },
-    "contextMenuCloseTabsAfter": {
-        "message": "Alttaki Sekmeleri Kapat"
+    "contextMenuReloadTab": {
+        "message": "Sekmeyi Yeniden Yükle"
     },
-    "contextMenuCloseOtherTabs": {
-        "message": "Diğer Sekmeleri Kapat"
+    "contextMenuUndoCloseTab": {
+        "message": "Kapatılan Sekmeyi Yeniden Aç"
     },
-    "settingsBtnTooltip": {
-        "message": "Ayarları aç"
+    "contextMenuUnmuteTab": {
+        "message": "Sekmenin Sesini Aç"
     },
-    "optionsTitle": {
-        "message": "Ayarlar"
+    "contextMenuUnpinTab": {
+        "message": "Sekmeden İğneyi Kaldır"
+    },
+    "extensionDescription": {
+        "message": "Tab Center insanların sekmeleri kullanma şeklinden kaynaklanan bazı sorunları (en dikkat çekeni \"çok fazla sekme\" sorunu) çözme ve gelecek yeniliklerin temeli için daha kullanışlı bir arayüz sağlama girişimidir. Firefox eklentisinin ilk sürümü, sekmeleri moda olduğu şekliyle yatay değil dikey olarak düzenler. Bu, muhteşem VerticalTabs eklentisinden ödünç alınmış bir fikir ve ondan yoğun bir şekilde ilham alır."
+    },
+    "newTabBtnLabel": {
+        "message": "Yeni Sekme"
+    },
+    "newTabBtnTooltip": {
+        "message": "Yeni bir sekme aç"
+    },
+    "optionsAdvancedTitle": {
+        "message": "Gelişmiş"
     },
     "optionsCompactMode": {
         "message": "Kısa Mod"
+    },
+    "optionsCompactModeDynamic": {
+        "message": "Dinamik"
     },
     "optionsCompactModeExplanation": {
         "message": "Kısa Mod daha fazla göstermek için sekmelerin yüksekliğini azaltır. Dinamik ayarda, boş alanımız kalmayınca devreye girecek."
@@ -79,23 +80,11 @@
     "optionsCompactModeOff": {
         "message": "Devre dışı"
     },
-    "optionsCompactModeDynamic": {
-        "message": "Dinamik"
-    },
     "optionsCompactModeStrict": {
         "message": "Daima"
     },
     "optionsCompactPins": {
         "message": "Kısa İğnelenmiş Sekmeler"
-    },
-    "optionsDarkTheme": {
-        "message": "Koyu Tema"
-    },
-    "optionsThemeIntegration": {
-        "message": ""
-    },
-    "optionsAdvancedTitle": {
-        "message": "Gelişmiş"
     },
     "optionsCustomCSS": {
         "message": "Özel Tarz Sayfası"
@@ -103,19 +92,22 @@
     "optionsCustomCSSWikiLink": {
         "message": "Wiki Maddesinden Alıntı CSS"
     },
+    "optionsDarkTheme": {
+        "message": "Koyu Tema"
+    },
     "optionsSaveCustomCSS": {
         "message": "CSS Kaydet"
     },
-    "contextMenuOpenInContextualTab": {
-        "message": "Kapsayıcıda yeniden aç"
+    "optionsThemeIntegration": {
+        "message": ""
     },
-    "contextMenuMoveTab": {
-        "message": "Sekmeyi taşı"
+    "optionsTitle": {
+        "message": "Ayarlar"
     },
-    "contextMenuMoveTabToStart": {
-        "message": "En başa taşı"
+    "searchPlaceholder": {
+        "message": "Sekmeleri ara"
     },
-    "contextMenuMoveTabToEnd": {
-        "message": "En sona taşı"
+    "settingsBtnTooltip": {
+        "message": "Ayarları aç"
     }
 }

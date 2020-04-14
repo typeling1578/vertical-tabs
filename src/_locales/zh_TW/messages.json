@@ -1,77 +1,78 @@
 {
-    "extensionDescription": {
-        "message": "分頁中心試圖解決人們使用分頁（尤其是太多分頁）時遇到的一些問題，並為未來的創新功能提供更多的基礎。此 Firefox 附加組件以垂直方式而非水平方式排列分頁。它的靈感極大來源於附加組件 VerticalTabs 的想法。"
+    "allTabsLabel": {
+        "message": "顯示所有分頁…"
     },
     "browserActionTitle": {
-        "message": "切換到 Tab Center Reborn",
-        "description": "Tooltip shown when hovering the toolbar button."
-    },
-    "newTabBtnLabel": {
-        "message": "新分頁",
-        "description": "Label of the New Tab button in the top menu."
-    },
-    "newTabBtnTooltip": {
-        "message": "開啟新分頁"
-    },
-    "searchPlaceholder": {
-        "message": "搜尋分頁"
+        "message": "切換到 Tab Center Reborn"
     },
     "closeTabButtonTooltip": {
         "message": "關閉分頁"
     },
-    "allTabsLabel": {
-        "message": "顯示所有分頁…",
-        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by a query."
-    },
-    "contextMenuReloadTab": {
-        "message": "重新載入分頁",
-        "description": "Reload Tab context menu item label."
-    },
-    "contextMenuPinTab": {
-        "message": "固定分頁",
-        "description": "Pin Tab context menu item label."
-    },
-    "contextMenuUnpinTab": {
-        "message": "取消固定分頁",
-        "description": "Unpin Tab context menu item label."
-    },
-    "contextMenuMuteTab": {
-        "message": "分頁靜音",
-        "description": "Mute Tab context menu item label."
-    },
-    "contextMenuUnmuteTab": {
-        "message": "取消分頁靜音",
-        "description": "Unmute Tab context menu item label."
+    "contextMenuCloseOtherTabs": {
+        "message": "關閉其他分頁"
     },
     "contextMenuCloseTab": {
         "message": "關閉分頁"
     },
-    "contextMenuUndoCloseTab": {
-        "message": "復原已關閉分頁"
+    "contextMenuCloseTabsAfter": {
+        "message": "關閉下方分頁"
     },
     "contextMenuDuplicateTab": {
         "message": "複製分頁"
     },
+    "contextMenuMoveTab": {
+        "message": "移動分頁"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "移動至結尾"
+    },
     "contextMenuMoveTabToNewWindow": {
         "message": "移動到新視窗"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "移動至開頭"
+    },
+    "contextMenuMuteTab": {
+        "message": "分頁靜音"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "使用容器開啟"
+    },
+    "contextMenuPinTab": {
+        "message": "固定分頁"
     },
     "contextMenuReloadAllTabs": {
         "message": "重新載入全部分頁"
     },
-    "contextMenuCloseTabsAfter": {
-        "message": "關閉下方分頁"
+    "contextMenuReloadTab": {
+        "message": "重新載入分頁"
     },
-    "contextMenuCloseOtherTabs": {
-        "message": "關閉其他分頁"
+    "contextMenuUndoCloseTab": {
+        "message": "復原已關閉分頁"
     },
-    "settingsBtnTooltip": {
-        "message": "開啟設定"
+    "contextMenuUnmuteTab": {
+        "message": "取消分頁靜音"
     },
-    "optionsTitle": {
-        "message": "設定"
+    "contextMenuUnpinTab": {
+        "message": "取消固定分頁"
+    },
+    "extensionDescription": {
+        "message": "分頁中心試圖解決人們使用分頁（尤其是太多分頁）時遇到的一些問題，並為未來的創新功能提供更多的基礎。此 Firefox 附加組件以垂直方式而非水平方式排列分頁。它的靈感極大來源於附加組件 VerticalTabs 的想法。"
+    },
+    "newTabBtnLabel": {
+        "message": "新分頁"
+    },
+    "newTabBtnTooltip": {
+        "message": "開啟新分頁"
+    },
+    "optionsAdvancedTitle": {
+        "message": "進階"
     },
     "optionsCompactMode": {
         "message": "精簡模式"
+    },
+    "optionsCompactModeDynamic": {
+        "message": "動態"
     },
     "optionsCompactModeExplanation": {
         "message": "精簡模式降低分頁的高度以顯示更多的分頁。在「動態」設定中，一旦發現沒有足夠的空間就會自動啟用。"
@@ -79,23 +80,11 @@
     "optionsCompactModeOff": {
         "message": "停用"
     },
-    "optionsCompactModeDynamic": {
-        "message": "動態"
-    },
     "optionsCompactModeStrict": {
         "message": "總是"
     },
     "optionsCompactPins": {
         "message": "精簡已釘選分頁"
-    },
-    "optionsDarkTheme": {
-        "message": "深色主題"
-    },
-    "optionsThemeIntegration": {
-        "message": "與當前主題整合"
-    },
-    "optionsAdvancedTitle": {
-        "message": "進階"
     },
     "optionsCustomCSS": {
         "message": "自訂樣式表"
@@ -103,19 +92,22 @@
     "optionsCustomCSSWikiLink": {
         "message": "CSS 調整 Wiki 文章"
     },
+    "optionsDarkTheme": {
+        "message": "深色主題"
+    },
     "optionsSaveCustomCSS": {
         "message": "儲存 CSS"
     },
-    "contextMenuOpenInContextualTab": {
-        "message": "使用容器開啟"
+    "optionsThemeIntegration": {
+        "message": "與當前主題整合"
     },
-    "contextMenuMoveTab": {
-        "message": "移動分頁"
+    "optionsTitle": {
+        "message": "設定"
     },
-    "contextMenuMoveTabToStart": {
-        "message": "移動至開頭"
+    "searchPlaceholder": {
+        "message": "搜尋分頁"
     },
-    "contextMenuMoveTabToEnd": {
-        "message": "移動至結尾"
+    "settingsBtnTooltip": {
+        "message": "開啟設定"
     }
 }

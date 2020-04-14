@@ -45,11 +45,9 @@ async function minify(content, path) {
     // remove fields that are unneeded for running the extension in locales
     if (path.indexOf("/_locales/") !== 1) {
       delete o["extensionsLongDescription"];
-      for (const elem of Object.values(o)) {
-        delete elem["description"];
-        if (path.indexOf("/en/") !== -1) {
-          // placeholder field is only useful for default_locale
-          delete elem["placeholder"];
+      if (path.indexOf("/en/") !== -1) {
+        for (const elem of Object.values(o)) {
+          delete elem["description"];
         }
       }
     }

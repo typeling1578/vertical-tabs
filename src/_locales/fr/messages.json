@@ -1,77 +1,135 @@
 {
-    "extensionDescription": {
-        "message": "Barre d’onglets verticale simple et puissante"
+    "OptionsAnimations": {
+        "message": "Animations"
+    },
+    "allTabsLabel": {
+        "message": "Afficher tous les onglets…"
+    },
+    "browserActionOff": {
+        "message": "off"
+    },
+    "browserActionOn": {
+        "message": "on"
     },
     "browserActionTitle": {
-        "message": "Activer/désactiver Tab Center Reborn",
-        "description": "Tooltip shown when hovering the toolbar button."
+        "message": "Activer/désactiver Tab Center Reborn"
     },
-    "newTabBtnLabel": {
-        "message": "Nouvel onglet",
-        "description": "Label of the New Tab button in the top menu."
-    },
-    "newTabBtnTooltip": {
-        "message": "Ouvrir un nouvel onglet"
-    },
-    "searchPlaceholder": {
-        "message": "Rechercher dans les onglets"
+    "closeAllTabsExceptWarning": {
+        "message": "Voulez-vous vraiment fermer les $COUNT$ autres onglets ?"
     },
     "closeTabButtonTooltip": {
         "message": "Fermer l'onglet"
     },
-    "allTabsLabel": {
-        "message": "Afficher tous les onglets…",
-        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by a query."
+    "closeTabsAfterWarning": {
+        "message": "Voulez-vous vraiment fermer les $COUNT$ onglets suivant ?"
     },
-    "contextMenuReloadTab": {
-        "message": "&Actualiser l'onglet",
-        "description": "Reload Tab context menu item label."
-    },
-    "contextMenuPinTab": {
-        "message": "É&pingler cet onglet",
-        "description": "Pin Tab context menu item label."
-    },
-    "contextMenuUnpinTab": {
-        "message": "Désé&pingler cet onglet",
-        "description": "Unpin Tab context menu item label."
-    },
-    "contextMenuMuteTab": {
-        "message": "&Rendre l'onglet muet",
-        "description": "Mute Tab context menu item label."
-    },
-    "contextMenuUnmuteTab": {
-        "message": "&Réactiver le son de l'onglet",
-        "description": "Unmute Tab context menu item label."
-    },
-    "contextMenuCloseTab": {
-        "message": "&Fermer l'onglet"
-    },
-    "contextMenuUndoCloseTab": {
-        "message": "A&nnuler la fermeture de l'onglet"
-    },
-    "contextMenuDuplicateTab": {
-        "message": "D&upliquer l'onglet"
-    },
-    "contextMenuMoveTabToNewWindow": {
-        "message": "Déplacer vers une &nouvelle fenêtre"
-    },
-    "contextMenuReloadAllTabs": {
-        "message": "Actualiser tous les onglets"
-    },
-    "contextMenuCloseTabsAfter": {
-        "message": "Fermer les onglets &suivants"
+    "closeTabsBeforeWarning": {
+        "message": "Voulez-vous vraiment fermer les $COUNT$ onglets précédent ?"
     },
     "contextMenuCloseOtherTabs": {
         "message": "Fermer les &autres onglets"
     },
-    "settingsBtnTooltip": {
-        "message": "Ouvrir les paramètres"
+    "contextMenuCloseTab": {
+        "message": "&Fermer l'onglet"
     },
-    "optionsTitle": {
-        "message": "Paramètres"
+    "contextMenuCloseTabs": {
+        "message": "Fermer des onglet&s"
+    },
+    "contextMenuCloseTabsAfter": {
+        "message": "Fermer les onglets &suivants"
+    },
+    "contextMenuCloseTabsBefore": {
+        "message": "Fermer les onglets &précédents"
+    },
+    "contextMenuDuplicateTab": {
+        "message": "D&upliquer l'onglet"
+    },
+    "contextMenuMoveTab": {
+        "message": "&Déplacer l’onglet"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "Déplacer vers la &fin"
+    },
+    "contextMenuMoveTabToNewWindow": {
+        "message": "Déplacer vers une &nouvelle fenêtre"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "Déplacer vers le &début"
+    },
+    "contextMenuMuteTab": {
+        "message": "&Rendre l'onglet muet"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "Rouvrir dans un onglet c&ontextuel"
+    },
+    "contextMenuPinTab": {
+        "message": "É&pingler cet onglet"
+    },
+    "contextMenuReloadAllTabs": {
+        "message": "Actualiser tous les onglets"
+    },
+    "contextMenuReloadTab": {
+        "message": "&Actualiser l'onglet"
+    },
+    "contextMenuUndoCloseTab": {
+        "message": "A&nnuler la fermeture de l'onglet"
+    },
+    "contextMenuUnloadTab": {
+        "message": "Dé&charger l’onglet"
+    },
+    "contextMenuUnmuteTab": {
+        "message": "&Réactiver le son de l'onglet"
+    },
+    "contextMenuUnpinTab": {
+        "message": "Désé&pingler cet onglet"
+    },
+    "extensionDescription": {
+        "message": "Barre d’onglets verticale simple et puissante"
+    },
+    "extensionsLongDescription": {
+        "message": "Tab Center Reborn est la continuation de <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> pour proposer une extension simple, puissante et bien intégrée pour gérer ses onglets verticalement.\n\nL’extension fournit quelques paramètres et permet aux utilisateur·rice·s avancé·e·s de complètement personnaliser son apparence avec du code CSS.\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home\n\nVous pourriez être particulièrement intéressés pour cacher la barre d’onglets du haut:\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\n\n\nFonctionnalités:\n– Toutes les fonctionnalités de la barre d’onglets de Firefox (épingler, dupliquer, déplacer au début/à la fin, fermer les onglets après, etc.)\n– Options “Décharger l’onglet” et “Fermer les onglets avant” pour s’adapter à la gestion de beaucoup d’onglets\n– Une notification vous permet d’annuler si “Fermer les onglets avant”, “Fermer les onglets après” ou “Fermer les autres onglets” a fermé plus de 5 onglets\n– A une apparence et un comportement natif, a des animations (désactivables)\n– Fonctionne et utilise les conteneurs: https://support.mozilla.org/fr/kb/onglets-contextuels-avec-les-containers\n– S’intègre avec les thèmes Firefox complets (les thèmes plus simples ne fournissent pas assez de couleurs pour travailler avec)\n– Synchronise vos paramètres avec Firefox Sync\n\nRaccourcis globaux:\n– Maj + F1: ouvre ou ferme le panneau latéral\n– Maj + F2: active l’onglet utilisé avant\nNotez que vous pouvez les configurer: https://support.mozilla.org/fr/kb/gerer-raccourcis-extensions-firefox\n\nRaccourcis quand vous cliquez sur le bouton nouvel onglet/nom d’un conteneur dans le menu contextuel de nouvel onglet (clic-droit):\n– Ctrl + click: ouvre après l’onglet courant si c’est à la fin par défaut (et ouvre à la fin si c’est après l’onglet courant par défaut)\n– Maj + click: ouvre une nouvelle fenêtre\n– Ctrl + Maj + click: ouvre dans une fenêtre de navigation privée (si Tab Center Reborn est autorisé à s’exécuter dans les fenêtres privées)\n\n\nVous pouvez contribuer en rapportant des problèmes, en traduisant, en ajoutant de la documentation ou en développant!\nhttps://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\n\nPermissions utilisées:\n– Accéder à vos données pour tous les sites web: pour utiliser les conteneurs.\n– Consulter et modifier les marque-pages: pour ne pas ouvrir une nouvelle fenêtre lorsqu’un onglet est lâché en dehors du panneau latérale mais sur la barre de marque-pages.\n– Consulter et modifier les paramètres du navigateur: pour respecter les paramètres et le thème de Firefox.\n– Vous afficher des notifications: pour afficher une notification quand vous avez fermé beaucoup d’onglets, vous permettant d’annuler cela.\n– Accéder aux onglets récemment fermés: pour activer l’onglet utilisé avant.\n– Accéder aux onglets du navigateur: pour obtenir l’URL, le titre et le favicon des onglets.\n– Accéder à l’activité du navigateur pendant la navigation: pour déclencher une animation supplémentaire quand une page a fini de charger ses ressources."
+    },
+    "muteTabButtonTooltip": {
+        "message": "Rendre l’onglet muet"
+    },
+    "newTabBtnLabel": {
+        "message": "Nouvel onglet"
+    },
+    "newTabBtnTooltip": {
+        "message": "Ouvrir un nouvel onglet"
+    },
+    "newTabContextMenuOpenAtEnd": {
+        "message": "À la &fin"
+    },
+    "newTabContextMenuOpenInPrivateWindow": {
+        "message": "Nouvelle fenêtre de navigation &privée"
+    },
+    "newTabContextMenuOpenInWindow": {
+        "message": "&Nouvelle fenêtre"
+    },
+    "newTabContextMenuOpneAfterCurrent": {
+        "message": "&Après l’onglet courant"
+    },
+    "notificationDeletedMessage": {
+        "message": "Cliquez sur la notification pour annuler."
+    },
+    "notificationDeletedTitle": {
+        "message": "$COUNT$ onglets fermés"
+    },
+    "optionsAdvancedTitle": {
+        "message": "Avancé"
+    },
+    "optionsAppearanceTitle": {
+        "message": "Apparence"
+    },
+    "optionsBehaviorTitle": {
+        "message": "Comportement"
     },
     "optionsCompactMode": {
         "message": "Mode compact"
+    },
+    "optionsCompactModeDynamic": {
+        "message": "Dynamique"
     },
     "optionsCompactModeExplanation": {
         "message": "Le Mode compact réduit la hauteur des onglets afin d'en afficher davantage. En réglage Dynamique, il s'active automatiquement lorsqu'il n'y a plus d'espace disponible."
@@ -79,189 +137,73 @@
     "optionsCompactModeOff": {
         "message": "Désactivé"
     },
-    "optionsCompactModeDynamic": {
-        "message": "Dynamique"
-    },
     "optionsCompactModeStrict": {
         "message": "Activé"
     },
     "optionsCompactPins": {
         "message": "Afficher uniquement la favicon pour les onglets épinglés"
     },
-    "optionsDarkTheme": {
-        "message": "Thème sombre"
-    },
-    "optionsThemeIntegration": {
-        "message": "Utiliser le thème courant du navigateur"
-    },
-    "optionsAdvancedTitle": {
-        "message": "Avancé"
-    },
     "optionsCustomCSS": {
         "message": "Feuille de style personnalisée"
+    },
+    "optionsCustomCSSChangelogLink": {
+        "message": "Consultez les nouveautés pour vous informer des changements cassant la compatibilité"
     },
     "optionsCustomCSSWikiLink": {
         "message": "Article Wiki de paramétrage CSS (en anglais)"
     },
+    "optionsDarkTheme": {
+        "message": "Thème sombre"
+    },
+    "optionsNotifyClosingManyTabs": {
+        "message": "Notifier lors de la fermeture de beaucoup d’onglets"
+    },
+    "optionsNotifyClosingManyTabsExplanation": {
+        "message": "Afficher une notification vous permettant d’annuler lors de la fermeture de plus de $COUNT$ onglets."
+    },
     "optionsSaveCustomCSS": {
         "message": "Enregistrer la CSS"
     },
-    "contextMenuOpenInContextualTab": {
-        "message": "Rouvrir dans un onglet c&ontextuel"
-    },
-    "contextMenuMoveTab": {
-        "message": "&Déplacer l’onglet"
-    },
-    "contextMenuMoveTabToStart": {
-        "message": "Déplacer vers le &début"
-    },
-    "contextMenuMoveTabToEnd": {
-        "message": "Déplacer vers la &fin"
-    },
-    "extensionsLongDescription": {
-        "message": "Tab Center Reborn est la continuation de <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> pour proposer une extension simple, puissante et bien intégrée pour gérer ses onglets verticalement.\n\nL’extension fournit quelques paramètres et permet aux utilisateur·rice·s avancé·e·s de complètement personnaliser son apparence avec du code CSS.\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home\n\nVous pourriez être particulièrement intéressés pour cacher la barre d’onglets du haut:\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\n\n\nFonctionnalités:\n– Toutes les fonctionnalités de la barre d’onglets de Firefox (épingler, dupliquer, déplacer au début/à la fin, fermer les onglets après, etc.)\n– Options “Décharger l’onglet” et “Fermer les onglets avant” pour s’adapter à la gestion de beaucoup d’onglets\n– Une notification vous permet d’annuler si “Fermer les onglets avant”, “Fermer les onglets après” ou “Fermer les autres onglets” a fermé plus de 5 onglets\n– A une apparence et un comportement natif, a des animations (désactivables)\n– Fonctionne et utilise les conteneurs: https://support.mozilla.org/fr/kb/onglets-contextuels-avec-les-containers\n– S’intègre avec les thèmes Firefox complets (les thèmes plus simples ne fournissent pas assez de couleurs pour travailler avec)\n– Synchronise vos paramètres avec Firefox Sync\n\nRaccourcis globaux:\n– Maj + F1: ouvre ou ferme le panneau latéral\n– Maj + F2: active l’onglet utilisé avant\nNotez que vous pouvez les configurer: https://support.mozilla.org/fr/kb/gerer-raccourcis-extensions-firefox\n\nRaccourcis quand vous cliquez sur le bouton nouvel onglet/nom d’un conteneur dans le menu contextuel de nouvel onglet (clic-droit):\n– Ctrl + click: ouvre après l’onglet courant si c’est à la fin par défaut (et ouvre à la fin si c’est après l’onglet courant par défaut)\n– Maj + click: ouvre une nouvelle fenêtre\n– Ctrl + Maj + click: ouvre dans une fenêtre de navigation privée (si Tab Center Reborn est autorisé à s’exécuter dans les fenêtres privées)\n\n\nVous pouvez contribuer en rapportant des problèmes, en traduisant, en ajoutant de la documentation ou en développant!\nhttps://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\n\nPermissions utilisées:\n– Accéder à vos données pour tous les sites web: pour utiliser les conteneurs.\n– Consulter et modifier les marque-pages: pour ne pas ouvrir une nouvelle fenêtre lorsqu’un onglet est lâché en dehors du panneau latérale mais sur la barre de marque-pages.\n– Consulter et modifier les paramètres du navigateur: pour respecter les paramètres et le thème de Firefox.\n– Vous afficher des notifications: pour afficher une notification quand vous avez fermé beaucoup d’onglets, vous permettant d’annuler cela.\n– Accéder aux onglets récemment fermés: pour activer l’onglet utilisé avant.\n– Accéder aux onglets du navigateur: pour obtenir l’URL, le titre et le favicon des onglets.\n– Accéder à l’activité du navigateur pendant la navigation: pour déclencher une animation supplémentaire quand une page a fini de charger ses ressources.",
-        "description": "Long description displayed on addons.mozilla.org."
-    },
-    "optionsThemeIntegrationExplanation": {
-        "message": "Utiliser le thème courant du navigateur au lieu du thème clair par défaut.",
-        "description": "Explanation for the Theme Integration option in the options page."
-    },
-    "closeTabsAfterWarning": {
-        "message": "Voulez-vous vraiment fermer les $COUNT$ onglets suivant ?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another."
-    },
-    "closeAllTabsExceptWarning": {
-        "message": "Voulez-vous vraiment fermer les $COUNT$ autres onglets ?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
-    },
-    "contextMenuUnloadTab": {
-        "message": "Dé&charger l’onglet",
-        "description": "Context menu item label."
-    },
-    "optionsSwitchLastActiveTabExplanation": {
-        "message": "Cliquer sur l’onglet courant active l’onglet utilisé avant.",
-        "description": "Explanation for the Compact Mode option in options page."
-    },
-    "optionsSwitchLastActiveTab": {
-        "message": "Activer l’onglet utilisé avant",
-        "description": "Option in options page."
-    },
-    "browserActionOn": {
-        "message": "on",
-        "description": "Badge text shown when sidebar is open."
-    },
-    "browserActionOff": {
-        "message": "off",
-        "description": "Badge text shown when sidebar is closed."
-    },
-    "optionsAppearanceTitle": {
-        "message": "Apparence",
-        "description": "Section in options page."
-    },
-    "optionsBehaviorTitle": {
-        "message": "Comportement",
-        "description": "Section in options page."
-    },
-    "optionsWarnBeforeClosing": {
-        "message": "Avertir avant de fermer plus que $COUNT onglets",
-        "description": "Option in options page."
-    },
-    "closeTabsBeforeWarning": {
-        "message": "Voulez-vous vraiment fermer les $COUNT$ onglets précédent ?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing tabs before another.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
-    },
-    "contextMenuCloseTabsBefore": {
-        "message": "Fermer les onglets &précédents",
-        "description": "Context menu item label."
-    },
-    "contextMenuCloseTabs": {
-        "message": "Fermer des onglet&s",
-        "description": "Context Menu item label"
-    },
-    "notificationDeletedMessage": {
-        "message": "Cliquez sur la notification pour annuler.",
-        "description": "Title of the notification when deleting many tabs."
-    },
-    "notificationDeletedTitle": {
-        "message": "$COUNT$ onglets fermés",
-        "description": "Title of the notification when deleting many tabs.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
-    },
-    "optionsNotifyClosingManyTabsExplanation": {
-        "message": "Afficher une notification vous permettant d’annuler lors de la fermeture de plus de $COUNT$ onglets.",
-        "description": "Explanation for the Notify when closing many tabs option in options page.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
-    },
-    "optionsNotifyClosingManyTabs": {
-        "message": "Notifier lors de la fermeture de beaucoup d’onglets",
-        "description": "Option in options page."
-    },
-    "unmuteTabButtonTooltip": {
-        "message": "Réactiver le son de l’onglet",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
-    },
-    "muteTabButtonTooltip": {
-        "message": "Rendre l’onglet muet",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
-    },
-    "newTabContextMenuOpenInPrivateWindow": {
-        "message": "Nouvelle fenêtre de navigation &privée",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?search=New+private+window&string=75628. New Tab context menu item."
-    },
-    "newTabContextMenuOpenInWindow": {
-        "message": "&Nouvelle fenêtre",
-        "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?search=New+window&string=75625. New Tab context menu item."
-    },
-    "newTabContextMenuOpneAfterCurrent": {
-        "message": "&Après l’onglet courant",
-        "description": "New Tab context menu item."
-    },
-    "newTabContextMenuOpenAtEnd": {
-        "message": "À la &fin",
-        "description": "New Tab context menu item."
-    },
-    "optionsCustomCSSChangelogLink": {
-        "message": "Consultez les nouveautés pour vous informer des changements cassant la compatibilité",
-        "description": "Text for a link to the changelog."
-    },
-    "OptionsAnimations": {
-        "message": "Animations",
-        "description": "Option in options page."
-    },
-    "optionsSwitchByScrollingWithCtrlExplanation": {
-        "message": "Active l’onglet suivant ou précédent au lieu de défiler sous certaines conditions.",
-        "description": "Explanation for the Switch by scrolling options in options page."
-    },
-    "optionsSwitchByScrollingNever": {
-        "message": "Jamais",
-        "description": "Option in options page"
+    "optionsSwitchByScrolling": {
+        "message": "Change l’onglet actif en défilant"
     },
     "optionsSwitchByScrollingAlways": {
-        "message": "Toujours",
-        "description": "Option in options page"
+        "message": "Toujours"
+    },
+    "optionsSwitchByScrollingNever": {
+        "message": "Jamais"
     },
     "optionsSwitchByScrollingWithCtrl": {
-        "message": "Avec Ctrl",
-        "description": "Option in options page"
+        "message": "Avec Ctrl"
     },
-    "optionsSwitchByScrolling": {
-        "message": "Change l’onglet actif en défilant",
-        "description": "Option in options page"
+    "optionsSwitchByScrollingWithCtrlExplanation": {
+        "message": "Active l’onglet suivant ou précédent au lieu de défiler sous certaines conditions."
+    },
+    "optionsSwitchLastActiveTab": {
+        "message": "Activer l’onglet utilisé avant"
+    },
+    "optionsSwitchLastActiveTabExplanation": {
+        "message": "Cliquer sur l’onglet courant active l’onglet utilisé avant."
+    },
+    "optionsThemeIntegration": {
+        "message": "Utiliser le thème courant du navigateur"
+    },
+    "optionsThemeIntegrationExplanation": {
+        "message": "Utiliser le thème courant du navigateur au lieu du thème clair par défaut."
+    },
+    "optionsTitle": {
+        "message": "Paramètres"
+    },
+    "optionsWarnBeforeClosing": {
+        "message": "Avertir avant de fermer plus que $COUNT onglets"
+    },
+    "searchPlaceholder": {
+        "message": "Rechercher dans les onglets"
+    },
+    "settingsBtnTooltip": {
+        "message": "Ouvrir les paramètres"
+    },
+    "unmuteTabButtonTooltip": {
+        "message": "Réactiver le son de l’onglet"
     }
 }

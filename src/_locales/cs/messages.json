@@ -1,77 +1,78 @@
 {
-    "extensionDescription": {
-        "message": "Posuňte vaše panely na stranu okna prohlízeče."
+    "allTabsLabel": {
+        "message": "Zobrazit všechny panely…"
     },
     "browserActionTitle": {
-        "message": "Přepnout Tab Center Reborn",
-        "description": "Tooltip shown when hovering the toolbar button."
-    },
-    "newTabBtnLabel": {
-        "message": "Nový panel",
-        "description": "Label of the New Tab button in the top menu."
-    },
-    "newTabBtnTooltip": {
-        "message": "Otevře nový panel"
-    },
-    "searchPlaceholder": {
-        "message": "Vyhledávat v záložkách"
+        "message": "Přepnout Tab Center Reborn"
     },
     "closeTabButtonTooltip": {
         "message": "Zavře panel"
     },
-    "allTabsLabel": {
-        "message": "Zobrazit všechny panely…",
-        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by a query."
-    },
-    "contextMenuReloadTab": {
-        "message": "Obnovit panel",
-        "description": "Reload Tab context menu item label."
-    },
-    "contextMenuPinTab": {
-        "message": "Připnout panel",
-        "description": "Pin Tab context menu item label."
-    },
-    "contextMenuUnpinTab": {
-        "message": "Odepnout panel",
-        "description": "Unpin Tab context menu item label."
-    },
-    "contextMenuMuteTab": {
-        "message": "Vypnout zvuk panelu",
-        "description": "Mute Tab context menu item label."
-    },
-    "contextMenuUnmuteTab": {
-        "message": "Zapnout zvuk panelu",
-        "description": "Unmute Tab context menu item label."
+    "contextMenuCloseOtherTabs": {
+        "message": "Zavřít ostatní panely"
     },
     "contextMenuCloseTab": {
         "message": "Zavřít panel"
     },
-    "contextMenuUndoCloseTab": {
-        "message": "Vrátit zavření panelu"
+    "contextMenuCloseTabsAfter": {
+        "message": "Zavřít panely níže"
     },
     "contextMenuDuplicateTab": {
         "message": "Duplikovat kartu"
     },
+    "contextMenuMoveTab": {
+        "message": "Přesunout panel"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "Přesunout na konec"
+    },
     "contextMenuMoveTabToNewWindow": {
         "message": "Přesunout do nového okna"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "Přesunout na začátek"
+    },
+    "contextMenuMuteTab": {
+        "message": "Vypnout zvuk panelu"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "Otevřít v kontejnerovém panelu"
+    },
+    "contextMenuPinTab": {
+        "message": "Připnout panel"
     },
     "contextMenuReloadAllTabs": {
         "message": "Obnovit všechny panely"
     },
-    "contextMenuCloseTabsAfter": {
-        "message": "Zavřít panely níže"
+    "contextMenuReloadTab": {
+        "message": "Obnovit panel"
     },
-    "contextMenuCloseOtherTabs": {
-        "message": "Zavřít ostatní panely"
+    "contextMenuUndoCloseTab": {
+        "message": "Vrátit zavření panelu"
     },
-    "settingsBtnTooltip": {
-        "message": "Otevřít nastavení"
+    "contextMenuUnmuteTab": {
+        "message": "Zapnout zvuk panelu"
     },
-    "optionsTitle": {
-        "message": "Nastavení"
+    "contextMenuUnpinTab": {
+        "message": "Odepnout panel"
+    },
+    "extensionDescription": {
+        "message": "Posuňte vaše panely na stranu okna prohlízeče."
+    },
+    "newTabBtnLabel": {
+        "message": "Nový panel"
+    },
+    "newTabBtnTooltip": {
+        "message": "Otevře nový panel"
+    },
+    "optionsAdvancedTitle": {
+        "message": "Pokročilé"
     },
     "optionsCompactMode": {
         "message": "Kompaktní režim"
+    },
+    "optionsCompactModeDynamic": {
+        "message": "Dynamický"
     },
     "optionsCompactModeExplanation": {
         "message": "Kompaktní režim snižuje výšku záložek aby jich bylo zobrazeno více. Dynamické nastavení aktivuje kompaktní režim když bude málo místa."
@@ -79,23 +80,11 @@
     "optionsCompactModeOff": {
         "message": "Deaktivováno"
     },
-    "optionsCompactModeDynamic": {
-        "message": "Dynamický"
-    },
     "optionsCompactModeStrict": {
         "message": "Pokaždé"
     },
     "optionsCompactPins": {
         "message": "Kompaktní připnuté karty"
-    },
-    "optionsDarkTheme": {
-        "message": "Tmavý vzhled"
-    },
-    "optionsThemeIntegration": {
-        "message": ""
-    },
-    "optionsAdvancedTitle": {
-        "message": "Pokročilé"
     },
     "optionsCustomCSS": {
         "message": "Vlastní šablona stylů"
@@ -103,19 +92,22 @@
     "optionsCustomCSSWikiLink": {
         "message": "Wiki článek o CSS vylepšeních"
     },
+    "optionsDarkTheme": {
+        "message": "Tmavý vzhled"
+    },
     "optionsSaveCustomCSS": {
         "message": "Uložit CSS"
     },
-    "contextMenuOpenInContextualTab": {
-        "message": "Otevřít v kontejnerovém panelu"
+    "optionsThemeIntegration": {
+        "message": ""
     },
-    "contextMenuMoveTab": {
-        "message": "Přesunout panel"
+    "optionsTitle": {
+        "message": "Nastavení"
     },
-    "contextMenuMoveTabToStart": {
-        "message": "Přesunout na začátek"
+    "searchPlaceholder": {
+        "message": "Vyhledávat v záložkách"
     },
-    "contextMenuMoveTabToEnd": {
-        "message": "Přesunout na konec"
+    "settingsBtnTooltip": {
+        "message": "Otevřít nastavení"
     }
 }

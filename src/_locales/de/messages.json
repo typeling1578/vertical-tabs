@@ -1,77 +1,132 @@
 {
-    "extensionDescription": {
-        "message": "Einfache und leistungsstarke vertikale Tab-Leiste"
+    "OptionsAnimations": {
+        "message": "Animationen"
+    },
+    "allTabsLabel": {
+        "message": "Alle Tabs anzeigen…"
+    },
+    "browserActionOff": {
+        "message": "aus"
+    },
+    "browserActionOn": {
+        "message": "ein"
     },
     "browserActionTitle": {
-        "message": "Tab Center Reborn anzeigen/ausblenden",
-        "description": "Tooltip shown when hovering the toolbar button."
+        "message": "Tab Center Reborn anzeigen/ausblenden"
     },
-    "newTabBtnLabel": {
-        "message": "Neuer Tab",
-        "description": "Label of the New Tab button in the top menu."
-    },
-    "newTabBtnTooltip": {
-        "message": "Neuen Tab öffnen"
-    },
-    "searchPlaceholder": {
-        "message": "Tabs durchsuchen"
+    "closeAllTabsExceptWarning": {
+        "message": "Möchten Sie wirklich die $COUNT$ anderen Tabs schließen?"
     },
     "closeTabButtonTooltip": {
         "message": "Tab schließen"
     },
-    "allTabsLabel": {
-        "message": "Alle Tabs anzeigen…",
-        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by a query."
-    },
-    "contextMenuReloadTab": {
-        "message": "Tab neu laden",
-        "description": "Reload Tab context menu item label."
-    },
-    "contextMenuPinTab": {
-        "message": "Tab anheften",
-        "description": "Pin Tab context menu item label."
-    },
-    "contextMenuUnpinTab": {
-        "message": "Tab ablösen",
-        "description": "Unpin Tab context menu item label."
-    },
-    "contextMenuMuteTab": {
-        "message": "Tab stummschalten",
-        "description": "Mute Tab context menu item label."
-    },
-    "contextMenuUnmuteTab": {
-        "message": "Stummschaltung für Tab aufheben",
-        "description": "Unmute Tab context menu item label."
-    },
-    "contextMenuCloseTab": {
-        "message": "Tab schließen"
-    },
-    "contextMenuUndoCloseTab": {
-        "message": "Geschlossenen Tab wiederherstellen"
-    },
-    "contextMenuDuplicateTab": {
-        "message": "Tab klonen"
-    },
-    "contextMenuMoveTabToNewWindow": {
-        "message": "In neues Fenster verschieben"
-    },
-    "contextMenuReloadAllTabs": {
-        "message": "Alle Tabs neu laden"
-    },
-    "contextMenuCloseTabsAfter": {
-        "message": "Folgende Tabs schließen"
+    "closeTabsAfterWarning": {
+        "message": "Möchten Sie wirklich die $COUNT$ unteren Tabs schließen?"
     },
     "contextMenuCloseOtherTabs": {
         "message": "Andere Tabs schließen"
     },
-    "settingsBtnTooltip": {
-        "message": "Einstellungen öffnen"
+    "contextMenuCloseTab": {
+        "message": "Tab schließen"
     },
-    "optionsTitle": {
-        "message": "Einstellungen"
+    "contextMenuCloseTabs": {
+        "message": "Tabs schließen"
+    },
+    "contextMenuCloseTabsAfter": {
+        "message": "Folgende Tabs schließen"
+    },
+    "contextMenuCloseTabsBefore": {
+        "message": "Vorherige Tabs schließen"
+    },
+    "contextMenuDuplicateTab": {
+        "message": "Tab klonen"
+    },
+    "contextMenuMoveTab": {
+        "message": "Tab verschieben"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "An Ende verschieben"
+    },
+    "contextMenuMoveTabToNewWindow": {
+        "message": "In neues Fenster verschieben"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "An Anfang verschieben"
+    },
+    "contextMenuMuteTab": {
+        "message": "Tab stummschalten"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "In Tab-Umgebung öffnen"
+    },
+    "contextMenuPinTab": {
+        "message": "Tab anheften"
+    },
+    "contextMenuReloadAllTabs": {
+        "message": "Alle Tabs neu laden"
+    },
+    "contextMenuReloadTab": {
+        "message": "Tab neu laden"
+    },
+    "contextMenuUndoCloseTab": {
+        "message": "Geschlossenen Tab wiederherstellen"
+    },
+    "contextMenuUnloadTab": {
+        "message": "Tab entladen"
+    },
+    "contextMenuUnmuteTab": {
+        "message": "Stummschaltung für Tab aufheben"
+    },
+    "contextMenuUnpinTab": {
+        "message": "Tab ablösen"
+    },
+    "extensionDescription": {
+        "message": "Einfache und leistungsstarke vertikale Tab-Leiste"
+    },
+    "extensionsLongDescription": {
+        "message": "Tab Center Reborn ist die Weiterentwicklung von <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> um eine einfache, leistungsstarke und gut integrierte Erweiterung für die vertikale Verwaltung von Tabs bereitzustellen.\n\nDie Erweiterung bietet eine handvoll Einstellungen und ermöglicht es fortgeschrittenen Benutzern, das Erscheinungsbild vollständig mit CSS-Code anzupassen.\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home\n\nFalls Sie daran interessiert sind, die obere Tab-Leiste auszulebend:\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\n\n\nFunktionen:\n– alle Funktionen der Firefox Tab-Leiste (anheften, duplizieren, Tab an den Anfang/ans Ende verschieben, alle Tabs unter dem aktuellen schließen)\n– die Optionen \"Tab entladen\" und \"Schließe alle Tabs von diesem\" dienen der Verwaltung vieler Tabs\n– eine Benachrichtigung ermöglicht es Ihnen, die Funktionen \"Schließe alle Tabs von diesem\", \"Schließe alle Tabs nach diesem\", \"Andere Tabs schließen\" rückgängig zu machen, falls Sie mehr als fünf Tabs auf einmal geschlossen haben\n– sieht und verhält sich nativ und bietet Animationen (können deaktiviert werden)\n– funktioniert und nutzt Tab-Umgebungen: https://support.mozilla.org/de/kb/firefox-tab-container\n– lässt sich vollständig in die Firefox-Themes integrieren (einfachere Themes bieten nicht genügend Farben, um mit ihnen zu arbeiten)\n– synchronisieren Sie Ihre Einstellungen mit Firefox Sync\n\nAllgemeine Tastenkombinationen:\n– Umschalt + F1: Öffnet oder schließt die Sidebar\n– Umschalt + F2: wechselt zum letzten aktiven Tab\nBeachten Sie, dass Sie die Tastenkombinationen konfigurieren können: https://support.mozilla.org/de/kb/tastenkombinationen-fur-erweiterungen-verwalten\n\nTastenkombinationen beim Klicken auf die \"neuen Tab\"-Schaltfläche/den Namen der Tab-Umgebungen im Kontextmenü (Rechtsklick):\n– Strg + klick: öffnet den Tab nach dem aktuellen, sofern am Ende öffnen der gesetzte Standard (und öffnet den neuen Tab am Ende, sofern nach dem aktuellen öffnen als Standard gesetzt ist)\n– Shift + klick: öffnet ein neues Fenster\n– Strg+ Shift + klick: öffnet ein neues privates Fenster (sofern Tab Center Reborn im privaten Fenster ausgeführt werden darf)\n\n\nSie können die Erweiterung im Rahmen der Übersetzung, Dokumentation, in dem sie Fehler melden oder mit Code unterstützen!\nhttps://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\n\nVerwendete Berechtigungen:\n– Auf Ihre Daten für alle Websites zugreifen: Um Tab-Umgebungen nutzen zu können.\n– Lesezeichen lesen und verändern: Um kein neues Fenster zu öffnen, wenn ein Tab außerhalb der Sidebar auf der Lesezeichen-Symbolleiste abgelegt wird.\n– Browser-Einstellungen lesen und verändern: Um die Firefox-Einstellungen und das Design nutzen zu können.\n– Benachrichtigungen anzeigen: Um eine Benachrichtigung anzuzeigen, wenn Sie viele Tabs geschlossen haben, sodass Sie dies rückgängig machen können\n– Auf kürzlich geschlossene Tabs zugreifen: Um zum letzten Tab zu wechseln.\n– Auf Browsertabs zugreifen: Um die URL, den Titel und das Favicon der Tabs zu erhalten.\n– Auf Browseraktivität während Seitenwechsel zugreifen: Um eine zusätzliche Animation auszulösen, wenn eine Seite das Laden Ihrer Ressourcen beendet hat."
+    },
+    "muteTabButtonTooltip": {
+        "message": "Tab stummschalten"
+    },
+    "newTabBtnLabel": {
+        "message": "Neuer Tab"
+    },
+    "newTabBtnTooltip": {
+        "message": "Neuen Tab öffnen"
+    },
+    "newTabContextMenuOpenAtEnd": {
+        "message": "Am Ende"
+    },
+    "newTabContextMenuOpenInPrivateWindow": {
+        "message": "Neues privates Fenster"
+    },
+    "newTabContextMenuOpenInWindow": {
+        "message": "Neues Fenster"
+    },
+    "newTabContextMenuOpneAfterCurrent": {
+        "message": "Neben dem aktuellen Tab"
+    },
+    "notificationDeletedMessage": {
+        "message": "Klicken Sie auf die Benachrichtigung, um den Vorgang rückgängig zu machen."
+    },
+    "notificationDeletedTitle": {
+        "message": "$COUNT$ geschlossene Tabs"
+    },
+    "optionsAdvancedTitle": {
+        "message": "Weitere Einstellungen"
+    },
+    "optionsAppearanceTitle": {
+        "message": "Erscheinungsbild"
+    },
+    "optionsBehaviorTitle": {
+        "message": "Verhalten"
     },
     "optionsCompactMode": {
         "message": "Kompakte Darstellung"
+    },
+    "optionsCompactModeDynamic": {
+        "message": "Dynamisch"
     },
     "optionsCompactModeExplanation": {
         "message": "Die kompakte Darstellung reduziert die Höhe der Tabs und zeigt so mehr von diesen an. Bei der Einstellung \"Dynamisch\", wird die Höhe reduziert, sobald nicht mehr genügend Platz zur Verfügung steht."
@@ -79,179 +134,73 @@
     "optionsCompactModeOff": {
         "message": "Deaktiviert"
     },
-    "optionsCompactModeDynamic": {
-        "message": "Dynamisch"
-    },
     "optionsCompactModeStrict": {
         "message": "Aktiv"
     },
     "optionsCompactPins": {
         "message": "Angeheftete Tabs nur mit Favicon darstellen"
     },
-    "optionsDarkTheme": {
-        "message": "Dunkle Darstellung"
-    },
-    "optionsThemeIntegration": {
-        "message": "Das aktuelle Browsertheme verwenden"
-    },
-    "optionsAdvancedTitle": {
-        "message": "Weitere Einstellungen"
-    },
     "optionsCustomCSS": {
         "message": "Benutzerdefinierte Stylesheet"
+    },
+    "optionsCustomCSSChangelogLink": {
+        "message": "Sehen Sie sich die neuen Funktionen an, um sich über Änderungen zu informieren, die die Kompatibilität beeinträchtigen"
     },
     "optionsCustomCSSWikiLink": {
         "message": "Wiki-Artikel über CSS Anpassungen"
     },
+    "optionsDarkTheme": {
+        "message": "Dunkle Darstellung"
+    },
+    "optionsNotifyClosingManyTabs": {
+        "message": "Benachrichtigen, wenn viele Tabs geschlossen werden"
+    },
+    "optionsNotifyClosingManyTabsExplanation": {
+        "message": "Zeigt eine Benachrichtigung an, mit der Sie das Schließen von mehr als $COUNT$ Tabs rückgängig machen können."
+    },
     "optionsSaveCustomCSS": {
         "message": "Stylesheet speichern"
     },
-    "contextMenuOpenInContextualTab": {
-        "message": "In Tab-Umgebung öffnen"
-    },
-    "contextMenuMoveTab": {
-        "message": "Tab verschieben"
-    },
-    "contextMenuMoveTabToStart": {
-        "message": "An Anfang verschieben"
-    },
-    "contextMenuMoveTabToEnd": {
-        "message": "An Ende verschieben"
-    },
-    "extensionsLongDescription": {
-        "message": "Tab Center Reborn ist die Weiterentwicklung von <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> um eine einfache, leistungsstarke und gut integrierte Erweiterung für die vertikale Verwaltung von Tabs bereitzustellen.\n\nDie Erweiterung bietet eine handvoll Einstellungen und ermöglicht es fortgeschrittenen Benutzern, das Erscheinungsbild vollständig mit CSS-Code anzupassen.\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home\n\nFalls Sie daran interessiert sind, die obere Tab-Leiste auszulebend:\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\n\n\nFunktionen:\n– alle Funktionen der Firefox Tab-Leiste (anheften, duplizieren, Tab an den Anfang/ans Ende verschieben, alle Tabs unter dem aktuellen schließen)\n– die Optionen \"Tab entladen\" und \"Schließe alle Tabs von diesem\" dienen der Verwaltung vieler Tabs\n– eine Benachrichtigung ermöglicht es Ihnen, die Funktionen \"Schließe alle Tabs von diesem\", \"Schließe alle Tabs nach diesem\", \"Andere Tabs schließen\" rückgängig zu machen, falls Sie mehr als fünf Tabs auf einmal geschlossen haben\n– sieht und verhält sich nativ und bietet Animationen (können deaktiviert werden)\n– funktioniert und nutzt Tab-Umgebungen: https://support.mozilla.org/de/kb/firefox-tab-container\n– lässt sich vollständig in die Firefox-Themes integrieren (einfachere Themes bieten nicht genügend Farben, um mit ihnen zu arbeiten)\n– synchronisieren Sie Ihre Einstellungen mit Firefox Sync\n\nAllgemeine Tastenkombinationen:\n– Umschalt + F1: Öffnet oder schließt die Sidebar\n– Umschalt + F2: wechselt zum letzten aktiven Tab\nBeachten Sie, dass Sie die Tastenkombinationen konfigurieren können: https://support.mozilla.org/de/kb/tastenkombinationen-fur-erweiterungen-verwalten\n\nTastenkombinationen beim Klicken auf die \"neuen Tab\"-Schaltfläche/den Namen der Tab-Umgebungen im Kontextmenü (Rechtsklick):\n– Strg + klick: öffnet den Tab nach dem aktuellen, sofern am Ende öffnen der gesetzte Standard (und öffnet den neuen Tab am Ende, sofern nach dem aktuellen öffnen als Standard gesetzt ist)\n– Shift + klick: öffnet ein neues Fenster\n– Strg+ Shift + klick: öffnet ein neues privates Fenster (sofern Tab Center Reborn im privaten Fenster ausgeführt werden darf)\n\n\nSie können die Erweiterung im Rahmen der Übersetzung, Dokumentation, in dem sie Fehler melden oder mit Code unterstützen!\nhttps://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\n\nVerwendete Berechtigungen:\n– Auf Ihre Daten für alle Websites zugreifen: Um Tab-Umgebungen nutzen zu können.\n– Lesezeichen lesen und verändern: Um kein neues Fenster zu öffnen, wenn ein Tab außerhalb der Sidebar auf der Lesezeichen-Symbolleiste abgelegt wird.\n– Browser-Einstellungen lesen und verändern: Um die Firefox-Einstellungen und das Design nutzen zu können.\n– Benachrichtigungen anzeigen: Um eine Benachrichtigung anzuzeigen, wenn Sie viele Tabs geschlossen haben, sodass Sie dies rückgängig machen können\n– Auf kürzlich geschlossene Tabs zugreifen: Um zum letzten Tab zu wechseln.\n– Auf Browsertabs zugreifen: Um die URL, den Titel und das Favicon der Tabs zu erhalten.\n– Auf Browseraktivität während Seitenwechsel zugreifen: Um eine zusätzliche Animation auszulösen, wenn eine Seite das Laden Ihrer Ressourcen beendet hat.",
-        "description": "Long description displayed on addons.mozilla.org."
-    },
-    "closeTabsAfterWarning": {
-        "message": "Möchten Sie wirklich die $COUNT$ unteren Tabs schließen?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing tabs underneath another."
-    },
-    "closeAllTabsExceptWarning": {
-        "message": "Möchten Sie wirklich die $COUNT$ anderen Tabs schließen?",
-        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one."
-    },
-    "optionsThemeIntegrationExplanation": {
-        "message": "Das aktuelle Browsertheme anstelle des Standard Themes mit hellen Farben verwenden.",
-        "description": "Explanation for the Theme Integration option in the options page."
-    },
-    "contextMenuUnloadTab": {
-        "message": "Tab entladen",
-        "description": "Context menu item label."
-    },
-    "optionsSwitchLastActiveTabExplanation": {
-        "message": "Auf den aktiven Tab klicken, um zum vorher aktiven Tab zu wechseln.",
-        "description": "Explanation for the Compact Mode option in options page."
-    },
-    "optionsSwitchLastActiveTab": {
-        "message": "Zum letzten aktiven Tab wechseln",
-        "description": "Option in options page."
-    },
-    "browserActionOn": {
-        "message": "ein",
-        "description": "Badge text shown when sidebar is open."
-    },
-    "browserActionOff": {
-        "message": "aus",
-        "description": "Badge text shown when sidebar is closed."
-    },
-    "optionsAppearanceTitle": {
-        "message": "Erscheinungsbild",
-        "description": "Section in options page."
-    },
-    "optionsBehaviorTitle": {
-        "message": "Verhalten",
-        "description": "Section in options page."
-    },
-    "optionsWarnBeforeClosing": {
-        "message": "Warnen, bevor mehr als $COUNT$ Tabs geschlossen werden",
-        "description": "Option in options page."
-    },
-    "notificationDeletedMessage": {
-        "message": "Klicken Sie auf die Benachrichtigung, um den Vorgang rückgängig zu machen.",
-        "description": "Title of the notification when deleting many tabs."
-    },
-    "notificationDeletedTitle": {
-        "message": "$COUNT$ geschlossene Tabs",
-        "description": "Title of the notification when deleting many tabs.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
-    },
-    "optionsNotifyClosingManyTabsExplanation": {
-        "message": "Zeigt eine Benachrichtigung an, mit der Sie das Schließen von mehr als $COUNT$ Tabs rückgängig machen können.",
-        "description": "Explanation for the Notify when closing many tabs option in options page.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
-    },
-    "optionsNotifyClosingManyTabs": {
-        "message": "Benachrichtigen, wenn viele Tabs geschlossen werden",
-        "description": "Option in options page."
-    },
-    "contextMenuCloseTabsBefore": {
-        "message": "Vorherige Tabs schließen",
-        "description": "Context menu item label."
-    },
-    "contextMenuCloseTabs": {
-        "message": "Tabs schließen",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197250. Context Menu item label"
-    },
-    "unmuteTabButtonTooltip": {
-        "message": "Stummschaltung für Tab aufheben",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
-    },
-    "muteTabButtonTooltip": {
-        "message": "Tab stummschalten",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
-    },
-    "newTabContextMenuOpenInPrivateWindow": {
-        "message": "Neues privates Fenster",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
-    },
-    "newTabContextMenuOpenInWindow": {
-        "message": "Neues Fenster",
-        "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
-    },
-    "newTabContextMenuOpneAfterCurrent": {
-        "message": "Neben dem aktuellen Tab",
-        "description": "New Tab context menu item."
-    },
-    "newTabContextMenuOpenAtEnd": {
-        "message": "Am Ende",
-        "description": "New Tab context menu item."
-    },
-    "optionsCustomCSSChangelogLink": {
-        "message": "Sehen Sie sich die neuen Funktionen an, um sich über Änderungen zu informieren, die die Kompatibilität beeinträchtigen",
-        "description": "Text for a link to the changelog."
-    },
-    "OptionsAnimations": {
-        "message": "Animationen",
-        "description": "Option in options page."
-    },
-    "optionsSwitchByScrollingWithCtrlExplanation": {
-        "message": "Aktiviert den nächsten oder den vorherigen Tab, anstatt unter bestimmten Umständen zu scrollen.",
-        "description": "Explanation for the Switch by scrolling options in options page."
-    },
-    "optionsSwitchByScrollingNever": {
-        "message": "Nie",
-        "description": "Option in options page"
+    "optionsSwitchByScrolling": {
+        "message": "Wechseln des aktiven Tabs durch Scrollen"
     },
     "optionsSwitchByScrollingAlways": {
-        "message": "Immer",
-        "description": "Option in options page"
+        "message": "Immer"
+    },
+    "optionsSwitchByScrollingNever": {
+        "message": "Nie"
     },
     "optionsSwitchByScrollingWithCtrl": {
-        "message": "Mit Strg",
-        "description": "Option in options page"
+        "message": "Mit Strg"
     },
-    "optionsSwitchByScrolling": {
-        "message": "Wechseln des aktiven Tabs durch Scrollen",
-        "description": "Option in options page"
+    "optionsSwitchByScrollingWithCtrlExplanation": {
+        "message": "Aktiviert den nächsten oder den vorherigen Tab, anstatt unter bestimmten Umständen zu scrollen."
+    },
+    "optionsSwitchLastActiveTab": {
+        "message": "Zum letzten aktiven Tab wechseln"
+    },
+    "optionsSwitchLastActiveTabExplanation": {
+        "message": "Auf den aktiven Tab klicken, um zum vorher aktiven Tab zu wechseln."
+    },
+    "optionsThemeIntegration": {
+        "message": "Das aktuelle Browsertheme verwenden"
+    },
+    "optionsThemeIntegrationExplanation": {
+        "message": "Das aktuelle Browsertheme anstelle des Standard Themes mit hellen Farben verwenden."
+    },
+    "optionsTitle": {
+        "message": "Einstellungen"
+    },
+    "optionsWarnBeforeClosing": {
+        "message": "Warnen, bevor mehr als $COUNT$ Tabs geschlossen werden"
+    },
+    "searchPlaceholder": {
+        "message": "Tabs durchsuchen"
+    },
+    "settingsBtnTooltip": {
+        "message": "Einstellungen öffnen"
+    },
+    "unmuteTabButtonTooltip": {
+        "message": "Stummschaltung für Tab aufheben"
     }
 }

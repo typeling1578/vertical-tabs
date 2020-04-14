@@ -1,77 +1,78 @@
 {
-    "extensionDescription": {
-        "message": "Tab Center jest próbą rozwiązania problemów, które pojawiły się w wyniku tego jak ludzie używają kart (szczególnie zbyt wielu kart) i wprowadza wszechstronny interfejs użytkownika dla przyszłych innowacji. Pierwsza wersja tej wtyczki układa karty pionowo, a nie poziomo. Ta wtyczka jest mocno zainspirowana wspaniałą wtyczką VerticalTabs."
+    "allTabsLabel": {
+        "message": "Pokaż wszystkie karty…"
     },
     "browserActionTitle": {
-        "message": "Przełącz Tab Center Reborn",
-        "description": "Tooltip shown when hovering the toolbar button."
-    },
-    "newTabBtnLabel": {
-        "message": "Nowa karta",
-        "description": "Label of the New Tab button in the top menu."
-    },
-    "newTabBtnTooltip": {
-        "message": "Otwórz nową kartę"
-    },
-    "searchPlaceholder": {
-        "message": "Szukaj karty"
+        "message": "Przełącz Tab Center Reborn"
     },
     "closeTabButtonTooltip": {
         "message": "Zamknij kartę"
     },
-    "allTabsLabel": {
-        "message": "Pokaż wszystkie karty…",
-        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by a query."
-    },
-    "contextMenuReloadTab": {
-        "message": "Odśwież kartę",
-        "description": "Reload Tab context menu item label."
-    },
-    "contextMenuPinTab": {
-        "message": "Przypnij kartę",
-        "description": "Pin Tab context menu item label."
-    },
-    "contextMenuUnpinTab": {
-        "message": "Odepnij kartę",
-        "description": "Unpin Tab context menu item label."
-    },
-    "contextMenuMuteTab": {
-        "message": "Wycisz kartę",
-        "description": "Mute Tab context menu item label."
-    },
-    "contextMenuUnmuteTab": {
-        "message": "Włącz dźwięk",
-        "description": "Unmute Tab context menu item label."
+    "contextMenuCloseOtherTabs": {
+        "message": "Zamknij inne karty"
     },
     "contextMenuCloseTab": {
         "message": "Zamknij kartę"
     },
-    "contextMenuUndoCloseTab": {
-        "message": "Przywróć zamkniętą kartę"
+    "contextMenuCloseTabsAfter": {
+        "message": "Zamknij karty poniżej"
     },
     "contextMenuDuplicateTab": {
         "message": "Duplikuj kartę"
     },
+    "contextMenuMoveTab": {
+        "message": "Tabblad verplaatsen"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "Verplaatsen naar einde"
+    },
     "contextMenuMoveTabToNewWindow": {
         "message": "Przenieś do nowego okna"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "Verplaatsen naar begin"
+    },
+    "contextMenuMuteTab": {
+        "message": "Wycisz kartę"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "Opnieuw openen in Container"
+    },
+    "contextMenuPinTab": {
+        "message": "Przypnij kartę"
     },
     "contextMenuReloadAllTabs": {
         "message": "Odśwież wszystkie karty"
     },
-    "contextMenuCloseTabsAfter": {
-        "message": "Zamknij karty poniżej"
+    "contextMenuReloadTab": {
+        "message": "Odśwież kartę"
     },
-    "contextMenuCloseOtherTabs": {
-        "message": "Zamknij inne karty"
+    "contextMenuUndoCloseTab": {
+        "message": "Przywróć zamkniętą kartę"
     },
-    "settingsBtnTooltip": {
-        "message": "Otwórz ustawienia"
+    "contextMenuUnmuteTab": {
+        "message": "Włącz dźwięk"
     },
-    "optionsTitle": {
-        "message": "Ustawienia"
+    "contextMenuUnpinTab": {
+        "message": "Odepnij kartę"
+    },
+    "extensionDescription": {
+        "message": "Tab Center jest próbą rozwiązania problemów, które pojawiły się w wyniku tego jak ludzie używają kart (szczególnie zbyt wielu kart) i wprowadza wszechstronny interfejs użytkownika dla przyszłych innowacji. Pierwsza wersja tej wtyczki układa karty pionowo, a nie poziomo. Ta wtyczka jest mocno zainspirowana wspaniałą wtyczką VerticalTabs."
+    },
+    "newTabBtnLabel": {
+        "message": "Nowa karta"
+    },
+    "newTabBtnTooltip": {
+        "message": "Otwórz nową kartę"
+    },
+    "optionsAdvancedTitle": {
+        "message": "Zaawansowane"
     },
     "optionsCompactMode": {
         "message": "Tryb kompaktowy"
+    },
+    "optionsCompactModeDynamic": {
+        "message": "Dynamiczny"
     },
     "optionsCompactModeExplanation": {
         "message": "Tryb kompaktowy zmniejsza wysokość kart, aby pokazać ich więcej. W ustawieniu dynamicznym uaktywni się, kiedy zabraknie miejsca."
@@ -79,23 +80,11 @@
     "optionsCompactModeOff": {
         "message": "Wyłączony"
     },
-    "optionsCompactModeDynamic": {
-        "message": "Dynamiczny"
-    },
     "optionsCompactModeStrict": {
         "message": "Zawsze"
     },
     "optionsCompactPins": {
         "message": "Kompaktuj przypięte karty"
-    },
-    "optionsDarkTheme": {
-        "message": "Ciemny motyw"
-    },
-    "optionsThemeIntegration": {
-        "message": "Zintegruj z bieżącym motywem"
-    },
-    "optionsAdvancedTitle": {
-        "message": "Zaawansowane"
     },
     "optionsCustomCSS": {
         "message": "Niestandardowy arkusz stylów"
@@ -103,19 +92,22 @@
     "optionsCustomCSSWikiLink": {
         "message": "Strona Wiki o dostosowaniu CSS"
     },
+    "optionsDarkTheme": {
+        "message": "Ciemny motyw"
+    },
     "optionsSaveCustomCSS": {
         "message": "Zapisz CSS"
     },
-    "contextMenuOpenInContextualTab": {
-        "message": "Opnieuw openen in Container"
+    "optionsThemeIntegration": {
+        "message": "Zintegruj z bieżącym motywem"
     },
-    "contextMenuMoveTab": {
-        "message": "Tabblad verplaatsen"
+    "optionsTitle": {
+        "message": "Ustawienia"
     },
-    "contextMenuMoveTabToStart": {
-        "message": "Verplaatsen naar begin"
+    "searchPlaceholder": {
+        "message": "Szukaj karty"
     },
-    "contextMenuMoveTabToEnd": {
-        "message": "Verplaatsen naar einde"
+    "settingsBtnTooltip": {
+        "message": "Otwórz ustawienia"
     }
 }

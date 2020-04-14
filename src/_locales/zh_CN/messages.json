@@ -1,77 +1,105 @@
 {
-    "extensionDescription": {
-        "message": "将标签页移动到您浏览器的窗口边。"
+    "allTabsLabel": {
+        "message": "显示所有标签页…"
     },
     "browserActionTitle": {
-        "message": "开关 Tab Center Reborn",
-        "description": "Tooltip shown when hovering the toolbar button."
+        "message": "开关 Tab Center Reborn"
     },
-    "newTabBtnLabel": {
-        "message": "新标签页",
-        "description": "Label of the New Tab button in the top menu."
-    },
-    "newTabBtnTooltip": {
-        "message": "打开新标签页"
-    },
-    "searchPlaceholder": {
-        "message": "搜索标签页"
+    "closeAllTabsExceptWarning": {
+        "message": "您真的想关闭其它 $COUNT$ 个标签页吗？"
     },
     "closeTabButtonTooltip": {
         "message": "关闭标签页"
     },
-    "allTabsLabel": {
-        "message": "显示所有标签页…",
-        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by a query."
+    "closeTabsAfterWarning": {
+        "message": "您真的想关闭下方 $COUNT$ 个标签页吗？"
     },
-    "contextMenuReloadTab": {
-        "message": "重新载入标签页",
-        "description": "Reload Tab context menu item label."
-    },
-    "contextMenuPinTab": {
-        "message": "固定标签页",
-        "description": "Pin Tab context menu item label."
-    },
-    "contextMenuUnpinTab": {
-        "message": "取消固定标签页",
-        "description": "Unpin Tab context menu item label."
-    },
-    "contextMenuMuteTab": {
-        "message": "静音标签页",
-        "description": "Mute Tab context menu item label."
-    },
-    "contextMenuUnmuteTab": {
-        "message": "取消静音标签页",
-        "description": "Unmute Tab context menu item label."
-    },
-    "contextMenuCloseTab": {
-        "message": "关闭标签页"
-    },
-    "contextMenuUndoCloseTab": {
-        "message": "恢复关闭的标签页"
-    },
-    "contextMenuDuplicateTab": {
-        "message": "创建标签页副本"
-    },
-    "contextMenuMoveTabToNewWindow": {
-        "message": "移动到新窗口"
-    },
-    "contextMenuReloadAllTabs": {
-        "message": "重新载入全部标签页"
-    },
-    "contextMenuCloseTabsAfter": {
-        "message": "关闭下方标签页"
+    "closeTabsBeforeWarning": {
+        "message": "您真的想关闭上方 $COUNT$ 个标签页吗？"
     },
     "contextMenuCloseOtherTabs": {
         "message": "关闭其他标签页"
     },
-    "settingsBtnTooltip": {
-        "message": "打开设置"
+    "contextMenuCloseTab": {
+        "message": "关闭标签页"
     },
-    "optionsTitle": {
-        "message": "设置"
+    "contextMenuCloseTabs": {
+        "message": "关闭多个标签页"
+    },
+    "contextMenuCloseTabsAfter": {
+        "message": "关闭下方标签页"
+    },
+    "contextMenuCloseTabsBefore": {
+        "message": "关闭上方标签页"
+    },
+    "contextMenuDuplicateTab": {
+        "message": "创建标签页副本"
+    },
+    "contextMenuMoveTab": {
+        "message": "移动标签页"
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "移动到末尾"
+    },
+    "contextMenuMoveTabToNewWindow": {
+        "message": "移动到新窗口"
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "移动到开头"
+    },
+    "contextMenuMuteTab": {
+        "message": "静音标签页"
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "使用容器标签页打开"
+    },
+    "contextMenuPinTab": {
+        "message": "固定标签页"
+    },
+    "contextMenuReloadAllTabs": {
+        "message": "重新载入全部标签页"
+    },
+    "contextMenuReloadTab": {
+        "message": "重新载入标签页"
+    },
+    "contextMenuUndoCloseTab": {
+        "message": "恢复关闭的标签页"
+    },
+    "contextMenuUnloadTab": {
+        "message": "释放标签页"
+    },
+    "contextMenuUnmuteTab": {
+        "message": "取消静音标签页"
+    },
+    "contextMenuUnpinTab": {
+        "message": "取消固定标签页"
+    },
+    "extensionDescription": {
+        "message": "将标签页移动到您浏览器的窗口边。"
+    },
+    "extensionsLongDescription": {
+        "message": "Tab Center Reborn 是已停止开发的 <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\"> Tab Center Redux </a> 后继者，目的是为了提供一个简单、功能强大且集成性良好的垂直管理标签扩展。\n\n本扩展程序提供了一些设置，并且允许高级用户使用 CSS 代码来自定义外观。\n\n<ul>\n<li>使用 Shift + F1 来打开或关闭该扩展</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">如何隐藏顶部标签栏</a></li>\n</ul>\n\n您可以<a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">贡献翻译、文档代码或者汇报 Bug</a>！"
+    },
+    "newTabBtnLabel": {
+        "message": "新标签页"
+    },
+    "newTabBtnTooltip": {
+        "message": "打开新标签页"
+    },
+    "optionsAdvancedTitle": {
+        "message": "高级"
+    },
+    "optionsAppearanceTitle": {
+        "message": "外观"
+    },
+    "optionsBehaviorTitle": {
+        "message": "行为"
     },
     "optionsCompactMode": {
         "message": "紧凑模式"
+    },
+    "optionsCompactModeDynamic": {
+        "message": "动态"
     },
     "optionsCompactModeExplanation": {
         "message": "紧凑模式通过减少标签页的高度显示更多标签页。在动态模式下，它将在没有足够显示空间时自动激活。"
@@ -79,23 +107,11 @@
     "optionsCompactModeOff": {
         "message": "禁用"
     },
-    "optionsCompactModeDynamic": {
-        "message": "动态"
-    },
     "optionsCompactModeStrict": {
         "message": "始终"
     },
     "optionsCompactPins": {
         "message": "固定标签页仅显示网站图标"
-    },
-    "optionsDarkTheme": {
-        "message": "深色主题"
-    },
-    "optionsThemeIntegration": {
-        "message": "搭配自定义主题"
-    },
-    "optionsAdvancedTitle": {
-        "message": "高级"
     },
     "optionsCustomCSS": {
         "message": "自定义样式表"
@@ -103,95 +119,34 @@
     "optionsCustomCSSWikiLink": {
         "message": "CSS 调整大全"
     },
+    "optionsDarkTheme": {
+        "message": "深色主题"
+    },
     "optionsSaveCustomCSS": {
         "message": "保存 CSS"
     },
-    "contextMenuOpenInContextualTab": {
-        "message": "使用容器标签页打开"
-    },
-    "contextMenuMoveTab": {
-        "message": "移动标签页"
-    },
-    "contextMenuMoveTabToStart": {
-        "message": "移动到开头"
-    },
-    "contextMenuMoveTabToEnd": {
-        "message": "移动到末尾"
-    },
-    "optionsWarnBeforeClosing": {
-        "message": "在关闭 $COUNT$ 个标签页前警告我",
-        "description": "Option in options page.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
-    },
-    "optionsBehaviorTitle": {
-        "message": "行为",
-        "description": "Section in options page."
-    },
-    "optionsThemeIntegrationExplanation": {
-        "message": "与您自定义的主题集成。如果您换回了 Firefox 的默认主题，需要重新打开侧边栏。",
-        "description": "Explanation for the Theme Integration option in the options page."
-    },
     "optionsSwitchLastActiveTab": {
-        "message": "切换到上一次活动的标签页",
-        "description": "Option in options page."
+        "message": "切换到上一次活动的标签页"
     },
     "optionsSwitchLastActiveTabExplanation": {
-        "message": "点击当前活动标签页时切换到上一个活动的标签页。",
-        "description": "Explanation for the Compact Mode option in options page."
+        "message": "点击当前活动标签页时切换到上一个活动的标签页。"
     },
-    "optionsAppearanceTitle": {
-        "message": "外观",
-        "description": "Section in options page."
+    "optionsThemeIntegration": {
+        "message": "搭配自定义主题"
     },
-    "closeAllTabsExceptWarning": {
-        "message": "您真的想关闭其它 $COUNT$ 个标签页吗？",
-        "description": "Warning shown when trying to close more than 4 tabs when closing all tabs except one.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
+    "optionsThemeIntegrationExplanation": {
+        "message": "与您自定义的主题集成。如果您换回了 Firefox 的默认主题，需要重新打开侧边栏。"
     },
-    "closeTabsAfterWarning": {
-        "message": "您真的想关闭下方 $COUNT$ 个标签页吗？",
-        "description": "Warning shown when trying to close more than 4 tabs when closing tabs after another.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
+    "optionsTitle": {
+        "message": "设置"
     },
-    "closeTabsBeforeWarning": {
-        "message": "您真的想关闭上方 $COUNT$ 个标签页吗？",
-        "description": "Warning shown when trying to close more than 4 tabs when closing tabs before another.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
+    "optionsWarnBeforeClosing": {
+        "message": "在关闭 $COUNT$ 个标签页前警告我"
     },
-    "contextMenuCloseTabsBefore": {
-        "message": "关闭上方标签页",
-        "description": "Context menu item label."
+    "searchPlaceholder": {
+        "message": "搜索标签页"
     },
-    "contextMenuCloseTabs": {
-        "message": "关闭多个标签页",
-        "description": "Context Menu item label"
-    },
-    "contextMenuUnloadTab": {
-        "message": "释放标签页",
-        "description": "Context menu item label."
-    },
-    "extensionsLongDescription": {
-        "message": "Tab Center Reborn 是已停止开发的 <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\"> Tab Center Redux </a> 后继者，目的是为了提供一个简单、功能强大且集成性良好的垂直管理标签扩展。\n\n本扩展程序提供了一些设置，并且允许高级用户使用 CSS 代码来自定义外观。\n\n<ul>\n<li>使用 Shift + F1 来打开或关闭该扩展</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">如何隐藏顶部标签栏</a></li>\n</ul>\n\n您可以<a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">贡献翻译、文档代码或者汇报 Bug</a>！",
-        "description": "Long description displayed on addons.mozilla.org."
+    "settingsBtnTooltip": {
+        "message": "打开设置"
     }
 }

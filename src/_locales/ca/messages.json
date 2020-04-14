@@ -1,250 +1,179 @@
 {
-    "extensionDescription": {
-        "message": "Barra de pestanyes vertical simple i potent",
-        "description": "Extension description shown in the options page and as short description on addons.mozilla.org."
-    },
-    "extensionsLongDescription": {
-        "message": "Tab Center Reborn és la continuació de <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\"> Tab Center Redux </a> per proporcionar una forma senzilla, potent i ben integrada per gestionar pestanyes verticalment.\n\nL’extensió proporciona un bon grapat de configuracions i permet als usuaris poder personalitzar la seva aparença completament amb codi CSS.\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home\n\nPot interessar-vos especialment amagar la barra de pestanyes superior:\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\n\n\nCaracterístiques:\n- Totes les funcions de la barra de pestanyes del Firefox (fixació, duplicació, moviment a l'inici / finalització, tancament de pestanyes després, etc.)\n- Opcions de \"Baixar pestanya\" i \"Tancar pestanyes abans\" per gestionar moltes pestanyes\n- Una notificació us permet desfer si “Tancar pestanyes abans”, “Tancar pestanyes després” o “Tancar altres pestanyes” tanquen més de 5 pestanyes.\n- Sembla i actua autòcton, té animacions (es pot desactivar)\n- Funciona amb i utilitza contenidors: https://support.mozilla.org/en-US/kb/containers\n- Adapteu-vos als temes complets del Firefox (els temes més senzills no proporcionen prou colors per treballar)\n- Sincronitza la vostra configuració amb Firefox Sync\n\nDreceres generals:\n- Maj + F1: obre o tanca la barra lateral\n- Majúscul + F2: passa a la darrera pestanya activa\nTingueu en compte que podeu configurar aquests: https://support.mozilla.org/en-US/kb/manage-extension-shortcuts-firefox\n\nDreceres quan feu clic al botó de la fitxa nou / nom del contenidor al menú contextual de la fitxa nova (feu clic amb el botó dret):\n- Ctrl + clic: s’obre després de la pestanya actual si el valor predeterminat és al final (i s’obre al final si el predeterminat és després de la pestanya actual)\n- Maj + clic: obre una nova finestra\n- Ctrl + Maj + clic: obre una nova finestra privada (si Tab Center Reborn es pot executar en finestres privades)\n\n\nPodeu contribuir reportant problemes, traduint, afegint documentació o desenvolupant-vos.\nhttps://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\n\nPermisos utilitzats:\n- Accediu a les vostres dades per a tots els llocs web: per utilitzar contenidors.\n- Llegiu i modifiqueu les adreces d'interès: no obriu una finestra nova quan s'hagi deixat caure una pestanya fora de la barra lateral, sinó a la barra d'adreces d'interès.\n- Llegir i modificar la configuració del navegador: per seguir la configuració i el tema del Firefox.\n- Mostra les notificacions: per mostrar una notificació quan tanqueu moltes pestanyes, deixant-vos desfer.\n- Accediu a les pestanyes tancades recentment: per canviar a la darrera pestanya.\n- Accedir a les pestanyes del navegador: per obtenir URL, títol i preferits de pestanyes.\n- Accediu a l’activitat del navegador durant la navegació: per activar una animació addicional quan una pàgina hagi acabat de carregar els seus recursos.",
-        "description": "Long description displayed on addons.mozilla.org. Don’t forget to change links for the current language. You can copy translated permissions from your language version of https://support.mozilla.org/en-US/kb/permission-request-messages-firefox-extensions."
-    },
-    "browserActionTitle": {
-        "message": "Activar/desactivar Tab Center Reborn",
-        "description": "Tooltip shown when hovering the toolbar button."
-    },
-    "newTabBtnTooltip": {
-        "message": "Obre una pestanya nova",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=74421. Tooltip of the New Tab button in the top menu."
-    },
-    "searchPlaceholder": {
-        "message": "Cercar pestanyes",
-        "description": "Placehorder of the filter bar in the top menu."
-    },
-    "settingsBtnTooltip": {
-        "message": "Obrir la configuració",
-        "description": "Tooltip of the settings button in the top menu."
-    },
-    "newTabContextMenuOpenAtEnd": {
-        "message": "Al &final",
-        "description": "New Tab context menu item."
-    },
-    "newTabContextMenuOpneAfterCurrent": {
-        "message": "&Al costat de la pestanya actual",
-        "description": "New Tab context menu item."
-    },
-    "newTabContextMenuOpenInWindow": {
-        "message": "Nova finestra",
-        "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
-    },
-    "newTabContextMenuOpenInPrivateWindow": {
-        "message": "Finestra nova i privada",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
-    },
-    "muteTabButtonTooltip": {
-        "message": "Silencia la pestanya",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
-    },
-    "unmuteTabButtonTooltip": {
-        "message": "No silenciïs la pestanya",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
-    },
-    "closeTabButtonTooltip": {
-        "message": "Tanca la pestanya",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197248. Tooltip of the close button on tabs."
+    "OptionsAnimations": {
+        "message": "Animacions"
     },
     "allTabsLabel": {
-        "message": "Mostrar totes les pestanyes …",
-        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by a query."
+        "message": "Mostrar totes les pestanyes …"
     },
-    "contextMenuReloadTab": {
-        "message": "&Torna a carregar la pestanya",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197237. Context menu item label."
+    "browserActionTitle": {
+        "message": "Activar/desactivar Tab Center Reborn"
     },
-    "contextMenuPinTab": {
-        "message": "&Fixa la pestanya",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197249. Context menu item label."
-    },
-    "contextMenuUnpinTab": {
-        "message": "No fixis la pestanya",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197266. Context menu item label."
-    },
-    "contextMenuMuteTab": {
-        "message": "&Silencia la pestanya",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Context menu item label and tooltip of the audible icon on tabs."
-    },
-    "contextMenuUnmuteTab": {
-        "message": "No silenciïs la pestanya",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Context menu item label and tooltip of the unmute icon on tabs."
-    },
-    "contextMenuDuplicateTab": {
-        "message": "Duplica la pestanya",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197263. Context menu item label."
-    },
-    "contextMenuUnloadTab": {
-        "message": "Des&carregar la pestanya",
-        "description": "Context menu item label."
-    },
-    "contextMenuOpenInContextualTab": {
-        "message": "Torna a obrir en un contenidor",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197234. Context menu item label."
-    },
-    "contextMenuMoveTab": {
-        "message": "Mou la pestanya",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197269. Context menu item label."
-    },
-    "contextMenuMoveTabToStart": {
-        "message": "Moure a l'&inici",
-        "description": "Context menu item label."
-    },
-    "contextMenuMoveTabToEnd": {
-        "message": "Moure cap al &final",
-        "description": "Context menu item label."
-    },
-    "contextMenuMoveTabToNewWindow": {
-        "message": "Mou a una &finestra nova",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197261. Context menu item label."
-    },
-    "contextMenuCloseTabs": {
-        "message": "Tanca les pestanyes",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197250. Context Menu item label"
-    },
-    "contextMenuCloseTabsBefore": {
-        "message": "Tancar les pestanyes anteriors",
-        "description": "Context menu item label."
-    },
-    "contextMenuCloseTabsAfter": {
-        "message": "Tancar les pestanyes de després",
-        "description": "Context menu item label."
+    "closeTabButtonTooltip": {
+        "message": "Tanca la pestanya"
     },
     "contextMenuCloseOtherTabs": {
-        "message": "Tanca les altres pestanyes",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197270. Context menu item label."
-    },
-    "contextMenuUndoCloseTab": {
-        "message": "Desfés el tancament de la pestanya",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197236. Context menu item label."
+        "message": "Tanca les altres pestanyes"
     },
     "contextMenuCloseTab": {
-        "message": "Tanca la pestanya",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197248. Context menu item label."
+        "message": "Tanca la pestanya"
     },
-    "optionsAppearanceTitle": {
-        "message": "Aparença",
-        "description": "Section in options page."
+    "contextMenuCloseTabs": {
+        "message": "Tanca les pestanyes"
     },
-    "optionsSwitchLastActiveTabExplanation": {
-        "message": "Clica la pestanya activa per canviar a la última activa.",
-        "description": "Explanation for the Compact Mode option in options page."
+    "contextMenuCloseTabsAfter": {
+        "message": "Tancar les pestanyes de després"
     },
-    "OptionsAnimations": {
-        "message": "Animacions",
-        "description": "Option in options page."
+    "contextMenuCloseTabsBefore": {
+        "message": "Tancar les pestanyes anteriors"
     },
-    "optionsCompactMode": {
-        "message": "Mode compacte",
-        "description": "Option in options page."
+    "contextMenuDuplicateTab": {
+        "message": "Duplica la pestanya"
     },
-    "optionsCompactModeExplanation": {
-        "message": "El mode compacte redueix la alçada de les pestanyes per mostrar més d'elles. En la configuració dinàmica, s'activarà quan no quedi espai.",
-        "description": "Explanation for the Compact Mode option in options page."
+    "contextMenuMoveTab": {
+        "message": "Mou la pestanya"
     },
-    "optionsCompactModeOff": {
-        "message": "Desactivat",
-        "description": "Possible value for Compact Mode option in options page."
+    "contextMenuMoveTabToEnd": {
+        "message": "Moure cap al &final"
     },
-    "optionsCompactModeDynamic": {
-        "message": "Dinàmic",
-        "description": "Possible value for Compact Mode option in options page."
+    "contextMenuMoveTabToNewWindow": {
+        "message": "Mou a una &finestra nova"
     },
-    "optionsCompactModeStrict": {
-        "message": "Activat",
-        "description": "Possible value for Compact Mode option in options page."
+    "contextMenuMoveTabToStart": {
+        "message": "Moure a l'&inici"
     },
-    "optionsSwitchLastActiveTab": {
-        "message": "Canviar a la darrera pestanya activa",
-        "description": "Option in options page."
+    "contextMenuMuteTab": {
+        "message": "&Silencia la pestanya"
     },
-    "optionsCompactPins": {
-        "message": "Pestanyes sols amb Favicon",
-        "description": "Option in options page."
+    "contextMenuOpenInContextualTab": {
+        "message": "Torna a obrir en un contenidor"
     },
-    "optionsThemeIntegration": {
-        "message": "Usar el tema actual del navegador",
-        "description": "Option in options page."
+    "contextMenuPinTab": {
+        "message": "&Fixa la pestanya"
     },
-    "optionsThemeIntegrationExplanation": {
-        "message": "Usar el tema actual del navegador en comptes del tema lleuger base.",
-        "description": "Explanation for the Theme Integration option in the options page."
+    "contextMenuReloadTab": {
+        "message": "&Torna a carregar la pestanya"
     },
-    "optionsBehaviorTitle": {
-        "message": "Comportament",
-        "description": "Section in options page."
+    "contextMenuUndoCloseTab": {
+        "message": "Desfés el tancament de la pestanya"
     },
-    "optionsNotifyClosingManyTabs": {
-        "message": "Notificar quan es tanquin moltes pestanyes",
-        "description": "Option in options page."
+    "contextMenuUnloadTab": {
+        "message": "Des&carregar la pestanya"
     },
-    "optionsNotifyClosingManyTabsExplanation": {
-        "message": "Mostrar una notificació per permetre't desfer quan tanques més de $COUNT$ pestanyes.",
-        "description": "Explanation for the Notify when closing many tabs option in options page.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
+    "contextMenuUnmuteTab": {
+        "message": "No silenciïs la pestanya"
     },
-    "optionsAdvancedTitle": {
-        "message": "Avançat",
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=176300. Section in options page."
+    "contextMenuUnpinTab": {
+        "message": "No fixis la pestanya"
     },
-    "optionsCustomCSS": {
-        "message": "Full d'estils personalitzat",
-        "description": "Option in options page."
+    "extensionDescription": {
+        "message": "Barra de pestanyes vertical simple i potent"
     },
-    "optionsCustomCSSChangelogLink": {
-        "message": "Consulteu les novetats per informar-vos dels canvis i de la seva compatibilitat",
-        "description": "Text for a link to the changelog."
+    "extensionsLongDescription": {
+        "message": "Tab Center Reborn és la continuació de <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\"> Tab Center Redux </a> per proporcionar una forma senzilla, potent i ben integrada per gestionar pestanyes verticalment.\n\nL’extensió proporciona un bon grapat de configuracions i permet als usuaris poder personalitzar la seva aparença completament amb codi CSS.\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home\n\nPot interessar-vos especialment amagar la barra de pestanyes superior:\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\n\n\nCaracterístiques:\n- Totes les funcions de la barra de pestanyes del Firefox (fixació, duplicació, moviment a l'inici / finalització, tancament de pestanyes després, etc.)\n- Opcions de \"Baixar pestanya\" i \"Tancar pestanyes abans\" per gestionar moltes pestanyes\n- Una notificació us permet desfer si “Tancar pestanyes abans”, “Tancar pestanyes després” o “Tancar altres pestanyes” tanquen més de 5 pestanyes.\n- Sembla i actua autòcton, té animacions (es pot desactivar)\n- Funciona amb i utilitza contenidors: https://support.mozilla.org/en-US/kb/containers\n- Adapteu-vos als temes complets del Firefox (els temes més senzills no proporcionen prou colors per treballar)\n- Sincronitza la vostra configuració amb Firefox Sync\n\nDreceres generals:\n- Maj + F1: obre o tanca la barra lateral\n- Majúscul + F2: passa a la darrera pestanya activa\nTingueu en compte que podeu configurar aquests: https://support.mozilla.org/en-US/kb/manage-extension-shortcuts-firefox\n\nDreceres quan feu clic al botó de la fitxa nou / nom del contenidor al menú contextual de la fitxa nova (feu clic amb el botó dret):\n- Ctrl + clic: s’obre després de la pestanya actual si el valor predeterminat és al final (i s’obre al final si el predeterminat és després de la pestanya actual)\n- Maj + clic: obre una nova finestra\n- Ctrl + Maj + clic: obre una nova finestra privada (si Tab Center Reborn es pot executar en finestres privades)\n\n\nPodeu contribuir reportant problemes, traduint, afegint documentació o desenvolupant-vos.\nhttps://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\n\nPermisos utilitzats:\n- Accediu a les vostres dades per a tots els llocs web: per utilitzar contenidors.\n- Llegiu i modifiqueu les adreces d'interès: no obriu una finestra nova quan s'hagi deixat caure una pestanya fora de la barra lateral, sinó a la barra d'adreces d'interès.\n- Llegir i modificar la configuració del navegador: per seguir la configuració i el tema del Firefox.\n- Mostra les notificacions: per mostrar una notificació quan tanqueu moltes pestanyes, deixant-vos desfer.\n- Accediu a les pestanyes tancades recentment: per canviar a la darrera pestanya.\n- Accedir a les pestanyes del navegador: per obtenir URL, títol i preferits de pestanyes.\n- Accediu a l’activitat del navegador durant la navegació: per activar una animació addicional quan una pàgina hagi acabat de carregar els seus recursos."
     },
-    "optionsCustomCSSWikiLink": {
-        "message": "Article wiki de trucs CSS",
-        "description": "Text for a link to the wiki."
+    "muteTabButtonTooltip": {
+        "message": "Silencia la pestanya"
     },
-    "optionsSaveCustomCSS": {
-        "message": "Desar CSS",
-        "description": "Option in options page."
+    "newTabBtnTooltip": {
+        "message": "Obre una pestanya nova"
     },
-    "notificationDeletedTitle": {
-        "message": "$COUNT$ pestanyes tancades",
-        "description": "Title of the notification when deleting many tabs.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": "5"
-            }
-        }
+    "newTabContextMenuOpenAtEnd": {
+        "message": "Al &final"
+    },
+    "newTabContextMenuOpenInPrivateWindow": {
+        "message": "Finestra nova i privada"
+    },
+    "newTabContextMenuOpenInWindow": {
+        "message": "Nova finestra"
+    },
+    "newTabContextMenuOpneAfterCurrent": {
+        "message": "&Al costat de la pestanya actual"
     },
     "notificationDeletedMessage": {
-        "message": "Clica sobre la notificació per desfer.",
-        "description": "Title of the notification when deleting many tabs."
+        "message": "Clica sobre la notificació per desfer."
     },
-    "optionsSwitchByScrollingWithCtrlExplanation": {
-        "message": "Activeu la pestanya següent o l'anterior en lloc de desplaçar-vos en determinades circumstàncies.",
-        "description": "Explanation for the Switch by scrolling options in options page."
+    "notificationDeletedTitle": {
+        "message": "$COUNT$ pestanyes tancades"
     },
-    "optionsSwitchByScrollingNever": {
-        "message": "Mai",
-        "description": "Option in options page"
+    "optionsAdvancedTitle": {
+        "message": "Avançat"
     },
-    "optionsSwitchByScrollingAlways": {
-        "message": "Sempre",
-        "description": "Option in options page"
+    "optionsAppearanceTitle": {
+        "message": "Aparença"
     },
-    "optionsSwitchByScrollingWithCtrl": {
-        "message": "Amb Ctrl",
-        "description": "Option in options page"
+    "optionsBehaviorTitle": {
+        "message": "Comportament"
+    },
+    "optionsCompactMode": {
+        "message": "Mode compacte"
+    },
+    "optionsCompactModeDynamic": {
+        "message": "Dinàmic"
+    },
+    "optionsCompactModeExplanation": {
+        "message": "El mode compacte redueix la alçada de les pestanyes per mostrar més d'elles. En la configuració dinàmica, s'activarà quan no quedi espai."
+    },
+    "optionsCompactModeOff": {
+        "message": "Desactivat"
+    },
+    "optionsCompactModeStrict": {
+        "message": "Activat"
+    },
+    "optionsCompactPins": {
+        "message": "Pestanyes sols amb Favicon"
+    },
+    "optionsCustomCSS": {
+        "message": "Full d'estils personalitzat"
+    },
+    "optionsCustomCSSChangelogLink": {
+        "message": "Consulteu les novetats per informar-vos dels canvis i de la seva compatibilitat"
+    },
+    "optionsCustomCSSWikiLink": {
+        "message": "Article wiki de trucs CSS"
+    },
+    "optionsNotifyClosingManyTabs": {
+        "message": "Notificar quan es tanquin moltes pestanyes"
+    },
+    "optionsNotifyClosingManyTabsExplanation": {
+        "message": "Mostrar una notificació per permetre't desfer quan tanques més de $COUNT$ pestanyes."
+    },
+    "optionsSaveCustomCSS": {
+        "message": "Desar CSS"
     },
     "optionsSwitchByScrolling": {
-        "message": "Canvieu la fitxa activa fent desplaçament",
-        "description": "Option in options page"
+        "message": "Canvieu la fitxa activa fent desplaçament"
+    },
+    "optionsSwitchByScrollingAlways": {
+        "message": "Sempre"
+    },
+    "optionsSwitchByScrollingNever": {
+        "message": "Mai"
+    },
+    "optionsSwitchByScrollingWithCtrl": {
+        "message": "Amb Ctrl"
+    },
+    "optionsSwitchByScrollingWithCtrlExplanation": {
+        "message": "Activeu la pestanya següent o l'anterior en lloc de desplaçar-vos en determinades circumstàncies."
+    },
+    "optionsSwitchLastActiveTab": {
+        "message": "Canviar a la darrera pestanya activa"
+    },
+    "optionsSwitchLastActiveTabExplanation": {
+        "message": "Clica la pestanya activa per canviar a la última activa."
+    },
+    "optionsThemeIntegration": {
+        "message": "Usar el tema actual del navegador"
+    },
+    "optionsThemeIntegrationExplanation": {
+        "message": "Usar el tema actual del navegador en comptes del tema lleuger base."
+    },
+    "searchPlaceholder": {
+        "message": "Cercar pestanyes"
+    },
+    "settingsBtnTooltip": {
+        "message": "Obrir la configuració"
+    },
+    "unmuteTabButtonTooltip": {
+        "message": "No silenciïs la pestanya"
     }
 }
