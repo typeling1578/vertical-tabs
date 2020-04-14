@@ -9,7 +9,7 @@ Search in the [list of open issues](https://framagit.org/ariasuni/tabcenter-rebo
 
 ## Translating
 
-Choose your language and [start translating and reviewing](https://translate.funkwhale.audio/projects/tabcenter-reborn/interface/). Can’t find your own language? [Start a new translation](https://translate.funkwhale.audio/new-lang/tabcenter-reborn/interface/)!
+Choose your language and [start translating and reviewing](https://translate.funkwhale.audio/engage/tabcenter-reborn/). Can’t find your own language? [Start a new translation](https://translate.funkwhale.audio/new-lang/tabcenter-reborn/interface/)!
 
 If a string has a comment starting with “Taken from Firefox”, follow the link then click on “LOCALES”, and copy the translation matching your language (if it is present).
 
