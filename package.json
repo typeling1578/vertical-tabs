@@ -7,11 +7,11 @@
     "lint-stylelint": "stylelint ./src/**/*.css",
     "lint": "npm run lint-prettier && npm run lint-eslint && npm run lint-stylelint",
     "watch": "webpack-cli --mode development --watch --devtool=inline-source-map",
-    "webext": "web-ext run --start-url 'about:debugging#/runtime/this-firefox' -s src",
+    "webext": "web-ext run --start-url 'about:debugging#/runtime/this-firefox' -s dist",
     "dev": "concurrently --kill-others --raw -s first 'yarn run webext' 'yarn run watch'",
     "webext-lint": "web-ext lint -s src/ -i sidebar/dist",
-    "build": "webpack-cli --mode production && web-ext build -s src/ -i 'background' '**/*.js' '!dist/*' --overwrite-dest",
-    "build-source": "tar cavf web-ext-artifacts/tabcenter-reborn.tar.gz -X .gitignore -X .tarignore ."
+    "build": "webpack-cli --mode production && web-ext build -s dist/ --overwrite-dest",
+    "build-source": "zip -r web-ext-artifacts/source.zip src package.json webpack.config.js yarn.lock"
   },
   "prettier": {
     "printWidth": 100,
@@ -70,6 +70,8 @@
   "homepage": "https://framagit.org/ariasuni/tabcenter-reborn#readme",
   "devDependencies": {
     "concurrently": "^5.1.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "cssnano": "^4.1.10",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "husky": "^4.2.3",
@@ -77,6 +79,7 @@
     "prettier": "^2.0.2",
     "stylelint": "^13.3.0",
     "stylelint-config-recommended": "^3.0.0",
+    "svg-inline-loader": "^0.8.2",
     "web-ext": "^4.1.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
@@ -84,6 +87,7 @@
   "dependencies": {
     "@ctrl/tinycolor": "^2.6.1",
     "fuzzysort": "^1.1.4",
+    "photon-colors": "^3.3.2",
     "smooth-scroll-into-view-if-needed": "^1.1.27"
   }
 }

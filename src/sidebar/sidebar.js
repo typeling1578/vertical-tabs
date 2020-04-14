@@ -1,3 +1,4 @@
+"use strict";
 /* global browser */
 
 import Sidetab from "./sidetab.js";
@@ -284,6 +285,9 @@ export default class Sidebar {
     );
   }
 }
+
+const sidebar = new Sidebar();
+sidebar.init();
 
 function isThemeReadable(themeColors) {
   // if a value is not defined, we use its default value to check if it is actually readable

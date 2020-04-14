@@ -1,4 +1,4 @@
-@import url("lib/photon-colors.css");
+@import url("./photon-colors.css");
 
 body > * {
   visibility: hidden;
