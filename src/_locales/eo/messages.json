@@ -159,7 +159,7 @@
         "message": "Sciigi kiam multaj langetoj fermiĝas"
     },
     "optionsNotifyClosingManyTabsExplanation": {
-        "message": "Montri sciigon por ke vi povas malfari kiam pli ol $COUNT langetoj fermiĝis."
+        "message": "Montri sciigon por ke vi povus malfari kiam pli ol $COUNT$ langetoj fermiĝis."
     },
     "optionsSaveCustomCSS": {
         "message": "Konservi la stilfolion"
@@ -198,12 +198,16 @@
         "message": "Averti antaŭ ol fermi pli ol $COUNT langetojn"
     },
     "searchPlaceholder": {
-        "message": "Serĉi langetojn"
+        "message": "Filtri langetojn"
     },
     "settingsBtnTooltip": {
         "message": "Malfermi agordojn"
     },
     "unmuteTabButtonTooltip": {
         "message": "Malsilentigi langeton"
+    },
+    "contextMenuNoContainer": {
+        "message": "&Neniu ingo",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153932 and https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153933. Context menu item label."
     }
 }
