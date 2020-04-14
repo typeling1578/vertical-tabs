@@ -109,5 +109,9 @@
     },
     "settingsBtnTooltip": {
         "message": "設定を変更します"
+    },
+    "contextMenuNoContainer": {
+        "message": "コンテナーなし (&N)",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153932 and https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153933. Context menu item label."
     }
 }
