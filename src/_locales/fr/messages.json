@@ -198,12 +198,16 @@
         "message": "Avertir avant de fermer plus que $COUNT onglets"
     },
     "searchPlaceholder": {
-        "message": "Rechercher dans les onglets"
+        "message": "Filtrer les onglets"
     },
     "settingsBtnTooltip": {
         "message": "Ouvrir les paramètres"
     },
     "unmuteTabButtonTooltip": {
         "message": "Réactiver le son de l’onglet"
+    },
+    "contextMenuNoContainer": {
+        "message": "&Sans contexte",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153932. Context menu item label."
     }
 }
