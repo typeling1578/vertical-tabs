@@ -54,3 +54,7 @@ export function extractNew(changes) {
   }
   return values;
 }
+
+export function svgToDataUrl(svg, color) {
+  return `data:image/svg+xml,${encodeURIComponent(svg.replace("context-fill", color))}`;
+}

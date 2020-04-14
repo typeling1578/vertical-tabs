@@ -1,6 +1,8 @@
 "use strict";
 /* global browser */
 
+import { svgToDataUrl } from "../common.js";
+
 class Background {
   constructor() {
     this.updateTheme();
@@ -87,17 +89,12 @@ class Background {
 
 new Background();
 
+// src/tabcenter.svg but a bit reduced and adapted
+const TABCENTER_ICON =
+  '<svg xmlns="http://www.w3.org/2000/svg" height="128" width="128" viewBox="0 0 16 16"><style>g{fill:context-fill}</style><g><path d="M3,1h10a3,3,0,0,1,3,3v8a3,3,0,0,1,-3,3h-10a3,3,0,0,1,-3,-3v-8a3,3,0,0,1,3,-3Z M3,3h 4a1,1,0,0,1,1,1v8a1,1,0,0,1,-1,1h -4a1,1,0,0,1,-1,-1v-8a1,1,0,0,1,1,-1Z" fill-rule="evenodd" /><circle cx="3.5" cy="4.5" r=".6" /><circle cx="3.5" cy="6.5" r=".6" /><circle cx="3.5" cy="8.5" r=".6" /><rect x="4.75" y="4" height="1" width="2.25" rx=".5" ry=".5" /><rect x="4.75" y="6" height="1" width="2.25" rx=".5" ry=".5" /><rect x="4.75" y="8" height="1" width="2.25" rx=".5" ry=".5" /></g></svg>';
+
 // Toolbar icon takes a different color than the sidebar header icon
 function setButtonsActionColor(browserColor, sidebarColor) {
-  // src/tabcenter.svg but a little reduced
-  const svgStr =
-    "data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' height='128' width='128' viewBox='0 0 16 16'%3E%3Cdefs%3E%3Csymbol id='shape'%3E%3Cpath d='M3,1h10a3,3,0,0,1,3,3v8a3,3,0,0,1,-3,3h-10a3,3,0,0,1,-3,-3v-8a3,3,0,0,1,3,-3Z M3,3h 4a1,1,0,0,1,1,1v8a1,1,0,0,1,-1,1h -4a1,1,0,0,1,-1,-1v-8a1,1,0,0,1,1,-1Z' fill-rule='evenodd' /%3E%3Ccircle cx='3.5' cy='4.5' r='.6' /%3E%3Ccircle cx='3.5' cy='6.5' r='.6' /%3E%3Ccircle cx='3.5' cy='8.5' r='.6' /%3E%3Crect x='4.75' y='4' height='1' width='2.25' rx='.5' ry='.5' /%3E%3Crect x='4.75' y='6' height='1' width='2.25' rx='.5' ry='.5' /%3E%3Crect x='4.75' y='8' height='1' width='2.25' rx='.5' ry='.5' /%3E%3C/symbol%3E%3C/defs%3E%3Cuse class='theme' id='default' fill='$fillcolor' href='%23shape' /%3E%3C/svg%3E%0A";
-
-  browser.browserAction.setIcon({
-    path: svgStr.replace("$fillcolor", browserColor.replace("#", "%23")),
-  });
-
-  browser.sidebarAction.setIcon({
-    path: svgStr.replace("$fillcolor", sidebarColor.replace("#", "%23")),
-  });
+  browser.browserAction.setIcon({ path: svgToDataUrl(TABCENTER_ICON, browserColor) });
+  browser.sidebarAction.setIcon({ path: svgToDataUrl(TABCENTER_ICON, sidebarColor) });
 }

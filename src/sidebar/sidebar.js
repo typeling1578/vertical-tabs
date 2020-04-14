@@ -3,7 +3,8 @@
 import Sidetab from "./sidetab.js";
 import Tablist from "./tablist.js";
 import Topmenu from "./topmenu.js";
-import { DEFAULT_PREFS, extractNew } from "../common.js";
+import { DEFAULT_PREFS, extractNew, svgToDataUrl } from "../common.js";
+import { IDENTITY_ICON_TEMPLATES } from "./identity-icon-templates.js";
 
 import { TinyColor, readability } from "@ctrl/tinycolor";
 
@@ -33,6 +34,7 @@ const CSS_TO_THEME_PROPS = {
   "--input-selected-text": ["toolbar_field_highlight_text", "toolbar_field_text"],
   "--input-text": ["toolbar_field_text", "bookmark_text"],
   "--input-text-focus": ["toolbar_field_text_focus", "toolbar_field_text"],
+  "--identity-color-toolbar": ["toolbar_field_text"],
 };
 
 export default class Sidebar {
@@ -253,11 +255,22 @@ export default class Sidebar {
       items.push({
         id: identity.cookieStoreId,
         title: identity.name,
-        icons: { "16": `/sidebar/img/identities/${identity.icon}.svg#${identity.color}` },
+        icons: this._getContextualIdentityIcons(identity),
         visible: cookieStoreId !== identity.cookieStoreId,
       });
     }
     return items;
+  }
+
+  _getContextualIdentityIcons(identity) {
+    const template = IDENTITY_ICON_TEMPLATES[identity.icon];
+    if (template === undefined) {
+      return null; // icon is not displayed if it’s not yet supported
+    }
+    if (identity.color === "toolbar") {
+      identity.colorCode = this._theme["toolbar_field_text"] || identity.colorCode;
+    }
+    return { "16": svgToDataUrl(template, identity.colorCode) };
   }
 
   _updateContextualIdentities() {

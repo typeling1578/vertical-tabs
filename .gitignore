@@ -2,3 +2,5 @@
 node_modules/
 **/*.bundle.js
 web-ext-artifacts
+tools/*
+!tools/*.py

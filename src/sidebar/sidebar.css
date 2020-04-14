@@ -37,6 +37,8 @@ body.loaded > * {
   --tab-hover-background: hsla(0, 0%, 50%, 0.2);
   --tab-separator: rgba(0, 0, 0, 0.3);
   --tab-text: var(--grey-90);
+
+  --identity-color-toolbar: #7c7c7d;
 }
 
 body.incognito {
@@ -119,6 +121,10 @@ img,
 
 [data-identity-color="purple"] {
   --identity-color: var(--purple-50);
+}
+
+[data-identity-color="toolbar"] {
+  --identity-color: var(--identity-color-toolbar);
 }
 
 .topmenu-button {
