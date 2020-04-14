@@ -109,5 +109,9 @@
     },
     "settingsBtnTooltip": {
         "message": "Otevřít nastavení"
+    },
+    "contextMenuNoContainer": {
+        "message": "Žá&dný kontejner",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153932 and https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153933. Context menu item label."
     }
 }
