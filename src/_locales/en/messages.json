@@ -60,7 +60,7 @@
         "message": "&Mute Tab"
     },
     "contextMenuNoContainer": {
-        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153932. Context menu item label.",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153932 and https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153933. Context menu item label.",
         "message": "&No Container"
     },
     "contextMenuOpenInContextualTab": {
