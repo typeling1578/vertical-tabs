@@ -20,12 +20,6 @@
     "contextMenuCloseTabs": {
         "message": "Tampar los onglets"
     },
-    "contextMenuCloseTabsAfter": {
-        "message": ""
-    },
-    "contextMenuCloseTabsBefore": {
-        "message": ""
-    },
     "contextMenuDuplicateTab": {
         "message": "Duplicar l’onglet"
     },
@@ -56,17 +50,11 @@
     "contextMenuUndoCloseTab": {
         "message": "Anullar la tampadura de l’onglet"
     },
-    "contextMenuUnloadTab": {
-        "message": ""
-    },
     "contextMenuUnmuteTab": {
         "message": "Rendre pas l’onglet mut"
     },
     "contextMenuUnpinTab": {
         "message": "Despenjar l’onglet"
-    },
-    "extensionDescription": {
-        "message": ""
     },
     "extensionsLongDescription": {
         "message": "!!Occitan not available on AMO"
@@ -86,15 +74,6 @@
     "newTabContextMenuOpenInWindow": {
         "message": "Fenèstra novèla"
     },
-    "newTabContextMenuOpneAfterCurrent": {
-        "message": ""
-    },
-    "notificationDeletedMessage": {
-        "message": ""
-    },
-    "notificationDeletedTitle": {
-        "message": ""
-    },
     "optionsAdvancedTitle": {
         "message": "Avançat"
     },
@@ -103,54 +82,6 @@
     },
     "optionsBehaviorTitle": {
         "message": "Compòrtament"
-    },
-    "optionsCompactMode": {
-        "message": ""
-    },
-    "optionsCompactModeDynamic": {
-        "message": ""
-    },
-    "optionsCompactModeExplanation": {
-        "message": ""
-    },
-    "optionsCompactModeOff": {
-        "message": ""
-    },
-    "optionsCompactModeStrict": {
-        "message": ""
-    },
-    "optionsCompactPins": {
-        "message": ""
-    },
-    "optionsCustomCSS": {
-        "message": ""
-    },
-    "optionsCustomCSSChangelogLink": {
-        "message": ""
-    },
-    "optionsCustomCSSWikiLink": {
-        "message": ""
-    },
-    "optionsNotifyClosingManyTabs": {
-        "message": ""
-    },
-    "optionsNotifyClosingManyTabsExplanation": {
-        "message": ""
-    },
-    "optionsSaveCustomCSS": {
-        "message": ""
-    },
-    "optionsSwitchLastActiveTab": {
-        "message": ""
-    },
-    "optionsSwitchLastActiveTabExplanation": {
-        "message": ""
-    },
-    "optionsThemeIntegration": {
-        "message": ""
-    },
-    "optionsThemeIntegrationExplanation": {
-        "message": ""
     },
     "searchPlaceholder": {
         "message": "Recercar pels onglets"

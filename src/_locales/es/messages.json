@@ -2,9 +2,6 @@
     "allTabsLabel": {
         "message": "Mostrar todas las pestañas…"
     },
-    "browserActionTitle": {
-        "message": ""
-    },
     "closeTabButtonTooltip": {
         "message": "Cerrar pestaña"
     },
@@ -97,9 +94,6 @@
     },
     "optionsSaveCustomCSS": {
         "message": "Guardar CSS"
-    },
-    "optionsThemeIntegration": {
-        "message": ""
     },
     "optionsTitle": {
         "message": "Ajustes"

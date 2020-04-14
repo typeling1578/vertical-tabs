@@ -11,10 +11,15 @@ TRANSLATIONS = CURRENT_DIR / "src" / "_locales"
 for lang_dir in TRANSLATIONS.iterdir():
     messages = lang_dir / "messages.json"
     translations = json.loads(messages.open().read())
-    if lang_dir.name != "en":
-        for ident, value in translations.items():
-            value.pop("description", None)
-            value.pop("placeholders", None)
+
+    to_remove = []
+    for key, value in translations.items():
+        if value["message"] == "":
+            to_remove.append(key)
+            continue
+    for key in to_remove:
+        translations.pop(key)
+
     messages.open("w").write(
-        json.dumps(translations, ensure_ascii=False, indent=4, sort_keys=True,)
+        json.dumps(translations, ensure_ascii=False, indent=4) + '\n'
     )

@@ -2,9 +2,6 @@
     "allTabsLabel": {
         "message": "すべてのタブを表示…"
     },
-    "browserActionTitle": {
-        "message": ""
-    },
     "closeTabButtonTooltip": {
         "message": "タブを閉じます"
     },
@@ -89,17 +86,11 @@
     "optionsCustomCSS": {
         "message": "CSSを保存"
     },
-    "optionsCustomCSSWikiLink": {
-        "message": ""
-    },
     "optionsDarkTheme": {
         "message": "暗いテーマ"
     },
     "optionsSaveCustomCSS": {
         "message": "CSSを保存"
-    },
-    "optionsThemeIntegration": {
-        "message": ""
     },
     "optionsTitle": {
         "message": "設定"
