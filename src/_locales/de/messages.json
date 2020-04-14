@@ -195,7 +195,7 @@
         "message": "Warnen, bevor mehr als $COUNT$ Tabs geschlossen werden"
     },
     "searchPlaceholder": {
-        "message": "Tabs durchsuchen"
+        "message": "Tabs filter"
     },
     "settingsBtnTooltip": {
         "message": "Einstellungen öffnen"
