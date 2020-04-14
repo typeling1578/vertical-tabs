@@ -1143,7 +1143,7 @@ export default class Tablist {
       url: tab.url,
     };
     const newProps = Object.assign(defaultProps, props);
-    createTab(newProps);
+    this.createTab(newProps);
   }
 
   moveTabToStart(currentTab) {
@@ -1175,10 +1175,7 @@ export default class Tablist {
   }
 
   closeTabsBefore(currentTab) {
-    this._deleteTabs(
-      currentTab.id,
-      this._tabsBefore(currentTab).map((tab) => tab.id),
-    );
+    this._deleteTabs(currentTab.id, this._tabsBefore(currentTab).map(tab => tab.id));
   }
 
   _tabsAfter(currentTab) {
@@ -1198,10 +1195,7 @@ export default class Tablist {
   }
 
   closeTabsAfter(currentTab) {
-    this._deleteTabs(
-      currentTab.id,
-      this._tabsAfter(currentTab).map((tab) => tab.id),
-    );
+    this._deleteTabs(currentTab.id, this._tabsAfter(currentTab).map(tab => tab.id));
   }
 
   closeAllTabsExceptCount(tabId) {
@@ -1209,10 +1203,7 @@ export default class Tablist {
   }
 
   closeAllTabsExcept(currentTab) {
-    this._deleteTabs(
-      currentTab.id,
-      this._allTabsExcept(currentTab.id).map((tab) => tab.id),
-    );
+    this._deleteTabs(currentTab.id, this._allTabsExcept(currentTab.id).map(tab => tab.id));
   }
 
   _allTabsExcept(tabId) {
