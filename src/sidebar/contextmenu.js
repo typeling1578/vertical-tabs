@@ -66,7 +66,7 @@ export default class ContextMenu {
     if (!info.menuItemId.startsWith("contextMenuOpenInContextualTab_")) {
       return;
     }
-    this._sidebar.createTab({
+    this._tablist.createTab({
       cookieStoreId: info.menuItemId.split("contextMenuOpenInContextualTab_")[1],
       openerTabId: tab.id,
       url: tab.url,
