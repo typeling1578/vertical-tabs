@@ -104,5 +104,25 @@
     "contextMenuNoContainer": {
         "message": "コンテナーなし (&N)",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153932 and https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153933. Context menu item label."
+    },
+    "browserActionTitle": {
+        "message": "Tab Center Rebornを開閉",
+        "description": "Tooltip shown when hovering the toolbar button."
+    },
+    "muteTabButtonTooltip": {
+        "message": "タブをミュート",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
+    },
+    "contextMenuCloseTabsBefore": {
+        "message": "上のタブをすべて閉じる",
+        "description": "Context menu item label."
+    },
+    "contextMenuCloseTabs": {
+        "message": "タブを閉じる",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197250. Context Menu item label"
+    },
+    "OptionsAnimations": {
+        "message": "アニメーション",
+        "description": "Option in options page."
     }
 }
