@@ -454,9 +454,10 @@ export default class Tablist {
 
     const dropTab = this.getTabById(dropTabId);
     const rect = dropTab.view.getBoundingClientRect();
-    const isOnFirstHalf = dropTab.pinned
-      ? e.clientX < rect.x + rect.width / 2
-      : e.clientY < rect.y + rect.height / 2;
+    const isOnFirstHalf =
+      dropTab.pinned && this._prefs.compactPins
+        ? e.clientX < rect.x + rect.width / 2
+        : e.clientY < rect.y + rect.height / 2;
     if (isOnFirstHalf) {
       const previousTab = this._getTabBefore(dropTab, true);
       if (previousTab) {
@@ -1175,7 +1176,10 @@ export default class Tablist {
   }
 
   closeTabsBefore(currentTab) {
-    this._deleteTabs(currentTab.id, this._tabsBefore(currentTab).map(tab => tab.id));
+    this._deleteTabs(
+      currentTab.id,
+      this._tabsBefore(currentTab).map((tab) => tab.id),
+    );
   }
 
   _tabsAfter(currentTab) {
@@ -1195,7 +1199,10 @@ export default class Tablist {
   }
 
   closeTabsAfter(currentTab) {
-    this._deleteTabs(currentTab.id, this._tabsAfter(currentTab).map(tab => tab.id));
+    this._deleteTabs(
+      currentTab.id,
+      this._tabsAfter(currentTab).map((tab) => tab.id),
+    );
   }
 
   closeAllTabsExceptCount(tabId) {
@@ -1203,7 +1210,10 @@ export default class Tablist {
   }
 
   closeAllTabsExcept(currentTab) {
-    this._deleteTabs(currentTab.id, this._allTabsExcept(currentTab.id).map(tab => tab.id));
+    this._deleteTabs(
+      currentTab.id,
+      this._allTabsExcept(currentTab.id).map((tab) => tab.id),
+    );
   }
 
   _allTabsExcept(tabId) {
