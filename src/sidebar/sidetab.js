@@ -50,7 +50,7 @@ export default class Sidetab {
         () => {},
       );
     }
-    this.updateThumbnail = debounced(this._updateThumbnail, 500);
+    this.updateThumbnail = debounced(() => this._updateThumbnail(), 500);
   }
 
   _buildViewStructure() {
