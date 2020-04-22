@@ -3,7 +3,7 @@
         "message": "显示所有标签页…"
     },
     "browserActionTitle": {
-        "message": "开关 Tab Center Reborn"
+        "message": "显示/隐藏 Tab Center Reborn"
     },
     "closeAllTabsExceptWarning": {
         "message": "您真的想关闭其它 $COUNT$ 个标签页吗？"
@@ -148,5 +148,13 @@
     },
     "settingsBtnTooltip": {
         "message": "打开设置"
+    },
+    "unmuteTabButtonTooltip": {
+        "message": "取消静音该标签页",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
+    },
+    "OptionsAnimations": {
+        "message": "动画",
+        "description": "Option in options page."
     }
 }
