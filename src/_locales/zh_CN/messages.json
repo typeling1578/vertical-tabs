@@ -27,10 +27,10 @@
         "message": "关闭多个标签页"
     },
     "contextMenuCloseTabsAfter": {
-        "message": "关闭下方标签页"
+        "message": "关闭在其之后标签页"
     },
     "contextMenuCloseTabsBefore": {
-        "message": "关闭上方标签页"
+        "message": "关闭在其之前的标签页"
     },
     "contextMenuDuplicateTab": {
         "message": "创建标签页副本"
@@ -51,7 +51,7 @@
         "message": "静音标签页"
     },
     "contextMenuOpenInContextualTab": {
-        "message": "使用容器标签页打开"
+        "message": "在容器中重新打开标签页"
     },
     "contextMenuPinTab": {
         "message": "固定标签页"
@@ -75,7 +75,7 @@
         "message": "取消固定标签页"
     },
     "extensionDescription": {
-        "message": "将标签页移动到您浏览器的窗口边。"
+        "message": "简单但是强大的垂直标签栏"
     },
     "extensionsLongDescription": {
         "message": "Tab Center Reborn 是已停止开发的 <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\"> Tab Center Redux </a> 后继者，目的是为了提供一个简单、功能强大且集成性良好的垂直管理标签扩展。\n\n本扩展程序提供了一些设置，并且允许高级用户使用 CSS 代码来自定义外观。\n\n<ul>\n<li>使用 Shift + F1 来打开或关闭该扩展</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">如何隐藏顶部标签栏</a></li>\n</ul>\n\n您可以<a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">贡献翻译、文档代码或者汇报 Bug</a>！"
@@ -126,16 +126,16 @@
         "message": "保存 CSS"
     },
     "optionsSwitchLastActiveTab": {
-        "message": "切换到上一次活动的标签页"
+        "message": "切换到最近的活动标签页"
     },
     "optionsSwitchLastActiveTabExplanation": {
         "message": "点击当前活动标签页时切换到上一个活动的标签页。"
     },
     "optionsThemeIntegration": {
-        "message": "搭配自定义主题"
+        "message": "使用当前的浏览器主题"
     },
     "optionsThemeIntegrationExplanation": {
-        "message": "与您自定义的主题集成。如果您换回了 Firefox 的默认主题，需要重新打开侧边栏。"
+        "message": "使用当前浏览器的主题而不是默认的明亮主题。"
     },
     "optionsTitle": {
         "message": "设置"
@@ -144,7 +144,7 @@
         "message": "在关闭 $COUNT$ 个标签页前警告我"
     },
     "searchPlaceholder": {
-        "message": "搜索标签页"
+        "message": "过滤标签页"
     },
     "settingsBtnTooltip": {
         "message": "打开设置"
@@ -156,5 +156,81 @@
     "OptionsAnimations": {
         "message": "动画",
         "description": "Option in options page."
+    },
+    "contextMenuNoContainer": {
+        "message": "没有容器",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153932 and https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153933. Context menu item label."
+    },
+    "optionsNotifyClosingManyTabsExplanation": {
+        "message": "当关闭超过 $COUNT$个标签页时，弹出撤销操作的通知。",
+        "description": "Explanation for the Notify when closing many tabs option in options page.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "optionsSwitchByScrollingWithCtrlExplanation": {
+        "message": "在特定情况下，激活上一个或下一个标签页而不是滚动。",
+        "description": "Explanation for the Switch by scrolling options in options page."
+    },
+    "optionsSwitchByScrollingWithCtrl": {
+        "message": "按下Ctrl键",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingNever": {
+        "message": "从不",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingAlways": {
+        "message": "总是",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrolling": {
+        "message": "以滚动方式切换当前标签页",
+        "description": "Option in options page"
+    },
+    "optionsNotifyClosingManyTabs": {
+        "message": "关闭多个标签页时通知我",
+        "description": "Option in options page."
+    },
+    "optionsCustomCSSChangelogLink": {
+        "message": "查看更新日志了解阻断性更改",
+        "description": "Text for a link to the changelog."
+    },
+    "notificationDeletedTitle": {
+        "message": "$COUNT$ 个已关闭标签页",
+        "description": "Title of the notification when deleting many tabs.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "notificationDeletedMessage": {
+        "message": "点击通知以撤销操作。",
+        "description": "Title of the notification when deleting many tabs."
+    },
+    "newTabContextMenuOpneAfterCurrent": {
+        "message": "在当前标签页旁",
+        "description": "New Tab context menu item."
+    },
+    "newTabContextMenuOpenInWindow": {
+        "message": "新建窗口",
+        "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
+    },
+    "newTabContextMenuOpenInPrivateWindow": {
+        "message": "新建隐私窗口",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
+    },
+    "newTabContextMenuOpenAtEnd": {
+        "message": "在末尾",
+        "description": "New Tab context menu item."
+    },
+    "muteTabButtonTooltip": {
+        "message": "将此标签页静音",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
     }
 }
