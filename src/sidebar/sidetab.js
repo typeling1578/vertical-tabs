@@ -218,9 +218,12 @@ export default class Sidetab {
     this._iconView.classList.remove("default-favicon");
     this._iconView.classList.toggle(
       "chrome-icon",
+      // Color monochrome favicons according to theme like in Firefox native tab bar
       favIconUrl.startsWith("chrome://") &&
         favIconUrl.endsWith(".svg") &&
-        favIconUrl !== "chrome://browser/skin/privatebrowsing/favicon.svg",
+        // but don’t recolor colorful icons (on about:privatebrowsing and about:logins)
+        favIconUrl !== "chrome://browser/skin/privatebrowsing/favicon.svg" &&
+        favIconUrl !== "chrome://browser/content/aboutlogins/icons/favicon.svg",
     );
     // https://bugzilla.mozilla.org/show_bug.cgi?id=1462948
     if (favIconUrl === "chrome://mozapps/skin/extensions/extensionGeneric-16.svg") {
