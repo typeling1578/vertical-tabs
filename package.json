@@ -72,7 +72,7 @@
     "concurrently": "^5.1.0",
     "copy-webpack-plugin": "^5.1.1",
     "cssnano": "^4.1.10",
-    "eslint": "^6.8.0",
+    "eslint": "^7.0.0",
     "eslint-config-prettier": "^6.10.1",
     "husky": "^4.2.3",
     "lint-staged": "^10.1.1",
@@ -85,7 +85,7 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "@ctrl/tinycolor": "^2.6.1",
+    "@ctrl/tinycolor": "^3.1.1",
     "fuzzysort": "^1.1.4",
     "photon-colors": "^3.3.2",
     "smooth-scroll-into-view-if-needed": "^1.1.27"
