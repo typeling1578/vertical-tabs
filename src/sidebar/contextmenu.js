@@ -2,7 +2,7 @@
 
 import Sidetab from "./sidetab.js";
 
-const IS_PRIVILEGED_PAGE_URL = /^(about|chrome|data|file|javascript):*/;
+const HAS_PRIVILEGED_SCHEME = /^(about|chrome|data|file|javascript|resource):*/;
 
 export default class ContextMenu {
   constructor(sidebar, tablist) {
@@ -225,15 +225,16 @@ export default class ContextMenu {
   }
 
   static canUnload(tab) {
+    // Trying to discard an about: tab fails silently
+    // https://bugzilla.mozilla.org/show_bug.cgi?id=1631157
     return (
-      !tab.active &&
-      !tab.discarded &&
-      !tab.url.startsWith("about:") &&
-      !tab.url.startsWith("chrome:")
+      tab.url === "about:blank" ||
+      tab.url === "about:newtab" ||
+      (!tab.active && !tab.discarded && !tab.url.startsWith("about:"))
     );
   }
 
   static canOpen(url) {
-    return !IS_PRIVILEGED_PAGE_URL.test(url) || url === "about:newtab" || url === "about:blank";
+    return url === "about:blank" || url === "about:newtab" || !HAS_PRIVILEGED_SCHEME.test(url);
   }
 }
