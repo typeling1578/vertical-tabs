@@ -238,7 +238,7 @@ export default class Sidetab {
 
   _resetIcon() {
     this.favIconUrl = null;
-    this._iconView.style.backgroundImage = 'url("img/default-favicon.svg")';
+    this._iconView.style.backgroundImage = 'url("img/globe.svg")';
     this._iconView.classList.add("chrome-icon", "default-favicon");
   }
 

@@ -150,7 +150,7 @@ img,
 }
 
 #newtab-icon {
-  background-image: url("img/new.svg#standard");
+  background-image: url("img/new.svg");
 }
 
 #settings-icon {
@@ -327,7 +327,7 @@ body.animated #pinnedtablist.compact .tab {
 }
 
 .tab.bursting .tab-loading-burst::before {
-  background-image: url("img/loading-burst.svg#standard");
+  background-image: url("img/loading-burst.svg");
   -moz-context-properties: fill;
   fill: var(--tab-loading-indicator);
   filter: url("img/filters.svg#fill");
@@ -338,7 +338,7 @@ body.animated #pinnedtablist.compact .tab {
 }
 
 .tab:not(.active).bursting .tab-loading-burst::before {
-  background-image: url("img/loading-burst.svg#light");
+  background-image: url("img/loading-burst.svg");
 }
 
 .tab.bursting.not-selected-since-load .tab-loading-burst::before {
@@ -622,7 +622,7 @@ body.animated #bottomshadow {
   /* Code from https://hg.mozilla.org/mozilla-central/file/tip/browser/themes/shared/tabs.inc.css */
   content: "";
   position: absolute;
-  background-image: url("img/loading-spinner.svg#standard");
+  background-image: url("img/loading.svg");
   background-position: left center;
   background-repeat: no-repeat;
   width: calc(30 * var(--favicon-size));
@@ -698,7 +698,7 @@ body.animated #bottomshadow {
   height: 14px;
   margin-right: 7px;
   display: block;
-  background-image: url("img/pinned.svg#standard");
+  background-image: url("img/pin.svg");
   -moz-context-properties: fill;
   fill: var(--icons);
   filter: url("img/filters.svg#fill");
