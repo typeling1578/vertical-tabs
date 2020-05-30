@@ -588,6 +588,7 @@ body.animated #bottomshadow {
 .tab-icon {
   height: var(--favicon-size);
   width: var(--favicon-size);
+  background-image: var(--favicon-url);
   background-repeat: no-repeat;
   background-size: contain;
   margin: auto;
@@ -600,7 +601,7 @@ body.animated #bottomshadow {
 }
 
 .tab-icon.chrome-icon.default-favicon {
-  fill-opacity: 0.6;
+  fill-opacity: 0.8;
 }
 
 #tablist-wrapper:not(.shrinked) #tablist .tab-icon.chrome-icon,

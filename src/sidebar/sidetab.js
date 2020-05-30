@@ -230,7 +230,7 @@ export default class Sidetab {
       favIconUrl = "img/extensions.svg";
     }
 
-    this._iconView.style.backgroundImage = `url("${favIconUrl}")`;
+    this._iconView.style.setProperty("--favicon-url", `url("${favIconUrl}")`);
     const imgTest = document.createElement("img");
     imgTest.onerror = this._resetIcon;
     imgTest.src = favIconUrl;
@@ -238,7 +238,7 @@ export default class Sidetab {
 
   _resetIcon() {
     this.favIconUrl = null;
-    this._iconView.style.backgroundImage = 'url("img/globe.svg")';
+    this._iconView.style.setProperty("--favicon-url", 'url("img/globe.svg")');
     this._iconView.classList.add("chrome-icon", "default-favicon");
   }
 
