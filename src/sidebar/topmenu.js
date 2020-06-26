@@ -9,6 +9,7 @@ export default class Topmenu {
     this._settingsView = document.getElementById("settings");
     this._filterboxInput = document.getElementById("filterbox-input");
     this._newTabLabelView = document.getElementById("newtab-label");
+    this._setupLabels();
 
     browser.extension
       .isAllowedIncognitoAccess()
@@ -18,7 +19,6 @@ export default class Topmenu {
       this._alternateNewTabPosition = setting.value === "afterCurrent" ? "atEnd" : "afterCurrent";
     });
 
-    this._setupLabels();
     this._setupListeners();
   }
 
