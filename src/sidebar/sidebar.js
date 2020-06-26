@@ -52,7 +52,7 @@ export default class Sidebar {
 
     await this._initPrefs();
     this._tablist = new Tablist(this);
-    this._onStorageChanged(this.prefs);
+    this._onStorageChanged(this.prefs, true);
 
     browser.runtime.connect({ name: this.windowId.toString() });
     this._setupListeners();
@@ -134,11 +134,10 @@ export default class Sidebar {
     if (typeof prefs.compactMode === "string") {
       prefs.compactMode = parseInt(prefs.compactMode);
     }
-
     return prefs;
   }
 
-  _onStorageChanged(changes) {
+  _onStorageChanged(changes, firstTime) {
     // merge prefs
     if (changes.hasOwnProperty("compactMode")) {
       changes.compactMode = parseInt(changes.compactMode);
@@ -155,8 +154,8 @@ export default class Sidebar {
     if (changes.hasOwnProperty("themeIntegration")) {
       this._applyTheme(this._theme);
     }
-    if (changes.hasOwnProperty("animations")) {
-      document.body.classList.toggle("animated", this._animations);
+    if (changes.hasOwnProperty("animations") && !firstTime) {
+      document.body.classList.toggle("animated", this.prefs._animations);
     }
 
     if (changes.hasOwnProperty("compactPins")) {

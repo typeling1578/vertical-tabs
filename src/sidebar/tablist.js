@@ -631,7 +631,7 @@ export default class Tablist {
       return url.hostname;
     } else {
       // about:, file:///, chrome://, data:, chrome://, moz-extension://, resource://, view-source:
-      // Used rarely so mostly likely only protocol is useful for filtering
+      // Used rarely so most likely only protocol is useful for filtering
       return url_string.match(/^[\w-]*:\/*/)[0];
     }
   }
@@ -812,14 +812,19 @@ export default class Tablist {
     }
     this._pinnedview.appendChild(pinnedFragment);
     this._view.insertBefore(unpinnedFragment, this._bottomVisibilityChecker);
-    document.body.classList.add("loaded");
     this._maybeShrinkTabs(true);
     if (activeTab !== null) {
       this.scrollIntoView(activeTab);
       this._maybeUpdateTabThumbnail(activeTab);
     }
     this._initCanScrollShadowObservers();
-    setTimeout(() => document.body.classList.toggle("animated", this._prefs.animations), 30);
+
+    requestAnimationFrame(() => {
+      document.body.classList.add("loaded");
+      requestAnimationFrame(() => {
+        document.body.classList.toggle("animated", this._prefs.animations);
+      });
+    });
   }
 
   checkWindow(windowId) {
