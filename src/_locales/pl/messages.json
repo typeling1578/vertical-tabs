@@ -30,16 +30,16 @@
         "message": "Przenieś d&o nowego okna"
     },
     "contextMenuMoveTabToStart": {
-        "message": "Przenieś na początek"
+        "message": "&Przenieś na początek"
     },
     "contextMenuMuteTab": {
-        "message": "Wycisz kartę"
+        "message": "&Wycisz kartę"
     },
     "contextMenuOpenInContextualTab": {
-        "message": "Opnieuw openen in Container"
+        "message": "Otwórz ponownie w &karcie z kontekstem"
     },
     "contextMenuPinTab": {
-        "message": "&Przypnij kartę"
+        "message": "Przyp&nij kartę"
     },
     "contextMenuReloadAllTabs": {
         "message": "Odśwież wszystkie karty"
@@ -75,7 +75,7 @@
         "message": "Dynamiczny"
     },
     "optionsCompactModeExplanation": {
-        "message": "Tryb kompaktowy zmniejsza wysokość kart, aby pokazać ich więcej. W ustawieniu dynamicznym uaktywni się, kiedy zabraknie miejsca."
+        "message": "Tryb kompaktowy zmniejsza wysokość kart, aby pokazać ich więcej. Przy włączonym ustawieniu dynamicznym uaktywni się, gdy zabraknie miejsca."
     },
     "optionsCompactModeOff": {
         "message": "Wyłączony"
@@ -84,7 +84,7 @@
         "message": "Włączony"
     },
     "optionsCompactPins": {
-        "message": "Kompaktuj przypięte karty"
+        "message": "Przypięte karty jako favikony"
     },
     "optionsCustomCSS": {
         "message": "Niestandardowy arkusz stylów"
@@ -99,13 +99,13 @@
         "message": "Zapisz CSS"
     },
     "optionsThemeIntegration": {
-        "message": "Zintegruj z bieżącym motywem"
+        "message": "Użyj aktualnego motywu przeglądarki"
     },
     "optionsTitle": {
         "message": "Ustawienia"
     },
     "searchPlaceholder": {
-        "message": "Szukaj karty"
+        "message": "Szukaj kart"
     },
     "settingsBtnTooltip": {
         "message": "Otwórz ustawienia"
@@ -153,7 +153,7 @@
         "description": "Text for a link to the changelog."
     },
     "notificationDeletedMessage": {
-        "message": "Kliknij powiadomienie by cofnąć.",
+        "message": "Kliknij powiadomienie, aby cofnąć.",
         "description": "Title of the notification when deleting many tabs."
     },
     "contextMenuCloseTabsBefore": {
@@ -189,5 +189,41 @@
                 "example": "5"
             }
         }
+    },
+    "contextMenuUnloadTab": {
+        "message": "&Usuń kartę z pamięci",
+        "description": "Context menu item label."
+    },
+    "newTabContextMenuOpenAtEnd": {
+        "message": "Na &końcu",
+        "description": "New Tab context menu item."
+    },
+    "newTabContextMenuOpneAfterCurrent": {
+        "message": "&Przy aktywnej karcie",
+        "description": "New Tab context menu item."
+    },
+    "optionsSwitchByScrollingWithCtrlExplanation": {
+        "message": "Przełączaj na następną lub poprzednią kartę zamiast przewijania listy kart.",
+        "description": "Explanation for the Switch by scrolling options in options page."
+    },
+    "optionsSwitchLastActiveTabExplanation": {
+        "message": "Kliknij aktywną kartę, aby przejść do poprzedniej aktywnej karty.",
+        "description": "Explanation for the Compact Mode option in options page."
+    },
+    "optionsSwitchLastActiveTab": {
+        "message": "Przejdź do poprzedniej aktywnej karty",
+        "description": "Option in options page."
+    },
+    "optionsSwitchByScrollingWithCtrl": {
+        "message": "Z wciśniętym Ctrl",
+        "description": "Option in options page"
+    },
+    "optionsThemeIntegrationExplanation": {
+        "message": "Używaj aktualnego motywu przeglądarki zamiast domyślnego jasnego motywu rozszerzenia.",
+        "description": "Explanation for the Theme Integration option in the options page."
+    },
+    "optionsSwitchByScrolling": {
+        "message": "Przełączaj aktywną kartę przy pomocy przewijania",
+        "description": "Option in options page"
     }
 }
