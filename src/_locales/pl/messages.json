@@ -9,16 +9,16 @@
         "message": "Zamknij kartę"
     },
     "contextMenuCloseOtherTabs": {
-        "message": "Zamknij inne karty"
+        "message": "Za&mknij inne karty"
     },
     "contextMenuCloseTab": {
-        "message": "Zamknij kartę"
+        "message": "&Zamknij kartę"
     },
     "contextMenuCloseTabsAfter": {
         "message": "Zamknij karty poniżej"
     },
     "contextMenuDuplicateTab": {
-        "message": "Duplikuj kartę"
+        "message": "&Duplikuj kartę"
     },
     "contextMenuMoveTab": {
         "message": "Tabblad verplaatsen"
@@ -48,13 +48,13 @@
         "message": "&Odśwież kartę"
     },
     "contextMenuUndoCloseTab": {
-        "message": "Przywróć zamkniętą kartę"
+        "message": "Przywróć z&amkniętą kartę"
     },
     "contextMenuUnmuteTab": {
-        "message": "Włącz dźwięk"
+        "message": "&Włącz dźwięk"
     },
     "contextMenuUnpinTab": {
-        "message": "Odepnij kartę"
+        "message": "Odep&nij kartę"
     },
     "extensionDescription": {
         "message": "Prosty i funkcjonalny pionowy pasek kart"
@@ -90,7 +90,7 @@
         "message": "Niestandardowy arkusz stylów"
     },
     "optionsCustomCSSWikiLink": {
-        "message": "Strona Wiki o dostosowaniu CSS"
+        "message": "Strona Wiki o dostosowywaniu CSS"
     },
     "optionsDarkTheme": {
         "message": "Ciemny motyw"
@@ -115,11 +115,11 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153932 and https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153933. Context menu item label."
     },
     "newTabContextMenuOpenInWindow": {
-        "message": "Nowe okno",
+        "message": "Nowe &okno",
         "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
     },
     "newTabContextMenuOpenInPrivateWindow": {
-        "message": "Nowe okno prywatne",
+        "message": "Nowe okno &prywatne",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
     },
     "muteTabButtonTooltip": {
@@ -133,5 +133,23 @@
     "OptionsAnimations": {
         "message": "Animacje",
         "description": "Option in options page."
+    },
+    "optionsNotifyClosingManyTabsExplanation": {
+        "message": "Wyświetla powiadomienie o możliwości cofnięcia zamknięcia, gdy zamknięto więcej niż $COUNT$ kart.",
+        "description": "Explanation for the Notify when closing many tabs option in options page.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "optionsNotifyClosingManyTabs": {
+        "message": "Powiadom przy zamykaniu wielu kart",
+        "description": "Option in options page."
+    },
+    "optionsCustomCSSChangelogLink": {
+        "message": "Sprawdź listę najnowszych zmian",
+        "description": "Text for a link to the changelog."
     }
 }
