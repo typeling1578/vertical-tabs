@@ -3,7 +3,7 @@
         "message": "Pokaż wszystkie karty…"
     },
     "browserActionTitle": {
-        "message": "Przełącz Tab Center Reborn"
+        "message": "Pokaż/ukryj Tab Center Reborn"
     },
     "closeTabButtonTooltip": {
         "message": "Zamknij kartę"
@@ -57,7 +57,7 @@
         "message": "Odepnij kartę"
     },
     "extensionDescription": {
-        "message": "Tab Center jest próbą rozwiązania problemów, które pojawiły się w wyniku tego jak ludzie używają kart (szczególnie zbyt wielu kart) i wprowadza wszechstronny interfejs użytkownika dla przyszłych innowacji. Pierwsza wersja tej wtyczki układa karty pionowo, a nie poziomo. Ta wtyczka jest mocno zainspirowana wspaniałą wtyczką VerticalTabs."
+        "message": "Prosty i funkcjonalny pionowy pasek kart"
     },
     "newTabBtnLabel": {
         "message": "Nowa karta"
@@ -113,5 +113,25 @@
     "contextMenuNoContainer": {
         "message": "&Brak kontekstu",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153932 and https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153933. Context menu item label."
+    },
+    "newTabContextMenuOpenInWindow": {
+        "message": "Nowe okno",
+        "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
+    },
+    "newTabContextMenuOpenInPrivateWindow": {
+        "message": "Nowe okno prywatne",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
+    },
+    "muteTabButtonTooltip": {
+        "message": "Wycisz kartę",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
+    },
+    "contextMenuCloseTabs": {
+        "message": "Zamknij karty",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197250. Context Menu item label"
+    },
+    "OptionsAnimations": {
+        "message": "Animacje",
+        "description": "Option in options page."
     }
 }
