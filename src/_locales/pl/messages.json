@@ -39,13 +39,13 @@
         "message": "Opnieuw openen in Container"
     },
     "contextMenuPinTab": {
-        "message": "Przypnij kartę"
+        "message": "&Przypnij kartę"
     },
     "contextMenuReloadAllTabs": {
         "message": "Odśwież wszystkie karty"
     },
     "contextMenuReloadTab": {
-        "message": "Odśwież kartę"
+        "message": "&Odśwież kartę"
     },
     "contextMenuUndoCloseTab": {
         "message": "Przywróć zamkniętą kartę"
