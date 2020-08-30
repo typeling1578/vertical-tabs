@@ -21,7 +21,7 @@
         "message": "&Duplikuj kartę"
     },
     "contextMenuMoveTab": {
-        "message": "Tabblad verplaatsen"
+        "message": "Przenieś kartę"
     },
     "contextMenuMoveTabToEnd": {
         "message": "Verplaatsen naar einde"
@@ -81,7 +81,7 @@
         "message": "Wyłączony"
     },
     "optionsCompactModeStrict": {
-        "message": "Zawsze"
+        "message": "Włączony"
     },
     "optionsCompactPins": {
         "message": "Kompaktuj przypięte karty"
@@ -151,5 +151,43 @@
     "optionsCustomCSSChangelogLink": {
         "message": "Sprawdź listę najnowszych zmian",
         "description": "Text for a link to the changelog."
+    },
+    "notificationDeletedMessage": {
+        "message": "Kliknij powiadomienie by cofnąć.",
+        "description": "Title of the notification when deleting many tabs."
+    },
+    "contextMenuCloseTabsBefore": {
+        "message": "Zamknij karty powyżej",
+        "description": "Context menu item label."
+    },
+    "unmuteTabButtonTooltip": {
+        "message": "Włącz dźwięk",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
+    },
+    "optionsSwitchByScrollingNever": {
+        "message": "Nigdy",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingAlways": {
+        "message": "Zawsze",
+        "description": "Option in options page"
+    },
+    "optionsBehaviorTitle": {
+        "message": "Działanie",
+        "description": "Section in options page."
+    },
+    "optionsAppearanceTitle": {
+        "message": "Wygląd",
+        "description": "Section in options page."
+    },
+    "notificationDeletedTitle": {
+        "message": "$COUNT$ zamknięto",
+        "description": "Title of the notification when deleting many tabs.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
     }
 }
