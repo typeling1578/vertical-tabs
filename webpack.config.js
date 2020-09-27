@@ -19,20 +19,24 @@ module.exports = (env, argv) => {
       filename: "[name]/[name].js",
     },
     plugins: [
-      new CopyPlugin([
-        {
-          from: "node_modules/photon-colors/photon-colors.css",
-          to: "sidebar/",
-        },
-        {
-          from: "**",
-          to: ".",
-          context: "src/",
-          ignore: ["*.js"],
-          transform: (content, path) =>
-            argv.mode === "production" ? minify(content, path) : content,
-        },
-      ]),
+      new CopyPlugin({
+        patterns: [
+          {
+            from: "node_modules/photon-colors/photon-colors.css",
+            to: "sidebar/",
+          },
+          {
+            from: "**",
+            to: ".",
+            context: "src/",
+            globOptions: {
+              ignore: ["**/*.js"],
+            },
+            transform: (content, path) =>
+              argv.mode === "production" ? minify(content, path) : content,
+          },
+        ],
+      }),
     ],
   };
 };
@@ -67,4 +71,5 @@ async function minify(content, path) {
     const result = await postcss([cssnano]).process(content, { from: path });
     return result.css;
   }
+  console.log(`Error: filetype can’t be minified: ${path}`);
 }
