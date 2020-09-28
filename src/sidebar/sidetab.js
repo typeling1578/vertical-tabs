@@ -3,6 +3,18 @@
 import { debounced } from "../common";
 
 let TAB_TEMPLATE = null;
+// we put URL before favicon URL for one of the workaround in _updateIcon()
+const TAB_UPDATE_FIELDS = [
+  "attention",
+  "audible",
+  "discarded",
+  "url",
+  "favIconUrl",
+  "hidden",
+  "mutedInfo",
+  "status",
+  "title",
+];
 
 export default class Sidetab {
   constructor(tabInfo) {
@@ -84,9 +96,13 @@ export default class Sidetab {
     return TAB_TEMPLATE;
   }
 
-  update(info, tab) {
-    for (const [key, value] of Object.entries(info)) {
-      switch (key) {
+  update(info) {
+    for (const field of TAB_UPDATE_FIELDS) {
+      const value = info[field];
+      if (value === undefined && field !== "favIconUrl") {
+        continue;
+      }
+      switch (field) {
         case "attention":
           this._updateAttention(value);
           break;
@@ -218,16 +234,20 @@ export default class Sidetab {
     this._iconView.classList.remove("default-favicon");
     this._iconView.classList.toggle(
       "chrome-icon",
-      // Color monochrome favicons according to theme like in Firefox native tab bar
-      favIconUrl.startsWith("chrome://") &&
+      // Color built-in monochrome favicons according to theme like in native tab bar
+      this.url.startsWith("about:") &&
         favIconUrl.endsWith(".svg") &&
-        // but don’t recolor colorful icons (on about:privatebrowsing and about:logins)
-        favIconUrl !== "chrome://browser/skin/privatebrowsing/favicon.svg" &&
-        favIconUrl !== "chrome://browser/content/aboutlogins/icons/favicon.svg",
+        // but don’t recolor colorful icons
+        this.url !== "about:privatebrowsing" &&
+        this.url !== "about:logins",
     );
+
+    // Some built-in icons can’t be loaded, so we use our own
     // https://bugzilla.mozilla.org/show_bug.cgi?id=1462948
-    if (favIconUrl === "chrome://mozapps/skin/extensions/extensionGeneric-16.svg") {
+    if (this.url === "about:addons") {
       favIconUrl = "img/extensions.svg";
+    } else if (this.url === "about:profiling") {
+      favIconUrl = "img/profiler-stopwatch.svg";
     }
 
     this._iconView.style.setProperty("--favicon-url", `url("${favIconUrl}")`);
