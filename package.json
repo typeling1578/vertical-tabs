@@ -14,9 +14,10 @@
     "build-source": "zip -r web-ext-artifacts/source.zip src package.json webpack.config.js yarn.lock"
   },
   "prettier": {
+    "endOfLine": "lf",
     "printWidth": 100,
-    "trailingComma": "all",
-    "endOfLine": "lf"
+    "quoteProps": "preserve",
+    "trailingComma": "all"
   },
   "eslintConfig": {
     "env": {
