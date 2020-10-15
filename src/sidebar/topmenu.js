@@ -14,10 +14,6 @@ export default class Topmenu {
     browser.extension
       .isAllowedIncognitoAccess()
       .then((isAllowed) => (this._isIncognitoAccessAllowed = isAllowed));
-    browser.browserSettings.newTabPosition.get({}).then((setting) => {
-      this._newTabPosition = setting.value;
-      this._alternateNewTabPosition = setting.value === "afterCurrent" ? "atEnd" : "afterCurrent";
-    });
 
     this._setupListeners();
   }
@@ -58,6 +54,15 @@ export default class Topmenu {
     this._newTabButtonView.addEventListener("contextmenu", (e) => {
       this._showNewTabPopup(e);
     });
+
+    browser.browserSettings.newTabPosition
+      .get({})
+      .then((setting) => this._setNewTabPosition(setting));
+    if (browser.browserSettings.newTabPosition.onChange !== undefined) {
+      browser.browserSettings.newTabPosition.onChange.addListener((setting) =>
+        this._setNewTabPosition(setting),
+      );
+    }
 
     window.addEventListener("keyup", (e) => {
       if (e.key === "Escape") {
@@ -110,6 +115,11 @@ export default class Topmenu {
     } else {
       this._sidebar.createTab(props, { successorTab: true });
     }
+  }
+
+  _setNewTabPosition(setting) {
+    this._newTabPosition = setting.value;
+    this._alternateNewTabPosition = setting.value === "afterCurrent" ? "atEnd" : "afterCurrent";
   }
 
   async _setupLabels() {
