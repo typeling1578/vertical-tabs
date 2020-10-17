@@ -88,33 +88,23 @@ export default class ContextMenu {
       {
         id: "contextMenuReloadTab",
         title: browser.i18n.getMessage("contextMenuReloadTab"),
-        icons: { "16": "/sidebar/img/refresh.svg" },
       },
       {
         id: "contextMenuMuteTab",
         title: browser.i18n.getMessage(tab.muted ? "contextMenuUnmuteTab" : "contextMenuMuteTab"),
-        icons: tab.muted
-          ? { "16": "/sidebar/img/audio-sound.svg" }
-          : { "16": "/sidebar/img/audio-mute.svg" },
-      },
-      {
-        type: "separator",
       },
       {
         id: "contextMenuPinTab",
         title: browser.i18n.getMessage(tab.pinned ? "contextMenuUnpinTab" : "contextMenuPinTab"),
-        icons: tab.pinned ? { "16": "/sidebar/img/unpin.svg" } : { "16": "/sidebar/img/pin.svg" },
       },
       {
         id: "contextMenuDuplicateTab",
         title: browser.i18n.getMessage("contextMenuDuplicateTab"),
-        icons: { "16": "/sidebar/img/copy.svg" },
         enabled: ContextMenu.canOpen(tab.url),
       },
       {
         id: "contextMenuUnloadTab",
         title: browser.i18n.getMessage("contextMenuUnloadTab"),
-        icons: { "16": "/sidebar/img/quit.svg" },
         enabled: ContextMenu.canUnload(tab),
       },
       {
@@ -127,34 +117,29 @@ export default class ContextMenu {
         id: "contextMenuOpenInContextualTab",
         title: browser.i18n.getMessage("contextMenuOpenInContextualTab"),
         enabled: ContextMenu.canOpen(tab.url),
-        icons: { "16": "/sidebar/img/containers.svg" },
         visible: identityItems.length !== 0 && !this._sidebar.incognito,
       },
       {
         id: "contextMenuMoveTab",
         title: browser.i18n.getMessage("contextMenuMoveTab"),
-        icons: { "16": "/sidebar/img/move.svg" },
         enabled: this._tablist.hasTabsBefore(tab) || this._tablist.hasTabsAfter(tab),
       },
       {
         parentId: "contextMenuMoveTab",
         id: "contextMenuMoveTabToStart",
         title: browser.i18n.getMessage("contextMenuMoveTabToStart"),
-        icons: { "16": "/sidebar/img/move-to-start.svg" },
         enabled: this._tablist.hasTabsBefore(tab),
       },
       {
         parentId: "contextMenuMoveTab",
         id: "contextMenuMoveTabToEnd",
         title: browser.i18n.getMessage("contextMenuMoveTabToEnd"),
-        icons: { "16": "/sidebar/img/move-to-end.svg" },
         enabled: this._tablist.hasTabsAfter(tab),
       },
       {
         parentId: "contextMenuMoveTab",
         id: "contextMenuMoveTabToNewWindow",
         title: browser.i18n.getMessage("contextMenuMoveTabToNewWindow"),
-        icons: { "16": "/sidebar/img/open-in-new.svg" },
       },
       {
         type: "separator",
@@ -162,7 +147,6 @@ export default class ContextMenu {
       {
         id: "contextMenuCloseTabs",
         title: browser.i18n.getMessage("contextMenuCloseTabs"),
-        icons: { "16": "/sidebar/img/cancel.svg" },
         visible: !this._tablist.isFilterActive(),
         enabled: this._tablist.tabCount() > 1 && !tab.pinned,
       },
@@ -170,32 +154,27 @@ export default class ContextMenu {
         parentId: "contextMenuCloseTabs",
         id: "contextMenuCloseTabsBefore",
         title: browser.i18n.getMessage("contextMenuCloseTabsBefore"),
-        icons: { "16": "/sidebar/img/arrowhead-up.svg" },
         enabled: this._tablist.hasTabsBefore(tab),
       },
       {
         parentId: "contextMenuCloseTabs",
         id: "contextMenuCloseTabsAfter",
         title: browser.i18n.getMessage("contextMenuCloseTabsAfter"),
-        icons: { "16": "/sidebar/img/arrowhead-down.svg" },
         enabled: this._tablist.hasTabsAfter(tab),
       },
       {
         parentId: "contextMenuCloseTabs",
         id: "contextMenuCloseOtherTabs",
         title: browser.i18n.getMessage("contextMenuCloseOtherTabs"),
-        icons: { "16": "/sidebar/img/arrowhead-up-down.svg" },
       },
       {
         id: "contextMenuUndoCloseTab",
         title: browser.i18n.getMessage("contextMenuUndoCloseTab"),
-        icons: { "16": "/sidebar/img/undo.svg" },
         enabled: this._tablist.hasRecentlyClosedTabs,
       },
       {
         id: "contextMenuCloseTab",
         title: browser.i18n.getMessage("contextMenuCloseTab"),
-        icons: { "16": "/sidebar/img/close.svg" },
       },
     ];
 

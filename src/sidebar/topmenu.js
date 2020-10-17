@@ -145,18 +145,10 @@ export default class Topmenu {
       {
         id: "newTabContextMenuOpenInWindow",
         title: browser.i18n.getMessage("newTabContextMenuOpenInWindow"),
-        icons: {
-          "16": `/sidebar/img/new-window.svg`,
-          "32": `/sidebar/img/private-browsing.svg`,
-        },
       },
       {
         id: "newTabContextMenuOpenInPrivateWindow",
         title: browser.i18n.getMessage("newTabContextMenuOpenInPrivateWindow"),
-        icons: {
-          "16": `/sidebar/img/private-browsing.svg`,
-          "32": `/sidebar/img/private-browsing.svg`,
-        },
         enabled: this._isIncognitoAccessAllowed,
       },
     ];
