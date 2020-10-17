@@ -1,3 +1,31 @@
+## 2.2.0
+
+- Optimize code that detect when to show scrolling shadows
+- Update contextual identities icons
+- Change sidebar title from “Tabs” to more distinctive “Tab Center Reborn”
+- Fix not being able to open tabs in private browsing
+- Fix dropping tab on sidebar sometimes opening it in a new window
+- Fix “Reopen in container” to work as in Firefox
+  - Propose option “No Container” if the tab is in a container
+  - Don’t propose the container a tab is already in
+- Use webpack to minify all the things, reducing the size of the extension
+- Don’t fade-in/out the scrolling shadows when animations are disabled
+- Dropping a tab on the filterbox now launch a search based on tab URL
+- Disable duplicate and discard context menu items when they can’t work
+- Fix tabs shrinking animation triggered at startup
+- Fix favicons (missing or wrong color) for several about: pages
+- Fix color of built-in Firefox favicons and loading indicator
+
+For Custom CSS users:
+
+- You can now use `--favicon-size` and `--favicon-size-only` to change favicons size
+- Add shortcut Ctrl-Enter to save the Custom CSS
+- Class changes:
+  - removed `.pinned`
+  - changed `.sound` to `.audible`
+  - changed `.not-selected-since-load` to `.unread`
+  - `.tab-host` renamed to `.tab-url`
+
 ## 2.1.2
 
 - Fix Firefox Color support
