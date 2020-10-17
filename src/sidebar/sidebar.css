@@ -20,6 +20,7 @@ body.loaded > * {
   --tab-height-compact: 36px;
   --favicon-size: 18px;
   --favicon-size-only: var(--favicon-size);
+  --tab-loading-fill: var(--blue-50);
 
   --icons: var(--grey-90-a80);
   --toolbar-background: var(--grey-10);
@@ -166,7 +167,7 @@ img,
   margin: 0 0 0 4px;
   -moz-context-properties: fill, fill-opacity;
   fill: var(--input-text);
-  fill-opacity: 0.5; /* it displays the icon as the intented color, though I don’t know why */
+  fill-opacity: 0.5; /* it displays the icon as the intended color, though I don’t know why */
   filter: url("img/filters.svg#fill");
   border-radius: var(--button-border-radius);
 }
@@ -329,7 +330,7 @@ body.animated #pinnedtablist.compact .tab {
 .tab.bursting .tab-loading-burst::before {
   background-image: url("img/loading-burst.svg");
   -moz-context-properties: fill;
-  fill: var(--tab-loading-indicator);
+  fill: var(--tab-loading-fill);
   filter: url("img/filters.svg#fill");
   background-position: center center;
   background-size: 100% auto;
@@ -606,7 +607,7 @@ body.animated #bottomshadow {
 
 #tablist-wrapper:not(.shrinked) #tablist .tab-icon.chrome-icon,
 #tablist-wrapper:not(.shrinked) #pinnedtablist:not(.compact) .tab-icon.chrome-icon {
-  fill: var(--grey-90-a80);
+  fill: var(--grey-90);
 }
 
 .tab.loading .tab-icon {
@@ -617,6 +618,13 @@ body.animated #bottomshadow {
 
 #pinnedtablist.compact .tab-icon {
   --favicon-size: var(--favicon-size-only);
+}
+
+.tab .tab-icon::before {
+  content: "";
+  -moz-context-properties: fill;
+  fill: currentColor;
+  filter: url("img/filters.svg#fill");
 }
 
 .tab.loading .tab-icon::before {
@@ -630,10 +638,14 @@ body.animated #bottomshadow {
   height: 100%;
   animation: tab-throbber-animation 1.05s steps(30) infinite;
   -moz-context-properties: fill;
-  fill: var(--tab-loading-indicator);
   opacity: 0.7;
   /* End of copied code */
   background-size: contain;
+}
+
+#tablist-wrapper:not(.shrinked) #tablist .tab-icon::before,
+#tablist-wrapper:not(.shrinked) #pinnedtablist:not(.compact) .tab-icon::before {
+  fill: var(--grey-90);
 }
 
 @keyframes tab-throbber-animation {

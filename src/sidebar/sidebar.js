@@ -21,7 +21,7 @@ const CSS_TO_THEME_PROPS = {
     "toolbar_top_separator",
   ],
   "--tab-selected-line": ["tab_line", "tab_text", "tab_background_text"],
-  "--tab-loading-indicator": ["tab_loading"],
+  "--tab-loading-fill": ["tab_loading"],
   "--tab-active-background": ["tab_selected", "toolbar"],
   "--tab-active-text": ["tab_text", "toolbar_text", "bookmark_text", "tab_background_text"],
   "--tab-text": ["tab_background_text", "tab_text", "toolbar_text", "bookmark_text"],
