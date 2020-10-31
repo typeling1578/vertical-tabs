@@ -15,11 +15,7 @@ const CSS_TO_THEME_PROPS = {
   "--button-background-active": ["button_background_active"],
   "--button-background-hover": ["button_background_hover"],
   "--icons": ["icons", "toolbar_text", "bookmark_text", "tab_background_text", "tab_text"],
-  "--tab-separator": [
-    "tab_background_separator",
-    "toolbar_field_separator",
-    "toolbar_top_separator",
-  ],
+  "--tab-separator": ["tab_background_separator"],
   "--tab-selected-line": ["tab_line", "tab_text", "tab_background_text"],
   "--tab-loading-fill": ["tab_loading"],
   "--tab-active-background": ["tab_selected", "toolbar"],
@@ -195,6 +191,19 @@ export default class Sidebar {
           break;
         }
       }
+    }
+
+    // In Firefox, tab separator color is used on an element with `opacity: 0.3;`
+    // We compute the final color directly so that we can use it anywhere easily
+    if (!themeColors["--tab-separator"]) {
+      themeColors["--tab-separator"] = themeColors["--tab-text"];
+    }
+
+    if (themeColors["--tab-separator"]) {
+      const tabSeparator = new TinyColor(themeColors["--tab-separator"]);
+      themeColors["--tab-separator"] = tabSeparator
+        .setAlpha(tabSeparator.getAlpha() * 0.3)
+        .toRgbString();
     }
 
     // swap background and tab-active-background colors if background is light
