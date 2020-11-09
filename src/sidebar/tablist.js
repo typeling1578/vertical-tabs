@@ -365,6 +365,11 @@ export default class Tablist {
   }
 
   _onDragStart(e) {
+    if (Sidetab.isCloseButtonEvent(e)) {
+      e.preventDefault();
+      return;
+    }
+
     this._isDraggingSince = null;
     if (!Sidetab.isTabEvent(e) || this._filterActive) {
       return;
