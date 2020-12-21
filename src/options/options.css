@@ -5,7 +5,7 @@ html {
 }
 
 body {
-  font-size: 1.1rem;
+  font-size: 15px;
   opacity: 0;
 }
 
@@ -14,7 +14,7 @@ body.loaded {
 }
 
 h1 {
-  font-size: 1.2rem;
+  font-size: 16px;
   font-weight: normal;
   padding-left: 2px;
   padding-bottom: 4px;
