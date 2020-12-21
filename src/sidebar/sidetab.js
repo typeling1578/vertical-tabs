@@ -121,6 +121,7 @@ export default class Sidetab {
         case "mutedInfo":
           this._updatedMuted(value);
           break;
+        // "pinned" case is handled in tablist.js for practical reasons
         case "status":
           this._updateLoading(value);
           break;

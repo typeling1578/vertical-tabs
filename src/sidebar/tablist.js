@@ -238,7 +238,7 @@ export default class Tablist {
     }
 
     if (changeInfo.hasOwnProperty("pinned")) {
-      this._onTabPinned(sidetab);
+      this._onTabPinned(sidetab, changeInfo.pinned);
     }
 
     if (changeInfo.hasOwnProperty("status") && changeInfo.status === "complete") {
@@ -1032,9 +1032,13 @@ export default class Tablist {
     }, 20);
   }
 
-  _onTabPinned(sidetab) {
+  _onTabPinned(sidetab, pinned) {
+    // Sometimes, e.g. when reopening a pinned tab, onUpdated reports a change by mistake
+    if (sidetab.pinned === pinned) {
+      return;
+    }
     this._removeTabView(sidetab);
-    sidetab.pinned = !sidetab.pinned;
+    sidetab.pinned = pinned;
     if (sidetab.pinned && this._compactPins) {
       sidetab.resetThumbnail();
     }
