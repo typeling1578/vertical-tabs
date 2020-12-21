@@ -33,7 +33,7 @@ body.loaded > * {
   --input-text-focus: var(--grey-70);
 
   --background: var(--white-100);
-  --tab-selected-line: var(--blue-60);
+  --tab-selected-line: var(--blue-50);
   --tab-active-background: var(--grey-30);
   --tab-hover-background: hsla(0, 0%, 50%, 0.2);
   --tab-separator: rgba(0, 0, 0, 0.3);
@@ -380,7 +380,7 @@ body.animated #pinnedtablist.compact .tab {
 
 #tablist .tab.active,
 #pinnedtablist:not(.compact) .tab.active {
-  box-shadow: inset 4px 0 0px 0px var(--tab-selected-line);
+  box-shadow: inset 3px 0 0px 0px var(--tab-selected-line);
 }
 
 body #pinnedtablist.compact .tab .tab-context {
