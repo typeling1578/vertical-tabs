@@ -244,7 +244,7 @@
         "description": "Placehorder of the filter bar in the top menu."
     },
     "settingsBtnTooltip": {
-        "message": "",
+        "message": "සැකසුම් විවෘත කරන්න",
         "description": "Tooltip of the settings button in the top menu."
     },
     "unmuteTabButtonTooltip": {
