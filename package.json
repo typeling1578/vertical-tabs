@@ -6,12 +6,13 @@
     "lint-eslint": "eslint . --fix",
     "lint-stylelint": "stylelint ./src/**/*.css",
     "lint": "npm run lint-prettier && npm run lint-eslint && npm run lint-stylelint",
-    "watch": "webpack-cli --mode development --watch --devtool=inline-source-map",
+    "watch": "webpack-cli --watch",
     "webext": "web-ext run --start-url 'about:debugging#/runtime/this-firefox' -s dist",
     "dev": "concurrently --kill-others --raw -s first 'yarn run webext' 'yarn run watch'",
     "webext-lint": "web-ext lint -s src/ -i sidebar/dist",
     "build": "webpack-cli --mode production && web-ext build -s dist/ --overwrite-dest",
-    "build-source": "zip -r web-ext-artifacts/source.zip src package.json webpack.config.js yarn.lock"
+    "build-source": "zip -r web-ext-artifacts/source.zip src package.json webpack.config.js yarn.lock",
+    "postinstall": "husky install"
   },
   "prettier": {
     "endOfLine": "lf",
@@ -43,11 +44,6 @@
   "stylelint": {
     "extends": "stylelint-config-recommended"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{js,yaml,html,css,json,yaml,md}": [
       "prettier --write"
@@ -70,20 +66,21 @@
   },
   "homepage": "https://framagit.org/ariasuni/tabcenter-reborn#readme",
   "devDependencies": {
-    "concurrently": "^5.3.0",
-    "copy-webpack-plugin": "^6.2.0",
-    "cssnano": "^4.1.10",
+    "concurrently": "^6.0.2",
+    "copy-webpack-plugin": "^8.1.1",
+    "cssnano": "^5.0.0",
     "eslint": "^7.10.0",
-    "eslint-config-prettier": "^6.12.0",
-    "husky": "^4.3.0",
+    "eslint-config-prettier": "^8.2.0",
+    "husky": "^6.0.0",
     "lint-staged": "^10.4.0",
+    "postcss": "^8.2.10",
     "prettier": "^2.1.2",
     "stylelint": "^13.7.2",
-    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-recommended": "^4.0.0",
     "svg-inline-loader": "^0.8.2",
-    "web-ext": "^5.1.0",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "web-ext": "^6.0.0",
+    "webpack": "^5.32.0",
+    "webpack-cli": "^4.6.0"
   },
   "dependencies": {
     "@ctrl/tinycolor": "^3.1.4",

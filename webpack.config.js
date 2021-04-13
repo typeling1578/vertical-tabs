@@ -9,6 +9,8 @@ const postcss = require("postcss");
 
 module.exports = (env, argv) => {
   return {
+    mode: "development",
+    devtool: argv.mode === "production" ? false : "inline-source-map",
     entry: {
       background: "./src/background/background.js",
       sidebar: "./src/sidebar/sidebar.js",
