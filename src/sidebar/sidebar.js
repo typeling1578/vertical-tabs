@@ -315,5 +315,7 @@ function isThemeReadable(themeColors) {
 // Some theme have bad contrast, but we only want to avoid incorrect themes
 // So we don’t check constrast >= AA but some arbitrary value to avoid white on white…
 function isReadable(color1, color2) {
-  return readability(color1, color2) >= 2;
+  const background = color1.onBackground("#ffffff");
+  const text = color2.onBackground(background);
+  return readability(background, text) >= 2;
 }
