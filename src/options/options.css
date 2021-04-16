@@ -31,18 +31,20 @@ p {
   margin: 10px 0px;
 }
 
-input[type="checkbox"] {
-  vertical-align: bottom;
-}
-
+input[type="checkbox"],
 input[type="radio"] {
-  vertical-align: top;
+  vertical-align: text-top;
+  margin-right: 6px;
 }
 
-.inline-radiogroup {
-  display: inline-block;
-  position: absolute;
-  right: 5px;
+.radio-config-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.radio-group {
+  display: flex;
+  gap: 12px;
 }
 
 .explanation {
@@ -51,18 +53,18 @@ input[type="radio"] {
 }
 
 textarea {
-  padding: 4px;
+  padding: 6px;
   border: 1px solid hsla(0, 0%, 0%, 0.3);
   border-radius: 2px;
 }
 
 textarea:disabled {
-  background-color: white;
-  opacity: 0.8;
+  background-color: #f9f9fa; /* --grey-10 */
 }
 
 #customCSS {
-  width: 100%;
+  margin: 0 2px;
+  width: calc(100% - 4px);
   height: 25rem;
   resize: vertical;
   overflow: auto;
