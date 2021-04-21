@@ -22,6 +22,7 @@ export default class Tablist {
     this._incognito = sidebar.incognito;
     this._prefs = sidebar.prefs;
     this._filter = sidebar.filter.bind(sidebar);
+    this._firefoxVersion = sidebar.firefoxVersion;
 
     this._tabs = new Map();
     this._active = null;
@@ -1134,14 +1135,30 @@ export default class Tablist {
     }, []);
   }
 
-  /* tabs.duplicate is limited and buggy:
-   * - Doesn’t provide an option to open the duplicated tab at a given index
+  /* tabs.duplicate() is limited and buggy in Firefox < 79:
+   * - Doesn’t provide an option to open the duplicated tab at a given index (< 68)
    *   https://bugzilla.mozilla.org/show_bug.cgi?id=1560218
-   * - First reports that the duplicated tab is pinned even when it isn’t
+   * - First reports that the duplicated tab is pinned even when it isn’t (< 68)
    *   https://bugzilla.mozilla.org/show_bug.cgi?id=1563380
+   * - The duplicated tab is not immediately made active (< 79)
+   *   https://bugzilla.mozilla.org/show_bug.cgi?id=1376088
    * We use this function instead of having to use ugly workarounds.
    */
   duplicate(tab, props) {
+    if (this._firefoxVersion >= "79.0") {
+      const newProps = {};
+      if (props) {
+        for (const [key, value] of Object.entries(props)) {
+          if (key === "index" || index === "active") {
+            newProps[key] = value;
+          }
+        }
+      }
+
+      browser.tabs.duplicate(tab.id, newProps);
+      return;
+    }
+
     const defaultProps = {
       active: true,
       cookieStoreId: tab.cookieStoreId,

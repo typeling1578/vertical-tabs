@@ -41,6 +41,9 @@ export default class Sidebar {
     this.windowId = window.id;
     this.incognito = window.incognito;
 
+    const firefoxInfo = await browser.runtime.getBrowserInfo();
+    this.firefoxVersion = firefoxInfo.version;
+
     const platform = await browser.runtime.getPlatformInfo();
     document.body.setAttribute("platform", platform.os);
 
