@@ -18,7 +18,7 @@ body.loaded > * {
 
   --tab-height-normal: 52px;
   --tab-height-compact: 36px;
-  --favicon-size: 18px;
+  --favicon-size: 16px;
   --favicon-size-only: var(--favicon-size);
   --tab-loading-fill: var(--blue-50);
 
