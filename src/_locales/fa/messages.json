@@ -1,10 +1,10 @@
 {
     "OptionsAnimations": {
-        "message": "",
+        "message": "انیمیشن",
         "description": "Option in options page."
     },
     "allTabsLabel": {
-        "message": "",
+        "message": "نمایش همه برگه ها…",
         "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by a query."
     },
     "browserActionTitle": {
@@ -12,7 +12,7 @@
         "description": "Tooltip shown when hovering the toolbar button."
     },
     "closeTabButtonTooltip": {
-        "message": "",
+        "message": "بستن تب‌",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197248. Tooltip of the close button on tabs."
     },
     "contextMenuCloseOtherTabs": {
@@ -20,7 +20,7 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197270. Context menu item label."
     },
     "contextMenuCloseTab": {
-        "message": "",
+        "message": "&بستن تب‌",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197248. Context menu item label."
     },
     "contextMenuCloseTabs": {
@@ -36,7 +36,7 @@
         "description": "Context menu item label."
     },
     "contextMenuDuplicateTab": {
-        "message": "",
+        "message": "&مضاعف کردن تب",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197263. Context menu item label."
     },
     "contextMenuMoveTab": {
