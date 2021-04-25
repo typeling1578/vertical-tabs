@@ -87,7 +87,10 @@ export default class Sidebar {
     browser.contextualIdentities.onRemoved.addListener(() => this._updateContextualIdentities());
     browser.contextualIdentities.onUpdated.addListener(() => this._updateContextualIdentities());
 
-    window.addEventListener("contextmenu", (e) => this._onContextMenu(e), false);
+    window.addEventListener("contextmenu", (e) => this._onContextMenu(e), {
+      passive: false,
+      capture: false,
+    });
   }
 
   _onContextMenu(e) {

@@ -80,12 +80,14 @@ export default class Tablist {
     // Because defining event listeners for each tab is a terrible idea.
     // Read more here: https://davidwalsh.name/event-delegate
     for (const view of [this._view, this._pinnedview]) {
-      view.addEventListener("click", (e) => this._onClick(e));
-      view.addEventListener("auxclick", (e) => this._onAuxClick(e));
-      view.addEventListener("mousedown", (e) => this._onMouseDown(e));
-      view.addEventListener("pointerup", (e) => this._onPointerUp(e));
+      view.addEventListener("click", (e) => this._onClick(e), { passive: false });
+      view.addEventListener("auxclick", (e) => this._onAuxClick(e), { passive: false });
+      view.addEventListener("pointerdown", (e) => this._onPointerDown(e), { passive: false });
       view.addEventListener("pointerover", (e) => this._onPointerOver(e));
-      view.addEventListener("contextmenu", (e) => this.tabContextMenu.open(e), true);
+      view.addEventListener("contextmenu", (e) => this.tabContextMenu.open(e), {
+        passive: false,
+        capture: true,
+      });
       view.addEventListener("animationend", (e) => this._onAnimationEnd(e));
     }
 
@@ -96,20 +98,24 @@ export default class Tablist {
     this._moreTabsView.addEventListener("click", () => this._clearSearch());
 
     // Drag-and-drop.
-    document.addEventListener("dragstart", (e) => this._onDragStart(e));
-    document.addEventListener("dragover", (e) => this._onDragOver(e));
+    document.addEventListener("dragstart", (e) => this._onDragStart(e), { passive: false });
+    document.addEventListener("dragover", (e) => this._onDragOver(e), { passive: false });
     document.addEventListener("dragleave", (e) => this._onDragLeave(e));
     document.addEventListener("drop", (e) => this._onDrop(e));
     document.addEventListener("dragend", (e) => this._onDragend(e));
 
     this._onWheel = throttled((e) => this.__onWheel(e), 20);
-    window.addEventListener("wheel", (e) => {
-      // disable zooming
-      if (e.metaKey || e.ctrlKey || this._scrollShouldSwitch(e)) {
-        e.preventDefault();
-      }
-      this._onWheel(e);
-    });
+    window.addEventListener(
+      "wheel",
+      (e) => {
+        // disable zooming
+        if (e.metaKey || e.ctrlKey || this._scrollShouldSwitch(e)) {
+          e.preventDefault();
+        }
+        this._onWheel(e);
+      },
+      { passive: false },
+    );
 
     // Handle notifications
     browser.notifications.onClicked.addListener((notificationId) =>
@@ -274,14 +280,7 @@ export default class Tablist {
     sidetab.burst();
   }
 
-  _onMouseDown(e) {
-    // Prevent autoscrolling on middle click
-    if (e.button === 1) {
-      e.preventDefault();
-    }
-  }
-
-  _onPointerUp(e) {
+  _onPointerDown(e) {
     // Prevent autoscrolling on middle click
     if (e.button === 1) {
       e.preventDefault();
