@@ -668,7 +668,7 @@ export default class Tablist {
       }
       browser.windows.create({ tabId: tabId });
       browser.bookmarks.onCreated.removeListener(__onBookmarkCreated);
-    }, 50);
+    }, 200);
   }
 
   __onWheel(e) {
