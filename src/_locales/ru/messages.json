@@ -3,40 +3,40 @@
         "message": "Показать все вкладки…"
     },
     "browserActionTitle": {
-        "message": "Панель Tab Center Reborn"
+        "message": "Показать/Скрыть Tab Center Reborn"
     },
     "closeAllTabsExceptWarning": {
         "message": "Вы точно хотите закрыть $COUNT$ других вкладок?"
     },
     "closeTabButtonTooltip": {
-        "message": "Закрыть вкладку"
+        "message": "Закрыть Вкладку"
     },
     "closeTabsAfterWarning": {
         "message": "Вы точно хотите закрыть все $COUNT$ вкладок?"
     },
     "contextMenuCloseOtherTabs": {
-        "message": "Закрыть другие вкладки"
+        "message": "Закрыть Другие Вкладки"
     },
     "contextMenuCloseTab": {
-        "message": "Закрыть вкладку"
+        "message": "Закрыть Вкладку"
     },
     "contextMenuCloseTabsAfter": {
-        "message": "Закрыть вкладки ниже"
+        "message": "Закрыть Вкладки Ниже"
     },
     "contextMenuDuplicateTab": {
-        "message": "Дублировать вкладку"
+        "message": "Дублировать Вкладку"
     },
     "contextMenuMoveTab": {
-        "message": "Переместить вкладку"
+        "message": "Переместить Вкладку"
     },
     "contextMenuMoveTabToEnd": {
-        "message": "Переместить в конец"
+        "message": "Переместить в Конец"
     },
     "contextMenuMoveTabToNewWindow": {
-        "message": "Переместить в новое окно"
+        "message": "Переместить в Новое Окно"
     },
     "contextMenuMoveTabToStart": {
-        "message": "Переместить в начало"
+        "message": "Переместить в Начало"
     },
     "contextMenuMuteTab": {
         "message": "Убрать звук во вкладке"
@@ -66,7 +66,7 @@
         "message": "Открепить вкладку"
     },
     "extensionDescription": {
-        "message": "Передвиньте ваши вкладки к боковой грани окна."
+        "message": "Простая и удобная боковая панель вкладок"
     },
     "extensionsLongDescription": {
         "message": "Tab Center Reborn продолжает <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> и его цель - простое, мощное и изящно вписанное расширение для управления вкладками в вертикальном режиме.\n\nРасширение имеет многочисленные настройки и позволяет продвинутым пользователям полностью перенастроить внешний вид с помощью CSS-кода.\n\n<ul>\n<li>Используйте Shift+F1 для открытия и скрытия расширения</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">Как скрыть верхнюю панель вкладок</a></li>\n</ul>\n\nВы можете <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">помочь с переводом, документацией, исправлением ошибок и кодом</a>!"
@@ -99,7 +99,7 @@
         "message": "Отключен"
     },
     "optionsCompactModeStrict": {
-        "message": "Всегда"
+        "message": "Включено"
     },
     "optionsCompactPins": {
         "message": "Закреплённые вкладки (только иконки)"
@@ -117,16 +117,16 @@
         "message": "Сохранить CSS"
     },
     "optionsSwitchLastActiveTab": {
-        "message": "Переключить последнюю активную вкладку"
+        "message": "Переключить на последнюю активную вкладку"
     },
     "optionsSwitchLastActiveTabExplanation": {
-        "message": "Кликая активную вкладку, переключайтесь на предыдущую активную."
+        "message": "Щелкните активную вкладку, чтобы переключиться на последнюю активную вкладку."
     },
     "optionsThemeIntegration": {
-        "message": "Интегрировать свою тему"
+        "message": "Использовать текущую тему браузера"
     },
     "optionsThemeIntegrationExplanation": {
-        "message": "Интегрировать свою тему вместо использования темы выше. Закройте и снова откройте боковую панель после переключения к одной из тем Firefox по-умолчанию."
+        "message": "Используйте текущую тему браузера вместо светлой темы по умолчанию."
     },
     "optionsTitle": {
         "message": "Настройки"
@@ -135,7 +135,7 @@
         "message": "Предупреждать перед закрытием более чем $COUNT$ вкладок"
     },
     "searchPlaceholder": {
-        "message": "Найти вкладку"
+        "message": "Вкладки Фильтра"
     },
     "settingsBtnTooltip": {
         "message": "Открыть настройки"
@@ -143,5 +143,89 @@
     "contextMenuNoContainer": {
         "message": "Н&е в контейнере",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153932 and https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153933. Context menu item label."
+    },
+    "unmuteTabButtonTooltip": {
+        "message": "Включить звук во вкладке",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
+    },
+    "optionsSwitchByScrollingWithCtrlExplanation": {
+        "message": "При определенных обстоятельствах активируйте следующую или предыдущую вкладку вместо прокрутки.",
+        "description": "Explanation for the Switch by scrolling options in options page."
+    },
+    "optionsSwitchByScrollingWithCtrl": {
+        "message": "С Ctrl",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingNever": {
+        "message": "Никогда",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingAlways": {
+        "message": "Всегда",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrolling": {
+        "message": "Переключение активной вкладки с помощью прокрутки",
+        "description": "Option in options page"
+    },
+    "optionsNotifyClosingManyTabsExplanation": {
+        "message": "Отображать уведомление, позволяющее отменить действие при закрытии более чем $COUNT$ вкладок.",
+        "description": "Explanation for the Notify when closing many tabs option in options page.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "optionsNotifyClosingManyTabs": {
+        "message": "Уведомлять при закрытии многих вкладок",
+        "description": "Option in options page."
+    },
+    "optionsCustomCSSChangelogLink": {
+        "message": "Проверьте журнал изменений на наличие обратно несовместимых изменений",
+        "description": "Text for a link to the changelog."
+    },
+    "notificationDeletedTitle": {
+        "message": "$COUNT$ закрытых вкладок",
+        "description": "Title of the notification when deleting many tabs.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "notificationDeletedMessage": {
+        "message": "Щёлкните уведомление чтобы отменить.",
+        "description": "Title of the notification when deleting many tabs."
+    },
+    "newTabContextMenuOpenInWindow": {
+        "message": "Новое окно",
+        "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
+    },
+    "newTabContextMenuOpenInPrivateWindow": {
+        "message": "Новое приватное окно",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
+    },
+    "newTabContextMenuOpenAtEnd": {
+        "message": "В конце",
+        "description": "New Tab context menu item."
+    },
+    "muteTabButtonTooltip": {
+        "message": "Выключить звук во вкладке",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
+    },
+    "contextMenuCloseTabsBefore": {
+        "message": "Закрыть Вкладки Выше",
+        "description": "Context menu item label."
+    },
+    "contextMenuCloseTabs": {
+        "message": "Закрыть Вкладки",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197250. Context Menu item label"
+    },
+    "OptionsAnimations": {
+        "message": "Анимации",
+        "description": "Option in options page."
     }
 }
