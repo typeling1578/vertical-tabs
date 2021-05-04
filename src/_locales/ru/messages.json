@@ -3,7 +3,7 @@
         "message": "Показать все вкладки…"
     },
     "browserActionTitle": {
-        "message": "Показать/скрыть Tab Center Reborn"
+        "message": "Показать/скрыть панель Tab Center Reborn"
     },
     "closeAllTabsExceptWarning": {
         "message": "Вы точно хотите закрыть $COUNT$ других вкладок?"
@@ -15,55 +15,55 @@
         "message": "Вы точно хотите закрыть все $COUNT$ вкладок?"
     },
     "contextMenuCloseOtherTabs": {
-        "message": "Закрыть другие вкладки"
+        "message": "Закр&ыть другие вкладки"
     },
     "contextMenuCloseTab": {
-        "message": "Закрыть вкладку"
+        "message": "Закрыт&ь вкладку"
     },
     "contextMenuCloseTabsAfter": {
-        "message": "Закрыть вкладки снизу"
+        "message": "Закрыть вкладки &ниже"
     },
     "contextMenuDuplicateTab": {
-        "message": "Дублировать вкладку"
+        "message": "&Дублировать вкладку"
     },
     "contextMenuMoveTab": {
-        "message": "Переместить вкладку"
+        "message": "Пере&местить вкладку"
     },
     "contextMenuMoveTabToEnd": {
-        "message": "Переместить в конец"
+        "message": "Переместить в коне&ц"
     },
     "contextMenuMoveTabToNewWindow": {
-        "message": "Переместить в новое окно"
+        "message": "Переместить в новое ок&но"
     },
     "contextMenuMoveTabToStart": {
-        "message": "Переместить в начало"
+        "message": "Переместить в на&чало"
     },
     "contextMenuMuteTab": {
-        "message": "Убрать звук во вкладке"
+        "message": "Убрать &звук во вкладке"
     },
     "contextMenuOpenInContextualTab": {
-        "message": "Открыть заново в контейнере"
+        "message": "Открыть заново в &контейнере"
     },
     "contextMenuPinTab": {
-        "message": "Закрепить вкладку"
+        "message": "За&крепить вкладку"
     },
     "contextMenuReloadAllTabs": {
         "message": "Перезагрузить все вкладки"
     },
     "contextMenuReloadTab": {
-        "message": "Обновить вкладку"
+        "message": "&Обновить вкладку"
     },
     "contextMenuUndoCloseTab": {
-        "message": "Восстановить закрытую вкладку"
+        "message": "&Восстановить закрытую вкладку"
     },
     "contextMenuUnloadTab": {
-        "message": "Выгрузить вкладку"
+        "message": "Вы&грузить вкладку"
     },
     "contextMenuUnmuteTab": {
-        "message": "Восстановить звук во вкладке"
+        "message": "Восстановить &звук во вкладке"
     },
     "contextMenuUnpinTab": {
-        "message": "Открепить вкладку"
+        "message": "От&крепить вкладку"
     },
     "extensionDescription": {
         "message": "Простая и функциональная боковая панель вкладок"
@@ -141,7 +141,7 @@
         "message": "Открыть настройки"
     },
     "contextMenuNoContainer": {
-        "message": "Не в контейнере",
+        "message": "Н&е в контейнере",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153932 and https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153933. Context menu item label."
     },
     "unmuteTabButtonTooltip": {
@@ -201,15 +201,15 @@
         "description": "Title of the notification when deleting many tabs."
     },
     "newTabContextMenuOpenInWindow": {
-        "message": "Новое окно",
+        "message": "Новое ок&но",
         "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
     },
     "newTabContextMenuOpenInPrivateWindow": {
-        "message": "Новое приватное окно",
+        "message": "Новое &приватное окно",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
     },
     "newTabContextMenuOpenAtEnd": {
-        "message": "В конце",
+        "message": "В кон&це",
         "description": "New Tab context menu item."
     },
     "muteTabButtonTooltip": {
@@ -217,11 +217,11 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
     },
     "contextMenuCloseTabsBefore": {
-        "message": "Закрыть вкладки сверху",
+        "message": "Закрыть вкладки &выше",
         "description": "Context menu item label."
     },
     "contextMenuCloseTabs": {
-        "message": "Закрыть несколько вкладок",
+        "message": "Закр&ыть несколько вкладок",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197250. Context Menu item label"
     },
     "OptionsAnimations": {
@@ -229,7 +229,7 @@
         "description": "Option in options page."
     },
     "newTabContextMenuOpneAfterCurrent": {
-        "message": "После текущей вкладки",
+        "message": "После &текущей вкладки",
         "description": "New Tab context menu item."
     }
 }
