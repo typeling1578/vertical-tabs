@@ -108,7 +108,7 @@
         "message": "Пользовательский стиль"
     },
     "optionsCustomCSSWikiLink": {
-        "message": "Вики-статья CSS Tweaks"
+        "message": "Вики-статья про настройки CSS"
     },
     "optionsDarkTheme": {
         "message": "Темная тема"
@@ -117,10 +117,10 @@
         "message": "Сохранить CSS"
     },
     "optionsSwitchLastActiveTab": {
-        "message": "Переключить на последнюю активную вкладку"
+        "message": "Переключать на последнюю активную вкладку"
     },
     "optionsSwitchLastActiveTabExplanation": {
-        "message": "Щелкните активную вкладку, чтобы переключиться на последнюю активную вкладку."
+        "message": "Щёлкните по текущей вкладке, чтобы переключиться на последнюю активную вкладку."
     },
     "optionsThemeIntegration": {
         "message": "Использовать текущую тему браузера"
@@ -135,7 +135,7 @@
         "message": "Предупреждать перед закрытием более чем $COUNT$ вкладок"
     },
     "searchPlaceholder": {
-        "message": "Вкладки Фильтра"
+        "message": "Фильтр вкладок"
     },
     "settingsBtnTooltip": {
         "message": "Открыть настройки"
@@ -145,15 +145,15 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153932 and https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153933. Context menu item label."
     },
     "unmuteTabButtonTooltip": {
-        "message": "Включить звук во вкладке",
+        "message": "Восстановить звук во вкладке",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
     },
     "optionsSwitchByScrollingWithCtrlExplanation": {
-        "message": "При определенных обстоятельствах активируйте следующую или предыдущую вкладку вместо прокрутки.",
+        "message": "Осуществлять переход на следующую/предыдущую вкладку с помощью колеса прокрутки, когда курсор мыши располагается над панелью Tab Center Reborn.",
         "description": "Explanation for the Switch by scrolling options in options page."
     },
     "optionsSwitchByScrollingWithCtrl": {
-        "message": "С Ctrl",
+        "message": "При нажатой Ctrl",
         "description": "Option in options page"
     },
     "optionsSwitchByScrollingNever": {
@@ -165,11 +165,11 @@
         "description": "Option in options page"
     },
     "optionsSwitchByScrolling": {
-        "message": "Переключение активной вкладки с помощью прокрутки",
+        "message": "Переключение между вкладками с помощью колеса прокрутки",
         "description": "Option in options page"
     },
     "optionsNotifyClosingManyTabsExplanation": {
-        "message": "Отображать уведомление, позволяющее отменить действие при закрытии более чем $COUNT$ вкладок.",
+        "message": "Показать уведомление, позволяющее отменить действие при закрытии более чем $COUNT$ вкладок.",
         "description": "Explanation for the Notify when closing many tabs option in options page.",
         "placeholders": {
             "count": {
@@ -179,7 +179,7 @@
         }
     },
     "optionsNotifyClosingManyTabs": {
-        "message": "Уведомлять при закрытии многих вкладок",
+        "message": "Уведомлять при закрытии большого количества вкладок",
         "description": "Option in options page."
     },
     "optionsCustomCSSChangelogLink": {
