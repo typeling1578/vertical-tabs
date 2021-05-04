@@ -149,7 +149,7 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
     },
     "optionsSwitchByScrollingWithCtrlExplanation": {
-        "message": "Осуществлять переход на следующую/предыдущую вкладку с помощью колеса прокрутки, когда курсор мыши располагается над панелью Tab Center Reborn.",
+        "message": "Переключаться на следующую/предыдущую вкладку с помощью колеса прокрутки, когда курсор мыши располагается над панелью Tab Center Reborn.",
         "description": "Explanation for the Switch by scrolling options in options page."
     },
     "optionsSwitchByScrollingWithCtrl": {
@@ -165,11 +165,11 @@
         "description": "Option in options page"
     },
     "optionsSwitchByScrolling": {
-        "message": "Переключение между вкладками с помощью колеса прокрутки",
+        "message": "Переключать вкладки с помощью колеса прокрутки",
         "description": "Option in options page"
     },
     "optionsNotifyClosingManyTabsExplanation": {
-        "message": "Показать уведомление, позволяющее отменить действие при закрытии более чем $COUNT$ вкладок.",
+        "message": "Показать уведомление, позволяющее отменить действие, при закрытии более чем $COUNT$ вкладок.",
         "description": "Explanation for the Notify when closing many tabs option in options page.",
         "placeholders": {
             "count": {
