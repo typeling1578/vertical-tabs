@@ -9,67 +9,67 @@
         "message": "aan"
     },
     "browserActionTitle": {
-        "message": "Tab Center Reborn weergeven/verbergen"
+        "message": "Tab Center Reborn tonen/verbergen"
     },
     "closeTabButtonTooltip": {
         "message": "Tabblad sluiten"
     },
     "contextMenuCloseOtherTabs": {
-        "message": "Overige tabbladen sluiten"
+        "message": "&Overige tabbladen sluiten"
     },
     "contextMenuCloseTab": {
-        "message": "Tabblad sluiten"
+        "message": "Tabblad &sluiten"
     },
     "contextMenuCloseTabsAfter": {
-        "message": "Onderliggende tabbladen sluiten"
+        "message": "Onderliggende t&abbladen sluiten"
     },
     "contextMenuDuplicateTab": {
-        "message": "Tabblad dupliceren"
+        "message": "Tabbla&d klonen"
     },
     "contextMenuMoveTab": {
-        "message": "Tabblad verplaatsen"
+        "message": "Tabblad &verplaatsen"
     },
     "contextMenuMoveTabToEnd": {
-        "message": "Verplaatsen naar einde"
+        "message": "Verplaatsen naar &einde"
     },
     "contextMenuMoveTabToNewWindow": {
-        "message": "Verplaatsen naar nieuw venster"
+        "message": "Verplaatsen naar nieu&w venster"
     },
     "contextMenuMoveTabToStart": {
-        "message": "Verplaatsen naar begin"
+        "message": "Verplaat&sen naar begin"
     },
     "contextMenuMuteTab": {
-        "message": "Tabblad dempen"
+        "message": "Tabblad de&mpen"
     },
     "contextMenuOpenInContextualTab": {
-        "message": "Opnieuw openen in Container"
+        "message": "Heropenen in c&ontainer"
     },
     "contextMenuPinTab": {
-        "message": "Tabblad vastmaken"
+        "message": "Ta&bblad vastmaken"
     },
     "contextMenuReloadAllTabs": {
         "message": "Alle tabbladen vernieuwen"
     },
     "contextMenuReloadTab": {
-        "message": "Tabblad vernieuwen"
+        "message": "Tabblad he&rladen"
     },
     "contextMenuUndoCloseTab": {
-        "message": "Tabblad sluiten ongedaan maken"
+        "message": "Tabblad sl&uiten ongedaan maken"
     },
     "contextMenuUnmuteTab": {
-        "message": "Tabblad dempen opheffen"
+        "message": "Tabblad ontde&mpen"
     },
     "contextMenuUnpinTab": {
-        "message": "Tabblad losmaken"
+        "message": "Ta&bblad losmaken"
     },
     "extensionDescription": {
-        "message": "Tab Center is een poging om sommige problemen op te lossen die ontstaan zijn uit de manier waarop mensen tabbladen gebruiken (vooral het “teveel tabbladen“ probleem) en een veelzijdigere gebruikersinterface te bieden voor toekomstige innovatie. De eerste versie van deze Firefox-add-on schikt tabbladen verticaal in plaats van horizontaal. Het is hevig geïnspireerd op en leent ideeën van de uitstekende VerticalTabs-add-on."
+        "message": "Eenvoudige doch krachtige verticale tabbladbalk"
     },
     "newTabBtnLabel": {
         "message": "Nieuw tabblad"
     },
     "newTabBtnTooltip": {
-        "message": "Open een nieuw tabblad"
+        "message": "Nieuw tabblad openen"
     },
     "optionsAdvancedTitle": {
         "message": "Geavanceerd"
@@ -81,22 +81,22 @@
         "message": "Dynamisch"
     },
     "optionsCompactModeExplanation": {
-        "message": "De compacte modus vermindert de hoogte van de tabbladen zodat er meer getoond kunnen worden. In de dynamische modus zal dit ingeschakeld worden wanneer er geen ruimte meer over is."
+        "message": "De compacte modus vermindert de hoogte van de tabbladen zodat er meer getoond kunnen worden. In de dynamische modus wordt dit ingeschakeld als er geen ruimte meer over is."
     },
     "optionsCompactModeOff": {
         "message": "Uitgeschakeld"
     },
     "optionsCompactModeStrict": {
-        "message": "Altijd"
+        "message": "Ingeschakeld"
     },
     "optionsCompactPins": {
-        "message": "Compacte vastgemaakte tabbladen"
+        "message": "Vastgemaakte tabbladen als favicons"
     },
     "optionsCustomCSS": {
-        "message": "Aangepaste CSS-stijlen"
+        "message": "Aangepast stijlblad"
     },
     "optionsCustomCSSWikiLink": {
-        "message": "CSS-aanpassingen wikipagina"
+        "message": "Wikipagina omtrent css-aanpassingen"
     },
     "optionsDarkTheme": {
         "message": "Donker thema"
@@ -115,5 +115,101 @@
     },
     "settingsBtnTooltip": {
         "message": "Instellingen openen"
+    },
+    "optionsSwitchByScrollingWithCtrl": {
+        "message": "Met Ctrl",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingNever": {
+        "message": "Nooit",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingAlways": {
+        "message": "Altijd",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrolling": {
+        "message": "Schakelen tussen tabbladen met muiswiel",
+        "description": "Option in options page"
+    },
+    "optionsNotifyClosingManyTabsExplanation": {
+        "message": "Toont een melding die het sluiten van meer dan $COUNT$ tabbladen mogelijk maakt.",
+        "description": "Explanation for the Notify when closing many tabs option in options page.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "optionsNotifyClosingManyTabs": {
+        "message": "Melding tonen bij sluiten van veel tabbladen",
+        "description": "Option in options page."
+    },
+    "optionsCustomCSSChangelogLink": {
+        "message": "Controleer het wijzigingslog op grote veranderingen",
+        "description": "Text for a link to the changelog."
+    },
+    "optionsBehaviorTitle": {
+        "message": "Gedrag",
+        "description": "Section in options page."
+    },
+    "optionsAppearanceTitle": {
+        "message": "Uiterlijk",
+        "description": "Section in options page."
+    },
+    "notificationDeletedTitle": {
+        "message": "$COUNT$ gesloten tabbladen",
+        "description": "Title of the notification when deleting many tabs.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "notificationDeletedMessage": {
+        "message": "Klik op de melding om ongedaan te maken.",
+        "description": "Title of the notification when deleting many tabs."
+    },
+    "newTabContextMenuOpneAfterCurrent": {
+        "message": "&Naast huidige tabblad",
+        "description": "New Tab context menu item."
+    },
+    "newTabContextMenuOpenInWindow": {
+        "message": "Nieu&w venster",
+        "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
+    },
+    "newTabContextMenuOpenInPrivateWindow": {
+        "message": "Nieuw &privévenster",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
+    },
+    "newTabContextMenuOpenAtEnd": {
+        "message": "Aan &einde",
+        "description": "New Tab context menu item."
+    },
+    "muteTabButtonTooltip": {
+        "message": "Tabblad dempen",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
+    },
+    "contextMenuUnloadTab": {
+        "message": "Tabblad in s&laapstand zetten",
+        "description": "Context menu item label."
+    },
+    "contextMenuNoContainer": {
+        "message": "Gee&n container",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153932 and https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153933. Context menu item label."
+    },
+    "contextMenuCloseTabsBefore": {
+        "message": "&Bovenliggende tabbladen sluiten",
+        "description": "Context menu item label."
+    },
+    "contextMenuCloseTabs": {
+        "message": "Tabblade&n sluiten",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197250. Context Menu item label"
+    },
+    "OptionsAnimations": {
+        "message": "Animaties",
+        "description": "Option in options page."
     }
 }
