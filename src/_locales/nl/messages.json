@@ -105,13 +105,13 @@
         "message": "CSS opslaan"
     },
     "optionsThemeIntegration": {
-        "message": "Integreren met huidige thema"
+        "message": "Huidig browserthema gebruiken"
     },
     "optionsTitle": {
         "message": "Instellingen"
     },
     "searchPlaceholder": {
-        "message": "Zoek tabbladen"
+        "message": "Tabbladen filteren"
     },
     "settingsBtnTooltip": {
         "message": "Instellingen openen"
@@ -211,5 +211,25 @@
     "OptionsAnimations": {
         "message": "Animaties",
         "description": "Option in options page."
+    },
+    "optionsSwitchLastActiveTabExplanation": {
+        "message": "Klik op het actieve tabblad op naar het laatst actieve te gaan.",
+        "description": "Explanation for the Compact Mode option in options page."
+    },
+    "optionsSwitchByScrollingWithCtrlExplanation": {
+        "message": "Activeer het vorige of volgende tabblad door in sommige gevallen te scrollen.",
+        "description": "Explanation for the Switch by scrolling options in options page."
+    },
+    "optionsSwitchLastActiveTab": {
+        "message": "Overschakelen naar laatst actieve tabblad",
+        "description": "Option in options page."
+    },
+    "optionsThemeIntegrationExplanation": {
+        "message": "Gebruik het huidige browserthema in plaats van het standaard lichte thema.",
+        "description": "Explanation for the Theme Integration option in the options page."
+    },
+    "unmuteTabButtonTooltip": {
+        "message": "Tabblad ontdempen",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
     }
 }
