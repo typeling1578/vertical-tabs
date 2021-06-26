@@ -506,11 +506,13 @@ body.animated #bottomshadow {
   width: 100%;
 }
 
-#tablist-wrapper.shrinked #tablist:not(.compact) .tab-icon-overlay {
+#tablist-wrapper.shrinked #tablist:not(.compact) .tab-icon-overlay,
+#tablist-wrapper.shrinked #pinnedtablist:not(.compact) .tab-icon-overlay {
   left: 18px;
 }
 
-#tablist-wrapper:not(.shrinked) #tablist:not(.compact) .tab-icon-overlay {
+#tablist-wrapper:not(.shrinked) #tablist:not(.compact) .tab-icon-overlay,
+#tablist-wrapper:not(.shrinked) #pinnedtablist:not(.compact) .tab-icon-overlay {
   width: 16px;
   height: 16px;
   top: 0;
