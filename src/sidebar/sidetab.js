@@ -84,15 +84,12 @@ export default class Sidetab {
       return TAB_TEMPLATE;
     }
     TAB_TEMPLATE = document.getElementById("tab-template");
-    TAB_TEMPLATE.content.querySelector(".tab-close").title = browser.i18n.getMessage(
-      "closeTabButtonTooltip",
-    );
-    TAB_TEMPLATE.content.querySelector(".tab-icon-overlay-audible").title = browser.i18n.getMessage(
-      "unmuteTabButtonTooltip",
-    );
-    TAB_TEMPLATE.content.querySelector(".tab-icon-overlay-muted").title = browser.i18n.getMessage(
-      "muteTabButtonTooltip",
-    );
+    TAB_TEMPLATE.content.querySelector(".tab-close").title =
+      browser.i18n.getMessage("closeTabButtonTooltip");
+    TAB_TEMPLATE.content.querySelector(".tab-icon-overlay-audible").title =
+      browser.i18n.getMessage("unmuteTabButtonTooltip");
+    TAB_TEMPLATE.content.querySelector(".tab-icon-overlay-muted").title =
+      browser.i18n.getMessage("muteTabButtonTooltip");
     return TAB_TEMPLATE;
   }
 
