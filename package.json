@@ -7,7 +7,7 @@
     "lint-stylelint": "stylelint ./src/**/*.css",
     "lint": "npm run lint-prettier && npm run lint-eslint && npm run lint-stylelint",
     "watch": "webpack-cli --watch",
-    "webext": "web-ext run --start-url 'about:debugging#/runtime/this-firefox' -s dist",
+    "webext": "webpack-cli --mode development && web-ext run --start-url 'about:debugging#/runtime/this-firefox' -s dist",
     "dev": "concurrently --kill-others --raw -s first 'yarn run webext' 'yarn run watch'",
     "webext-lint": "web-ext lint -s src/ -i sidebar/dist",
     "build": "webpack-cli --mode production && web-ext build -s dist/ --overwrite-dest",
