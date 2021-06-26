@@ -342,7 +342,8 @@ body.animated #pinnedtablist.compact .tab {
   background-image: url("img/loading-burst.svg");
 }
 
-.tab.bursting.not-selected-since-load .tab-loading-burst::before {
+/* .unread is .notselectedsinceload in Firefox’s source code */
+.tab.bursting.unread .tab-loading-burst::before {
   animation-name: tab-burst-animation-light;
 }
 
