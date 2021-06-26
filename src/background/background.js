@@ -19,9 +19,6 @@ class Background {
   }
 
   async updateTheme() {
-    if (!browser.theme.onUpdated) {
-      return;
-    }
     const theme = await browser.theme.getCurrent();
     this.onThemeUpdated(theme);
     browser.theme.onUpdated.addListener(({ theme }) => this.onThemeUpdated(theme));
