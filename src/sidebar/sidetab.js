@@ -16,6 +16,12 @@ const TAB_UPDATE_FIELDS = [
   "title",
 ];
 
+const ABOUT_URLS_WITH_COLORFUL_FAVICON = [
+  "about:logins",
+  "about:loginsimportreport",
+  "about:privatebrowsing",
+];
+
 export default class Sidetab {
   constructor(tabInfo) {
     // fields that are taken as is from tabs.Tab
@@ -236,15 +242,14 @@ export default class Sidetab {
       this.url.startsWith("about:") &&
         favIconUrl.endsWith(".svg") &&
         // but don’t recolor colorful icons
-        this.url !== "about:privatebrowsing" &&
-        this.url !== "about:logins",
+        !ABOUT_URLS_WITH_COLORFUL_FAVICON.some((url) => this.url.startsWith(url)),
     );
 
     // Some built-in icons can’t be loaded, so we use our own
     // https://bugzilla.mozilla.org/show_bug.cgi?id=1462948
-    if (this.url === "about:addons") {
+    if (this.url.startsWith("about:addons")) {
       favIconUrl = "img/extensions.svg";
-    } else if (this.url === "about:profiling") {
+    } else if (this.url.startsWith("about:profiling")) {
       favIconUrl = "img/profiler-stopwatch.svg";
     }
 
