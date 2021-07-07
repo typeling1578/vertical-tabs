@@ -72,7 +72,7 @@
     "cssnano": "^5.0.0",
     "eslint": "^7.10.0",
     "eslint-config-prettier": "^8.2.0",
-    "husky": "^6.0.0",
+    "husky": "^7.0.1",
     "lint-staged": "^11.0.0",
     "postcss": "^8.2.10",
     "prettier": "^2.1.2",
