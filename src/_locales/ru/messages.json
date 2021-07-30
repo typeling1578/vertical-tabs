@@ -3,7 +3,7 @@
         "message": "Показать все вкладки…"
     },
     "browserActionTitle": {
-        "message": "Панель Tab Center Reborn"
+        "message": "Показать/скрыть панель Tab Center Reborn"
     },
     "closeAllTabsExceptWarning": {
         "message": "Вы точно хотите закрыть $COUNT$ других вкладок?"
@@ -15,61 +15,61 @@
         "message": "Вы точно хотите закрыть все $COUNT$ вкладок?"
     },
     "contextMenuCloseOtherTabs": {
-        "message": "Закрыть другие вкладки"
+        "message": "Закр&ыть другие вкладки"
     },
     "contextMenuCloseTab": {
-        "message": "Закрыть вкладку"
+        "message": "Закрыт&ь вкладку"
     },
     "contextMenuCloseTabsAfter": {
-        "message": "Закрыть вкладки ниже"
+        "message": "Закрыть вкладки &ниже"
     },
     "contextMenuDuplicateTab": {
-        "message": "Дублировать вкладку"
+        "message": "&Дублировать вкладку"
     },
     "contextMenuMoveTab": {
-        "message": "Переместить вкладку"
+        "message": "Пере&местить вкладку"
     },
     "contextMenuMoveTabToEnd": {
-        "message": "Переместить в конец"
+        "message": "Переместить в коне&ц"
     },
     "contextMenuMoveTabToNewWindow": {
-        "message": "Переместить в новое окно"
+        "message": "Переместить в новое ок&но"
     },
     "contextMenuMoveTabToStart": {
-        "message": "Переместить в начало"
+        "message": "Переместить в на&чало"
     },
     "contextMenuMuteTab": {
-        "message": "Убрать звук во вкладке"
+        "message": "Убрать &звук во вкладке"
     },
     "contextMenuOpenInContextualTab": {
-        "message": "Переоткрыть в контейнере"
+        "message": "Открыть заново в &контейнере"
     },
     "contextMenuPinTab": {
-        "message": "Закрепить вкладку"
+        "message": "За&крепить вкладку"
     },
     "contextMenuReloadAllTabs": {
         "message": "Перезагрузить все вкладки"
     },
     "contextMenuReloadTab": {
-        "message": "Перезагрузить вкладку"
+        "message": "&Обновить вкладку"
     },
     "contextMenuUndoCloseTab": {
-        "message": "Вернуть закрытую вкладку"
+        "message": "&Восстановить закрытую вкладку"
     },
     "contextMenuUnloadTab": {
-        "message": "Выгрузить вкладку"
+        "message": "Вы&грузить вкладку"
     },
     "contextMenuUnmuteTab": {
-        "message": "Восстановить звук во вкладке"
+        "message": "Восстановить &звук во вкладке"
     },
     "contextMenuUnpinTab": {
-        "message": "Открепить вкладку"
+        "message": "От&крепить вкладку"
     },
     "extensionDescription": {
-        "message": "Передвиньте ваши вкладки к боковой грани окна."
+        "message": "Простая и функциональная боковая панель вкладок"
     },
     "extensionsLongDescription": {
-        "message": "Tab Center Reborn продолжает <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> и его цель - простое, мощное и изящно вписанное расширение для управления вкладками в вертикальном режиме.\n\nРасширение имеет многочисленные настройки и позволяет продвинутым пользователям полностью перенастроить внешний вид с помощью CSS-кода.\n\n<ul>\n<li>Используйте Shift+F1 для открытия и скрытия расширения</li>\n<li><a href=\"https://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\">Как скрыть верхнюю панель вкладок</a></li>\n</ul>\n\nВы можете <a href=\"https://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\">помочь с переводом, документацией, исправлением ошибок и кодом</a>!"
+        "message": "Tab Center Reborn является наследником <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> и представляет собой простое, мощное и хорошо интегрированное расширение для управления вкладками в вертикальном режиме.\n\nРасширение имеет множество настроек и позволяет опытным пользователям полностью настроить его внешний вид с помощью кода CSS.\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home\n\nВероятно, вам будет особенно интересно узнать о том, каким образом можно скрыть верхнюю панель вкладок:\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\n\n\nВозможности:\n– Все функции панели вкладок Firefox (закрепление, дублирование, перемещение в начало/конец, закрытие всех вкладок после текущей и т.д.);\n– Опции \"Выгрузить вкладку\" и \"Закрыть вкладки перед\" для управления большим количеством вкладок;\n– Отмена действия, если при выполнении команды \"Закрыть вкладки перед\", \"Закрыть вкладки после\" или \"Закрыть другие вкладки\" было закрыто более 5 вкладок;\n– Нативный внешний вид и работа, поддержка анимации (можно отключить);\n– Поддерживает работу с контейнерами: https://support.mozilla.org/en-US/kb/containers;\n– Адаптируется к полноценным темам Firefox (более простые темы не предоставляют достаточное количество цветов);\n– Синхронизация настроек с Firefox Sync.\n\nГлобальные сочетания клавиш:\n– Shift + F1: открыть или закрыть боковую панель\n– Shift + F2: переключиться на последнюю активную вкладку\nПри необходимости сочетания клавиш можно перенастроить: https://support.mozilla.org/en-US/kb/manage-extension-shortcuts-firefox\n\nСочетания клавиш при нажатии на кнопку новой вкладки/контейнера, доступные в контекстном меню новой вкладки (правая кнопка мыши):\n– Ctrl + щелчок ЛКМ: открыть новую вкладку после текущей, если по умолчанию они открываются в конце (и наоборот — открыть новую вкладку в конце, если по умолчанию новые вкладки открываются после текущей);\n– Shift + щелчок ЛКМ: открыть новое окно;\n– Ctrl + Shift + щелчок ЛКМ: открыть новое приватное окно (если расширению Tab Center Reborn разрешён запуск в приватных окнах).\n\n\nВы можете внести свой вклад: сообщайте о проблемах, делайте перевод, добавляйте документацию или помогайте разрабатывать расширение!\nhttps://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\n\nИспользуемые разрешения:\n– Получать доступ к вашим данным на всех сайтах: необходимо для корректной работы контейнеров;\n– Читать и изменять закладки: чтобы не открывать новое окно, если вы переместили вкладку на панель закладок;\n– Читать и изменять настройки браузера: чтобы следовать настройкам и теме Firefox;\n– Показывать вам уведомления: чтобы отображать уведомление о возможности отмены действия, когда было закрыто сразу много вкладок;\n– Получать доступ к недавно закрытым вкладкам: для переключения на последнюю активную вкладку;\n– Получать доступ ко вкладкам браузера: для получения URL, названий и иконок вкладок;\n– Получать доступ к активности браузера при навигации: для отображения дополнительной анимации после полной загрузки страницы."
     },
     "newTabBtnLabel": {
         "message": "Новая вкладка"
@@ -93,22 +93,22 @@
         "message": "Автоматическая подстройка"
     },
     "optionsCompactModeExplanation": {
-        "message": "Компактный режим уменьшает высоту вкладок, позволяя отобразить их большее количество. Опция \"Динамический\" активирует компактный режим автоматически, когда заканчивается свободное место."
+        "message": "Компактный режим уменьшает высоту вкладок, позволяя отобразить их большее количество. При \"Автоматической подстройке\" компактный режим активируется только в случае недостатка свободного пространства."
     },
     "optionsCompactModeOff": {
         "message": "Отключен"
     },
     "optionsCompactModeStrict": {
-        "message": "Всегда"
+        "message": "Включен"
     },
     "optionsCompactPins": {
-        "message": "Закреплённые вкладки (только иконки)"
+        "message": "Показывать только иконки закрепленных вкладок"
     },
     "optionsCustomCSS": {
-        "message": "Пользовательские стили"
+        "message": "Пользовательский стиль"
     },
     "optionsCustomCSSWikiLink": {
-        "message": "Вики-статья CSS Tweaks"
+        "message": "Вики-статья про настройки CSS"
     },
     "optionsDarkTheme": {
         "message": "Темная тема"
@@ -117,16 +117,16 @@
         "message": "Сохранить CSS"
     },
     "optionsSwitchLastActiveTab": {
-        "message": "Переключить последнюю активную вкладку"
+        "message": "Переключать на последнюю активную вкладку"
     },
     "optionsSwitchLastActiveTabExplanation": {
-        "message": "Кликая активную вкладку, переключайтесь на предыдущую активную."
+        "message": "Щёлкните по текущей вкладке, чтобы переключиться на последнюю активную вкладку."
     },
     "optionsThemeIntegration": {
-        "message": "Интегрировать свою тему"
+        "message": "Использовать текущую тему браузера"
     },
     "optionsThemeIntegrationExplanation": {
-        "message": "Интегрировать свою тему вместо использования темы выше. Закройте и снова откройте боковую панель после переключения к одной из тем Firefox по-умолчанию."
+        "message": "Используйте текущую тему браузера вместо светлой темы по умолчанию."
     },
     "optionsTitle": {
         "message": "Настройки"
@@ -135,7 +135,7 @@
         "message": "Предупреждать перед закрытием более чем $COUNT$ вкладок"
     },
     "searchPlaceholder": {
-        "message": "Найти вкладку"
+        "message": "Фильтр вкладок"
     },
     "settingsBtnTooltip": {
         "message": "Открыть настройки"
@@ -143,5 +143,93 @@
     "contextMenuNoContainer": {
         "message": "Н&е в контейнере",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153932 and https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153933. Context menu item label."
+    },
+    "unmuteTabButtonTooltip": {
+        "message": "Восстановить звук во вкладке",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
+    },
+    "optionsSwitchByScrollingWithCtrlExplanation": {
+        "message": "Переключаться на следующую/предыдущую вкладку с помощью колеса прокрутки, когда курсор мыши располагается над панелью Tab Center Reborn.",
+        "description": "Explanation for the Switch by scrolling options in options page."
+    },
+    "optionsSwitchByScrollingWithCtrl": {
+        "message": "При нажатой Ctrl",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingNever": {
+        "message": "Никогда",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingAlways": {
+        "message": "Всегда",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrolling": {
+        "message": "Переключать вкладки с помощью колеса прокрутки",
+        "description": "Option in options page"
+    },
+    "optionsNotifyClosingManyTabsExplanation": {
+        "message": "Показать уведомление, позволяющее отменить действие, при закрытии более чем $COUNT$ вкладок.",
+        "description": "Explanation for the Notify when closing many tabs option in options page.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "optionsNotifyClosingManyTabs": {
+        "message": "Уведомлять при закрытии большого количества вкладок",
+        "description": "Option in options page."
+    },
+    "optionsCustomCSSChangelogLink": {
+        "message": "Проверьте журнал изменений на наличие обратно несовместимых изменений",
+        "description": "Text for a link to the changelog."
+    },
+    "notificationDeletedTitle": {
+        "message": "$COUNT$ закрытых вкладок",
+        "description": "Title of the notification when deleting many tabs.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "notificationDeletedMessage": {
+        "message": "Щёлкните по уведомлению, чтобы отменить.",
+        "description": "Title of the notification when deleting many tabs."
+    },
+    "newTabContextMenuOpenInWindow": {
+        "message": "Новое ок&но",
+        "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
+    },
+    "newTabContextMenuOpenInPrivateWindow": {
+        "message": "Новое &приватное окно",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
+    },
+    "newTabContextMenuOpenAtEnd": {
+        "message": "В кон&це",
+        "description": "New Tab context menu item."
+    },
+    "muteTabButtonTooltip": {
+        "message": "Убрать звук во вкладке",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
+    },
+    "contextMenuCloseTabsBefore": {
+        "message": "Закрыть вкладки &выше",
+        "description": "Context menu item label."
+    },
+    "contextMenuCloseTabs": {
+        "message": "Закр&ыть несколько вкладок",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197250. Context Menu item label"
+    },
+    "OptionsAnimations": {
+        "message": "Анимации",
+        "description": "Option in options page."
+    },
+    "newTabContextMenuOpneAfterCurrent": {
+        "message": "После &текущей вкладки",
+        "description": "New Tab context menu item."
     }
 }

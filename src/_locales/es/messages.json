@@ -9,31 +9,31 @@
         "message": "Cerrar las demás pestañas"
     },
     "contextMenuCloseTab": {
-        "message": "Cerrar pestaña"
+        "message": "&Cerrar pestaña"
     },
     "contextMenuCloseTabsAfter": {
-        "message": "Cerrar pestañas bajo ésta"
+        "message": "Cerrar pestañas &anteriores a ésta"
     },
     "contextMenuDuplicateTab": {
-        "message": "Duplicar pestaña"
+        "message": "&Duplicar pestaña"
     },
     "contextMenuMoveTab": {
-        "message": "Mover pestaña"
+        "message": "Mo&ver pestaña"
     },
     "contextMenuMoveTabToEnd": {
-        "message": "Mover al final"
+        "message": "Mover al &final"
     },
     "contextMenuMoveTabToNewWindow": {
         "message": "Mover a una nueva ventana"
     },
     "contextMenuMoveTabToStart": {
-        "message": "Mover al inicio"
+        "message": "Mover al &inicio"
     },
     "contextMenuMuteTab": {
         "message": "Silenciar pestaña"
     },
     "contextMenuOpenInContextualTab": {
-        "message": "Reabrir en contenedor"
+        "message": "Reabrir en c&ontenedor"
     },
     "contextMenuPinTab": {
         "message": "Fijar pestaña"
@@ -107,5 +107,125 @@
     "contextMenuNoContainer": {
         "message": "&No hay contenedor",
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153932 and https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153933. Context menu item label."
+    },
+    "notificationDeletedMessage": {
+        "message": "Haz clic en la notificación para deshacer.",
+        "description": "Title of the notification when deleting many tabs."
+    },
+    "optionsSwitchByScrollingAlways": {
+        "message": "Siempre",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingWithCtrl": {
+        "message": "Con Ctrl",
+        "description": "Option in options page"
+    },
+    "optionsSwitchLastActiveTabExplanation": {
+        "message": "Hacer clic en la pestaña activa para cambiar a la anteriormente activa.",
+        "description": "Explanation for the Compact Mode option in options page."
+    },
+    "optionsThemeIntegration": {
+        "message": "Usar el tema del navegador",
+        "description": "Option in options page."
+    },
+    "optionsThemeIntegrationExplanation": {
+        "message": "Usar el tema del navegador en lugar del tema predeterminado.",
+        "description": "Explanation for the Theme Integration option in the options page."
+    },
+    "notificationDeletedTitle": {
+        "message": "$COUNT$ pestañas cerradas",
+        "description": "Title of the notification when deleting many tabs.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "unmuteTabButtonTooltip": {
+        "message": "Desilenciar pestaña",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
+    },
+    "OptionsAnimations": {
+        "message": "Animaciones",
+        "description": "Option in options page."
+    },
+    "browserActionTitle": {
+        "message": "Mostrar/ocultar Tab Center Reborn",
+        "description": "Tooltip shown when hovering the toolbar button."
+    },
+    "contextMenuCloseTabs": {
+        "message": "Cerrar pestaña&s",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197250. Context Menu item label"
+    },
+    "muteTabButtonTooltip": {
+        "message": "Silenciar pestaña",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
+    },
+    "contextMenuCloseTabsBefore": {
+        "message": "Cerrar pestañas &posteriores a ésta",
+        "description": "Context menu item label."
+    },
+    "contextMenuUnloadTab": {
+        "message": "De&scargar pestaña",
+        "description": "Context menu item label."
+    },
+    "newTabContextMenuOpenAtEnd": {
+        "message": "Al &final",
+        "description": "New Tab context menu item."
+    },
+    "newTabContextMenuOpenInPrivateWindow": {
+        "message": "Nueva ventana &privada",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
+    },
+    "newTabContextMenuOpenInWindow": {
+        "message": "Nueva &ventana",
+        "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
+    },
+    "newTabContextMenuOpneAfterCurrent": {
+        "message": "&Junto a la pestaña actual",
+        "description": "New Tab context menu item."
+    },
+    "optionsAppearanceTitle": {
+        "message": "Apariencia",
+        "description": "Section in options page."
+    },
+    "optionsBehaviorTitle": {
+        "message": "Comportamiento",
+        "description": "Section in options page."
+    },
+    "optionsCustomCSSChangelogLink": {
+        "message": "Revisa la lista de cambios en caso de incompatibilidades",
+        "description": "Text for a link to the changelog."
+    },
+    "optionsNotifyClosingManyTabs": {
+        "message": "Notificar cuando se cierren múltiples pestañas",
+        "description": "Option in options page."
+    },
+    "optionsNotifyClosingManyTabsExplanation": {
+        "message": "Mostrar una notificación que permita deshacer cuando se cierren más de $COUNT$ pestañas.",
+        "description": "Explanation for the Notify when closing many tabs option in options page.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "optionsSwitchByScrolling": {
+        "message": "Cambiar de pestaña activa con la rueda de desplazamiento",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingNever": {
+        "message": "Nunca",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingWithCtrlExplanation": {
+        "message": "Activar la pestaña anterior o posterior en vez de desplazar, en ciertas circunstancias.",
+        "description": "Explanation for the Switch by scrolling options in options page."
+    },
+    "optionsSwitchLastActiveTab": {
+        "message": "Cambiar a la pestaña anteriormente activa",
+        "description": "Option in options page."
     }
 }

@@ -1,0 +1,254 @@
+{
+    "OptionsAnimations": {
+        "message": "انیمیشن",
+        "description": "Option in options page."
+    },
+    "allTabsLabel": {
+        "message": "نمایش همه برگه ها…",
+        "description": "Label shown at the bottom of the list of tabs if some tabs are filtered by a query."
+    },
+    "browserActionTitle": {
+        "message": "",
+        "description": "Tooltip shown when hovering the toolbar button."
+    },
+    "closeTabButtonTooltip": {
+        "message": "بستن تب‌",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197248. Tooltip of the close button on tabs."
+    },
+    "contextMenuCloseOtherTabs": {
+        "message": "",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197270. Context menu item label."
+    },
+    "contextMenuCloseTab": {
+        "message": "&بستن تب‌",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197248. Context menu item label."
+    },
+    "contextMenuCloseTabs": {
+        "message": "",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197250. Context Menu item label"
+    },
+    "contextMenuCloseTabsAfter": {
+        "message": "",
+        "description": "Context menu item label."
+    },
+    "contextMenuCloseTabsBefore": {
+        "message": "",
+        "description": "Context menu item label."
+    },
+    "contextMenuDuplicateTab": {
+        "message": "&مضاعف کردن تب",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197263. Context menu item label."
+    },
+    "contextMenuMoveTab": {
+        "message": "",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197269. Context menu item label."
+    },
+    "contextMenuMoveTabToEnd": {
+        "message": "",
+        "description": "Context menu item label."
+    },
+    "contextMenuMoveTabToNewWindow": {
+        "message": "",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197261. Context menu item label."
+    },
+    "contextMenuMoveTabToStart": {
+        "message": "",
+        "description": "Context menu item label."
+    },
+    "contextMenuMuteTab": {
+        "message": "",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Context menu item label and tooltip of the audible icon on tabs."
+    },
+    "contextMenuNoContainer": {
+        "message": "",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153932 and https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153933. Context menu item label."
+    },
+    "contextMenuOpenInContextualTab": {
+        "message": "",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197234. Context menu item label."
+    },
+    "contextMenuPinTab": {
+        "message": "",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197249. Context menu item label."
+    },
+    "contextMenuReloadTab": {
+        "message": "",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197237. Context menu item label."
+    },
+    "contextMenuUndoCloseTab": {
+        "message": "",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197236. Context menu item label."
+    },
+    "contextMenuUnloadTab": {
+        "message": "",
+        "description": "Context menu item label."
+    },
+    "contextMenuUnmuteTab": {
+        "message": "",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Context menu item label and tooltip of the unmute icon on tabs."
+    },
+    "contextMenuUnpinTab": {
+        "message": "",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197266. Context menu item label."
+    },
+    "extensionDescription": {
+        "message": "",
+        "description": "Extension description shown in the options page and as short description on addons.mozilla.org."
+    },
+    "extensionsLongDescription": {
+        "message": "",
+        "description": "Long description displayed on addons.mozilla.org. Don’t forget to change links for the current language. You can copy translated permissions from your language version of https://support.mozilla.org/en-US/kb/permission-request-messages-firefox-extensions."
+    },
+    "muteTabButtonTooltip": {
+        "message": "",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon."
+    },
+    "newTabBtnTooltip": {
+        "message": "",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=74421. Tooltip of the New Tab button in the top menu."
+    },
+    "newTabContextMenuOpenAtEnd": {
+        "message": "",
+        "description": "New Tab context menu item."
+    },
+    "newTabContextMenuOpenInPrivateWindow": {
+        "message": "",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75628. New Tab context menu item."
+    },
+    "newTabContextMenuOpenInWindow": {
+        "message": "",
+        "description": "Take from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=75625. New Tab context menu item."
+    },
+    "newTabContextMenuOpneAfterCurrent": {
+        "message": "",
+        "description": "New Tab context menu item."
+    },
+    "notificationDeletedMessage": {
+        "message": "",
+        "description": "Title of the notification when deleting many tabs."
+    },
+    "notificationDeletedTitle": {
+        "message": "",
+        "description": "Title of the notification when deleting many tabs.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "optionsAdvancedTitle": {
+        "message": "",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=176300. Section in options page."
+    },
+    "optionsAppearanceTitle": {
+        "message": "",
+        "description": "Section in options page."
+    },
+    "optionsBehaviorTitle": {
+        "message": "",
+        "description": "Section in options page."
+    },
+    "optionsCompactMode": {
+        "message": "",
+        "description": "Option in options page."
+    },
+    "optionsCompactModeDynamic": {
+        "message": "",
+        "description": "Possible value for Compact Mode option in options page."
+    },
+    "optionsCompactModeExplanation": {
+        "message": "",
+        "description": "Explanation for the Compact Mode option in options page."
+    },
+    "optionsCompactModeOff": {
+        "message": "",
+        "description": "Possible value for Compact Mode option in options page."
+    },
+    "optionsCompactModeStrict": {
+        "message": "",
+        "description": "Possible value for Compact Mode option in options page."
+    },
+    "optionsCompactPins": {
+        "message": "",
+        "description": "Option in options page."
+    },
+    "optionsCustomCSS": {
+        "message": "",
+        "description": "Option in options page."
+    },
+    "optionsCustomCSSChangelogLink": {
+        "message": "",
+        "description": "Text for a link to the changelog."
+    },
+    "optionsCustomCSSWikiLink": {
+        "message": "",
+        "description": "Text for a link to the wiki."
+    },
+    "optionsNotifyClosingManyTabs": {
+        "message": "",
+        "description": "Option in options page."
+    },
+    "optionsNotifyClosingManyTabsExplanation": {
+        "message": "",
+        "description": "Explanation for the Notify when closing many tabs option in options page.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "5"
+            }
+        }
+    },
+    "optionsSaveCustomCSS": {
+        "message": "",
+        "description": "Option in options page."
+    },
+    "optionsSwitchByScrolling": {
+        "message": "",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingAlways": {
+        "message": "",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingNever": {
+        "message": "",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingWithCtrl": {
+        "message": "",
+        "description": "Option in options page"
+    },
+    "optionsSwitchByScrollingWithCtrlExplanation": {
+        "message": "",
+        "description": "Explanation for the Switch by scrolling options in options page."
+    },
+    "optionsSwitchLastActiveTab": {
+        "message": "",
+        "description": "Option in options page."
+    },
+    "optionsSwitchLastActiveTabExplanation": {
+        "message": "",
+        "description": "Explanation for the Compact Mode option in options page."
+    },
+    "optionsThemeIntegration": {
+        "message": "",
+        "description": "Option in options page."
+    },
+    "optionsThemeIntegrationExplanation": {
+        "message": "",
+        "description": "Explanation for the Theme Integration option in the options page."
+    },
+    "searchPlaceholder": {
+        "message": "",
+        "description": "Placehorder of the filter bar in the top menu."
+    },
+    "settingsBtnTooltip": {
+        "message": "",
+        "description": "Tooltip of the settings button in the top menu."
+    },
+    "unmuteTabButtonTooltip": {
+        "message": "",
+        "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99190. Tooltip of the unmute icon on tabs, displayed on the favicon."
+    }
+}
