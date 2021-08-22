@@ -1,3 +1,21 @@
+## 2.3.0
+
+- Fix not respecting the Firefox theme color of tab separator
+- “More Tabs” button is no longer draggable (it had no effect anyway)
+- Fix pinned tab being considered as unpinned and vice-versa in certain conditions
+- Use correct default color for active tab line and reduce its size slightly
+- Make font size of option page correct on Windows
+- Take alpha into account when checking theme readability
+- Don’t drag tabs when click starts on close button
+- Improve options page appearance (margins, textarea)
+- Display favicon in 16x16 by default because some look bad in 18x18
+- Tabs duplicated via TCRn now have an history if Firefox >= 79.0
+- Fix Make event listeners using preventDefault() not passive
+- Dropping a tab on the bookmark toolbar works more reliably now
+- Fix position of sound/muted icon for not favicon-only pinned tabs
+- Use colorful about:loginsimportreport favicon
+- Updated Dutch, Italian, Russian and Spanish translations
+
 ## 2.2.0
 
 - Optimize code that detect when to show scrolling shadows
