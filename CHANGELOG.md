@@ -1,3 +1,7 @@
+## 2.3.1
+
+- Fix middle-click triggering autoscroll instead of closing tabs on Windows
+
 ## 2.3.0
 
 - Fix not respecting the Firefox theme color of tab separator
