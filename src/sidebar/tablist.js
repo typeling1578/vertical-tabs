@@ -82,7 +82,7 @@ export default class Tablist {
     for (const view of [this._view, this._pinnedview]) {
       view.addEventListener("click", (e) => this._onClick(e), { passive: false });
       view.addEventListener("auxclick", (e) => this._onAuxClick(e), { passive: false });
-      view.addEventListener("pointerdown", (e) => this._onPointerDown(e), { passive: false });
+      view.addEventListener("mousedown", (e) => this._onMouseDown(e), { passive: false });
       view.addEventListener("pointerover", (e) => this._onPointerOver(e));
       view.addEventListener("contextmenu", (e) => this.tabContextMenu.open(e), {
         passive: false,
@@ -191,6 +191,7 @@ export default class Tablist {
   }
 
   _onBrowserTabMoved(tabId, moveInfo) {
+    console.log(moveInfo);
     if (!this.checkWindow(moveInfo.windowId)) {
       return;
     }
@@ -223,6 +224,7 @@ export default class Tablist {
   }
 
   _onBrowserTabUpdated(tabId, changeInfo, tab) {
+    console.log(tabId, changeInfo, tab);
     // we don’t filter by windowId because it’s already filtered in the listener
     const sidetab = this.getTabById(tabId);
     if (!sidetab) {
@@ -280,7 +282,7 @@ export default class Tablist {
     sidetab.burst();
   }
 
-  _onPointerDown(e) {
+  _onMouseDown(e) {
     // Prevent autoscrolling on middle click
     if (e.button === 1) {
       e.preventDefault();
