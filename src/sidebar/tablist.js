@@ -191,7 +191,6 @@ export default class Tablist {
   }
 
   _onBrowserTabMoved(tabId, moveInfo) {
-    console.log(moveInfo);
     if (!this.checkWindow(moveInfo.windowId)) {
       return;
     }
@@ -224,7 +223,6 @@ export default class Tablist {
   }
 
   _onBrowserTabUpdated(tabId, changeInfo, tab) {
-    console.log(tabId, changeInfo, tab);
     // we don’t filter by windowId because it’s already filtered in the listener
     const sidetab = this.getTabById(tabId);
     if (!sidetab) {
@@ -283,7 +281,9 @@ export default class Tablist {
   }
 
   _onMouseDown(e) {
-    // Prevent autoscrolling on middle click
+    // Prevent autoscrolling on middle click on Windows
+    // It should be in onMouseDown, it doesn’t in onPointerDown on some Windows 10.
+    // https://framagit.org/ariasuni/tabcenter-reborn/-/issues/88
     if (e.button === 1) {
       e.preventDefault();
     }
