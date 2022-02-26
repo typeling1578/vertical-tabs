@@ -3,9 +3,13 @@
 
 import { svgToDataUrl } from "../common.js";
 
-// src/tabcenter.svg but a bit reduced and adapted
-const TABCENTER_ICON =
-  '<svg xmlns="http://www.w3.org/2000/svg" height="128" width="128" viewBox="0 0 16 16"><style>g{fill:context-fill}</style><g><path d="M3,1h10a3,3,0,0,1,3,3v8a3,3,0,0,1,-3,3h-10a3,3,0,0,1,-3,-3v-8a3,3,0,0,1,3,-3Z M3,3h 4a1,1,0,0,1,1,1v8a1,1,0,0,1,-1,1h -4a1,1,0,0,1,-1,-1v-8a1,1,0,0,1,1,-1Z" fill-rule="evenodd" /><circle cx="3.5" cy="4.5" r=".6" /><circle cx="3.5" cy="6.5" r=".6" /><circle cx="3.5" cy="8.5" r=".6" /><rect x="4.75" y="4" height="1" width="2.25" rx=".5" ry=".5" /><rect x="4.75" y="6" height="1" width="2.25" rx=".5" ry=".5" /><rect x="4.75" y="8" height="1" width="2.25" rx=".5" ry=".5" /></g></svg>';
+// src/vertical-tabs.svg but a bit reduced and adapted
+const VERTICAL_TABS_ICON = `
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" fill="context-fill" viewBox="0 0 16 16">
+  <path d="M2.5 4a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm2-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm1 .5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+  <path d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v2H1V3a1 1 0 0 1 1-1h12zM1 13V6h4v8H2a1 1 0 0 1-1-1zm5 1V6h9v7a1 1 0 0 1-1 1H6z"/>
+</svg>
+`;
 
 class Background {
   constructor() {
@@ -48,8 +52,8 @@ class Background {
     const sidebarTextColor =
       theme.colors && theme.colors["sidebar_text"] ? theme.colors["sidebar_text"] : "#5a5b5c";
 
-    browser.browserAction.setIcon({ path: svgToDataUrl(TABCENTER_ICON, browserColor) });
-    browser.sidebarAction.setIcon({ path: svgToDataUrl(TABCENTER_ICON, sidebarTextColor) });
+    browser.browserAction.setIcon({ path: svgToDataUrl(VERTICAL_TABS_ICON, browserColor) });
+    browser.sidebarAction.setIcon({ path: svgToDataUrl(VERTICAL_TABS_ICON, sidebarTextColor) });
   }
 
   onConnect(port) {
