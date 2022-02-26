@@ -11,11 +11,11 @@ export const SWITCH_BY_SCROLLING = {
 };
 
 export const DEFAULT_PREFS = {
-  animations: true,
+  animations: false,
   themeIntegration: true,
-  compactMode: COMPACT_MODE.DYNAMIC,
+  compactMode: COMPACT_MODE.STRICT,
   compactPins: true,
-  switchLastActiveTab: true,
+  switchLastActiveTab: false,
   switchByScrolling: SWITCH_BY_SCROLLING.WITH_CTRL,
   notifyClosingManyTabs: true,
   useCustomCSS: true,
