@@ -1,24 +1,24 @@
 {
-  "name": "Tab Center Reborn",
+  "name": "Vertical Tabs",
   "description": "__MSG_extensionDescription__",
-  "homepage_url": "https://framagit.org/ariasuni/tabcenter-reborn",
+  "homepage_url": "https://github.com/typeling1578/vertical-tabs",
   "manifest_version": 2,
-  "version": "2.3.1",
+  "version": "1.0.0",
   "default_locale": "en",
   "browser_specific_settings": {
     "gecko": {
-      "id": "tabcenter-reborn@ariasuni",
+      "id": "vertical-tabs@typeling1578",
       "strict_min_version": "65.0"
     }
   },
   "sidebar_action": {
-    "default_title": "Tab Center Reborn",
+    "default_title": "Vertical Tabs",
     "default_panel": "sidebar/sidebar.html",
-    "default_icon": "tabcenter.svg"
+    "default_icon": "vertical-tabs.svg"
   },
   "icons": {
-    "48": "tabcenter.svg",
-    "96": "tabcenter.svg"
+    "48": "vertical-tabs.svg",
+    "96": "vertical-tabs.svg"
   },
   "permissions": [
     "<all_urls>",
@@ -39,19 +39,19 @@
   "browser_action": {
     "browser_style": true,
     "default_icon": {
-      "16": "tabcenter.svg",
-      "32": "tabcenter.svg"
+      "16": "vertical-tabs.svg",
+      "32": "vertical-tabs.svg"
     },
     "default_title": "__MSG_browserActionTitle__",
     "theme_icons": [
       {
-        "dark": "tabcenter.svg",
-        "light": "tabcenter.svg#light",
+        "dark": "vertical-tabs.svg",
+        "light": "vertical-tabs.svg#light",
         "size": 16
       },
       {
-        "dark": "tabcenter.svg",
-        "light": "tabcenter.svg#light",
+        "dark": "vertical-tabs.svg",
+        "light": "vertical-tabs.svg#light",
         "size": 32
       }
     ]
