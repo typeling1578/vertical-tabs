@@ -187,6 +187,7 @@ img,
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   transition: border-color 0.1s, box-shadow 0.1s;
   cursor: text;
+  border-radius: 4px;
 }
 
 #filterbox-input:hover {
@@ -195,10 +196,6 @@ img,
 
 #filterbox-input:focus {
   border: 1px solid var(--input-border-focus);
-}
-
-body[platform="win"] #filterbox-input {
-  border-radius: 2px;
 }
 
 body[platform="mac"] #filterbox-input {
@@ -223,6 +220,8 @@ body.has-custom-input-color #filterbox-input::selection {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  padding: 8px;
+  scrollbar-width: thin;
 }
 
 .tab {
@@ -245,7 +244,7 @@ body.has-custom-input-color #filterbox-input::selection {
   max-height: var(--tab-height-normal);
   min-height: 0;
   min-width: 0;
-  border-bottom: 1px solid var(--tab-separator);
+  border-radius: 4px;
 }
 
 .tab.added,
@@ -269,6 +268,7 @@ body.has-custom-input-color #filterbox-input::selection {
   width: calc(var(--tab-height-compact) - 2px);
   max-width: calc(var(--tab-height-compact) - 2px);
   min-width: 0;
+  border-radius: 4px;
 }
 
 body.animated #tablist {
@@ -381,7 +381,14 @@ body.animated #pinnedtablist.compact .tab {
 
 #tablist .tab.active,
 #pinnedtablist:not(.compact) .tab.active {
-  box-shadow: inset 3px 0 0px 0px var(--tab-selected-line);
+  box-shadow: 0 0 4px gray;
+}
+
+@media (prefers-color-scheme: dark) {
+  #tablist .tab.active,
+  #pinnedtablist:not(.compact) .tab.active {
+    box-shadow: unset;
+  }
 }
 
 body #pinnedtablist.compact .tab .tab-context {
@@ -423,6 +430,7 @@ body #pinnedtablist:not(.compact) .tab[data-identity-color] .tab-context {
 #pinnedtablist {
   z-index: 50;
   background-color: var(--background);
+  padding: 8px;
 }
 
 #pinnedtablist.compact {
@@ -439,7 +447,13 @@ body #pinnedtablist:not(.compact) .tab[data-identity-color] .tab-context {
 }
 
 #pinnedtablist.compact .tab.active {
-  box-shadow: inset 0 3px 0px 0px var(--tab-selected-line);
+  box-shadow: 0 0 4px gray;
+}
+
+@media (prefers-color-scheme: dark) {
+  #pinnedtablist.compact .tab.active {
+    box-shadow: unset;
+  }
 }
 
 body.incognito #pinnedtablist.compact .tab .tab-context {
@@ -449,40 +463,6 @@ body.incognito #pinnedtablist.compact .tab .tab-context {
 
 #pinnedtablist.compact:not(:empty) {
   border-bottom: 1px solid var(--tab-separator);
-}
-
-#topshadow,
-#bottomshadow {
-  z-index: 25;
-  flex-shrink: 0;
-  width: 100%;
-  pointer-events: none;
-  opacity: 0;
-  box-shadow: 0px 0px 7px 5px var(--grey-50);
-}
-
-#topshadow {
-  position: relative;
-}
-
-#bottomshadow {
-  position: relative;
-  bottom: 0px;
-}
-
-body.animated #topshadow,
-body.animated #bottomshadow {
-  transition: opacity 0.3s ease;
-}
-
-#tablist-wrapper.highlight-scroll-bottom #bottomshadow {
-  box-shadow: 0px 0px 7px 5px var(--blue-60);
-  transition: box-shadow 0s;
-}
-
-#tablist-wrapper.can-scroll-top #topshadow,
-#tablist-wrapper.can-scroll-bottom #bottomshadow {
-  opacity: 1;
 }
 
 .tab-icon-overlay {
@@ -726,12 +706,13 @@ body.animated #bottomshadow {
 .tab-close {
   position: absolute;
   display: block;
-  width: 28px;
-  height: 100%;
+  width: 2em;
+  height: 2em;
   top: 0;
   bottom: 0;
   right: 0;
   margin: auto;
+  margin-right: 4px;
   background-image: url("img/close.svg");
   background-size: 18px;
   -moz-context-properties: fill;
@@ -740,6 +721,7 @@ body.animated #bottomshadow {
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0;
+  border-radius: 4px;
 }
 
 .tab-close:hover {
