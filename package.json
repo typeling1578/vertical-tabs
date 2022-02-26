@@ -67,26 +67,27 @@
   },
   "homepage": "https://framagit.org/ariasuni/tabcenter-reborn#readme",
   "devDependencies": {
-    "concurrently": "^6.0.2",
-    "copy-webpack-plugin": "^9.0.1",
-    "cssnano": "^5.0.0",
-    "eslint": "^7.10.0",
-    "eslint-config-prettier": "^8.2.0",
-    "husky": "^7.0.1",
-    "lint-staged": "^11.0.0",
-    "postcss": "^8.2.10",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "stylelint-config-recommended": "^5.0.0",
+    "concurrently": "^7.0.0",
+    "copy-webpack-plugin": "^10.2.4",
+    "cssnano": "^5.0.17",
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.4.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.4",
+    "postcss": "^8.4.7",
+    "prettier": "^2.5.1",
+    "stylelint": "^14.5.3",
+    "stylelint-config-recommended": "^7.0.0",
     "svg-inline-loader": "^0.8.2",
-    "web-ext": "^6.0.0",
-    "webpack": "^5.32.0",
-    "webpack-cli": "^4.6.0"
+    "web-ext": "^6.7.0",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
   },
   "dependencies": {
-    "@ctrl/tinycolor": "^3.1.4",
-    "fuzzysort": "^1.1.4",
+    "@ctrl/tinycolor": "^3.4.0",
+    "fuzzysort": "^1.2.1",
     "photon-colors": "^3.3.2",
-    "smooth-scroll-into-view-if-needed": "^1.1.29"
+    "smooth-scroll-into-view-if-needed": "^1.1.33",
+    "yarn": "^1.22.17"
   }
 }
