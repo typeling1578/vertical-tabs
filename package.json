@@ -2,18 +2,10 @@
   "name": "vertical-tabs",
   "sideEffects": false,
   "scripts": {
-    "lint:prettier": "prettier --write ./src/**/*.{js,html,css,json} *.{md,yml}",
-    "lint:eslint": "eslint . --fix",
-    "lint:stylelint": "stylelint ./src/**/*.css",
-    "lint:webext": "web-ext lint -s src/ -i sidebar/dist",
-    "lint": "yarn run lint:prettier && yarn run lint:eslint && yarn run lint:stylelint",
-    "dev:webext": "webpack-cli --mode development && web-ext run --start-url 'about:debugging#/runtime/this-firefox' -s dist",
-    "dev:watch": "webpack-cli --watch",
-    "dev": "concurrently --kill-others --raw -s first 'yarn run dev:webext' 'yarn run dev:watch'",
-    "build:ext": "webpack-cli --mode production && web-ext build -s dist/ --overwrite-dest",
-    "build:source": "zip -r web-ext-artifacts/source.zip src package.json webpack.config.js yarn.lock",
-    "build": "yarn run build:ext && yarn run build:source",
-    "postinstall": "husky install"
+    "lint": "eslint .",
+    "build": "webpack-cli --mode production",
+    "dev-build": "webpack-cli --mode development",
+    "webext": "webpack-cli --mode development && web-ext run --start-url 'about:debugging#/runtime/this-firefox' -s dist"
   },
   "prettier": {
     "endOfLine": "lf",
@@ -67,18 +59,10 @@
   },
   "homepage": "https://framagit.org/ariasuni/tabcenter-reborn#readme",
   "devDependencies": {
-    "concurrently": "^7.0.0",
     "copy-webpack-plugin": "^10.2.4",
     "cssnano": "^5.0.17",
     "eslint": "^8.10.0",
-    "eslint-config-prettier": "^8.4.0",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.3.4",
     "postcss": "^8.4.7",
-    "prettier": "^2.5.1",
-    "stylelint": "^14.5.3",
-    "stylelint-config-recommended": "^7.0.0",
-    "svg-inline-loader": "^0.8.2",
     "web-ext": "^6.7.0",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2"
@@ -87,7 +71,6 @@
     "@ctrl/tinycolor": "^3.4.0",
     "fuzzysort": "^1.2.1",
     "photon-colors": "^3.3.2",
-    "smooth-scroll-into-view-if-needed": "^1.1.33",
-    "yarn": "^1.22.17"
+    "smooth-scroll-into-view-if-needed": "^1.1.33"
   }
 }
