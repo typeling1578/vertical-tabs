@@ -319,11 +319,11 @@ export default class Sidetab {
   }
 
   highlightTitle(newTitle) {
-    this._titleView.innerHTML = newTitle;
+    this._titleView.innerText = newTitle;
   }
 
   highlightHost(newHost) {
-    this._urlView.innerHTML = newHost;
+    this._urlView.innerText = newHost;
   }
 
   // If strict is true, this will return false for subviews (e.g the close button).
