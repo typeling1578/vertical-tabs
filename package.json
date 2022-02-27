@@ -50,14 +50,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://framagit.org/ariasuni/tabcenter-reborn.git"
+    "url": "git+https://github.com/typeling1578/vertical-tabs.git"
   },
-  "author": "Mélanie Chauvel (ariasuni)",
+  "author": "typeling1578",
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://framagit.org/ariasuni/tabcenter-reborn/issues"
+    "url": "https://github.com/typeling1578/vertical-tabs/issues"
   },
-  "homepage": "https://framagit.org/ariasuni/tabcenter-reborn#readme",
+  "homepage": "https://github.com/typeling1578/vertical-tabs",
   "devDependencies": {
     "copy-webpack-plugin": "^10.2.4",
     "cssnano": "^5.0.17",
