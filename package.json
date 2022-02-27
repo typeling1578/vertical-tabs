@@ -4,8 +4,7 @@
   "scripts": {
     "lint": "eslint .",
     "build": "webpack-cli --mode production",
-    "dev-build": "webpack-cli --mode development",
-    "webext": "webpack-cli --mode development && web-ext run --start-url 'about:debugging#/runtime/this-firefox' -s dist"
+    "dev-build": "webpack-cli --mode development"
   },
   "prettier": {
     "endOfLine": "lf",
@@ -63,7 +62,6 @@
     "cssnano": "^5.0.17",
     "eslint": "^8.10.0",
     "postcss": "^8.4.7",
-    "web-ext": "^6.7.0",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2"
   },
