@@ -6,7 +6,7 @@
         "message": "Mostrar totes les pestanyes …"
     },
     "browserActionTitle": {
-        "message": "Activar/desactivar Tab Center Reborn"
+        "message": "Activar/desactivar Vertical Tabs"
     },
     "closeTabButtonTooltip": {
         "message": "Tanca la pestanya"
@@ -69,7 +69,7 @@
         "message": "Barra de pestanyes vertical simple i potent"
     },
     "extensionsLongDescription": {
-        "message": "Tab Center Reborn és la continuació de <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\"> Tab Center Redux </a> per proporcionar una forma senzilla, potent i ben integrada per gestionar pestanyes verticalment.\n\nL’extensió proporciona un bon grapat de configuracions i permet als usuaris poder personalitzar la seva aparença completament amb codi CSS.\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home\n\nPot interessar-vos especialment amagar la barra de pestanyes superior:\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\n\n\nCaracterístiques:\n- Totes les funcions de la barra de pestanyes del Firefox (fixació, duplicació, moviment a l'inici / finalització, tancament de pestanyes després, etc.)\n- Opcions de \"Baixar pestanya\" i \"Tancar pestanyes abans\" per gestionar moltes pestanyes\n- Una notificació us permet desfer si “Tancar pestanyes abans”, “Tancar pestanyes després” o “Tancar altres pestanyes” tanquen més de 5 pestanyes.\n- Sembla i actua autòcton, té animacions (es pot desactivar)\n- Funciona amb i utilitza contenidors: https://support.mozilla.org/ca/kb/containers\n- Adapteu-vos als temes complets del Firefox (els temes més senzills no proporcionen prou colors per treballar)\n- Sincronitza la vostra configuració amb Firefox Sync\n\nDreceres generals:\n- Maj + F1: obre o tanca la barra lateral\n- Majúscul + F2: passa a la darrera pestanya activa\nTingueu en compte que podeu configurar aquests: https://support.mozilla.org/ca/kb/manage-extension-shortcuts-firefox\n\nDreceres quan feu clic al botó de la fitxa nou / nom del contenidor al menú contextual de la fitxa nova (feu clic amb el botó dret):\n- Ctrl + clic: s’obre després de la pestanya actual si el valor predeterminat és al final (i s’obre al final si el predeterminat és després de la pestanya actual)\n- Maj + clic: obre una nova finestra\n- Ctrl + Maj + clic: obre una nova finestra privada (si Tab Center Reborn es pot executar en finestres privades)\n\n\nPodeu contribuir reportant problemes, traduint, afegint documentació o desenvolupant-vos.\nhttps://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\n\nPermisos utilitzats:\n- Accediu a les vostres dades per a tots els llocs web: per utilitzar contenidors.\n- Llegiu i modifiqueu les adreces d'interès: no obriu una finestra nova quan s'hagi deixat caure una pestanya fora de la barra lateral, sinó a la barra d'adreces d'interès.\n- Llegir i modificar la configuració del navegador: per seguir la configuració i el tema del Firefox.\n- Mostra les notificacions: per mostrar una notificació quan tanqueu moltes pestanyes, deixant-vos desfer.\n- Accediu a les pestanyes tancades recentment: per canviar a la darrera pestanya.\n- Accedir a les pestanyes del navegador: per obtenir URL, títol i preferits de pestanyes.\n- Accediu a l’activitat del navegador durant la navegació: per activar una animació addicional quan una pàgina hagi acabat de carregar els seus recursos."
+        "message": ""
     },
     "muteTabButtonTooltip": {
         "message": "Silencia la pestanya"

@@ -3,7 +3,7 @@
         "message": "Mostrar todas as abas…"
     },
     "browserActionTitle": {
-        "message": "Mostrar/esconder Tab Center Reborn"
+        "message": "Mostrar/esconder Vertical Tabs"
     },
     "closeTabButtonTooltip": {
         "message": "Fechar aba"
@@ -57,7 +57,7 @@
         "message": "Desafixar aba"
     },
     "extensionDescription": {
-        "message": "Tab Center é uma tentativa de resolver alguns dos problemas que surgiram a partir da forma como as pessoas usam abas (notavelmente o problema de \"abas demais\") e fornecer uma base de interface de usuário mais versátil para inovação futura. A primeira versão desta extensão para o Firefox organiza abas verticalmente, em vez de horizontalmente. Ela é fortemente inspirada e toma emprestado ideias da excelente extensão VerticalTabs."
+        "message": ""
     },
     "muteTabButtonTooltip": {
         "message": "Silenciar aba"

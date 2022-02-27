@@ -54,7 +54,7 @@
         "message": "タブのピン留めを外す"
     },
     "extensionDescription": {
-        "message": "Tab Center は、ユーザーのタブの使い方から生じるいくつかの問題 (特に「タブを開きすぎてしまう」状況) を解決し、将来の革新に向けてより自在な UI の基礎を提供しようとする試みです。この Firefox アドオンの初回版では、タブを水平ではなく垂直に配置してみました。これは素晴らしい VerticalTabs アドオンに強く触発され、そのアイデアを借用したものです。"
+        "message": ""
     },
     "newTabBtnLabel": {
         "message": "新しいタブ"
@@ -106,7 +106,7 @@
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153932 and https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=153933. Context menu item label."
     },
     "browserActionTitle": {
-        "message": "Tab Center Rebornを開閉",
+        "message": "Vertical Tabsを開閉",
         "description": "Tooltip shown when hovering the toolbar button."
     },
     "muteTabButtonTooltip": {

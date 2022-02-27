@@ -3,7 +3,7 @@
         "message": "Tüm sekmeleri göster…"
     },
     "browserActionTitle": {
-        "message": "Tab Center Reborn'a Geç"
+        "message": "Vertical Tabs'a Geç"
     },
     "closeTabButtonTooltip": {
         "message": "Sekmeyi kapat"
@@ -57,7 +57,7 @@
         "message": "Sekmeden İğneyi Kaldır"
     },
     "extensionDescription": {
-        "message": "Tab Center insanların sekmeleri kullanma şeklinden kaynaklanan bazı sorunları (en dikkat çekeni \"çok fazla sekme\" sorunu) çözme ve gelecek yeniliklerin temeli için daha kullanışlı bir arayüz sağlama girişimidir. Firefox eklentisinin ilk sürümü, sekmeleri moda olduğu şekliyle yatay değil dikey olarak düzenler. Bu, muhteşem VerticalTabs eklentisinden ödünç alınmış bir fikir ve ondan yoğun bir şekilde ilham alır."
+        "message": ""
     },
     "newTabBtnLabel": {
         "message": "Yeni Sekme"

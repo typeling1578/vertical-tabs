@@ -9,7 +9,7 @@
     },
     "browserActionTitle": {
         "description": "Tooltip shown when hovering the toolbar button.",
-        "message": "Show/hide Tab Center Reborn"
+        "message": "Show/hide Vertical Tabs"
     },
     "closeTabButtonTooltip": {
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=197248. Tooltip of the close button on tabs.",
@@ -97,7 +97,7 @@
     },
     "extensionsLongDescription": {
         "description": "Long description displayed on addons.mozilla.org. Don’t forget to change links for the current language. You can copy translated permissions from your language version of https://support.mozilla.org/en-US/kb/permission-request-messages-firefox-extensions.",
-        "message": "Tab Center Reborn is the continuation of <a href=\"https://addons.mozilla.org/firefox/addon/tab-center-redux/\">Tab Center Redux</a> to provide a simple, powerful and well-integrated extension to manage tabs vertically.\n\nThe extension provides a handful of settings and allows power-users to customize its appearance completely with CSS code.\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home\n\nYou might especially be interested in hiding the top tab bar:\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks\n\n\nFeatures:\n– All features of Firefox tab bar (pinning, duplicating, moving to start/end, closing tabs after, etc.)\n– “Unload Tab” and “Close Tabs Before” options to accommodate managing a lot of tabs\n– A notification allows you to undo if “Close Tabs Before”, “Close Tabs After” or “Close Other Tabs” closed more than 5 tabs\n– Looks and act native, has animations (can be disabled)\n– Works with and uses containers: https://support.mozilla.org/en-US/kb/containers\n– Adapt to full Firefox themes (simpler themes don’t provide enough colors to work with)\n– Synchronizes your settings with Firefox Sync\n\nGlobal shortcuts:\n– Shift + F1: opens or closes the sidebar\n– Shift + F2: switches to last active tab\nNote that you can configure those: https://support.mozilla.org/en-US/kb/manage-extension-shortcuts-firefox\n\nShortcuts when clicking new tab button/container name in new tab context menu (right-click):\n– Ctrl + click: opens after current tab if default is at the end (and opens at the end if default is after current tab)\n– Shift + click: opens a new window\n– Ctrl + Shift + click: opens a new private window (if Tab Center Reborn is allowed to run in private windows)\n\n\nYou can contribute by reporting issues, translating, adding documentation or developing!\nhttps://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md\n\nPermissions used:\n– Access your data for all websites: to use containers.\n– Read and modify bookmarks: to not open a new window when a tab has been dropped outside the sidebar but on the bookmark bar.\n– Read and modify browser settings: to follow Firefox settings and theme.\n– Display notifications to you: to display a notification when you closed a lot of tabs, letting you undo.\n– Access recently closed tabs: to switch to last tab.\n– Access browser tabs: to get URL, title and favicons of tabs.\n– Access browser activity during navigation: to trigger an extra animation when a page has finished loading its resources."
+        "message": ""
     },
     "muteTabButtonTooltip": {
         "description": "Taken from Firefox: https://pontoon.mozilla.org/en-GB/firefox/all-resources/?string=99188. Tooltip of the audible icon on tabs, displayed on the favicon.",

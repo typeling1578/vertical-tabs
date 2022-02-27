@@ -3,7 +3,7 @@
         "message": "显示所有标签页…"
     },
     "browserActionTitle": {
-        "message": "显示/隐藏 Tab Center Reborn"
+        "message": "显示/隐藏 Vertical Tabs"
     },
     "closeAllTabsExceptWarning": {
         "message": "您真的想关闭其它 $COUNT$ 个标签页吗？"
@@ -78,7 +78,7 @@
         "message": "简单但是强大的垂直标签栏"
     },
     "extensionsLongDescription": {
-        "message": "Tab Center Reborn是<a href>Tab Center Redux</a>的延续，它提供了一个简单、强大且集成良好的扩展来垂直管理选项卡。\n\n该扩展提供了一些设置，并允许高级用户使用CSS代码完全自定义其外观。\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home。\n\n您可能对隐藏顶部选项卡栏特别感兴趣：\nhttps://framagit.org/ariasuni/tabcenter-reborn/wikis/home#userchromecss-tweaks。\n\n\n特点：\n-Firefox选项卡栏的所有功能(固定、复制、移动到开始/结束位置、结束后关闭选项卡等)。\n-“Unload Tab”(卸载选项卡)和“Close Tab Been”(在此之前关闭选项卡)选项，以适应管理大量选项卡的需要。\n-如果“之前关闭选项卡”、“之后关闭选项卡”或“关闭其他选项卡”关闭超过5个选项卡，则通知允许您撤消。\n-外观和行为原生，有动画(可以禁用)。\n-使用和使用容器：https://support.mozilla.org/en-US/kb/containers。\n-适应完整的Firefox主题(较简单的主题不能提供足够的颜色来使用)。\n-使用Firefox Sync同步您的设置。\n\n全局快捷方式：\n-Shift+F1：打开或关闭侧边栏。\n-Shift+F2：切换到最后一个活动选项卡。\n请注意，您可以配置它们：https://support.mozilla.org/en-US/kb/manage-extension-shortcuts-firefox。\n\n在新选项卡上下文菜单中单击新选项卡按钮/容器名称时的快捷方式(右键单击)：\n-Ctrl+单击：如果缺省在末尾，则在当前页签之后打开(如果缺省在当前页签之后，则在末尾打开)。\n-Shift+单击：打开一个新窗口。\n-Ctrl+Shift+单击：打开一个新的私人窗口(如果允许Tab Center Reborn在私人窗口中运行)。\n\n\n您可以通过报告问题、翻译、添加文档或开发！\nhttps://framagit.org/ariasuni/tabcenter-reborn/blob/main/CONTRIBUTING.md。\n\n使用的权限：\n-访问所有网站的数据：使用容器。\n-阅读和修改书签：当标签被放到侧边栏之外但在书签栏上时，不会打开新窗口。\n-阅读和修改浏览器设置：遵循Firefox设置和主题。\n-向您显示通知：在您关闭大量选项卡时显示通知，允许您撤消。\n-访问最近关闭的标签：切换到最后一个标签。\n-访问浏览器标签：获取标签的URL、标题和收藏夹图标。\n-在导航过程中访问浏览器活动：在页面加载完资源后触发额外的动画。"
+        "message": ""
     },
     "newTabBtnLabel": {
         "message": "新标签页"
