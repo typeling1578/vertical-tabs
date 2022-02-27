@@ -27,8 +27,6 @@ class Options {
       "optionsNotifyClosingManyTabs",
       "optionsAdvancedTitle",
       "optionsCustomCSS",
-      "optionsCustomCSSWikiLink",
-      "optionsCustomCSSChangelogLink",
       "optionsSaveCustomCSS",
     ];
     const changes = [];
