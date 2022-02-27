@@ -34,7 +34,7 @@ body.loaded > * {
 
   --background: var(--white-100);
   --tab-selected-line: var(--blue-50);
-  --tab-active-background: var(--grey-30);
+  --tab-active-background: var(--white-100);
   --tab-hover-background: hsla(0, 0%, 50%, 0.2);
   --tab-separator: rgba(0, 0, 0, 0.3);
   --tab-text: var(--grey-90);
@@ -55,6 +55,9 @@ body {
   background-color: var(--background);
   color: var(--tab-text);
   font: message-box;
+  background-image: var(--frame-image);
+  background-size: cover;
+  background-position: center;
 }
 
 #spacer {
@@ -303,6 +306,7 @@ body.animated #pinnedtablist.compact .tab {
 .tab.active {
   color: var(--tab-active-text);
   background-color: var(--tab-active-background);
+  border: 1px solid var(--tab-line);
 }
 
 .tab-loading-burst {

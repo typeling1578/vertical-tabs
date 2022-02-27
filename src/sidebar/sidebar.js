@@ -32,6 +32,7 @@ const CSS_TO_THEME_PROPS = {
   "--input-text": ["toolbar_field_text", "bookmark_text"],
   "--input-text-focus": ["toolbar_field_text_focus", "toolbar_field_text"],
   "--identity-color-toolbar": ["toolbar_field_text"],
+  "--tab-line": ["tab_line"],
 };
 
 export default class Sidebar {
@@ -199,42 +200,11 @@ export default class Sidebar {
       }
     }
 
-    // In Firefox, tab separator color is used on an element with `opacity: 0.3;`
-    // We compute the final color directly so that we can use it anywhere easily
-    if (!themeColors["--tab-separator"]) {
-      themeColors["--tab-separator"] = themeColors["--tab-text"];
-    }
-
-    if (themeColors["--tab-separator"]) {
-      const tabSeparator = new TinyColor(themeColors["--tab-separator"]);
-      themeColors["--tab-separator"] = tabSeparator
-        .setAlpha(tabSeparator.getAlpha() * 0.3)
-        .toRgbString();
-    }
-
-    // swap background and tab-active-background colors if background is light
-    if (
-      themeColors["--background"] !== null &&
-      new TinyColor(themeColors["--background"]).isLight()
-    ) {
-      if (themeColors["--tab-active-background"] !== null) {
-        let tmp = themeColors["--background"];
-        themeColors["--background"] = themeColors["--tab-active-background"];
-        themeColors["--tab-active-background"] = tmp;
-
-        tmp = themeColors["--tab-active-text"];
-        themeColors["--tab-active-text"] = themeColors["--tab-text"];
-        themeColors["--tab-text"] = tmp;
-      }
-    }
-
-    // Since Firefox Color uses additional_backgrounds instead of theme_frame,
-    // TCRn won’t fall back to default theme even if colors aren’t readable,
-    // so the user won’t think that TCRn is buggy with regards to Firefox Color
-    if (theme.images && theme.images.theme_frame && !isThemeReadable(themeColors)) {
-      for (const cssVar of Object.keys(CSS_TO_THEME_PROPS)) {
-        themeColors[cssVar] = null;
-      }
+    if(theme.images && (theme.images.theme_frame || theme.images.headerURL || (theme.images.additional_backgrounds && theme.images.additional_backgrounds.length > 0))) {
+      const frameImage = theme.images.theme_frame || theme.images.headerURL || theme.images.additional_backgrounds[0];
+      style.setProperty("--frame-image", `url(${frameImage})`);
+    }else{
+      style.removeProperty("--frame-image");
     }
 
     // apply color if one was found, otherwise remove var and use default style
