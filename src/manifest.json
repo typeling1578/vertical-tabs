@@ -8,7 +8,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "vertical-tabs@typeling1578",
-      "strict_min_version": "65.0"
+      "strict_min_version": "91.0"
     }
   },
   "sidebar_action": {
