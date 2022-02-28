@@ -319,11 +319,43 @@ export default class Sidetab {
   }
 
   highlightTitle(newTitle) {
-    this._titleView.innerText = newTitle;
+    this._titleView.innerText = "";
+    if(newTitle.indexOf("<b>") !== -1) {
+      let arr = newTitle.split(/<b>|<\/b>/)
+      for (let i = 0; i < arr.length; i++) {
+        if (i % 2 === 1) {
+          let elem = document.createElement("b");
+          elem.innerText = arr[i];
+          this._titleView.appendChild(elem);
+        } else {
+          let elem = document.createElement("span");
+          elem.innerText = arr[i];
+          this._titleView.appendChild(elem);
+        }
+      }
+    } else {
+      this._titleView.innerText = newTitle;
+    }
   }
 
   highlightHost(newHost) {
-    this._urlView.innerText = newHost;
+    this._urlView.innerText = "";
+    if(newHost.indexOf("<b>") !== -1) {
+      let arr = newHost.split(/<b>|<\/b>/)
+      for (let i = 0; i < arr.length; i++) {
+        if (i % 2 === 1) {
+          let elem = document.createElement("b");
+          elem.innerText = arr[i];
+          this._urlView.appendChild(elem);
+        } else {
+          let elem = document.createElement("span");
+          elem.innerText = arr[i];
+          this._urlView.appendChild(elem);
+        }
+      }
+    } else {
+      this._urlView.innerText = newHost;
+    }
   }
 
   // If strict is true, this will return false for subviews (e.g the close button).
