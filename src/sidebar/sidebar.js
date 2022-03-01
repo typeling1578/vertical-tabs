@@ -323,9 +323,6 @@ function colorCodeToRGBA(colorCode) {
       return null;
     }
   }
-  if (colorCode.startsWith("rgb")) {
-    return colorCode.replace(/^rgb\(/, "rgba(").replace(/\)$/, ",1)");
-  }
   if (colorCode.startsWith("rgba")) {
     if(colorCode.split(",").length == 2) {
       return colorCode.replace(/\)$/, ",1)");
@@ -334,6 +331,9 @@ function colorCodeToRGBA(colorCode) {
     }else{
       return null;
     }
+  }
+  if (colorCode.startsWith("rgb")) {
+    return colorCode.replace(/^rgb\(/, "rgba(").replace(/\)$/, ",1)");
   }
   return null;
 }
