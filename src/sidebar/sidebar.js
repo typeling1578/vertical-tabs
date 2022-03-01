@@ -207,6 +207,17 @@ export default class Sidebar {
       style.removeProperty("--frame-image");
     }
 
+    if(theme.colors && theme.colors.tab_background_text) {
+      let rgba = colorCodeToRGBA(theme.colors.tab_background_text);
+      if(rgba !== null){
+        style.setProperty("--tab-hover-background", rgba.replace(/,[0-9]?\.?[0-9]?\)$/, "," + (Number(rgba.match(/,([0-9]?\.?[0-9]?)\)$/)[1]) * 0.11) + ")"));
+      }else{
+        style.removeProperty("--tab-hover-background");
+      }
+    }else{
+      style.removeProperty("--tab-hover-background");
+    }
+
     // apply color if one was found, otherwise remove var and use default style
     for (const [cssVar, color] of Object.entries(themeColors)) {
       if (color !== null) {
@@ -294,4 +305,35 @@ function isReadable(color1, color2) {
   const background = color1.onBackground("#ffffff");
   const text = color2.onBackground(background);
   return readability(background, text) >= 2;
+}
+
+function colorCodeToRGBA(colorCode) {
+  colorCode = colorCode.replaceAll(" ", "").replaceAll("　", "").replaceAll(";", "");
+  if (colorCode.startsWith("#")) {
+    let HexcolorCode = colorCode.replace(/^#/, "");
+    if (HexcolorCode.length === 3) {
+      HexcolorCode = HexcolorCode.split("").map((c) => c + c).join("");
+    }
+    if (HexcolorCode.length === 6) {
+      let r = parseInt(HexcolorCode.substr(0, 2), 16);
+      let g = parseInt(HexcolorCode.substr(2, 2), 16);
+      let b = parseInt(HexcolorCode.substr(4, 2), 16);
+      return `rgba(${r},${g},${b},1)`;
+    }else{
+      return null;
+    }
+  }
+  if (colorCode.startsWith("rgb")) {
+    return colorCode.replace(/^rgb\(/, "rgba(").replace(/\)$/, ",1)");
+  }
+  if (colorCode.startsWith("rgba")) {
+    if(colorCode.split(",").length == 2) {
+      return colorCode.replace(/\)$/, ",1)");
+    }else if(colorCode.split(",").length == 3){
+      return colorCode;
+    }else{
+      return null;
+    }
+  }
+  return null;
 }
