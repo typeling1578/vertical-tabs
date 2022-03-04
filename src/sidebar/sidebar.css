@@ -22,24 +22,27 @@ body.loaded > * {
   --favicon-size-only: var(--favicon-size);
   --tab-loading-fill: var(--blue-50);
 
-  --icons: var(--grey-90-a80);
-  --toolbar-background: var(--grey-10);
-  --toolbar-text: var(--grey-90);
-
-  --input-background: var(--white-100);
-  --input-border: hsla(0, 0%, 20%, 0.18);
   --input-border-focus: var(--blue-50);
-  --input-text: var(--grey-50);
-  --input-text-focus: var(--grey-70);
 
-  --background: var(--white-100);
-  --tab-selected-line: var(--blue-50);
-  --tab-active-background: var(--white-100);
-  --tab-hover-background: hsla(0, 0%, 50%, 0.2);
   --tab-separator: rgba(0, 0, 0, 0.3);
-  --tab-text: var(--grey-90);
 
-  --identity-color-toolbar: #7c7c7d;
+  --tab-hover-background: rgba(21,20,26,0.11);
+  --background: #f0f0f4;
+  --icons: rgb(91,91,102);
+  --tab-selected-line: transparent;
+  --tab-active-background: #fff;
+  --tab-active-text: rgb(21,20,26);
+  --tab-text: rgb(21,20,26);
+  --toolbar-background: #f9f9fb;
+  --toolbar-text: rgb(21,20,26);
+  --input-background: #f0f0f4;
+  --input-border: transparent;
+  --input-background-focus: white;
+  --input-selected-text: rgb(21,20,26);
+  --input-text: rgb(21,20,26);
+  --input-text-focus: rgb(21,20,26);
+  --identity-color-toolbar: rgb(21,20,26);
+  --tab-line: transparent;
 }
 
 body.incognito {
