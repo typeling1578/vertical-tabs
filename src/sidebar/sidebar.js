@@ -32,7 +32,6 @@ const CSS_TO_THEME_PROPS = {
   "--input-text": ["toolbar_field_text", "bookmark_text"],
   "--input-text-focus": ["toolbar_field_text_focus", "toolbar_field_text"],
   "--identity-color-toolbar": ["toolbar_field_text"],
-  "--tab-line": ["tab_line"],
 };
 
 export default class Sidebar {

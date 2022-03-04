@@ -309,7 +309,7 @@ body.animated #pinnedtablist.compact .tab {
 .tab.active {
   color: var(--tab-active-text);
   background-color: var(--tab-active-background);
-  border: 1px solid var(--tab-line);
+  border: 1px solid var(--tab-selected-line);
 }
 
 .tab-loading-burst {
