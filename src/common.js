@@ -11,7 +11,7 @@ export const SWITCH_BY_SCROLLING = {
 };
 
 export const DEFAULT_PREFS = {
-  animations: false,
+  animations: true,
   themeIntegration: true,
   compactMode: COMPACT_MODE.STRICT,
   compactPins: true,
