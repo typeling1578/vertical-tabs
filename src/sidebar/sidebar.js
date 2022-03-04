@@ -7,8 +7,6 @@ import Topmenu from "./topmenu.js";
 import { DEFAULT_PREFS, extractNew, svgToDataUrl } from "../common.js";
 import { IDENTITY_ICON_TEMPLATES } from "./identity-icon-templates.js";
 
-import { TinyColor, readability } from "@ctrl/tinycolor";
-
 // fallbacks for theme colors
 const CSS_TO_THEME_PROPS = {
   "--background": ["frame"],
@@ -282,29 +280,6 @@ export default class Sidebar {
 
 const sidebar = new Sidebar();
 sidebar.init();
-
-function isThemeReadable(themeColors) {
-  // if a value is not defined, we use its default value to check if it is actually readable
-  return (
-    isReadable(themeColors["--background"] || "#ffffff", themeColors["--tab-text"] || "#0c0c0d") &&
-    isReadable(
-      themeColors["--tab-active-background"] || "#d7d7db",
-      themeColors["--tab-active-text"] || "#0c0c0d",
-    ) &&
-    isReadable(
-      themeColors["--toolbar-background"] || "#f9f9fa",
-      themeColors["--icons"] || "rgba(249, 249, 250, 0.8)",
-    )
-  );
-}
-
-// Some theme have bad contrast, but we only want to avoid incorrect themes
-// So we don’t check constrast >= AA but some arbitrary value to avoid white on white…
-function isReadable(color1, color2) {
-  const background = color1.onBackground("#ffffff");
-  const text = color2.onBackground(background);
-  return readability(background, text) >= 2;
-}
 
 function colorCodeToRGBA(colorCode) {
   colorCode = colorCode.replaceAll(" ", "").replaceAll("　", "").replaceAll(";", "");

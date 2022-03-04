@@ -66,7 +66,6 @@
     "webpack-cli": "^4.9.2"
   },
   "dependencies": {
-    "@ctrl/tinycolor": "^3.4.0",
     "fuzzysort": "^1.2.1",
     "photon-colors": "^3.3.2",
     "smooth-scroll-into-view-if-needed": "^1.1.33"
