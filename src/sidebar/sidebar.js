@@ -16,7 +16,7 @@ const CSS_TO_THEME_PROPS = {
   "--button-background-hover": ["button_background_hover"],
   "--icons": ["icons", "toolbar_text", "bookmark_text", "tab_background_text", "tab_text"],
   "--tab-separator": ["tab_background_separator"],
-  "--tab-selected-line": ["tab_line", "tab_text", "tab_background_text"],
+  "--tab-line": ["tab_line", "tab_text", "tab_background_text"],
   "--tab-loading-fill": ["tab_loading"],
   "--tab-active-background": ["tab_selected", "toolbar"],
   "--tab-active-text": ["tab_text", "toolbar_text", "bookmark_text", "tab_background_text"],

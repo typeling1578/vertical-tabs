@@ -29,7 +29,8 @@ body.loaded > * {
   --tab-hover-background: rgba(21,20,26,0.11);
   --background: #f0f0f4;
   --icons: rgb(91,91,102);
-  --tab-selected-line: transparent;
+  --tab-line: transparent;
+  --tab-separate-line: var(--blue-50);
   --tab-active-background: #fff;
   --tab-active-text: rgb(21,20,26);
   --tab-text: rgb(21,20,26);
@@ -42,7 +43,6 @@ body.loaded > * {
   --input-text: rgb(21,20,26);
   --input-text-focus: rgb(21,20,26);
   --identity-color-toolbar: rgb(21,20,26);
-  --tab-line: transparent;
 }
 
 body.incognito {
@@ -309,7 +309,7 @@ body.animated #pinnedtablist.compact .tab.added, body.animated #pinnedtablist.co
 .tab.active {
   color: var(--tab-active-text);
   background-color: var(--tab-active-background);
-  border: 1px solid var(--tab-selected-line);
+  border: 1px solid var(--tab-line);
 }
 
 .tab-loading-burst {
@@ -802,24 +802,24 @@ body.incognito #pinnedtablist.compact .tab .tab-context {
 /* stylelint-disable */
 #tablist .tab.drag-highlight-previous .tab-drag-overlay,
 #pinnedtablist:not(.compact) .tab.drag-highlight-previous .tab-drag-overlay {
-  box-shadow: inset 0px 2px 0px 0px var(--tab-selected-line) !important;
+  box-shadow: inset 0px 2px 0px 0px var(--tab-separate-line) !important;
 }
 
 #tablist .tab.drag-highlight-next,
 #pinnedtablist:not(.compact) .tab.drag-highlight-next {
-  border-bottom-color: var(--tab-selected-line);
+  border-bottom-color: var(--tab-separate-line);
 }
 
 #tablist .tab.drag-highlight-next .tab-drag-overlay,
 #pinnedtablist:not(.compact) .tab.drag-highlight-next .tab-drag-overlay {
-  box-shadow: inset 0px -1px 0px 0px var(--tab-selected-line) !important;
+  box-shadow: inset 0px -1px 0px 0px var(--tab-separate-line) !important;
 }
 /* stylelint-enable */
 
 #pinnedtablist.compact .tab.drag-highlight-previous .tab-drag-overlay {
-  box-shadow: inset 2px 0px 0px 0px var(--tab-selected-line) !important;
+  box-shadow: inset 2px 0px 0px 0px var(--tab-separate-line) !important;
 }
 
 #pinnedtablist.compact .tab.drag-highlight-next .tab-drag-overlay {
-  box-shadow: inset -2px 0px 0px 0px var(--tab-selected-line) !important;
+  box-shadow: inset -2px 0px 0px 0px var(--tab-separate-line) !important;
 }
