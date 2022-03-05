@@ -282,11 +282,15 @@ body.animated #tablist {
 }
 
 /* HACK: keep in sync with animation time in JS */
-body.animated #tablist-wrapper .tab.added, body.animated #tablist-wrapper .tab.deleted {
+body.animated #tablist-wrapper .tab.being-added,
+body.animated #tablist-wrapper .tab.added,
+body.animated #tablist-wrapper .tab.deleted {
   transition: box-shadow 0.1s ease, height 0.05s linear;
 }
 
-body.animated #pinnedtablist.compact .tab.added, body.animated #pinnedtablist.compact .tab.deleted {
+body.animated #pinnedtablist.compact .tab.being-added,
+body.animated #pinnedtablist.compact .tab.added,
+body.animated #pinnedtablist.compact .tab.deleted {
   transition: box-shadow 0.1s ease, width 0.1s linear;
 }
 
