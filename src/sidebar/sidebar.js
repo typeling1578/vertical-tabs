@@ -298,9 +298,9 @@ function colorCodeToRGBA(colorCode) {
     }
   }
   if (colorCode.startsWith("rgba")) {
-    if(colorCode.split(",").length == 2) {
+    if(colorCode.match(/,/g).length == 2) {
       return colorCode.replace(/\)$/, ",1)");
-    }else if(colorCode.split(",").length == 3){
+    }else if(colorCode.match(/,/g).length == 3){
       return colorCode;
     }else{
       return null;
