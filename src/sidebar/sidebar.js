@@ -16,10 +16,8 @@ const CSS_TO_THEME_PROPS = {
   "--tab-separator": ["tab_background_separator"],
   "--tab-line": ["tab_line", "tab_text", "tab_background_text"],
   "--tab-loading-fill": ["tab_loading"],
-  "--tab-active-background": ["tab_selected", "toolbar"],
   "--tab-active-text": ["tab_text", "toolbar_text", "bookmark_text", "tab_background_text"],
   "--tab-text": ["tab_background_text", "tab_text", "toolbar_text", "bookmark_text"],
-  "--toolbar-background": ["toolbar", "frame"],
   "--toolbar-text": ["toolbar_text", "bookmark_text"],
   "--input-background": ["toolbar_field"],
   "--input-border": ["toolbar_field_border"],
@@ -195,6 +193,23 @@ export default class Sidebar {
           break;
         }
       }
+    }
+
+    if(theme.colors && (theme.colors.tab_selected || theme.colors.toolbar)) {
+      const tabActiveBackgroundColor = theme.colors.tab_selected || theme.colors.toolbar;
+      style.setProperty("--tab-active-background", tabActiveBackgroundColor);
+    }else if(theme.colors != null){
+      style.setProperty("--tab-active-background", "rgba(255,255,255,0.4)");
+    }else{
+      style.removeProperty("--tab-active-background");
+    }
+
+    if(theme.colors && theme.colors.toolbar){
+      style.setProperty("--toolbar-background", theme.colors.toolbar);
+    }else if(theme.colors != null){
+      style.setProperty("--toolbar-background", "rgba(255,255,255,0.4)");
+    }else{
+      style.removeProperty("--toolbar-background");
     }
 
     if(theme.images && (theme.images.theme_frame || theme.images.headerURL || (theme.images.additional_backgrounds && theme.images.additional_backgrounds.length > 0))) {
