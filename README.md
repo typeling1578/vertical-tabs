@@ -5,3 +5,4 @@ A vertical tab add-on that resembles the Proton UI.
 
 ## Improvements over Tab Center Reborn
 - The UI is now similar to Proton UI.
+- Compatibility with themes is further improved.
