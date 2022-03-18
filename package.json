@@ -59,9 +59,9 @@
   "homepage": "https://github.com/typeling1578/vertical-tabs",
   "devDependencies": {
     "copy-webpack-plugin": "^10.2.4",
-    "cssnano": "^5.1.0",
-    "eslint": "^8.10.0",
-    "postcss": "^8.4.7",
+    "cssnano": "^5.1.4",
+    "eslint": "^8.11.0",
+    "postcss": "^8.4.12",
     "webpack": "^5.70.0",
     "webpack-cli": "^4.9.2"
   },
