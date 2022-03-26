@@ -27,7 +27,7 @@ body.loaded > * {
   --tab-separator: rgba(0, 0, 0, 0.3);
 
   --tab-hover-background: rgba(21,20,26,0.11);
-  --background: #f0f0f4;
+  --background: #f0f0f0;
   --icons: rgb(91,91,102);
   --tab-line: transparent;
   --tab-separate-line: var(--blue-50);
