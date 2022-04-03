@@ -220,9 +220,9 @@ export default class Sidebar {
     }
 
     if(theme.colors && theme.colors.tab_background_text) {
-      let rgba = colorCodeToRGBA(theme.colors.tab_background_text);
+      let rgba = colorToRGBA(theme.colors.tab_background_text);
       if(rgba !== null){
-        style.setProperty("--tab-hover-background", rgba.replace(/,[0-9]?\.?[0-9]?\)$/, "," + (Number(rgba.match(/,([0-9]?\.?[0-9]?)\)$/)[1]) * 0.11) + ")"));
+        style.setProperty("--tab-hover-background", rgba.replace(/,\s[0-9]?\.?[0-9]?\)$/, ", " + (Number(rgba.match(/,\s([0-9]?\.?[0-9]?)\)$/)[1]) * 0.11) + ")"));
       }else{
         style.removeProperty("--tab-hover-background");
       }
@@ -296,7 +296,7 @@ export default class Sidebar {
 const sidebar = new Sidebar();
 sidebar.init();
 
-function colorCodeToRGBA(colorCode) {
+function colorToRGBA(colorCode) {
   colorCode = colorCode.replaceAll(" ", "").replaceAll("　", "").replaceAll(";", "");
   if (colorCode.startsWith("#")) {
     let HexcolorCode = colorCode.replace(/^#/, "");
@@ -307,22 +307,26 @@ function colorCodeToRGBA(colorCode) {
       let r = parseInt(HexcolorCode.substr(0, 2), 16);
       let g = parseInt(HexcolorCode.substr(2, 2), 16);
       let b = parseInt(HexcolorCode.substr(4, 2), 16);
-      return `rgba(${r},${g},${b},1)`;
+      return `rgba(${r}, ${g}, ${b}, 1)`;
     }else{
       return null;
     }
   }
   if (colorCode.startsWith("rgba")) {
     if(colorCode.match(/,/g).length == 2) {
-      return colorCode.replace(/\)$/, ",1)");
+      return colorCode.replace(/\)$/, ",1)").replaceAll(",", ", ");
     }else if(colorCode.match(/,/g).length == 3){
-      return colorCode;
+      return colorCode.replaceAll(",", ", ");
     }else{
       return null;
     }
   }
   if (colorCode.startsWith("rgb")) {
-    return colorCode.replace(/^rgb\(/, "rgba(").replace(/\)$/, ",1)");
+    if(colorCode.match(/,/g).length == 2) {
+      return colorCode.replace(/^rgb\(/, "rgba(").replace(/\)$/, ",1)").replaceAll(",", ", ");
+    }else{
+      return null;
+    }
   }
   return null;
 }
