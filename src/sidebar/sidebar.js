@@ -220,9 +220,15 @@ export default class Sidebar {
     }
 
     if(theme.colors && theme.colors.tab_background_text) {
-      let rgba = colorToRGBA(theme.colors.tab_background_text);
+      let rgba;
+      try {
+        let [r, g, b, a] = colorToRGBA(theme.colors.tab_background_text);
+        rgba = `rgba(${r}, ${g}, ${b}, ${a * 0.11})`;
+      } catch (e) {
+        rgba = null;
+      }
       if(rgba !== null){
-        style.setProperty("--tab-hover-background", rgba.replace(/,\s[0-9]?\.?[0-9]?\)$/, ", " + (Number(rgba.match(/,\s([0-9]?\.?[0-9]?)\)$/)[1]) * 0.11) + ")"));
+        style.setProperty("--tab-hover-background", rgba);
       }else{
         style.removeProperty("--tab-hover-background");
       }
@@ -297,36 +303,60 @@ const sidebar = new Sidebar();
 sidebar.init();
 
 function colorToRGBA(colorCode) {
-  colorCode = colorCode.replaceAll(" ", "").replaceAll("　", "").replaceAll(";", "");
-  if (colorCode.startsWith("#")) {
-    let HexcolorCode = colorCode.replace(/^#/, "");
-    if (HexcolorCode.length === 3) {
-      HexcolorCode = HexcolorCode.split("").map((c) => c + c).join("");
-    }
-    if (HexcolorCode.length === 6) {
-      let r = parseInt(HexcolorCode.substr(0, 2), 16);
-      let g = parseInt(HexcolorCode.substr(2, 2), 16);
-      let b = parseInt(HexcolorCode.substr(4, 2), 16);
-      return `rgba(${r}, ${g}, ${b}, 1)`;
-    }else{
-      return null;
-    }
+  if (!(typeof colorCode === "string")) {
+    throw new TypeError("Invalid arguments");
   }
-  if (colorCode.startsWith("rgba")) {
-    if(colorCode.match(/,/g).length == 2) {
-      return colorCode.replace(/\)$/, ",1)").replaceAll(",", ", ");
-    }else if(colorCode.match(/,/g).length == 3){
-      return colorCode.replaceAll(",", ", ");
-    }else{
-      return null;
+
+  colorCode = colorCode.replaceAll(" ", "");
+
+  if(colorCode.startsWith("#")){
+    let hex = colorCode.substring(1);
+
+    if(hex.length === 3){
+      hex = hex.split("").map(c => c + c).join("");
     }
-  }
-  if (colorCode.startsWith("rgb")) {
-    if(colorCode.match(/,/g).length == 2) {
-      return colorCode.replace(/^rgb\(/, "rgba(").replace(/\)$/, ",1)").replaceAll(",", ", ");
-    }else{
-      return null;
+
+    if(hex.length !== 6){
+      throw new RangeError("Invalid color code");
     }
+
+    let r = parseInt(hex.substring(0, 2), 16);
+    let g = parseInt(hex.substring(2, 4), 16);
+    let b = parseInt(hex.substring(4, 6), 16);
+    let a = 1;
+
+    if (
+        (r > 255 || g > 255 || b > 255) ||
+        (r < 0 || g < 0 || b < 0)
+    ) {
+        throw new RangeError("Invalid color code");
+    }
+
+    return [r, g, b, a];
+  }else if(colorCode.startsWith("rgb")){
+    let match = colorCode.match(/^rgba?\((\d+),(\d+),(\d+),?([\d\.]+)?\)[;,]?$/);
+    if (!match) {
+      throw new RangeError("Invalid color code");
+    }
+
+    let r = Number(match[1]);
+    let g = Number(match[2]);
+    let b = Number(match[3]);
+    let a;
+    if(match[4]){
+      a = Number(match[4]);
+    }else{
+      a = 1;
+    }
+
+    if (
+        (r > 255 || g > 255 || b > 255) ||
+        (r < 0 || g < 0 || b < 0) ||
+        (a > 1 || a < 0)
+    ) {
+        throw new RangeError("Invalid color code");
+    }
+
+    return [r, g, b, a];
   }
-  return null;
 }
