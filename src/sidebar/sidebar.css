@@ -45,6 +45,27 @@ body.loaded > * {
   --identity-color-toolbar: rgb(21,20,26);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --tab-active-background: rgb(66,65,77);
+    --toolbar-background: rgb(43,42,51);
+    --tab-hover-background: rgba(251, 251, 254, 0.11);
+    --background: #1c1b22;
+    --icons: rgb(251,251,254);
+    --tab-line: transparent;
+    --tab-active-text: rgb(251,251,254);
+    --tab-text: #fbfbfe;
+    --toolbar-text: rgb(251, 251, 254);
+    --input-background: rgb(28,27,34);
+    --input-border: transparent;
+    --input-background-focus: rgb(66,65,77);
+    --input-selected-text: rgb(251,251,254);
+    --input-text: rgb(251,251,254);
+    --input-text-focus: rgb(251,251,254);
+    --identity-color-toolbar: rgb(251,251,254);
+  }
+}
+
 body.incognito {
   --identity-color: var(--purple-50);
 }
