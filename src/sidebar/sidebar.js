@@ -358,5 +358,69 @@ function colorToRGBA(colorCode) {
     }
 
     return [r, g, b, a];
+  } else if(colorCode.startsWith("hsl")) {
+    let match = colorCode.match(/^hsla?\((\d+),(\d+%),(\d+%),?([\d\.]+)?\)[;,]?$/);
+    if (!match) {
+      throw new RangeError("Invalid color code");
+    }
+
+    let h = Number(match[1]) / 360;
+    let s = Number(match[2].replaceAll("%", "")) / 100;
+    let l = Number(match[3].replaceAll("%", "")) / 100;
+    let a;
+    if(match[4]){
+      a = Number(match[4]);
+    }else{
+      a = 1;
+    }
+
+    if (
+        (h > 1 || s > 1 || l > 1) ||
+        (h < 0 || s < 0 || l < 0) ||
+        (a > 1 || a < 0)
+    ) {
+        throw new RangeError("Invalid color code");
+    }
+
+    /*https://github.com/mozilla/gecko-dev/blob/3a67d45dd328c26d8f43ac8c1a71fbdfba54e641/devtools/shared/css/color.js#L765-L782*/
+    function _hslValue(m1, m2, h) {
+      if (h < 0.0) {
+        h += 1.0;
+      }
+      if (h > 1.0) {
+        h -= 1.0;
+      }
+      if (h < 1.0 / 6.0) {
+        return m1 + (m2 - m1) * h * 6.0;
+      }
+      if (h < 1.0 / 2.0) {
+        return m2;
+      }
+      if (h < 2.0 / 3.0) {
+        return m1 + (m2 - m1) * (2.0 / 3.0 - h) * 6.0;
+      }
+      return m1;
+    }
+
+    /*https://github.com/mozilla/gecko-dev/blob/3a67d45dd328c26d8f43ac8c1a71fbdfba54e641/devtools/shared/css/color.js#L786-L798*/
+    let m2;
+    if (l <= 0.5) {
+      m2 = l * (s + 1);
+    } else {
+      m2 = l + s - l * s;
+    }
+    let m1 = l * 2 - m2;
+    let r = Math.round(255 * _hslValue(m1, m2, h + 1.0 / 3.0));
+    let g = Math.round(255 * _hslValue(m1, m2, h));
+    let b = Math.round(255 * _hslValue(m1, m2, h - 1.0 / 3.0));
+
+    if (
+        (r > 255 || g > 255 || b > 255) ||
+        (r < 0 || g < 0 || b < 0)
+    ) {
+        throw new RangeError("Invalid color code");
+    }
+
+    return [r, g, b, a];
   }
 }
