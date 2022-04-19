@@ -365,7 +365,6 @@ export default class Tablist {
       browser.tabs.update(tabId, { muted: !tab.muted });
     } else if (e.button === 0 && Sidetab.isTabEvent(e)) {
       const tabId = Sidetab.tabIdForEvent(e);
-      const activeId = this._active.id;
       if (e.ctrlKey) {
         browser.tabs.get(tabId).then((tab) => {
           if (tab.highlighted) {
