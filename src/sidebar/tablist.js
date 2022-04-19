@@ -374,7 +374,21 @@ export default class Tablist {
           }
         });
       } else if (e.shiftKey) {
-        //
+        browser.tabs.query({ currentWindow: true }).then((tabs) => {
+          const activetab = tabs.find((tab) => tab.active);
+          const activetab_index = tabs.indexOf(activetab);
+          const tab = tabs.find((tab) => tab.id === tabId);
+          const tab_index = tabs.indexOf(tab);
+          if (tab_index > activetab_index) {
+            for (let i = activetab_index; i <= tab_index; i++) {
+              browser.tabs.update(tabs[i].id, { highlighted: true, active: false });
+            }
+          } else if (tab_index < activetab_index) {
+            for (let i = tab_index; i <= activetab_index; i++) {
+              browser.tabs.update(tabs[i].id, { highlighted: true, active: false });
+            }
+          }
+        })
       } else if (tabId !== this._active.id) {
         browser.tabs.update(tabId, { active: true });
       } else if (this._prefs.switchLastActiveTab && this._tabs.size > 1) {
