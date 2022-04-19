@@ -331,7 +331,7 @@ body.animated #pinnedtablist.compact .tab.deleted {
   opacity: 0;
 }
 
-.tab.active {
+.tab.active, .tab.highlight {
   color: var(--tab-active-text);
   background-color: var(--tab-active-background);
   border: 1px solid var(--tab-line);
@@ -411,14 +411,14 @@ body.animated #pinnedtablist.compact .tab.deleted {
   }
 }
 
-#tablist .tab.active,
-#pinnedtablist:not(.compact) .tab.active {
+#tablist .tab.active, #tablist .tab.highlight,
+#pinnedtablist:not(.compact) .tab.active, #pinnedtablist:not(.compact) .tab.highlight {
   box-shadow: 0 0 4px gray;
 }
 
 @media (prefers-color-scheme: dark) {
-  #tablist .tab.active,
-  #pinnedtablist:not(.compact) .tab.active {
+  #tablist .tab.active, #tablist .tab.highlight,
+  #pinnedtablist:not(.compact) .tab.active, #pinnedtablist:not(.compact) .tab.highlight {
     box-shadow: unset;
   }
 }
@@ -478,12 +478,12 @@ body #pinnedtablist:not(.compact) .tab[data-identity-color] .tab-context {
   margin-bottom: -1px; /* Make favicon feel centered even when tab is active */
 }
 
-#pinnedtablist.compact .tab.active {
+#pinnedtablist.compact .tab.active, #pinnedtablist.compact .tab.highlight {
   box-shadow: 0 0 4px gray;
 }
 
 @media (prefers-color-scheme: dark) {
-  #pinnedtablist.compact .tab.active {
+  #pinnedtablist.compact .tab.active, #pinnedtablist.compact .tab.highlight {
     box-shadow: unset;
   }
 }

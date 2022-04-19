@@ -58,6 +58,7 @@ export default class Tablist {
     // Tab events
     browser.tabs.onCreated.addListener((tab) => this._onBrowserTabCreated(tab));
     browser.tabs.onActivated.addListener((activeInfo) => this._onBrowserTabActivated(activeInfo));
+    browser.tabs.onHighlighted.addListener((highlightInfo) => this._onBrowserTabHighlighted(highlightInfo));
     browser.tabs.onUpdated.addListener(
       (tabId, changeInfo, tab) => this._onBrowserTabUpdated(tabId, changeInfo, tab),
       { windowId: this._windowId }, // only onUpdated lets us filter by windowId
@@ -188,6 +189,20 @@ export default class Tablist {
     this._setActive(sidetab);
     this._maybeUpdateTabThumbnail(sidetab);
     this.scrollIntoView(sidetab);
+  }
+
+  _onBrowserTabHighlighted(highlightInfo) {
+    if (!this.checkWindow(highlightInfo.windowId)) {
+      return;
+    }
+    let highlight = [];
+    for (const tabId of highlightInfo.tabIds) {
+      const sidetab = this.getTabById(tabId);
+      if (sidetab) {
+        highlight.push(sidetab);
+      }
+    }
+    this._setHighlight(highlight);
   }
 
   _onBrowserTabMoved(tabId, moveInfo) {
@@ -987,6 +1002,19 @@ export default class Tablist {
     }
     sidetab.updateActive(true);
     this._active = sidetab;
+  }
+
+  _setHighlight(sidetabs) {
+    if (this._highlight) {
+      for (const sidetab of this._highlight) {
+        sidetab.updateHighlight(false);
+      }
+    }
+    this._highlight = [];
+    for (const sidetab of sidetabs) {
+      sidetab.updateHighlight(true);
+      this._highlight.push(sidetab);
+    }
   }
 
   _remove(sidetab) {

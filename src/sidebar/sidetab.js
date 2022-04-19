@@ -171,6 +171,10 @@ export default class Sidetab {
     this.view.classList.toggle("audible", audible);
   }
 
+  _updateHighlighted(highlighted) {
+    this.view.classList.toggle("highlighted", highlighted);
+  }
+
   _updatedMuted(mutedInfo) {
     const muted = mutedInfo.muted;
     this.muted = muted;
@@ -198,6 +202,10 @@ export default class Sidetab {
       this._unread = false;
       this.view.classList.remove("unread", "wants-attention");
     }
+  }
+
+  updateHighlight(highlight) {
+    this.view.classList.toggle("highlight", highlight);
   }
 
   _updateHidden(hidden) {
