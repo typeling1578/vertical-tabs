@@ -171,10 +171,6 @@ export default class Sidetab {
     this.view.classList.toggle("audible", audible);
   }
 
-  _updateHighlighted(highlighted) {
-    this.view.classList.toggle("highlighted", highlighted);
-  }
-
   _updatedMuted(mutedInfo) {
     const muted = mutedInfo.muted;
     this.muted = muted;
