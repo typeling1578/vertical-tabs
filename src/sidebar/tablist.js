@@ -421,9 +421,9 @@ export default class Tablist {
     //trick to show the "move" effect when dragging over tab viewport.
     e.dataTransfer.setData("text/uri-list", "");
     e.dataTransfer.setData(
-      "text/x-tabcenter-tab",
+      "text/x-verticaltabs-tab",
       JSON.stringify({
-        tabId: parseInt(tabId),
+        tabId: tabId,
         origWindowId: this._windowId,
       }),
     );
@@ -581,7 +581,7 @@ export default class Tablist {
     }
 
     const dt = e.dataTransfer;
-    const tabJson = dt.getData("text/x-tabcenter-tab");
+    const tabJson = dt.getData("text/x-verticaltabs-tab");
     if (tabJson) {
       const tabDroppedData = JSON.parse(tabJson);
       if (isFilterboxInputEvent) {
@@ -637,35 +637,65 @@ export default class Tablist {
   async _handleDroppedSidetab(e, dragTabInfo, whereToDropInfo) {
     const toDuplicate = e.ctrlKey;
 
-    const dragTab = await browser.tabs.get(dragTabInfo.tabId);
-    const { tab, before } = whereToDropInfo;
-    let newIndex;
-    if (tab === null) {
-      newIndex = -1;
-    } else {
-      newIndex = before ? tab.index : tab.index + 1;
-      // when moving a tab in the same window, the tab is first removed then inserted
-      // so the index has to be decremented to match the earlier removal
-      if (this.checkWindow(dragTabInfo.origWindowId) && dragTab.index < newIndex && !toDuplicate) {
-        newIndex -= 1;
+    const dragTabs = [];
+    let tab_ = await browser.tabs.get(dragTabInfo.tabId);
+    if (tab_.active || tab_.highlighted) {
+      let tabs = await browser.tabs.query({ windowId: dragTabInfo.origWindowId });
+      tabs = tabs.sort((a, b) => a.index - b.index);
+      for (const tab of tabs) {
+        if (tab.active || tab.highlighted) {
+          dragTabs.push(tab);
+        }
       }
-    }
-
-    if (toDuplicate) {
-      this.duplicate(dragTab, {
-        windowId: this._windowId,
-        active: false,
-        index: newIndex,
-        pinned: tab ? tab.pinned : false,
-      });
     } else {
-      browser.tabs.update(dragTab.id, { pinned: tab ? tab.pinned : false });
-      browser.tabs.move(dragTab.id, {
-        windowId: this._windowId,
-        index: newIndex,
-      });
-      if (!this.checkWindow(dragTabInfo.origWindowId)) {
-        browser.tabs.update(dragTab.id, { active: true });
+      dragTabs.push(tab_);
+    }
+    let { tab, before } = whereToDropInfo;
+    let old_tab;
+    let first = true;
+    let first_elem_index_zero = false;
+    for (const dragTab of dragTabs) {
+      if (old_tab) {
+        tab = await browser.tabs.get(old_tab.id);
+      }
+      let newIndex;
+      if (tab === null) {
+        newIndex = -1;
+      } else {
+        newIndex = before ? tab.index : tab.index + 1;
+        // when moving a tab in the same window, the tab is first removed then inserted
+        // so the index has to be decremented to match the earlier removal
+        if (this.checkWindow(dragTabInfo.origWindowId) && dragTab.index < newIndex && !toDuplicate) {
+          newIndex -= 1;
+        }
+
+        if (old_tab && first_elem_index_zero) {
+          newIndex += 1;
+        }
+
+        if (first && newIndex == 0) {
+          first_elem_index_zero = true;
+        }
+      }
+
+      if (toDuplicate) {
+        let duplicatedtab = await this.duplicate(dragTab, {
+          windowId: this._windowId,
+          active: false,
+          index: newIndex,
+          pinned: tab ? tab.pinned : false,
+        });
+        old_tab = duplicatedtab;
+      } else {
+        await browser.tabs.update(dragTab.id, { pinned: tab ? tab.pinned : false });
+        await browser.tabs.move(dragTab.id, {
+          windowId: this._windowId,
+          index: newIndex,
+        });
+        if (!this.checkWindow(dragTabInfo.origWindowId)) {
+          await browser.tabs.update(dragTab.id, { active: true });
+        }
+        old_tab = dragTab;
       }
     }
   }
@@ -1197,7 +1227,7 @@ export default class Tablist {
    *   https://bugzilla.mozilla.org/show_bug.cgi?id=1376088
    * We use this function instead of having to use ugly workarounds.
    */
-  duplicate(tab, props) {
+  async duplicate(tab, props) {
     if (this._firefoxVersion >= "79.0") {
       const newProps = {};
       if (props) {
@@ -1208,8 +1238,8 @@ export default class Tablist {
         }
       }
 
-      browser.tabs.duplicate(tab.id, newProps);
-      return;
+      let tab = await browser.tabs.duplicate(tab.id, newProps);
+      return tab;
     }
 
     const defaultProps = {
