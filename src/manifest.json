@@ -3,7 +3,7 @@
   "description": "__MSG_extensionDescription__",
   "homepage_url": "https://github.com/typeling1578/vertical-tabs",
   "manifest_version": 2,
-  "version": "1.0.4",
+  "version": "1.0.5",
   "default_locale": "en",
   "browser_specific_settings": {
     "gecko": {
