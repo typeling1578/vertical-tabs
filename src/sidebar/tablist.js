@@ -365,7 +365,18 @@ export default class Tablist {
       browser.tabs.update(tabId, { muted: !tab.muted });
     } else if (e.button === 0 && Sidetab.isTabEvent(e)) {
       const tabId = Sidetab.tabIdForEvent(e);
-      if (tabId !== this._active.id) {
+      const activeId = this._active.id;
+      if (e.ctrlKey) {
+        browser.tabs.get(tabId).then((tab) => {
+          if (tab.highlighted) {
+            browser.tabs.update(tabId, { highlighted: false });
+          } else {
+            browser.tabs.update(tabId, { highlighted: true, active: false });
+          }
+        });
+      } else if (e.shiftKey) {
+        //
+      } else if (tabId !== this._active.id) {
         browser.tabs.update(tabId, { active: true });
       } else if (this._prefs.switchLastActiveTab && this._tabs.size > 1) {
         browser.tabs.query({ currentWindow: true }).then((tabs) => {
