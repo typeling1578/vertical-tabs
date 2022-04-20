@@ -395,8 +395,10 @@ export default class Tablist {
           browser.tabs.update(tabs[1].id, { active: true });
         });
       } else {
-        for (const tab of this._highlight) {
-          browser.tabs.update(tab.id, { highlighted: false });
+        if (this._highlight) {
+          for (const tab of this._highlight) {
+            browser.tabs.update(tab.id, { highlighted: false });
+          }
         }
         browser.tabs.update(tabId, { active: true });
       }
