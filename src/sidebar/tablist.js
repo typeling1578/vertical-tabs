@@ -358,7 +358,19 @@ export default class Tablist {
     // Don't put preventDefault here or drag-and-drop won't work
     if (Sidetab.isCloseButtonEvent(e)) {
       const tabId = Sidetab.tabIdForEvent(e);
-      browser.tabs.remove(tabId);
+      browser.tabs.get(tabId).then((tab) => {
+        if (tab.active || tab.highlighted) {
+          browser.tabs.query({ currentWindow: true }).then((tabs) => {
+            for (const tab_ of tabs) {
+              if (tab_.active || tab_.highlighted) {
+                browser.tabs.remove(tab_.id);
+              }
+            }
+          })
+        } else {
+          browser.tabs.remove(tabId);
+        }
+      })
     } else if (Sidetab.isIconOverlayEvent(e)) {
       const tabId = Sidetab.tabIdForEvent(e);
       const tab = this.getTabById(tabId);
