@@ -652,8 +652,6 @@ export default class Tablist {
     }
     let { tab, before } = whereToDropInfo;
     let old_tab;
-    let first = true;
-    let first_elem_index_zero = false;
     for (const dragTab of dragTabs) {
       if (old_tab) {
         tab = await browser.tabs.get(old_tab.id);
@@ -662,19 +660,14 @@ export default class Tablist {
       if (tab === null) {
         newIndex = -1;
       } else {
+        if (old_tab) {
+          before = false;
+        }
         newIndex = before ? tab.index : tab.index + 1;
         // when moving a tab in the same window, the tab is first removed then inserted
         // so the index has to be decremented to match the earlier removal
         if (this.checkWindow(dragTabInfo.origWindowId) && dragTab.index < newIndex && !toDuplicate) {
           newIndex -= 1;
-        }
-
-        if (old_tab && first_elem_index_zero) {
-          newIndex += 1;
-        }
-
-        if (first && newIndex == 0) {
-          first_elem_index_zero = true;
         }
       }
 
