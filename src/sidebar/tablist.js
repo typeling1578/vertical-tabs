@@ -707,6 +707,8 @@ export default class Tablist {
         }
         old_tab = dragTab;
       }
+
+      await new Promise((resolve) => setTimeout(resolve, 20));
     }
   }
 
