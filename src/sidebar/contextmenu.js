@@ -13,7 +13,23 @@ export default class ContextMenu {
     browser.menus.onClicked.addListener((info, tab) => this._onContextMenuClicked(info, tab));
   }
 
-  _onContextMenuClicked(info, tab) {
+  async _getTabs(ctab) {
+    let tabs = [];
+    const tab = await browser.tabs.get(ctab.id);
+    if (tab.active || tab.highlighted) {
+      const tabs_ = await browser.tabs.query({ currentWindow: true });
+      for (const tab_ of tabs_) {
+        if (tab_.active || tab_.highlighted) {
+          tabs.push(tab_);
+        }
+      }
+    } else {
+      tabs.push(tab);
+    }
+    return tabs;
+  }
+
+  async _onContextMenuClicked(info, tab) {
     if (
       !tab ||
       !this._tablist.checkWindow(tab.windowId) ||
@@ -21,30 +37,47 @@ export default class ContextMenu {
     ) {
       return;
     }
+    const tabs = await this._getTabs(tab);
+    const reverse_tabs = tabs.slice().reverse();
     switch (info.menuItemId) {
       case "contextMenuReloadTab":
-        browser.tabs.reload(tab.id);
+        for (const tab_ of tabs) {
+          await browser.tabs.reload(tab_.id);
+        }
         return;
       case "contextMenuMuteTab":
-        browser.tabs.update(tab.id, { muted: !tab.mutedInfo.muted });
+        for (const tab_ of tabs) {
+          await browser.tabs.update(tab_.id, { muted: !tab_.mutedInfo.muted });
+        }
         return;
       case "contextMenuPinTab":
-        browser.tabs.update(tab.id, { pinned: !tab.pinned });
+        for (const tab_ of tabs) {
+          await browser.tabs.update(tab_.id, { pinned: !tab_.pinned });
+          await new Promise((resolve) => setTimeout(resolve, 20));
+        }
         return;
       case "contextMenuDuplicateTab":
-        this._tablist.duplicate(tab);
+        for (const tab_ of tabs) {
+          await browser.tabs.duplicate(tab_.id);
+        }
         return;
       case "contextMenuUnloadTab":
-        browser.tabs.discard(tab.id);
+        for (const tab_ of tabs) {
+          await browser.tabs.discard(tab_.id);
+        }
         return;
       case "contextMenuMoveTabToStart":
-        this._tablist.moveTabToStart(tab);
+        for (const tab_ of reverse_tabs) {
+          this._tablist.moveTabToStart(tab_);
+        }
         return;
       case "contextMenuMoveTabToEnd":
-        this._tablist.moveTabToEnd(tab);
+        for (const tab_ of tabs) {
+          this._tablist.moveTabToEnd(tab_);
+        }
         return;
       case "contextMenuMoveTabToNewWindow":
-        browser.windows.create({ tabId: tab.id });
+        await browser.windows.create({ tabId: tab.id });
         return;
       case "contextMenuCloseTabsBefore":
         this._tablist.closeTabsBefore(tab);
@@ -59,7 +92,11 @@ export default class ContextMenu {
         this._tablist.undoCloseTab();
         return;
       case "contextMenuCloseTab":
-        browser.tabs.remove(tab.id);
+        let tabIds = [];
+        for (const tab_ of tabs) {
+          tabIds.push(tab_.id);
+        }
+        await browser.tabs.remove(tabIds);
         return;
     }
 
